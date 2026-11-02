@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 import re
 import sqlite3
 import sys
@@ -93,13 +94,21 @@ def main() -> int:
             detail_json TEXT, flags_json TEXT, degenerate INTEGER,
             latency_s REAL, n_tokens INTEGER)"""
     )
+    # Full HF-parity budget needs the peer model unloaded on the L4
+    # (activation capture: 62 layers x hidden per token on the 12B OOMs
+    # when both brains are resident). Override per-role via OMNI_DIAG_MT_*
+    # env when running both brains concurrently.
+    budget = {
+        "analyst": int(os.getenv("OMNI_DIAG_MT_ANALYST", "1800")),
+        "executor": int(os.getenv("OMNI_DIAG_MT_EXECUTOR", "1800")),
+    }
     for role in roles:
         for task in _TASKS:
             prompt = _prompt(mod, task)
             t0 = time.time()
             resp = brain_chat(
                 [{"role": "user", "content": prompt}],
-                role=role, max_tokens=1800, temperature=0.7,
+                role=role, max_tokens=budget.get(role, 1024), temperature=0.7,
             )
             lat = time.time() - t0
             resp = resp or ""
