@@ -1,0 +1,70 @@
+"""Tests for kernel_daemon.homeostasis (ported resource state machine)."""
+
+from __future__ import annotations
+
+import pytest
+
+from omni_coworker.kernel_daemon.homeostasis import (
+    HomeostaticController, ResourceState, TaskPriority)
+
+
+@pytest.fixture
+def ctl():
+    return HomeostaticController()
+
+
+def _soma(cpu=10, ram=30, disk=20, vram_used=5, vram_total=23):
+    return {"cpu_percent": cpu, "ram_percent": ram,
+            "disk": {"percent": disk},
+            "gpu": {"gpus": [{"vram_used_gb": vram_used,
+                              "vram_total_gb": vram_total}]}}
+
+
+def test_state_machine_levels(ctl):
+    assert ctl.regulate(_soma(cpu=10))["state"] == "optimal"
+    assert ctl.regulate(_soma(cpu=65))["state"] == "good"
+    assert ctl.regulate(_soma(cpu=85))["state"] == "warning"
+    assert ctl.regulate(_soma(cpu=92))["state"] == "critical"
+    assert ctl.regulate(_soma(cpu=97))["state"] == "emergency"
+
+
+def test_vram_counts_as_resource(ctl):
+    out = ctl.regulate(_soma(vram_used=21.5, vram_total=23))
+    assert out["state"] == "critical"  # 93.5% vram
+    assert out["metrics"]["vram_percent"] > 90
+
+
+def test_emergency_throttles_and_recovers(ctl):
+    ctl.regulate(_soma(cpu=97))
+    assert ctl._throttled is True
+    out = ctl.regulate(_soma(cpu=10))
+    assert out["action"] == "throttle_released" and ctl._throttled is False
+
+
+def test_sublimation_override(ctl):
+    ctl.update_consciousness_state(0.5, TaskPriority.CRITICAL)
+    out = ctl.regulate(_soma(cpu=97))
+    assert out["action"] == "sublimated_override"
+    assert ctl._throttled is False
+
+
+def test_should_execute_task_gates(ctl):
+    ctl.regulate(_soma(cpu=97))  # emergency
+    assert ctl.should_execute_task(TaskPriority.CRITICAL) is True
+    assert ctl.should_execute_task(TaskPriority.LOW) is False
+    ctl.regulate(_soma(cpu=85))  # warning
+    assert ctl.should_execute_task(TaskPriority.BACKGROUND) is False
+    assert ctl.should_execute_task(TaskPriority.MEDIUM) is True
+
+
+def test_kernel_cycle_publishes_homeostasis(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_STATE_DIR", str(tmp_path))
+    from omni_coworker.kernel_daemon import collector, scheduler
+    from omni_coworker.shared_workspace import bus, store
+    store._reset(); bus._reset()
+    log = tmp_path / "act.jsonl"; log.write_text("")
+    monkeypatch.setattr(collector, "ACTIVATIONS_LOG", log)
+    scheduler.run_cycle()
+    ev = bus.latest("kernel.homeostasis")
+    assert ev is not None and "state" in ev["payload"]
+    bus._reset(); store._reset()

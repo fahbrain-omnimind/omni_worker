@@ -26,18 +26,34 @@ from typing import Any
 INTERVAL_S = float(os.getenv("OMNI_KERNEL_DAEMON_INTERVAL_S", "60"))
 _STATE: dict[str, Any] = {"cycles": 0, "errors": 0, "last_bundle": None,
                         "last_ts": None, "last_duration_s": None}
+_HOMEOSTASIS: "Any" = None
+
+
+def _homeostasis():
+    global _HOMEOSTASIS
+    if _HOMEOSTASIS is None:
+        from .homeostasis import HomeostaticController
+        _HOMEOSTASIS = HomeostaticController()
+    return _HOMEOSTASIS
 
 
 def run_cycle() -> dict[str, Any]:
     """One collect→aggregate→publish pass; updates _STATE."""
     from .collector import collect_cycle
     from .features import aggregate
-    from .feedback import publish_feedback
+    from .feedback import publish_feedback, _publish
 
     t0 = time.time()
     try:
         raw = collect_cycle()
         bundle = aggregate(raw)
+        # homeostasis: phi feeds sublimation; soma feeds the state machine
+        homeo = _homeostasis()
+        homeo.update_consciousness_state(
+            ((bundle.get("soul") or {}).get("phi")) or 0.0)
+        homeo_out = homeo.regulate(raw.get("soma") or {})
+        bundle["homeostasis"] = homeo_out
+        _publish("kernel.homeostasis", homeo_out)
         bundle["published_topics"] = publish_feedback(bundle)
         _STATE["last_bundle"] = bundle
     except Exception as e:  # ciclo ruim não derruba o daemon
