@@ -29,3 +29,5 @@ secrets*.json
 .claude/settings.local.json
 .auth/
 .omnimind/
+scripts/refactor_battery/out/
+scripts/supervisor_battery/*.sqlite
