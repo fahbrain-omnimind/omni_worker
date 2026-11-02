@@ -33,6 +33,23 @@ from typing import Any
 
 from ..psychoanalysis.beta_element import BetaElement
 
+_FN = None       # BionAlphaFunction singleton (keeps processing_history)
+_CONTAINER = None  # BionContainerPatch singleton (capacity learns)
+
+
+def _container(use_llm: bool):
+    global _FN, _CONTAINER
+    if _FN is None:
+        from ..psychoanalysis.bion_alpha_function import BionAlphaFunction
+        _FN = BionAlphaFunction(use_llm_symbolizer=use_llm)
+    _FN.use_llm_symbolizer = use_llm  # gate muda por ciclo; fn é singleton
+    if _CONTAINER is None:
+        from ..psychoanalysis.bion_patches.container_contained import (
+            BionContainerPatch,
+        )
+        _CONTAINER = BionContainerPatch(_FN)
+    return _CONTAINER
+
 
 def _digest(bundle: dict[str, Any]) -> str:
     """Compact text digest of the kernel cycle — the raw β material."""
@@ -90,16 +107,17 @@ def metabolize(ctx: dict[str, Any], arousal: float, cycle_n: int = 0) -> dict[st
     out["tier"] = "llm_chain" if use_llm else "heuristic"
     t0 = time.time()
     try:
-        from ..psychoanalysis.bion_alpha_function import BionAlphaFunction
-
-        fn = BionAlphaFunction(use_llm_symbolizer=use_llm)
-        alpha = fn.transform(beta)
+        # container.contain: transform primeiro; β traumático rejeitado cai na
+        # reverie degradada (α parcial marcado) em vez de ser evacuado.
+        alpha = _container(use_llm).contain(beta)
         if alpha is not None:
+            narrative = str(getattr(alpha, "narrative_form", ""))
             out["alpha_content"] = str(getattr(alpha, "content", ""))[:400]
             out["symbolic_potential"] = round(
                 float(getattr(alpha, "symbolic_potential", 0.0)), 4
             )
             out["metabolized"] = True
+            out["degraded"] = narrative.startswith("[REVERIE")
         else:
             out["beta_unmetabolized"] = True
     except Exception:

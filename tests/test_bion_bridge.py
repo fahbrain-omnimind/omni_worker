@@ -28,10 +28,11 @@ def test_metabolize_llm_gating():
     # processable + aroused → llm_chain tier
     out = bion_bridge.metabolize({"bundle": _bundle()}, arousal=0.45, cycle_n=1)
     assert out["tier"] == "llm_chain"
-    # charge ≥ 0.6 → unprocessable β: heuristic tier + unmetabolized flag
+    # charge ≥ 0.6 → transform rejeita; container cai em reverie degradada
     out2 = bion_bridge.metabolize({"bundle": _bundle()}, arousal=0.9, cycle_n=1)
     assert out2["tier"] == "heuristic"
-    assert out2.get("beta_unmetabolized") is True
+    assert out2["metabolized"] is True
+    assert out2.get("degraded") is True
     # homeostasis degraded + processable → LLM tier
     out3 = bion_bridge.metabolize({"bundle": _bundle("warning")}, arousal=0.4, cycle_n=1)
     assert out3["tier"] == "llm_chain"
