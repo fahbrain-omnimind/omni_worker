@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+*.db
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+node.db
+/omni_code_index/
+/dist/
+/build/

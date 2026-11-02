@@ -1,0 +1,140 @@
+"""Brain server wrapper.
+
+English: Reuses src.erika.erika_torch_server as the brain substrate.
+pt-BR: Reutiliza src.erika.erika_torch_server como substrato cerebral.
+"""
+
+from __future__ import annotations
+
+import os
+from typing import Any
+
+__all__ = ["create_brain_router", "get_brain_client", "ERIKA_HOST", "ERIKA_PORT"]
+
+
+ERIKA_HOST = os.getenv("ERIKA_HOST", "127.0.0.1")
+ERIKA_PORT = int(os.getenv("ERIKA_PORT", "8098"))
+ERIKA_BASE_URL = f"http://{ERIKA_HOST}:{ERIKA_PORT}"
+EXECUTOR_PORT = int(os.getenv("ERIKA_EXECUTOR_PORT", "8099"))
+EXECUTOR_BASE_URL = f"http://{ERIKA_HOST}:{EXECUTOR_PORT}"
+
+
+def _base_for_role(role: str) -> str:
+    """Return the upstream base URL for a brain role.
+
+    English: 'executor' targets the tactical model server, anything else
+    targets the analyst/brain server.
+    pt-BR: 'executor' aponta para o servidor do modelo tático, o restante
+    aponta para o servidor analista/brain.
+    """
+    return EXECUTOR_BASE_URL if role == "executor" else ERIKA_BASE_URL
+
+
+def create_brain_router():
+    """Create a router that proxies to Erika brain server.
+    
+    English: Creates FastAPI router bridging to Erika endpoints.
+    pt-BR: Cria router FastAPI fazendo bridge para endpoints da Erika.
+    """
+    try:
+        from fastapi import APIRouter, HTTPException
+        import httpx
+        
+        router = APIRouter(prefix="/brain", tags=["brain"])
+        
+        @router.get("/health")
+        async def health():
+            try:
+                async with httpx.AsyncClient(timeout=5.0) as client:
+                    resp = await client.get(f"{ERIKA_BASE_URL}/health")
+                    return resp.json()
+            except Exception as e:
+                raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
+        
+        @router.get("/activations")
+        async def activations(limit: int = 16):
+            try:
+                async with httpx.AsyncClient(timeout=5.0) as client:
+                    resp = await client.get(f"{ERIKA_BASE_URL}/erika/activations", params={"limit": limit})
+                    return resp.json()
+            except Exception as e:
+                raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
+        
+        @router.get("/affect")
+        async def affect():
+            try:
+                async with httpx.AsyncClient(timeout=5.0) as client:
+                    resp = await client.get(f"{ERIKA_BASE_URL}/erika/affect")
+                    return resp.json()
+            except Exception as e:
+                raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
+        
+        @router.post("/chat")
+        async def chat(payload: dict, role: str = "analyst"):
+            try:
+                async with httpx.AsyncClient(timeout=120.0) as client:
+                    resp = await client.post(
+                        f"{_base_for_role(role)}/v1/chat/completions", json=payload
+                    )
+                    return resp.json()
+            except Exception as e:
+                raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
+
+        @router.get("/executor/health")
+        async def executor_health():
+            try:
+                async with httpx.AsyncClient(timeout=5.0) as client:
+                    resp = await client.get(f"{EXECUTOR_BASE_URL}/health")
+                    return resp.json()
+            except Exception as e:
+                raise HTTPException(status_code=503, detail=f"Executor server unavailable: {e}")
+
+        @router.get("/topology")
+        async def topology():
+            """Report which brain roles have live servers.
+
+            English: analyst (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT).
+            pt-BR: analista (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT).
+            """
+            out: dict = {}
+            async with httpx.AsyncClient(timeout=3.0) as client:
+                for role, base in (("analyst", ERIKA_BASE_URL), ("executor", EXECUTOR_BASE_URL)):
+                    try:
+                        r = await client.get(f"{base}/health")
+                        out[role] = {"status": "up", "base": base, **r.json()}
+                    except Exception:
+                        out[role] = {"status": "down", "base": base}
+            return out
+
+        return router
+    except Exception as e:
+        # Return a dummy router if dependencies missing
+        from fastapi import APIRouter
+        router = APIRouter(prefix="/brain", tags=["brain"])
+        @router.get("/health")
+        def health_fallback():
+            return {"status": "unavailable", "error": str(e)}
+        return router
+
+
+_CLIENTS: dict = {}
+
+
+def get_brain_client(role: str = "analyst"):
+    """Get a synchronous client for a brain server role.
+
+    English: Returns cached httpx client for the analyst (default) or
+    executor backend.
+    pt-BR: Retorna cliente httpx cacheado para o backend analista
+    (default) ou executor.
+    """
+    client = _CLIENTS.get(role)
+    if client is not None:
+        return client
+    try:
+        import httpx
+        client = httpx.Client(base_url=_base_for_role(role), timeout=60.0)
+        _CLIENTS[role] = client
+        return client
+    except Exception:
+        return None

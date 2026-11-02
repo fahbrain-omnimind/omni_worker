@@ -1,0 +1,56 @@
+schema_version: v1
+directory: src/omni_coworker
+generated_at: '2026-11-02T08:00:00+00:00'
+modules:
+  total: 40
+  with_main:
+  - src/omni_coworker/cli.py
+  - src/omni_coworker/server/erika_torch_server.py
+  - src/omni_coworker/orchestration/agent_orchestrator.py
+  imported_by_others: []
+  standalone_executables:
+  - src/omni_coworker/cli.py
+  - src/omni_coworker/app.py
+  - src/omni_coworker/orchestration/agent_orchestrator.py
+  - src/omni_coworker/server/erika_torch_server.py
+  - src/omni_coworker/store/code_index.py
+  stubs_and_shims:
+  - file: brain/server.py
+    purpose: Adapter — proxy httpx p/ src.erika.erika_torch_server (:8098/:8099)
+    type: adapter
+  - file: safety/matrix.py
+    purpose: Adapter — src.orchestration.permission_matrix.PermissionMatrix
+    type: adapter
+  - file: safety/gate.py
+    purpose: Adapter — src.autopoietic.constitutional_gate (ChangePayload->DeliberationCertificate)
+    type: adapter
+  - file: agency/analyst.py
+    purpose: Adapter — src.agentes.psychoanalytic_analyst (guard OMNI_ANALYST_CONFIG)
+    type: adapter
+  - file: agency/dream.py
+    purpose: Adapter — src.cognitive.dream_weaver + dream_cycle próprio
+    type: adapter
+  - file: server/erika_torch_server.py
+    purpose: Stub leve do servidor canônico (sem torch) p/ pacote mínimo
+    type: stub
+autopoietic_repairs: []
+execution_modes:
+- type: library
+  description: Pacote importável (agents, agency, safety, store, kernel_hooks)
+- type: cli_executable
+  description: omni-coworker serve|doctor|demo|soul-export|missions
+- type: asgi_app
+  description: create_app() FastAPI unificada (soul SSE, brain proxy, ops)
+- type: embedded_model_server
+  description: erika_torch_server (analyst :8098 | executor :8099) — externo ao pacote, consumido via proxy
+systemd_units: []
+shell_invocations: []
+historical_lineage:
+- provenance: src.agentes_recuperados / src.agentes (malha restaurada 2026-11-02)
+- provenance: src.erika.erika_torch_server (brain substrate, eager attn patch)
+- provenance: src.kernel.* (9 crates pyo3 compilados — kernel_hooks)
+governance:
+  owner: fahbrain
+  last_audit: '2026-11-02'
+  policy: Prótese executiva — DebugAgent read-only; CodeAgent só submete via matriz+gate; stubs preservados como fallback de ambiente mínimo
+  license: Apache-2.0 (pacote) — ativos OmniMind permanecem CC-BY-NC-ND

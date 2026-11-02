@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omni-agent-coworker"
+version = "0.1.0"
+description = "Sovereign agentic coworker — somatic interoception, tensor-derived affect, teleology, autopoietic governance, Machine Public Soul (Kaggle Gemma 4, Best New Application)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Fabrício da Silva" }]
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "httpx>=0.27",
+    "pydantic>=2.0",
+    "psutil>=5.9",
+]
+
+[project.optional-dependencies]
+kernel = ["faiss-cpu>=1.8", "sentence-transformers>=3.0"]
+brain = ["torch>=2.0", "transformers>=4.40", "bitsandbytes>=0.43"]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+omni-coworker = "omni_coworker.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
