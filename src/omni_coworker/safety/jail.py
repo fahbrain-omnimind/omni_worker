@@ -36,6 +36,8 @@ def is_safe(command: str) -> bool:
         ("ncat -e", "net_exfil"),
         ("curl | sh", "pipe_exec"),
         ("wget | sh", "pipe_exec"),
+        ("| sh", "pipe_exec"),
+        ("| bash", "pipe_exec"),
         ("bash -i >& /dev/tcp", "reverse_shell"),
         ("/dev/tcp/", "reverse_shell"),
         ("ssh -o stricthostkeychecking=no -l root -n -r", "ssh_tunnel"),
