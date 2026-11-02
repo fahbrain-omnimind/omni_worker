@@ -107,6 +107,20 @@ class AgentOrchestrator:
             json.dump(task, f, indent=2)
         return task
     
+    def run_external(self, name, task, context=None):
+        """Delegate a task to an external agentic CLI as a resource.
+
+        English: Routes through ExternalCLIAgent (ACP when available,
+        else the synchronous shell fallback, else a "none" failure
+        dict). Never touches the brain LLM backends.
+        pt-BR: Delega via ExternalCLIAgent (ACP quando disponível,
+        senão o fallback shell síncrono, senão um dict de falha "none").
+        Nunca toca os backends LLM do brain.
+        """
+        from ..agents.external_cli_agent import ExternalCLIAgent
+
+        return ExternalCLIAgent(name).execute(task, context or {})
+
     def run_judge_review(self, task_id, result):
         """Run adversarial judges review.
 

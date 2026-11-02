@@ -13,6 +13,7 @@ __all__ = [
     "analyst_agent",
     "reviewer_agent",
     "code_agent",
+    "external_cli_agent",
     "bus",
     "persona",
 ]
