@@ -133,7 +133,7 @@ def get_brain_client(role: str = "analyst"):
         return client
     try:
         import httpx
-        client = httpx.Client(base_url=_base_for_role(role), timeout=60.0)
+        client = httpx.Client(base_url=_base_for_role(role), timeout=300.0)
         _CLIENTS[role] = client
         return client
     except Exception:
