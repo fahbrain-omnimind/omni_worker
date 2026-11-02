@@ -82,6 +82,10 @@ def main() -> int:
     roles = [a for a in sys.argv[1:] if a in ("analyst", "executor")] or [
         "analyst", "executor"
     ]
+    reps = 1
+    if "--reps" in sys.argv:
+        i = sys.argv.index("--reps")
+        reps = max(1, int(sys.argv[i + 1]))
     try:
         from omni_coworker.agents._llm import brain_chat
     except Exception as e:
@@ -94,6 +98,11 @@ def main() -> int:
             detail_json TEXT, flags_json TEXT, degenerate INTEGER,
             latency_s REAL, n_tokens INTEGER)"""
     )
+    # rep column for multi-repetition statistics; guarded migration keeps
+    # old ledgers readable.
+    cols = {r[1] for r in con.execute("PRAGMA table_info(diag_battery)")}
+    if "rep" not in cols:
+        con.execute("ALTER TABLE diag_battery ADD COLUMN rep INTEGER DEFAULT 0")
     # Full HF-parity budget needs the peer model unloaded on the L4
     # (activation capture: 62 layers x hidden per token on the 12B OOMs
     # when both brains are resident). Override per-role via OMNI_DIAG_MT_*
@@ -102,30 +111,31 @@ def main() -> int:
         "analyst": int(os.getenv("OMNI_DIAG_MT_ANALYST", "1800")),
         "executor": int(os.getenv("OMNI_DIAG_MT_EXECUTOR", "1800")),
     }
-    for role in roles:
-        for task in _TASKS:
-            prompt = _prompt(mod, task)
-            t0 = time.time()
-            resp = brain_chat(
-                [{"role": "user", "content": prompt}],
-                role=role, max_tokens=budget.get(role, 1024), temperature=0.7,
-            )
-            lat = time.time() - t0
-            resp = resp or ""
-            scorer = getattr(mod, _TASKS[task][1])
-            detail = scorer(resp)
-            flags = mod._flags_resposta(resp)
-            con.execute(
-                "INSERT INTO diag_battery VALUES (?,?,?,?,?,?,?,?,?)",
-                (time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), role,
-                 task, detail.get("score"), json.dumps(detail)[:2000],
-                 json.dumps(flags), int(_degenerate(resp)),
-                 round(lat, 1), len(resp.split())),
-            )
-            con.commit()
-            print(f"{role}/{task}: score={detail.get('score')} "
-                  f"degen={_degenerate(resp)} {lat:.0f}s "
-                  f"flags={flags}")
+    for rep in range(reps):
+        for role in roles:
+            for task in _TASKS:
+                prompt = _prompt(mod, task)
+                t0 = time.time()
+                resp = brain_chat(
+                    [{"role": "user", "content": prompt}],
+                    role=role, max_tokens=budget.get(role, 1024), temperature=0.7,
+                )
+                lat = time.time() - t0
+                resp = resp or ""
+                scorer = getattr(mod, _TASKS[task][1])
+                detail = scorer(resp)
+                flags = mod._flags_resposta(resp)
+                con.execute(
+                    "INSERT INTO diag_battery VALUES (?,?,?,?,?,?,?,?,?,?)",
+                    (time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), role,
+                     task, detail.get("score"), json.dumps(detail)[:2000],
+                     json.dumps(flags), int(_degenerate(resp)),
+                     round(lat, 1), len(resp.split()), rep),
+                )
+                con.commit()
+                print(f"rep{rep} {role}/{task}: score={detail.get('score')} "
+                      f"degen={_degenerate(resp)} {lat:.0f}s "
+                      f"flags={flags}")
     con.close()
     print(f"ledger: {DB}")
     return 0
