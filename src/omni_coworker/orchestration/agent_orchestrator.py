@@ -271,6 +271,27 @@ class AgentOrchestrator:
             review = self.run_judge_review(task['id'], result)
             audit = self.run_audit(task['id'])
 
+            # Audit P0 wiring: the loop now feeds trust, the event bus and
+            # the witness hash-chain on every iteration (previously the
+            # governance kit was assembled but never connected).
+            try:
+                from ..orchestration.governance import EventBus, get_trust_system
+                from ..agency.witness import witness_event
+
+                ts = get_trust_system()
+                ok = bool(review.get("consensus")) and bool(audit.get("passed"))
+                ts.record_event("tests_passed" if ok else "review_dissent",
+                                agent="CodeAgent")
+                EventBus().publish(
+                    "iteration.completed",
+                    {"task": task['id'], "ok": ok, "trust": ts.get_trust()},
+                )
+                witness_event("orchestrator.iteration",
+                              {"task": task['id'], "ok": ok,
+                               "iteration": i + 1})
+            except Exception:
+                pass
+
             try:
                 self.db.add_artifact(
                     task['id'],
