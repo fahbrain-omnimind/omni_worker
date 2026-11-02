@@ -76,13 +76,19 @@ def test_phi_meta_window(tmp_path, monkeypatch):
     # independent flags → low phi; correlated flags → higher phi
     bundle = {"models": {"m": {"n_records": 2}},
               "affect": {"analyst": {"e": 1}, "executor": None},
-              "soma": {"cpu_percent": 10}, "soul": {"phi": 0.5},
+              "soma": {"cpu_percent": 10,
+                      "gpu": {"gpus": [{"power_w": 33.7, "temp_c": 71.0}]}},
+              "soul": {"phi": 0.5},
               "homeostasis": {"state": "good"}, "mesh_topics": ["kernel.cycle"]}
     out = None
     for _ in range(6):
         out = phi_meta.update(bundle)
     assert out["phi_meta"] >= 0 and out["window"] == 6
     assert "activations" in out["elements"]
+    # bit/Landauer layer: real power → real bit flow + integrated rate
+    assert float(out["bit_flow_real_bits_s"]) > 0
+    assert float(out["phi_bit_flow_rate_bits_s"]) >= 0
+    assert out["vs_i5_ratio"] is not None and out["vs_i5_ratio"] > 0
     # alternating states → more entropy/complexity
     phi_meta._reset()
     for i in range(6):

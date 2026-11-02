@@ -32,6 +32,42 @@ from typing import Any
 WINDOW = 40          # estados na janela de análise
 _STATES: list[dict[str, bool]] = []
 
+# Padrão bit/Landauer (port de consciousness/machine_bit_standard.py):
+# E_Landauer(T) = k_B·T_K·ln2  [J/bit] — custo físico de um bit apagado;
+# bit_flow_real = P_real / E_Landauer  [bits/s] — informação que de fato
+# percorre a máquina; phi_bit_flow = bit_flow·coesão — fração integrada.
+KB = 1.380649e-23
+LN2 = math.log(2)
+I5_TDP_W, I5_TEMP_C = 45.0, 73.65   # baseline do i5 de referência
+
+
+def _landauer_j_per_bit(temp_c: float) -> float:
+    return KB * (temp_c + 273.15) * LN2
+
+
+def _bit_layer(bundle: dict[str, Any], phi_bits: float, h_sys: float) -> dict[str, Any]:
+    """Physical bit layer: Landauer cost, real bit flow, integrated flow."""
+    gpu = (((bundle.get("soma") or {}).get("gpu") or {}).get("gpus") or [{}])[0]
+    power_w = gpu.get("power_w") or 0.0
+    temp_c = gpu.get("temp_c") or 70.0
+    e = _landauer_j_per_bit(temp_c)
+    bit_flow = (power_w / e) if e > 0 and power_w > 0 else 0.0
+    cohesion = (phi_bits / h_sys) if h_sys > 0 else 0.0
+    cohesion = max(0.0, min(1.0, cohesion))
+    e_i5 = _landauer_j_per_bit(I5_TEMP_C)
+    c_bit_i5 = I5_TDP_W / e_i5
+    c_bit_host = (power_w / e) if e > 0 else 0.0
+    return {
+        "e_landauer_j_per_bit": f"{e:.4e}",
+        "power_w": power_w,
+        "temp_c": temp_c,
+        "bit_flow_real_bits_s": f"{bit_flow:.4e}",
+        "phi_integrated_bits": phi_bits,
+        "cohesion": round(cohesion, 4),
+        "phi_bit_flow_rate_bits_s": f"{bit_flow * cohesion:.4e}",
+        "vs_i5_ratio": round(c_bit_host / c_bit_i5, 4) if c_bit_i5 else None,
+    }
+
 
 def elements_from_bundle(bundle: dict[str, Any]) -> dict[str, bool]:
     """Binarize subsystem activity from the daemon bundle."""
@@ -97,13 +133,15 @@ def update(bundle: dict[str, Any]) -> dict[str, Any]:
     elems = sorted(states[0]) if states else []
     mis = [_mi({a}, {b}, states) for i, a in enumerate(elems)
            for b in elems[i + 1:]] if len(elems) > 1 else [0.0]
-    return {
+    out = {
         "phi_meta": round(p, 4),
         "complexity": round(h, 4),
         "integration": round(sum(mis) / len(mis), 4) if mis else 0.0,
         "window": len(states),
         "elements": elems,
     }
+    out.update(_bit_layer(bundle, p, h))
+    return out
 
 
 def _reset() -> None:
