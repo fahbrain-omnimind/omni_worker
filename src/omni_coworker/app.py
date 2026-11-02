@@ -33,9 +33,9 @@ def create_app() -> FastAPI:
 
     @app.get("/soma/probe")
     def soma_probe() -> dict:
-        """Host telemetry snapshot."""
-        from .soma.probe import probe_with_brain
-        return probe_with_brain()
+        """Host telemetry snapshot (persisted to somatic store)."""
+        from .soma.probe import probe_recorded
+        return probe_recorded()
 
     @app.get("/agency/missions")
     def agency_missions() -> dict:
@@ -98,5 +98,13 @@ def create_app() -> FastAPI:
         except Exception:
             pass
         return dunker_architecture(kernel_state=kernel_state)
+
+    @app.get("/agency/witness")
+    def agency_witness() -> dict:
+        """Witness hash-chain: last entries + integrity verification."""
+        from .agency.witness import read_witness, verify_witness
+
+        chain = read_witness("data/witness.jsonl", limit=20)
+        return {"entries": chain, "verify": verify_witness("data/witness.jsonl")}
 
     return app
