@@ -52,7 +52,9 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
     """
     gate = get_gate()
     if gate is None or ChangePayload is None:
-        return {"allowed": True, "reason": "no_gate"}
+        fail_closed = os.getenv("OMNI_GATE_FAIL_CLOSED") == "1"
+        return {"allowed": not fail_closed,
+                "reason": "no_gate_fail_closed" if fail_closed else "no_gate"}
     context = context or {}
     try:
         change = ChangePayload(
