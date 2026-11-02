@@ -1,3 +1,5 @@
+<!-- doc_id: OW-CARE-002 | title: Brazil Mental Health Support — North + Northeast + Central-West (2026) | author: kilo | requester: artifice-operator | project: omni-agent-coworker (kaggle) | date: 2026-11-02 | status: active -->
+
 # Brazil – Mental Health Support: North + Northeast + Central-West (2026)
 # pt-BR directory. States: AC AP AM PA RO RR TO | AL BA CE MA PB PE PI RN SE | DF GO MT MS
 # Psychoanalytic presence marked: PRESENT / THIN (no CNES school/association)

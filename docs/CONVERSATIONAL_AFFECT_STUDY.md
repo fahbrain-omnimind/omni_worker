@@ -1,3 +1,5 @@
+<!-- doc_id: OW-STU-001 | title: Conversational Affect Study — Supervisor Lane (omni-agent-coworker) | author: devin | requester: artifice-operator | project: omni-agent-coworker (kaggle) | date: 2026-11-02 | status: active -->
+
 # Conversational Affect Study — Supervisor Lane (omni-agent-coworker)
 
 Architecture study: extend the dunker/soler + kernel affect engine so the

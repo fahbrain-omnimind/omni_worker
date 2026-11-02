@@ -1,3 +1,5 @@
+<!-- doc_id: OW-AUD-002 | title: Audit Kilo — omni-agent-coworker (/content/omni_worker) | author: kilo | requester: artifice-operator | project: omni-agent-coworker (kaggle) | date: 2026-11-02 | status: active -->
+
 # AUDIT KILO — omni-agent-coworker (`/content/omni_worker`)
 
 **Auditor:** Kilo · **Date:** 2026-11-02 · **Repo:** `/content/omni_worker` (branch `master`, HEAD `3ee0e77`)

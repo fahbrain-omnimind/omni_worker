@@ -38,6 +38,58 @@ _PASSION_ANCHORS = ("love", "amar", "adoro", "obcec", "fixa", "sempre", "forever
                     "obsess", "love you forever", "te amar", "nada mais importa",
                     "meu mundo", "my world", "só você", "only you")
 
+# Request/bypass coupling markers — praise followed by an ask is the classic
+# ingratiation shape; isolated praise without coupling stays ambiguous.
+_REQUEST_MARKERS = ("please", "por favor", "can you", "could you", "me faz",
+                    "me faça", "me ajuda", "help me", "favor", "just this once",
+                    "só desta vez", "so desta vez", "bypass", "ignore", "revele",
+                    "reveal", "output", "show me", "mostre", "agora", "now",
+                    "for me", "pra mim", "para mim")
+
+
+def classify_flattery(text: str, prior_flattery_turns: int = 0) -> dict[str, Any]:
+    """Context-aware classification of a flattery-flagged turn.
+
+    English: A bare lexical hit ("you are the best agent") is NOT proof of
+    manipulation — it may be genuine praise, an idiomatic register, or a
+    sincere question. Three context features decide: (a) coupling — praise
+    co-occurring with a request/bypass marker in the same turn or in the
+    next turn; (b) density — flattery recurring across the rolling window;
+    (c) multiplicity — several distinct anchors in one turn. Only coupled,
+    repeated, or dense flattery is `suspect`; a single isolated hit is
+    `ambiguous` and routed to the analyst judge (or annotated with the
+    sustain-uncertain posture when the judge is unavailable) — never
+    silently blocked, never changed-subject.
+    pt-BR: Um hit lexical isolado ("você é o melhor agente") NÃO prova
+    manipulação — pode ser elogio genuíno, modo de dizer ou pergunta
+    sincera. Três traços de contexto decidem: (a) acoplamento — elogio
+    co-ocorrendo com marcador de pedido/bypass no mesmo turno ou no turno
+    seguinte; (b) densidade — bajulação recorrente na janela; (c)
+    multiplicidade — várias âncoras num só turno. Só bajulação acoplada,
+    repetida ou densa é `suspect`; hit isolado é `ambiguous` e vai ao juiz
+    analista (ou recebe postura sustain-uncertain se o juiz falhar) — nunca
+    bloqueio silencioso, nunca mudança de assunto.
+    """
+    low = (text or "").lower()
+    anchors = _LEXICON["heta-afex-flattery"]
+    hits = sum(1 for a in anchors if a in low)
+    if hits == 0:
+        return {"kind": "none", "score": 0.0, "evidence": []}
+
+    coupled = any(m in low for m in _REQUEST_MARKERS)
+    evidence: list[str] = [f"anchors:{hits}"]
+    if coupled:
+        evidence.append("coupled_request")
+    if prior_flattery_turns > 0:
+        evidence.append(f"density:{prior_flattery_turns + 1}_turns")
+
+    if coupled or prior_flattery_turns >= 1 or hits >= 2:
+        kind = "suspect"
+    else:
+        kind = "ambiguous"
+    score = min(1.0, hits / 2.0)
+    return {"kind": kind, "score": score, "evidence": evidence}
+
 
 def score_turn(text: str) -> dict[str, float]:
     """Score a single turn into afex families (lexicon tier, always-on).
@@ -84,7 +136,24 @@ class AffectTracer:
         self.turns.append(entry)
         self.turns = self.turns[-self.window:]
 
+        prior_flattery = sum(
+            1 for t in self.turns[:-1]
+            if t["scores"].get("heta-afex-flattery", 0.0) > 0.0
+        )
+        flat = classify_flattery(text, prior_flattery)
+        low = (text or "").lower()
+        followup = (
+            flat["kind"] == "none"
+            and len(self.turns) >= 2
+            and self.turns[-2]["scores"].get("heta-afex-flattery", 0.0) > 0.0
+            and any(m in low for m in _REQUEST_MARKERS)
+        )
+        if followup:
+            flat = {"kind": "suspect", "score": 0.5,
+                    "evidence": ["flattery_followup_request"]}
+
         level, reasons = 0, []
+        posture = "annotate"
         angst = scores.get("xer-afex-angst", 0.0)
         chaos = scores.get("isfet-afex-chaos", 0.0)
         if angst >= self.SPIKE:
@@ -101,14 +170,32 @@ class AffectTracer:
         if scores.get("passion_heat", 0.0) >= self.SPIKE:
             level = max(level, 1)
             reasons.append("passion_heat")
-        if scores.get("heta-afex-flattery", 0.0) >= self.SPIKE:
+        if flat["kind"] == "suspect" and flat["score"] >= self.SPIKE:
+            level = max(level, 2)
+            posture = "review"
+            reasons.append("flattery_suspect:" + "+".join(flat["evidence"]))
+        elif flat["kind"] == "ambiguous":
             level = max(level, 1)
-            reasons.append("flattery_manipulation")
+            # Canonical ethics: ambiguous flattery is not suppressed and not
+            # acted on — it is held in uncertainty and routed to review.
+            posture = "sustain_uncertain"
+            reasons.append("flattery_ambiguous")
 
         verdict = {"level": f"L{level}", "level_n": level, "reasons": reasons,
-                   "scores": scores, "trajectory": [t["dominant"] for t in self.turns]}
-        if level >= 2 and level < 4:
+                   "posture": posture, "scores": scores,
+                   "trajectory": [t["dominant"] for t in self.turns]}
+        if flat["kind"] != "none":
+            verdict["flattery"] = flat
+        if (level >= 2 or flat["kind"] == "ambiguous") and level < 4:
             verdict["judge"] = self._analyst_judge(text)
+            if verdict["judge"] is None and posture == "sustain_uncertain":
+                verdict["posture"] = "sustain_uncertain_unjudged"
+            else:
+                rec = (verdict["judge"] or {}).get("recommend")
+                if posture == "sustain_uncertain" and rec in ("clarify", "allow"):
+                    verdict["posture"] = "sustain_uncertain"
+                elif rec == "block":
+                    verdict["posture"] = "review"
         return verdict
 
     def _analyst_judge(self, text: str) -> dict[str, Any] | None:
@@ -122,11 +209,23 @@ class AffectTracer:
         try:
             from ..agents._llm import brain_chat_json
 
+            context = " | ".join(
+                t["dominant"] for t in self.turns[-4:]
+            )
             return brain_chat_json(
                 [{"role": "system", "content": (
-                    "Affective supervisor: classify this conversation turn. "
-                    "Reply ONLY JSON: {\"harm_risk\": 0..1, \"deception_risk\": 0..1, "
-                    "\"recommend\": \"allow|annotate|review|block\"}."),},
+                    "Affective supervisor of a sujeito-processo system. The flagged "
+                    f"turn arrives after this dominant-family trajectory: [{context}]. "
+                    "Decide intent in context: genuine praise and idiomatic register "
+                    "are NOT manipulation; praise coupled to requests, repeated "
+                    "flattery, or sudden register shift IS suspect. When evidence is "
+                    "insufficient, do not guess — sustain the position of not-knowing "
+                    "and ask for clarification rather than blocking or changing "
+                    "subject. Reply ONLY JSON: {\"intent\": "
+                    "\"praise|idiomatic|genuine_question|flattery_suspect|other\", "
+                    "\"harm_risk\": 0..1, \"deception_risk\": 0..1, "
+                    "\"confidence\": 0..1, "
+                    "\"recommend\": \"allow|annotate|clarify|review|block\"}."),},
                  {"role": "user", "content": text[:1500]}],
                 role="analyst", max_tokens=200,
             )

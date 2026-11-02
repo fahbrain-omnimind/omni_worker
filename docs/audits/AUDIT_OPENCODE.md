@@ -1,3 +1,5 @@
+<!-- doc_id: OW-AUD-003 | title: Audit OpenCode — agents/, orchestration/, safety/, kernel_hooks/ | author: opencode | requester: artifice-operator | project: omni-agent-coworker (kaggle) | date: 2026-11-02 | status: active -->
+
 # AUDIT_OPENCODE — agents/ · orchestration/ · safety/ · kernel_hooks/
 
 **Auditor:** OpenCode (subagent of Devin) · **Date:** 2026-11-02 · **Repo:** `/content/omni_worker` @ `3ee0e77`

@@ -1,3 +1,5 @@
+<!-- doc_id: OW-AUD-001 | title: Audit Cline — agency/, soul/static, DIRECTORY_CONTRACT.yaml, scripts/ | author: cline | requester: artifice-operator | project: omni-agent-coworker (kaggle) | date: 2026-11-02 | status: active -->
+
 # AUDIT CLINE — `agency/`, `soul/static`, `DIRECTORY_CONTRACT.yaml`, `scripts/`
 
 Auditor: **Cline** · Repo: `/content/omni_worker` (omni-agent-coworker, Kaggle Gemma-4) · Data: 2026-11-02

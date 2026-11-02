@@ -1,3 +1,5 @@
+<!-- doc_id: OW-OPS-001 | title: Kaggle Gemma 4 — Setup and Validation Study (omni-agent-coworker) | author: devin | requester: artifice-operator | project: omni-agent-coworker (kaggle) | date: 2026-11-02 | status: active -->
+
 # Kaggle Gemma 4 — Setup & Validation Study (omni-agent-coworker)
 
 Study document for the competition submission. Covers environment setup, the

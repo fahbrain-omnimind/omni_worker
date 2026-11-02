@@ -1,3 +1,5 @@
+<!-- doc_id: OW-OPS-002 | title: Pending Roadmap — omni_worker (2026-11-02) | author: devin | requester: artifice-operator | project: omni-agent-coworker (kaggle) | date: 2026-11-02 | status: active -->
+
 # Pending Roadmap — omni_worker (2026-11-02)
 
 Regra: NADA de placeholder. Cada item = implementação + testes herméticos
