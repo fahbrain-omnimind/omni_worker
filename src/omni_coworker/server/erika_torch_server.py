@@ -359,6 +359,13 @@ def completions(req: CompletionReq) -> dict[str, Any]:
 
 
 def main() -> None:
+    # expandable_segments (torch>=2.9 default) keeps VMM segments mapped
+    # while ANY block inside is still referenced — empty_cache() then
+    # cannot unmap them, so an "unloaded" server kept ~9GB at driver
+    # level and the next reload saw no free VRAM. Classic allocator
+    # releases whole cudaMalloc blocks on empty_cache. Must be set
+    # before CUDA init (setdefault respects explicit overrides).
+    os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:False")
     ap = argparse.ArgumentParser(description="Erika Torch Server")
     ap.add_argument("--model", required=True, help="HF model id ou path local (safetensors)")
     ap.add_argument("--load-4bit", action="store_true", help="quantiza fp16→nf4 no load (checkpoints crus)")
