@@ -46,9 +46,9 @@ fixed the divergences below.
   re-exportados nos `__init__.py` — importáveis como submódulos (documentado).
 - `soul/dodeca.py` casas S05/S06/S08/S09/S14/S15 → `unavailable_standalone`
   (`dodeca.py:44`): exigem superfícies canônicas ausentes neste pacote.
-- `POST /brain/unload|reload` inútil contra o stub upstream — o stub
-  (`server/erika_torch_server.py`) não implementa `/erika/unload|reload`;
-  erro upstream vira `{"status": "error"}` (documentado).
+- `POST /brain/unload|reload` → upstream real desde 2026-11-02 — o
+  servidor portado (`server/erika_torch_server.py`, real, não-stub)
+  implementa `/erika/unload|reload` para o swap scheduler.
 - Endpoints propostos e ainda inexistentes: `/gate/pending`, `/gate/decide`,
   `/supervisor/review`, `/soul/affect/conversation`
   (`docs/audits/AUDIT_CLINE.md:79`, `CONVERSATIONAL_AFFECT_STUDY.md:140`).
@@ -134,10 +134,12 @@ App única `create_app()` (`app.py:17`), deploy `:8081`.
 | `/brain/unload?role=` | POST | role-routed `/erika/unload` (default executor) |
 | `/brain/reload?role=` | POST | role-routed `/erika/reload` (default executor) |
 
-**stub `server/erika_torch_server.py`** (superfície mínima):
-`GET /health`, `GET /erika/activations`, `GET /erika/affect`,
-`POST /v1/chat/completions`, `POST /v1/completions` (503 sem `_MODEL`).
-Sem `/erika/unload|reload`.
+**`server/erika_torch_server.py`** (servidor real portado do canônico
+omni_node — pacote autocontido):
+`GET /health` (+`model_loaded`), `GET /erika/activations`, `GET /erika/affect`,
+`POST /v1/chat/completions`, `POST /v1/completions` (503 com `_MODEL` despejado),
+`POST /erika/unload`, `POST /erika/reload` (swap scheduler). Flags:
+`--load-4bit`, `--eager-attn`, `--cpu-offload`, `--max-vram-gb`.
 
 **CLI (`cli.py`)**: `serve [--port]`, `doctor`, `demo [--task]`,
 `soul-export [--out]`, `missions`. **__main__ auxiliares**:

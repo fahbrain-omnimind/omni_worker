@@ -30,9 +30,6 @@ modules:
   - file: agency/dream.py
     purpose: Adapter — src.cognitive.dream_weaver + dream_cycle próprio
     type: adapter
-  - file: server/erika_torch_server.py
-    purpose: Stub leve do servidor canônico (sem torch) p/ pacote mínimo
-    type: stub
 autopoietic_repairs: []
 execution_modes:
 - type: library
@@ -42,7 +39,7 @@ execution_modes:
 - type: asgi_app
   description: create_app() FastAPI unificada (soul SSE, brain proxy, ops)
 - type: embedded_model_server
-  description: erika_torch_server (analyst :8098 | executor :8099) — externo ao pacote, consumido via proxy
+  description: erika_torch_server real (analyst :8098 | executor :8099) — portado do canônico p/ o pacote (--eager-attn + /erika/unload|reload p/ swap scheduler)
 systemd_units: []
 shell_invocations: []
 historical_lineage:

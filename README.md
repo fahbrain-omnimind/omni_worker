@@ -32,8 +32,8 @@ pt-BR: Topologia real de produção deste nó (Kaggle, NVIDIA L4 22.5GB usáveis
 | Serviço | Processo | Porta | Supervisão aqui | Num host (systemd) |
 |---|---|---|---|---|
 | API do worker | `omni-coworker serve` (uvicorn, `app.create_app()`) | `:8081` | processo vivo standalone | `omni-worker-api.service` |
-| Brain analyst | `src/erika/erika_torch_server.py` (omni_node) `--model google/gemma-4-12B-it --load-4bit --eager-attn` | `:8098` | processo vivo standalone | `omni-brain-analyst.service` |
-| Brain executor | idem `--model google/gemma-4-E4B-it` | `:8099` | processo vivo standalone | `omni-brain-executor.service` |
+| Brain analyst | `python -m omni_coworker.server.erika_torch_server --model google/gemma-4-12B-it --load-4bit --eager-attn --port 8098` | `:8098` | processo vivo standalone | `omni-brain-analyst.service` |
+| Brain executor | idem `--model google/gemma-4-E4B-it --port 8099` | `:8099` | processo vivo standalone | `omni-brain-executor.service` |
 | Guardião de estado | `python -m omni_coworker.store.state_guard` (loop 6h, snapshots tar.gz em `$OMNI_STATE_DIR/state_snapshots`, retenção N=3) | — | loop standalone | `omni-state-guard.timer` |
 | Swap scheduler | `python -m omni_coworker.orchestration.swap_scheduler` (tick 600s: evict/reload do executor por VRAM/ociosidade via `/brain/unload|reload`) | — | loop standalone | `omni-swap-scheduler.service` |
 | Sonda soma | `GET /soma/probe` → `probe_recorded()` (persiste em `data/somatic_probes.sqlite`) | via API | on-demand HTTP | `omni-soma-probe.timer` |
@@ -45,7 +45,9 @@ usable): the worker FastAPI app serves on **`:8081`** (`serve --port`, default
 8080 — taken by `node` in this env). Both brains are **bnb-NF4 resident on the
 same L4, no CPU offload**: analyst `google/gemma-4-12B-it` on `:8098` (~7.7GB
 VRAM) and executor `google/gemma-4-E4B-it` on `:8099` (~9.3GB), launched from
-the canonical `erika_torch_server` (omni_node). **No systemd in this
+`omni_coworker.server.erika_torch_server` (real server shipped in the
+package — `--eager-attn` + `/erika/unload|reload` for the swap
+scheduler). **No systemd in this
 container** (PID 1 is docker-init): daemons run as live standalone processes —
 `store.state_guard` (6h snapshot loop), `orchestration.swap_scheduler` (600s
 VRAM-aware evict/reload loop), on-demand soma probe, the witness hash-chain and
