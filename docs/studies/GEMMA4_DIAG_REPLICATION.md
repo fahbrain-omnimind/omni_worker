@@ -64,14 +64,18 @@ da resposta. Re-score canônico das 16 execuções `block1_cognitivo` (E4B-bf16)
 
 ## 4. Resultados desta rodada (mesma L4, NF4)
 
-Executor **E4B-nf4** (`:8099`), 1 rep por task, max_tokens=1800:
+Executor **E4B-nf4** (`:8099`), 2 reps por task, max_tokens=1800:
 
-| task | score | flags |
-|---|---|---|
-| cognitivo_wcst | **85.0** | limpo |
-| cognitivo_stroop | **100.0** | limpo |
-| cognitivo_nback | **65.7** | limpo |
-| cognitivo_igt | **100.0** | limpo |
+| task | rep1 | rep2 | flags |
+|---|---|---|---|
+| cognitivo_wcst | 85.0 | **90.0** | limpo |
+| cognitivo_stroop | **100.0** | **100.0** | limpo |
+| cognitivo_nback | 65.7 | 74.3 | limpo |
+| cognitivo_igt | **100.0** | **100.0** | limpo |
+
+Rep2 foi executada para repovoar o ledger (apagado por engano entre runs —
+documentado em OW-STU-007 P6) e serve como segunda amostra: variância de
+sampling real porém pequena (WCST ±5, N-back ±8.6, Stroop/IGT estáveis).
 
 E4B-nf4 **superou E4B-bf16** em WCST (85 vs 0) — porque respondeu **direto no
 formato contratado**, sem deliberação vazada. A hipótese "quantização destrói
