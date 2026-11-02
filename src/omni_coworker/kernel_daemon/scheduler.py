@@ -54,6 +54,17 @@ def run_cycle() -> dict[str, Any]:
         homeo_out = homeo.regulate(raw.get("soma") or {})
         bundle["homeostasis"] = homeo_out
         _publish("kernel.homeostasis", homeo_out)
+        # desire: falta estrutural = distância do ótimo homeostático;
+        # compute() já publica agency.desire na malha
+        try:
+            from ..psychology.desire_engine import DesireEngine
+            d = DesireEngine().compute(
+                target={"homeostasis": "optimal"},
+                current={"homeostasis": homeo_out.get("state")},
+                goals=["homeostatic_optimum", "vram_headroom"])
+            bundle["desire"] = {"intensity": d.intensity, "vector": d.vector}
+        except Exception:
+            pass
         # phi_meta: IIT-simplified over subsystem activity flags
         try:
             from .phi_meta import update as _phi_update
