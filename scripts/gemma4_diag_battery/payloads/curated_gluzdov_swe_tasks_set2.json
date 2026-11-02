@@ -1,0 +1,44 @@
+[
+  {
+    "task_id": "swe_gluzdov_set2_apiflask_apiflask-412",
+    "instance_id": "apiflask__apiflask-412",
+    "repo": "apiflask/apiflask",
+    "behavior_group": "set2_generalization",
+    "prompt": "Repository: apiflask/apiflask\nTask ID: apiflask__apiflask-412\n\nProblem Statement:\nSupport to add schemas to the OpenAPI spec explicitly\nSorry, the issue was submitted late\r\n\r\nThe specific problems are as follows\r\n\r\nLike this doc, both RequestDTO and ResponseDTO will be displayed on the schema component of OpenAPI\r\n```python\r\nclass A(MethodView):\r\n    @input(RequestDTO, location=\"json\")\r\n    @output(ResponseDTO)\r\n    def post(self, data):\r\n        return {}\r\n```\r\nBut not every schema is nested or explicitly used, such as checking data with marshmallow or dynamically specifying which schema to use, which cannot be displayed on the openapi.\r\n\r\nLike this schema, it is dynamically loaded in the web app, but it wants to be displayed in the schema\r\n```python\r\nclass S(Schema):\r\n    f1 = fields.String()\r\n    f2 = fields.String()\r\n```\r\n\r\nI hope there is a place to manually configure schema components in apiflask,TKS\n"
+  },
+  {
+    "task_id": "swe_gluzdov_set2_audreyr_cookiecutter-834",
+    "instance_id": "audreyr__cookiecutter-834",
+    "repo": "audreyr/cookiecutter",
+    "behavior_group": "set2_generalization",
+    "prompt": "Repository: audreyr/cookiecutter\nTask ID: audreyr__cookiecutter-834\n\nProblem Statement:\nSimplify cookiecutter.hooks.find_hooks\nWe should rename `cookiecutter.hooks.find_hooks` to `find_hook(hook_name)` and explicitly look for the requested hook, instead of processing all the files in the hooks directory.\n\nSee https://github.com/audreyr/cookiecutter/pull/768/files/9a94484093ca23e9d55d42a53f096f67535b0b63#r68646614\n"
+  },
+  {
+    "task_id": "swe_gluzdov_set2_brettcannon_gidgethub-174",
+    "instance_id": "brettcannon__gidgethub-174",
+    "repo": "brettcannon/gidgethub",
+    "behavior_group": "set2_generalization",
+    "prompt": "Repository: brettcannon/gidgethub\nTask ID: brettcannon__gidgethub-174\n\nProblem Statement:\n202 ACCEPTED considered as error\nFrom here, it looks like the only correct HTTP status codes are 200 OK, 201 CREATED, and 204 NO CONTENT:\r\n\r\nhttps://github.com/brettcannon/gidgethub/blob/8724568f87efe1a13c8e0e2251969c1ba9940c7a/gidgethub/sansio.py#L316-L318\r\n\r\nHowever, some endpoints may also return 202 ACCEPTED, like `POST /repos/{owner}/{repo}/forks`:\r\n\r\nhttps://docs.github.com/en/rest/reference/repos#create-a-fork\r\n\r\nFrom [RFC7231 Section 6.3.3](https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.3) I read\r\n\r\n> The 202 (Accepted) status code indicates that the request has been\r\n   accepted for processing, but the processing has not been completed.\r\n   The request might or might not eventually be acted upon, as it might\r\n   be disallowed when processing actually takes place.\r\n\r\n> The 202 response is intentionally noncommittal.  Its purpose is to\r\n   allow a server to accept a request for some other process (perhaps a\r\n   batch-oriented process that is only run once per day) without\r\n   requiring that the user agent's connection to the server persist\r\n   until the process is completed.\r\n\r\nThis is consistent with what the GH docs say:\r\n\r\n> **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time before you can access the git objects. If this takes longer than 5 minutes, be sure to contact GitHub Support.\r\n\r\nShould 202 be treated as successful instead?\n"
+  },
+  {
+    "task_id": "swe_gluzdov_set2_callowayproject_bump-my-version-180",
+    "instance_id": "callowayproject__bump-my-version-180",
+    "repo": "callowayproject/bump-my-version",
+    "behavior_group": "set2_generalization",
+    "prompt": "Repository: callowayproject/bump-my-version\nTask ID: callowayproject__bump-my-version-180\n\nProblem Statement:\nZero-padded version parts are not working\n              It seems that this fix was removed with some refactoring happened in #112. Tried with version 0.20.1 and the following config parameters:\r\n```\r\ncurrent_version = \"5.06.0\"\r\nparse = \"(?P<major>\\\\d+)\\\\.(?P<minor>\\\\d+)\\\\.(?P<patch>\\\\d+)\"\r\nserialize = [\"{major}.{minor:02}.{patch}\"]\r\nsearch = \"{current_version}\"\r\nreplace = \"{new_version}\"\r\n```\r\nIncreasing minor would result in version 5.70.0 which is obviously wrong. Any chances we get this functionality back? Or is there any other possibility to have fixed length version numbers?\r\n\r\n_Originally posted by @reindlt in https://github.com/callowayproject/bump-my-version/issues/26#issuecomment-2071756686_\n"
+  },
+  {
+    "task_id": "swe_gluzdov_set2_cloudtools_troposphere-1968",
+    "instance_id": "cloudtools__troposphere-1968",
+    "repo": "cloudtools/troposphere",
+    "behavior_group": "set2_generalization",
+    "prompt": "Repository: cloudtools/troposphere\nTask ID: cloudtools__troposphere-1968\n\nProblem Statement:\nAdd support for Application Load Balancer to TargetGroup's valid types\nCurrently the valid TargetTypes include Instance, IP and Lambda.\r\n\r\nALB should also be added as a valid target group type - [ref](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html#cfn-elasticloadbalancingv2-targetgroup-targettype).\n"
+  },
+  {
+    "task_id": "swe_gluzdov_set2_mpmath_mpmath-831",
+    "instance_id": "mpmath__mpmath-831",
+    "repo": "mpmath/mpmath",
+    "behavior_group": "set2_generalization",
+    "prompt": "Repository: mpmath/mpmath\nTask ID: mpmath__mpmath-831\n\nProblem Statement:\nformat(mpf(3.14), '') raises ValueError\nReproducer:\r\n```pycon\r\n>>> from mpmath import mpf\r\n>>> format(mpf(3.14), '')\r\nTraceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\n  File \"/home/sk/src/mpmath/mpmath/ctx_mp_python.py\", line 359, in __format__\r\n    return format_mpf(s._mpf_, format_spec)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"/home/sk/src/mpmath/mpmath/libmp/libmpf.py\", line 1601, in format_mpf\r\n    format_dict = read_format_spec(format_spec)\r\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"/home/sk/src/mpmath/mpmath/libmp/libmpf.py\", line 1465, in read_format_spec\r\n    raise ValueError(\"Invalid format specifier '{}'\".format(format_spec))\r\nValueError: Invalid format specifier ''\r\n```\r\n\r\nInstead, this should use default settings, like:\r\n```pycon\r\n>>> format(3.14, '')\r\n'3.14'\r\n```\n"
+  }
+]
