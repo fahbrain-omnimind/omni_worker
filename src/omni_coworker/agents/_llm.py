@@ -9,7 +9,33 @@ pt-BR: Chat mínimo roteado por role sobre os servidores brain
 from __future__ import annotations
 
 import json
+import os
 from typing import Any
+
+
+def _soma_inject(messages: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Prepend live machine telemetry to the chat.
+
+    English: When OMNI_SOMA_INJECT != "0" (default on), prepends a
+    system message with the compact soma context line (cpu/ram/gpu/
+    vram/virt) so the model sees the live body of the machine it runs
+    on — including virtualization when the host is a VM.
+    pt-BR: Quando OMNI_SOMA_INJECT != "0" (default ligado), prepende uma
+    mensagem de sistema com a linha de contexto soma (cpu/ram/gpu/vram/
+    virt) para o modelo ver o corpo vivo da máquina onde roda —
+    incluindo virtualização quando o host é VM.
+    """
+    if os.getenv("OMNI_SOMA_INJECT", "1") in ("0", "false", "no"):
+        return messages
+    try:
+        from ..soma.probe import soma_context_line
+
+        line = soma_context_line()
+        if not line:
+            return messages
+        return [{"role": "system", "content": f"[soma live] {line}"}] + list(messages)
+    except Exception:
+        return messages
 
 
 def brain_chat(
@@ -17,11 +43,14 @@ def brain_chat(
     role: str = "analyst",
     max_tokens: int = 256,
     temperature: float = 0.3,
+    include_soma: bool = True,
 ) -> str | None:
     """Call a brain server chat completion.
 
-    English: Returns assistant text or None on failure.
-    pt-BR: Retorna texto do assistente ou None em falha.
+    English: Returns assistant text or None on failure. When
+    include_soma (default), injects live host telemetry.
+    pt-BR: Retorna texto do assistente ou None em falha. Com
+    include_soma (default), injeta telemetria viva do host.
     """
     try:
         from ..brain.server import get_brain_client
@@ -31,7 +60,7 @@ def brain_chat(
         resp = client.post(
             "/v1/chat/completions",
             json={
-                "messages": messages,
+                "messages": _soma_inject(messages) if include_soma else messages,
                 "max_tokens": max_tokens,
                 "temperature": temperature,
             },

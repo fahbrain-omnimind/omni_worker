@@ -73,4 +73,17 @@ def create_app() -> FastAPI:
         from .kernel_hooks.compute import kernel_status as _status
         return _status()
 
+    @app.get("/agency/dunker")
+    def agency_dunker() -> dict:
+        """Dunker/Soler 5-level psychoaffective architecture (canonical adapter)."""
+        from .agency.dunker import dunker_architecture
+        from .kernel_hooks.compute import affect_state
+        from .soma.probe import probe
+        kernel_state = None
+        try:
+            kernel_state = affect_state({"soma": probe()})
+        except Exception:
+            pass
+        return dunker_architecture(kernel_state=kernel_state)
+
     return app

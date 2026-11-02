@@ -15,7 +15,8 @@ brain server (quando ativo), servindo-os como JSON, stream SSE de 2s e UI bilín
 | File | Role | Key API |
 |---|---|---|
 | `__init__.py` | Package surface | exports `api`, `router` |
-| `api.py` | FastAPI router `APIRouter(prefix="/soul")` | `GET /soul/state`, `GET /soul/stream` (SSE), `GET /soul/` (UI), `GET /soul/static/{path}` |
+| `api.py` | FastAPI router `APIRouter(prefix="/soul")` | `GET /soul/state`, `GET /soul/dodeca`, `GET /soul/stream` (SSE), `GET /soul/` (UI), `GET /soul/static/{path}` |
+| `dodeca.py` | Dodecatiad house computation | `compute_dodeca(state, kernel_state, brain)` → 15 houses S01–S15 with per-house `{value, source, formula}`, `active_face`; embedded as `dodeca` block in `/soul/state` and served standalone at `GET /soul/dodeca` |
 | `static/index.html` | Single-page dark UI | polls `/soul/state` every 5s, renders the four metric cards |
 | `static/i18n/en.json` | EN strings | `app.title`, `soul.state`, `metrics.{phi,psi,sigma,epsilon}` |
 | `static/i18n/pt-BR.json` | pt-BR strings | same keys, pt-BR values |
@@ -26,8 +27,12 @@ brain server (quando ativo), servindo-os como JSON, stream SSE de 2s e UI bilín
 {"phi": 0.0, "psi": 0.0, "sigma": 0.0, "epsilon": 0.0,
  "dominant_token": "…",        // only when kernel path active
  "kernel": true|false,
- "soma": {cpu_percent, ram_used_gb, ram_total_gb, load_avg, …},
- "brain": {…}}                 // derive_affect_from_brain() or {}
+ "soma": {cpu_percent, ram_used_gb, ram_total_gb, load_avg,
+         gpu: {gpus: [{name, temp_c, util_percent, vram_*, power_w}]},
+         virt: {container, vm, hypervisor_flag, platform}, …},
+ "brain": {…},                // derive_affect_from_brain() or {}
+ "dodeca": {houses: {S01..S15: {axis, value, source, formula}},
+            active_face, n_computable}}
 ```
 
 Two computation paths in `_compute_state()`:
@@ -43,6 +48,14 @@ Two computation paths in `_compute_state()`:
 
 Every source is wrapped in `try/except` — a missing `psutil`, brain server or
 Rust wheel degrades the payload, never the endpoint.
+
+## `GET /soul/dodeca`
+
+Full Dodecatíade audit: S01–S15 houses with `value`, `source` and `formula`
+each — S01–S04 from soul scalars, S07 `maat` via `maat_balance`, S10 `omega`
+via teleology, S11 `rekh`/S12 `seshet`/S13 `isfet` from kernel afex scores
+(when compiled), S05/S06/S08/S09/S14/S15 `unavailable_standalone` (canonical
+daemon surfaces required). `active_face` = strongest computable house.
 
 ## SSE stream / Stream SSE
 

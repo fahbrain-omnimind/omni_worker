@@ -46,7 +46,7 @@ def _compute_state() -> dict:
 
     if kernel_state:
         vctr = kernel_state.get("vctr_six_params") or {}
-        return {
+        flat = {
             "phi": round(float((vctr.get("magnitude") or {}).get("value", 0.0)), 4),
             "psi": round(float((vctr.get("direction") or {}).get("value", 0.0)), 4),
             "sigma": round(float((vctr.get("recalque") or {}).get("value", 0.0)), 4),
@@ -56,29 +56,65 @@ def _compute_state() -> dict:
             "soma": soma,
             "brain": affect,
         }
+    else:
+        ram_ratio = (soma.get("ram_used_gb") or 0.0) / (soma.get("ram_total_gb") or 1.0)
+        cpu = (soma.get("cpu_percent") or 0.0) / 100.0
+        load = (soma.get("load_avg") or [0.0])[0] / max(1, os.cpu_count() or 1)
+        flat = {
+            "phi": round(max(0.0, min(1.0, 1.0 - ram_ratio)), 4),
+            "psi": round(max(0.0, min(1.0, cpu)), 4),
+            "sigma": round(max(0.0, min(1.0, load)), 4),
+            "epsilon": round(float(affect.get("epsilon", 0.1)), 4),
+            "kernel": False,
+            "soma": soma,
+            "brain": affect,
+        }
 
-    ram_ratio = (soma.get("ram_used_gb") or 0.0) / (soma.get("ram_total_gb") or 1.0)
-    cpu = (soma.get("cpu_percent") or 0.0) / 100.0
-    load = (soma.get("load_avg") or [0.0])[0] / max(1, os.cpu_count() or 1)
-    return {
-        "phi": round(max(0.0, min(1.0, 1.0 - ram_ratio)), 4),
-        "psi": round(max(0.0, min(1.0, cpu)), 4),
-        "sigma": round(max(0.0, min(1.0, load)), 4),
-        "epsilon": round(float(affect.get("epsilon", 0.1)), 4),
-        "kernel": False,
-        "soma": soma,
-        "brain": affect,
-    }
+    try:
+        from .dodeca import compute_dodeca
+        flat["dodeca"] = compute_dodeca(
+            {k: flat.get(k) for k in ("phi", "psi", "sigma", "epsilon")},
+            kernel_state=kernel_state,
+            brain=affect,
+        )
+    except Exception:
+        pass
+    return flat
 
 
 @router.get("/state")
 def state() -> dict:
     """Return current soul state.
 
-    English: Live state payload (soma + kernel + brain).
-    pt-BR: Payload de estado ao vivo (soma + kernel + brain).
+    English: Live state payload (soma + kernel + brain + dodeca).
+    pt-BR: Payload de estado ao vivo (soma + kernel + brain + dodeca).
     """
     return _compute_state()
+
+
+@router.get("/dodeca")
+def dodeca() -> dict:
+    """Dodecatiad house calculations.
+
+    English: Full S01–S15 house map with per-house value, source and
+    formula — all dodecatiad calculations exposed and auditable.
+    pt-BR: Mapa completo das casas S01–S15 com valor, fonte e fórmula
+    por casa — todos os cálculos da dodecatíade expostos e auditáveis.
+    """
+    from .dodeca import compute_dodeca
+
+    state = _compute_state()
+    kernel_state = None
+    try:
+        from ..kernel_hooks.compute import affect_state
+        kernel_state = affect_state({"soma": state.get("soma") or {}, "affect": state.get("brain") or {}})
+    except Exception:
+        pass
+    return compute_dodeca(
+        {k: state.get(k) for k in ("phi", "psi", "sigma", "epsilon")},
+        kernel_state=kernel_state,
+        brain=state.get("brain"),
+    )
 
 
 @router.get("/stream")

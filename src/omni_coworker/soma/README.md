@@ -42,8 +42,12 @@ dual-writer), so it is deliberately not reused here.
 
 ## Dependencies & fallbacks
 
-- `psutil` (required, core dep); `pynvml` optional for GPU temp
-  (docstring-level — currently not read). `os.getloadavg` is guarded
+- `psutil` (required, core dep); `pynvml`/`nvidia-ml-py` optional for
+  real GPU telemetry (temp/util/VRAM/power — `nvidia-smi` subprocess
+  fallback). `virt` block always present: container (dockerenv/cgroup),
+  hypervisor flag, DMI vendor match, platform (kaggle/colab/cloud-vm/metal).
+  `soma_context_line()` renders the compact `[soma live]` string injected
+  into brain chats. `os.getloadavg` is guarded
   (`None` on non-POSIX).
 - `probe_recorded` returns `recorded=False` if SQLite write fails.
 - `probe_with_brain` uses `brain.server.get_brain_client()`

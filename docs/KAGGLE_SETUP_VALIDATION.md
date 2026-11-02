@@ -119,7 +119,71 @@ Both degrade to extractive fallback without the index or the brain.
   model — `/v1/*` 503s by design; real serving is the canonical omni_node
   server above.
 
-## 6. Provenance
+## 6. Telemetry, kernel & psychoaffective surface (2026-11-02 update)
+
+### GPU + virtualization telemetry (`soma/probe.py`)
+
+`probe()` now always returns a `gpu` block (pynvml primary, `nvidia-smi`
+subprocess fallback → `nvidia-ml-py` added to `[kernel]` extra) and a
+`virt` block: container detection (`/.dockerenv`, `/proc/1/cgroup`),
+hypervisor flag (`/proc/cpuinfo`), DMI vendor/product match
+(kvm/qemu/vmware/xen/hyper-v/gce/ec2) and platform hint
+(KAGGLE_* / COLAB_* / `/content`). Live reading on this node:
+`gpu0 = NVIDIA L4 69C, vram 18.8/24.2GB, 33W` + `virt = container+gce,
+platform=kaggle` — the system detects it is a VM and reports it.
+
+### Soma → model injection (`agents/_llm.py`)
+
+`brain_chat` prepends `[soma live] cpu=.. ram=.. gpu0=.. vram=.. virt=..`
+as a system message on every agent→brain call (env `OMNI_SOMA_INJECT`,
+default on, `0` disables; per-call `include_soma=False` also works).
+Verified live: the 12B analyst answers "what is your body state" citing
+real numbers (8.19GB RAM, 19GB VRAM, L4) — the machine's live body
+reaches the model itself.
+
+### Rust kernel (`src/kernel/` crates built from source)
+
+No cargo was present; `rustup` stable (1.99.1) installed and the three
+pyo3 cdylib crates compiled with `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1`
+(`cargo build --release`), installed as `omnimind_*.so` into the venv:
+
+| Module | Exposes |
+|---|---|
+| `omnimind_kernel_compute` | `compute_affect_vector_28d`, `compute_maat_balance`, `calculate_shadow_phi`, DesireEngine, neutrosophic ops, epsilon axes |
+| `omnimind_metrics` | `cosine_similarity`, `normalize_l2`, `sarannya_entropy`, `quadruple_topsis` |
+| `omnimind_freud10d` | `Freud10DApparatus` (10D×128 neurons), `freudian_values_from_state` |
+
+With the kernel loaded, `/soul/state` takes the **kernel path**
+(`kernel:true`): phi=vctr.magnitude (RMS of 18 afex scores),
+psi=vctr.direction (dominant_index/17), sigma=vctr.recalque
+(angst−joy+0.5), epsilon=dominant_affect_score, plus `dominant_token`
+(live: `floo-afex-current`, signature `floo>tadi>lumi>0.269`).
+
+### Dodecatiad houses (`soul/dodeca.py` + `GET /soul/dodeca`)
+
+Every `/soul/state` now embeds a `dodeca` block; `GET /soul/dodeca`
+returns the auditable map: all 15 houses S01–S15 with **value, source
+and formula per house**. Computed live (9/15): S01–S04 from the soul
+scalars, S07=maat via `maat_balance`, S10=omega via teleology,
+S11=rekh/S12=seshet/S13=isfet from real kernel afex scores. Houses
+S05/S06/S08/S09/S14/S15 are honestly marked `unavailable_standalone` —
+they need canonical dodecatiad daemon surfaces (orbital/lexical/gemelo).
+
+### Dunker/Soler psychoaffective stack (`agency/dunker.py` + `GET /agency/dunker`)
+
+Adapter to canonical `src.cognitive.dunker_architecture` (requires
+`python-chess`, installed): the kernel's 18 afex tokens are literal
+dunker `families` inputs → full 5-level computation (affects lexicon →
+Soler affects → emotions → sentiments → passions → ethics). Live run:
+18 families → `soler_dominante`, `emotion_dominante`,
+`sentiment_dominante`, `passion_dominante`, ethics variable all real.
+
+So: yes — with the Rust kernel + dunker module active, every soul
+field becomes a real computation (no more telemetry proxies) and the
+whole psychoaffective surface is exposed via `/soul/state`,
+`/soul/dodeca` and `/agency/dunker`.
+
+## 7. Provenance
 
 Substrate comes from the canonical OmniMind repos for the competition:
 `src/erika/erika_torch_server.py` (brain), `src.orchestration`,

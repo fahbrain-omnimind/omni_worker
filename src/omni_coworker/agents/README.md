@@ -17,7 +17,7 @@ degrada para payload heurístico/stub quando os backends caem.
 
 | File | Role | Public API |
 |---|---|---|
-| `_llm.py` | Shared brain helper (internal) | `brain_chat(messages, role, max_tokens, temperature)` → text or `None`; `brain_chat_json(...)` → first `{...}` parsed or `None` |
+| `_llm.py` | Shared brain helper (internal) | `brain_chat(messages, role, max_tokens, temperature, include_soma)` → text or `None`; `brain_chat_json(...)` → first `{...}` parsed or `None`. Soma injection: prepends `[soma live]` telemetry (cpu/ram/gpu/vram/virt) as system msg when `include_soma` (default on; `OMNI_SOMA_INJECT=0` disables) — the model sees the live machine body, incl. VM detection |
 | `bus.py` | Synchronous pub/sub bus | `MessageBus` (`subscribe`/`publish`/`pending`/`consume`/`resolve_conflict`), `get_message_bus()` singleton, `canonical_bus_available()` |
 | `persona.py` | Persona loader + prompt builder | `load_persona(name, config_dir)`, `system_prompt(role, mode)`, `ROLE_PERSONA_MAP`, `PERSONA_DESCRIPTIONS` |
 | `modes.py` | Roo-style modes with sticky model role | `MODES`, `switch_mode(mode)`, `set_role(mode, role)`, `spec_for(mode)`, `current_mode()` |
