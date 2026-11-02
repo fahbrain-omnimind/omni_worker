@@ -290,3 +290,27 @@ unload/reload — its `max_unloaded` clock can fire `/erika/reload`
 mid-battery; dual-resident brains + activation capture OOM at high
 max_tokens (keep peer-swap flow); `node.db`/`witness.jsonl` outside
 snapshot root; orchestrator trust/quarantine in-memory only.
+
+## Addendum 2026-11-02 (session 2 — live findings)
+
+**Resolved traps**: (a) `swap_scheduler` timed-reload now requires
+`ratio < evict_at` — commit `f439dbf`; the 30-min clock can no longer
+fire `/erika/reload` into a saturated GPU mid-battery. (b) `code_index`
+rebuild is automatic on staleness (`--reindex` forces, CPU-only build)
+and `_load()` keys its cache on parquet mtime — in-place rebuilds are
+picked up live, no API restart.
+
+**Open anomaly — executor residual VRAM**: after `/erika/unload`,
+`/health` reports `memory_allocated ≈ 0.01GB` but `nvidia-smi` still
+shows the erika_torch_server process holding ~9.0GB (bnb/accelerate
+allocator residue or unreleased reserved pool). Effect: the "freed"
+VRAM is not actually available to the peer — the analyst phase runs
+with ~1GB OS headroom instead of ~10GB. Mitigation shipped
+(`vram_reserved_gb` in `/health`, `ipc_collect` + second `empty_cache`
+in unload) — verify empirically on next brain restart/reload; if
+reservation persists, candidates are `remove_hook_from_submodules`
+(accelerate) or allocator `expandable_segments`.
+
+**In flight**: `run_diag_reps_swapped.sh 5` — rep ledger at
+`scripts/gemma4_diag_battery/diag_battery.sqlite` (expect 40 rows:
+5 reps × 4 tasks × 2 roles). Analyst rep0≈87.7, rep1≈85.2, rep2≈82.5.

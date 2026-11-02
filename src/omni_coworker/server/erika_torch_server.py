@@ -242,12 +242,14 @@ app = FastAPI(title="erika-torch", version="0.2.0")
 
 @app.get("/health")
 def health() -> dict[str, Any]:
+    cuda = torch.cuda.is_available()
     return {
         "status": "ok",
         "model": _MODEL_ID,
         "model_loaded": _MODEL is not None,
-        "cuda": torch.cuda.is_available(),
-        "vram_gb": round(torch.cuda.memory_allocated() / 1e9, 2) if torch.cuda.is_available() else 0,
+        "cuda": cuda,
+        "vram_gb": round(torch.cuda.memory_allocated() / 1e9, 2) if cuda else 0,
+        "vram_reserved_gb": round(torch.cuda.memory_reserved() / 1e9, 2) if cuda else 0,
         "activations_buffered": len(_ACTIVATIONS),
     }
 
@@ -286,11 +288,18 @@ def erika_unload() -> dict[str, Any]:
     if torch.cuda.is_available():
         torch.cuda.synchronize()
         torch.cuda.empty_cache()
+        try:
+            torch.cuda.ipc_collect()
+        except Exception:
+            pass
+        gc.collect()  # bnb/accelerate hooks pode segurar refs de Params4bit
+        torch.cuda.empty_cache()
     logger.info("Modelo %s despejado da VRAM", _MODEL_ID)
     return {
         "status": "unloaded",
         "model": _MODEL_ID,
         "vram_gb": round(torch.cuda.memory_allocated() / 1e9, 2) if torch.cuda.is_available() else 0,
+        "vram_reserved_gb": round(torch.cuda.memory_reserved() / 1e9, 2) if torch.cuda.is_available() else 0,
     }
 
 
