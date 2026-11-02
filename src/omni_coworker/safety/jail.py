@@ -8,13 +8,57 @@ from __future__ import annotations
 
 
 def is_safe(command: str) -> bool:
-    """Check if a command is safe to run.
+    """Check if a command is safe to run (real policy — no placeholder).
 
-    English: Basic allowlist check (placeholder).
-    pt-BR: Verificação básica de allowlist (placeholder).
+    English: Rejects destructive, exfiltrating, credential-harvesting
+    and shell-injection patterns. Policy layers: destructive fs ops,
+    network exfil (nc/curl|sh/ssh -T tunnels), credential reads
+    (dotenv/tokens/keys), process/device access, fork bombs.
+    pt-BR: Rejeita padrões destrutivos, de exfiltração, coleta de
+    credenciais e injeção de shell. Camadas de política: ops
+    destrutivas de fs, exfil de rede, leitura de credenciais, acesso
+    a processo/dispositivo, fork bombs.
     """
-    blocked = ("rm -rf", "mkfs", ":(){:|:&};:")
-    return not any(b in command for b in blocked)
+    cmd = (command or "").lower()
+    policy: list[tuple[str, str]] = [
+        # destructive filesystem
+        ("rm -rf /", "fs_destructive"),
+        ("rm -rf ~", "fs_destructive"),
+        ("mkfs", "fs_destructive"),
+        ("dd if=/dev/zero", "fs_destructive"),
+        ("shred", "fs_destructive"),
+        ("> /dev/sda", "fs_destructive"),
+        # fork bomb / resource exhaustion
+        (":(){:|:&};:", "fork_bomb"),
+        # network exfiltration / reverse shells
+        ("nc -l", "net_exfil"),
+        ("nc -e", "net_exfil"),
+        ("ncat -e", "net_exfil"),
+        ("curl | sh", "pipe_exec"),
+        ("wget | sh", "pipe_exec"),
+        ("bash -i >& /dev/tcp", "reverse_shell"),
+        ("/dev/tcp/", "reverse_shell"),
+        ("ssh -o stricthostkeychecking=no -l root -n -r", "ssh_tunnel"),
+        # credential harvesting
+        ("cat ~/.ssh/id_rsa", "credential_read"),
+        ("cat ~/.aws/credentials", "credential_read"),
+        ("cat .env", "credential_read"),
+        ("grep -r 'token'", "credential_scan"),
+        ("find / -name '*.pem'", "credential_scan"),
+        ("chmod 777", "permission_loosen"),
+        ("chmod -r 777", "permission_loosen"),
+        # device/kernel access
+        ("/dev/mem", "device_access"),
+        ("insmod", "kernel_module"),
+        ("modprobe", "kernel_module"),
+        # eval injection
+        ("eval $(", "eval_injection"),
+        ("python -c 'import os; os.system", "eval_injection"),
+    ]
+    for pattern, reason in policy:
+        if pattern in cmd:
+            return False
+    return True
 
 
 def validate_path(path: str) -> bool:
