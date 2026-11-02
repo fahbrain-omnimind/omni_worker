@@ -109,6 +109,10 @@ def qualia(ctx: dict[str, Any], x: np.ndarray) -> ModuleState:
                                  "arousal": round(arousal, 4)})
 
 
+_W_NARRATIVE = np.random.default_rng(20261102).normal(
+    0, 1.0 / np.sqrt(DIM), size=(DIM, DIM))
+
+
 def narrative(ctx: dict[str, Any], x: np.ndarray) -> ModuleState:
     """EMA over last K sensory embeddings — continuity channel."""
     hist = (ctx.get("history") or [])[-8:]
@@ -117,8 +121,9 @@ def narrative(ctx: dict[str, Any], x: np.ndarray) -> ModuleState:
         w = GAMMA ** (len(hist) - i)
         emb = emb + w * np.asarray(past, dtype=float)
     emb = emb / (1.0 + sum(GAMMA ** i for i in range(1, len(hist) + 1)))
-    W = ctx["rng"].normal(0, 1.0 / np.sqrt(DIM), size=(DIM, DIM))
-    nvec = W @ emb
+    # projeção fixa (não seed-por-ciclo): embeddings comparáveis entre
+    # ciclos — pré-requisito do quilting point (convergência de variância).
+    nvec = _W_NARRATIVE @ emb
     return ModuleState("narrative",
                        embedding=[round(float(v), 6) for v in nvec],
                        metadata={"history_len": len(hist),
