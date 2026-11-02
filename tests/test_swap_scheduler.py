@@ -1,0 +1,63 @@
+"""Tests for orchestration.swap_scheduler (hermetic, fake probes)."""
+
+from __future__ import annotations
+
+from omni_coworker.orchestration import swap_scheduler as ss
+
+
+class _FakeResp:
+    def __init__(self, status):
+        self._s = status
+
+    def json(self):
+        return {"status": self._s}
+
+
+class _FakeClient:
+    def __init__(self):
+        self.posts = []
+
+    def post(self, url, *a, **k):
+        self.posts.append(url)
+        return _FakeResp("unloaded" if url.endswith("unload") else "loaded")
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+
+def test_evicts_when_vram_tight_and_idle(monkeypatch):
+    monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
+    monkeypatch.setattr(ss, "_executor_active", lambda: False)
+    s = ss.SwapScheduler()
+    fc = _FakeClient()
+    monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)
+    st = s.tick()
+    assert st["executor"] == "unloaded"
+    assert st["events"][-1]["evt"] == "evicted"
+
+
+def test_no_evict_when_busy(monkeypatch):
+    monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
+    monkeypatch.setattr(ss, "_executor_active", lambda: True)
+    s = ss.SwapScheduler()
+    fc = _FakeClient()
+    monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)
+    st = s.tick()
+    assert st["executor"] == "loaded"
+    assert fc.posts == []
+
+
+def test_reloads_when_vram_frees(monkeypatch):
+    monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
+    monkeypatch.setattr(ss, "_executor_active", lambda: False)
+    s = ss.SwapScheduler()
+    fc = _FakeClient()
+    monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)
+    s.tick()  # evict
+    monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.5)
+    s.tick()  # reload
+    assert s.state["executor"] == "loaded"
+    assert s.state["events"][-1]["evt"] == "reloaded"

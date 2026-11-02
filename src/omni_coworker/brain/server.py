@@ -41,7 +41,29 @@ def create_brain_router():
         import httpx
         
         router = APIRouter(prefix="/brain", tags=["brain"])
-        
+
+        @router.post("/unload")
+        async def unload(role: str = "executor"):
+            """Evict a brain role from GPU (swap scheduler)."""
+            try:
+                base = _base_for_role(role)
+                async with httpx.AsyncClient(timeout=60.0) as client:
+                    resp = await client.post(f"{base}/erika/unload")
+                    return {"role": role, **resp.json()}
+            except Exception as e:
+                return {"role": role, "status": "error", "reason": str(e)}
+
+        @router.post("/reload")
+        async def reload_model(role: str = "executor"):
+            """Reload a brain role on GPU (swap scheduler)."""
+            try:
+                base = _base_for_role(role)
+                async with httpx.AsyncClient(timeout=300.0) as client:
+                    resp = await client.post(f"{base}/erika/reload")
+                    return {"role": role, **resp.json()}
+            except Exception as e:
+                return {"role": role, "status": "error", "reason": str(e)}
+
         @router.get("/health")
         async def health():
             try:
