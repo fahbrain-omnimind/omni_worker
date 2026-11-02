@@ -724,6 +724,13 @@ class ExternalCLIAgent:
                 self.name, self.cmd, self.args_factory, timeout=self.timeout, cwd=self.cwd
             )
             result = client.run(task, context)
+            if not result.get("ok"):
+                # CLI pode não falar ACP stdio limpo — degrada p/ shell
+                shell = ShellCLIAdapter(
+                    self.name, self.cmd, self.args_factory, timeout=self.timeout, cwd=self.cwd
+                )
+                result = shell.run(task, context)
+                result["adapter"] = "shell"
         elif self.adapter == "shell":
             client = ShellCLIAdapter(
                 self.name, self.cmd, self.args_factory, timeout=self.timeout, cwd=self.cwd
