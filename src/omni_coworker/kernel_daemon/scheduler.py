@@ -65,6 +65,11 @@ def run_cycle() -> dict[str, Any]:
     except Exception as e:  # ciclo ruim não derruba o daemon
         _STATE["errors"] += 1
         bundle = {"ts": t0, "error": str(e)}
+        try:
+            from ..agency import rca
+            rca.register_failure("kernel.cycle", str(e), t0)
+        except Exception:
+            pass
     _STATE["cycles"] += 1
     _STATE["last_ts"] = t0
     _STATE["last_duration_s"] = round(time.time() - t0, 3)
