@@ -25,6 +25,24 @@ omni-coworker serve --port 8081   # ASGI (soul, brain proxy, ops)
 python -m pytest          # suíte hermética (sem LLM) / hermetic suite (no LLM)
 ```
 
+Full topology (dual brains + API + state guard + swap scheduler) in one
+command / Topologia completa com um comando:
+
+```bash
+bash scripts/start_omni_worker.sh            # sobe tudo / bring up everything
+bash scripts/start_omni_worker.sh status     # status dos serviços / service status
+bash scripts/start_omni_worker.sh stop       # para tudo / stop all
+bash scripts/start_omni_worker.sh --reindex  # força rebuild do code index (all-MiniLM + faiss)
+```
+
+The script boots the brains **sequentially** (concurrent nf4 warmup OOMs
+the L4), health-gates each port, and rebuilds the code index
+automatically when `chunks.parquet` is missing or older than the newest
+`src` file. / O script sobe os brains **sequencialmente** (warmup nf4
+concorrente OOMa a L4), faz health-gate por porta e reconstrói o índice
+de código automaticamente quando `chunks.parquet` está ausente ou mais
+velho que o `src` mais novo.
+
 ## Runtime & Services / Runtime e Serviços
 
 pt-BR: Topologia real de produção deste nó (Kaggle, NVIDIA L4 22.5GB usáveis):
