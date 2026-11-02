@@ -1,0 +1,55 @@
+"""kernel_daemon.feedback — publicação do bundle na malha.
+
+Orquestração runtime / Runtime orchestration:
+    `publish_feedback(bundle)` escreve os tópicos canônicos do ciclo.
+    Transporte: tenta o bus in-process primeiro (daemon dentro do
+    FastAPI); se o pacote rodar standalone, cai para POST /mesh/publish
+    na API local. Falha de transporte nunca derruba o ciclo — retorna a
+    lista de tópicos efetivamente publicados.
+
+Arquitetura / Architecture:
+    Tópicos: `kernel.cycle` (bundle completo), `kernel.affect`,
+    `kernel.soul`, `kernel.soma`, `kernel.drift` — consumidores podem
+    assinar o prefixo `kernel` para receber tudo.
+
+pt-BR: publicação dos tópicos canônicos kernel.* — bus in-process com
+fallback HTTP /mesh/publish.
+"""
+
+from __future__ import annotations
+
+import os
+from typing import Any
+
+_API_PORT = os.getenv("API_PORT", "8081")
+
+
+def _publish(topic: str, payload: Any) -> bool:
+    """In-process bus first; HTTP /mesh/publish when standalone."""
+    try:
+        from ..shared_workspace import bus
+        bus.publish(topic, payload)
+        return True
+    except Exception:
+        pass
+    try:
+        import httpx
+        r = httpx.post(
+            f"http://127.0.0.1:{_API_PORT}/mesh/publish",
+            json={"topic": topic, "payload": payload}, timeout=2.0,
+        )
+        return r.status_code == 200
+    except Exception:
+        return False
+
+
+def publish_feedback(bundle: dict[str, Any]) -> list[str]:
+    """Publish canonical kernel.* topics; returns published names."""
+    topics = {
+        "kernel.cycle": bundle,
+        "kernel.affect": bundle.get("affect") or {},
+        "kernel.soul": bundle.get("soul") or {},
+        "kernel.soma": bundle.get("soma") or {},
+        "kernel.drift": bundle.get("drift") or {},
+    }
+    return [t for t, p in topics.items() if _publish(t, p)]
