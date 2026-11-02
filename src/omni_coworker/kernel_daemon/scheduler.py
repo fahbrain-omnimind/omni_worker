@@ -54,6 +54,12 @@ def run_cycle() -> dict[str, Any]:
         homeo_out = homeo.regulate(raw.get("soma") or {})
         bundle["homeostasis"] = homeo_out
         _publish("kernel.homeostasis", homeo_out)
+        # phi_meta: IIT-simplified over subsystem activity flags
+        try:
+            from .phi_meta import update as _phi_update
+            _publish("kernel.phi_meta", _phi_update(bundle))
+        except Exception:
+            pass
         bundle["published_topics"] = publish_feedback(bundle)
         _STATE["last_bundle"] = bundle
     except Exception as e:  # ciclo ruim não derruba o daemon

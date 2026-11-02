@@ -68,3 +68,25 @@ def test_kernel_cycle_publishes_homeostasis(tmp_path, monkeypatch):
     ev = bus.latest("kernel.homeostasis")
     assert ev is not None and "state" in ev["payload"]
     bus._reset(); store._reset()
+
+
+def test_phi_meta_window(tmp_path, monkeypatch):
+    from omni_coworker.kernel_daemon import phi_meta
+    phi_meta._reset()
+    # independent flags → low phi; correlated flags → higher phi
+    bundle = {"models": {"m": {"n_records": 2}},
+              "affect": {"analyst": {"e": 1}, "executor": None},
+              "soma": {"cpu_percent": 10}, "soul": {"phi": 0.5},
+              "homeostasis": {"state": "good"}, "mesh_topics": ["kernel.cycle"]}
+    out = None
+    for _ in range(6):
+        out = phi_meta.update(bundle)
+    assert out["phi_meta"] >= 0 and out["window"] == 6
+    assert "activations" in out["elements"]
+    # alternating states → more entropy/complexity
+    phi_meta._reset()
+    for i in range(6):
+        b = dict(bundle); b["affect"] = {"analyst": {"e": 1} if i % 2 else None}
+        out = phi_meta.update(b)
+    assert out["complexity"] > 0
+    phi_meta._reset()
