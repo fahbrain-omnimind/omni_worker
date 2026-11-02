@@ -155,7 +155,14 @@ class AgentOrchestrator:
             judges.append({"judge": 1, "type": "implementation", "approved": True,
                            "comments": f"fallback: {e}", "llm": False})
 
-        # Judge 2 — executor model, independent opinion
+        # Judge 2 — independent opinion; feedback.loop recommendation
+        # picks which brain opines (reflect regime → analyst).
+        try:
+            from ..integration_loop.consumer import latest_modulation
+            _rec = (latest_modulation() or {}).get("recommendation")
+        except Exception:
+            _rec = None
+        j2_role = "analyst" if _rec == "analyst" else "executor"
         j2 = brain_chat_json(
             [
                 {"role": "system", "content": (
@@ -164,10 +171,10 @@ class AgentOrchestrator:
                     'with JSON: {"approved": bool, "comments": str}.')},
                 {"role": "user", "content": f"Judge this deliverable:\n{str(result_text)[:3000]}"},
             ],
-            role="executor", max_tokens=200,
+            role=j2_role, max_tokens=200,
         )
         judges.append({
-            "judge": 2, "type": "implementation",
+            "judge": 2, "type": "implementation", "role": j2_role,
             "approved": bool(j2.get("approved")) if j2 else True,
             "comments": (j2 or {}).get("comments", "fallback: executor down"),
             "llm": bool(j2),
@@ -232,11 +239,20 @@ class AgentOrchestrator:
         from ..agents._llm import brain_chat
 
         notes = "\n".join(feedback_notes or [])
+        # feedback.loop modulation: prompt_suffix marks the current
+        # regime ([regime:reflect|execute|steady]); fail-open.
+        try:
+            from ..integration_loop.consumer import latest_modulation
+            mod = latest_modulation() or {}
+            suffix = mod.get("prompt_suffix") or ""
+        except Exception:
+            suffix = ""
         artifact = brain_chat(
             [
                 {"role": "system", "content": (
                     "You are a tactical executor agent. Produce the deliverable "
-                    "for the task below. Be concrete and concise.")},
+                    "for the task below. Be concrete and concise."
+                    + (f" {suffix}" if suffix else ""))},
                 {"role": "user", "content": (
                     f"Task [{task['type']}]: {task['description']}\n"
                     f"Files: {task.get('files') or []}\n"

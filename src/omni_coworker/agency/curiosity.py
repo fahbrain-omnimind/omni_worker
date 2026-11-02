@@ -29,7 +29,16 @@ def explore(
     from ..store import code_index
 
     out_dir = out_dir or code_index.index_dir()
-    hits = code_index.search(topic, out_dir, k=k)
+    # feedback.loop modulation: curiosity_boost widens retrieval
+    # (boost∈[0,1] → up to +100% k). Fail-open.
+    boost = 0.0
+    try:
+        from ..integration_loop.consumer import latest_modulation
+        boost = float((latest_modulation() or {}).get("curiosity_boost") or 0.0)
+    except Exception:
+        pass
+    k_eff = k + int(round(k * max(0.0, min(1.0, boost))))
+    hits = code_index.search(topic, out_dir, k=k_eff)
 
     synthesis = None
     if use_llm and hits:
@@ -61,5 +70,7 @@ def explore(
         "topic": topic,
         "fragments": hits,
         "synthesis": synthesis,
+        "k_effective": k_eff,
+        "curiosity_boost": boost,
         "source": "brain:executor" if synthesis else "extractive",
     }

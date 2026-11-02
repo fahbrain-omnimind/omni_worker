@@ -95,6 +95,8 @@ def run_once() -> dict[str, Any]:
     mod = derive_modulation(cycle, bundle)
     payload["modulation"] = mod.to_dict()
     store.append_cycle(payload)
+    from .consumer import write_modulation
+    write_modulation(mod.to_dict())
     if _publish_modulation(mod):
         payload["published"] = True
     _STATE.update({"cycles": _STATE["cycles"] + 1,

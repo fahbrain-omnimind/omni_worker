@@ -84,6 +84,17 @@ class SwapScheduler:
         ratio = _vram_ratio()
         evict_at = float(os.getenv("OMNI_SWAP_EVICT_THRESHOLD", "0.9"))
         reload_at = float(os.getenv("OMNI_SWAP_RELOAD_THRESHOLD", "0.75"))
+        # feedback.loop modulation: swap_threshold_delta nudges evict_at
+        # (unstable regime → evict earlier for headroom). Fail-open.
+        try:
+            from ..integration_loop.consumer import latest_modulation
+            mod = latest_modulation() or {}
+            delta = float(mod.get("swap_threshold_delta") or 0.0)
+            evict_at = min(0.97, max(0.5, evict_at - delta))
+            self.state["modulation"] = {"swap_threshold_delta": delta,
+                                        "cycle_id": mod.get("cycle_id")}
+        except Exception:
+            self.state["modulation"] = None
         max_unloaded = float(os.getenv("OMNI_SWAP_MAX_UNLOADED_MIN", "30")) * 60
         base = _base_for_role("executor")
 
