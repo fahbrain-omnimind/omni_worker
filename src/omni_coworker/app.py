@@ -30,6 +30,43 @@ def create_app() -> FastAPI:
         app.include_router(create_brain_router())
     except Exception:
         pass
+    try:
+        from .shared_workspace.api import router as mesh_router
+        app.include_router(mesh_router)
+    except Exception:
+        pass
+    try:
+        from .kernel_daemon.api import router as kernel_router
+        app.include_router(kernel_router)
+
+        from .kernel_daemon.scheduler import KernelDaemon
+        _daemon = KernelDaemon()
+
+        @app.on_event("startup")
+        async def _kernel_daemon_start() -> None:
+            _daemon.start()
+
+        @app.on_event("shutdown")
+        async def _kernel_daemon_stop() -> None:
+            await _daemon.stop()
+    except Exception:
+        pass
+    try:
+        from .integration_loop.api import router as loop_router
+        app.include_router(loop_router)
+
+        from .integration_loop.loop import IntegrationLoop
+        _loop = IntegrationLoop()
+
+        @app.on_event("startup")
+        async def _integration_loop_start() -> None:
+            _loop.start()
+
+        @app.on_event("shutdown")
+        async def _integration_loop_stop() -> None:
+            await _loop.stop()
+    except Exception:
+        pass
 
     @app.get("/soma/probe")
     def soma_probe() -> dict:
