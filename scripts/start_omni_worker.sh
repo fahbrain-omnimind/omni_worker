@@ -15,6 +15,7 @@
 # Usage / Uso:
 #   bash scripts/start_omni_worker.sh           # sobe tudo
 #   bash scripts/start_omni_worker.sh --no-brains   # só API + loops
+#   bash scripts/start_omni_worker.sh --reindex     # força rebuild do code index
 #   bash scripts/start_omni_worker.sh status    # status dos serviços
 #   bash scripts/start_omni_worker.sh stop      # para tudo
 #
@@ -63,7 +64,7 @@ pid_alive()  { [ -f "$PID_DIR/$1.pid" ] && kill -0 "$(cat "$PID_DIR/$1.pid")" 2>
 start_proc() { # name, log, cmd...
   local name="$1" log="$2"; shift 2
   if pid_alive "$name"; then
-    echo -e "${YELLOW}[SKIP]${NC} $name já vivo (PID $(cat "$PID_DIR/$1.pid"))"; return 0
+    echo -e "${YELLOW}[SKIP]${NC} $name já vivo (PID $(cat "$PID_DIR/$name.pid"))"; return 0
   fi
   nohup "$@" >> "$LOG_DIR/$log" 2>&1 &
   echo $! > "$PID_DIR/$name.pid"
@@ -113,11 +114,29 @@ status() {
 case "${1:-up}" in
   stop)   stop_all; exit 0 ;;
   status) status; exit 0 ;;
-  up|""|--no-brains) ;;
-  *) echo "uso: $0 [up|--no-brains|status|stop]"; exit 2 ;;
+  up|""|--no-brains|--reindex) ;;
+  *) echo "uso: $0 [up|--no-brains|--reindex|status|stop]"; exit 2 ;;
 esac
 
 echo -e "${GREEN}OmniMind Worker bring-up${NC} — repo $REPO, python $VENV_PYTHON"
+
+# Code index (symbolic body): rebuild when missing or stale vs newest
+# src .py — the build also pulls all-MiniLM-L6-v2 + writes chunks.parquet
+# + code_index.faiss that /dream/cycle and /curiosity/explore consume.
+index_stale() {
+  local mani="$OMNI_CODE_INDEX_DIR/chunks.parquet"
+  [ -f "$mani" ] || return 0
+  [ -n "$(find "$REPO/src/omni_coworker" -name '*.py' -newer "$mani" -print -quit)" ]
+}
+if [ "${1:-}" = "--reindex" ] || index_stale; then
+  echo -e "${BLUE}>> code index rebuild → $OMNI_CODE_INDEX_DIR${NC}"
+  # CPU-only: rebuild com brains residentes não pode disputar VRAM
+  CUDA_VISIBLE_DEVICES="" "$VENV_PYTHON" -c "from omni_coworker.store import code_index; \
+    print(code_index.build_index('$REPO/src/omni_coworker', code_index.index_dir()))" \
+    || echo -e "${YELLOW}[WARN] index build falhou (dream/curiosity degradam p/ fallback)${NC}"
+else
+  echo -e "${GREEN}[OK]${NC} code index atualizado ($OMNI_CODE_INDEX_DIR)"
+fi
 
 if [ "${1:-up}" != "--no-brains" ]; then
   # sequencial de propósito: warmup nf4 concorrente OOMa a L4

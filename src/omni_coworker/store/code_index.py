@@ -110,26 +110,33 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
     return manifest
 
 
-_LOADED_DIR: Path | None = None
+_LOADED_DIR: tuple[Path, float] | None = None
 
 
 def _load(out_dir: str | Path) -> bool:
-    """Load persisted index into memory (cached per out_dir).
+    """Load persisted index into memory (cached per out_dir + mtime).
 
     English: Returns False when the index files don't exist — callers
-    degrade to empty results instead of crashing (audit D2/D3).
+    degrade to empty results instead of crashing (audit D2/D3). The
+    cache key includes chunks.parquet's mtime so an in-place rebuild
+    is picked up without restarting the consumer.
     pt-BR: Retorna False quando os arquivos do índice não existem —
-    callers degradam para resultados vazios em vez de quebrar.
+    callers degradam para resultados vazios em vez de quebrar. A chave
+    do cache inclui o mtime do chunks.parquet, então um rebuild no
+    lugar é percebido sem reiniciar o consumidor.
     """
     global _INDEX, _ROWS, _LOADED_DIR
     import numpy as np
     import pandas as pd
 
     out_dir = Path(out_dir)
-    if _INDEX is not None and _LOADED_DIR == out_dir:
-        return True
-    if not (out_dir / "chunks.parquet").exists():
+    mani = out_dir / "chunks.parquet"
+    try:
+        stamp = (out_dir, mani.stat().st_mtime)
+    except OSError:
         return False
+    if _INDEX is not None and _LOADED_DIR == stamp:
+        return True
     _ROWS = pd.read_parquet(out_dir / "chunks.parquet").to_dict("records")
     try:
         import faiss
@@ -140,7 +147,7 @@ def _load(out_dir: str | Path) -> bool:
             _INDEX = None
             return False
         _INDEX = ("numpy", np.load(out_dir / "embeddings.npy"))
-    _LOADED_DIR = out_dir
+    _LOADED_DIR = stamp
     return True
 
 
