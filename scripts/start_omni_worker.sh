@@ -156,6 +156,8 @@ start_proc state_guard "state_guard.log" \
   "$VENV_PYTHON" -m omni_coworker.store.state_guard
 start_proc swap_scheduler "swap_scheduler.log" \
   "$VENV_PYTHON" -m omni_coworker.orchestration.swap_scheduler
+start_proc archive_loop "archive_loop.log" \
+  bash "$REPO/scripts/archive_worker_state.sh" --loop "${ARCHIVE_INTERVAL_S:-3600}"
 
 echo -e "\n${GREEN}Topologia:${NC}"
 status
