@@ -6,14 +6,19 @@ executor produced no new activations since the last check, it evicts
 the executor (frees ~9-10GB for the analyst's longer windows); when
 VRAM frees up (< OMNI_SWAP_RELOAD_THRESHOLD, default 0.75) or the
 executor has been unloaded too long (OMNI_SWAP_MAX_UNLOADED_MIN,
-default 30), it reloads. Never evicts a busy executor.
+default 30), it reloads — but a timed reload still requires VRAM
+below the evict threshold, so it never loads a ~9GB model into a GPU
+that is already saturated (e.g. by an analyst benchmark run). Never
+evicts a busy executor.
 pt-BR: Checa periodicamente a folga de VRAM e a ociosidade do executor.
 Com VRAM apertada (>= OMNI_SWAP_EVICT_THRESHOLD, default 0.9) e sem
 activations novas desde o último check, despeja o executor (libera
 ~9-10GB p/ janelas maiores do analyst); com folga (<
 OMNI_SWAP_RELOAD_THRESHOLD, default 0.75) ou tempo máximo despejado
-(OMNI_SWAP_MAX_UNLOADED_MIN, default 30), recarrega. Nunca despeja
-executor ocupado.
+(OMNI_SWAP_MAX_UNLOADED_MIN, default 30), recarrega — mas o reload
+temporizado ainda exige VRAM abaixo do threshold de despejo, para
+nunca carregar ~9GB numa GPU já saturada (ex.: benchmark do analyst).
+Nunca despeja executor ocupado.
 """
 
 from __future__ import annotations
@@ -97,7 +102,8 @@ class SwapScheduler:
             else:
                 unloaded_for = (time.time() - (self.state["last_evict"] or time.time())) \
                     if self.state["last_evict"] else 0.0
-                if ratio <= reload_at or unloaded_for >= max_unloaded:
+                timed = unloaded_for >= max_unloaded and ratio < evict_at
+                if ratio <= reload_at or timed:
                     try:
                         r = client.post(f"{base}/erika/reload")
                         ok = r.json().get("status") in ("loaded", "already_loaded")

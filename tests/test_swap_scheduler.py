@@ -59,6 +59,37 @@ def test_busy_detection_uses_delta(monkeypatch):
     assert s._executor_active(None) is False  # unreachable -> treat as idle
 
 
+def test_timed_reload_suppressed_while_vram_tight(monkeypatch):
+    """An expired max_unloaded clock must not reload into a saturated GPU."""
+    import time
+
+    s = ss.SwapScheduler()
+    s.state["executor"] = "unloaded"
+    s.state["last_evict"] = time.time() - 99999  # expired clock
+    monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
+    monkeypatch.setattr(ss, "_executor_activations", lambda: 0)
+    fc = _FakeClient()
+    monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)
+    st = s.tick()
+    assert st["executor"] == "unloaded"
+    assert fc.posts == []  # no reload under pressure
+
+
+def test_timed_reload_fires_with_headroom(monkeypatch):
+    import time
+
+    s = ss.SwapScheduler()
+    s.state["executor"] = "unloaded"
+    s.state["last_evict"] = time.time() - 99999
+    monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.80)  # below evict, above reload
+    monkeypatch.setattr(ss, "_executor_activations", lambda: 0)
+    fc = _FakeClient()
+    monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)
+    st = s.tick()
+    assert st["executor"] == "loaded"
+    assert any(u.endswith("reload") for u in fc.posts)
+
+
 def test_reloads_when_vram_frees(monkeypatch):
     monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
     monkeypatch.setattr(ss, "_executor_activations", lambda: 0)
