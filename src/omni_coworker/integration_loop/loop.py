@@ -54,6 +54,19 @@ def _sensory_history(n: int = 8) -> list[list[float]]:
     return out
 
 
+def _narrative_history(n: int = 8) -> tuple[list[list[float]], list[str]]:
+    """Last n narrative embeddings + aligned topic hints (quilting input)."""
+    embs, hints = [], []
+    for c in store.history(n):
+        ss = c.get("stage_states") or {}
+        st = ss.get("narrative") or {}
+        if st.get("embedding"):
+            embs.append(st["embedding"])
+            hints.append(((ss.get("meaning_maker") or {}).get("metadata") or {})
+                         .get("topic_hint") or "")
+    return embs, hints
+
+
 def run_once() -> dict[str, Any]:
     """One full cycle; returns persisted payload dict."""
     t0 = time.time()
@@ -75,6 +88,15 @@ def run_once() -> dict[str, Any]:
         stage_states["qualia"] = stages.qualia(ctx, x)
         stage_states["narrative"] = stages.narrative(ctx, x)
         nvec = np.asarray(stage_states["narrative"].embedding, dtype=float)
+
+        # quilting point: narrativa convergindo → tópico fixado temporário
+        try:
+            from .quilting import detect_quilting_point
+            qp = detect_quilting_point(*_narrative_history())
+            if qp:
+                stage_states["narrative"].metadata["quilting_point"] = qp
+        except Exception:
+            pass
 
         hint = ",".join((ctx.get("bundle") or {}).get("mesh_topics") or
                         (ctx.get("bundle") or {}).get("models") or ["omni"])
