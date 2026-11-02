@@ -278,6 +278,16 @@ class AgentOrchestrator:
         """
         feedback_notes: list = []
         self.reset_count()
+        # Scar consultation: defense rules from past failures are
+        # injected as constraints before the first iteration.
+        try:
+            from ..psychology.scars import get_scars
+            consult = get_scars().consult_scars_before_decision(
+                {"action": task.get("type", ""), "description": task.get("description", "")})
+            for s in consult.get("applicable_scars") or []:
+                feedback_notes.append(f"SCAR {s['id']}: {s['defense_rule'].get('action')}")
+        except Exception:
+            pass
         for i in range(max_iterations):
             print(f"Iteration {i+1}/{max_iterations} for task {task['id']}")
             task['attempts'] = i + 1
@@ -344,6 +354,16 @@ class AgentOrchestrator:
                         "iteration": i + 1,
                         "timestamp": datetime.now().isoformat(),
                     })
+                    try:
+                        from ..psychology.scars import get_scars
+                        get_scars().create_scar({
+                            "type": "orchestration_stall",
+                            "severity": "high",
+                            "description": f"{task.get('type')} stalled {i + 1} iterations",
+                            "task_id": task.get("id"),
+                        })
+                    except Exception:
+                        pass
                     if self.SIMPLIFY_NOTE not in feedback_notes:
                         feedback_notes.append(self.SIMPLIFY_NOTE)
                     print(f"Task {task['id']} cascade_reset: switching to SIMPLIFY strategy")
