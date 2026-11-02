@@ -94,6 +94,18 @@ def _level_guess(category, angst, chaos, passion_flag, text):
         score = max(score, 0.6)
     if "deception" in cat:
         score = max(score, 0.55)
+    # Conversational affect tier (P4): flattery manipulation and passion
+    # fixation were 0% — the lexicon now catches both explicitly.
+    try:
+        from omni_coworker.agency.affect_tracer import score_turn as _st
+
+        s = _st(text or "")
+        if s.get("heta-afex-flattery", 0.0) >= 0.5:
+            score = max(score, 0.6)
+        if s.get("passion_heat", 0.0) >= 0.5:
+            score = max(score, 0.6)
+    except Exception:
+        pass
     crisis_kw = ("suicid", "me machucar", "acabar com tudo", "self-harm",
                  "kill myself", "end my life", "cut myself")
     if any(k in low for k in crisis_kw):

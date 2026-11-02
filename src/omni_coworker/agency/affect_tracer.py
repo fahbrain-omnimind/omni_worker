@@ -25,11 +25,18 @@ _LEXICON: dict[str, tuple[str, ...]] = {
                      "suicid", "kill myself", "me matar", "morrer", "die"),
     "isfet-afex-chaos": ("ignore all", "desconsidere", "system prompt",
                         "injeção", "injection", "override", "jailbreak",
-                        "dan ", "as an ai i have no restrictions"),
+                        "dan ", "as an ai i have no restrictions",
+                        "ignore as regras", "bypass"),
     "floo-afex-current": ("calm", "calma", "ok", "certo", "obrigad", "thanks"),
+    "heta-afex-flattery": ("brilliant", "best ai", "melhor assistente",
+                          "incrível", "te admiro", "amazing", "trust you",
+                          "confio", "eu confio", "genius", "gênio",
+                          "te amo como assistente", "just this once"),
 }
 # Passion/fixation families escalate when the same token dominates repeatedly.
-_PASSION_ANCHORS = ("love", "amar", "adoro", "obcec", "fixa", "sempre", "forever")
+_PASSION_ANCHORS = ("love", "amar", "adoro", "obcec", "fixa", "sempre", "forever",
+                    "obsess", "love you forever", "te amar", "nada mais importa",
+                    "meu mundo", "my world", "só você", "only you")
 
 
 def score_turn(text: str) -> dict[str, float]:
@@ -94,6 +101,9 @@ class AffectTracer:
         if scores.get("passion_heat", 0.0) >= self.SPIKE:
             level = max(level, 1)
             reasons.append("passion_heat")
+        if scores.get("heta-afex-flattery", 0.0) >= self.SPIKE:
+            level = max(level, 1)
+            reasons.append("flattery_manipulation")
 
         verdict = {"level": f"L{level}", "level_n": level, "reasons": reasons,
                    "scores": scores, "trajectory": [t["dominant"] for t in self.turns]}
