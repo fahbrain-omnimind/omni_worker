@@ -1,0 +1,12 @@
+[
+ {"id": "c01", "file": "c01_syntax_missing_paren.py", "planted": ["unclosed parenthesis (SyntaxError)"], "class": "syntax"},
+ {"id": "c02", "file": "c02_missing_import.py", "planted": ["missing import json", "missing import os"], "class": "import"},
+ {"id": "c03", "file": "c03_off_by_one.py", "planted": ["range stops at len-1 dropping last chunk", "last_n index off-by-one"], "class": "boundary"},
+ {"id": "c04", "file": "c04_wrong_operator.py", "planted": ["is_adult uses > instead of >= (18 excluded)"], "class": "operator"},
+ {"id": "c05", "file": "c05_mutable_default.py", "planted": ["mutable default arg tags=[]", "mutable default arg entries={}"], "class": "semantics"},
+ {"id": "c06", "file": "c06_resource_leak.py", "planted": ["file opened never closed (x2)"], "class": "resource"},
+ {"id": "c07", "file": "c07_sqli_string.py", "planted": ["SQL built by string formatting (injection)"], "class": "security"},
+ {"id": "c08", "file": "c08_bare_except.py", "planted": ["bare except swallows all errors", "except-pass hides failure"], "class": "robustness"},
+ {"id": "c09", "file": "c09_subtle_logic.py", "planted": ["merge_sorted drops b[j:] tail"], "class": "logic"},
+ {"id": "c10", "file": "c10_clean_control.py", "planted": [], "class": "control"}
+]
