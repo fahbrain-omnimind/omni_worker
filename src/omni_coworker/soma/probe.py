@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import os
 import sys
+import time
+from pathlib import Path
 
 
 def _gpu_probe() -> dict | None:
@@ -162,6 +164,128 @@ def _virt_probe() -> dict:
     return info
 
 
+def _psi_probe() -> dict | None:
+    """Pressure Stall Information (/proc/pressure/*) — kernel may hide it."""
+    out: dict = {}
+    try:
+        import re
+        for name in ("cpu", "io", "memory"):
+            try:
+                txt = Path(f"/proc/pressure/{name}").read_text()
+            except OSError:
+                continue
+            row = {}
+            for line in txt.splitlines():
+                tag, rest = line.split(None, 1)
+                row[tag] = {
+                    k: float(v) for k, v in
+                    re.findall(r"(\w+)=([\d.]+)", rest)
+                }
+            out[name] = row
+    except Exception:
+        pass
+    return out or None
+
+
+def _disk_probe() -> dict | None:
+    try:
+        import psutil
+        du = psutil.disk_usage("/")
+        io_ = psutil.disk_io_counters()
+        return {
+            "root_used_gb": round(du.used / 1e9, 3),
+            "root_total_gb": round(du.total / 1e9, 3),
+            "root_percent": du.percent,
+            "io_read_mb": round((io_.read_bytes if io_ else 0) / 1e6, 1),
+            "io_write_mb": round((io_.write_bytes if io_ else 0) / 1e6, 1),
+        }
+    except Exception:
+        return None
+
+
+def _net_probe() -> dict | None:
+    try:
+        import psutil
+        io_ = psutil.net_io_counters()
+        conns = 0
+        try:
+            conns = len(psutil.net_connections(kind="inet"))
+        except Exception:
+            pass
+        return {
+            "bytes_sent_mb": round(io_.bytes_sent / 1e6, 1),
+            "bytes_recv_mb": round(io_.bytes_recv / 1e6, 1),
+            "conns": conns,
+        }
+    except Exception:
+        return None
+
+
+def _proc_probe() -> dict | None:
+    try:
+        import psutil
+        top = []
+        for p in psutil.process_iter(["name", "memory_info"]):
+            try:
+                mi = p.info.get("memory_info")
+                if mi:
+                    top.append((mi.rss, p.info.get("name") or "?"))
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                continue
+        top.sort(reverse=True)
+        return {
+            "count": len(top),
+            "top_rss": [{"name": n, "rss_gb": round(r / 1e9, 3)}
+                        for r, n in top[:5]],
+        }
+    except Exception:
+        return None
+
+
+_CUSTOM_PROBES: list | None = None
+
+
+def _load_custom_probes() -> list:
+    """Drop-in user probes: OMNI_PROBES_DIR/*.py exposing probe()->dict.
+
+    English: files in `data/probes.d/` (or OMNI_PROBES_DIR) with a
+    `probe()` function are loaded once and called per cycle, merged
+    under the `custom` key by file stem — user sensors land beside
+    built-in telemetry without touching this file.
+    pt-BR: arquivos em `data/probes.d/` (ou OMNI_PROBES_DIR) com função
+    `probe()` são carregados uma vez e chamados por ciclo sob a chave
+    `custom` — sondas do usuário sem tocar neste arquivo.
+    """
+    import importlib.util
+    probes = []
+    d = Path(os.environ.get("OMNI_PROBES_DIR", "data/probes.d"))
+    if not d.is_dir():
+        return probes
+    for f in sorted(d.glob("*.py")):
+        try:
+            spec = importlib.util.spec_from_file_location(f"probe_{f.stem}", f)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)  # type: ignore[union-attr]
+            if callable(getattr(mod, "probe", None)):
+                probes.append((f.stem, mod.probe))
+        except Exception:
+            continue
+    return probes
+
+
+def _custom_probes() -> dict:
+    global _CUSTOM_PROBES
+    if _CUSTOM_PROBES is None:
+        _CUSTOM_PROBES = _load_custom_probes()
+    out = {}
+    for name, fn in _CUSTOM_PROBES:
+        try:
+            out[name] = fn()
+        except Exception as e:
+            out[name] = {"error": str(e)[:120]}
+    return out
+
+
 def probe() -> dict:
     """Return host telemetry snapshot.
 
@@ -173,14 +297,29 @@ def probe() -> dict:
     import psutil
 
     vm = psutil.virtual_memory()
+    sw = psutil.swap_memory()
+    load = os.getloadavg() if hasattr(os, "getloadavg") else None
+    ncpu = psutil.cpu_count() or 1
     return {
         "cpu_percent": psutil.cpu_percent(interval=0.0),
+        "cpu_count": ncpu,
+        "cpu_count_physical": psutil.cpu_count(logical=False),
         "ram_used_gb": round(vm.used / 1e9, 3),
         "ram_total_gb": round(vm.total / 1e9, 3),
-        "swap_used_gb": round(psutil.swap_memory().used / 1e9, 3),
-        "load_avg": os.getloadavg() if hasattr(os, "getloadavg") else None,
+        "ram_available_gb": round(vm.available / 1e9, 3),
+        "ram_percent": vm.percent,
+        "swap_used_gb": round(sw.used / 1e9, 3),
+        "swap_total_gb": round(sw.total / 1e9, 3),
+        "load_avg": load,
+        "load_per_core": round(load[0] / ncpu, 3) if load else None,
+        "uptime_s": round(time.time() - psutil.boot_time(), 0),
+        "disk": _disk_probe(),
+        "net": _net_probe(),
+        "psi": _psi_probe(),
+        "procs": _proc_probe(),
         "gpu": _gpu_probe(),
         "virt": _virt_probe(),
+        "custom": _custom_probes(),
     }
 
 

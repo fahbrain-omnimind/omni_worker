@@ -75,6 +75,10 @@ def aggregate(raw: dict[str, Any]) -> dict[str, Any]:
         "soma": {
             "cpu_percent": soma.get("cpu_percent"),
             "ram_percent": soma.get("ram_percent"),
+            "load_per_core": soma.get("load_per_core"),
+            "disk_percent": (soma.get("disk") or {}).get("root_percent"),
+            "psi_cpu_some": (((soma.get("psi") or {}).get("cpu") or {})
+                            .get("some") or {}).get("avg10"),
             "gpu_vram_used_gb": gpu.get("vram_used_gb"),
             "gpu_util_percent": gpu.get("util_percent"),
             "gpu_power_w": gpu.get("power_w"),
