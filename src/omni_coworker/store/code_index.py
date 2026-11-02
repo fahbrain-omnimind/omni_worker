@@ -105,25 +105,43 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
 
     manifest = {"model": MODEL_ID, "chunks": len(rows), "dim": int(embs.shape[1]), "faiss": used_faiss}
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    global _INDEX, _LOADED_DIR
+    _INDEX, _LOADED_DIR = None, None
     return manifest
 
 
-def _load(out_dir: str | Path):
-    """Load persisted index into memory."""
-    global _INDEX, _ROWS
-    if _INDEX is not None:
-        return
+_LOADED_DIR: Path | None = None
+
+
+def _load(out_dir: str | Path) -> bool:
+    """Load persisted index into memory (cached per out_dir).
+
+    English: Returns False when the index files don't exist — callers
+    degrade to empty results instead of crashing (audit D2/D3).
+    pt-BR: Retorna False quando os arquivos do índice não existem —
+    callers degradam para resultados vazios em vez de quebrar.
+    """
+    global _INDEX, _ROWS, _LOADED_DIR
     import numpy as np
     import pandas as pd
 
     out_dir = Path(out_dir)
+    if _INDEX is not None and _LOADED_DIR == out_dir:
+        return True
+    if not (out_dir / "chunks.parquet").exists():
+        return False
     _ROWS = pd.read_parquet(out_dir / "chunks.parquet").to_dict("records")
     try:
         import faiss
 
         _INDEX = ("faiss", faiss.read_index(str(out_dir / "code_index.faiss")))
     except Exception:
+        if not (out_dir / "embeddings.npy").exists():
+            _INDEX = None
+            return False
         _INDEX = ("numpy", np.load(out_dir / "embeddings.npy"))
+    _LOADED_DIR = out_dir
+    return True
 
 
 def search(query: str, out_dir: str | Path, k: int = 5) -> list[dict]:
@@ -134,7 +152,8 @@ def search(query: str, out_dir: str | Path, k: int = 5) -> list[dict]:
     """
     import numpy as np
 
-    _load(out_dir)
+    if not _load(out_dir):
+        return []
     q = _get_model().encode([query], normalize_embeddings=True).astype("float32")
 
     kind, store = _INDEX

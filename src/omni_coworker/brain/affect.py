@@ -38,14 +38,14 @@ def derive_affect_from_brain() -> dict:
         if resp.status_code != 200:
             return derive_affect()
         data = resp.json()
-        # Map brain metrics to affect space
+        # Map brain metrics to affect space (unsaturated — audit D1):
+        # entropy ~[0,4] observed on Gemma-4 nf4; hidden norm ~[0,300].
         ent = data.get("attention_entropy_mean")
         norm = data.get("hidden_norm_mean")
-        # Derive phi, psi, sigma, epsilon as measurable quantities
-        phi = min(1.0, max(0.0, 1.0 - (ent or 0.5))) if ent is not None else 0.0
-        psi = min(1.0, max(0.0, ent or 0.0)) if ent is not None else 0.0
-        sigma = min(1.0, max(0.0, (norm or 1.0) / 2.0)) if norm is not None else 0.0
-        epsilon = 0.1  # base impulse rate
-        return {"phi": round(phi, 4), "psi": round(psi, 4), "sigma": round(sigma, 4), "epsilon": round(epsilon, 4)}
+        phi = min(1.0, max(0.0, 1.0 - (ent or 0.0) / 4.0)) if ent is not None else 0.0
+        psi = min(1.0, max(0.0, (ent or 0.0) / 4.0)) if ent is not None else 0.0
+        sigma = min(1.0, max(0.0, (norm or 0.0) / 300.0)) if norm is not None else 0.0
+        epsilon = round(min(1.0, max(0.0, (norm or 0.0) / 1000.0 + 0.05)), 4)
+        return {"phi": round(phi, 4), "psi": round(psi, 4), "sigma": round(sigma, 4), "epsilon": epsilon}
     except Exception:
         return derive_affect()

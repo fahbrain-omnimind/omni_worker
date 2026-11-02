@@ -149,17 +149,27 @@ class TrustSystem:
     def summary(self) -> dict[str, Any]:
         """Per-agent trust map + event count."""
         return {
+            "trust": dict(self._scores),
             "default_trust": self.default_trust,
-            "scores": dict(self._scores),
-            "total_events": len(self._events),
+            "events": len(self._events),
         }
 
-    def reset(self, agent: str | None = None) -> None:
-        """Reset trust for one agent or all agents."""
-        if agent is not None:
-            self._scores.pop(agent, None)
-        else:
-            self._scores.clear()
+
+_SHARED_TRUST: "TrustSystem | None" = None
+
+
+def get_trust_system() -> "TrustSystem":
+    """Process-wide shared TrustSystem (audit P0: loop must feed trust).
+
+    English: Singleton so battery, agents and orchestrator accumulate
+    evidence on the SAME trust scores instead of fresh 0.5 defaults.
+    pt-BR: Singleton para bateria, agentes e orquestrador acumularem
+    evidência nos MESMOS scores de confiança em vez de defaults 0.5.
+    """
+    global _SHARED_TRUST
+    if _SHARED_TRUST is None:
+        _SHARED_TRUST = TrustSystem()
+    return _SHARED_TRUST
 
 
 # ── QuarantineSystem ─────────────────────────────────────────────────────────

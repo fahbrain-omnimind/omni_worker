@@ -38,9 +38,9 @@ class CodeAgent:
         try:
             provider = self.trust_provider
             if provider is None:
-                from ..orchestration.governance import TrustSystem
+                from ..orchestration.governance import get_trust_system
 
-                provider = TrustSystem()
+                provider = get_trust_system()
             return float(provider.get_trust(agent="CodeAgent"))
         except Exception:
             return 0.9
