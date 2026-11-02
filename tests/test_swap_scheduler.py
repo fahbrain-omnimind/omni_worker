@@ -30,7 +30,7 @@ class _FakeClient:
 
 def test_evicts_when_vram_tight_and_idle(monkeypatch):
     monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
-    monkeypatch.setattr(ss, "_executor_active", lambda: False)
+    monkeypatch.setattr(ss, "_executor_activations", lambda: 0)
     s = ss.SwapScheduler()
     fc = _FakeClient()
     monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)
@@ -41,7 +41,7 @@ def test_evicts_when_vram_tight_and_idle(monkeypatch):
 
 def test_no_evict_when_busy(monkeypatch):
     monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
-    monkeypatch.setattr(ss, "_executor_active", lambda: True)
+    monkeypatch.setattr(ss, "_executor_activations", lambda: 1)
     s = ss.SwapScheduler()
     fc = _FakeClient()
     monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)
@@ -50,9 +50,18 @@ def test_no_evict_when_busy(monkeypatch):
     assert fc.posts == []
 
 
+def test_busy_detection_uses_delta(monkeypatch):
+    """A stagnant cumulative counter must not pin the executor busy."""
+    s = ss.SwapScheduler()
+    assert s._executor_active(3) is True   # first sight of activity counts as busy
+    assert s._executor_active(3) is False  # same count next tick -> idle again
+    assert s._executor_active(4) is True   # new generation -> busy
+    assert s._executor_active(None) is False  # unreachable -> treat as idle
+
+
 def test_reloads_when_vram_frees(monkeypatch):
     monkeypatch.setattr(ss, "_vram_ratio", lambda: 0.95)
-    monkeypatch.setattr(ss, "_executor_active", lambda: False)
+    monkeypatch.setattr(ss, "_executor_activations", lambda: 0)
     s = ss.SwapScheduler()
     fc = _FakeClient()
     monkeypatch.setattr("httpx.Client", lambda *a, **k: fc)

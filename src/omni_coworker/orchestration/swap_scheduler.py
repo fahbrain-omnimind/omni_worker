@@ -31,17 +31,17 @@ def _vram_ratio() -> float:
     return (used or 0.0) / (total or 1.0)
 
 
-def _executor_active() -> bool:
-    """True when the executor produced NEW activations since last check."""
+def _executor_activations() -> int | None:
+    """Cumulative activations counter on the executor; None when unreachable."""
     import httpx
 
     try:
         from ..brain.server import _base_for_role
 
         r = httpx.get(f"{_base_for_role('executor')}/health", timeout=5.0)
-        return bool(r.json().get("activations_buffered", 0) > 0)
+        return int(r.json().get("activations_buffered", 0))
     except Exception:
-        return False
+        return None
 
 
 class SwapScheduler:
@@ -51,7 +51,23 @@ class SwapScheduler:
         self.interval_s = int(interval_s)
         self.state: dict[str, Any] = {"executor": "loaded",
                                       "last_evict": None, "last_reload": None,
-                                      "checks": 0, "events": []}
+                                      "checks": 0, "events": [],
+                                      "last_activation_count": None}
+
+    def _executor_active(self, current: int | None) -> bool:
+        """True when the executor produced NEW activations since last tick.
+
+        The upstream counter is cumulative — comparing against the count
+        recorded on the previous tick is what makes busy detection honest
+        (a single historical generation must not pin the executor forever).
+        """
+        last = self.state.get("last_activation_count")
+        self.state["last_activation_count"] = current
+        if current is None:
+            return False
+        if last is None:
+            return current > 0
+        return current > last
 
     def tick(self) -> dict[str, Any]:
         """One scheduler step; returns the new state."""
@@ -68,7 +84,7 @@ class SwapScheduler:
 
         with httpx.Client(timeout=30.0) as client:
             if self.state["executor"] == "loaded":
-                if ratio >= evict_at and not _executor_active():
+                if ratio >= evict_at and not self._executor_active(_executor_activations()):
                     try:
                         r = client.post(f"{base}/erika/unload")
                         ok = r.json().get("status") in ("unloaded", "already_unloaded")
