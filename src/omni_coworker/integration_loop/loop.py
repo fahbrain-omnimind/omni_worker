@@ -25,7 +25,7 @@ from typing import Any
 
 import numpy as np
 
-from . import adapters, stages, store
+from . import adapters, bion_bridge, stages, store
 from .modulator import derive_modulation
 from .schema import CycleResult, new_cycle_id
 
@@ -80,6 +80,11 @@ def run_once() -> dict[str, Any]:
                         (ctx.get("bundle") or {}).get("models") or ["omni"])
         ctx["meaning_hit"] = adapters.collect_meaning_context(str(hint))
         stage_states["meaning_maker"] = stages.meaning_maker(ctx, nvec)
+
+        # bion β→α: metabolize raw cycle state (arousal = emotional_charge)
+        arousal = float(stage_states["qualia"].metadata.get("arousal") or 0.0)
+        stage_states["meaning_maker"].metadata["bion"] = bion_bridge.metabolize(
+            ctx, arousal, _STATE["cycles"])
 
         stage_states["expectation"] = stages.expectation(ctx, x)
         stage_states["sensory_feedback"] = stages.sensory_feedback(cid, stage_states)
