@@ -135,7 +135,7 @@ class TrustSystem:
         """
         delta = self.EVENT_DELTAS.get(event_type, 0.0)
         before = self.get_trust(agent)
-        after = max(0.0, min(1.0, before + delta))
+        after = round(max(0.0, min(1.0, before + delta)), 6)
         self._scores[agent] = after
         self._events.append(
             {"event": event_type, "agent": agent, "delta": delta, "before": before, "after": after, "ts": _now()}
