@@ -88,17 +88,24 @@ def load_persona(name: str, config_dir: str | Path | None = None) -> dict[str, A
     }
 
 
-def system_prompt(role: str) -> str:
+def system_prompt(role: str, mode: str | None = None) -> str:
     """Build a persona-based system prompt for a coworker role.
 
     English: Maps role -> persona (reviewer->critic, code->architect,
-    judge->titan, ...) and returns name + description + mode. Always
-    non-empty, even when persona configs are unavailable.
+    judge->titan, ...) and returns name + description + mode. When a
+    Roo-style `mode` is given, the persona is taken from the mode spec.
+    Always non-empty, even when persona configs are unavailable.
     pt-BR: Mapeia papel -> persona (reviewer->critic, code->architect,
     judge->titan, ...) e retorna nome + descrição + mode. Sempre não
     vazio, mesmo sem configs de persona disponíveis.
     """
     persona_name = ROLE_PERSONA_MAP.get(role, role)
+    if mode:
+        try:
+            from .modes import spec_for
+            persona_name = spec_for(mode).get("persona", persona_name)
+        except Exception:
+            pass
     persona = load_persona(persona_name)
     name = str(persona.get("agent_name") or persona_name)
     mode = str(persona.get("mode") or persona_name)
