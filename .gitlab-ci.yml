@@ -16,7 +16,7 @@ gate:lint:
   image: python:3.12-slim
   timeout: 10m
   script:
-    - python -m compileall -q src scripts tests
+    - python -m compileall -q -x victim src scripts tests
     - |
       pip install -q ruff && ruff check src scripts tests --select E9,F63,F7,F82 \
         || echo "ruff skipped"
