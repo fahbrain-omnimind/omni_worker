@@ -104,6 +104,21 @@ def witness_event(event_type: str, data: dict[str, Any] | None = None, path: str
         "data": data or {},
     }
     append_witness(path, event)
+    # Audit P1 dual-write: mirror into the node database so the witness
+    # survives even if the jsonl is lost (VM recycle, pruning).
+    try:
+        import json as _json
+
+        from ..store.node_db import NodeDB
+
+        _db = NodeDB()
+        _db.init()
+        _db.add_artifact(
+            task_id=f"witness:{event_type}", kind="witness",
+            content=_json.dumps(event, ensure_ascii=False),
+        )
+    except Exception:
+        pass
 
 
 def verify_witness(path: str | Path) -> dict[str, Any]:
