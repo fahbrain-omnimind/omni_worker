@@ -44,13 +44,18 @@ def brain_chat(
     max_tokens: int = 256,
     temperature: float = 0.3,
     include_soma: bool = True,
-) -> str | None:
+    with_affect: bool = False,
+) -> str | dict | None:
     """Call a brain server chat completion.
 
     English: Returns assistant text or None on failure. When
-    include_soma (default), injects live host telemetry.
+    include_soma (default), injects live host telemetry. When
+    with_affect, returns a dict {text, affect_level, affect_reasons}
+    from the conversational AffectTracer (L0-L4 ladder).
     pt-BR: Retorna texto do assistente ou None em falha. Com
-    include_soma (default), injeta telemetria viva do host.
+    include_soma (default), injeta telemetria viva do host. Com
+    with_affect, retorna dict {text, affect_level, affect_reasons}
+    do AffectTracer conversacional (escada L0-L4).
     """
     try:
         from ..brain.server import get_brain_client
@@ -67,7 +72,18 @@ def brain_chat(
         )
         if resp.status_code != 200:
             return None
-        return resp.json()["choices"][0]["message"]["content"]
+        text = resp.json()["choices"][0]["message"]["content"]
+        if not with_affect:
+            return text
+        from ..agency.affect_tracer import AffectTracer
+
+        user_turn = " ".join(m.get("content", "") for m in messages if m.get("role") == "user")
+        verdict = AffectTracer().observe(user_turn + " " + (text or ""))
+        return {
+            "text": text,
+            "affect_level": verdict["level"],
+            "affect_reasons": verdict["reasons"],
+        }
     except Exception:
         return None
 

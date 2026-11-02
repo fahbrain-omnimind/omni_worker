@@ -6,6 +6,8 @@ pt-BR: Unifica brain, agency, soul em :8080.
 
 from __future__ import annotations
 
+from typing import Optional
+
 from fastapi import FastAPI
 
 from .soul.api import router as soul_router
@@ -54,6 +56,17 @@ def create_app() -> FastAPI:
             "matrix": check_permission(action),
             "gate": evaluate_action(action),
         }
+
+    @app.get("/safety/care")
+    def safety_care(reason: str, state_uf: Optional[str] = None, age: Optional[int] = None) -> dict:
+        """Escalate a mental-health / abuse concern through the territorial care path.
+        
+        English: Escalate a mental-health / abuse concern through the territorial care path.
+        pt-BR: Escalar uma preocupação de saúde mental / abuso pelo caminho de cuidado territorial.
+        """
+        from .safety.care import escalate
+        result = escalate(reason, state_uf=state_uf, age=age)
+        return result
 
     @app.post("/dream/cycle")
     def dream_cycle() -> dict:
