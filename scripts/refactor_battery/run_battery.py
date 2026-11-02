@@ -104,7 +104,7 @@ def _ledger(con: sqlite3.Connection, rec: dict):
     con.commit()
 
 
-def run_one(idx: int) -> dict:
+def run_one(idx: int, trust=None) -> dict:
     from omni_coworker.agents.debug_agent import DebugAgent
     from omni_coworker.agents.code_agent import CodeAgent
     from omni_coworker.agents.reviewer_agent import ReviewerAgent
@@ -120,7 +120,8 @@ def run_one(idx: int) -> dict:
     rec["llm"]["debug"] = bool(diag.get("llm"))
 
     spec = SPEC + "\n\n--- todo_api.py (victim) ---\n" + victim_src
-    gen = CodeAgent().generate(spec, context={"diagnosis": diag.get("diagnosis")})
+    agent = CodeAgent(trust_provider=trust)
+    gen = agent.generate(spec, context={"diagnosis": diag.get("diagnosis")})
     rec["llm"]["code"] = bool(gen.get("llm"))
     code_text = gen.get("code") or ""
     rec["files"] = _extract_files(code_text)
@@ -139,7 +140,12 @@ def run_one(idx: int) -> dict:
     smoke = _smoke(out) if rec["files"] else {"passed": 0, "failed": 0, "rc": -1, "tail": "no files"}
     rec["smoke"] = smoke
 
-    sub = CodeAgent().submit_patch(
+    if trust is not None:
+        trust.record_event("tests_passed" if smoke["passed"] > 0 and smoke["failed"] == 0
+                           else "tests_failed")
+        rec["summary"]["trust"] = trust.get_trust()
+
+    sub = agent.submit_patch(
         code_text, test_results={"passed": smoke["passed"], "failed": smoke["failed"]},
         target_files=list(rec["files"]),
     )
@@ -173,9 +179,12 @@ def main() -> int:
         smoke_passed INT, smoke_failed INT, submitted INT, verdict TEXT,
         latency_s REAL, llm_flags TEXT, raw_summary TEXT)""")
 
+    from omni_coworker.orchestration.governance import TrustSystem
+
+    trust = TrustSystem()
     results = []
     for i in range(args.n):
-        rec = run_one(i)
+        rec = run_one(i, trust=trust)
         _ledger(con, rec)
         results.append(rec)
         print(json.dumps({
