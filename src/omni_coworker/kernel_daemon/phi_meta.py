@@ -47,9 +47,10 @@ def _landauer_j_per_bit(temp_c: float) -> float:
 
 def _bit_layer(bundle: dict[str, Any], phi_bits: float, h_sys: float) -> dict[str, Any]:
     """Physical bit layer: Landauer cost, real bit flow, integrated flow."""
-    gpu = (((bundle.get("soma") or {}).get("gpu") or {}).get("gpus") or [{}])[0]
-    power_w = gpu.get("power_w") or 0.0
-    temp_c = gpu.get("temp_c") or 70.0
+    soma = bundle.get("soma") or {}
+    gpu = ((soma.get("gpu") or {}).get("gpus") or [{}])[0]
+    power_w = soma.get("gpu_power_w") or gpu.get("power_w") or 0.0
+    temp_c = soma.get("gpu_temp_c") or gpu.get("temp_c") or 70.0
     e = _landauer_j_per_bit(temp_c)
     bit_flow = (power_w / e) if e > 0 and power_w > 0 else 0.0
     cohesion = (phi_bits / h_sys) if h_sys > 0 else 0.0

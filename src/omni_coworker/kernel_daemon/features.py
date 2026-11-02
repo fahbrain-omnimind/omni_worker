@@ -77,6 +77,8 @@ def aggregate(raw: dict[str, Any]) -> dict[str, Any]:
             "ram_percent": soma.get("ram_percent"),
             "gpu_vram_used_gb": gpu.get("vram_used_gb"),
             "gpu_util_percent": gpu.get("util_percent"),
+            "gpu_power_w": gpu.get("power_w"),
+            "gpu_temp_c": gpu.get("temp_c"),
         },
         "mesh_topics": sorted((raw.get("mesh") or {}).keys()),
     }
