@@ -58,8 +58,12 @@ def _digest(bundle: dict[str, Any]) -> str:
 
 
 def _should_llm(arousal: float, homeo_state: str, cycle_n: int) -> bool:
-    return bool(arousal >= 0.5 or homeo_state not in ("optimal", "", None)
-                or cycle_n % 5 == 0)
+    # charge ≥ tolerance(0.6) → β não-processável: transform rejeita antes
+    # do symbolizer — não gaste LLM onde a resposta é sempre None.
+    processable = arousal < 0.6
+    return bool(processable and (arousal >= 0.3
+                or homeo_state not in ("optimal", "", None)
+                or cycle_n % 5 == 0))
 
 
 def metabolize(ctx: dict[str, Any], arousal: float, cycle_n: int = 0) -> dict[str, Any]:

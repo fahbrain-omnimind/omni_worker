@@ -24,13 +24,17 @@ def test_metabolize_heuristic_tier():
     assert 0.0 <= out["symbolic_potential"] <= 1.0
 
 
-def test_metabolize_llm_gated_on_arousal():
-    # arousal >= 0.5 → llm_chain tier (call may still fall back inside)
-    out = bion_bridge.metabolize({"bundle": _bundle()}, arousal=0.8, cycle_n=1)
+def test_metabolize_llm_gating():
+    # processable + aroused → llm_chain tier
+    out = bion_bridge.metabolize({"bundle": _bundle()}, arousal=0.45, cycle_n=1)
     assert out["tier"] == "llm_chain"
-    # homeostasis degraded also gates the LLM tier
-    out2 = bion_bridge.metabolize({"bundle": _bundle("warning")}, arousal=0.1, cycle_n=1)
-    assert out2["tier"] == "llm_chain"
+    # charge ≥ 0.6 → unprocessable β: heuristic tier + unmetabolized flag
+    out2 = bion_bridge.metabolize({"bundle": _bundle()}, arousal=0.9, cycle_n=1)
+    assert out2["tier"] == "heuristic"
+    assert out2.get("beta_unmetabolized") is True
+    # homeostasis degraded + processable → LLM tier
+    out3 = bion_bridge.metabolize({"bundle": _bundle("warning")}, arousal=0.4, cycle_n=1)
+    assert out3["tier"] == "llm_chain"
 
 
 def test_metabolize_empty_bundle_no_raise():
