@@ -1,18 +1,20 @@
-# server/ — Embedded brain-server stub
-
-English: Lightweight stub of the canonical `src.erika.erika_torch_server` from
-omni_node (marked `type: stub` in `DIRECTORY_CONTRACT.yaml`). It keeps the
-package importable and the endpoint surface stable in a minimal install — it
-does **not** load a model, quantize, or stream real activations. The production
-brains run outside this package: `analyst → google/gemma-4-12B-it (:8098)` and
-`executor → google/gemma-4-E4B-it (:8099)`, consumed via `brain/` httpx proxy.
+# server/ — Stub embutido do brain-server / Embedded brain-server stub
 
 pt-BR: Stub leve do `src.erika.erika_torch_server` canônico do omni_node
 (marcado `type: stub` no `DIRECTORY_CONTRACT.yaml`). Mantém o pacote importável
 e a superfície de endpoints estável numa instalação mínima — **não** carrega
 modelo, não quantiza nem emite ativações reais. Os brains de produção rodam fora
 deste pacote: `analyst → google/gemma-4-12B-it (:8098)` e `executor →
-google/gemma-4-E4B-it (:8099)`, consumidos via proxy httpx em `brain/`.
+google/gemma-4-E4B-it (:8099)`, ambos NF4-residentes na L4, consumidos via
+proxy httpx em `brain/`.
+
+English: Lightweight stub of the canonical `src.erika.erika_torch_server` from
+omni_node (marked `type: stub` in `DIRECTORY_CONTRACT.yaml`). It keeps the
+package importable and the endpoint surface stable in a minimal install — it
+does **not** load a model, quantize, or stream real activations. The production
+brains run outside this package: `analyst → google/gemma-4-12B-it (:8098)` and
+`executor → google/gemma-4-E4B-it (:8099)`, both NF4-resident on the L4,
+consumed via `brain/` httpx proxy.
 
 ## Files / Arquivos
 
@@ -34,7 +36,10 @@ google/gemma-4-E4B-it (:8099)`, consumidos via proxy httpx em `brain/`.
 Pydantic models: `ChatMessage`, `ChatCompletionReq` (`max_tokens ≤ 8192`,
 `temperature`, `top_p`, `stream`), `CompletionReq`. The `/erika/*` pair mirrors
 the canonical server contract that `brain.affect.derive_affect_from_brain()`
-consumes on the real deployment.
+consumes on the real deployment. Note: the canonical `/erika/unload` +
+`/erika/reload` (VRAM swap surface used by `orchestration.swap_scheduler` and
+proxied at `/brain/unload|reload`) are **not** implemented by this stub —
+calls return an error payload when it is the upstream.
 
 ## Import guard / Fallback
 

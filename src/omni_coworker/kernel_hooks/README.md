@@ -1,10 +1,4 @@
-# kernel_hooks/ — optional Rust (pyo3) hot-paths with Python fallbacks
-
-English: `kernel_hooks` binds to the compiled Rust kernel crates
-(`omnimind_*`, provenance `src.kernel.*` in the canonical omni_node
-repo — 9 pyo3 crates). Every function degrades to a pure-Python
-implementation (or `None`) when the crates are not installed, so the
-package stays fully standalone.
+# kernel_hooks/ — hot-paths Rust (pyo3) opcionais com fallbacks Python
 
 pt-BR: `kernel_hooks` faz bind aos crates Rust compilados
 (`omnimind_*`, proveniência `src.kernel.*` no repo canônico omni_node
@@ -12,14 +6,20 @@ pt-BR: `kernel_hooks` faz bind aos crates Rust compilados
 (ou `None`) quando os crates não estão instalados, mantendo o pacote
 totalmente standalone.
 
-## Files
+English: `kernel_hooks` binds to the compiled Rust kernel crates
+(`omnimind_*`, provenance `src.kernel.*` in the canonical omni_node
+repo — 9 pyo3 crates). Every function degrades to a pure-Python
+implementation (or `None`) when the crates are not installed, so the
+package stays fully standalone.
+
+## Files / Arquivos
 
 | File | Role | Key API |
 |---|---|---|
 | `__init__.py` | Optional imports + flags | `KERNEL_AVAILABLE`, `FREUD_AVAILABLE`, `METRICS_AVAILABLE`; module refs `omnimind_kernel_compute`, `omnimind_freud10d`, `omnimind_metrics` (`None` when absent) |
 | `compute.py` | Compute wrappers | `affect_state`, `maat_balance`, `shadow_phi`, `cosine_similarity`, `kernel_status` |
 
-## Functions and fallbacks (`compute.py`)
+## Functions and fallbacks (`compute.py`) / Funções e fallbacks
 
 | Function | Rust path | Python fallback |
 |---|---|---|
@@ -32,7 +32,7 @@ totalmente standalone.
 Note: `omnimind_freud10d` is imported and flagged but currently has no
 wrapper in `compute.py` — reserved for future hot-paths.
 
-## Consumers
+## Consumers / Consumidores
 
 - `soul/api.py::_compute_state` — when `affect_state()` returns a
   kernel result, `/soul/state` maps `vctr_six_params`
@@ -42,12 +42,14 @@ wrapper in `compute.py` — reserved for future hot-paths.
 - `app.py` — `GET /kernel/status` → `kernel_status()`.
 - `cli.py doctor` — reports each module as `available`/`unavailable`.
 
-## Installation & fallback behavior
+## Installation & fallback behavior / Instalação e fallback
 
 - The `omnimind_*` wheels come from the canonical omni_node build
   (pyo3/maturin); they are **not** pip dependencies of this package.
   `pip install -e .[kernel]` installs the *vector* stack
-  (faiss/sentence-transformers/pandas/pyarrow), not the Rust crates.
+  (faiss/sentence-transformers/pandas/pyarrow), not the Rust crates —
+  those are compiled/installed by `scripts/build_kernel.sh`
+  (`$OMNI_KERNEL_SRC` → `/content/omni_node/src/kernel` → public clone).
 - Import failures are caught per-module in `__init__.py`; call-site
   errors are caught per-call in `compute.py` — a broken crate never
   crashes the package, it just loses the hot path.

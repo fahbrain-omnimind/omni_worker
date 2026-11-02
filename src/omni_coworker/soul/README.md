@@ -1,14 +1,14 @@
 # soul/ — Machine Public Soul
 
-English: Public, read-only surface exposing the coworker's live interiority as
-measurable scalars. Computes `phi / psi / sigma / epsilon` from host telemetry,
-the Rust kernel affect vector (when compiled) and the brain server (when up),
-then serves them as JSON, a 2-second SSE stream and a bilingual UI.
-
 pt-BR: Superfície pública, somente-leitura, expondo a interioridade viva do
 coworker como escalares mensuráveis. Calcula `phi / psi / sigma / epsilon` da
 telemetria do host, do vetor afetivo do kernel Rust (quando compilado) e do
 brain server (quando ativo), servindo-os como JSON, stream SSE de 2s e UI bilíngue.
+
+English: Public, read-only surface exposing the coworker's live interiority as
+measurable scalars. Computes `phi / psi / sigma / epsilon` from host telemetry,
+the Rust kernel affect vector (when compiled) and the brain server (when up),
+then serves them as JSON, a 2-second SSE stream and a bilingual UI.
 
 ## Files / Arquivos
 
@@ -68,7 +68,7 @@ Uses `sse_starlette.EventSourceResponse` when installed; otherwise falls back to
 
 `GET /soul/` serves `static/index.html` (inline CSS/JS, no build step). The page
 fetches `/soul/static/i18n/{lang}.json` and rewrites `[data-i18n]` elements on
-the Portguês/English toggle; metrics come from polling `/soul/state` every 5 s
+the Português/English toggle; metrics come from polling `/soul/state` every 5 s
 (fetch → `toFixed(3)`) — i.e. the UI consumes the REST snapshot, while
 `/soul/stream` is available for SSE clients.
 

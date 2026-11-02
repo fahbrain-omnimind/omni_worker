@@ -1,4 +1,11 @@
-# agents/ — Agent Layer
+# agents/ — Camada de Agentes / Agent Layer
+
+**pt-BR:** Agentes por papel (Debug / Analyst / Reviewer / Code), bus
+inter-agentes, configs de persona, modes estilo Roo e ponte para CLIs
+agênticos externos. Todo trabalho de LLM passa por `_llm.brain_chat*` para os
+servidores brain externos (analista `:8098` / executor `:8099`,
+`/v1/chat/completions` OpenAI-compatible); cada agente degrada para payload
+heurístico/stub quando os backends caem (`llm: False` nos resultados).
 
 **English:** Role agents (Debug / Analyst / Reviewer / Code), an inter-agent
 message bus, persona configs, Roo-style modes, and a bridge to external
@@ -6,12 +13,6 @@ agentic CLIs. All LLM work is routed through `_llm.brain_chat*` to the
 external brain servers (analyst `:8098` / executor `:8099`, OpenAI-compatible
 `/v1/chat/completions`); every agent degrades to a heuristic/stub payload
 when the backends are down (`llm: False` in results).
-
-**pt-BR:** Agentes por papel (Debug / Analyst / Reviewer / Code), bus
-inter-agentes, configs de persona, modes estilo Roo e ponte para CLIs
-agênticos externos. Todo trabalho de LLM passa por `_llm.brain_chat*` para os
-servidores brain externos (analista `:8098` / executor `:8099`); cada agente
-degrada para payload heurístico/stub quando os backends caem.
 
 ## Files
 
@@ -27,7 +28,7 @@ degrada para payload heurístico/stub quando os backends caem.
 | `code_agent.py` | Gated patch producer | `CodeAgent.generate(spec, context)`, `submit_patch(code, test_results, target_files)` |
 | `external_cli_agent.py` | External agentic CLI bridge | `ExternalCLIAgent.execute/publish_to_bus`, `ACPClient`, `ShellCLIAdapter`, `sanitized_env`, `default_clis`, `register_cli`, `list_available` |
 
-## Governance surface
+## Governance surface / Superfície de governança
 
 - **DebugAgent** is read-only by contract: `diagnose` calls the executor brain
   with a "may NOT edit files" system prompt and returns `can_fix: False`;
@@ -63,7 +64,7 @@ degrada para payload heurístico/stub quando os backends caem.
 - **Registry:** `DEFAULT_CLIS` (dev, opencode, kilo, hermes) overridable via
   `OMNI_CLI_<NAME>` env or `register_cli`; `list_available` probes PATH.
 
-## Data/control flow
+## Data/control flow / Fluxo de dados e controle
 
 ```
 issue ─► DebugAgent.diagnose ─► _llm.brain_chat_json(executor) ─► {diagnosis, suggestions}
@@ -73,7 +74,7 @@ patch ─► CodeAgent.submit_patch ─► matrix.check_permission ─► gate.e
 task  ─► ExternalCLIAgent.execute ─► ACPClient|ShellCLIAdapter ─► publish_to_bus ─► MessageBus
 ```
 
-## Dependencies & fallbacks
+## Dependencies & fallbacks / Dependências e fallbacks
 
 - **Imports:** `brain.server.get_brain_client` (httpx, cached per role),
   `safety.matrix`/`safety.gate` (canonical adapters), `agency.analyst`
