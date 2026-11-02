@@ -11,3 +11,20 @@ node.db
 /omni_code_index/
 /dist/
 /build/
+# Secrets / keys / tokens — NUNCA commitar
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*id_rsa*
+*id_ed25519*
+*secret*
+*token*
+*credential*
+*.netrc
+api_keys*.json
+secrets*.json
+.claude/settings.local.json
+.auth/
