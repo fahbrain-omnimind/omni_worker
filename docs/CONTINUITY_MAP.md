@@ -314,3 +314,29 @@ reservation persists, candidates are `remove_hook_from_submodules`
 **In flight**: `run_diag_reps_swapped.sh 5` — rep ledger at
 `scripts/gemma4_diag_battery/diag_battery.sqlite` (expect 40 rows:
 5 reps × 4 tasks × 2 roles). Analyst rep0≈87.7, rep1≈85.2, rep2≈82.5.
+
+**diag battery 5-rep run COMPLETE (40/40 rows)**: peer-swap run with
+per-role eviction. Mean±range per task (n=5):
+
+| task | analyst (12B) | executor (E4B) |
+|---|---|---|
+| wcst | 73.0 (45–90) | 86.8 (70–90) |
+| stroop | 97.0 (95–100) | 100.0 |
+| nback | 65.7 (flat) | 68.6 (65.7–74.3) |
+| igt | 100.0 | 100.0 |
+
+`degenerate=0` on all 40 rows — consistent with OW-STU-006: local NF4
+runs show no lexical degeneration even at 1800 tokens. Per-rep spread
+is driven by WCST variance on the analyst (77.7–87.7 rep means);
+executor is nearly deterministic (86.1–88.9). Garbage 503 rows from
+the failed mid-run reload were deleted (latency<1s, all-zero) — real
+executor rows were re-run with the allocator fix.
+
+**Residual VRAM root cause SOLVED**: `expandable_segments` (torch 2.9+
+VMM allocator default) pinned whole segments while any interior block
+survived — `empty_cache()` could not unmap them, so unload freed
+`memory_allocated` but not driver memory, and `device_map="auto"`
+reload then saw ~1GB free → bnb dispatch ValueError. Fix shipped:
+`PYTORCH_CUDA_ALLOC_CONF=expandable_segments:False` set by the brain
+server itself at startup (`setdefault`, pre-CUDA-init). Verified:
+post-unload footprint 9210→218MiB. Both brains restarted with the fix.
