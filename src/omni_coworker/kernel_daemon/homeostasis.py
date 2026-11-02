@@ -99,10 +99,14 @@ class HomeostaticController:
         """Build metrics from the worker's soma.probe payload."""
         gpu = ((soma.get("gpu") or {}).get("gpus") or [{}])[0]
         used, total = gpu.get("vram_used_gb", 0.0), gpu.get("vram_total_gb", 1.0)
-        disk = (soma.get("disk") or {}).get("percent") or 0.0
+        ram_u, ram_t = soma.get("ram_used_gb", 0.0), soma.get("ram_total_gb", 0.0)
+        ram_pct = (soma.get("ram_percent") or soma.get("memory_percent")
+                   or (ram_u / ram_t * 100.0 if ram_t else 0.0))
+        disk = ((soma.get("disk") or {}).get("percent")
+                or soma.get("disk_percent") or 0.0)
         return ResourceMetrics(
             cpu_percent=soma.get("cpu_percent") or 0.0,
-            memory_percent=soma.get("ram_percent") or soma.get("memory_percent") or 0.0,
+            memory_percent=ram_pct,
             disk_percent=disk,
             vram_percent=(used / total * 100.0) if total else 0.0,
         )
