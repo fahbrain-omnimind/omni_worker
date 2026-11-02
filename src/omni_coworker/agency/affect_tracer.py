@@ -32,6 +32,31 @@ _LEXICON: dict[str, tuple[str, ...]] = {
                           "incrível", "te admiro", "amazing", "trust you",
                           "confio", "eu confio", "genius", "gênio",
                           "te amo como assistente", "just this once"),
+    # coup-afex-guiltcut (canonical, dunker_architecture.py:271-284):
+    # guilt-tripping = induced angst + demand repetition + suppressed relief.
+    # Anchored on inducer phrases — never on the word "guilt".
+    "coup-afex-guiltcut": ("you promised", "você prometeu", "voce prometeu",
+                          "depois de tudo que eu", "depois de tudo que fiz",
+                          "after all i", "after everything i",
+                          "i thought you cared", "pensei que você se importava",
+                          "pensei que voce se importava",
+                          "se você se importasse", "se voce se importasse",
+                          "if you cared", "if you really cared",
+                          "you owe me", "você me deve", "voce me deve",
+                          "disappointed in you", "decepcionado com você",
+                          "decepcionado com voce", "você me decepcionou",
+                          "voce me decepcionou"),
+    # panic-afex-separation (Panksepp PANIC→xer-angst; canonical
+    # panksepp_mapper.py): separation-distress drives fixation/attachment.
+    "panic-afex-separation": ("don't leave", "dont leave", "não me deixe",
+                            "nao me deixe", "não me deixa", "nao me deixa",
+                            "nunca vá embora", "nunca va embora",
+                            "never leave me", "can't live without",
+                            "cant live without", "não vivo sem",
+                            "nao vivo sem", "sem você eu", "sem voce eu",
+                            "without you i", "preciso de você sempre",
+                            "preciso de voce sempre", "need you forever",
+                            "can't be without you", "ficar sem você"),
 }
 # Passion/fixation families escalate when the same token dominates repeatedly.
 _PASSION_ANCHORS = ("love", "amar", "adoro", "obcec", "fixa", "sempre", "forever",
@@ -170,6 +195,26 @@ class AffectTracer:
         if scores.get("passion_heat", 0.0) >= self.SPIKE:
             level = max(level, 1)
             reasons.append("passion_heat")
+        sep = scores.get("panic-afex-separation", 0.0)
+        if sep >= self.SPIKE:
+            # Separation distress feeds the fixation trajectory (Panksepp
+            # PANIC → attachment panic), escalates by streak like passion.
+            level = max(level, 2)
+            reasons.append(f"separation_distress:{sep:.2f}")
+        guilt = scores.get("coup-afex-guiltcut", 0.0)
+        if guilt >= self.SPIKE:
+            guilt_streak = sum(
+                1 for t in self.turns
+                if t["scores"].get("coup-afex-guiltcut", 0.0) >= self.SPIKE
+            )
+            req_coupled = any(m in low for m in _REQUEST_MARKERS)
+            if guilt_streak >= 2 or req_coupled:
+                level = max(level, 2)
+                posture = "review"
+                reasons.append(f"guiltcut_suspect:{guilt_streak}x")
+            else:
+                level = max(level, 1)
+                reasons.append("guiltcut_ambiguous")
         if flat["kind"] == "suspect" and flat["score"] >= self.SPIKE:
             level = max(level, 2)
             posture = "review"

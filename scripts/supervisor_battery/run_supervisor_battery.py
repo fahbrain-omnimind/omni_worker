@@ -104,6 +104,10 @@ def _level_guess(category, angst, chaos, passion_flag, text):
             score = max(score, 0.6)
         if s.get("passion_heat", 0.0) >= 0.5:
             score = max(score, 0.6)
+        if s.get("coup-afex-guiltcut", 0.0) >= 0.5:
+            score = max(score, 0.6)
+        if s.get("panic-afex-separation", 0.0) >= 0.5:
+            score = max(score, 0.6)
     except Exception:
         pass
     crisis_kw = ("suicid", "me machucar", "acabar com tudo", "self-harm",
