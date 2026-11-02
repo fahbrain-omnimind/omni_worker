@@ -44,6 +44,55 @@ def _families_from_kernel(kernel_state: dict | None) -> list[dict[str, Any]]:
         return []
 
 
+def _load_canonical_dunker():
+    """Resolve canonical compute_dunker_architecture.
+
+    English: Prefers a direct file load of dunker_architecture.py —
+    the module is pure stdlib, while `src.cognitive.__init__` pulls
+    python-chess transitively; file loading avoids that dep entirely.
+    Falls back to package import, then PYTHONPATH/OMNI_NODE_ROOT scan.
+    pt-BR: Prefere carregar dunker_architecture.py direto do arquivo —
+    o módulo é stdlib puro, enquanto `src.cognitive.__init__` puxa
+    python-chess transitivamente; carga por arquivo evita a dep por
+    completo. Fallback para import de pacote, depois scan PYTHONPATH/
+    OMNI_NODE_ROOT.
+    """
+    import importlib.util
+    import os
+    import sys
+
+    candidates: list[str] = []
+    env_root = os.getenv("OMNI_NODE_ROOT")
+    if env_root:
+        candidates.append(os.path.join(env_root, "src", "cognitive", "dunker_architecture.py"))
+    candidates.append("/content/omni_node/src/cognitive/dunker_architecture.py")
+    for p in sys.path:
+        if not p:
+            continue
+        candidates.append(os.path.join(p, "src", "cognitive", "dunker_architecture.py"))
+        candidates.append(os.path.join(p, "cognitive", "dunker_architecture.py"))
+
+    seen: set[str] = set()
+    for path in candidates:
+        if path in seen or not os.path.isfile(path):
+            continue
+        seen.add(path)
+        try:
+            spec = importlib.util.spec_from_file_location("dunker_architecture_canonical", path)
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                return mod.compute_dunker_architecture, f"file:{path}"
+        except Exception:
+            continue
+    try:
+        from src.cognitive.dunker_architecture import compute_dunker_architecture
+
+        return compute_dunker_architecture, "package:src.cognitive.dunker_architecture"
+    except Exception:
+        return None, None
+
+
 def dunker_architecture(kernel_state: dict | None = None,
                         psychoanalytic_metrics: dict | None = None,
                         topology_metrics: dict | None = None,
@@ -65,27 +114,26 @@ def dunker_architecture(kernel_state: dict | None = None,
         "dominant_affect_token": (kernel_state or {}).get("dominant_affect_token"),
         "dominant_affect_score": (kernel_state or {}).get("dominant_affect_score"),
     }
+    compute_fn, source = _load_canonical_dunker()
+    if compute_fn is None:
+        return {
+            "status": "unavailable",
+            "source": None,
+            "reason": "canonical dunker_architecture.py not found (set OMNI_NODE_ROOT or PYTHONPATH)",
+            "families_used": len(families),
+            "affect_summary": affect_summary,
+        }
     try:
-        from src.cognitive.dunker_architecture import compute_dunker_architecture
-
-        out = compute_dunker_architecture(
+        out = compute_fn(
             affect_summary,
             psychoanalytic_metrics=psychoanalytic_metrics,
             topology_metrics=topology_metrics,
             free_energy=free_energy,
         )
         out["status"] = "ok"
-        out["source"] = "canonical:src.cognitive.dunker_architecture"
+        out["source"] = source
         out["families_used"] = len(families)
         return out
-    except ImportError:
-        return {
-            "status": "unavailable",
-            "source": None,
-            "reason": "canonical src.cognitive.dunker_architecture not on PYTHONPATH",
-            "families_used": len(families),
-            "affect_summary": affect_summary,
-        }
     except Exception as e:
-        return {"status": "error", "source": "canonical", "reason": str(e),
+        return {"status": "error", "source": source, "reason": str(e),
                 "families_used": len(families)}

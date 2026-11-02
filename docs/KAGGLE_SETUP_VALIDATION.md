@@ -183,7 +183,29 @@ field becomes a real computation (no more telemetry proxies) and the
 whole psychoaffective surface is exposed via `/soul/state`,
 `/soul/dodeca` and `/agency/dunker`.
 
-## 7. Provenance
+## 7. Dependency audit — kernel crates & psychoanalytic-mesh (2026-11-02)
+
+Two-agent audit before touching requirements — verdict: **no new package
+deps declared**; adapters + build script instead.
+
+| Artifact | Exists? | Contains what we need? | Decision |
+|---|---|---|---|
+| `github.com/devomnimind/Doxihewu-OmniMind-Kernel` | public, cloneable | all 14 crates (local omni_node ≥ public snapshot; pyo3 0.29 + py3.14 builds fine) | **no pip dep possible** (no Python packaging upstream) → `scripts/build_kernel.sh` builds crates + installs `omnimind_*.so` |
+| `omnimind-psychoanalytic-mesh` (PyPI 2.1.1) | yes | **does NOT contain dunker_architecture** — different artifact (464D torch mesh); would drag `torch` + CC-BY-NC-ND | **do not declare** |
+
+License note: kernel crates and the PyPI mesh are CC-BY-NC-ND-4.0 —
+incompatible with vendoring into this Apache-2.0 package; runtime
+optional imports keep zero license entanglement (dual-licensing the
+needed crates to Apache-2.0 is the clean unblock if wheels are wanted).
+
+Fix applied from audit: `agency/dunker.py` now loads
+`dunker_architecture.py` via `importlib` file-load (stdlib-only file)
+instead of package import — removes the transitive `python-chess`
+requirement that came from `src.cognitive.__init__` → `chess_mind`.
+Resolution order: `OMNI_NODE_ROOT` → `/content/omni_node` → PYTHONPATH
+scan → package import.
+
+## 8. Provenance
 
 Substrate comes from the canonical OmniMind repos for the competition:
 `src/erika/erika_torch_server.py` (brain), `src.orchestration`,
