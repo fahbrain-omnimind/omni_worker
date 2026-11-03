@@ -122,5 +122,25 @@ def metabolize(ctx: dict[str, Any], arousal: float, cycle_n: int = 0) -> dict[st
             out["beta_unmetabolized"] = True
     except Exception:
         out["beta_unmetabolized"] = True
+    # OW-STU-009: a produção do modelo é β próprio — segundo β quando a
+    # janela de ativações mostra atrator (score alto) — metabolizado no
+    # mesmo container, marcado como source="activations.window".
+    try:
+        att = bundle.get("attractor") or {}
+        att_score = max((f.get("attractor_score") or 0.0)
+                        for f in att.values()) if att else 0.0
+        if att and att_score >= 0.5:
+            from ..activation_beta.attractor import digest as att_digest
+            beta2 = BetaElement(
+                raw_data=att_digest(att),
+                timestamp=datetime.now(timezone.utc),
+                emotional_charge=max(0.0, min(1.0, att_score)),
+                source="activations.window")
+            a2 = _container(False).contain(beta2)
+            if a2 is not None:
+                out["attractor_alpha"] = str(getattr(a2, "content", ""))[:400]
+                out["attractor_score"] = round(att_score, 4)
+    except Exception:
+        pass
     out["elapsed_ms"] = round((time.time() - t0) * 1000, 1)
     return out

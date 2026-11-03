@@ -47,6 +47,16 @@ def run_cycle() -> dict[str, Any]:
     try:
         raw = collect_cycle()
         bundle = aggregate(raw)
+        # activation_beta: atratores sobre a janela de ativações (OW-STU-009)
+        try:
+            from ..activation_beta import attractor
+            attractor.push(raw.get("activations") or [])
+            att = attractor.features()
+            if att:
+                bundle["attractor"] = att
+                _publish("kernel.attractor", att)
+        except Exception:
+            pass
         # homeostasis: phi feeds sublimation; soma feeds the state machine
         homeo = _homeostasis()
         homeo.update_consciousness_state(
