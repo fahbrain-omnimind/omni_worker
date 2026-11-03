@@ -142,7 +142,13 @@ class Desire:
 
 
 class DesireEngine(DesireAsStructuralImpossibility):
-    """Computa falta estrutural (target vs current) → intensity + vector."""
+    """Computa falta estrutural (target vs current) → intensity + vector.
+
+    Alimentacao opcional por observaveis do mesh: use
+    src.omni_coworker.psychology.desire_epsilon.ingest_observables(obs)
+    para obter lack_of_being e compute_epsilon_desire(lack, potential, novelty)
+    para epsilon. Kernel.soma/homeostasis topics do mesh alimentam `obs`.
+    """
 
     def compute(self, target: Any, current: Any, goals: Optional[List[str]] = None) -> Desire:
         goals = goals or []
