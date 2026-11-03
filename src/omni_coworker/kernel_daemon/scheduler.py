@@ -108,6 +108,16 @@ def run_cycle() -> dict[str, Any]:
             _publish("kernel.metastability", meta)
         except Exception:
             pass
+        # ignition: GWT-lite broadcast diversity + synergy proxy (OW-STU-016)
+        try:
+            from . import ignition
+            ig = ignition.cycle(bundle)
+            bundle["workspace"] = ig
+            if ig.get("ignited"):
+                _publish("kernel.workspace.ignition", ig)
+            _publish("kernel.workspace", ig)
+        except Exception:
+            pass
         bundle["published_topics"] = publish_feedback(bundle)
         _STATE["last_bundle"] = bundle
     except Exception as e:  # ciclo ruim não derruba o daemon

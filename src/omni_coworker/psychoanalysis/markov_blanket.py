@@ -31,8 +31,12 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-# Node order — the blanket's minimal causal organs.
+# Node order — the blanket's minimal causal organs (4-node core).
 NODES = ("Z", "M", "R", "T")
+# 6-node: the blanket's own channels become elements — E sensory error
+# relay and P permeability gate (FEP: internal {M,R,T} / blanket {E,P}
+# / external {Z}). The E bridge can integrate Z into the complex.
+NODES6 = ("Z", "E", "M", "R", "T", "P")
 
 # Sovereign constants (simulate_prior_conflict_hyperbolic.py —
 # DO NOT tune: they reproduce the livro §19/B§9 simulation).
@@ -124,28 +128,62 @@ def blanket_step(state: BlanketState, z: np.ndarray, alpha: float,
         "error": error, "error_mag": error_mag,
         "permeability": permeability, "gain": gain,
         "dH": hyperbolic_dist(state.mu, TARGET),
+        "z": z,  # world state actually used (post-flip)
     }
     return state, observ
 
 
-def binarize(z: np.ndarray, state: BlanketState, observ: dict) -> tuple:
-    """Continuous microstate → 4 node bits (Z, M, R, T).
+def _error_mag0(z: np.ndarray, mu: np.ndarray, r: float) -> float:
+    """Expected (noiseless) prediction error — the E observable."""
+    return float(np.linalg.norm(z - mu * (1.0 - 0.25 * r)))
+
+
+def _permeability0(alpha: float, r: float) -> float:
+    """Expected permeability given (alpha, r) — the P observable."""
+    p = 0.5 * (1.0 - alpha) + 0.4 * (1.0 - r)
+    return max(0.05, min(0.95, p))
+
+
+def binarize(z: np.ndarray, state: BlanketState, observ: dict,
+             alpha: float = 0.35, nodes6: bool = False) -> tuple:
+    """Continuous microstate → node bits.
 
     English: the coarse-graining map — each bit is a sovereign-defined
-    clinical threshold, not an arbitrary discretization.
+    clinical threshold, not an arbitrary discretization. nodes6 adds
+    E (error channel) and P (permeability gate) as elements, evaluated
+    on the noiseless observables of the current microstate.
     """
-    return (
+    base = (
         int(z[0] > Z_THRESH),
+        int(_error_mag0(z, state.mu, state.r) > E_THRESH),
         int(observ["dH"] <= M_THRESH),
         int(state.r >= R_THRESH),
         int(state.tau[0] > 0.0),
+        int(_permeability0(alpha, state.r) >= 0.5),
     )
+    if nodes6:
+        return base
+    return (base[0], base[2], base[3], base[4])
 
 
 def _sample_consistent(bits: tuple, rng: np.random.Generator,
-                       max_tries: int = 4000) -> tuple:
-    """Rejection-sample a continuous (z, mu, r, tau) matching node bits."""
-    zb, mb, rb, tb = bits
+                       alpha: float = 0.35,
+                       max_tries: int = 6000) -> tuple:
+    """Rejection-sample a continuous (z, mu, r, tau) matching node bits.
+
+    English: accepts 4-bit (Z,M,R,T) or 6-bit (Z,E,M,R,T,P) tuples —
+    the E and P bits constrain the joint (z,mu,r) via the noiseless
+    error/permeability observables, so rejection happens on the full
+    constraint set, not independently per node.
+    """
+    n = len(bits)
+    if n == 6:
+        zb, eb, mb_, rb, tb, pb = bits
+    elif n == 4:
+        zb, mb_, rb, tb = bits
+        eb = pb = None
+    else:
+        raise ValueError(f"bits must be 4 or 6, got {n}")
     for _ in range(max_tries):
         if zb:
             z = np.array([0.62, 0.38]) + rng.normal(0, 0.05, 2)
@@ -159,44 +197,49 @@ def _sample_consistent(bits: tuple, rng: np.random.Generator,
             mu = rng.uniform(-0.9, 0.9, 2)
             if np.dot(mu, mu) < 0.9 ** 2:
                 break
-        st = BlanketState(mu=mu,
-                          r=float(rng.uniform(R_THRESH, 1.0) if rb
-                                  else rng.uniform(0.0, R_THRESH)))
+        r = float(rng.uniform(R_THRESH, 1.0) if rb
+                  else rng.uniform(0.0, R_THRESH))
+        # joint constraints from the channel bits
+        if eb is not None and (_error_mag0(z, mu, r) > E_THRESH) != bool(eb):
+            continue
+        if pb is not None and alpha <= 0.7 and \
+                (_permeability0(alpha, r) >= 0.5) != bool(pb):
+            continue
+        if (hyperbolic_dist(mu, TARGET) <= M_THRESH) != bool(mb_):
+            continue
         th = rng.uniform(0, 2 * math.pi)
         tau = np.array([math.cos(th), math.sin(th)]) * 0.8
         if (tau[0] > 0.0) != bool(tb):
             continue
-        # M bit depends on dH of the *post-step* mu; approximate with the
-        # pre-step distance — close enough for coarse-graining, and the
-        # honest alternative (pre-imaging the map) costs orders more.
-        if (hyperbolic_dist(mu, TARGET) <= M_THRESH) != bool(mb):
-            continue
+        st = BlanketState(mu=mu, r=r)
         st.tau = tau
         return z, st
     raise RuntimeError(f"no consistent microstate for bits {bits}")
 
 
-def build_tpm(alpha: float, k: int = 600, seed: int = 0) -> tuple[np.ndarray, np.ndarray]:
-    """Coarse-grained TPM over the 4 blanket nodes via Monte Carlo.
+def build_tpm(alpha: float, k: int = 600, seed: int = 0,
+              nodes6: bool = False) -> tuple[np.ndarray, np.ndarray]:
+    """Coarse-grained TPM over the blanket nodes via Monte Carlo.
 
-    English: for each of the 16 binary states, sample K consistent
+    English: for each binary state (16 or 64), sample K consistent
     microstates, run one sovereign-faithful step (with noise + z-flip),
-    count next binary states → joint TPM (16×16). Also returns the
-    state-by-node marginals PyPhi's sbn format would use.
+    count next binary states → joint TPM. Also returns state-by-node
+    marginals (PyPhi sbn format).
 
     pt-BR: para cada estado binário, K microestados consistentes → um
-    passo da dinâmica soberana → TPM conjunta 16×16 + marginais s×n.
+    passo da dinâmica soberana → TPM conjunta + marginais s×n.
     """
     rng = np.random.default_rng(seed)
-    n = len(NODES)
+    n = len(NODES6) if nodes6 else len(NODES)
     joint = np.zeros((2 ** n, 2 ** n))
+    unreachable: list[int] = []
     for s_idx in range(2 ** n):
         bits = tuple((s_idx >> (n - 1 - i)) & 1 for i in range(n))
         counts = np.zeros(2 ** n)
         tried = 0
         for _ in range(k):
             try:
-                z, st = _sample_consistent(bits, rng)
+                z, st = _sample_consistent(bits, rng, alpha)
             except RuntimeError:
                 tried += 1
                 if tried > 3:
@@ -204,27 +247,49 @@ def build_tpm(alpha: float, k: int = 600, seed: int = 0) -> tuple[np.ndarray, np
                 continue
             noise = rng.normal(0, NOISE_STD, 2)
             st2, obs = blanket_step(st, z, alpha, noise, rng)
-            nxt = binarize(z, st2, obs)
+            nxt = binarize(obs["z"], st2, obs, alpha=alpha, nodes6=nodes6)
             n_idx = sum(b << (n - 1 - i) for i, b in enumerate(nxt))
             counts[n_idx] += 1
         total = counts.sum()
-        joint[s_idx] = counts / total if total > 0 else 0.0
+        if total > 0:
+            joint[s_idx] = counts / total
+        else:
+            # Unreachable: no consistent microstate exists under the
+            # dynamics (e.g. R=0 ∧ P=0 is impossible at α≤0.7 — low
+            # resistance forces permeability up). Convention: absorbing
+            # self-loop — zero stationary mass anyway, and PyPhi needs
+            # a proper TPM. Counted in `unreachable` as a diagnostic of
+            # how much of the binary space the dynamics rules out.
+            joint[s_idx, s_idx] = 1.0
+            unreachable.append(s_idx)
     # state-by-node marginals: sbn[s][j] = P(node j ON at t+1 | s)
     sbn = np.zeros((2 ** n, n))
     for s_idx in range(2 ** n):
         for j in range(n):
             sbn[s_idx, j] = sum(joint[s_idx, ns] for ns in range(2 ** n)
                                 if (ns >> (n - 1 - j)) & 1)
-    return joint, sbn
+    return joint, sbn, {"unreachable": unreachable}
 
 
-def connectivity_matrix() -> np.ndarray:
+def connectivity_matrix(nodes6: bool = False) -> np.ndarray:
     """Directed effective connectivity at node grain (from→to).
 
-    English: Z drives everything through the error channel; M persists
-    and drives ŷ→error→{R,T}; R modulates gain + distorts ŷ → {M,R,T};
-    T feeds resistance (φ=⟨e,τ⟩) and persists. No arrows into Z (world).
+    English: Z drives everything through the error channel; E relays
+    into the internal organs {M,R,T}; M persists and drives ŷ→error;
+    R modulates gain + distorts ŷ and sets permeability; T feeds
+    resistance and persists; P is a readout (effect-pure — sovereign
+    dynamics give it no outgoing influence). No arrows into Z (world).
     """
+    if nodes6:
+        # order Z E M R T P; cm[i][j] = i → j
+        return np.array([
+            [1, 1, 1, 1, 1, 0],   # Z → Z,E,M,R,T (world → error relay)
+            [0, 0, 1, 1, 1, 0],   # E → M,R,T (sensory → internal)
+            [0, 1, 1, 1, 1, 0],   # M → E,M,R,T (prediction → error)
+            [0, 1, 1, 1, 1, 1],   # R → E,M,R,T,P (gain+distort+perm)
+            [0, 0, 0, 1, 1, 0],   # T → R,T (alignment + persistence)
+            [0, 0, 0, 0, 0, 0],   # P → nothing (effect-pure readout)
+        ], dtype=float)
     # order Z M R T; cm[i][j] = i → j
     return np.array([
         [1, 1, 1, 1],   # Z → Z,M,R,T (via sensory error channel)

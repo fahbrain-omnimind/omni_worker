@@ -201,6 +201,7 @@ def update(bundle: dict[str, Any]) -> dict[str, Any]:
         "mip_top3": mip_top3,
         "n_distinct_states": n_distinct,
         "diversity": round(n_distinct / len(states), 4) if states else 0.0,
+        "scale": "bits over 7 binary flags, window 40 [PRX]",
     }
     out.update(_bit_layer(bundle, p, h))
     return out

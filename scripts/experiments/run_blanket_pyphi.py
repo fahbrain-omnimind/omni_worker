@@ -102,6 +102,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--k", type=int, default=600, help="MC samples/state")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--nodes6", action="store_true",
+                    help="6-node blanket (adds E error relay + P permeability)")
     args = ap.parse_args()
 
     try:
@@ -115,11 +117,16 @@ def main() -> int:
         ts TEXT, alpha REAL, k INTEGER, seed INTEGER, state TEXT,
         phi REAL, phi_null REAL, partition_json TEXT,
         tpm_json TEXT, detail_json TEXT)""")
-    cm = mb.connectivity_matrix()
+    cm = mb.connectivity_matrix(nodes6=args.nodes6)
     results = []
+    # node index map depends on the grain: 4-node = Z,M,R,T (M=1,R=2)
+    # 6-node = Z,E,M,R,T,P (M=2,R=3)
+    mr_nodes = (2, 3) if args.nodes6 else (1, 2)
+    n = len(mb.NODES6) if args.nodes6 else len(mb.NODES)
     for alpha in ALPHAS:
         t0 = time.time()
-        joint, sbn = mb.build_tpm(alpha, k=args.k, seed=args.seed)
+        joint, sbn, meta = mb.build_tpm(alpha, k=args.k, seed=args.seed,
+                                        nodes6=args.nodes6)
         state, s_prob = stationary_state(joint)
         res = run_phi(joint, cm, state)              # full joint [EXP]
         res_sbn = run_phi(sbn, cm, state)            # marginal approx
@@ -132,11 +139,10 @@ def main() -> int:
         ev, evec = np.linalg.eig(joint.T)
         pi = np.abs(evec[:, int(np.argmax(ev.real))].real)
         pi /= pi.sum()
-        n = len(mb.NODES)
         mr_phis, mr_wts = [], []
         for s_idx in range(2 ** n):
             st = tuple((s_idx >> (n - 1 - j)) & 1 for j in range(n))
-            sub = pyphi.Subsystem(net, st, nodes=(1, 2))
+            sub = pyphi.Subsystem(net, st, nodes=mr_nodes)
             mr_phis.append(pyphi.compute.phi(sub))
             mr_wts.append(pi[s_idx])
         e_phi_mr = float(np.dot(mr_phis, mr_wts))
@@ -157,11 +163,13 @@ def main() -> int:
                      json.dumps({"state_prob": s_prob, "latency": lat,
                                  "phi_sbn": res_sbn["phi"],
                                  "e_phi_mr": e_phi_mr,
-                                 "max_phi_mr": float(max(mr_phis))})))
+                                 "max_phi_mr": float(max(mr_phis)),
+                                 "unreachable": meta["unreachable"]})))
         con.commit()
         print(f"α={alpha} state={row['state']} Φ={row['phi']:.4f} "
               f"Φsbn={row['phi_sbn']:.4f} Φnull={row['phi_null']:.4f} "
-              f"E[Φ(M,R)]={e_phi_mr:.4f} ({lat:.0f}s)")
+              f"E[Φ(M,R)]={e_phi_mr:.4f} "
+              f"unreach={len(meta['unreachable'])}/{2**n} ({lat:.0f}s)")
     con.close()
     e85 = next(r["e_phi_mr"] for r in results if r["alpha"] == 0.85)
     e05 = next(r["e_phi_mr"] for r in results if r["alpha"] == 0.05)

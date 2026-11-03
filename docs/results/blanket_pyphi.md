@@ -85,3 +85,45 @@ principiados + estrutura de transição — os dois requisitos do PyPhi.
   T = alinhamento transferencial, Z = regime somático) → TPM empírica
   do runtime real → mesmo pipeline. Esse é o caminho para Φ do
   *worker*, não só da simulação.
+
+## Rodada 2 — 6 nós (E erro + P permeabilidade como elementos) [DADO]
+
+Os canais do blanket viraram elementos: `E` (relé de erro sensorial) e
+`P` (porta de permeabilidade). 64 estados, k=300, mesma pipeline.
+
+| Regime | Φ sistema | E_π[Φ(M,R)] | unreach |
+|---|---|---|---|
+| α=0.05 | 0.0000 | 0.0000 | 27/64 |
+| α=0.35 | 0.0000 | **0.0014** | 27/64 |
+| α=0.85 | 0.0000 | 0.0000 | **15/64** |
+
+Achados adicionais:
+
+6. **Estados inalcançáveis como diagnóstico estrutural**: estados sem
+   microestado consistente (ex.: R=0∧P=0 é impossível a α≤0.7 — baixa
+   resistência força permeabilidade alta) viram auto-loop absorvente
+   (massa estacionária zero; PyPhi exige TPM completa). 27/64 a α≤0.7
+   vs **15/64 a α=0.85** — a desestruturação *relaxa as restrições do
+   espaço binário*: mais estados logicamente possíveis = menos
+   estrutura causal por construção.
+7. **Φ sistema continua 0 mesmo com a ponte Z→E→{M,R,T}**: o relé
+   sensorial não recupera Φ não-nulo neste grão — reforça caveat 1 (o
+   mapa binário perde a integração contínua).
+8. **Ordem inverteu entre grãos**: a 6 nós, α=0.35 mostra o maior
+   E[Φ(M,R)] (0.0014 vs 0 a α=0.05 e α=0.85) — *consistente* com a
+   alegação soberana de ambiguidade moderada como regime integrado.
+   Mas com k=300 a margem é frágil (ver caveat 2) — registrar como
+   indício, não conclusão.
+9. **P é nó efeito-puro** (sem setas de saída — a dinâmica soberana não
+   lhe dá influência causal de volta) — estrutura honesta, não omissão.
+
+## Atualização OW-STU-016 estágio-1 (kernel)
+
+- `kernel_daemon/ignition.py`: GWT-lite — `distinct_prefixes` por ciclo
+  via bus subscribe, `ignited = distinct≥3 ∧ coherence>0.5` [TXT] +
+  `synergy_proxy` (MI média entre séries binárias de ativação de
+  prefixos, janela 40) [PRX] + campo `scale`. Wired no scheduler;
+  publica `kernel.workspace` (e `kernel.workspace.ignition` quando
+  dispara). Ao vivo: 4 prefixos → ignited=True.
+- `phi_meta`: campo `scale` adicionado ("bits over 7 binary flags,
+  window 40 [PRX]") — convenção scale_stack.

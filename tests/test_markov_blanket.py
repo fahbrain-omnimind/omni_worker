@@ -50,11 +50,21 @@ def test_binarize_uses_sovereign_thresholds():
 
 
 def test_tpm_row_stochastic_and_persistent():
-    joint, sbn = mb.build_tpm(0.35, k=40, seed=3)
+    joint, sbn, meta = mb.build_tpm(0.35, k=40, seed=3)
     assert np.allclose(joint.sum(1), 1.0, atol=1e-9)
     # states are largely self-persistent at the binary grain
     assert np.diag(joint).mean() > 0.5
     assert sbn.shape == (16, 4)
+
+
+def test_tpm6_unreachable_absorbing():
+    joint, sbn, meta = mb.build_tpm(0.35, k=40, seed=3, nodes6=True)
+    assert joint.shape == (64, 64)
+    assert np.allclose(joint.sum(1), 1.0, atol=1e-9)
+    # dynamics rule out a large chunk of the binary space (e.g. R=0∧P=0)
+    assert len(meta["unreachable"]) > 10
+    for s in meta["unreachable"]:
+        assert joint[s, s] == 1.0
 
 
 def test_pyphi_irreducible_core_mr():
@@ -66,7 +76,7 @@ def test_pyphi_irreducible_core_mr():
     pyphi = pytest.importorskip("pyphi")
     pyphi.config.PROGRESS_BARS = False
     pyphi.config.VALIDATE_CONDITIONAL_INDEPENDENCE = False
-    joint, _ = mb.build_tpm(0.05, k=80, seed=0)
+    joint, _, _ = mb.build_tpm(0.05, k=80, seed=0)
     net = pyphi.Network(joint, cm=mb.connectivity_matrix())
     # {M,R} carries the blanket's causal core: belief↔resistance loop.
     sub = pyphi.Subsystem(net, (1, 0, 1, 1), nodes=(1, 2))
