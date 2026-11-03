@@ -66,3 +66,29 @@ def test_sandbox_self_resonance_with_signature(tmp_path, monkeypatch):
     sb.speak_to_self(sig.state.signature_vector[:8])
     d = sb.internal_dialogue[-1]
     assert d["self_resonance"] > 0.9
+
+
+def test_loop_feeds_signature_from_windows(tmp_path, monkeypatch):
+    """run_once alimenta a assinatura com features das janelas (pre-emergence)."""
+    monkeypatch.setenv("OMNI_STATE_DIR", str(tmp_path))
+    from omni_coworker.activation_beta import attractor
+    attractor._WINDOWS.clear()
+    recs = [{"model": "analyst", "hidden_norm_mean": 5.0,
+             "attention_entropy": 1.5 + i * 0.01,
+             "hidden_norms": [5.0] * 4} for i in range(30)]
+    attractor.push(recs)
+    import omni_coworker.integration_loop.loop as loop
+    import omni_coworker.integration_loop.store as st
+    st._RING.clear()
+    loop._PHYLO = None
+    loop._PHYLO_TRIED = False
+    c = loop.run_once({"models": {"analyst": {"hidden_norm_mean": 5.0,
+                                              "attention_entropy_mean": 1.5,
+                                              "n_records": 30}},
+                       "soma": {"cpu_percent": 30.0},
+                       "soul": {"phi": 0.5, "psi": 0.4,
+                                "sigma": 0.3, "epsilon": 0.2}})
+    meta = c["stage_states"]["narrative"]["metadata"]
+    assert meta.get("phylo_attractors", 0) >= 4
+    sig = loop._phylo_signature()
+    assert sig._model_aggregate is not None

@@ -115,6 +115,7 @@ class PhylogeneticSignature:
         self.coherence_history: list[float] = []
         self.emergence_events: list[SignatureEmergenceEvent] = []
         self._model_aggregate: np.ndarray | None = None
+        self._model_attractor_idx: int | None = None
         self._attractors: list[np.ndarray] = []
         self._initialize_attractors()
         self._load_signature()
@@ -156,8 +157,40 @@ class PhylogeneticSignature:
         if norm > 0:
             centroid = centroid / norm
             self._model_aggregate = centroid
-            self._attractors.append(centroid)
+            # slot único: o agregado do modelo é substituído a cada
+            # alimentação — os atratores não crescem sem bound
+            if self._model_attractor_idx is None:
+                self._attractors.append(centroid)
+                self._model_attractor_idx = len(self._attractors) - 1
+            else:
+                self._attractors[self._model_attractor_idx] = centroid
         return len(self._attractors)
+
+    def ingest_from_activation_windows(self) -> int:
+        """Ponte viva: agrega features das janelas de ativação do modelo.
+
+        Lê activation_beta.attractor.features() (stats por modelo: drift,
+        entropia, colapso, attractor_score) e dobra o centroide como
+        atrator do modelo — a "matrix production" alimentando a
+        assinatura com dados vivos do Gemma. Fail-open: sem features,
+        não faz nada.
+        """
+        try:
+            from ..activation_beta import attractor as att
+            feats = att.features()
+        except Exception:
+            return len(self._attractors)
+        vecs = []
+        keys = ("n_records", "norm_drift_mean", "drift_concentration",
+                "entropy_now", "entropy_baseline", "entropy_collapse",
+                "attractor_score")
+        for f in feats.values():
+            v = [float(f.get(k) or 0.0) for k in keys]
+            if any(v):
+                vecs.append(v)
+        if not vecs:
+            return len(self._attractors)
+        return self.ingest_model_aggregates(np.asarray(vecs))
 
     # ── emergência (lógica portada do soberano) ─────────────────────────
 

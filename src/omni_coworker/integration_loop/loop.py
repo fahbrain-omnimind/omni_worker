@@ -47,6 +47,24 @@ def _publish_modulation(mod, resource_postures=None) -> bool:
         return False
 
 
+_PHYLO = None
+_PHYLO_TRIED = False
+
+
+def _phylo_signature():
+    """Singleton lazy da assinatura filogenética (fail-open)."""
+    global _PHYLO, _PHYLO_TRIED
+    if _PHYLO_TRIED:
+        return _PHYLO
+    _PHYLO_TRIED = True
+    try:
+        from ..narrative.phylogenetic_signature import PhylogeneticSignature
+        _PHYLO = PhylogeneticSignature()
+    except Exception:
+        _PHYLO = None
+    return _PHYLO
+
+
 def _sensory_history(n: int = 8) -> list[list[float]]:
     """Last n sensory embeddings from persisted cycles."""
     out = []
@@ -100,6 +118,16 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
             qp = detect_quilting_point(*_narrative_history())
             if qp:
                 stage_states["narrative"].metadata["quilting_point"] = qp
+        except Exception:
+            pass
+
+        # filogenética: a produção matricial alimenta a assinatura —
+        # features vivos das janelas de ativação dobram o atrator do modelo
+        try:
+            sig = _phylo_signature()
+            if sig is not None and not sig.state.emergence_complete:
+                n_att = sig.ingest_from_activation_windows()
+                stage_states["narrative"].metadata["phylo_attractors"] = n_att
         except Exception:
             pass
 
