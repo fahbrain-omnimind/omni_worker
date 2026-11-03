@@ -144,11 +144,62 @@ class Desire:
 class DesireEngine(DesireAsStructuralImpossibility):
     """Computa falta estrutural (target vs current) → intensity + vector.
 
-    Alimentacao opcional por observaveis do mesh: use
-    src.omni_coworker.psychology.desire_epsilon.ingest_observables(obs)
-    para obter lack_of_being e compute_epsilon_desire(lack, potential, novelty)
-    para epsilon. Kernel.soma/homeostasis topics do mesh alimentam `obs`.
+    Alimentacao opcional por observaveis do mesh:
+    ingest_observables(obs) → lack_of_being (pesos soberanos, via
+    psychology.desire_epsilon); epsilon_desire(potential, novelty) → ε.
+    Kernel.soma/homeostasis topics alimentam `obs`; ε publicado em
+    `agency.desire.epsilon` e consumível por safety.gate (context.epsilon).
     """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.lack_of_being: float = 0.5
+        self.epsilon_desire_value: float = 0.0
+
+    def ingest_observables(self, observables: Dict[str, Any]) -> float:
+        """Atualiza lack_of_being a partir de observáveis mesh-style.
+
+        English: Mesh observables (freud_tension, ferenczi_is_cleaved, ...)
+        modulate the lack of being; publishes agency.desire.lack.
+        pt-BR: observáveis do mesh modulam a falta-de-ser; publica no bus.
+        """
+        try:
+            from .desire_epsilon import ingest_observables as _ingest
+            self.lack_of_being = float(_ingest(observables))
+        except Exception:
+            return self.lack_of_being
+        try:
+            from ..shared_workspace import bus
+            bus.publish("agency.desire.lack",
+                        {"lack_of_being": self.lack_of_being})
+        except Exception:
+            pass
+        return self.lack_of_being
+
+    def epsilon_desire(self, potential: float = 0.5,
+                       novelty: float = 0.5) -> float:
+        """ε_desire = α_lack × β_potential × γ_novelty (clamp [0,1]).
+
+        English: Sovereign-style desire epsilon; consumable as
+        context["epsilon"] by safety.gate refusal contract. Publishes
+        agency.desire.epsilon.
+        pt-BR: epsilon de desejo consumível pelo contrato de recusa.
+        """
+        try:
+            from .desire_epsilon import compute_epsilon_desire
+            self.epsilon_desire_value = float(
+                compute_epsilon_desire(self.lack_of_being,
+                                       potential, novelty))
+        except Exception:
+            return self.epsilon_desire_value
+        try:
+            from ..shared_workspace import bus
+            bus.publish("agency.desire.epsilon",
+                        {"epsilon": self.epsilon_desire_value,
+                         "lack_of_being": self.lack_of_being})
+        except Exception:
+            pass
+        return self.epsilon_desire_value
 
     def compute(self, target: Any, current: Any, goals: Optional[List[str]] = None) -> Desire:
         goals = goals or []
