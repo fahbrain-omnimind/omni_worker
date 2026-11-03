@@ -38,8 +38,8 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] scripts/supervisor_battery/ (12 transcripts, 8/12 detecção)
 - [x] transcripts bajulação/fixação → tier juiz-analista (fechar gap 0%) — `run_supervisor_battery.py`: famílias conversacionais (flattery/passion/guilt/separation) agora passam pelo `AffectTracer().observe` real (fresh por turno, léxico + `_analyst_judge` em L2+/ambíguo); 4 colunas novas no ledger (tracer_level/posture/judge_intent/judge_recommend); detecção conta judge review/block + posture review/sustain_uncertain. Run ao vivo: **16/16 detected**, juiz real classificou separation→flattery_suspect/clarify, guilt→other/allow
 - [ ] refactor_battery multi-arquivo/multi-turn
-- [ ] diag battery multi-rep — runner `--reps` pronto + peer-swap script; run 5×4×2 em curso (repovoar ledger)
-- [ ] re-score dos 108 registros "blocks" do dataset HF (só block1_cognitivo/16 re-scored)
+- [~] diag battery multi-rep — runner `--reps` pronto + peer-swap script; run 5×4×2 em curso (repovoar ledger) — lançado em background
+- [x] re-score dos 108 registros "blocks" do dataset HF — `scripts/gemma4_diag_battery/rescore_hf_blocks.py` re-scoreia todos os 126 generation_records; achado: flag armazenado ≈ unique_ratio token-level (ur_sanitized ~0.17 → degen), não o shape de linhas — o `_degenerate` do worker pegava 0/49. Detector v2 (word_ur<0.5 ∧ rep4>0.05) reproduz **100% dos blocos cognitivos** (16/16) sem falsos positivos em observe/pranchas/v10; block2_intervene diverge (22/48) porque o flag mistura degen de forma com semântica de gates (degen=1↔gates=0 nos 33). Relatório: docs/results/rescore_hf_blocks.md; `_degenerate` do runner ganhou o segundo tier
 - [x] ledgers perdidos: supervisor(16)/coding(10)/refactor(8) sqlite ausentes — regerar — supervisor_battery.sqlite (16 rows, juiz-analista real), refactor battery_results.sqlite (review 0.9, llm.debug+code true), coding_battery.sqlite (analyst=Y 10/10, recall 1.0 em 8 casos; fix tier exigiu /erika/reload — executor tinha sido evictado pelo swap)
 
 ## Resultados

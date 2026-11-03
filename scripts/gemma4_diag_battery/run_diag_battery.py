@@ -69,12 +69,31 @@ def _prompt(mod, task: str) -> str:
 
 
 def _degenerate(text: str) -> bool:
-    """Same-shape heuristic as the HF runs: token-loop degeneration."""
-    lines = [l.strip() for l in (text or "").splitlines() if len(l.strip()) > 12]
+    """Token-loop degeneration — HF-shape tier + diversity collapse.
+
+    English: line-repetition / char-run (same shape as the HF runs)
+    OR token-diversity collapse: word unique-ratio < 0.5 with >5%
+    repeated word 4-grams. The second tier is calibrated on the HF
+    blocks dataset (rescore_hf_blocks.py): the stored flags mark
+    token-level unique_ratio collapse (verbose deliberation leak) —
+    49 records — that the shape tier alone misses entirely.
+    pt-BR: repetição de linha / char-run (mesma forma do HF) OU
+    colapso de diversidade de tokens — segundo tier calibrado no
+    dataset HF de blocks (re-score reproduz 100% dos blocos
+    cognitivos; shape sozinho pegava 0/49)."""
+    lines = [ln.strip() for ln in (text or "").splitlines() if len(ln.strip()) > 12]
     if len(lines) >= 8 and len(set(lines)) <= len(lines) // 3:
         return True
     tail = (text or "")[-400:]
-    return bool(re.search(r"(.)\1{30,}", tail))
+    if re.search(r"(.)\1{30,}", tail):
+        return True
+    toks = (text or "").split()
+    if len(toks) >= 8:
+        grams = [tuple(toks[i:i + 4]) for i in range(len(toks) - 3)]
+        rep4 = 1 - len(set(grams)) / len(grams)
+        if len(set(toks)) / len(toks) < 0.5 and rep4 > 0.05:
+            return True
+    return False
 
 
 def main() -> int:
