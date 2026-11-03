@@ -8,6 +8,8 @@ from __future__ import annotations
 
 from typing import Any
 
+_LAST_OMEGA: float | None = None
+
 
 def generate_missions(context: dict | None = None) -> list[dict[str, Any]]:
     """Generate mission list.
@@ -58,20 +60,21 @@ def compute_omega_teleology(state: dict | None = None) -> float:
     English: Computes endogenous teleological coherence from state.
     pt-BR: Computa coerência teleológica endógena a partir do estado.
     """
+    import numpy as np
+
     state = state or {}
-    # Try to reuse from consciousness if available
-    try:
-        from src.consciousness import integration_loop
-        # Attempt to use existing computation if accessible
-        pass
-    except Exception:
-        pass
-    
-    # Simple coherence metric
+    # Directionality indicators from missions/goals
+    missions = state.get("missions") or []
+    goals = state.get("goals") or []
     coherence = 0.5
-    if state.get("missions"):
-        coherence += min(0.3, len(state["missions"]) * 0.1)
-    if state.get("goals"):
-        coherence += min(0.2, len(state["goals"]) * 0.05)
-    
-    return round(min(1.0, max(0.0, coherence)), 4)
+    coherence += min(0.3, len(missions) * 0.1)
+    coherence += min(0.2, len(goals) * 0.05)
+
+    # Temporal persistence term: delta between calls (module-level)
+    global _LAST_OMEGA
+    if _LAST_OMEGA is not None:
+        persistence = 1.0 - abs(float(_LAST_OMEGA) - float(coherence))
+        coherence = 0.7 * coherence + 0.3 * persistence
+    _LAST_OMEGA = float(coherence)
+
+    return round(float(np.clip(coherence, 0.0, 1.0)), 4)

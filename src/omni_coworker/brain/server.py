@@ -94,6 +94,23 @@ def create_brain_router():
         @router.post("/chat")
         async def chat(payload: dict, role: str = "analyst"):
             try:
+                payload = dict(payload or {})
+                with_affect = bool(payload.pop("with_affect", False))
+                if with_affect:
+                    try:
+                        from ..agency.affect_tracer import AffectTracer
+
+                        user_turn = " ".join(
+                            m.get("content", "")
+                            for m in (payload.get("messages") or [])
+                            if m.get("role") == "user"
+                        )
+                        verdict = AffectTracer().observe(user_turn)
+                        note = f"[affect] level={verdict.get('level')} reasons={verdict.get('reasons')}"
+                        msgs = list(payload.get("messages") or [])
+                        payload["messages"] = [{"role": "system", "content": note}] + msgs
+                    except Exception:
+                        pass
                 async with httpx.AsyncClient(timeout=120.0) as client:
                     resp = await client.post(
                         f"{_base_for_role(role)}/v1/chat/completions", json=payload

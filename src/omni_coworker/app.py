@@ -31,6 +31,11 @@ def create_app() -> FastAPI:
     except Exception:
         pass
     try:
+        from .safety.supervisor import create_supervisor_router
+        app.include_router(create_supervisor_router())
+    except Exception:
+        pass
+    try:
         from .shared_workspace.api import router as mesh_router
         app.include_router(mesh_router)
     except Exception:

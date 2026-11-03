@@ -6,6 +6,11 @@ pt-BR: Reutiliza src.orchestration.permission_matrix.PermissionMatrix.
 
 from __future__ import annotations
 
+import logging
+import os
+
+logger = logging.getLogger(__name__)
+
 try:
     from src.orchestration.permission_matrix import PermissionMatrix
 except Exception:  # pragma: no cover
@@ -50,5 +55,8 @@ def check_permission(action: str, context: dict | None = None) -> bool:
             trust_level=float(context.get("trust_level", 0.5)),
         )
         return bool(allowed)
-    except Exception:
-        return True
+    except Exception as e:
+        logger.warning("permission matrix failed: %s", e)
+        if os.getenv("OMNI_GATE_FAIL_CLOSED") == "0":
+            return True
+        return False

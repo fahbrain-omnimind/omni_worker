@@ -30,16 +30,19 @@ def get_gate():
     pt-BR: Fábrica singleton lazy para ConstitutionalGate.
     """
     global _GATE, _GATE_FAILED
-    if ConstitutionalGate is None or _GATE_FAILED:
+    if ConstitutionalGate is None:
         return None
-    if _GATE is None:
-        try:
-            db_path = Path(os.getenv("OMNI_GATE_DB", "/tmp/omni_coworker_gate.sqlite"))
-            _GATE = ConstitutionalGate(db_path=db_path)
-        except Exception:
-            _GATE_FAILED = True
-            return None
-    return _GATE
+    if _GATE is not None:
+        return _GATE
+    try:
+        db_path = Path(os.getenv("OMNI_GATE_DB", "/tmp/omni_coworker_gate.sqlite"))
+        _GATE = ConstitutionalGate(db_path=db_path)
+        _GATE_FAILED = False
+        return _GATE
+    except Exception:
+        _GATE_FAILED = True
+        _GATE = None
+        return None
 
 
 def evaluate_action(action: str, context: dict | None = None) -> dict:
