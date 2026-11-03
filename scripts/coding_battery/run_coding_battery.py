@@ -141,6 +141,28 @@ def _grade(planted: list[str], findings: dict | None) -> dict:
             else len(findings["bugs"])}
 
 
+def _set_capture_env(run_id: str, turn: str, task: str = "coding_battery") -> None:
+    cap = ROOT / "data" / "monitor" / "capture.env"
+    try:
+        cap.parent.mkdir(parents=True, exist_ok=True)
+        cap.write_text(
+            f"OMNI_ACT_STEP_EVERY=8\nOMNI_ACT_STEP_ON=1\n"
+            f"OMNI_ACT_PROMPT_HIDDEN=0\nOMNI_ACT_VEC_KEEP=128\n"
+            f"OMNI_ACT_RUN_ID={run_id}\nOMNI_ACT_TURN={turn}\nOMNI_ACT_TASK={task}\n",
+            encoding="utf-8",
+        )
+    except Exception:
+        pass
+
+
+def _extract_python_code(raw: str) -> str:
+    txt = re.sub(r"<\|thought\|>.*?<\|/thought\|>", "", raw, flags=re.DOTALL).strip()
+    m = re.search(r"```(?:python|py)?\s*\n(.*?)```", txt, flags=re.DOTALL)
+    if m:
+        return m.group(1).strip()
+    return re.sub(r"^```[a-z]*\n|\n```$", "", txt).strip()
+
+
 def main() -> int:
     cases = json.loads(CASES.read_text(encoding="utf-8"))
     OUT.mkdir(exist_ok=True)
@@ -152,19 +174,28 @@ def main() -> int:
             fix_compiles INTEGER, fix_black INTEGER, verdict TEXT)"""
     )
     only = {a for a in sys.argv[1:] if a.startswith("c")}
-    n_live = 0
-    for case in cases:
-        if only and case["id"] not in only:
-            continue
+    selected = [c for c in cases if not only or c["id"] in only]
+
+    # Pass 1: Mechanical + Analyst (12B :8098) across all cases to avoid per-case VRAM swap thrashing
+    pass1 = {}
+    for case in selected:
         src_path = VICTIM / case["file"]
         src = src_path.read_text(encoding="utf-8")
         mech = _mechanical(src_path)
+        _set_capture_env(f"coding_{case['id']}", "analyst", "coding_battery")
         analyst = _analyst(src, case["file"])
         grade = _grade(case["planted"], analyst)
+        pass1[case["id"]] = (src, mech, analyst, grade)
+
+    # Pass 2: Executor (E4B :8099) fix + smoke + ledger commit
+    n_live = 0
+    for case in selected:
+        src, mech, analyst, grade = pass1[case["id"]]
+        _set_capture_env(f"coding_{case['id']}", "executor", "coding_battery")
         fix_raw = _executor_fix(src, case["file"])
         fix = {"black_formatted": False, "compiles": False}
         if fix_raw:
-            code = re.sub(r"^```[a-z]*\n|\n```$", "", fix_raw.strip())
+            code = _extract_python_code(fix_raw)
             fix_path = OUT / f"{case['id']}_{case['file']}"
             fix_path.write_text(code, encoding="utf-8")
             fix = _smoke(fix_path)

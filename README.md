@@ -1,8 +1,19 @@
 # Omni-Gemma Lab-Agent Coworker (omni_worker)
 
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Competition: Gemma 4 Paper Track](https://img.shields.io/badge/Google_Competition-Gemma_4_Paper_Track-4285F4)](docs/PAPER_WRITEUP.md)
+[![Competition: Gemma 4 Agent](https://img.shields.io/badge/Google_Competition-Gemma_4_Developer_Agent-34A853)](docs/DOCS_INDEX.md)
+[![Live Dashboard](https://img.shields.io/badge/Telemetry_SPA-Live_L4_Dashboard-FBBC05)](docs/index.html)
+
 **Status:** ATIVO — Omni-Gemma Lab-Agent Coworker for Google Competitions:
 - **Google — The Gemma 4 Developer Agent Paper Track** (Advancing the state-of-the-art for agentic software engineering)
 - **Google — The Gemma 4 Developer Agent Competition** (Autonomous coding agents)
+
+**Links Diretos / Direct Navigation:**
+- 📊 **[Interactive 4-View Live Telemetry Dashboard (`docs/index.html`)](docs/index.html)** — alimentado por telemetria real NVIDIA L4 (`docs/data/dashboard/latest.json` + `/soul/state`)
+- 📄 **[Paper Track Writeup & Architecture (`docs/PAPER_WRITEUP.md`)](docs/PAPER_WRITEUP.md)** — resultados empíricos completos (Psicodiagnóstico-V + `omni_worker` L4)
+- 🧭 **[Documentation & Studies Index (`docs/DOCS_INDEX.md`)](docs/DOCS_INDEX.md)** — mapa linear de `OW-DSN-001..003`, `OW-STU-008..018` e resultados
+- ⚖️ **Independent Judge Audits:** [OW-AUD-018 (Repo & Code Conformance)](docs/audit/OW-AUD-018_judge_repo_presentation_and_code_conformance.md) · [OW-AUD-019 (Kaggle & SOTA Comparison)](docs/audit/OW-AUD-019_judge_kaggle_competition_and_sota_comparison.md) · [OW-AUD-020 (Deep Architecture & MPS Audit)](docs/audit/OW-AUD-020_judge_hermes_deep_architecture_and_mps_audit.md)
 
 Repositório de pesquisa & engenharia agêntica soberana (Apache-2.0).
 

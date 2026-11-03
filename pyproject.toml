@@ -4,12 +4,36 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "omni-agent-coworker"
-version = "0.1.0"
+version = "0.10.0"
 description = "Omni-Gemma Lab-Agent Coworker — sovereign agentic coworker for Google Competitions (The Gemma 4 Developer Agent Paper Track & Competition)"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
 authors = [{ name = "Fabrício da Silva" }]
+keywords = [
+    "gemma-4",
+    "agentic-software-engineering",
+    "executive-function",
+    "metacognitive-governance",
+    "spectral-activations",
+    "markov-blanket",
+    "kaggle-competition",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Repository = "https://github.com/fabriciodasilva/omni_worker"
+Mirror = "https://gitlab.com/omni-group535144/omni_worker"
+Documentation = "https://fabriciodasilva.github.io/omni_worker/"
+Writeup = "https://github.com/fabriciodasilva/omni_worker/blob/master/docs/PAPER_WRITEUP.md"
 dependencies = [
     "fastapi>=0.110",
     "uvicorn>=0.29",

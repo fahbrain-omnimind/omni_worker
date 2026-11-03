@@ -119,6 +119,16 @@ def _bond_dims(vec: np.ndarray) -> list[int]:
     return ranks
 
 
+def _ipr_dim(vec: np.ndarray) -> float:
+    """Component-wise Inverse Participation Ratio (Σhᵢ²)² / Σhᵢ⁴ across D units."""
+    v2 = vec.astype(np.float64) ** 2
+    denom = float((v2 * v2).sum())
+    if denom <= 1e-24:
+        return 1.0
+    num = float(v2.sum()) ** 2
+    return num / denom
+
+
 def spectral_features() -> dict[str, Any]:
     """Per-model spectral/MPS features over recent sidecars."""
     out: dict[str, Any] = {}
@@ -141,7 +151,8 @@ def spectral_features() -> dict[str, Any]:
         if len(vecs) < 2:
             continue
         n_layers = min(v.shape[0] for v in vecs)
-        effs, hent, bonds = [], [], []
+        hidden_d = int(vecs[-1].shape[1]) if vecs[-1].ndim == 2 else 1
+        effs, hent, bonds, iprs = [], [], [], []
         for layer in range(n_layers):
             er = _eff_rank(vecs, layer)
             if er:
@@ -149,16 +160,21 @@ def spectral_features() -> dict[str, Any]:
                 hent.append(er[1])
             try:
                 v = vecs[-1][layer].astype(np.float64)
+                iprs.append(_ipr_dim(v))
                 v = v / (np.linalg.norm(v) + 1e-12)
                 bonds.append(max(_bond_dims(v)))
             except Exception:
                 continue
         if not effs:
             continue
+        ipr_mean = round(float(np.mean(iprs)), 2) if iprs else None
         out[model] = {
             "eff_rank_mean": round(float(np.mean(effs)), 3),
             "spectral_entropy_mean": round(float(np.mean(hent)), 4),
+            "ipr_dim_mean": ipr_mean,
+            "ipr_dim_pct": round(100.0 * ipr_mean / hidden_d, 2) if ipr_mean else None,
             "bond_dim_max_mean": round(float(np.mean(bonds)), 2) if bonds else None,
+            "hidden_dim": hidden_d,
             "n_layers": n_layers,
             "n_files": len(vecs),
             "note": "proxy espectral/MPS — não é Φ causal IIT",

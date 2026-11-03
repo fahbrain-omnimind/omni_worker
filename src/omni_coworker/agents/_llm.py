@@ -76,11 +76,11 @@ def brain_chat(
             peer_client = get_brain_client(peer)
             if peer_client is not None:
                 try:
-                    peer_client.post("/erika/unload", timeout=15.0)
+                    peer_client.post("/erika/unload")
                 except Exception:
                     pass
             try:
-                client.post("/erika/reload", timeout=120.0)
+                client.post("/erika/reload")
             except Exception:
                 pass
             resp = client.post(

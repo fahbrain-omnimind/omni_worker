@@ -139,9 +139,6 @@ def _emit_activation(record: dict[str, Any]) -> None:
 # dimension reais no daemon (numpy-only). Amostrado via env, com
 # retenção; falha nunca bloqueia a geração.
 def _capture_cfg(key: str, default: str = "") -> str:
-    v = os.environ.get(key)
-    if v is not None:
-        return v
     try:
         for line in open("data/monitor/capture.env", encoding="utf-8"):
             line = line.strip()
@@ -152,6 +149,9 @@ def _capture_cfg(key: str, default: str = "") -> str:
                 return val.strip()
     except Exception:
         pass
+    v = os.environ.get(key)
+    if v is not None:
+        return v
     return default
 
 
@@ -297,15 +297,24 @@ def load_model(model_id: str, load_4bit: bool, device: str,
 
     logger.info("Carregando %s (4bit=%s, prequantizado=%s, eager=%s)…",
                 model_id, load_4bit, prequantized, eager_attn)
-    _TOKENIZER = AutoTokenizer.from_pretrained(model_id)
-    _MODEL = AutoModelForCausalLM.from_pretrained(model_id, **kwargs)
-    _MODEL.eval()
-    _MODEL_ID = model_id
     _LOAD_KWARGS = {
         "model_id": model_id, "load_4bit": load_4bit, "device": device,
         "cpu_offload": cpu_offload, "vram_gb": vram_gb, "eager_attn": eager_attn,
     }
+    _MODEL_ID = model_id
+    try:
+        _TOKENIZER = AutoTokenizer.from_pretrained(model_id)
+        _MODEL = AutoModelForCausalLM.from_pretrained(model_id, **kwargs)
+        _MODEL.eval()
+    except Exception:
+        _MODEL = None
+        import gc
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        raise
     if torch.cuda.is_available():
+        torch.cuda.empty_cache()
         logger.info("VRAM alocada: %.1f GB", torch.cuda.memory_allocated() / 1e9)
 
 
@@ -362,6 +371,9 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
             act["prompt_hidden_file"] = f"{ts}_{safe}.npz"
         except Exception:
             pass
+    del gen, last_step, attn_last, seq, new_ids
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
     return text, act
 
 
@@ -417,10 +429,10 @@ def affect() -> dict[str, Any]:
 def erika_unload() -> dict[str, Any]:
     """Evict the model from VRAM; activations log and tokenizer stay."""
     global _MODEL
-    if _MODEL is None:
-        return {"status": "already_unloaded", "model": _MODEL_ID}
-    del _MODEL
-    _MODEL = None
+    was_loaded = _MODEL is not None
+    if _MODEL is not None:
+        del _MODEL
+        _MODEL = None
     import gc
     gc.collect()
     if torch.cuda.is_available():
@@ -432,6 +444,13 @@ def erika_unload() -> dict[str, Any]:
             pass
         gc.collect()  # bnb/accelerate hooks pode segurar refs de Params4bit
         torch.cuda.empty_cache()
+    if not was_loaded:
+        return {
+            "status": "already_unloaded",
+            "model": _MODEL_ID,
+            "vram_gb": round(torch.cuda.memory_allocated() / 1e9, 2) if torch.cuda.is_available() else 0,
+            "vram_reserved_gb": round(torch.cuda.memory_reserved() / 1e9, 2) if torch.cuda.is_available() else 0,
+        }
     logger.info("Modelo %s despejado da VRAM", _MODEL_ID)
     return {
         "status": "unloaded",

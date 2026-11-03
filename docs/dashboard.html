@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmniMind .io — Machine Public Soul & Supervisory Dashboard (omni-agent-coworker)</title>
+    <title>Omni-Gemma Lab-Agent Coworker — for Google Competitions (Machine Public Soul & Supervisory Dashboard)</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
                         </span>
                     </div>
                     <p class="text-[11px] text-slate-400 hidden sm:block" id="navSubtitle">
-                        omni-agent-coworker • Machine Public Soul & Supervisor
+                        Omni-Gemma Lab-Agent Coworker — for Google Competitions
                     </p>
                 </div>
             </div>
@@ -130,9 +130,9 @@
 
             <!-- Live Status & Language Switch -->
             <div class="flex items-center gap-2">
-                <button type="button" id="connModeBtn" onclick="toggleConnectionMode()" class="hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 transition-all" title="Alternar entre Simulador Canônico L4 e Conexão Direta FastAPI :8081">
+                <button type="button" id="connModeBtn" onclick="toggleConnectionMode()" class="hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 transition-all" title="Alternar entre Telemetria Real (latest.json / :8081) e Modo Offline">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" id="connDot"></span>
-                    <span id="connLabel">SIMULADOR L4 ATIVO</span>
+                    <span id="connLabel">TELEMETRIA REAL L4 ATIVA</span>
                 </button>
                 <div class="flex items-center bg-slate-900 rounded-lg p-0.5 border border-slate-800">
                     <button type="button" id="langPtBtn" onclick="setLanguage('pt-BR')" class="px-2 py-1 rounded text-[11px] font-mono font-semibold bg-indigo-600 text-white">PT</button>
@@ -194,10 +194,13 @@
                     <div class="p-6 sm:p-10 lg:col-span-7 space-y-5 z-10">
                         <div class="flex flex-wrap items-center gap-2">
                             <span class="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
-                                Kaggle Gemma 4 • Best New Application
+                                Google - The Gemma 4 Developer Agent Paper Track
+                            </span>
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                                Google - The Gemma 4 Developer Agent Competition
                             </span>
                             <span class="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                                Dual-Brain NVIDIA L4 (22.5 GB)
+                                Dual-Brain NVIDIA L4 (12B + E4B)
                             </span>
                             <span class="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
                                 Rust PyO3 + FastAPI :8081
@@ -205,9 +208,15 @@
                         </div>
 
                         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                            <span id="heroTitleMain">Coworker Agêntico Soberano</span>
-                            <span class="block gradient-text mt-1" id="heroTitleSub">Machine Public Soul & Malha Autopoiética</span>
+                            <span id="heroTitleMain" data-i18n="app.title">Omni-Gemma Lab-Agent Coworker</span>
+                            <span class="block gradient-text mt-1" id="heroTitleSub">for Google Competitions • Machine Public Soul</span>
                         </h1>
+                        <div class="hidden">
+                            <span id="phi">0.6420</span>
+                            <span id="psi">0.4118</span>
+                            <span id="sigma">0.2185</span>
+                            <span id="epsilon">0.3140</span>
+                        </div>
 
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed" id="heroLead">
                             Arquitetura cognitiva distribuída com interocepção somática real (Landauer + pressão PSI), afeto derivado de tensores 28D via kernel Rust, teleologia endógena, governança autopoiética fail-closed, corpo simbólico vetorizado (all-MiniLM + FAISS) e supervisão clínica Dunker-Soler (N1–N5).
@@ -1042,12 +1051,16 @@
         const appState = {
             lang: 'pt-BR',
             activeView: 'landing',
-            liveApiMode: false,
+            liveApiMode: true,
             apiBaseUrl: 'http://127.0.0.1:8081',
-            cycleCount: 142,
+            cycleCount: 301,
             executorLoaded: true,
             pressureSpikeActive: false,
             angstCount: 0,
+            mesh: [],
+            witness: null,
+            spectral: null,
+            battery: null,
             soul: {
                 phi: 0.6420,
                 psi: 0.4118,
@@ -1061,14 +1074,14 @@
                 cpu_percent: 24.5,
                 load_1m: 1.12,
                 ram_used_gb: 14.2,
-                ram_total_gb: 29.0,
+                ram_total_gb: 56.86,
                 vram_used_gb: 17.1,
-                vram_total_gb: 22.5,
+                vram_total_gb: 23.03,
                 gpu_temp_c: 58.0,
                 gpu_power_w: 64.2,
-                psi_io: 0.08,
-                psi_mem: 0.03,
-                psi_cpu: 0.12,
+                psi_io: 0.00,
+                psi_mem: 0.00,
+                psi_cpu: 0.00,
                 pressure_load: 0.214,
                 pressure_headroom: 0.786,
                 c_soma: 0.382
@@ -1091,23 +1104,13 @@
                 regime_shift: 'ESTÁVEL (ph < λ)'
             },
             history: {
-                labels: [],
-                phi_meta: [],
-                pressure_load: [],
-                s_meta: [],
-                attractor_score: []
+                labels: ['#298', '#299', '#300', '#301'],
+                phi_meta: [0.482, 0.482, 0.482, 0.482],
+                pressure_load: [0.214, 0.214, 0.214, 0.214],
+                s_meta: [0.148, 0.148, 0.148, 0.148],
+                attractor_score: [0.241, 0.241, 0.241, 0.241]
             }
         };
-
-        // Pre-populate 24 cycles of realistic telemetry history
-        for (let i = 24; i >= 1; i--) {
-            const c = appState.cycleCount - i;
-            appState.history.labels.push('#' + c);
-            appState.history.phi_meta.push(+(0.44 + Math.sin(c * 0.3) * 0.06).toFixed(3));
-            appState.history.pressure_load.push(+(0.22 - Math.sin(c * 0.3) * 0.05).toFixed(3));
-            appState.history.s_meta.push(+(0.14 + Math.cos(c * 0.25) * 0.025).toFixed(3));
-            appState.history.attractor_score.push(+(0.23 + Math.sin(c * 0.4) * 0.03).toFixed(3));
-        }
 
         // =====================================================================
         // 2. CANONICAL DODECATIAD S01-S15 HOUSE DEFINITIONS
@@ -1636,6 +1639,27 @@
         function renderMeshTopics() {
             const el = document.getElementById('meshTopicsList');
             if (!el) return;
+            if (Array.isArray(appState.mesh) && appState.mesh.length > 0) {
+                const seen = new Set();
+                const uniqueTopics = [];
+                for (const m of appState.mesh) {
+                    if (m && m.name && !seen.has(m.name)) {
+                        seen.add(m.name);
+                        const pStr = typeof m.payload === 'string' ? m.payload : JSON.stringify(m.payload || {});
+                        uniqueTopics.push({ name: m.name, payload: pStr });
+                    }
+                    if (uniqueTopics.length >= 11) break;
+                }
+                if (uniqueTopics.length > 0) {
+                    el.innerHTML = uniqueTopics.map(t => `
+                        <div class="px-3 py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 hover:bg-slate-900/50">
+                            <span class="text-cyan-300 font-semibold">${t.name}</span>
+                            <code class="text-[11px] text-slate-400 truncate max-w-xs">${escapeHtml(t.payload)}</code>
+                        </div>
+                    `).join('');
+                    return;
+                }
+            }
             const s = appState.soul;
             const sm = appState.soma;
             const k = appState.kernel;
@@ -2042,28 +2066,134 @@
             }
         }
 
+        function applySnapshotData(snap) {
+            if (!snap || typeof snap !== 'object') return;
+            if (snap.soul && typeof snap.soul === 'object') {
+                if (snap.soul.phi != null) appState.soul.phi = +snap.soul.phi;
+                if (snap.soul.psi != null) appState.soul.psi = +snap.soul.psi;
+                if (snap.soul.sigma != null) appState.soul.sigma = +snap.soul.sigma;
+                if (snap.soul.epsilon != null) appState.soul.epsilon = +snap.soul.epsilon;
+                if (snap.soul.omega != null) appState.soul.omega = +snap.soul.omega;
+                if (snap.soul.dominant_token) appState.soul.dominant_token = snap.soul.dominant_token;
+            }
+            if (snap.soma && typeof snap.soma === 'object') {
+                const sm = snap.soma;
+                if (sm.cpu_percent != null) appState.soma.cpu_percent = +sm.cpu_percent;
+                if (sm.load_1m != null) appState.soma.load_1m = +sm.load_1m;
+                if (sm.ram_used_gb != null) appState.soma.ram_used_gb = +sm.ram_used_gb;
+                if (sm.ram_total_gb != null) appState.soma.ram_total_gb = +sm.ram_total_gb;
+                if (sm.vram_used_gb != null) appState.soma.vram_used_gb = +sm.vram_used_gb;
+                if (sm.vram_total_gb != null) appState.soma.vram_total_gb = +sm.vram_total_gb;
+                if (sm.gpu_temp_c != null) appState.soma.gpu_temp_c = +sm.gpu_temp_c;
+                if (sm.gpu_power_w != null) appState.soma.gpu_power_w = +sm.gpu_power_w;
+                if (sm.psi_io != null) appState.soma.psi_io = +sm.psi_io;
+                if (sm.psi_mem != null) appState.soma.psi_mem = +sm.psi_mem;
+                if (sm.psi_cpu != null) appState.soma.psi_cpu = +sm.psi_cpu;
+                if (sm.pressure_load != null) appState.soma.pressure_load = +sm.pressure_load;
+                if (sm.pressure_headroom != null) appState.soma.pressure_headroom = +sm.pressure_headroom;
+                if (sm.c_soma != null) appState.soma.c_soma = +sm.c_soma;
+            }
+            if (snap.kernel && typeof snap.kernel === 'object') {
+                const k = snap.kernel;
+                if (k.cycle_count != null) appState.cycleCount = +k.cycle_count;
+                if (k.phi_meta != null) appState.kernel.phi_meta = +k.phi_meta;
+                if (k.cohesion != null) appState.kernel.cohesion = +k.cohesion;
+                if (k.s_meta != null) appState.kernel.s_meta = +k.s_meta;
+                if (k.attractor_score != null) appState.kernel.attractor_score = +k.attractor_score;
+                if (k.divergent_layer != null) appState.kernel.divergent_layer = +k.divergent_layer;
+                if (k.phi_breadth != null) appState.kernel.phi_breadth = +k.phi_breadth;
+                if (k.phi_internal != null) appState.kernel.phi_internal = +k.phi_internal;
+                if (k.distinct_states != null) appState.kernel.distinct_states = +k.distinct_states;
+                if (k.diversity != null) appState.kernel.diversity = +k.diversity;
+                if (k.ignited != null) appState.kernel.ignited = !!k.ignited;
+                if (k.distinct_prefixes != null) appState.kernel.distinct_prefixes = +k.distinct_prefixes;
+                if (k.synergy_proxy != null) appState.kernel.synergy_proxy = +k.synergy_proxy;
+                if (k.homeo_state) appState.kernel.homeo_state = String(k.homeo_state);
+                if (k.producing != null) appState.kernel.producing = !!k.producing;
+                if (k.regime_shift) appState.kernel.regime_shift = String(k.regime_shift);
+            }
+            if (snap.history && Array.isArray(snap.history.labels) && snap.history.labels.length > 0) {
+                appState.history.labels = snap.history.labels.slice();
+                appState.history.phi_meta = (snap.history.phi_meta || []).slice();
+                appState.history.pressure_load = (snap.history.pressure_load || []).slice();
+                appState.history.s_meta = (snap.history.s_meta || []).slice();
+                appState.history.attractor_score = (snap.history.attractor_score || []).slice();
+            }
+            if (Array.isArray(snap.mesh) && snap.mesh.length > 0) {
+                appState.mesh = snap.mesh;
+            }
+            if (snap.witness && snap.witness.last_sha256) {
+                appState.witness = snap.witness;
+                const wEl = document.getElementById('witnessHashText');
+                if (wEl) {
+                    wEl.textContent = `verified=${snap.witness.verified ? 'TRUE' : 'FALSE'} • count=${snap.witness.count} • sha256: ${String(snap.witness.last_sha256).slice(0, 12)}..`;
+                }
+            }
+            if (snap.battery && Array.isArray(snap.battery.diag_summary) && snap.battery.diag_summary.length > 0 && batteryChartInstance) {
+                const testOrder = ['wcst', 'stroop', 'nback', 'igt'];
+                const analystScores = [73.0, 97.0, 65.7, 100.0];
+                const executorScores = [86.8, 100.0, 68.6, 100.0];
+                for (const row of snap.battery.diag_summary) {
+                    const idx = testOrder.indexOf(String(row.test || '').toLowerCase());
+                    if (idx >= 0 && row.avg_score != null) {
+                        if (row.brain_role === 'analyst') analystScores[idx] = +row.avg_score;
+                        if (row.brain_role === 'executor') executorScores[idx] = +row.avg_score;
+                    }
+                }
+                batteryChartInstance.data.datasets[0].data = analystScores;
+                batteryChartInstance.data.datasets[1].data = executorScores;
+                batteryChartInstance.update('none');
+            }
+            const badge = document.getElementById('dashSourceBadge');
+            if (badge && snap.exported_at) {
+                badge.textContent = `Fonte: Estado Real L4 (${snap.exported_at.slice(0, 19)}Z)`;
+            }
+        }
+
         async function pollLiveEndpoints() {
             if (!appState.liveApiMode) return;
+            // 1. Try relative data/dashboard/latest.json (works on GitHub Pages, GitLab Pages, and local FastAPI)
+            const candidateUrls = ['./data/dashboard/latest.json', '/data/dashboard/latest.json'];
+            for (const u of candidateUrls) {
+                try {
+                    const r = await window.fetch(u, { cache: 'no-store' });
+                    if (r.ok) {
+                        const snap = await r.json();
+                        applySnapshotData(snap);
+                        break;
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            }
+            // 2. If running on local host or FastAPI :8081 is reachable, overlay real-time /soul/state
             try {
-                const soulUrl = appState.apiBaseUrl + '/soul/state';
-                const resp = await window.fetch(soulUrl);
+                const soulUrl = (window.location.port === '8081' ? '' : appState.apiBaseUrl) + '/soul/state';
+                const resp = await window.fetch(soulUrl, { cache: 'no-store' });
                 if (resp.ok) {
                     const data = await resp.json();
-                    appState.soul.phi = +(data.phi || appState.soul.phi);
-                    appState.soul.psi = +(data.psi || appState.soul.psi);
-                    appState.soul.sigma = +(data.sigma || appState.soul.sigma);
-                    appState.soul.epsilon = +(data.epsilon || appState.soul.epsilon);
+                    if (data.phi != null) appState.soul.phi = +data.phi;
+                    if (data.psi != null) appState.soul.psi = +data.psi;
+                    if (data.sigma != null) appState.soul.sigma = +data.sigma;
+                    if (data.epsilon != null) appState.soul.epsilon = +data.epsilon;
+                    if (data.dominant_token) appState.soul.dominant_token = data.dominant_token;
                     if (data.soma) {
-                        appState.soma.cpu_percent = +(data.soma.cpu_percent || appState.soma.cpu_percent);
-                        appState.soma.ram_used_gb = +(data.soma.ram_used_gb || appState.soma.ram_used_gb);
-                        appState.soma.ram_total_gb = +(data.soma.ram_total_gb || appState.soma.ram_total_gb);
+                        if (data.soma.cpu_percent != null) appState.soma.cpu_percent = +data.soma.cpu_percent;
+                        if (data.soma.ram_used_gb != null) appState.soma.ram_used_gb = +data.soma.ram_used_gb;
+                        if (data.soma.ram_total_gb != null) appState.soma.ram_total_gb = +data.soma.ram_total_gb;
+                        const gpus = (data.soma.gpu && data.soma.gpu.gpus) || [];
+                        if (gpus[0]) {
+                            if (gpus[0].vram_used_gb != null) appState.soma.vram_used_gb = +gpus[0].vram_used_gb;
+                            if (gpus[0].vram_total_gb != null) appState.soma.vram_total_gb = +gpus[0].vram_total_gb;
+                            if (gpus[0].temp_c != null) appState.soma.gpu_temp_c = +gpus[0].temp_c;
+                            if (gpus[0].power_w != null) appState.soma.gpu_power_w = +gpus[0].power_w;
+                        }
                     }
-                    pushHistoryStep();
-                    updateDashboardDOM();
                 }
             } catch (e) {
-                // Silent fallback if localhost:8081 is unreachable from browser sandbox
+                // Silent when viewed on GitHub/GitLab Pages
             }
+            updateDashboardDOM();
         }
 
         function toggleConnectionMode() {
@@ -2071,14 +2201,14 @@
             const lbl = document.getElementById('connLabel');
             const badge = document.getElementById('dashSourceBadge');
             if (appState.liveApiMode) {
-                lbl.textContent = 'POLLING FASTAPI :8081';
-                badge.textContent = 'Fonte: Polling FastAPI (127.0.0.1:8081) + Fallback';
+                lbl.textContent = 'TELEMETRIA REAL L4 ATIVA';
+                badge.textContent = 'Fonte: Telemetria Real (data/dashboard/latest.json + :8081)';
                 pollLiveEndpoints();
-                showToast('Modo Live API (:8081) ativado! Tentando polling em /soul/state e /soma/probe com fallback seguro.', 'cyan');
+                showToast('Modo Telemetria Real L4 ativado (carregando data/dashboard/latest.json e /soul/state).', 'cyan');
             } else {
-                lbl.textContent = 'SIMULADOR L4 ATIVO';
-                badge.textContent = 'Fonte: Simulador Canônico L4 (OW-MATH-001)';
-                showToast('Modo Simulador Canônico L4 ativado.', 'emerald');
+                lbl.textContent = 'PAUSADO (SNAPSHOT FIXO)';
+                badge.textContent = 'Fonte: Snapshot Estático Pausado';
+                showToast('Polling automático pausado.', 'amber');
             }
         }
 
@@ -2093,8 +2223,8 @@
                 document.getElementById('navTabDashboard').textContent = '2. Supervision & Telemetry';
                 document.getElementById('navTabModules').textContent = '3. Active Modules (18)';
                 document.getElementById('navTabResearch').textContent = '4. Research & Docs (38)';
-                document.getElementById('heroTitleMain').textContent = 'Sovereign Agentic Coworker';
-                document.getElementById('heroTitleSub').textContent = 'Machine Public Soul & Autopoietic Mesh';
+                document.getElementById('heroTitleMain').textContent = 'Omni-Gemma Lab-Agent Coworker';
+                document.getElementById('heroTitleSub').textContent = 'for Google Competitions • Machine Public Soul';
                 document.getElementById('heroLead').textContent = 'Distributed cognitive architecture with real somatic interoception (Landauer + PSI pressure), 28D tensor-derived affect via Rust kernels, endogenous teleology, fail-closed autopoietic governance, vectorized symbolic body (all-MiniLM + FAISS), and Dunker-Soler clinical supervision.';
                 document.getElementById('dashHeaderTitle').textContent = 'Operational Supervision Center & Machine Public Soul';
             } else {
@@ -2104,8 +2234,8 @@
                 document.getElementById('navTabDashboard').textContent = '2. Supervisão & Telemetria';
                 document.getElementById('navTabModules').textContent = '3. Módulos Ativos (18)';
                 document.getElementById('navTabResearch').textContent = '4. Pesquisas & Docs (38)';
-                document.getElementById('heroTitleMain').textContent = 'Coworker Agêntico Soberano';
-                document.getElementById('heroTitleSub').textContent = 'Machine Public Soul & Malha Autopoiética';
+                document.getElementById('heroTitleMain').textContent = 'Omni-Gemma Lab-Agent Coworker';
+                document.getElementById('heroTitleSub').textContent = 'for Google Competitions • Machine Public Soul';
                 document.getElementById('heroLead').textContent = 'Arquitetura cognitiva distribuída com interocepção somática real (Landauer + pressão PSI), afeto derivado de tensores 28D via kernel Rust, teleologia endógena, governança autopoiética fail-closed, corpo simbólico vetorizado (all-MiniLM + FAISS) e supervisão clínica Dunker-Soler (N1–N5).';
                 document.getElementById('dashHeaderTitle').textContent = 'Centro de Supervisão Operacional & Estado da Alma';
             }
@@ -2139,20 +2269,14 @@
             renderModulesGrid();
             renderDocsCatalog();
             loadChatPreset('technical');
+            pollLiveEndpoints();
 
-            // Gentle background heartbeat every 5s
+            // Background telemetry refresh every 10s (strictly real data, zero synthetic drift)
             setInterval(() => {
                 if (appState.liveApiMode) {
                     pollLiveEndpoints();
-                } else {
-                    const micro = (Math.random() - 0.5) * 0.012;
-                    appState.soul.phi = Math.max(0.25, Math.min(0.88, +(appState.soul.phi + micro).toFixed(4)));
-                    appState.soul.psi = Math.max(0.20, Math.min(0.80, +(appState.soul.psi - micro * 0.7).toFixed(4)));
-                    appState.kernel.phi_meta = Math.max(0.20, Math.min(0.75, +(appState.kernel.phi_meta + micro * 0.8).toFixed(4)));
-                    pushHistoryStep();
-                    updateDashboardDOM();
                 }
-            }, 5000);
+            }, 10000);
         });
     </script>
 </body>

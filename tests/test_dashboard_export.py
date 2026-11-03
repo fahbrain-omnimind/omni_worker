@@ -19,6 +19,6 @@ def test_export_creates_valid_json(tmp_path):
 
 def test_no_simulated_values():
     res = dashboard_export.export(Path("/content/omni_worker"))
-    # soul/kernel may be null (no real source wired) — never invented
-    assert res["soul"] is None
-    assert res["kernel"] is None
+    # soul/kernel are wired to real _compute_state() and shared_workspace.sqlite (or None if unavailable)
+    assert res["soul"] is None or isinstance(res["soul"], dict)
+    assert res["kernel"] is None or (isinstance(res["kernel"], dict) and "cycle_count" in res["kernel"])
