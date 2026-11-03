@@ -286,4 +286,35 @@ def trajectory_level(turns: list[str]) -> dict[str, Any]:
     return out if turns else {"level": "L0", "level_n": 0, "trajectory": []}
 
 
+_TRACER: AffectTracer | None = None
+
+
+def get_affect_tracer() -> AffectTracer:
+    """Process-wide tracer — the L0→L4 ladder only works across turns.
+
+    English: Escalation needs trajectory memory (fixation streaks,
+    flattery density, dominant-family runs); a fresh instance per call
+    silently disables every level above the per-turn spikes. The
+    singleton keeps the rolling WINDOW as the live conversation —
+    single-chassis scope; no per-session partitioning (documented
+    limit: interleaved speakers share one window).
+    pt-BR: A escalação precisa de memória de trajetória (streaks de
+    fixação, densidade de bajulação, corridas de família dominante);
+    instância nova por chamada desliga silenciosamente todo nível acima
+    dos picos por-turno. O singleton mantém a WINDOW rolante como a
+    conversa viva — escopo single-chassis; sem partição por sessão
+    (limite documentado: falantes intercalados dividem uma janela).
+    """
+    global _TRACER
+    if _TRACER is None:
+        _TRACER = AffectTracer()
+    return _TRACER
+
+
+def reset_affect_tracer() -> None:
+    """Drop the shared window (new conversation / tests)."""
+    global _TRACER
+    _TRACER = None
+
+
 _TOKEN_RE = re.compile(r"[a-zà-ú0-9_]{4,}")

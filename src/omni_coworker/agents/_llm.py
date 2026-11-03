@@ -75,10 +75,10 @@ def brain_chat(
         text = resp.json()["choices"][0]["message"]["content"]
         if not with_affect:
             return text
-        from ..agency.affect_tracer import AffectTracer
+        from ..agency.affect_tracer import get_affect_tracer
 
         user_turn = " ".join(m.get("content", "") for m in messages if m.get("role") == "user")
-        verdict = AffectTracer().observe(user_turn + " " + (text or ""))
+        verdict = get_affect_tracer().observe(user_turn + " " + (text or ""))
         return {
             "text": text,
             "affect_level": verdict["level"],

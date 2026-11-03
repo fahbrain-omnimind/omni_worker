@@ -26,7 +26,7 @@ CONTINUITY_MAP para evidência commit-a-commit).
 
 ## P2 — Afeto conversacional (estudo + opencode)
 - [x] agency/affect_tracer.py L0-L4 + 6 testes (feito)
-- [ ] wire no /brain/chat (escada L0-L4 real) + supervisor lane analyst — `with_affect` existe em `_llm.py` mas nada o chama; sem `safety/supervisor.py` nem endpoints `/supervisor/*`
+- [x] wire no /brain/chat (escada L0-L4 real) + supervisor lane analyst — `affect_tracer.get_affect_tracer()` singleton (instância por chamada matava a trajetória — streaks/densidade nunca disparavam); `/brain/chat` com `with_affect` injeta `[affect]` + devolve veredito completo (posture/judge/trajectory); L4 retém geração sem chamar o brain; juiz-analista `_analyst_judge` já era chamado via `brain_chat_json` nos níveis L2-L3 — `_llm.brain_chat` também usa o singleton
 - [ ] teleology: remover probe canônico morto; metabolize real
 
 ## P3 — Swap inteligente (alocação sob demanda)

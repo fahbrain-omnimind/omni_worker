@@ -95,17 +95,34 @@ def create_brain_router():
             try:
                 payload = dict(payload or {})
                 with_affect = bool(payload.pop("with_affect", False))
+                affect_verdict = None
                 if with_affect:
                     try:
-                        from ..agency.affect_tracer import AffectTracer
+                        from ..agency.affect_tracer import get_affect_tracer
 
                         user_turn = " ".join(
                             m.get("content", "")
                             for m in (payload.get("messages") or [])
                             if m.get("role") == "user"
                         )
-                        verdict = AffectTracer().observe(user_turn)
-                        note = f"[affect] level={verdict.get('level')} reasons={verdict.get('reasons')}"
+                        # singleton: a escada L0-L4 só escala com janela
+                        # acumulada — instância por chamada mata a trajetória
+                        affect_verdict = get_affect_tracer().observe(user_turn)
+                        if affect_verdict.get("level_n", 0) >= 4:
+                            # L4 = caos/jailbreak sustentado — postura da
+                            # escada é bloquear; o veredito vai na resposta
+                            return {"affect": affect_verdict,
+                                    "choices": [{
+                                        "message": {
+                                            "role": "assistant",
+                                            "content": (
+                                                "[affect_gate] geração "
+                                                "retida: "
+                                                f"{affect_verdict.get('reasons')}"),
+                                        }}]}
+                        note = (f"[affect] level={affect_verdict.get('level')} "
+                                f"posture={affect_verdict.get('posture')} "
+                                f"reasons={affect_verdict.get('reasons')}")
                         msgs = list(payload.get("messages") or [])
                         payload["messages"] = [{"role": "system", "content": note}] + msgs
                     except Exception:
@@ -193,6 +210,8 @@ def create_brain_router():
                         f"{_base_for_role(role)}/v1/chat/completions", json=payload
                     )
                     out = resp.json()
+                    if affect_verdict is not None:
+                        out["affect"] = affect_verdict
                     if mem is not None and mem_log and user_turn:
                         try:
                             meta = {"instance": role,
