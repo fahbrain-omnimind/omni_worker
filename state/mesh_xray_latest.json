@@ -1,0 +1,727 @@
+{
+  "ts": "2026-11-03T13:08:20Z",
+  "host": "fc4aa720ee38",
+  "elapsed_s": 0.04,
+  "L0_chassis": {
+    "gpu": "NVIDIA L4, 19395 MiB, 23034 MiB, 580.82.07",
+    "gpu_apps": [
+      "103806, 11344 MiB",
+      "104465, 7700 MiB",
+      "158464, 332 MiB"
+    ],
+    "kernel": "6.6.159+",
+    "glibc": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39",
+    "mounts": [
+      "overlay / overlay rw,relatime,lowerdir=84/fs:83/fs:82/fs:81/fs:80/fs:79/fs:78/fs:77/fs:76/fs:75/fs:74/fs:73/fs:72/fs:71/fs:70/fs:69/fs:68/fs:67/fs:66/fs:65/fs:64/fs:63/fs:62/fs:61/fs:60/fs:59/fs:58/fs:57/fs:56/fs:55/fs:54/fs:53/fs:52/fs:51/fs:50/fs:49/fs:48/fs:47/fs:46/fs:45/fs:44/fs:43/fs:42/fs:41/fs:40/fs:39/fs:38/fs:37/fs:36/fs:35/fs:34/fs:33/fs:32/fs:31/fs:30/fs:29/fs:28/fs:27/fs:26/fs:25/fs:24/fs:23/fs:22/fs:21/fs:20/fs:19/fs:18/fs:17/fs:16/fs:15/fs:14/fs:13/fs:12/fs:11/fs:10/fs:9/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.gcfs/snapshotter/snapshots/85/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.gcfs/snapshotter/snapshots/85/work 0 0",
+      "drive /content/drive fuse.drive rw,nosuid,nodev,relatime,user_id=0,group_id=0 0 0"
+    ],
+    "meminfo": {
+      "MemTotal": "55530568 kB",
+      "MemFree": "2129312 kB",
+      "MemAvailable": "44667776 kB",
+      "Buffers": "333420 kB"
+    },
+    "cgroup_memory_max": "max"
+  },
+  "L2_python_envs": {
+    "/content/omni_node/.venv": {
+      "pids_using": [
+        24038,
+        30109,
+        42873,
+        57069,
+        103806,
+        103892,
+        104465,
+        104553
+      ],
+      "site_packages_dirs": 167
+    }
+  },
+  "L2_worker_sysmodules": {
+    "error": "HTTP Error 404: Not Found"
+  },
+  "L3_roles": {
+    "infra": 21,
+    "other": 23,
+    "agent": 4,
+    "daemon": 4,
+    "brain": 2,
+    "worker": 1
+  },
+  "L3_agents": {
+    "9301": "/root/.opencode/bin/opencode serve --service",
+    "10933": "/tools/node/lib/node_modules/cline/bin/.cline --cline-hub-daemon --cwd /content --host 127",
+    "13703": "devin",
+    "13729": "/root/.local/share/devin/cli/_versions/3000.11.234/bin/devin acp"
+  },
+  "L4_shared_files": {},
+  "L5_listeners": [
+    {
+      "pid": 5544,
+      "local": "127.0.0.1:46679"
+    },
+    {
+      "pid": 28249,
+      "local": "127.0.0.1:10000"
+    },
+    {
+      "pid": 215822,
+      "local": "127.0.0.1:10001"
+    },
+    {
+      "pid": 216018,
+      "local": "127.0.0.1:10002"
+    },
+    {
+      "pid": 104465,
+      "local": "127.0.0.1:8098"
+    },
+    {
+      "pid": 103806,
+      "local": "127.0.0.1:8099"
+    },
+    {
+      "pid": 132,
+      "local": "127.0.0.1:2222"
+    },
+    {
+      "pid": 158464,
+      "local": "0.0.0.0:8081"
+    },
+    {
+      "pid": 89,
+      "local": "127.0.0.1:3453"
+    },
+    {
+      "pid": 148,
+      "local": "172.28.0.12:9000"
+    },
+    {
+      "pid": 10933,
+      "local": "127.0.0.1:25463"
+    },
+    {
+      "pid": 12,
+      "local": "172.28.0.12:6000"
+    },
+    {
+      "pid": 9301,
+      "local": "127.0.0.1:49374"
+    },
+    {
+      "pid": 7,
+      "local": "*:8080"
+    },
+    {
+      "pid": 6753,
+      "local": "[::1]:7679"
+    }
+  ],
+  "edges": [
+    {
+      "src": 1,
+      "dst": 7,
+      "kind": "spawn"
+    },
+    {
+      "src": 7,
+      "dst": 9,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 11,
+      "kind": "spawn"
+    },
+    {
+      "src": 11,
+      "dst": 12,
+      "kind": "spawn"
+    },
+    {
+      "src": 7,
+      "dst": 88,
+      "kind": "spawn"
+    },
+    {
+      "src": 7,
+      "dst": 89,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 132,
+      "kind": "spawn"
+    },
+    {
+      "src": 7,
+      "dst": 148,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 5430,
+      "kind": "spawn"
+    },
+    {
+      "src": 5430,
+      "dst": 5431,
+      "kind": "spawn"
+    },
+    {
+      "src": 148,
+      "dst": 5544,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 6546,
+      "kind": "spawn"
+    },
+    {
+      "src": 6546,
+      "dst": 6547,
+      "kind": "spawn"
+    },
+    {
+      "src": 6546,
+      "dst": 6548,
+      "kind": "spawn"
+    },
+    {
+      "src": 6547,
+      "dst": 6753,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 6836,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 6837,
+      "kind": "spawn"
+    },
+    {
+      "src": 6836,
+      "dst": 6838,
+      "kind": "spawn"
+    },
+    {
+      "src": 6836,
+      "dst": 6839,
+      "kind": "spawn"
+    },
+    {
+      "src": 5431,
+      "dst": 9109,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 9301,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 10933,
+      "kind": "spawn"
+    },
+    {
+      "src": 9109,
+      "dst": 13703,
+      "kind": "spawn"
+    },
+    {
+      "src": 13703,
+      "dst": 13729,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 24038,
+      "kind": "spawn"
+    },
+    {
+      "src": 5544,
+      "dst": 28249,
+      "kind": "spawn"
+    },
+    {
+      "src": 28249,
+      "dst": 28251,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 30109,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 42870,
+      "kind": "spawn"
+    },
+    {
+      "src": 42870,
+      "dst": 42873,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 49751,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 57069,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 103791,
+      "kind": "spawn"
+    },
+    {
+      "src": 103791,
+      "dst": 103806,
+      "kind": "spawn"
+    },
+    {
+      "src": 103806,
+      "dst": 103892,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 104453,
+      "kind": "spawn"
+    },
+    {
+      "src": 104453,
+      "dst": 104465,
+      "kind": "spawn"
+    },
+    {
+      "src": 104465,
+      "dst": 104553,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 114418,
+      "kind": "spawn"
+    },
+    {
+      "src": 114418,
+      "dst": 114419,
+      "kind": "spawn"
+    },
+    {
+      "src": 1,
+      "dst": 158464,
+      "kind": "spawn"
+    },
+    {
+      "src": 5544,
+      "dst": 215822,
+      "kind": "spawn"
+    },
+    {
+      "src": 215822,
+      "dst": 215824,
+      "kind": "spawn"
+    },
+    {
+      "src": 5544,
+      "dst": 216018,
+      "kind": "spawn"
+    },
+    {
+      "src": 216018,
+      "dst": 216020,
+      "kind": "spawn"
+    },
+    {
+      "src": 7,
+      "dst": 335228,
+      "kind": "spawn"
+    },
+    {
+      "src": 7,
+      "dst": 346163,
+      "kind": "spawn"
+    },
+    {
+      "src": 346163,
+      "dst": 346176,
+      "kind": "spawn"
+    },
+    {
+      "src": 49751,
+      "dst": 389052,
+      "kind": "spawn"
+    },
+    {
+      "src": 9,
+      "dst": 392216,
+      "kind": "spawn"
+    },
+    {
+      "src": 13729,
+      "dst": 392218,
+      "kind": "spawn"
+    },
+    {
+      "src": 392218,
+      "dst": 392219,
+      "kind": "spawn"
+    },
+    {
+      "src": 13703,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "35.223.238.178:443"
+    },
+    {
+      "src": 13729,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "35.223.238.178:443"
+    },
+    {
+      "src": 13729,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "35.223.238.178:443"
+    },
+    {
+      "src": 12,
+      "dst": 148,
+      "kind": "tcp",
+      "evidence": "172.28.0.12:9000"
+    },
+    {
+      "src": 12,
+      "dst": 148,
+      "kind": "tcp",
+      "evidence": "172.28.0.12:9000"
+    },
+    {
+      "src": 12,
+      "dst": 148,
+      "kind": "tcp",
+      "evidence": "172.28.0.12:9000"
+    },
+    {
+      "src": 7,
+      "dst": 216018,
+      "kind": "tcp",
+      "evidence": "127.0.0.1:10002"
+    },
+    {
+      "src": 7,
+      "dst": 12,
+      "kind": "tcp",
+      "evidence": "172.28.0.12:6000"
+    },
+    {
+      "src": 7,
+      "dst": 12,
+      "kind": "tcp",
+      "evidence": "172.28.0.12:6000"
+    },
+    {
+      "src": 7,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "[::ffff:172.28.0.1]:33714"
+    },
+    {
+      "src": 7,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "[::ffff:172.28.0.1]:38846"
+    },
+    {
+      "src": 7,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "[::ffff:172.28.0.1]:37944"
+    },
+    {
+      "src": 7,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "[::ffff:172.28.0.1]:50626"
+    },
+    {
+      "src": 7,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "[::ffff:172.28.0.1]:33696"
+    },
+    {
+      "src": 6753,
+      "dst": "EXTERNAL",
+      "kind": "external",
+      "evidence": "172.217.113.4:443"
+    },
+    {
+      "src": "LIB:libtorch_python",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorch_python"
+    },
+    {
+      "src": "LIB:libtorch_python",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libtorch_python"
+    },
+    {
+      "src": "LIB:libtorch_python",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libtorch_python"
+    },
+    {
+      "src": "LIB:libtorchcodec_core6",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorchcodec_core6"
+    },
+    {
+      "src": "LIB:libtorch_cpu",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorch_cpu"
+    },
+    {
+      "src": "LIB:libtorch_cpu",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libtorch_cpu"
+    },
+    {
+      "src": "LIB:libtorch_cpu",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libtorch_cpu"
+    },
+    {
+      "src": "LIB:libtorch_cuda",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorch_cuda"
+    },
+    {
+      "src": "LIB:libtorch_cuda",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libtorch_cuda"
+    },
+    {
+      "src": "LIB:libtorch_cuda",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libtorch_cuda"
+    },
+    {
+      "src": "LIB:libcrypto",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libcrypto"
+    },
+    {
+      "src": "LIB:libsqlite3",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libsqlite3"
+    },
+    {
+      "src": "LIB:libtorch_nvshmem",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorch_nvshmem"
+    },
+    {
+      "src": "LIB:libtorch_nvshmem",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libtorch_nvshmem"
+    },
+    {
+      "src": "LIB:libtorch_nvshmem",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libtorch_nvshmem"
+    },
+    {
+      "src": "LIB:libtorchaudio.abi3",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorchaudio.abi3"
+    },
+    {
+      "src": "LIB:libcuda",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libcuda"
+    },
+    {
+      "src": "LIB:libcuda",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libcuda"
+    },
+    {
+      "src": "LIB:libcuda",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libcuda"
+    },
+    {
+      "src": "LIB:libstdc++",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libstdc++"
+    },
+    {
+      "src": "LIB:libstdc++",
+      "dst": 57069,
+      "kind": "loads_lib",
+      "evidence": "libstdc++"
+    },
+    {
+      "src": "LIB:libstdc++",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libstdc++"
+    },
+    {
+      "src": "LIB:libstdc++",
+      "dst": 9301,
+      "kind": "loads_lib",
+      "evidence": "libstdc++"
+    },
+    {
+      "src": "LIB:libstdc++",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libstdc++"
+    },
+    {
+      "src": "LIB:libssl",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libssl"
+    },
+    {
+      "src": "LIB:libtorch",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorch"
+    },
+    {
+      "src": "LIB:libtorch",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libtorch"
+    },
+    {
+      "src": "LIB:libtorch",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libtorch"
+    },
+    {
+      "src": "LIB:libcudart",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libcudart"
+    },
+    {
+      "src": "LIB:libcudart",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libcudart"
+    },
+    {
+      "src": "LIB:libcudart",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libcudart"
+    },
+    {
+      "src": "LIB:libtorchcodec_custom_ops6",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorchcodec_custom_ops6"
+    },
+    {
+      "src": "LIB:libcudart.faf08d9a",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libcudart.faf08d9a"
+    },
+    {
+      "src": "LIB:libtorch_global_deps",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorch_global_deps"
+    },
+    {
+      "src": "LIB:libtorch_global_deps",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libtorch_global_deps"
+    },
+    {
+      "src": "LIB:libtorch_global_deps",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libtorch_global_deps"
+    },
+    {
+      "src": "LIB:libpython3.13",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libpython3.13"
+    },
+    {
+      "src": "LIB:libnvidia-ml",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libnvidia-ml"
+    },
+    {
+      "src": "LIB:libnvidia-ml",
+      "dst": 104465,
+      "kind": "loads_lib",
+      "evidence": "libnvidia-ml"
+    },
+    {
+      "src": "LIB:libnvidia-ml",
+      "dst": 103806,
+      "kind": "loads_lib",
+      "evidence": "libnvidia-ml"
+    },
+    {
+      "src": "LIB:libtorchcodec_pybind_ops6",
+      "dst": 158464,
+      "kind": "loads_lib",
+      "evidence": "libtorchcodec_pybind_ops6"
+    }
+  ],
+  "edge_summary": {
+    "spawn": 52,
+    "external": 9,
+    "tcp": 6,
+    "loads_lib": 41
+  },
+  "scale": "snapshot [CAP] \u2014 persistent edges only; event edges need eBPF/strace",
+  "caveat": "installed \u2260 active; transient edges invisible to FD inspection"
+}

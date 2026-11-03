@@ -134,6 +134,35 @@ def create_app() -> FastAPI:
         from .kernel_hooks.compute import kernel_status as _status
         return _status()
 
+    @app.get("/kernel/sysmodules")
+    def kernel_sysmodules() -> dict:
+        """Active Python module set inside this live process (sys.modules).
+
+        English: which modules are actually loaded — the activation set,
+        not pip freeze (installed ≠ active). Mesh x-ray L2 layer.
+        pt-BR: módulos realmente carregados — conjunto de ativação, não
+        pip freeze (instalado ≠ ativo). Camada L2 do raio-X da malha.
+        """
+        import collections
+        import sys
+        pkgs: dict[str, int] = collections.Counter()
+        natives: list[str] = []
+        for name, mod in sys.modules.items():
+            pkgs[name.split(".")[0]] += 1
+            f = getattr(mod, "__file__", None) or ""
+            spec = getattr(mod, "__spec__", None)
+            builtin = spec is not None and spec.origin == "built-in"
+            if f.endswith((".so", ".pyd")) or builtin:
+                natives.append(name)
+        top = pkgs.most_common(40)
+        return {
+            "pid": __import__("os").getpid(),
+            "n_modules": len(sys.modules),
+            "top_packages": dict(top),
+            "native_modules": sorted(natives),
+            "scale": "sys.modules count [CAP]",
+        }
+
     @app.get("/agency/dunker")
     def agency_dunker() -> dict:
         """Dunker/Soler 5-level psychoaffective architecture (canonical adapter)."""

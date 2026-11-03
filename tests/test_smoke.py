@@ -16,6 +16,29 @@ def test_app_create():
     assert app is not None
 
 
+def test_sysmodules_endpoint():
+    from fastapi.testclient import TestClient
+    c = TestClient(create_app())
+    d = c.get("/kernel/sysmodules").json()
+    assert d["n_modules"] > 50
+    assert "omni_coworker" in d["top_packages"]
+    assert d["scale"].startswith("sys.modules")
+
+
+def test_mesh_xray_snapshot(tmp_path, monkeypatch):
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location(
+        "mesh_xray", Path(__file__).resolve().parents[1] / "scripts/mesh/mesh_xray.py")
+    mx = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mx)
+    monkeypatch.setattr(mx, "OUT", tmp_path / "x.json")
+    rep = mx.snapshot()
+    assert rep["L3_roles"]["infra"] >= 1
+    assert any(e["kind"] == "spawn" for e in rep["edges"])
+    assert "kernel" in rep["L0_chassis"]
+
+
 def test_jail():
     assert is_safe("pytest -q")
     assert not is_safe("rm -rf /")
