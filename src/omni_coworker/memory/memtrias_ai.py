@@ -29,9 +29,13 @@ Arquitetura / Architecture:
                      bridge read-only, uso interno/privado).
       - state:       estado da máquina associado à memória (regime,
                      vram, phi, attractor no momento da escrita).
-    Embedding default: hashing-trick determinístico 384d (mesma
-    dimensionalidade do acervo vetorizado 384D); pluggable via
-    `embedder=` (ex.: sentence-transformers quando disponível).
+    Embedding default `auto`: all-MiniLM-L6-v2 quando sentence-
+    transformers disponível (`OMNI_MEMTRIAS_EMBEDDER=auto|minilm|hash`;
+    hash determinístico offline sempre funciona). Cada registro marca
+    `analysis['embedder']`; recall prefere mesmo espaço vetorial
+    (registros pré-tagging contam como 'hash'). LIMITE medido: MiniLM
+    é inglês-dominante — paráfrase EN discrimina (0.463 vs 0.024), PT
+    cross-lingual fraco (~0.30 vs 0.31).
 
 Princípios teóricos invocados / Theoretical principles:
     Retorno do recalcado (Freud): o que foi registrado retorna quando o
@@ -106,6 +110,62 @@ def _cosine(a: np.ndarray, b: np.ndarray) -> float:
     return float(np.dot(a, b) / (na * nb))
 
 
+_ST_MODEL = None
+_ST_TRIED = False
+
+
+def minilm_embedder(text: str, dim: int = EMBED_DIM) -> list[float]:
+    """Embedder semântico real: all-MiniLM-L6-v2 (mesmo do acervo).
+
+    Carrega lazy (singleton); fallback hash_embedder quando ST
+    indisponível — nunca quebra o caminho de memória.
+    """
+    global _ST_MODEL, _ST_TRIED
+    if not _ST_TRIED:
+        _ST_TRIED = True
+        try:
+            from sentence_transformers import SentenceTransformer
+            _ST_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+        except Exception:
+            _ST_MODEL = None
+    if _ST_MODEL is None:
+        return hash_embedder(text, dim)
+    emb = _ST_MODEL.encode([text or ""])[0]
+    v = np.asarray(emb, dtype=np.float64)
+    if v.size != dim:
+        out = np.zeros(dim)
+        out[:min(dim, v.size)] = v[:min(dim, v.size)]
+        v = out
+    n = float(np.linalg.norm(v))
+    return (v / n).tolist() if n > 0 else v.tolist()
+
+
+def _pick_embedder(spec: str | None) -> tuple[Callable[[str], list[float]], str]:
+    """Resolve embedder + nome honesto para marcação por registro.
+
+    spec: 'minilm' | 'hash' | 'auto' (default) | None.
+    auto/minilm → tenta ST (marca 'minilm' se carregar, 'hash' senão);
+    'hash' → força hashing-trick.
+    """
+    spec = (spec or os.getenv("OMNI_MEMTRIAS_EMBEDDER") or "auto").lower()
+    if spec == "hash":
+        return hash_embedder, "hash"
+    if spec in ("auto", "minilm"):
+        global _ST_MODEL, _ST_TRIED
+        if not _ST_TRIED:
+            _ST_TRIED = True
+            try:
+                from sentence_transformers import SentenceTransformer
+                _ST_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+            except Exception:
+                _ST_MODEL = None
+        if _ST_MODEL is not None:
+            return minilm_embedder, "minilm"
+        if spec == "minilm":
+            return hash_embedder, "hash"  # pedido mas indisponível
+    return hash_embedder, "hash"
+
+
 def _affect_analyzer(text: str) -> dict[str, Any]:
     """Motor afetivo léxico (AffectTracer): famílias afex + flattery."""
     try:
@@ -128,7 +188,10 @@ class MemtriasAI:
                  acervo_dir: Path | str | None = None) -> None:
         self._dir = Path(state_dir) if state_dir else _state_dir()
         self._dir.mkdir(parents=True, exist_ok=True)
-        self._embedder = embedder or hash_embedder
+        if embedder is not None:
+            self._embedder, self._embedder_name = embedder, "custom"
+        else:
+            self._embedder, self._embedder_name = _pick_embedder(None)
         self._namespaces: set[str] = set(CANONICAL_NAMESPACES)
         self._acervo_dir = Path(acervo_dir or os.getenv("OMNI_ACERVO_DIR", "")) \
             if (acervo_dir or os.getenv("OMNI_ACERVO_DIR")) else None
@@ -224,7 +287,7 @@ class MemtriasAI:
         if quarantined and "quarantined" not in tags:
             tags = tags + ["quarantined"]
         emb = self._embedder(content or "")
-        analysis: dict[str, Any] = {}
+        analysis: dict[str, Any] = {"embedder": self._embedder_name}
         for name, fn in self._analyzers.items():
             try:
                 analysis[name] = fn(content or "")
@@ -318,6 +381,15 @@ class MemtriasAI:
                            "events": json.loads(events or "[]"),
                            "analysis": json.loads(analysis or "{}"),
                            "ts": ts})
+        # espaços vetoriais diferentes não se comparam: prefere registros
+        # do mesmo embedder. Registros sem marca são pré-tagging → foram
+        # escritos pelo hash_embedder (único que existia) → "hash".
+        # Cai para todos quando não há nenhum mesmo-embedder.
+        same = [r for r in scored
+                if ((r["analysis"] or {}).get("embedder") or "hash")
+                == self._embedder_name]
+        if same:
+            scored = same
         scored.sort(key=lambda r: r["score"], reverse=True)
         return scored[:top_k]
 

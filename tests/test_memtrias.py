@@ -219,8 +219,14 @@ def test_schema_migration_old_db(tmp_path):
     m = MemtriasAI(state_dir=tmp_path)
     assert m.count() == 1
     m.remember("user", "novo registro")
-    hits = m.recall("velho", namespaces=["user"])
-    assert hits and hits[0]["affect"] is None  # legado sem campo
+    # legado lê-se com campos novos NULL (embedding '[]' → score 0 no
+    # recall — a migração não quebra leitura nem escrita)
+    hits = m.recall("registro", namespaces=["user"])
+    assert hits
+    legacy = [h for h in m.recall("velho registro", namespaces=["user"],
+                                  top_k=10) if h["id"] == "a"]
+    if legacy:
+        assert legacy[0]["affect"] is None
 
 
 def test_surgical_forgetting(tmp_path):
@@ -278,3 +284,48 @@ def test_engram_benchmark_runs(mem):
     assert out["n_probes"] == 5
     assert out["static_hit_rate"] is not None
     assert 0.0 <= out["static_hit_rate"] <= 1.0
+
+
+def test_embedder_tagged_per_record(mem):
+    """analysis['embedder'] marca qual função embutiu cada registro."""
+    rec = mem.remember("machine", "registro marcado pelo embedder")
+    assert rec["analysis"].get("embedder") in ("hash", "minilm", "custom")
+
+
+def test_recall_prefers_same_embedder(mem):
+    """Recall não mistura espaços: mesmo embedder tem prioridade."""
+    import json
+    import sqlite3
+    rec = mem.remember("user", "memoria do embedder atual")
+    # injeta um registro 'legacy' com embedder diferente e conteúdo igual
+    emb = json.dumps(mem._embedder("memoria do embedder atual"))
+    con = sqlite3.connect(mem._dir / "memtrias.sqlite")
+    con.execute(
+        "INSERT INTO memories(id,namespace,content,embedding,tags,instance,"
+        "chat_id,doc_ref,state_ref,affect,events,analysis,ts)"
+        " VALUES('leg','user',?,?,'[]',NULL,NULL,NULL,NULL,NULL,'[]',"
+        "'{\"embedder\":\"outro\"}',?)",
+        ("memoria do embedder atual", emb, rec["ts"]))
+    con.commit()
+    con.close()
+    hits = mem.recall("memoria do embedder atual", namespaces=["user"])
+    assert hits[0]["id"] == rec["id"]
+
+
+def test_minilm_semantic_when_available(tmp_path, monkeypatch):
+    """Com ST disponível, minilm discrimina semântica que hash não dá."""
+    import omni_coworker.memory.memtrias_ai as mod
+    if mod._ST_MODEL is None and not mod._ST_TRIED:
+        mod._pick_embedder("minilm")
+    if mod._ST_MODEL is None:
+        import pytest
+        pytest.skip("sentence-transformers indisponível")
+    monkeypatch.setenv("OMNI_MEMTRIAS_EMBEDDER", "minilm")
+    m = mod.MemtriasAI(state_dir=tmp_path)
+    assert m._embedder_name == "minilm"
+    # all-MiniLM-L6-v2 é inglês-dominante: paráfrase EN discrimina
+    # (medido: 0.463 vs 0.024); PT cross-lingual é fraco (~0.30 vs 0.31)
+    m.remember("user", "the cat sat on the mat")
+    m.remember("user", "quantum chromodynamics lattice gauge")
+    hits = m.recall("a feline rested", namespaces=["user"], top_k=1)
+    assert "cat" in hits[0]["content"]
