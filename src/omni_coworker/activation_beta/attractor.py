@@ -26,6 +26,8 @@ from typing import Any
 
 import numpy as np
 
+from ..activation_beta import spiking_glial
+
 _MAXLEN = 256
 _BASELINE_N = 128
 _WINDOWS: dict[str, deque] = {}
@@ -157,12 +159,29 @@ def _model_features(w: deque) -> dict[str, Any] | None:
     return out
 
 
+def glial_verdict(window=None) -> dict[str, Any]:
+    """Veredito glial para degeneração.
+
+    Se window None, agrega todas as janelas do attractor.
+    """
+    if window is None:
+        combined = []
+        for w in _WINDOWS.values():
+            combined.extend(list(w))
+        window = combined
+    try:
+        return spiking_glial.glial_gate({}, window)
+    except Exception:
+        return {"allow_generation": True, "glial": {}, "reason": "fail-open"}
+
+
 def features() -> dict[str, Any]:
     """Attractor features per model over the current window."""
     out = {}
     for model, w in _WINDOWS.items():
         f = _model_features(w)
         if f:
+            f["glial_gate"] = spiking_glial.glial_gate({}, list(w))
             out[model] = f
     return out
 

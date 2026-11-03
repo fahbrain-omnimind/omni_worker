@@ -138,3 +138,28 @@ def glial_features(window) -> dict[str, Any]:
     st["n"] = len(window)
     st["mean_signal"] = round(float(__import__("numpy").mean(signals)), 4) if signals else 0.0
     return st
+
+
+def glial_gate(features: dict, window) -> dict[str, Any]:
+    """Gate de degeneração glial: decide se permite geração.
+
+    Fail-open: se qualquer erro, allow_generation=True.
+    """
+    try:
+        if window is not None:
+            feats = glial_features(window)
+        else:
+            feats = features if isinstance(features, dict) else {}
+        glial = feats if isinstance(feats, dict) else {}
+        vagus = float(glial.get("vagus_sedative", 0.0) or 0.0)
+        habituated = float(glial.get("habituated", 0.0) or 0.0)
+        if vagus >= 0.5:
+            return {"allow_generation": False, "glial": glial,
+                    "reason": "vagus_sedative>=0.5"}
+        if habituated >= 0.8:
+            return {"allow_generation": False, "glial": glial,
+                    "reason": "habituated>=0.8"}
+        return {"allow_generation": True, "glial": glial, "reason": "ok"}
+    except Exception:
+        return {"allow_generation": True, "glial": {},
+                "reason": "fail-open"}
