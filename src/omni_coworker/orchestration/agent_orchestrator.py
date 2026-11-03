@@ -7,11 +7,9 @@ pt-BR: Orquestra agentes em loop com juízes e auditor.
 
 import json
 import os
-import subprocess
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any
 
 
 class AgentOrchestrator:
@@ -154,7 +152,8 @@ class AgentOrchestrator:
         except Exception as e:
             judges.append({"judge": 1, "type": "implementation", "approved": False,
                            "comments": f"review_needed: backend unavailable: {e}",
-                           "reason": f"backend unavailable: {e}", "llm": False})
+                           "reason": f"backend unavailable: {e}", "llm": False,
+                           "blind": True})
 
         # Judge 2 — independent opinion; feedback.loop recommendation
         # picks which brain opines (reflect regime → analyst).
@@ -179,7 +178,7 @@ class AgentOrchestrator:
             "approved": bool(j2.get("approved")) if j2 else False,
             "comments": (j2 or {}).get("comments", "review_needed: backend unavailable: executor down"),
             "reason": (j2 or {}).get("reason", "backend unavailable: executor down"),
-            "llm": bool(j2),
+            "llm": bool(j2), "blind": not j2,
         })
 
         # Judge 3 — concurring (analyst synthesizes)
@@ -200,19 +199,62 @@ class AgentOrchestrator:
             "approved": bool(j3.get("approved")) if j3 else False,
             "comments": (j3 or {}).get("comments", "review_needed: backend unavailable: concurring judge down"),
             "reason": (j3 or {}).get("reason", "backend unavailable: concurring judge down"),
-            "llm": bool(j3),
+            "llm": bool(j3), "blind": not j3,
         })
 
+        # Tri-state consensus (AUDIT_OPENCODE §1.4-5): a blind judge is
+        # not a dissenting judge — it saw nothing. `None` = undecidable
+        # (all judges blind) → approval queue; otherwise `all()` over the
+        # judges that actually deliberated.
+        sighted = [j for j in judges if not j.get("blind")]
+        consensus = (all(j["approved"] for j in sighted)
+                     if sighted else None)
         review = {
             "task_id": task_id,
             "timestamp": datetime.now().isoformat(),
             "judges": judges,
-            "consensus": all(j["approved"] for j in judges),
+            "consensus": consensus,
         }
         with open(self.audit_dir / f"{task_id}_review.json", "w") as f:
             json.dump(review, f, indent=2)
         return review
-    
+
+    def _enqueue_approval(self, task: dict, review: dict) -> None:
+        """Route an undecidable review to the human approval queue.
+
+        English: consensus=None means every judge was blind (backends
+        down) — the deliverable is neither approved nor dissented, it
+        waits for an operator. Append-only `approval_queue.jsonl` under
+        audit_dir + a witnessed event so the queue itself has lineage.
+        pt-BR: consensus=None significa que todo juiz estava cego
+        (backends fora) — o entregável não é aprovado nem dissentido,
+        espera um operador. `approval_queue.jsonl` append-only no
+        audit_dir + evento testemunhado para a fila ter linhagem.
+        """
+        entry = {
+            "task_id": task.get("id"),
+            "type": task.get("type"),
+            "attempts": task.get("attempts"),
+            "enqueued_utc": datetime.now().isoformat(),
+            "judges": [{"judge": j.get("judge"), "approved": j.get("approved"),
+                        "blind": j.get("blind"), "reason": j.get("reason")}
+                       for j in review.get("judges", [])],
+            "artifact_excerpt": (task.get("last_artifact") or "")[:2000],
+        }
+        try:
+            qpath = self.audit_dir / "approval_queue.jsonl"
+            qpath.parent.mkdir(parents=True, exist_ok=True)
+            with open(qpath, "a", encoding="utf-8") as f:
+                f.write(json.dumps(entry, ensure_ascii=False,
+                                   default=str) + "\n")
+        except Exception:
+            pass
+        try:
+            from ..agency.witness import witness_event
+            witness_event("orchestrator.approval_required", entry)
+        except Exception:
+            pass
+
     @staticmethod
     def _module_exists(module_name: str) -> bool:
         import importlib.util
@@ -475,6 +517,7 @@ class AgentOrchestrator:
 
             review = self.run_judge_review(task['id'], result)
             audit = self.run_audit(task['id'])
+            consensus = review.get("consensus")
 
             # Audit P0 wiring: the loop now feeds trust, the event bus and
             # the witness hash-chain on every iteration (previously the
@@ -484,9 +527,12 @@ class AgentOrchestrator:
                 from ..agency.witness import witness_event
 
                 ts = get_trust_system()
-                ok = bool(review.get("consensus")) and bool(audit.get("passed"))
-                ts.record_event("tests_passed" if ok else "review_dissent",
-                                agent="CodeAgent")
+                if consensus is None:
+                    ok = False  # undecidável ≠ dissenso: trust não registra
+                else:
+                    ok = bool(consensus) and bool(audit.get("passed"))
+                    ts.record_event("tests_passed" if ok else "review_dissent",
+                                    agent="CodeAgent")
                 EventBus().publish(
                     "iteration.completed",
                     {"task": task['id'], "ok": ok, "trust": ts.get_trust()},
@@ -502,7 +548,8 @@ class AgentOrchestrator:
                     task['id'],
                     kind=task['type'],
                     content=result.get("artifact", "")[:8000],
-                    verdict=("consensus" if review["consensus"] else "dissent"),
+                    verdict=("undecided" if consensus is None
+                             else "consensus" if consensus else "dissent"),
                 )
             except Exception:
                 pass
@@ -515,6 +562,14 @@ class AgentOrchestrator:
             }
             task['feedback'].append(feedback)
             task['last_artifact'] = result.get("artifact")
+
+            if consensus is None:
+                # §1.4-5: juízes cegos → fila de aprovação humana, não
+                # dissenso automático nem retry queimando iterações às cegas
+                task['status'] = 'approval_required'
+                self._enqueue_approval(task, review)
+                print(f"Task {task['id']} → approval queue (judges blind)")
+                break
 
             if review['consensus'] and audit['passed']:
                 task['status'] = 'approved'

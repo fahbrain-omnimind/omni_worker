@@ -63,6 +63,9 @@ def check_permission(action: str, context: dict | None = None) -> bool:
     except Exception as e:
         logger.warning("permission matrix failed: %s", e)
         if os.getenv("OMNI_GATE_FAIL_CLOSED") == "0":
+            # laboratório: fail-open explícito — o veredito ainda é
+            # registrado (estava saindo da cadeia de evidência)
+            _record_matrix_verdict(True, action)
             return True
         _record_matrix_verdict(False, action)
         return False

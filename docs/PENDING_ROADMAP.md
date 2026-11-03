@@ -15,7 +15,7 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] wire do loop: EventBus→TrustSystem, breakers/quarentena/witness por iteração — `loop._gov()` lazy wiring: EventBus gov alimenta TrustSystem compartilhado (deltas loop.* honestos), cada estágio sob CircuitBreaker (3 falhas → abre → quarentena com witness; ciclos seguintes pulam como `quarantined`), status `partial` granular (falha de um estágio não derruba independentes), resumo `payload["governance"]`
 - [x] safety/jail.py — política real implementada (107 linhas, sem placeholder)
 - [x] safety/care.py — escalação territorial Brasil (251 linhas, CVV 188/CAPS/CRP)
-- [ ] residual: judges/orquestrador fail-open restantes (AUDIT_OPENCODE §1.4)
+- [x] residual: judges/orquestrador fail-open restantes (AUDIT_OPENCODE §1.4) — consensus tri-state: juiz cego (`blind:true`, backend down) ≠ juiz dissidente; `consensus=None` → `_enqueue_approval()` (approval_queue.jsonl append-only + witness `orchestrator.approval_required`) e break do loop, em vez de dissent cego/retry às cegas; `matrix.py` ramo fail-open de laboratório agora registra o veredito (saía da cadeia de evidência); testes tri-state + fila em `test_judges_failclosed.py`
 
 ## P1 — Loop de continuidade (Kilo)
 - [x] probe_recorded no /soma/probe (persistência do loop) — `soma/probe.py:221`, wired em `app.py:37`

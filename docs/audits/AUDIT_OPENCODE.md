@@ -59,7 +59,7 @@ Four per-folder READMEs, bilingual, high fidelity to code. Corrections needed: (
 2. `CircuitBreaker` per brain endpoint + per external CLI around `brain_chat`/`ExternalCLIAgent.execute`; on `open` → skip judge LLM calls, mark review `llm:False`.
 3. `witness_event()` per loop iteration (task_id, judge votes, stall, artifact sha256) → tamper-evident lineage in `audit_dir`.
 4. Persist trust/quarantine/stall to `node.db` (new tables) — currently process-memory only; recycle = amnesia.
-5. **Fail-open fixes:** `run_judge_review` approving `True` when brains are down (L156,171,191) auto-approves blind; `matrix` exception→`True`; `gate` absent→`allowed`. Make judges return `consensus: None` → route to approval queue (canonical `PermissionLevel.APPROVAL_REQUIRED` exists).
+5. **Fail-open fixes — RESOLVIDO (commit posterior ao audit):** `run_judge_review` já retornava `approved:False` nos fallbacks; o residual real era `consensus=False` tratando juiz cego como dissidente. Fix: judges blind marcados `blind:true`; `consensus=None` quando nenhum deliberou → `_enqueue_approval()` (approval_queue.jsonl + witness `orchestrator.approval_required`), break do loop (sem retry às cegas); `consensus` passa a ser `all()` só sobre juízes que deliberaram. `matrix` exception→`False` por default (fail-open só com `OMNI_GATE_FAIL_CLOSED=0` explícito — laboratório — e agora registra o veredito); `gate` já era fail-closed opcional (P0). Testes: `test_judges_failclosed.py` tri-state + fila, `test_matrix_failclosed.py`.
 6. `QuarantineSystem` unused: agent at trust < 0.3 or ≥2 cascade_resets → `quarantine()` + skip delegation.
 7. `run_audit` real: reuse `scripts/guard_sanitize.py` PATTERNS (secrets scan) + `ast.parse` syntax check + file-contract check.
 8. cascade_reset should classify *why* (canonical `failure_reason_evaluator` pattern) instead of always SIMPLIFY; persist task JSON per-iteration, not only at end.
@@ -71,7 +71,7 @@ Four per-folder READMEs, bilingual, high fidelity to code. Corrections needed: (
 
 | # | Risk | Where | Likelihood | Impact | Mitigation |
 |---|---|---|---|---|---|
-| R1 | Blind approval when brains down → bad patch ships | `agent_orchestrator.py:156,171,191`; `matrix.py:53`; `gate.py:55` | High (backends flap on Kaggle) | High | fail-closed + approval queue (§1.4-5) |
+| R1 | Blind approval when brains down → bad patch ships | `agent_orchestrator.py:156,171,191`; `matrix.py:53`; `gate.py:55` | High (backends flap on Kaggle) | High | **MITIGADO**: consensus tri-state + approval queue + matrix fail-closed default (§1.4-5) |
 | R2 | Governance amnesia on process recycle | all of `governance.py`, `modes.py` state, stall count | Certain (tmpfs/ephemeral) | Med | persist to `node.db` + witness (§1.4-4) |
 | R3 | Subprocess credential leak | `external_cli_agent.py` — mitigated by allowlist, but `overrides` bypasses only via filter; PATH injection still possible | Low-Med | High | keep denylist, add binary hash pinning |
 | R4 | Perseveration without detection (repeated identical patches) | `feedback_loop` — SIMPLIFY fires only after 3 *stalls*, not repeated-output hash | Med | Med (wasted GPU time) | tool-call-hash loop detector (§2) + FailureReasonEvaluator |
