@@ -134,6 +134,41 @@ def _emit_activation(record: dict[str, Any]) -> None:
         pass
 
 
+# Sidecar de vetores hidden (phi_layer P2, OW-STU-010 §5): last-token
+# hidden por camada em fp16 — permite SVD effective rank e bond
+# dimension reais no daemon (numpy-only). Amostrado via env, com
+# retenção; falha nunca bloqueia a geração.
+VEC_DIR = ACTIVATIONS_LOG.parent / "activation_vectors"
+_VEC_EVERY = int(os.environ.get("OMNI_ACT_VEC_EVERY", "1"))
+_VEC_KEEP = int(os.environ.get("OMNI_ACT_VEC_KEEP", "64"))
+_VEC_ON = os.environ.get("OMNI_ACT_VEC_SIDECAR", "1") != "0"
+_VEC_COUNT = 0
+
+
+def _emit_vectors(last_step: tuple | None, record: dict[str, Any]) -> None:
+    global _VEC_COUNT
+    if not (_VEC_ON and last_step):
+        return
+    _VEC_COUNT += 1
+    if _VEC_COUNT % _VEC_EVERY:
+        return
+    try:
+        import numpy as np
+        VEC_DIR.mkdir(parents=True, exist_ok=True)
+        vecs = np.stack([h[:, -1, :].detach().float().cpu().numpy()[0]
+                         for h in last_step]).astype(np.float16)
+        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
+        safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
+        np.savez_compressed(VEC_DIR / f"{ts}_{safe}.npz",
+                            vectors=vecs, model=_MODEL_ID,
+                            ts=record.get("ts") or "")
+        files = sorted(VEC_DIR.glob(f"*_{safe}.npz"))
+        for old in files[:-_VEC_KEEP]:
+            old.unlink(missing_ok=True)
+    except Exception:
+        pass
+
+
 # ── Model / Modelo ──────────────────────────────────────────────────────────
 def load_model(model_id: str, load_4bit: bool, device: str,
                cpu_offload: bool = False, vram_gb: float | None = None,
@@ -224,6 +259,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
         **_summarize_attention(attn_last),
     }
     _emit_activation(act)
+    _emit_vectors(last_step, act)
     return text, act
 
 

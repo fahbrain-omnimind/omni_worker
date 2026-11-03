@@ -88,6 +88,11 @@ def _temporal_mi(w: Any) -> float | None:
 
 def features() -> dict[str, Any]:
     """Informational-Φ proxies per model over the activations window."""
+    try:
+        from .hidden_spectral import spectral_features
+        spectral = spectral_features()
+    except Exception:
+        spectral = {}
     out = {}
     for model, w in _WINDOWS.items():
         if len(w) < 6:
@@ -107,4 +112,11 @@ def features() -> dict[str, Any]:
             "n_records": len(w),
             "note": "proxy informacional — não é Φ causal IIT",
         }
+        if model in spectral:
+            out[model]["spectral"] = spectral[model]
+    # modelos com sidecars mas janela curta: publica spectral sozinho
+    for model, sp in spectral.items():
+        if model not in out:
+            out[model] = {"spectral": sp, "n_records": len(_WINDOWS.get(model, ())),
+                          "note": "spectral-only (janela <6) — proxy informacional"}
     return out
