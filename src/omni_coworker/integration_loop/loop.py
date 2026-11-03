@@ -35,10 +35,13 @@ _STATE: dict[str, Any] = {"cycles": 0, "errors": 0, "last_cycle": None,
                         "last_modulation": None, "last_ts": None}
 
 
-def _publish_modulation(mod) -> bool:
+def _publish_modulation(mod, resource_postures=None) -> bool:
     try:
         from ..shared_workspace import bus
-        bus.publish("feedback.loop", mod.to_dict())
+        payload = mod.to_dict()
+        if resource_postures is not None:
+            payload["resource_postures"] = resource_postures
+        bus.publish("feedback.loop", payload)
         return True
     except Exception:
         return False
@@ -67,17 +70,19 @@ def _narrative_history(n: int = 8) -> tuple[list[list[float]], list[str]]:
     return embs, hints
 
 
-def run_once() -> dict[str, Any]:
+def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
     """One full cycle; returns persisted payload dict."""
     t0 = time.time()
     cid = new_cycle_id(t0)
     rng = np.random.default_rng(abs(hash(cid)) % (2**32))
     stage_states = {}
-    bundle: dict[str, Any] = {}
+    if bundle is None:
+        bundle = adapters.collect_sensory()
+    else:
+        bundle = bundle or {}
     status = "ok"
     err = None
     try:
-        bundle = adapters.collect_sensory()
         ctx = {"bundle": bundle, "rng": rng,
                "history": _sensory_history(), "feat_stats": {}}
 
@@ -119,12 +124,22 @@ def run_once() -> dict[str, Any]:
     cycle = CycleResult(cycle_id=cid, ts=t0, stage_states=stage_states,
                         duration_s=round(dur, 3), status=status, error=err)
     payload = cycle.to_dict()
+    # posturas de recurso (fail-open: import/avaliação nunca bloqueia o ciclo)
+    resource_postures: list[Any] = []
+    try:
+        from ..psychoanalysis.plasticity_resource import assess_worker_bundle
+        resource_postures = [a.to_dict() for a in assess_worker_bundle(bundle or {})]
+        if isinstance(bundle, dict):
+            bundle["resource_postures"] = resource_postures
+    except Exception:
+        resource_postures = []
+    payload["resource_postures"] = resource_postures
     mod = derive_modulation(cycle, bundle)
     payload["modulation"] = mod.to_dict()
     store.append_cycle(payload)
     from .consumer import write_modulation
     write_modulation(mod.to_dict())
-    if _publish_modulation(mod):
+    if _publish_modulation(mod, resource_postures):
         payload["published"] = True
     _STATE.update({"cycles": _STATE["cycles"] + 1,
                    "errors": _STATE["errors"] + (status == "error"),

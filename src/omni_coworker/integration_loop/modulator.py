@@ -27,6 +27,55 @@ from .schema import CycleResult, Modulation
 HIGH_ERR = 0.5
 HIGH_AROUSAL = 0.7
 
+HOLD_POSTURE = "hold_boundary"
+
+
+def _resource_postures(cycle: CycleResult, bundle: dict[str, Any]) -> list[dict[str, Any]]:
+    """Posturas de recurso (fail-open). Lê do bundle ou avalia sob demanda."""
+    out: list[dict[str, Any]] = []
+    raw = (bundle or {}).get("resource_postures") if isinstance(bundle, dict) else None
+    if isinstance(raw, list) and raw:
+        for rp in raw:
+            if hasattr(rp, "to_dict"):
+                try:
+                    out.append(rp.to_dict())
+                except Exception:
+                    pass
+            elif isinstance(rp, dict):
+                out.append(dict(rp))
+        if out:
+            return out
+    try:
+        from ..psychoanalysis.plasticity_resource import assess_worker_bundle
+        return [a.to_dict() for a in assess_worker_bundle(bundle or {})]
+    except Exception:
+        return []
+
+
+def _norm_posture(val: Any) -> str:
+    if hasattr(val, "value"):
+        val = val.value
+    s = str(val).strip().lower().replace("-", "_")
+    if s in ("holdboundary", "hold_boundary", "hold"):
+        return "hold_boundary"
+    return s
+
+
+def _has_hold(postures: list[dict[str, Any]], lanes: set[str] | None = None) -> bool:
+    for rp in postures:
+        if not isinstance(rp, dict):
+            continue
+        if _norm_posture(rp.get("posture")) != "hold_boundary":
+            continue
+        if lanes is None:
+            return True
+        lane = str(rp.get("lane", "")).strip().lower()
+        if lane in {x.lower() for x in lanes}:
+            return True
+    # if lanes specified but no lane match, still allow any hold when lanes is None only;
+    # for lane-filtered checks, require lane match. But for generic any-hold we call with None.
+    return False
+
 
 def _m(cycle: CycleResult, stage: str, key: str):
     st = cycle.stage_states.get(stage)
@@ -58,6 +107,15 @@ def derive_modulation(cycle: CycleResult, bundle: dict[str, Any]) -> Modulation:
     boost = round(max(0.0, min(1.0, 1.0 - ms)), 4) if ms is not None else 0.3
     suffix = {"analyst": "[regime:reflect]", "executor": "[regime:execute]",
               "balanced": "[regime:steady]"}[rec]
+
+    # posturas de recurso: HOLD_BOUNDARY em vram/thermal pressiona o ciclo
+    try:
+        postures = _resource_postures(cycle, bundle)
+        if _has_hold(postures, {"vram_pressure", "thermal"}) or _has_hold(postures):
+            delta = round(delta + 0.05, 4)
+            delta = max(-0.1, min(0.1, delta))
+    except Exception:
+        pass
 
     return Modulation(
         cycle_id=cycle.cycle_id, ts=cycle.ts, meaning_score=ms,
