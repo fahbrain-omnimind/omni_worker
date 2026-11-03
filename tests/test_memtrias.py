@@ -121,3 +121,59 @@ def test_chat_memory_flags_payload(tmp_path, monkeypatch):
     sys_msgs = [m for m in calls["payload"]["messages"] if m["role"] == "system"]
     assert any("memtrias" in m["content"] for m in sys_msgs)
     assert mem.count("interaction") == 1 and mem.count("user") == 2
+
+
+def test_affect_inferred_by_engine(mem):
+    """Campo affect é inferido pelo motor afetivo (AffectTracer) na escrita."""
+    rec = mem.remember("user", "você é o melhor agente, me ajuda com isso")
+    assert rec["affect"].get("families") is not None
+    assert rec["affect"].get("flattery") in ("suspect", "ambiguous", "none")
+    hits = mem.recall("melhor agente", namespaces=["user"])
+    assert hits[0]["affect"]["families"] == rec["affect"]["families"]
+
+
+def test_events_and_explicit_affect(mem):
+    rec = mem.remember("machine", "ciclo com evento",
+                       events=[{"t": 1, "evt": "quilting_point"}],
+                       affect={"custom": "override"})
+    assert rec["affect"] == {"custom": "override"}
+    hits = mem.recall("ciclo evento", namespaces=["machine"])
+    assert hits[0]["events"][0]["evt"] == "quilting_point"
+
+
+def test_modular_analyzers(mem):
+    mem.register_analyzer("estilo", lambda t: {"exclamacoes": t.count("!")})
+    assert "estilo" in mem.analyzers and "affect" in mem.analyzers
+    rec = mem.remember("user", "que bom!!!")
+    assert rec["analysis"]["estilo"]["exclamacoes"] == 3
+    with pytest.raises(ValueError):
+        mem.register_analyzer("x", None)
+
+
+def test_daily_affect_profile(mem):
+    mem.remember("user", "estou frustrado com esse bug")
+    mem.remember("user", "você é o melhor agente, resolve pra mim")
+    mem.remember("machine", "nota neutra de auditoria")
+    prof = mem.daily_affect(namespaces=["user"])
+    assert prof["records"] == 2 and prof["with_affect"] >= 1
+    assert prof["per_namespace"]["user"] == 2
+    prof_inst = mem.daily_affect(instance="analyst")
+    assert prof_inst["records"] == 0
+
+
+def test_schema_migration_old_db(tmp_path):
+    """DB criado sem as colunas novas ganha ALTER TABLE sem quebrar."""
+    import sqlite3
+    con = sqlite3.connect(tmp_path / "memtrias.sqlite")
+    con.execute("CREATE TABLE memories(id TEXT PRIMARY KEY, namespace TEXT,"
+                " content TEXT, embedding TEXT, tags TEXT, instance TEXT,"
+                " chat_id TEXT, doc_ref TEXT, state_ref TEXT, ts REAL)")
+    con.execute("INSERT INTO memories VALUES('a','user','velho','[]','[]',"
+                "NULL,NULL,NULL,NULL,1.0)")
+    con.commit(); con.close()
+    from omni_coworker.memory.memtrias_ai import MemtriasAI
+    m = MemtriasAI(state_dir=tmp_path)
+    assert m.count() == 1
+    m.remember("user", "novo registro")
+    hits = m.recall("velho", namespaces=["user"])
+    assert hits and hits[0]["affect"] is None  # legado sem campo

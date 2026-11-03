@@ -96,6 +96,20 @@ def _cosine(a: np.ndarray, b: np.ndarray) -> float:
     return float(np.dot(a, b) / (na * nb))
 
 
+def _affect_analyzer(text: str) -> dict[str, Any]:
+    """Motor afetivo léxico (AffectTracer): famílias afex + flattery."""
+    try:
+        from ..agency.affect_tracer import classify_flattery, score_turn
+
+        fams = score_turn(text or "")
+        flat = classify_flattery(text or "")
+        active = {k: round(v, 4) for k, v in fams.items() if v > 0}
+        return {"families": active, "flattery": flat.get("kind"),
+                "flattery_score": flat.get("score")}
+    except Exception:
+        return {"families": {}, "flattery": "none", "flattery_score": 0.0}
+
+
 class MemtriasAI:
     """Registro aberto de memórias topológicas por namespace."""
 
@@ -108,16 +122,38 @@ class MemtriasAI:
         self._namespaces: set[str] = set(CANONICAL_NAMESPACES)
         self._acervo_dir = Path(acervo_dir or os.getenv("OMNI_ACERVO_DIR", "")) \
             if (acervo_dir or os.getenv("OMNI_ACERVO_DIR")) else None
+        self._analyzers: dict[str, Callable[[str], dict[str, Any]]] = {}
+        self.register_analyzer("affect", _affect_analyzer)
         con = sqlite3.connect(self._dir / _DB, timeout=10)
         con.execute(
             "CREATE TABLE IF NOT EXISTS memories("
             "id TEXT PRIMARY KEY, namespace TEXT, content TEXT,"
             " embedding TEXT, tags TEXT, instance TEXT, chat_id TEXT,"
-            " doc_ref TEXT, state_ref TEXT, ts REAL)")
+            " doc_ref TEXT, state_ref TEXT, affect TEXT, events TEXT,"
+            " analysis TEXT, ts REAL)")
+        cols = {r[1] for r in con.execute("PRAGMA table_info(memories)")}
+        for col in ("affect", "events", "analysis"):
+            if col not in cols:
+                con.execute(f"ALTER TABLE memories ADD COLUMN {col} TEXT")
         con.execute(
             "CREATE INDEX IF NOT EXISTS idx_mem_ns ON memories(namespace, ts)")
         con.commit()
         con.close()
+
+    # ── analisadores modulares (registro aberto) ─────────────────────────
+
+    def register_analyzer(self, name: str,
+                          fn: Callable[[str], dict[str, Any]]) -> str:
+        """Pluga classificador: fn(texto) -> dict gravado em analysis[name]."""
+        name = (name or "").strip().lower()
+        if not name or not callable(fn):
+            raise ValueError("analyzer precisa de nome + callable")
+        self._analyzers[name] = fn
+        return name
+
+    @property
+    def analyzers(self) -> list[str]:
+        return sorted(self._analyzers)
 
     # ── namespaces abertos ───────────────────────────────────────────────
 
@@ -141,12 +177,25 @@ class MemtriasAI:
                  chat_id: str | None = None,
                  doc_ref: str | None = None,
                  state_ref: dict[str, Any] | str | None = None,
+                 affect: dict[str, Any] | None = None,
+                 events: list[dict[str, Any]] | None = None,
                  ts: float | None = None) -> dict[str, Any]:
-        """Inscreve memória: embute conteúdo + persiste com metadados."""
+        """Inscreve memória: embute conteúdo + roda analisadores + persiste.
+
+        `affect` explícito sobrescreve o inferido pelo motor afetivo;
+        `events` guarda eventos associados (kernel, ciclo, auditoria).
+        """
         ns = (namespace or "").strip().lower()
         if ns not in self._namespaces:
             self.register_namespace(ns)
         emb = self._embedder(content or "")
+        analysis: dict[str, Any] = {}
+        for name, fn in self._analyzers.items():
+            try:
+                analysis[name] = fn(content or "")
+            except Exception:
+                analysis[name] = {"error": "analyzer_failed"}
+        inferred = analysis.get("affect") or {}
         rec = {
             "id": uuid.uuid4().hex[:16],
             "namespace": ns,
@@ -157,15 +206,21 @@ class MemtriasAI:
             "doc_ref": doc_ref,
             "state_ref": state_ref if isinstance(state_ref, str) or state_ref is None
                         else json.dumps(state_ref, default=str),
+            "affect": affect if affect is not None else inferred,
+            "events": events or [],
+            "analysis": analysis,
             "ts": float(ts or time.time()),
         }
         con = sqlite3.connect(self._dir / _DB, timeout=10)
         con.execute(
             "INSERT INTO memories(id,namespace,content,embedding,tags,"
-            "instance,chat_id,doc_ref,state_ref,ts) VALUES(?,?,?,?,?,?,?,?,?,?)",
+            "instance,chat_id,doc_ref,state_ref,affect,events,analysis,ts)"
+            " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (rec["id"], ns, rec["content"], json.dumps(emb),
              json.dumps(rec["tags"]), instance, chat_id, doc_ref,
-             rec["state_ref"], rec["ts"]))
+             rec["state_ref"], json.dumps(rec["affect"], default=str),
+             json.dumps(rec["events"], default=str),
+             json.dumps(analysis, default=str), rec["ts"]))
         con.commit()
         con.close()
         rec["dim"] = len(emb)
@@ -186,7 +241,8 @@ class MemtriasAI:
         """
         q = np.asarray(self._embedder(query or ""), dtype=np.float64)
         sql = "SELECT id,namespace,content,embedding,tags,instance,chat_id," \
-              "doc_ref,state_ref,ts FROM memories WHERE 1=1"
+              "doc_ref,state_ref,affect,events,analysis,ts" \
+              " FROM memories WHERE 1=1"
         args: list[Any] = []
         if namespaces:
             sql += f" AND namespace IN ({','.join('?' * len(namespaces))})"
@@ -202,7 +258,8 @@ class MemtriasAI:
         con.close()
         now = time.time()
         scored = []
-        for (mid, ns, content, embj, tags, inst, cid, dref, sref, ts) in rows:
+        for (mid, ns, content, embj, tags, inst, cid, dref, sref,
+             affect, events, analysis, ts) in rows:
             emb = np.asarray(json.loads(embj), dtype=np.float64)
             score = _cosine(q, emb)
             if recency_halflife_s and ts:
@@ -211,9 +268,60 @@ class MemtriasAI:
             scored.append({"id": mid, "namespace": ns, "content": content,
                            "score": round(score, 6), "tags": json.loads(tags or "[]"),
                            "instance": inst, "chat_id": cid, "doc_ref": dref,
-                           "state_ref": sref, "ts": ts})
+                           "state_ref": sref,
+                           "affect": json.loads(affect or "null"),
+                           "events": json.loads(events or "[]"),
+                           "analysis": json.loads(analysis or "{}"),
+                           "ts": ts})
         scored.sort(key=lambda r: r["score"], reverse=True)
         return scored[:top_k]
+
+    # ── leitura afetiva do dia (motor afetivo) ───────────────────────────
+
+    def daily_affect(self, day_ts: float | None = None, *,
+                     instance: str | None = None,
+                     namespaces: list[str] | None = None) -> dict[str, Any]:
+        """Perfil afetivo do dia: agrega o campo affect dos registros.
+
+        O "estado afetivo lido no dia pelo motor afetivo" — dominância de
+        famílias afex, contagem de flattery, volume por namespace.
+        """
+        day = time.localtime(day_ts or time.time())
+        start = time.mktime((day.tm_year, day.tm_mon, day.tm_mday,
+                            0, 0, 0, 0, 0, -1))
+        end = start + 86400
+        sql = "SELECT namespace,affect FROM memories WHERE ts>=? AND ts<?"
+        args: list[Any] = [start, end]
+        if instance:
+            sql += " AND instance=?"
+            args.append(instance)
+        if namespaces:
+            sql += f" AND namespace IN ({','.join('?' * len(namespaces))})"
+            args += [n.lower() for n in namespaces]
+        con = sqlite3.connect(self._dir / _DB, timeout=10)
+        rows = con.execute(sql, args).fetchall()
+        con.close()
+        fams: dict[str, float] = {}
+        flattery: dict[str, int] = {}
+        per_ns: dict[str, int] = {}
+        n_aff = 0
+        for ns, affj in rows:
+            per_ns[ns] = per_ns.get(ns, 0) + 1
+            aff = json.loads(affj or "{}") or {}
+            if not aff:
+                continue
+            n_aff += 1
+            for k, v in (aff.get("families") or {}).items():
+                fams[k] = fams.get(k, 0.0) + float(v)
+            kind = aff.get("flattery")
+            if kind:
+                flattery[kind] = flattery.get(kind, 0) + 1
+        dominant = max(fams.items(), key=lambda kv: kv[1])[0] if fams else None
+        return {"records": len(rows), "with_affect": n_aff,
+                "dominant_family": dominant,
+                "family_sums": {k: round(v, 4) for k, v in fams.items()},
+                "flattery_counts": flattery, "per_namespace": per_ns,
+                "day": time.strftime("%Y-%m-%d", day)}
 
     def count(self, namespace: str | None = None) -> int:
         sql = "SELECT COUNT(*) FROM memories"
