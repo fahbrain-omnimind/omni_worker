@@ -47,7 +47,12 @@ def _compute_state() -> dict:
     if kernel_state:
         vctr = kernel_state.get("vctr_six_params") or {}
         flat = {
-            "phi": round(float((vctr.get("magnitude") or {}).get("value", 0.0)), 4),
+            # clip [0,1] — mesmo contrato do ramo fallback; magnitude do
+            # kernel é observada em [0.27, 0.84] (n=301 eventos,
+            # shared_workspace.sqlite kernel.soul), mas consumidores
+            # (phi_meta.soul_phi>0.2, stages) assumem escala [0,1] (A7).
+            "phi": round(max(0.0, min(1.0, float(
+                (vctr.get("magnitude") or {}).get("value", 0.0)))), 4),
             "psi": round(float((vctr.get("direction") or {}).get("value", 0.0)), 4),
             "sigma": round(float((vctr.get("recalque") or {}).get("value", 0.0)), 4),
             "epsilon": round(float(kernel_state.get("dominant_affect_score") or 0.0), 4),
