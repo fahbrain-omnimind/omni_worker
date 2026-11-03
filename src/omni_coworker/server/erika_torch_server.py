@@ -138,10 +138,28 @@ def _emit_activation(record: dict[str, Any]) -> None:
 # hidden por camada em fp16 — permite SVD effective rank e bond
 # dimension reais no daemon (numpy-only). Amostrado via env, com
 # retenção; falha nunca bloqueia a geração.
-VEC_DIR = ACTIVATIONS_LOG.parent / "activation_vectors"
+def _vec_dir() -> Path:
+    override = _capture_cfg("OMNI_ACT_VEC_DIR")
+    if override:
+        return Path(override)
+    return ACTIVATIONS_LOG.parent / "activation_vectors"
+
+
+def _step_dir() -> Path:
+    override = _capture_cfg("OMNI_ACT_VEC_DIR")
+    if override:
+        return Path(override).parent / "activation_steps"
+    return ACTIVATIONS_LOG.parent / "activation_steps"
+
+
+VEC_DIR = _vec_dir()
+STEP_DIR = _step_dir()
 _VEC_EVERY = int(os.environ.get("OMNI_ACT_VEC_EVERY", "1"))
 _VEC_KEEP = int(os.environ.get("OMNI_ACT_VEC_KEEP", "64"))
 _VEC_ON = os.environ.get("OMNI_ACT_VEC_SIDECAR", "1") != "0"
+_STEP_EVERY = int(os.environ.get("OMNI_ACT_STEP_EVERY", "0"))
+_STEP_KEEP = int(os.environ.get("OMNI_ACT_STEP_KEEP", "32"))
+_STEP_ON = os.environ.get("OMNI_ACT_STEP_ON", "1") != "0"
 _VEC_COUNT = 0
 
 
@@ -154,19 +172,84 @@ def _emit_vectors(last_step: tuple | None, record: dict[str, Any]) -> None:
         return
     try:
         import numpy as np
-        VEC_DIR.mkdir(parents=True, exist_ok=True)
+        _vec_dir().mkdir(parents=True, exist_ok=True)
         vecs = np.stack([h[:, -1, :].detach().float().cpu().numpy()[0]
                          for h in last_step]).astype(np.float16)
         ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
         safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
-        np.savez_compressed(VEC_DIR / f"{ts}_{safe}.npz",
+        np.savez_compressed(_vec_dir() / f"{ts}_{safe}.npz",
                             vectors=vecs, model=_MODEL_ID,
-                            ts=record.get("ts") or "")
-        files = sorted(VEC_DIR.glob(f"*_{safe}.npz"))
+                            ts=record.get("ts") or "",
+                            run_id=_capture_cfg("OMNI_ACT_RUN_ID", ""),
+                            turn=_capture_cfg("OMNI_ACT_TURN", ""),
+                            task=_capture_cfg("OMNI_ACT_TASK", ""))
+        files = sorted(_vec_dir().glob(f"*_{safe}.npz"))
         for old in files[:-_VEC_KEEP]:
             old.unlink(missing_ok=True)
     except Exception:
         pass
+
+
+# Trajetória por-passo (OW-STU-018 §4, M3 contract drift): gen.hidden_states
+# já traz um tuple por token gerado; amostramos a cada OMNI_ACT_STEP_EVERY
+# passos (0=off) e guardamos (n_steps, n_layers, hidden) fp16 por call.
+# Opt-in — 4096 tokens a K=16 ≈ 256 passos ≈ ~90MB por call.
+STEP_DIR = ACTIVATIONS_LOG.parent / "activation_steps"
+_STEP_EVERY = int(os.environ.get("OMNI_ACT_STEP_EVERY", "0"))
+_STEP_KEEP = int(os.environ.get("OMNI_ACT_STEP_KEEP", "32"))
+
+
+def _emit_step_trajectory(hidden_states: tuple | None, record: dict[str, Any]) -> None:
+    step_every = int(_capture_cfg("OMNI_ACT_STEP_EVERY", "0"))
+    step_on = _capture_cfg("OMNI_ACT_STEP_ON", "1") != "0"
+    if not (step_on and step_every > 0 and hidden_states):
+        return
+    step_keep = int(_capture_cfg("OMNI_ACT_STEP_KEEP", "32"))
+    try:
+        import numpy as np
+        n = len(hidden_states)
+        idxs = list(range(0, n, step_every))
+        if idxs[-1] != n - 1:
+            idxs.append(n - 1)
+        traj = np.stack([
+            np.stack([h[:, -1, :].detach().float().cpu().numpy()[0]
+                      for h in hidden_states[i]])
+            for i in idxs
+        ]).astype(np.float16)
+        _step_dir().mkdir(parents=True, exist_ok=True)
+        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
+        safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
+        np.savez_compressed(_step_dir() / f"{ts}_{safe}.npz",
+                            traj=traj, steps=np.asarray(idxs),
+                            n_tokens=n, model=_MODEL_ID,
+                            ts=record.get("ts") or "",
+                            run_id=_capture_cfg("OMNI_ACT_RUN_ID", ""),
+                            turn=_capture_cfg("OMNI_ACT_TURN", ""),
+                            task=_capture_cfg("OMNI_ACT_TASK", ""))
+        files = sorted(_step_dir().glob(f"*_{safe}.npz"))
+        for old in files[:-step_keep]:
+            old.unlink(missing_ok=True)
+        record["step_traj"] = {"n_steps": len(idxs), "every": step_every,
+                              "file": f"{ts}_{safe}.npz"}
+    except Exception:
+        pass
+
+
+def _capture_cfg(key: str, default: str = "") -> str:
+    v = os.environ.get(key)
+    if v is not None:
+        return v
+    try:
+        for line in open("data/monitor/capture.env", encoding="utf-8"):
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, val = line.split("=", 1)
+            if k.strip() == key:
+                return val.strip()
+    except Exception:
+        pass
+    return default
 
 
 # ── Model / Modelo ──────────────────────────────────────────────────────────
@@ -253,6 +336,9 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
     act = {
         "ts": datetime.now(timezone.utc).isoformat(),
         "model": _MODEL_ID,
+        "run_id": _capture_cfg("OMNI_ACT_RUN_ID", ""),
+        "turn": _capture_cfg("OMNI_ACT_TURN", ""),
+        "task": _capture_cfg("OMNI_ACT_TASK", ""),
         "prompt_tokens": int(prompt_ids.shape[1]),
         "gen_tokens": int(new_ids.shape[0]),
         "layers": _summarize_hidden(last_step),
@@ -260,6 +346,27 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
     }
     _emit_activation(act)
     _emit_vectors(last_step, act)
+    _emit_step_trajectory(getattr(gen, "hidden_states", None), act)
+    if os.environ.get("OMNI_ACT_PROMPT_HIDDEN", "0") == "1":
+        try:
+            import numpy as np
+            with torch.inference_mode():
+                out = _MODEL(prompt_ids.to(_MODEL.device), output_hidden_states=True)
+            ph = np.stack([h[0, -1, :].detach().float().cpu().numpy()
+                           for h in out.hidden_states]).astype(np.float16)
+            d = _step_dir() if False else _vec_dir().parent / "prompt_hidden"
+            d.mkdir(parents=True, exist_ok=True)
+            ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
+            safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
+            np.savez_compressed(d / f"{ts}_{safe}.npz",
+                                hidden=ph, model=_MODEL_ID,
+                                run_id=_capture_cfg("OMNI_ACT_RUN_ID", ""),
+                                turn=_capture_cfg("OMNI_ACT_TURN", ""),
+                                task=_capture_cfg("OMNI_ACT_TASK", ""),
+                                ts=act["ts"])
+            act["prompt_hidden_file"] = f"{ts}_{safe}.npz"
+        except Exception:
+            pass
     return text, act
 
 
@@ -301,7 +408,7 @@ def affect() -> dict[str, Any]:
         return {"status": "no_data"}
     recent = list(_ACTIVATIONS)[-32:]
     ent = [a.get("attention_entropy_last") for a in recent if a.get("attention_entropy_last") is not None]
-    norms = [l["norm"] for a in recent for l in a.get("layers", [])]
+    norms = [layer["norm"] for a in recent for layer in a.get("layers", [])]
     return {
         "status": "ok",
         "n_activations": len(recent),

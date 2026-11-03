@@ -175,14 +175,43 @@ def run_one(idx: int, trust=None) -> dict:
 
     # Multi-turn loop: review issues + smoke tail feed the next turn's
     # spec until the contract holds or the turn budget runs out.
+    ACT_LOG = Path(os.environ.get("ERIKA_ACTIVATIONS_LOG",
+                                 "data/monitor/erika_torch_activations.jsonl"))
+    VEC_DIR = Path(os.environ.get("OMNI_ACT_VEC_DIR",
+                                 str(ACT_LOG.parent / "activation_vectors")))
+
     feedback = ""
     turns = []
+    files = {}
+    review = {}
     for turn in range(1, MAX_TURNS + 1):
         if not _ensure_executor():
             turns.append({"turn": turn, "error": "executor_unloaded"})
             break
         spec = base_spec + feedback
+        # Offset-slicing (Stage A): captura ativações/sidecars gerados neste turno
+        off_before = ACT_LOG.stat().st_size if ACT_LOG.exists() else 0
+        sidecars_before = set(VEC_DIR.glob("*.npz")) if VEC_DIR.exists() else set()
+        ts_start = time.time()
         gen = agent.generate(spec, context={"diagnosis": diag.get("diagnosis")})
+        ts_end = time.time()
+        off_after = ACT_LOG.stat().st_size if ACT_LOG.exists() else off_before
+        sidecars_after = set(VEC_DIR.glob("*.npz")) if VEC_DIR.exists() else set()
+        new_sidecars = sorted(str(p) for p in (sidecars_after - sidecars_before))
+        new_records = []
+        try:
+            with open(ACT_LOG, "r", encoding="utf-8", errors="replace") as fh:
+                fh.seek(off_before)
+                for line in fh:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        new_records.append(json.loads(line))
+                    except json.JSONDecodeError:
+                        continue
+        except OSError:
+            pass
         rec["llm"]["code"] = bool(gen.get("llm"))
         code_text = gen.get("code") or ""
         files = _extract_files(code_text)
@@ -211,6 +240,11 @@ def run_one(idx: int, trust=None) -> dict:
             "smoke": smoke, "review_approved": bool(review.get("approved")),
             "review_score": review.get("score"),
             "issues": (review.get("issues") or [])[:5],
+            "activation_offset_start": off_before,
+            "activation_offset_end": off_after,
+            "activation_records": new_records,
+            "sidecar_files": new_sidecars,
+            "ts_start": ts_start, "ts_end": ts_end,
         })
         if files and smoke["failed"] == 0 and smoke["passed"] > 0 \
                 and review.get("approved"):
@@ -226,6 +260,13 @@ def run_one(idx: int, trust=None) -> dict:
 
     rec["files"] = files
     rec["turns"] = turns
+    # Persist turns (com ativações fatiadas) em arquivo separado — turns_json
+    # do ledger é truncado a 4000 chars.
+    try:
+        (out / "turns.json").write_text(json.dumps(turns, ensure_ascii=False, indent=1))
+        rec["summary"]["turns_file"] = str(out / "turns.json")
+    except Exception:
+        pass
     rec["review_approved"] = bool(review.get("approved"))
     rec["review_score"] = review.get("score")
     rec["summary"]["review_issues"] = (review.get("issues") or [])[:5]
