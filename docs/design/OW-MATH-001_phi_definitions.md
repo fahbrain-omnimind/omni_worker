@@ -32,6 +32,11 @@ esta camada mede **capacidade**, não estado.
 - `phi_meta = min_bipartição [H_sistema − MI(p1,p2)]` — perda mínima de
   informação ao cortar (MIP simplificado sobre flags, não transições causais).
 - `integration = média MI entre pares adjacentes de elementos`.
+- `mip_side_a`/`mip_side_b`/`mip_top3` [PRX-audit] — bipartição de perda
+  mínima publicada (o proxy só é auditável se o corte for visível;
+  OW-STU-016 estágio 1).
+- `n_distinct_states`, `diversity = n_distinct/window` — anti-saturação;
+  alerta quando diversity < 0.3.
 
 ## 3. Camada de pressão — `kernel.phi_meta` (D1) [TXT]
 

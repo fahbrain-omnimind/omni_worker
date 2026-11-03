@@ -10,6 +10,12 @@ cybersecurity/benchmarks quando precisar.
 Checkboxes atualizados 2026-11-02 contra o código (ver OW-OPS-004
 CONTINUITY_MAP para evidência commit-a-commit).
 
+### OW-STU-016 — auditoria IIT/GWT (kilo research + devin review) — 2026-11-03
+- Relatório: `docs/design/OW-STU-016_iit_gwt_measurement_audit.md` — IIT 3.0/4.0, PyPhi (teto ~10 nós), Φ*/Φ^G/ΦID/PCI proxies, críticas (Doerig unfolding, Merker, COGITATE), auditoria soberano+worker, proposta 3 estágios com rótulos [CAP]/[PRX]/[TXT]/[CLS]/[EXP].
+- Estágio 1 parcial implementado: MIP explicável (`mip_side_a/b`, `mip_top3`) + anti-saturação (`n_distinct_states`, `diversity`) em `phi_meta.update`.
+- Pendente estágio 1: ignição de workspace (GWT-lite), sinergia proxy (ΦID-lite), formalizar scale_stack, fire tests pearson.
+- Estágio 2-3 aspiracionais: hidden vectors SVD/MPS, Φ* gaussiano, PyPhi só em brinquedos ≤8 nós (inválido no runtime — confirmado).
+
 ## P0 — Segurança/governança (auditorias OpenCode/Kilo/Cline)
 - [x] gate fail-closed opcional (OMNI_GATE_FAIL_CLOSED=1) — `safety/gate.py:55`
 - [x] wire do loop: EventBus→TrustSystem, breakers/quarentena/witness por iteração — `loop._gov()` lazy wiring: EventBus gov alimenta TrustSystem compartilhado (deltas loop.* honestos), cada estágio sob CircuitBreaker (3 falhas → abre → quarentena com witness; ciclos seguintes pulam como `quarantined`), status `partial` granular (falha de um estágio não derruba independentes), resumo `payload["governance"]`

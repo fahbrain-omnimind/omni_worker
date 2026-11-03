@@ -144,20 +144,37 @@ def _mi(p1: set, p2: set, states: list[dict[str, bool]]) -> float:
     return max(0.0, h1 + h2 - hj)
 
 
-def phi(states: list[dict[str, bool]]) -> float:
-    """Φ = minimum information loss across bipartitions (MIP)."""
+def phi_detailed(states: list[dict[str, bool]]) -> tuple[float, list, list]:
+    """Φ proxy + explicable partition.
+
+    English: returns (phi_meta, mip_sides, top3_losses). The minimum-
+    information-loss bipartition is itself published — the proxy is
+    only auditable if the cut it chose is visible (OW-STU-016 stage 1).
+    pt-BR: devolve (phi_meta, lados do MIP, top3 perdas). A bipartição
+    de perda mínima é publicada — o proxy só é auditável se o corte
+    escolhido for visível.
+    """
     if len(states) < 2:
-        return 0.0
+        return 0.0, [], []
     elems = sorted(states[0])
     if len(elems) < 2:
-        return 0.0
+        return 0.0, [], []
     h_sys = _entropy(states)
-    best = float("inf")
+    losses = []
     for i in range(1, 2 ** (len(elems) - 1)):
         p1 = {e for j, e in enumerate(elems) if i & (1 << j)}
         p2 = set(elems) - p1
-        best = min(best, h_sys - _mi(p1, p2, states))
-    return max(0.0, best)
+        losses.append((h_sys - _mi(p1, p2, states), sorted(p1), sorted(p2)))
+    losses.sort(key=lambda r: r[0])
+    best = losses[0]
+    top3 = [{"loss": round(loss, 4), "side_a": a, "side_b": b}
+            for loss, a, b in losses[:3]]
+    return max(0.0, best[0]), [best[1], best[2]], top3
+
+
+def phi(states: list[dict[str, bool]]) -> float:
+    """Φ = minimum information loss across bipartitions (MIP)."""
+    return phi_detailed(states)[0]
 
 
 def update(bundle: dict[str, Any]) -> dict[str, Any]:
@@ -166,17 +183,24 @@ def update(bundle: dict[str, Any]) -> dict[str, Any]:
     del _STATES[:-WINDOW]
     states = _STATES
     h = _entropy(states)
-    p = phi(states)
+    p, mip_sides, mip_top3 = phi_detailed(states)
     # integration: mean pairwise MI over adjacent element pairs
     elems = sorted(states[0]) if states else []
     mis = [_mi({a}, {b}, states) for i, a in enumerate(elems)
            for b in elems[i + 1:]] if len(elems) > 1 else [0.0]
+    keys = sorted(states[0]) if states else []
+    n_distinct = len({tuple(s[k] for k in keys) for s in states}) if keys else 0
     out = {
         "phi_meta": round(p, 4),
         "complexity": round(h, 4),
         "integration": round(sum(mis) / len(mis), 4) if mis else 0.0,
         "window": len(states),
         "elements": elems,
+        "mip_side_a": mip_sides[0] if mip_sides else [],
+        "mip_side_b": mip_sides[1] if len(mip_sides) > 1 else [],
+        "mip_top3": mip_top3,
+        "n_distinct_states": n_distinct,
+        "diversity": round(n_distinct / len(states), 4) if states else 0.0,
     }
     out.update(_bit_layer(bundle, p, h))
     return out
