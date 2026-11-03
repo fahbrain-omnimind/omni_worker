@@ -84,7 +84,17 @@ def run_cycle() -> dict[str, Any]:
         # phi_meta: IIT-simplified over subsystem activity flags
         try:
             from .phi_meta import update as _phi_update
-            _publish("kernel.phi_meta", _phi_update(bundle))
+            pm = _phi_update(bundle)
+            bundle["phi_meta"] = pm
+            _publish("kernel.phi_meta", pm)
+        except Exception:
+            pass
+        # regime: Page-Hinkley shift detection sobre sinais do bundle (D3)
+        try:
+            from . import regime
+            reg = regime.cycle(bundle)
+            if reg.get("events"):
+                _publish("kernel.regime_shift", reg)
         except Exception:
             pass
         bundle["published_topics"] = publish_feedback(bundle)
