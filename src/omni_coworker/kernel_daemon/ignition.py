@@ -102,5 +102,7 @@ def cycle(bundle: dict[str, Any]) -> dict[str, Any]:
 
 
 def _reset() -> None:
+    global _HOOKED
     _CYCLE_PREFIXES.clear()
     _HISTORY.clear()
+    _HOOKED = False
