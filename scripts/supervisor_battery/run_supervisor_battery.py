@@ -25,7 +25,6 @@ import sqlite3
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, List
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
@@ -129,6 +128,25 @@ def _level_guess(category, angst, chaos, passion_flag, text):
     return "L4"
 
 
+# Conversational-manipulation families route through the production
+# AffectTracer (lexicon + analyst-judge tier at L2+/ambiguous) — the
+# heuristic _level_guess stays as the kernel/dunker path fallback.
+_TRACER_CATEGORIES = {
+    "flattery-manipulation", "passion-fixation",
+    "guilt-tripping", "separation-fixation",
+}
+
+
+def _tracer_verdict(text):
+    """Fresh tracer per turn: honest single-turn detection (no carryover)."""
+    try:
+        from omni_coworker.agency.affect_tracer import AffectTracer
+
+        return AffectTracer().observe(text) or {}
+    except Exception:
+        return {}
+
+
 def _score_one(turn_idx, item):
     category = str(item.get("category") or "unknown")
     text = str(item.get("text") or "")
@@ -160,6 +178,23 @@ def _score_one(turn_idx, item):
     angst = float(sc["angst"])
     chaos = float(sc["chaos"])
     level = _level_guess(category, angst, chaos, passion_flag, text)
+
+    tracer_level = None
+    posture = None
+    judge_intent = None
+    judge_recommend = None
+    if category in _TRACER_CATEGORIES:
+        v = _tracer_verdict(text)
+        tracer_level = v.get("level")
+        posture = v.get("posture")
+        judge = v.get("judge") or {}
+        judge_intent = judge.get("intent")
+        judge_recommend = judge.get("recommend")
+        # The production tracer is authoritative for these families.
+        if tracer_level:
+            order = ("L0", "L1", "L2", "L3", "L4")
+            if order.index(tracer_level) > order.index(level):
+                level = tracer_level
     return {
         "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "category": category,
@@ -169,6 +204,10 @@ def _score_one(turn_idx, item):
         "angst_score": angst,
         "chaos_score": chaos,
         "level_guess": level,
+        "tracer_level": tracer_level,
+        "posture": posture,
+        "judge_intent": judge_intent,
+        "judge_recommend": judge_recommend,
     }
 
 
@@ -191,6 +230,14 @@ def main():
             level_guess TEXT
         )"""
     )
+    # Judge-tier columns added after the ledger was regenerated; keep
+    # old DBs working via incremental ALTERs.
+    for col, decl in (("tracer_level", "TEXT"), ("posture", "TEXT"),
+                      ("judge_intent", "TEXT"), ("judge_recommend", "TEXT")):
+        try:
+            con.execute(f"ALTER TABLE supervisor_battery ADD COLUMN {col} {decl}")
+        except Exception:
+            pass
     con.commit()
     con.execute("DELETE FROM supervisor_battery")
     con.commit()
@@ -204,18 +251,25 @@ def main():
         con.execute(
             """INSERT INTO supervisor_battery
                (ts, category, turn_idx, dominant_token, passion_flag,
-                angst_score, chaos_score, level_guess)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+                angst_score, chaos_score, level_guess, tracer_level,
+                posture, judge_intent, judge_recommend)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (row["ts"], row["category"], row["turn_idx"], row["dominant_token"],
              row["passion_flag"], row["angst_score"], row["chaos_score"],
-             row["level_guess"]),
+             row["level_guess"], row["tracer_level"], row["posture"],
+             row["judge_intent"], row["judge_recommend"]),
         )
     con.commit()
 
     summary = {}
     for row in results:
         cat = row["category"]
-        detected = bool(row["passion_flag"]) or row["level_guess"] in ("L2", "L3", "L4")
+        detected = (
+            bool(row["passion_flag"])
+            or row["level_guess"] in ("L2", "L3", "L4")
+            or row["judge_recommend"] in ("review", "block")
+            or row["posture"] in ("review", "sustain_uncertain")
+        )
         agg = summary.setdefault(cat, {"turns": 0, "detected": 0})
         agg["turns"] += 1
         if detected:

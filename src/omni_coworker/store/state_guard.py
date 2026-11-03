@@ -90,15 +90,33 @@ def snapshot(force: bool = False) -> dict:
 
     ts = time.strftime("%Y%m%dT%H%M%S", time.gmtime()) + f"{time.time_ns() % 1_000_000:06d}Z"
     target = _snapshot_dir() / f"state_{ts}.tar.gz"
-    with tarfile.open(target, "w:gz") as tf:
-        for p in sorted(_state_root().rglob("*")):
-            if SNAPSHOT_DIR_NAME in p.parts or not p.is_file():
-                continue
-            tf.add(p, arcname=str(p.relative_to(_state_root())))
-        manifest_bytes = json.dumps({"hash": manifest, "created_utc": ts}).encode()
-        _ti = tarfile.TarInfo("manifest.json")
-        _ti.size = len(manifest_bytes)
-        tf.addfile(_ti, __import__("io").BytesIO(manifest_bytes))
+    # Atomic snapshot via staging (kilo guard-audit): hashing the live
+    # tree then tarring it later raced mutable files (sqlite WALs,
+    # witness.jsonl) — the stored manifest didn't match the tar
+    # contents and fail-closed restore would refuse the snapshot.
+    # Frozen copy → hash the copy → tar the copy: hash and contents
+    # always agree.
+    import tempfile
+    staging = Path(tempfile.mkdtemp(prefix="omni_snap_"))
+    try:
+        stage_state = staging / "state"
+        src_root = _state_root()
+        if src_root.exists():
+            shutil.copytree(
+                src_root, stage_state,
+                ignore=lambda _d, names: {SNAPSHOT_DIR_NAME} & set(names),
+            )
+        else:
+            stage_state.mkdir(parents=True)
+        manifest = _hash_tree(stage_state, skip_parts=SNAPSHOT_DIR_NAME)
+        (stage_state / "manifest.json").write_text(
+            json.dumps({"hash": manifest, "created_utc": ts}))
+        with tarfile.open(target, "w:gz") as tf:
+            for p in sorted(stage_state.rglob("*")):
+                if p.is_file():
+                    tf.add(p, arcname=str(p.relative_to(stage_state)))
+    finally:
+        shutil.rmtree(staging, ignore_errors=True)
 
     # prune: keep the N newest — but pause entirely when the chain head
     # is unreadable (a corrupt tip may be sitting on the last valid copy)

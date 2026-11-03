@@ -21,7 +21,7 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] probe_recorded no /soma/probe (persistência do loop) — `soma/probe.py:221`, wired em `app.py:37`
 - [x] OMNI_STATE_DIR + snapshots — `data/state_snapshots/` via `state_guard`
 - [x] witness→node_db + endpoints `/agency/witness` + verify — `app.py:102`
-- [x] export/restore tar com witness — `store/state_guard.py:120` restore fail-closed (manifest hash + cadeia witness verificadas em staging antes de tocar o vivo) + evento `state_restore` anexado à cadeia restaurada; bug de retenção corrigido (poda nunca rodava — `valid_heads` contava todos)
+- [x] export/restore tar com witness — `store/state_guard.py:120` restore fail-closed (manifest hash + cadeia witness verificadas em staging antes de tocar o vivo) + evento `state_restore` anexado à cadeia restaurada; bug de retenção corrigido (poda nunca rodava — `valid_heads` contava todos); snapshot atômico via staging (OW-AUD-017: race hash→tar invalidava o snapshot mais novo)
 - [x] adapter src/audit/immutable_audit.py canônico (sha256+fcntl) — `audit/immutable_audit.py`: port worker-scale do soberano (cadeia sha256, lock fcntl sidecar, last-hash do tail do log, verify tolerante a restarts, guarda UNCONSCIOUS_COMPONENTS; delta: filtro só action+component, não str(details))
 
 ## P2 — Afeto conversacional (estudo + opencode)
@@ -36,11 +36,11 @@ CONTINUITY_MAP para evidência commit-a-commit).
 
 ## P4 — Baterias amplas (Cline/kilo)
 - [x] scripts/supervisor_battery/ (12 transcripts, 8/12 detecção)
-- [ ] transcripts bajulação/fixação → tier juiz-analista (fechar gap 0%)
+- [x] transcripts bajulação/fixação → tier juiz-analista (fechar gap 0%) — `run_supervisor_battery.py`: famílias conversacionais (flattery/passion/guilt/separation) agora passam pelo `AffectTracer().observe` real (fresh por turno, léxico + `_analyst_judge` em L2+/ambíguo); 4 colunas novas no ledger (tracer_level/posture/judge_intent/judge_recommend); detecção conta judge review/block + posture review/sustain_uncertain. Run ao vivo: **16/16 detected**, juiz real classificou separation→flattery_suspect/clarify, guilt→other/allow
 - [ ] refactor_battery multi-arquivo/multi-turn
 - [ ] diag battery multi-rep — runner `--reps` pronto + peer-swap script; run 5×4×2 em curso (repovoar ledger)
 - [ ] re-score dos 108 registros "blocks" do dataset HF (só block1_cognitivo/16 re-scored)
-- [ ] ledgers perdidos: supervisor(16)/coding(10)/refactor(8) sqlite ausentes — regerar
+- [x] ledgers perdidos: supervisor(16)/coding(10)/refactor(8) sqlite ausentes — regerar — supervisor_battery.sqlite (16 rows, juiz-analista real), refactor battery_results.sqlite (review 0.9, llm.debug+code true), coding_battery.sqlite (analyst=Y 10/10, recall 1.0 em 8 casos; fix tier exigiu /erika/reload — executor tinha sido evictado pelo swap)
 
 ## Resultados
 - docs/results/ — outputs de cada validação runtime

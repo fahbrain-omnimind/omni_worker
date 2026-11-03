@@ -97,11 +97,12 @@ archive_once() {
     --exclude='*.pem' --exclude='*.key' --exclude='*credential*' \
     --exclude='*id_rsa*' --exclude='*id_ed25519*' \
     -C "$REPO" \
-    data logs omni_code_index \
+    --ignore-failed-read \
+    data logs omni_code_index runtime_config \
     scripts/gemma4_diag_battery/diag_battery.sqlite \
     scripts/coding_battery/coding_battery.sqlite \
     scripts/supervisor_battery/supervisor_battery.sqlite \
-    scripts/refactor_battery/refactor_battery.sqlite \
+    scripts/refactor_battery/battery_results.sqlite \
     2>/dev/null
   if [ -s "$DRIVE_BACKUP_DIR/.$name.tmp" ]; then
     mv "$DRIVE_BACKUP_DIR/.$name.tmp" "$DRIVE_BACKUP_DIR/$name"
