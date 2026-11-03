@@ -45,8 +45,35 @@ def _landauer_j_per_bit(temp_c: float) -> float:
     return KB * (temp_c + 273.15) * LN2
 
 
+# Canais de pressão → carga composta. Corpus (livro R.10.15): PSI_io é o
+# preditor mais forte do estado interno (r=-0,5069, Granger hardware→software);
+# potência isolada é N.S. — pressão, não potência, modula a informação
+# efetivamente integrada. Pesos refletem essa ordem empírica.
+_PRESSURE_W = {"psi_io": 0.35, "vram_ratio": 0.25, "psi_mem": 0.15,
+               "psi_cpu": 0.15, "load_core": 0.10}
+
+
+def _pressure_channels(soma: dict[str, Any]) -> dict[str, float]:
+    """Normalize pressure signals to [0,1]; missing channels dropped."""
+    ch: dict[str, float] = {}
+    for key, field, scale in (
+            ("psi_io", "psi_io_some", 100.0),
+            ("psi_mem", "psi_mem_some", 100.0),
+            ("psi_cpu", "psi_cpu_some", 100.0)):
+        v = soma.get(field)
+        if isinstance(v, (int, float)):
+            ch[key] = max(0.0, min(1.0, float(v) / scale))
+    used, total = soma.get("gpu_vram_used_gb"), soma.get("gpu_vram_total_gb")
+    if isinstance(used, (int, float)) and isinstance(total, (int, float)) and total:
+        ch["vram_ratio"] = max(0.0, min(1.0, float(used) / float(total)))
+    load = soma.get("load_per_core")
+    if isinstance(load, (int, float)):
+        ch["load_core"] = max(0.0, min(1.0, float(load)))
+    return ch
+
+
 def _bit_layer(bundle: dict[str, Any], phi_bits: float, h_sys: float) -> dict[str, Any]:
-    """Physical bit layer: Landauer cost, real bit flow, integrated flow."""
+    """Physical bit layer: Landauer capacity + pressure-modulated effective flow."""
     soma = bundle.get("soma") or {}
     gpu = ((soma.get("gpu") or {}).get("gpus") or [{}])[0]
     power_w = soma.get("gpu_power_w") or gpu.get("power_w") or 0.0
@@ -58,6 +85,10 @@ def _bit_layer(bundle: dict[str, Any], phi_bits: float, h_sys: float) -> dict[st
     e_i5 = _landauer_j_per_bit(I5_TEMP_C)
     c_bit_i5 = I5_TDP_W / e_i5
     c_bit_host = (power_w / e) if e > 0 else 0.0
+    ch = _pressure_channels(soma)
+    wsum = sum(_PRESSURE_W[k] for k in ch) or 1.0
+    pressure_load = sum(ch[k] * _PRESSURE_W[k] for k in ch) / wsum
+    headroom = 1.0 - pressure_load
     return {
         "e_landauer_j_per_bit": f"{e:.4e}",
         "power_w": power_w,
@@ -67,6 +98,12 @@ def _bit_layer(bundle: dict[str, Any], phi_bits: float, h_sys: float) -> dict[st
         "cohesion": round(cohesion, 4),
         "phi_bit_flow_rate_bits_s": f"{bit_flow * cohesion:.4e}",
         "vs_i5_ratio": round(c_bit_host / c_bit_i5, 4) if c_bit_i5 else None,
+        "pressure_channels": {k: round(v, 4) for k, v in ch.items()},
+        "pressure_load": round(pressure_load, 4),
+        "pressure_headroom": round(headroom, 4),
+        # efetiva = capacidade física × coesão × headroom de pressão —
+        # camada que o corpus mostrou acoplada (PSI), não a potência nua.
+        "phi_effective_bits_s": f"{bit_flow * cohesion * headroom:.4e}",
     }
 
 
