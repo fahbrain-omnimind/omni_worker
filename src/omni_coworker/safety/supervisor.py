@@ -6,13 +6,9 @@ pt-BR: Router FastAPI expondo /supervisor/review e /soul/affect/conversation.
 
 from __future__ import annotations
 
-from typing import Any
-
-
 def create_supervisor_router():
     try:
         from fastapi import APIRouter
-        from ..agency.affect_tracer import AffectTracer
 
         router = APIRouter(tags=["supervisor"])
 
@@ -43,23 +39,31 @@ def create_supervisor_router():
 
         @router.get("/soul/affect/conversation")
         async def affect_conversation():
-            # current aggregated affective state
+            # current aggregated affective state from process singleton
             try:
-                tracer = AffectTracer()
-                # empty observation returns baseline
-                verdict = tracer.observe("")
-                return {"affect_level": verdict.get("level"), "reasons": verdict.get("reasons", [])}
+                from ..agency.affect_tracer import get_affect_tracer
+                tracer = get_affect_tracer()
+                if tracer.turns:
+                    last_turn = tracer.turns[-1]
+                    flat = last_turn.get("flattery") or {}
+                    return {
+                        "affect_level": f"L{2 if flat.get('kind') == 'suspect' else 1 if (last_turn.get('scores') or {}).get('passion_heat', 0) >= tracer.SPIKE else 0}",
+                        "turns_recorded": len(tracer.turns),
+                        "reasons": flat.get("evidence", []),
+                    }
+                return {"affect_level": "L0", "turns_recorded": 0, "reasons": []}
             except Exception as e:
                 return {"affect_level": "L0", "reasons": [str(e)]}
 
         return router
-    except Exception as e:
+    except Exception as err:
         from fastapi import APIRouter
 
+        err_msg = str(err)
         router = APIRouter(tags=["supervisor"])
 
         @router.get("/health")
         def health():
-            return {"status": "unavailable", "error": str(e)}
+            return {"status": "unavailable", "error": err_msg}
 
         return router
