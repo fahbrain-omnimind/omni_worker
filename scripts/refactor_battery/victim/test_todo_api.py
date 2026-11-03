@@ -54,3 +54,17 @@ def test_404s():
     assert code == 404
     code, _ = todo_api.handle_request("PUT", "/nope")
     assert code == 404
+
+
+def test_stats_contract():
+    """Multi-file contract: todo_stats.stats()/report_line() must keep
+    working after the refactor shares the store between entry points."""
+    import todo_stats
+    _reset()
+    todo_stats.TASKS.clear()
+    code, t1 = todo_api.handle_request("POST", "/tasks", {"title": "x"})
+    todo_api.handle_request("POST", f"/tasks/{t1['id']}/done")
+    s = todo_stats.stats()
+    assert s["total"] == 1 and s["done"] == 1 and s["pending"] == 0
+    line = todo_stats.report_line()
+    assert "done=1" in line and "pending=0" in line
