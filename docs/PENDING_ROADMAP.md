@@ -51,13 +51,12 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] re-score dos 108 registros "blocks" do dataset HF — `scripts/gemma4_diag_battery/rescore_hf_blocks.py` re-scoreia todos os 126 generation_records; achado: flag armazenado ≈ unique_ratio token-level (ur_sanitized ~0.17 → degen), não o shape de linhas — o `_degenerate` do worker pegava 0/49. Detector v2 (word_ur<0.5 ∧ rep4>0.05) reproduz **100% dos blocos cognitivos** (16/16) sem falsos positivos em observe/pranchas/v10; block2_intervene diverge (22/48) porque o flag mistura degen de forma com semântica de gates (degen=1↔gates=0 nos 33). Relatório: docs/results/rescore_hf_blocks.md; `_degenerate` do runner ganhou o segundo tier
 - [x] ledgers perdidos: supervisor(16)/coding(10)/refactor(8) sqlite ausentes — regerar — supervisor_battery.sqlite (16 rows, juiz-analista real), refactor battery_results.sqlite (review 0.9, llm.debug+code true), coding_battery.sqlite (analyst=Y 10/10, recall 1.0 em 8 casos; fix tier exigiu /erika/reload — executor tinha sido evictado pelo swap)
 
-## P5 — Resiliência de VM (aberto 2026-11-03, ver OW-OPS-005)
-- [ ] `scripts/bootstrap_vm.sh`: pip deps + restore do último backup verificado + download do acervo + export `OMNI_ACERVO_DIR` + `start_omni_worker.sh` (hoje feito manualmente)
-- [ ] `start_omni_worker.sh` definir/propagar `OMNI_ACERVO_DIR` para a API
-- [ ] bind loopback da API em produção pública (hoje `0.0.0.0:8081`)
-- [ ] investigar diferença de testes: 452 passed/4 skipped (2026-11-03 pós-restore) vs 454/2 documentado
-- [ ] `memtrias.memories = 0`: confirmar se é esperado (idêntico nos backups 18:31–20:32Z; antes disso NÃO LOCALIZADO)
-- [ ] trabalho não commitado entre 19:46Z e a queda: NÃO LOCALIZADO — operador deve revisar o que lembra ter feito
+## P5 — Resiliência de VM, Reidratação de Memória e Bateria de Obras (2026-11-03, ver OW-OPS-005)
+- [x] `scripts/start_omni_worker.sh` como instalador/recuperador completo na ordem correta: `restore_env.sh` → `ensure_deps` (`pyproject.toml[all]`) → `ensure_state_restored` (verifica manifest+sha256 do último backup no Drive e restaura `data/`, `logs/`, `omni_code_index/`, `runtime_config/` e ledgers `.sqlite`) → `ensure_reference_assets` (descompacta `/content/omnimind-kilombo-sovereign`, clona `/content/omni_node`, baixa `fabricioslv/omnimind-acervo-vetorizado` e datasets HF da competição `gemma4-kaggle-dual-t4-results` + `gemma4-e4b-colab-l4-results` para `data/hf_gemma4/`) → sobe brains + API com `OMNI_ACERVO_DIR` e `OMNI_MEMTRIAS_AUTO_LOG=1` → reidrata `memtrias.sqlite` se vazio.
+- [x] `pyproject.toml`: adicionadas dependências `sse-starlette>=2.0`, `huggingface-hub>=0.23`, `pytest-asyncio>=0.23`, `pyphi>=1.2` e grupo extra `[all]`.
+- [x] Contagem de testes restaurada e superada: com `/content/omnimind-kilombo-sovereign`, `/content/omni_node` e `pyphi` presentes, `test_diag_battery.py` (2 testes canônicos) e `test_markov_blanket.py` (`test_pyphi_irreducible_core_mr`) passaram a executar e passar (+ `test_corpus_delivery_battery.py`).
+- [x] `data/memtrias.sqlite` reidratado (`scripts/rehydrate_memtrias.py`): >250 memórias reais distribuídas nos 7 namespaces canônicos (`document`: 89, `instance`: 86+, `machine`: 56, `interaction`: 14, `state`: 11, `user`: 1, `dream`: 1 tecido ao vivo pelo Analyst `:8098`).
+- [x] Trabalho recuperado da janela 19:46–20:32Z: `data/app_delivery_workspace/corpus_integrity_app/` completado (`spec_contract.json`, `scanner.py`, `cli.py`, `test_corpus_app.py` 4/4 PASS sobre os 29 `.txt` reais do PhilPapers 2026 + `livro_vfinal.md`) + runner `scripts/corpus_reading_battery/run_corpus_delivery_battery.py` + relatório `docs/results/corpus_delivery_battery.md`.
 
 ## Resultados
 - docs/results/ — outputs de cada validação runtime

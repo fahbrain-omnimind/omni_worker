@@ -103,6 +103,7 @@ archive_once() {
     scripts/coding_battery/coding_battery.sqlite \
     scripts/supervisor_battery/supervisor_battery.sqlite \
     scripts/refactor_battery/battery_results.sqlite \
+    scripts/corpus_reading_battery/corpus_delivery_battery.sqlite \
     2>/dev/null
   if [ -s "$DRIVE_BACKUP_DIR/.$name.tmp" ]; then
     mv "$DRIVE_BACKUP_DIR/.$name.tmp" "$DRIVE_BACKUP_DIR/$name"

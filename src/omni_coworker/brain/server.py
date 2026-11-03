@@ -157,8 +157,9 @@ def create_brain_router():
                     except Exception:
                         pass
                 # memtrias: retorno do recalcado (recall) + inscrição (log)
+                auto_log = os.getenv("OMNI_MEMTRIAS_AUTO_LOG", "0") in ("1", "true", "yes")
                 mem_recall = bool(payload.pop("memory_recall", False))
-                mem_log = bool(payload.pop("memory_log", False))
+                mem_log = bool(payload.pop("memory_log", auto_log))
                 mem_chat = str(payload.pop("chat_id", "") or "")
                 acervo_recall = bool(payload.pop("acervo_recall", False))
                 mem = None

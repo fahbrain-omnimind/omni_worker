@@ -35,7 +35,8 @@ Machine Public Soul (SSE + UI bilíngue).
 |---|---|
 | [OW-OPS-001 — Kaggle Setup & Validation](KAGGLE_SETUP_VALIDATION.md) | Setup do ambiente, topologia dual-brain na GPU, validação E2E |
 | [OW-OPS-002 — Pending Roadmap](PENDING_ROADMAP.md) | Roadmap pendente (implementação + testes herméticos + validação runtime) |
-| [OW-OPS-005 — Recuperação pós-queda de VM](ops/OW-OPS-005_vm_recovery_2026-11-03.md) | Restauração de backup, bring-up, acervo vetorizado, lacunas conhecidas (2026-11-03) |
+| [OW-OPS-005 — Recuperação pós-queda de VM](ops/OW-OPS-005_vm_recovery_2026-11-03.md) | Bootstrap completo no `start_omni_worker.sh`, reidratação `memtrias`, datasets HF e bateria de leitura de obras (2026-11-03) |
+| [OW-RES-CORPUS-001 — Bateria de Leitura de Obras & Entrega de App](results/corpus_delivery_battery.md) | Leitura de obras reais (PhilPapers 2026 + livro A6) pelos brains Gemma 4 + entrega `corpus_integrity_app` |
 | [OW-OPS-003 — Code ↔ README Conformance](CODE_README_CONFORMANCE.md) | Conformidade entre os READMEs do repo e o código |
 
 **Estudos** (`docs/studies/`)

@@ -193,7 +193,7 @@ class AgentOrchestrator:
                     _judge_persona
                     + "\n\nYou are a second-opinion implementation judge. Reply ONLY "
                     'with JSON: {"approved": bool, "comments": str}.')},
-                {"role": "user", "content": f"Judge this deliverable:\n{str(result_text)[:3000]}"},
+                {"role": "user", "content": f"Judge this deliverable:\n{str(result_text)[:10000]}"},
             ],
             role=j2_role, max_tokens=200,
         )
@@ -214,7 +214,7 @@ class AgentOrchestrator:
                     + "\n\nYou are a concurring judge. Given prior verdicts "
                     f"{verdicts}, reply ONLY with JSON: "
                     '{"approved": bool, "comments": str}.')},
-                {"role": "user", "content": f"Deliverable:\n{str(result_text)[:2000]}"},
+                {"role": "user", "content": f"Deliverable:\n{str(result_text)[:10000]}"},
             ],
             role="analyst", max_tokens=200,
         )

@@ -49,6 +49,10 @@ OMNI_NODE_ROOT="${OMNI_NODE_ROOT:-/content/omni_node}"
 export PYTHONPATH
 export OMNI_CODE_INDEX_DIR="${OMNI_CODE_INDEX_DIR:-$REPO/omni_code_index}"
 export OMNI_STATE_DIR="${OMNI_STATE_DIR:-$REPO/data}"
+export OMNI_ACERVO_DIR="${OMNI_ACERVO_DIR:-/content/acervo_vetorizado}"
+export OMNI_MEMTRIAS_AUTO_LOG="${OMNI_MEMTRIAS_AUTO_LOG:-1}"
+DRIVE_BACKUP_DIR="${DRIVE_BACKUP_DIR:-/content/drive/MyDrive/omni_worker_backups}"
+SOVEREIGN_TAR="${SOVEREIGN_TAR:-/content/drive/MyDrive/omnimind_backup/omnimind-kilombo-sovereign.tar.gz}"
 
 ANALYST_MODEL="${ANALYST_MODEL:-google/gemma-4-12B-it}"
 EXECUTOR_MODEL="${EXECUTOR_MODEL:-google/gemma-4-E4B-it}"
@@ -122,6 +126,109 @@ esac
 
 echo -e "${GREEN}OmniMind Worker bring-up${NC} — repo $REPO, python $VENV_PYTHON"
 
+# --- 1. Bootstrap de variáveis e segredos (restore_env.sh) ------------------
+if [ -z "${HF_TOKEN:-}" ] && [ ! -f "$HOME/.cache/huggingface/token" ]; then
+  if [ -f "$REPO/scripts/restore_env.sh" ]; then
+    echo -e "${BLUE}>> [bootstrap] restaurando variáveis de ambiente (restore_env.sh)...${NC}"
+    # shellcheck disable=SC1090
+    source "$REPO/scripts/restore_env.sh" --scope public || true
+  fi
+fi
+
+# --- 2. Bootstrap de venv e dependências (pyproject.toml [all]) -------------
+ensure_deps() {
+  if [ "${OMNI_CREATE_VENV:-0}" = "1" ] && [ ! -x "$REPO/.venv/bin/python" ]; then
+    echo -e "${BLUE}>> [bootstrap] criando virtualenv em $REPO/.venv...${NC}"
+    python3 -m venv "$REPO/.venv" --system-site-packages
+    VENV_PYTHON="$REPO/.venv/bin/python"
+  fi
+  if ! "$VENV_PYTHON" -c "import fastapi, uvicorn, httpx, bitsandbytes, faiss, sentence_transformers, black, ruff, pytest_asyncio, sse_starlette, huggingface_hub, pyphi, acp" 2>/dev/null; then
+    echo -e "${BLUE}>> [bootstrap] instalando dependências completas de pyproject.toml ([all])...${NC}"
+    "$VENV_PYTHON" -m pip install -q -e "$REPO[all]" \
+      || "$VENV_PYTHON" -m pip install -q bitsandbytes faiss-cpu sentence-transformers pandas pyarrow nvidia-ml-py httpx psutil ruff black pytest-asyncio sse-starlette huggingface-hub pyphi "agent-client-protocol>=0.12,<1"
+  else
+    echo -e "${GREEN}[OK]${NC} dependências Python verificadas ($VENV_PYTHON)"
+  fi
+}
+
+# --- 3. Restauração automática de backup do Drive se bancos ausentes --------
+ensure_state_restored() {
+  if [ -f "$OMNI_STATE_DIR/integration_loop.sqlite" ] && [ -f "$OMNI_STATE_DIR/shared_workspace.sqlite" ]; then
+    echo -e "${GREEN}[OK]${NC} bancos SQLite presentes em $OMNI_STATE_DIR"
+    return 0
+  fi
+  if [ ! -d "$DRIVE_BACKUP_DIR" ]; then
+    echo -e "${YELLOW}[WARN]${NC} $DRIVE_BACKUP_DIR não montado e $OMNI_STATE_DIR vazio"
+    return 0
+  fi
+  local latest
+  latest="$(ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz 2>/dev/null | head -1 || true)"
+  if [ -z "$latest" ]; then
+    echo -e "${YELLOW}[WARN]${NC} nenhum omni_worker_*.tar.gz em $DRIVE_BACKUP_DIR"
+    return 0
+  fi
+  echo -e "${BLUE}>> [bootstrap] verificando e restaurando backup: $(basename "$latest")${NC}"
+  if bash "$REPO/scripts/archive_worker_state.sh" --verify "$latest"; then
+    local stage="/tmp/omni_restore_stage_$$"
+    mkdir -p "$stage"
+    tar -xzf "$latest" -C "$stage"
+    rm -rf "$stage/runtime_config/pids"
+    for d in data logs omni_code_index runtime_config; do
+      [ -d "$stage/$d" ] && cp -a "$stage/$d" "$REPO/"
+    done
+    [ -f "$stage/scripts/gemma4_diag_battery/diag_battery.sqlite" ] && \
+      cp -a "$stage/scripts/gemma4_diag_battery/diag_battery.sqlite" "$REPO/scripts/gemma4_diag_battery/"
+    [ -f "$stage/scripts/refactor_battery/battery_results.sqlite" ] && \
+      cp -a "$stage/scripts/refactor_battery/battery_results.sqlite" "$REPO/scripts/refactor_battery/"
+    [ -f "$stage/scripts/supervisor_battery/supervisor_battery.sqlite" ] && \
+      cp -a "$stage/scripts/supervisor_battery/supervisor_battery.sqlite" "$REPO/scripts/supervisor_battery/"
+    [ -f "$stage/scripts/corpus_reading_battery/corpus_delivery_battery.sqlite" ] && \
+      mkdir -p "$REPO/scripts/corpus_reading_battery" && \
+      cp -a "$stage/scripts/corpus_reading_battery/corpus_delivery_battery.sqlite" "$REPO/scripts/corpus_reading_battery/"
+    rm -rf "$stage"
+    echo -e "${GREEN}[OK]${NC} estado e bancos restaurados de $(basename "$latest")"
+  else
+    echo -e "${RED}[FAIL]${NC} verificação de integridade falhou para $latest — abortando restore"
+  fi
+}
+
+# --- 4. Repositórios de referência e datasets HF (acervo + competição) ------
+ensure_reference_assets() {
+  if [ ! -d "/content/omnimind-kilombo-sovereign" ] && [ -f "$SOVEREIGN_TAR" ]; then
+    echo -e "${BLUE}>> [bootstrap] descompactando /content/omnimind-kilombo-sovereign...${NC}"
+    tar -xzf "$SOVEREIGN_TAR" -C /content || true
+  fi
+  if [ ! -d "$OMNI_NODE_ROOT" ]; then
+    echo -e "${BLUE}>> [bootstrap] clonando repositório de referência $OMNI_NODE_ROOT...${NC}"
+    git clone -q https://github.com/fahbrain-omnimind/omni_node.git "$OMNI_NODE_ROOT" || true
+  fi
+  [ -d "$OMNI_NODE_ROOT/src" ] && export PYTHONPATH="$OMNI_NODE_ROOT:$OMNI_NODE_ROOT/src:$REPO/src"
+
+  if [ ! -f "$OMNI_ACERVO_DIR/acervo_manifest.sqlite" ]; then
+    echo -e "${BLUE}>> [bootstrap] baixando acervo vetorizado HF -> $OMNI_ACERVO_DIR...${NC}"
+    "$VENV_PYTHON" -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='fabricioslv/omnimind-acervo-vetorizado', repo_type='dataset', local_dir='$OMNI_ACERVO_DIR', max_workers=8)" \
+      || echo -e "${YELLOW}[WARN] falha ao baixar acervo vetorizado${NC}"
+  else
+    echo -e "${GREEN}[OK]${NC} acervo vetorizado presente ($OMNI_ACERVO_DIR)"
+  fi
+
+  mkdir -p "$OMNI_STATE_DIR/hf_gemma4"
+  if [ ! -f "$OMNI_STATE_DIR/hf_gemma4/gemma4_t4x2_v2_results.sqlite" ] || [ ! -f "$OMNI_STATE_DIR/hf_gemma4/gemma4_e4b_l4_results.sqlite" ]; then
+    echo -e "${BLUE}>> [bootstrap] baixando datasets da competição HF -> $OMNI_STATE_DIR/hf_gemma4...${NC}"
+    "$VENV_PYTHON" -c "
+from huggingface_hub import snapshot_download
+for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4b-colab-l4-results'):
+    snapshot_download(repo_id=repo, repo_type='dataset', local_dir='$OMNI_STATE_DIR/hf_gemma4')
+" || echo -e "${YELLOW}[WARN] falha ao baixar datasets HF da competição${NC}"
+  else
+    echo -e "${GREEN}[OK]${NC} datasets HF da competição presentes ($OMNI_STATE_DIR/hf_gemma4)"
+  fi
+}
+
+ensure_deps
+ensure_state_restored
+ensure_reference_assets
+
 # Code index (symbolic body): só reconstrói se ausente ou se chamado explicitamente com --reindex.
 # Se já existe índice válido, reutiliza imediatamente no startup para nunca atrasar os brains.
 index_missing() {
@@ -174,6 +281,15 @@ start_proc swap_scheduler "swap_scheduler.log" \
   "$VENV_PYTHON" -m omni_coworker.orchestration.swap_scheduler
 start_proc archive_loop "archive_loop.log" \
   bash "$REPO/scripts/archive_worker_state.sh" --loop "${ARCHIVE_INTERVAL_S:-3600}"
+
+# --- 5. Reidratação da memória topológica (memtrias.sqlite) se vazia --------
+mem_count=$("$VENV_PYTHON" -c "import sqlite3, os; p='$OMNI_STATE_DIR/memtrias.sqlite'; print(sqlite3.connect(p).execute('SELECT count(*) FROM memories').fetchone()[0] if os.path.exists(p) else 0)" 2>/dev/null || echo "0")
+if [ "${mem_count:-0}" -eq 0 ] && [ -f "$REPO/scripts/rehydrate_memtrias.py" ]; then
+  echo -e "${BLUE}>> [bootstrap] memtrias.sqlite vazio (0 registros) — reidratando memórias reais...${NC}"
+  "$VENV_PYTHON" "$REPO/scripts/rehydrate_memtrias.py" || echo -e "${YELLOW}[WARN] rehydrate_memtrias falhou${NC}"
+else
+  echo -e "${GREEN}[OK]${NC} memtrias.sqlite populado (${mem_count} memórias)"
+fi
 
 echo -e "\n${GREEN}Topologia:${NC}"
 status
