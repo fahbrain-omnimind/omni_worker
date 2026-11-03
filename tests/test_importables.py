@@ -77,7 +77,8 @@ def test_bus_conflict_tie_breaks_by_last_writer():
 # ── 2. Governance ────────────────────────────────────────────────────────────
 
 
-def test_trust_system_events_move_trust():
+def test_trust_system_events_move_trust(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_STATE_DIR", str(tmp_path))
     ts = TrustSystem()
     assert ts.get_trust("CodeAgent") == pytest.approx(0.5)
     ts.record_event("tests_passed")

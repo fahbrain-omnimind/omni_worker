@@ -16,7 +16,10 @@ puro-Python mínimo em vez de forçar async no loop do coworker.
 
 from __future__ import annotations
 
+import json
+import os
 import time
+from pathlib import Path
 from datetime import datetime, timezone
 from typing import Any, Callable
 
@@ -113,8 +116,44 @@ class TrustSystem:
 
     def __init__(self, default_trust: float = DEFAULT_TRUST) -> None:
         self.default_trust = float(default_trust)
+        self._state_dir = Path(os.getenv("OMNI_STATE_DIR", "data"))
+        self._scores_path = self._state_dir / "trust_scores.json"
+        self._events_path = self._state_dir / "trust_events.jsonl"
         self._scores: dict[str, float] = {}
         self._events: list[dict[str, Any]] = []
+        self._load()
+
+    def _load(self) -> None:
+        try:
+            if self._scores_path.exists():
+                raw = json.loads(self._scores_path.read_text(encoding="utf-8"))
+                if isinstance(raw, dict):
+                    self._scores = {
+                        str(k): float(v) for k, v in raw.items()
+                        if isinstance(v, (int, float)) and not isinstance(v, bool)
+                    }
+        except Exception:
+            self._scores = {}
+
+    def _save_scores(self) -> None:
+        try:
+            self._scores_path.parent.mkdir(parents=True, exist_ok=True)
+            tmp = self._scores_path.with_name(self._scores_path.name + ".tmp")
+            tmp.write_text(json.dumps(self._scores, ensure_ascii=False), encoding="utf-8")
+            os.replace(tmp, self._scores_path)
+        except Exception:
+            try:
+                tmp.unlink(missing_ok=True)
+            except Exception:
+                pass
+
+    def _append_event(self, record: dict[str, Any]) -> None:
+        try:
+            self._events_path.parent.mkdir(parents=True, exist_ok=True)
+            with self._events_path.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
+        except Exception:
+            pass
 
     def get_trust(self, agent: str = "CodeAgent") -> float:
         """Return current trust for an agent (default DEFAULT_TRUST)."""
@@ -124,6 +163,7 @@ class TrustSystem:
         """Set trust explicitly, clamped to [0.0, 1.0]."""
         value = max(0.0, min(1.0, float(value)))
         self._scores[agent] = value
+        self._save_scores()
         return value
 
     def record_event(self, event_type: str, agent: str = "CodeAgent") -> float:
@@ -137,9 +177,10 @@ class TrustSystem:
         before = self.get_trust(agent)
         after = round(max(0.0, min(1.0, before + delta)), 6)
         self._scores[agent] = after
-        self._events.append(
-            {"event": event_type, "agent": agent, "delta": delta, "before": before, "after": after, "ts": _now()}
-        )
+        record = {"event": event_type, "agent": agent, "delta": delta, "before": before, "after": after, "ts": _now()}
+        self._events.append(record)
+        self._save_scores()
+        self._append_event(record)
         return after
 
     def events(self) -> list[dict[str, Any]]:
@@ -184,8 +225,37 @@ class QuarantineSystem:
     corrotinas async; reimplementado como um pequeno registro síncrono.
     """
 
+    _FILES = ("quarantine.json", "quarantine_records.json")
+
     def __init__(self) -> None:
+        self._state_dir = Path(os.getenv("OMNI_STATE_DIR", "data"))
+        self._paths = [self._state_dir / name for name in self._FILES]
         self._records: dict[str, dict[str, Any]] = {}
+        self._load()
+
+    def _load(self) -> None:
+        for p in self._paths:
+            try:
+                if p.exists():
+                    raw = json.loads(p.read_text(encoding="utf-8"))
+                    if isinstance(raw, dict):
+                        self._records = {str(k): v for k, v in raw.items() if isinstance(v, dict)}
+                        return
+            except Exception:
+                continue
+
+    def _save(self) -> None:
+        for p in self._paths:
+            try:
+                p.parent.mkdir(parents=True, exist_ok=True)
+                tmp = p.with_name(p.name + ".tmp")
+                tmp.write_text(json.dumps(self._records, ensure_ascii=False, default=str), encoding="utf-8")
+                os.replace(tmp, p)
+            except Exception:
+                try:
+                    tmp.unlink(missing_ok=True)
+                except Exception:
+                    pass
 
     def quarantine(
         self, component_id: str, reason: str, evidence: dict[str, Any] | None = None
@@ -198,11 +268,15 @@ class QuarantineSystem:
             "ts": _now(),
         }
         self._records[component_id] = record
+        self._save()
         return record
 
     def release(self, component_id: str) -> bool:
         """Release a component; True when it was quarantined."""
-        return self._records.pop(component_id, None) is not None
+        removed = self._records.pop(component_id, None) is not None
+        if removed:
+            self._save()
+        return removed
 
     def is_quarantined(self, component_id: str) -> bool:
         """Check quarantine status."""

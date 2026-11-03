@@ -6,6 +6,7 @@ pt-BR: Conexões atômicas por escrita; reutiliza src.storage.
 
 from __future__ import annotations
 
+import os
 import sqlite3
 from pathlib import Path
 
@@ -17,7 +18,9 @@ class NodeDB:
     pt-BR: Modo WAL, uma conexão por escrita.
     """
 
-    def __init__(self, path: str = "data/node.db"):
+    def __init__(self, path: str | None = None):
+        if path is None:
+            path = str(Path(os.getenv("OMNI_STATE_DIR", "data")) / "node.db")
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
 

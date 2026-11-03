@@ -140,11 +140,57 @@ def create_brain_router():
                         }] + msgs
                     except Exception:
                         pass
+                # memtrias: retorno do recalcado (recall) + inscrição (log)
+                mem_recall = bool(payload.pop("memory_recall", False))
+                mem_log = bool(payload.pop("memory_log", False))
+                mem_chat = str(payload.pop("chat_id", "") or "")
+                mem = None
+                if mem_recall or mem_log:
+                    try:
+                        from ..memory.memtrias_ai import get_memtrias
+
+                        mem = get_memtrias()
+                    except Exception:
+                        mem = None
+                user_turn = " ".join(
+                    m.get("content", "")
+                    for m in (payload.get("messages") or [])
+                    if m.get("role") == "user"
+                )
+                if mem is not None and mem_recall and user_turn:
+                    try:
+                        hits = mem.recall(
+                            user_turn,
+                            namespaces=["user", "interaction", "chat", "machine"],
+                            chat_id=mem_chat or None, top_k=3)
+                        if hits:
+                            note = "[memtrias] " + " | ".join(
+                                f"{h['namespace']}:{h['content'][:80]}"
+                                for h in hits)
+                            msgs = list(payload.get("messages") or [])
+                            payload["messages"] = [{"role": "system",
+                                                    "content": note}] + msgs
+                    except Exception:
+                        pass
                 async with httpx.AsyncClient(timeout=120.0) as client:
                     resp = await client.post(
                         f"{_base_for_role(role)}/v1/chat/completions", json=payload
                     )
-                    return resp.json()
+                    out = resp.json()
+                    if mem is not None and mem_log and user_turn:
+                        try:
+                            meta = {"instance": role,
+                                    "chat_id": mem_chat or None}
+                            mem.remember("user", user_turn, **meta)
+                            ans = ((out.get("choices") or [{}])[0]
+                                   .get("message") or {}).get("content") or ""
+                            if ans:
+                                mem.remember("interaction",
+                                             f"u: {user_turn}\na: {ans}",
+                                             **meta)
+                        except Exception:
+                            pass
+                    return out
             except Exception as e:
                 raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
 

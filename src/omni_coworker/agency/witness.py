@@ -15,6 +15,7 @@ ela quebra, inclusive registros legados anteriores ao hashing.
 from __future__ import annotations
 
 import hashlib
+import os
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -45,12 +46,16 @@ def _last_hash(records: list[dict[str, Any]]) -> str:
     return records[-1].get("hash", "") or ""
 
 
-def append_witness(path: str | Path, event: dict[str, Any]) -> None:
+def append_witness(path: str | Path | None = None, event: dict[str, Any] | None = None) -> None:
     """Append an event to witness JSONL.
 
     English: Appends one JSON line with timestamp, prev_hash and hash.
     pt-BR: Adiciona uma linha JSON com timestamp, prev_hash e hash.
     """
+    if path is None:
+        path = Path(os.getenv("OMNI_STATE_DIR", "data")) / "witness.jsonl"
+    if event is None:
+        event = {}
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
 
@@ -68,12 +73,14 @@ def append_witness(path: str | Path, event: dict[str, Any]) -> None:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def read_witness(path: str | Path, limit: int | None = None) -> list[dict[str, Any]]:
+def read_witness(path: str | Path | None = None, limit: int | None = None) -> list[dict[str, Any]]:
     """Read witness log.
 
     English: Reads JSONL events (skips malformed lines).
     pt-BR: Lê eventos JSONL (ignora linhas malformadas).
     """
+    if path is None:
+        path = Path(os.getenv("OMNI_STATE_DIR", "data")) / "witness.jsonl"
     p = Path(path)
     if not p.exists():
         return []
@@ -93,7 +100,7 @@ def read_witness(path: str | Path, limit: int | None = None) -> list[dict[str, A
     return events
 
 
-def witness_event(event_type: str, data: dict[str, Any] | None = None, path: str | Path = "data/witness.jsonl") -> None:
+def witness_event(event_type: str, data: dict[str, Any] | None = None, path: str | Path | None = None) -> None:
     """Create and append a witness event.
 
     English: Convenience function for witness events.
@@ -103,6 +110,8 @@ def witness_event(event_type: str, data: dict[str, Any] | None = None, path: str
         "type": event_type,
         "data": data or {},
     }
+    if path is None:
+        path = Path(os.getenv("OMNI_STATE_DIR", "data")) / "witness.jsonl"
     append_witness(path, event)
     # Audit P1 dual-write: mirror into the node database so the witness
     # survives even if the jsonl is lost (VM recycle, pruning).
@@ -121,7 +130,7 @@ def witness_event(event_type: str, data: dict[str, Any] | None = None, path: str
         pass
 
 
-def verify_witness(path: str | Path) -> dict[str, Any]:
+def verify_witness(path: str | Path | None = None) -> dict[str, Any]:
     """Verify the witness hash chain.
 
     English: Walks records and validates prev_hash continuity + content
@@ -132,6 +141,8 @@ def verify_witness(path: str | Path) -> dict[str, Any]:
     no próprio índice. Retorna {"valid": bool, "records": int,
     "broken_at": int | None}.
     """
+    if path is None:
+        path = Path(os.getenv("OMNI_STATE_DIR", "data")) / "witness.jsonl"
     records = read_witness(path)
     prev = ""
     for i, record in enumerate(records):

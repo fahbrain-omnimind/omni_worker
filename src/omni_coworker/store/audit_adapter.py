@@ -45,6 +45,6 @@ def audit_verify() -> dict:
     try:
         from ..agency.witness import verify_witness
 
-        return {"source": "witness_fallback", "verify": verify_witness("data/witness.jsonl")}
+        return {"source": "witness_fallback", "verify": verify_witness()}
     except Exception as e:
         return {"source": None, "verify": {"valid": False, "reason": str(e)}}

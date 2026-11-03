@@ -146,7 +146,7 @@ def create_app() -> FastAPI:
         """Witness hash-chain: last entries + integrity verification."""
         from .agency.witness import read_witness, verify_witness
 
-        chain = read_witness("data/witness.jsonl", limit=20)
-        return {"entries": chain, "verify": verify_witness("data/witness.jsonl")}
+        chain = read_witness(limit=20)
+        return {"entries": chain, "verify": verify_witness()}
 
     return app
