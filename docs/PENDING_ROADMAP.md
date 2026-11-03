@@ -21,8 +21,8 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] probe_recorded no /soma/probe (persistência do loop) — `soma/probe.py:221`, wired em `app.py:37`
 - [x] OMNI_STATE_DIR + snapshots — `data/state_snapshots/` via `state_guard`
 - [x] witness→node_db + endpoints `/agency/witness` + verify — `app.py:102`
-- [ ] export/restore tar.zst com witness (restore path pendente)
-- [ ] adapter src/audit/immutable_audit.py canônico (sha256+fcntl)
+- [x] export/restore tar com witness — `store/state_guard.py:120` restore fail-closed (manifest hash + cadeia witness verificadas em staging antes de tocar o vivo) + evento `state_restore` anexado à cadeia restaurada; bug de retenção corrigido (poda nunca rodava — `valid_heads` contava todos)
+- [x] adapter src/audit/immutable_audit.py canônico (sha256+fcntl) — `audit/immutable_audit.py`: port worker-scale do soberano (cadeia sha256, lock fcntl sidecar, last-hash do tail do log, verify tolerante a restarts, guarda UNCONSCIOUS_COMPONENTS; delta: filtro só action+component, não str(details))
 
 ## P2 — Afeto conversacional (estudo + opencode)
 - [x] agency/affect_tracer.py L0-L4 + 6 testes (feito)

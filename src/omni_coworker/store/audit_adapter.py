@@ -1,11 +1,13 @@
 """audit_adapter — ponte para o ImmutableAuditSystem canônico.
 
-English: Uses the canonical `ImmutableAuditSystem` (sha256 chain +
-fcntl file lock) when the primary repo is mounted; otherwise falls back
-to the local witness hash-chain — the app never depends on either.
-pt-BR: Usa o `ImmutableAuditSystem` canônico (cadeia sha256 + lock
-fcntl) quando o repo primário está montado; senão cai na hash-chain
-local — o app nunca depende de nenhum dos dois.
+English: Appends audit events to the worker-owned canonical
+`ImmutableAuditSystem` (sha256 chain + fcntl lock, anchored at
+OMNI_STATE_DIR/audit). When the audit write itself fails, falls back
+to the witness hash-chain — the caller never depends on either.
+pt-BR: Anexa eventos de auditoria ao `ImmutableAuditSystem` canônico
+do próprio worker (cadeia sha256 + lock fcntl, ancorado em
+OMNI_STATE_DIR/audit). Se a escrita de auditoria falhar, cai na
+hash-chain do witness — o chamador nunca depende de nenhum dos dois.
 """
 
 from __future__ import annotations
@@ -14,34 +16,36 @@ from typing import Any
 
 
 def audit_append(event_type: str, data: dict[str, Any] | None = None) -> dict:
-    """Append an audit event via canonical adapter or local fallback."""
+    """Append an audit event via the canonical chain or witness fallback."""
     data = data or {}
     try:
-        import sys
-        from pathlib import Path
+        from ..audit import get_audit
 
-        for base in (Path("/content/omni_node"), Path("/content/omnimind-kilombo-sovereign")):
-            p = base / "src"
-            if (base / "src" / "audit" / "immutable_audit.py").exists():
-                sys.path.insert(0, str(p))
-                from audit.immutable_audit import ImmutableAuditSystem  # noqa: PLC0415
-
-                system = ImmutableAuditSystem(log_dir=str(base / "logs"))
-                system.append(event_type, json_dump := __import__("json").dumps(data))
-                return {"source": "canonical:immutable_audit", "appended": True}
-    except Exception:
-        pass
+        h = get_audit().log_action(event_type, dict(data))
+        return {"source": "canonical:immutable_audit", "appended": True,
+                "hash": h}
+    except Exception as e:
+        canonical_err = str(e)
     try:
         from ..agency.witness import witness_event
 
         witness_event(f"audit.{event_type}", data)
-        return {"source": "witness_fallback", "appended": True}
+        return {"source": "witness_fallback", "appended": True,
+                "canonical_error": canonical_err}
     except Exception as e:
-        return {"source": None, "appended": False, "reason": str(e)}
+        return {"source": None, "appended": False,
+                "reason": str(e), "canonical_error": canonical_err}
 
 
 def audit_verify() -> dict:
-    """Verify the canonical chain or the local witness fallback."""
+    """Verify the audit chain (canonical first, witness fallback)."""
+    try:
+        from ..audit import get_audit
+
+        return {"source": "canonical",
+                "verify": get_audit().verify_chain_integrity()}
+    except Exception:
+        pass
     try:
         from ..agency.witness import verify_witness
 

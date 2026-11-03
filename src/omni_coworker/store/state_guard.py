@@ -36,18 +36,27 @@ def _snapshot_dir() -> Path:
     return d
 
 
-def _manifest_hash() -> str:
-    """Hash of the state files (excluding snapshots dir)."""
-    root = _state_root()
+def _hash_tree(root: Path, skip_top: set[str] | None = None,
+               skip_parts: str | None = None) -> str:
+    """Deterministic sha256 over a tree's files (path + content)."""
+    skip_top = skip_top or set()
     h = hashlib.sha256()
     for p in sorted(root.rglob("*")):
-        if SNAPSHOT_DIR_NAME in p.parts or not p.is_file():
+        if not p.is_file():
             continue
-        h.update(str(p.relative_to(root)).encode())
+        rel = p.relative_to(root)
+        if rel.parts[0] in skip_top or (skip_parts and skip_parts in rel.parts):
+            continue
+        h.update(str(rel).encode())
         with p.open("rb") as f:
             for chunk in iter(lambda: f.read(1_000_000), b""):
                 h.update(chunk)
     return h.hexdigest()
+
+
+def _manifest_hash() -> str:
+    """Hash of the state files (excluding snapshots dir)."""
+    return _hash_tree(_state_root(), skip_parts=SNAPSHOT_DIR_NAME)
 
 
 def _latest_snapshot() -> Path | None:
@@ -91,32 +100,93 @@ def snapshot(force: bool = False) -> dict:
         _ti.size = len(manifest_bytes)
         tf.addfile(_ti, __import__("io").BytesIO(manifest_bytes))
 
-    # prune: keep the N newest, but never drop the last valid chain head
+    # prune: keep the N newest — but pause entirely when the chain head
+    # is unreadable (a corrupt tip may be sitting on the last valid copy)
     snaps = sorted(_snapshot_dir().glob("state_*.tar.gz"), reverse=True)
-    valid_heads = 0
-    for s in snaps:
-        try:
-            with tarfile.open(s, "r:gz") as tf:
-                tf.extractfile("manifest.json")
-            valid_heads += 1
-        except Exception:
-            break
-    kept = snaps[: max(N_SNAPSHOTS, valid_heads)]
+    try:
+        with tarfile.open(snaps[0], "r:gz") as tf:
+            tf.extractfile("manifest.json")
+        head_ok = True
+    except Exception:
+        head_ok = False
+    kept = snaps[:N_SNAPSHOTS] if head_ok else snaps
     for old in snaps[len(kept):]:
         old.unlink()
     return {"created": True, "skipped": False, "path": str(target),
             "kept": len(kept)}
 
 
-def restore(path: str | Path) -> dict:
-    """Extract a snapshot into the state root (never overwrite snapshots)."""
+def restore(path: str | Path, verify: bool = True) -> dict:
+    """Verify + extract a snapshot into the state root, then witness it.
+
+    English: With ``verify`` (default) the archive is stage-extracted and
+    checked BEFORE touching live state — fail-closed: a snapshot whose
+    manifest hash mismatches (tampered/corrupt) or whose embedded
+    witness.jsonl chain is broken is refused and never overwrites the
+    state dir. On success the files overlay the state root (files absent
+    from the archive are left alone — overlay, not wipe) and a
+    ``state_restore`` witness event is appended to the restored chain,
+    so the act itself joins the lineage it resurrected.
+    pt-BR: Com ``verify`` (default) o arquivo é extraído em staging e
+    conferido ANTES de tocar o estado vivo — fail-closed: snapshot com
+    hash de manifest divergente (adulterado/corrompido) ou witness.jsonl
+    embutido com cadeia quebrada é recusado e nunca sobrescreve o state
+    dir. No sucesso os arquivos sobrepõem a raiz (arquivos ausentes do
+    arquivo permanecem — overlay, não wipe) e um evento witness
+    ``state_restore`` é anexado à cadeia restaurada — o ato entra na
+    linhagem que ressuscitou.
+    """
+    import tempfile
+
     path = Path(path)
+    root = _state_root()
+    root.mkdir(parents=True, exist_ok=True)
     try:
-        with tarfile.open(path, "r:gz") as tf:
-            tf.extractall(_state_root(), filter="data")
-        return {"restored": True, "path": str(path)}
+        if not verify:
+            with tarfile.open(path, "r:gz") as tf:
+                tf.extractall(root, filter="data")
+            return {"restored": True, "path": str(path), "verified": False}
+        with tempfile.TemporaryDirectory(dir=str(root.parent)) as stage:
+            sp = Path(stage)
+            with tarfile.open(path, "r:gz") as tf:
+                tf.extractall(sp, filter="data")
+            try:
+                stored = json.loads((sp / "manifest.json").read_text())["hash"]
+            except Exception:
+                return {"restored": False, "reason": "manifest_missing",
+                        "path": str(path)}
+            got = _hash_tree(sp, skip_top={"manifest.json"})
+            if got != stored:
+                return {"restored": False, "reason": "manifest_hash_mismatch",
+                        "expected": stored, "got": got, "path": str(path)}
+            wfile = sp / "witness.jsonl"
+            if wfile.exists():
+                from ..agency.witness import verify_witness
+                wv = verify_witness(wfile)
+                if wv.get("valid") is False:
+                    return {"restored": False, "reason": "witness_chain_broken",
+                            "broken_at": wv.get("broken_at"), "path": str(path)}
+            else:
+                wv = {"valid": None, "records": 0}
+            for item in sp.iterdir():
+                if item.name == "manifest.json":
+                    continue
+                dest = root / item.name
+                if item.is_dir():
+                    shutil.copytree(item, dest, dirs_exist_ok=True)
+                else:
+                    shutil.copy2(item, dest)
+            try:
+                from ..agency.witness import witness_event
+                witness_event("state_restore", {
+                    "archive": str(path), "manifest_sha256": stored,
+                    "witness_records": wv.get("records", 0)})
+            except Exception:
+                pass
+            return {"restored": True, "path": str(path), "verified": True,
+                    "manifest_sha256": stored, "witness": wv}
     except Exception as e:
-        return {"restored": False, "reason": str(e)}
+        return {"restored": False, "reason": str(e), "path": str(path)}
 
 
 def loop(interval_hours: float = 6.0, once: bool = False) -> None:
