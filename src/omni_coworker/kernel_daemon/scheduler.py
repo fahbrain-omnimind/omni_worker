@@ -55,6 +55,12 @@ def run_cycle() -> dict[str, Any]:
             if att:
                 bundle["attractor"] = att
                 _publish("kernel.attractor", att)
+            # phi_layer: proxies informacionais sobre a mesma janela (OW-STU-010)
+            from ..activation_beta import phi_layer
+            pl = phi_layer.features()
+            if pl:
+                bundle["phi_layer"] = pl
+                _publish("kernel.phi_layer", pl)
         except Exception:
             pass
         # homeostasis: phi feeds sublimation; soma feeds the state machine
