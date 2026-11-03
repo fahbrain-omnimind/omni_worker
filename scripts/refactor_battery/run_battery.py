@@ -26,6 +26,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import sqlite3
 import subprocess
 import sys
@@ -118,6 +119,37 @@ def _ledger(con: sqlite3.Connection, rec: dict):
     con.commit()
 
 
+def _ensure_executor(timeout_s: int = 90) -> bool:
+    """Reload :8099 if the swap scheduler evicted it mid-battery.
+
+    English: batteries span minutes — VRAM eviction between turns is a
+    real failure mode (proven live 2026-11-03). Poll /health; on
+    model_loaded=false POST /erika/reload and wait like run_diag's
+    wait_loaded. Returns True when executor is loaded.
+    pt-BR: baterias levam minutos — eviction de VRAM entre turns é modo
+    de falha real (provado ao vivo 2026-11-03).
+    """
+    import urllib.request
+    try:
+        with urllib.request.urlopen("http://127.0.0.1:8099/health", timeout=4) as r:
+            if json.loads(r.read()).get("model_loaded"):
+                return True
+        urllib.request.urlopen(urllib.request.Request(
+            "http://127.0.0.1:8099/erika/reload", method="POST"), timeout=60)
+    except Exception:
+        pass
+    t0 = time.time()
+    while time.time() - t0 < timeout_s:
+        try:
+            with urllib.request.urlopen("http://127.0.0.1:8099/health", timeout=4) as r:
+                if json.loads(r.read()).get("model_loaded"):
+                    return True
+        except Exception:
+            pass
+        time.sleep(4)
+    return False
+
+
 def run_one(idx: int, trust=None) -> dict:
     from omni_coworker.agents.debug_agent import DebugAgent
     from omni_coworker.agents.code_agent import CodeAgent
@@ -146,13 +178,19 @@ def run_one(idx: int, trust=None) -> dict:
     feedback = ""
     turns = []
     for turn in range(1, MAX_TURNS + 1):
+        if not _ensure_executor():
+            turns.append({"turn": turn, "error": "executor_unloaded"})
+            break
         spec = base_spec + feedback
         gen = agent.generate(spec, context={"diagnosis": diag.get("diagnosis")})
         rec["llm"]["code"] = bool(gen.get("llm"))
         code_text = gen.get("code") or ""
         files = _extract_files(code_text)
         for name in list(out.iterdir()):
-            name.unlink()
+            if name.is_dir():
+                shutil.rmtree(name, ignore_errors=True)
+            else:
+                name.unlink()
         for name, content in files.items():
             (out / name).write_text(content)
 
