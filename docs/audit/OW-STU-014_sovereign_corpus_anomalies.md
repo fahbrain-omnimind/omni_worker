@@ -81,3 +81,13 @@ Top grupos por número de cópias:
 ## Nota de integridade
 Contagens derivadas de comandos acima. Itens marcados NÃO LOCALIZADO não
 foram verificados. Nenhum dado simulado.
+## Nota de escopo (Devin, 2026-11-03)
+
+Os alvos quebrados com caminho `/home/fahbrain/...` são links INTERNOS da
+documentação soberana apontando para o filesystem do host onde o projeto
+vive — não são referências do worker. Verificado: nenhum arquivo em
+`omni_worker/src|scripts|docs` depende de `/home/fahbrain` (as únicas
+ocorrências locais são o org do GitHub e este relatório). O soberano é
+material de referência read-only: os caminhos são válidos no host real;
+a fragilidade só aparece em cópias. O achado pertence à higiene do
+próprio repo soberano (relativo-vs-absoluto), não a este worker.
