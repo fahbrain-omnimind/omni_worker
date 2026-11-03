@@ -98,6 +98,15 @@ def run_cycle() -> dict[str, Any]:
                 _publish("kernel.regime_shift", reg)
         except Exception:
             pass
+        # metastability: textura do regime — s_meta/m_t/c_soma/angst (D6)
+        try:
+            from . import metastability
+            bundle["duration_s"] = _STATE.get("last_duration_s")
+            meta = metastability.cycle(bundle)
+            bundle["metastability"] = meta
+            _publish("kernel.metastability", meta)
+        except Exception:
+            pass
         bundle["published_topics"] = publish_feedback(bundle)
         _STATE["last_bundle"] = bundle
     except Exception as e:  # ciclo ruim não derruba o daemon
