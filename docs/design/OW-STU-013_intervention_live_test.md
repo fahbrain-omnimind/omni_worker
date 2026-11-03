@@ -141,3 +141,21 @@ morreu).
 saúde, bloqueia sob repetição sustentada ou pressão explícita. Não é
 consciência nem homeostasia completa — é um freio degenerativo
 calibrável por `rate`/`threshold`/`OMNI_GLIAL_RECENT_N`.
+## 8. Quilting ao vivo — convergência real de variância (2026-11-03)
+
+Experimento com `run_once` real (store SQLite temporário, sem mocks):
+
+- **Regime convergente** (bundle estável ×10, soul/model fixos): quilting
+  disparou 6/10 ciclos — silencioso nos ~4 iniciais (histórico < min_points
+  + EMA ainda misturando), depois `fixed_topic='analyst'` (hint real do
+  code-index via `collect_meaning_context`), `stability=1.0`, janela 300s.
+- **Regime divergente** (bundles aleatórios ×8): 1/8 disparo, no 1º ciclo —
+  janela ainda continha embeddings do regime convergente (carryover
+  legítimo da história). Variância final da janela: 5.48 ≫ threshold 0.05
+  → corretamente sem fixação.
+
+Estatuto: convergência de variância REAL sobre embeddings narrativos
+persistidos (`_narrative_history` → `detect_quilting_point`). O "tópico
+fixado" é o hit do code-index — etiqueta estrutural, não afirmação semântica.
+Testes do wire: `tests/test_quilting_defense.py::test_quilting_wire_live_*`
+(convergente ≥4/8, divergente 0/8, tmp state dir).

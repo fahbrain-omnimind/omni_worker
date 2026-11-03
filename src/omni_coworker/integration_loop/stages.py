@@ -150,7 +150,8 @@ def expectation(ctx: dict[str, Any], x: np.ndarray) -> ModuleState:
     hist = [np.asarray(h, dtype=float) for h in (ctx.get("history") or [])[-8:]]
     pred_err = None
     if len(hist) >= 3:
-        X = np.stack(hist[:-1]); Y = np.stack(hist[1:])
+        X = np.stack(hist[:-1])
+        Y = np.stack(hist[1:])
         lam = 1e-3
         A = np.linalg.solve(X.T @ X + lam * np.eye(DIM), X.T @ Y)
         x_next_hat = hist[-1] @ A
