@@ -461,7 +461,13 @@ def chat_completions(req: ChatCompletionReq) -> dict[str, Any]:
     if _MODEL is None:
         raise HTTPException(status_code=503, detail="model unloaded — POST /erika/reload first")
     ids = _chat_prompt(req.messages)
-    text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
+    try:
+        text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
+    except torch.OutOfMemoryError as e:
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        logger.warning("CUDA OOM em /v1/chat/completions: %s", e)
+        raise HTTPException(status_code=507, detail=f"CUDA OOM — evict peer model and retry: {e}") from e
     return {
         "id": f"chatcmpl-{uuid.uuid4().hex[:12]}",
         "object": "chat.completion",
@@ -481,7 +487,13 @@ def completions(req: CompletionReq) -> dict[str, Any]:
     if _MODEL is None:
         raise HTTPException(status_code=503, detail="model unloaded — POST /erika/reload first")
     ids = _TOKENIZER(req.prompt, return_tensors="pt").input_ids
-    text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
+    try:
+        text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
+    except torch.OutOfMemoryError as e:
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        logger.warning("CUDA OOM em /v1/completions: %s", e)
+        raise HTTPException(status_code=507, detail=f"CUDA OOM — evict peer model and retry: {e}") from e
     return {
         "id": f"cmpl-{uuid.uuid4().hex[:12]}",
         "object": "text_completion",

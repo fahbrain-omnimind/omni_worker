@@ -70,6 +70,27 @@ def brain_chat(
                 "temperature": temperature,
             },
         )
+        if resp.status_code in (500, 503, 507):
+            # OOM ou modelo descarregado: desocupa peer e retenta (peer-swap dinâmico)
+            peer = "executor" if role == "analyst" else "analyst"
+            peer_client = get_brain_client(peer)
+            if peer_client is not None:
+                try:
+                    peer_client.post("/erika/unload", timeout=15.0)
+                except Exception:
+                    pass
+            try:
+                client.post("/erika/reload", timeout=120.0)
+            except Exception:
+                pass
+            resp = client.post(
+                "/v1/chat/completions",
+                json={
+                    "messages": _soma_inject(messages) if include_soma else messages,
+                    "max_tokens": max_tokens,
+                    "temperature": temperature,
+                },
+            )
         if resp.status_code != 200:
             return None
         text = resp.json()["choices"][0]["message"]["content"]
