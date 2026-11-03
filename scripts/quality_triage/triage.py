@@ -59,12 +59,31 @@ def _is_vendored(path: str) -> bool:
     return any(m in path for m in VENDORED_MARKERS)
 
 
-def classify(finding: dict, priors: dict) -> dict:
+def classify(finding: dict, priors: dict, scope: str = "domestic") -> dict:
     """Return {verdict, confidence, rationale, via} for one finding."""
     rule, sev, path = (finding.get("rule") or "",
                        (finding.get("severity") or "").upper(),
                        finding.get("file") or "")
     p = priors.get(rule)
+    # scope público: reclassifica o prior doméstico com trilha explicativa
+    if scope == "public":
+        import public_scope
+        if p:
+            p = public_scope.apply_to_prior(rule, p)
+            if p["flips"]:
+                return {"verdict": p["public_verdict"],
+                        "confidence": p["confidence"],
+                        "rationale": f"{p['public_reason']} — "
+                                     f"[prior doméstico: {p['domestic_verdict']}]",
+                        "via": "public_scope"}
+        else:
+            p = {"verdict": None, "confidence": 0.0,
+                 "suppressible": False, "rationale": "",
+                 "total": 0, "dist": "{}"}
+            p = public_scope.apply_to_prior(rule, p)
+            if p["flips"]:
+                return {"verdict": p["public_verdict"], "confidence": 0.0,
+                        "rationale": p["public_reason"], "via": "public_scope"}
     # gate: severidade alta em código próprio nunca é auto-suprimida
     if sev in GATE_SEVERITIES and not _is_vendored(path):
         return {"verdict": "review_needed", "confidence": 1.0,
@@ -126,15 +145,17 @@ def record(db_path: Path, finding: dict, result: dict) -> None:
     db.close()
 
 
-def run(findings_path: Path, db_path: Path, use_llm: bool = True) -> dict:
+def run(findings_path: Path, db_path: Path, use_llm: bool = True,
+        scope: str = "domestic") -> dict:
     priors = load_priors(db_path)
-    stats = {"auto": 0, "llm": 0, "fallback": 0, "gate": 0, "total": 0}
+    stats = {"auto": 0, "llm": 0, "fallback": 0, "gate": 0, "total": 0,
+             "public_scope": 0}
     with findings_path.open() as fh:
         for line in fh:
             if not line.strip():
                 continue
             f = json.loads(line)
-            r = classify(f, priors)
+            r = classify(f, priors, scope)
             if r["verdict"] == "escalate":
                 r = llm_review(f, priors.get(f.get("rule"))) if use_llm else {
                     "verdict": "review_needed", "confidence": 0.0,
@@ -151,8 +172,11 @@ def main() -> None:
                     help="jsonl com um achado por linha")
     ap.add_argument("--db", default=PRIORS_DB, type=Path)
     ap.add_argument("--no-llm", action="store_true")
+    ap.add_argument("--scope", default="domestic",
+                    choices=("domestic", "public"),
+                    help="public reclassifica priors domésticos com trilha")
     a = ap.parse_args()
-    print(json.dumps(run(a.findings, a.db, not a.no_llm), indent=1))
+    print(json.dumps(run(a.findings, a.db, not a.no_llm, a.scope), indent=1))
 
 
 if __name__ == "__main__":

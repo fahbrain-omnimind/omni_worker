@@ -76,3 +76,22 @@ def test_record_roundtrip(priors_db, tmp_path):
     row = sqlite3.connect(priors_db).execute(
         "select verdict from findings where rule='S8707'").fetchone()
     assert row[0] == "accepted_domestic"
+
+
+def test_public_scope_flips_domestic(priors_db):
+    # S8707 tem prior accepted_domestic suppressible; em escopo público
+    # o mesmo achado vira future_public_risk com trilha explicativa.
+    p = triage.load_priors(priors_db)
+    r = triage.classify({"rule": "S8707", "file": "src/x.py",
+                         "severity": "MINOR"}, p, scope="public")
+    assert r["verdict"] == "future_public_risk"
+    assert r["via"] == "public_scope"
+    assert "prior doméstico: accepted_domestic" in r["rationale"]
+
+
+def test_public_scope_no_flip_still_uses_prior(priors_db):
+    # regra sem flip no mapeamento público segue o fluxo normal
+    p = triage.load_priors(priors_db)
+    r = triage.classify({"rule": "SWEAK", "file": "src/x.py",
+                         "severity": "MINOR"}, p, scope="public")
+    assert r["verdict"] == "escalate"  # conf 0.6 < threshold
