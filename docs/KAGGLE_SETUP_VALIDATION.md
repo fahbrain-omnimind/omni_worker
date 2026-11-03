@@ -100,7 +100,7 @@ Both degrade to extractive fallback without the index or the brain.
 
 | Check | Result |
 |---|---|
-| `pytest` | **69 passed** (suite is hermetic — no LLM needed) |
+| `pytest` | **454 passed, 2 skipped** across 72 test files (suite is hermetic — no LLM needed; plus 4 live GPU batteries) |
 | `omni-coworker doctor` | fastapi/torch(cu126)/httpx/psutil/pydantic OK; Rust kernels `unavailable` (optional); brains `up` when servers run |
 | `omni-coworker serve` | ASGI up (port 8080 taken by env `node` → used `--port 8081`) |
 | `GET /soma/probe` `/soul/state` `/agency/missions` `/safety/check` `/kernel/status` `/curiosity/explore?topic=` | all HTTP 200 |

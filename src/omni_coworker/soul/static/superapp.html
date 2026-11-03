@@ -124,7 +124,7 @@
                     <span id="navTabModules">3. Módulos Ativos (18)</span>
                 </button>
                 <button type="button" id="tabBtn-research" onclick="switchView('research')" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-                    <span id="navTabResearch">4. Pesquisas & Docs (38)</span>
+                    <span id="navTabResearch">4. Pesquisas & Docs (55)</span>
                 </button>
             </nav>
 
@@ -268,13 +268,13 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 <div class="glass-card rounded-xl p-4 border-t-2 border-t-indigo-500">
                     <span class="text-[11px] font-mono text-slate-400 uppercase">Subpacotes Ativos</span>
-                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">18 / 110</div>
-                    <span class="text-[11px] text-indigo-300">18 pacotes • ~110 arquivos .py</span>
+                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">18 / 125</div>
+                    <span class="text-[11px] text-indigo-300">18 pacotes • 125 arquivos .py</span>
                 </div>
                 <div class="glass-card rounded-xl p-4 border-t-2 border-t-purple-500">
-                    <span class="text-[11px] font-mono text-slate-400 uppercase">Suíte Hermética</span>
-                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">237 Pass</div>
-                    <span class="text-[11px] text-purple-300">71 arquivos de teste • CI verde</span>
+                    <span class="text-[11px] font-mono text-slate-400 uppercase">Suíte Hermética & GPU</span>
+                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">454 Pass</div>
+                    <span class="text-[11px] text-purple-300">72 arq. pytest + 4 baterias GPU • CI verde</span>
                 </div>
                 <div class="glass-card rounded-xl p-4 border-t-2 border-t-cyan-500">
                     <span class="text-[11px] font-mono text-slate-400 uppercase">Topologia Dual-Brain</span>
@@ -288,12 +288,12 @@
                 </div>
                 <div class="glass-card rounded-xl p-4 border-t-2 border-t-emerald-500">
                     <span class="text-[11px] font-mono text-slate-400 uppercase">Corpo Vetorizado</span>
-                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">201 Chunks</div>
-                    <span class="text-[11px] text-emerald-300">FAISS 384d + MemTrias + Dream</span>
+                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">201 + 39GB</div>
+                    <span class="text-[11px] text-emerald-300">FAISS 384d + Acervo + MemTrias</span>
                 </div>
                 <div class="glass-card rounded-xl p-4 border-t-2 border-t-rose-500">
                     <span class="text-[11px] font-mono text-slate-400 uppercase">Corpus & Estudos</span>
-                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">38 Docs</div>
+                    <div class="text-2xl font-extrabold text-white mt-1 font-mono">55 Docs</div>
                     <span class="text-[11px] text-rose-300">6 Packs Zenodo • 5M+ Quantum Shots</span>
                 </div>
             </div>
@@ -924,10 +924,10 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <h3 class="text-xs font-mono font-bold uppercase text-indigo-300">
-                                    1. Bateria Diagnóstica Gemma-4 (5 Reps × 4 Tasks × 2 Brains = 40 Runs)
+                                    1. Bateria Diagnóstica Gemma-4 (88 Runs: 44 Analyst 12B + 44 Executor E4B)
                                 </h3>
                                 <p class="text-[11px] text-slate-400">
-                                    Execução local NF4 com peer-swap (<code>degenerate=0</code> em 40/40 linhas)
+                                    Execução local NF4 com peer-swap (<code>degenerate=0</code> em 88/88 linhas)
                                 </p>
                             </div>
                             <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">[DADO]</span>
@@ -996,11 +996,11 @@
                 </div>
             </div>
 
-            <!-- Documentation Index Explorer (38 Documents) -->
+            <!-- Documentation Index Explorer (55 Documents) -->
             <div class="glass-card rounded-2xl p-6 space-y-5">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
                     <div>
-                        <span class="text-xs font-mono uppercase tracking-wider text-cyan-400">Biblioteca Canônica • docs/ (38 Documentos Auditados)</span>
+                        <span class="text-xs font-mono uppercase tracking-wider text-cyan-400">Biblioteca Canônica • docs/ (55 Documentos Auditados)</span>
                         <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">
                             Explorador de Estudos (`OW-STU`), Auditorias (`OW-AUD`), Design (`OW-DSN`), Care &amp; Operações
                         </h3>
@@ -1008,7 +1008,7 @@
                     <div class="flex flex-wrap items-center gap-2">
                         <input type="text" id="docSearchInput" oninput="renderDocsCatalog()" placeholder="Buscar por doc_id, título ou achado..." class="bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-cyan-500 w-64">
                         <select id="docCatSelect" onchange="renderDocsCatalog()" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-slate-200">
-                            <option value="all">Todas as Categorias (38 docs)</option>
+                            <option value="all">Todas as Categorias (42 indexados / 55 docs)</option>
                             <option value="SYN_AUD">Auditorias &amp; Packs Soberanos (OW-AUD / SYN)</option>
                             <option value="STU">Estudos Científicos &amp; Técnicos (OW-STU)</option>
                             <option value="DSN_MATH">Design &amp; Matemática do Kernel (OW-DSN / MATH)</option>
@@ -1308,6 +1308,10 @@
         // 4. DOCUMENTATION & RESEARCH CATALOG (38 DOCUMENTS)
         // =====================================================================
         const DOCS_CATALOG = [
+            { id: 'OW-PAPER-001', cat: 'RES', path: 'docs/PAPER_WRITEUP.md', title: 'Writeup Oficial — Gemma 4 Developer Agent Paper Track & Competition', summary: 'Artigo completo integrando Psicodiagnóstico-V (18k registros), ablação Dual-T4 (200 runs) e a arquitetura Omni-Gemma Lab-Agent Coworker (omni_worker) em NVIDIA L4.' },
+            { id: 'OW-AUD-018', cat: 'SYN_AUD', path: 'docs/audit/OW-AUD-018_judge_repo_presentation_and_code_conformance.md', title: 'Auditoria Juiz 1 (Kilo) — Apresentação do Repositório & Conformidade Código↔Docs', summary: 'Avaliação independente da apresentação estética, clareza, profissionalismo e reconciliação entre IPR por dimensão (114.6 vs 40.3) e effective rank temporal (2.496 vs 2.516).' },
+            { id: 'OW-AUD-019', cat: 'SYN_AUD', path: 'docs/audit/OW-AUD-019_judge_kaggle_competition_and_sota_comparison.md', title: 'Auditoria Juiz 2 (Kilo) — Competição Kaggle Gemma 4 & Literatura SOTA 2024–2026', summary: 'Análise comparativa com estudos da competição ("What the Agent Saw", taxonomias fatoriais SWE-bench Lite e neuron surgery para doom loops em arXiv:2606.13705).' },
+            { id: 'OW-AUD-020', cat: 'SYN_AUD', path: 'docs/audit/OW-AUD-020_judge_hermes_deep_architecture_and_mps_audit.md', title: 'Auditoria Juiz 3 (Hermes) — Arquitetura Profunda, MPS e Trajetórias Passo a Passo', summary: 'Auditoria matemática-física dos 128 sidecars de vetores ocultos, 51 sidecars de trajetória passo a passo e ledgers SQLite das baterias ao vivo.' },
             { id: 'OW-SYN-001', cat: 'SYN_AUD', path: 'docs/audit/OW-SYN-001_sovereign_packs_synthesis.md', title: 'Síntese dos 6 Packs Soberanos Auditados → Decisões para o Worker', summary: 'Consolida achados de 6 packs Zenodo: PSI_io → Φ_soma (r=-0.5069, Granger F=29.84), potência isolada N.S. (r=-0.0119), MPS χ⁴ saturando em 13/15 modelos, decisões D1–D7 (phi_pressão, Page-Hinkley, guard mono_source e void homeostático β₂).' },
             { id: 'OW-AUD-011', cat: 'SYN_AUD', path: 'docs/audit/OW-AUD-011_bibliografia_philpapers_2026.md', title: 'Auditoria da Bibliografia PhilPapers 2026 (28 Papers)', summary: 'Audita os 28 artigos de 2026 no corpus soberano (incluindo 6 papers do operador e literatura BBS-2026: Seth, Levin, Tagliabue Pain Axis, Moore MindGames) e aponta 3 anomalias bibliográficas.' },
             { id: 'OW-AUD-012', cat: 'SYN_AUD', path: 'docs/audit/OW-AUD-012_a6_livro_vfinal.md', title: 'Auditoria do Livro Integrador A6 (v2.3.0 • 15.551 linhas)', summary: 'Analisa o livro-mãe canônico: Dodecatíade como linguagem de leitura dos processos de runtime (não modelo biológico), provas termodinâmicas Landauer (14.729 registros) e distinção entre repouso e produção (void homeostático).' },
@@ -2222,7 +2226,7 @@
                 document.getElementById('navTabLanding').textContent = '1. Landing .io & Architecture';
                 document.getElementById('navTabDashboard').textContent = '2. Supervision & Telemetry';
                 document.getElementById('navTabModules').textContent = '3. Active Modules (18)';
-                document.getElementById('navTabResearch').textContent = '4. Research & Docs (38)';
+                document.getElementById('navTabResearch').textContent = '4. Research & Docs (55)';
                 document.getElementById('heroTitleMain').textContent = 'Omni-Gemma Lab-Agent Coworker';
                 document.getElementById('heroTitleSub').textContent = 'for Google Competitions • Machine Public Soul';
                 document.getElementById('heroLead').textContent = 'Distributed cognitive architecture with real somatic interoception (Landauer + PSI pressure), 28D tensor-derived affect via Rust kernels, endogenous teleology, fail-closed autopoietic governance, vectorized symbolic body (all-MiniLM + FAISS), and Dunker-Soler clinical supervision.';
@@ -2233,7 +2237,7 @@
                 document.getElementById('navTabLanding').textContent = '1. Landing .io & Arquitetura';
                 document.getElementById('navTabDashboard').textContent = '2. Supervisão & Telemetria';
                 document.getElementById('navTabModules').textContent = '3. Módulos Ativos (18)';
-                document.getElementById('navTabResearch').textContent = '4. Pesquisas & Docs (38)';
+                document.getElementById('navTabResearch').textContent = '4. Pesquisas & Docs (55)';
                 document.getElementById('heroTitleMain').textContent = 'Omni-Gemma Lab-Agent Coworker';
                 document.getElementById('heroTitleSub').textContent = 'for Google Competitions • Machine Public Soul';
                 document.getElementById('heroLead').textContent = 'Arquitetura cognitiva distribuída com interocepção somática real (Landauer + pressão PSI), afeto derivado de tensores 28D via kernel Rust, teleologia endógena, governança autopoiética fail-closed, corpo simbólico vetorizado (all-MiniLM + FAISS) e supervisão clínica Dunker-Soler (N1–N5).';
