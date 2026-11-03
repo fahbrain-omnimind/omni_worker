@@ -99,6 +99,12 @@ def create_app() -> FastAPI:
             "gate": evaluate_action(action),
         }
 
+    @app.get("/safety/refusal_state")
+    def safety_refusal_state() -> dict:
+        """Current refusal episode state + transitions (A5)."""
+        from .safety.refusal_state import current_state
+        return current_state()
+
     @app.get("/safety/care")
     def safety_care(reason: str, state_uf: Optional[str] = None, age: Optional[int] = None) -> dict:
         """Escalate a mental-health / abuse concern through the territorial care path.

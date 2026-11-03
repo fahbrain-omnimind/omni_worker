@@ -43,10 +43,13 @@ def check_permission(action: str, context: dict | None = None) -> bool:
             "codebase_search", "list_code_definitions", "communicate_with_agent",
         }
         if action in safe or action.startswith("read_"):
-            return True
-        min_trust = {"modify_code": 0.8, "modify_config": 0.9}.get(action, 1.0)
-        trust = float((context or {}).get("trust_level", 0.0))
-        return trust >= min_trust
+            allowed = True
+        else:
+            min_trust = {"modify_code": 0.8, "modify_config": 0.9}.get(action, 1.0)
+            trust = float((context or {}).get("trust_level", 0.0))
+            allowed = trust >= min_trust
+        _record_matrix_verdict(allowed, action)
+        return allowed
     try:
         context = context or {}
         allowed, _reason = matrix.can_execute(
@@ -54,9 +57,21 @@ def check_permission(action: str, context: dict | None = None) -> bool:
             emergency=bool(context.get("emergency", False)),
             trust_level=float(context.get("trust_level", 0.5)),
         )
-        return bool(allowed)
+        allowed = bool(allowed)
+        _record_matrix_verdict(allowed, action)
+        return allowed
     except Exception as e:
         logger.warning("permission matrix failed: %s", e)
         if os.getenv("OMNI_GATE_FAIL_CLOSED") == "0":
             return True
+        _record_matrix_verdict(False, action)
         return False
+
+
+def _record_matrix_verdict(allowed: bool, action: str) -> None:
+    try:
+        from .refusal_state import record_verdict
+
+        record_verdict(allowed, {"source": "matrix", "action": action})
+    except Exception:
+        pass

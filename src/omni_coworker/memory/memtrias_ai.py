@@ -56,6 +56,16 @@ import uuid
 from pathlib import Path
 from typing import Any, Callable
 
+try:
+    from .provenance import provenance_signature, classify_trust, quarantine_check
+except Exception:  # pragma: no cover - fail-open
+    def provenance_signature(content, source):  # type: ignore
+        return ""
+    def classify_trust(source, namespace):  # type: ignore
+        return "unknown"
+    def quarantine_check(content):  # type: ignore
+        return {"quarantine": False, "reasons": []}
+
 import numpy as np
 
 EMBED_DIM = 384  # mesma dimensão do acervo vetorizado (384D)
@@ -188,6 +198,28 @@ class MemtriasAI:
         ns = (namespace or "").strip().lower()
         if ns not in self._namespaces:
             self.register_namespace(ns)
+        # MINJA provenance guard (fail-open)
+        try:
+            q = quarantine_check(content)
+        except Exception:
+            q = {"quarantine": False, "reasons": ["guard_error"]}
+        try:
+            src_marker = doc_ref if doc_ref else instance
+            tc = classify_trust(src_marker, ns)
+            sig = provenance_signature(content, src_marker)
+        except Exception:
+            tc = "unknown"
+            sig = ""
+        quarantined = bool(q.get("quarantine"))
+        provenance = {
+            "signature": sig,
+            "trust_class": tc,
+            "quarantine": quarantined,
+            "reasons": list(q.get("reasons") or []),
+        }
+        tags = list(tags or [])
+        if quarantined and "quarantined" not in tags:
+            tags = tags + ["quarantined"]
         emb = self._embedder(content or "")
         analysis: dict[str, Any] = {}
         for name, fn in self._analyzers.items():
@@ -195,12 +227,13 @@ class MemtriasAI:
                 analysis[name] = fn(content or "")
             except Exception:
                 analysis[name] = {"error": "analyzer_failed"}
+        analysis["provenance"] = provenance
         inferred = analysis.get("affect") or {}
         rec = {
             "id": uuid.uuid4().hex[:16],
             "namespace": ns,
             "content": content or "",
-            "tags": tags or [],
+            "tags": tags,
             "instance": instance,
             "chat_id": chat_id,
             "doc_ref": doc_ref,
@@ -209,6 +242,7 @@ class MemtriasAI:
             "affect": affect if affect is not None else inferred,
             "events": events or [],
             "analysis": analysis,
+            "provenance": provenance,
             "ts": float(ts or time.time()),
         }
         con = sqlite3.connect(self._dir / _DB, timeout=10)
@@ -233,7 +267,8 @@ class MemtriasAI:
                top_k: int = 5,
                instance: str | None = None,
                chat_id: str | None = None,
-               recency_halflife_s: float | None = 86400.0) -> list[dict[str, Any]]:
+               recency_halflife_s: float | None = 86400.0,
+               include_quarantined: bool = False) -> list[dict[str, Any]]:
         """Retrieval topológico: cosine(query) + filtros + recency decay.
 
         O "retorno do recalcado": o que foi inscrito volta quando a
@@ -260,6 +295,9 @@ class MemtriasAI:
         scored = []
         for (mid, ns, content, embj, tags, inst, cid, dref, sref,
              affect, events, analysis, ts) in rows:
+            tlist = json.loads(tags or "[]")
+            if (not include_quarantined) and "quarantined" in (tlist or []):
+                continue
             emb = np.asarray(json.loads(embj), dtype=np.float64)
             score = _cosine(q, emb)
             if recency_halflife_s and ts:

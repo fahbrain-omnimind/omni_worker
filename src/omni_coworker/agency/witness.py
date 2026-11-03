@@ -64,8 +64,21 @@ def append_witness(path: str | Path | None = None, event: dict[str, Any] | None 
         event = dict(event)
         event["ts"] = datetime.now(timezone.utc).isoformat()
 
+    # MINJA provenance guard (lightweight)
+    try:
+        from ..memory.provenance import classify_trust, provenance_signature
+
+        ev = event if isinstance(event, dict) else {}
+        src = ev.get("instance") or ev.get("source")
+        prov = {
+            "signature": provenance_signature(ev.get("data", ev), src),
+            "trust_class": classify_trust(src, "instance"),
+        }
+    except Exception:
+        prov = {"signature": "", "trust_class": "unknown"}
     existing = read_witness(p)
     record = dict(event)
+    record["provenance"] = prov
     record["prev_hash"] = _last_hash(existing)
     record["hash"] = _hash_record(record)
 

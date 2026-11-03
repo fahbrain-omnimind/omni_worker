@@ -70,11 +70,26 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
         )
         cert = gate.evaluate(change)
         verdict = getattr(cert, "verdict", "REFUSE")
+        allowed = verdict in ("EXECUTE", "TEACH")
+        try:
+            from .refusal_state import record_verdict
+
+            record_verdict(allowed, {"source": "gate", "action": action,
+                                     "verdict": verdict})
+        except Exception:
+            pass
         return {
-            "allowed": verdict in ("EXECUTE", "TEACH"),
+            "allowed": allowed,
             "verdict": verdict,
             "grade": getattr(cert, "grade", None),
             "reason": getattr(cert, "justification", ""),
         }
     except Exception as e:
+        try:
+            from .refusal_state import record_verdict
+
+            record_verdict(False, {"source": "gate", "action": action,
+                                   "verdict": "gate_error"})
+        except Exception:
+            pass
         return {"allowed": False, "reason": f"gate_error: {e}"}
