@@ -13,7 +13,9 @@ def setup_function():
     attractor.reset()
 
 
-def test_features_need_min_window():
+def test_features_need_min_window(tmp_path, monkeypatch):
+    # isola sidecars do runtime (brains vivos escrevem .npz reais)
+    monkeypatch.setenv("OMNI_ACT_VEC_DIR", str(tmp_path / "vecs"))
     attractor.push([_rec(2.0, [1.0] * 43)] * 4)
     assert phi_layer.features() == {}
 

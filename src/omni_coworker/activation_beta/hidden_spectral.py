@@ -28,6 +28,7 @@ pt-BR: SVD effective rank + bond dimension MPS sobre hidden vectors.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Any
 
@@ -39,6 +40,9 @@ _MAX_DIM_SITES = 11   # cap de sítios MPS (D = odd × 2^10)
 
 def _vec_dir() -> Path:
     from ..kernel_daemon.collector import ACTIVATIONS_LOG
+    override = os.getenv("OMNI_ACT_VEC_DIR")
+    if override:
+        return Path(override)
     return ACTIVATIONS_LOG.parent / "activation_vectors"
 
 
