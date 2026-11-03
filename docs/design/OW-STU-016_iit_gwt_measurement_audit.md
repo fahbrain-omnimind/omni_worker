@@ -6,6 +6,7 @@
 - Claims acadêmicos conferem com o estado da arte: PyPhi ~10-12 nós (IIT3) / ~6-8 (IIT4), Doerig 2019 unfolding, Merker/Williford/Rudrauf 2022 BBS, COGITATE Nature 2025 ambíguo.
 - **Veredito**: proposta aceita como baseline. Estágio 1 (MIP explicável, anti-saturação, ignição, sinergia, scale_stack, fire tests) é barato e alto-valor — candidato a implementação. Estágios 2-3 dependem de captura de hidden vectors e permanecem aspiracionais. PyPhi no runtime: **confirmado inviável** — manter só para validação matemática em brinquedos ≤8 nós.
 - Ressalva: citação "arXiv 2604.11482 (2026)" não verificável de forma independente nesta sessão — tratada como referência do agente, não como evidência primária.
+- **Correção do operador (2026-11-03, implementada)**: "PyPhi inviável" valia só para o worker genérico — o soberano já tinha a base (Markov blanket FEP = elementos principiados + TPM). Implementado: `psychoanalysis/markov_blanket.py` + `scripts/experiments/run_blanket_pyphi.py` — Φ exato IIT 3.0 sobre o blanket em 4 nós. Resultados em `docs/results/blanket_pyphi.md`: {M,R} único mecanismo irredutível, α=0.85 → Φ≈0 (desintegração com assinatura IIT), rigidez>moderado para Φ (integração ≠ adaptabilidade), Φ~10⁻³ bits (grão binário perde estrutura contínua).
 
 ---
 

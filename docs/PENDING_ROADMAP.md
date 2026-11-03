@@ -14,7 +14,8 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - Relatório: `docs/design/OW-STU-016_iit_gwt_measurement_audit.md` — IIT 3.0/4.0, PyPhi (teto ~10 nós), Φ*/Φ^G/ΦID/PCI proxies, críticas (Doerig unfolding, Merker, COGITATE), auditoria soberano+worker, proposta 3 estágios com rótulos [CAP]/[PRX]/[TXT]/[CLS]/[EXP].
 - Estágio 1 parcial implementado: MIP explicável (`mip_side_a/b`, `mip_top3`) + anti-saturação (`n_distinct_states`, `diversity`) em `phi_meta.update`.
 - Pendente estágio 1: ignição de workspace (GWT-lite), sinergia proxy (ΦID-lite), formalizar scale_stack, fire tests pearson.
-- Estágio 2-3 aspiracionais: hidden vectors SVD/MPS, Φ* gaussiano, PyPhi só em brinquedos ≤8 nós (inválido no runtime — confirmado).
+- **REVISADO**: PyPhi viável NO BLANKET soberano (elementos principiados FEP) — implementado `psychoanalysis/markov_blanket.py` + `run_blanket_pyphi.py`; resultados `docs/results/blanket_pyphi.md`. Próximos: 6-7 nós (E,P), convergência-k, blanket vivo sobre telemetria real.
+- Estágio 2-3 aspiracionais: hidden vectors SVD/MPS, Φ* gaussiano, ΦID real.
 
 ## P0 — Segurança/governança (auditorias OpenCode/Kilo/Cline)
 - [x] gate fail-closed opcional (OMNI_GATE_FAIL_CLOSED=1) — `safety/gate.py:55`
