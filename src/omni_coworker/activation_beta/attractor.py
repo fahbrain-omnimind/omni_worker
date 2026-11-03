@@ -29,6 +29,7 @@ import numpy as np
 _MAXLEN = 256
 _BASELINE_N = 128
 _WINDOWS: dict[str, deque] = {}
+_REHYDRATED = False
 
 
 def push(records: list[dict[str, Any]]) -> int:
@@ -40,8 +41,54 @@ def push(records: list[dict[str, Any]]) -> int:
     return sum(len(w) for w in _WINDOWS.values())
 
 
+def rehydrate(log_path: Any | None = None, tail_bytes: int = 1 << 19) -> int:
+    """Seed windows from the jsonl tail after a restart.
+
+    Reads the last `tail_bytes` (default 512KB) of the activations log
+    and loads the newest _MAXLEN records per model — WITHOUT touching
+    the persisted `.offset` used by the incremental tail (read-back,
+    not read-forward). Runs once per process; window survives daemon
+    restart with its recent context intact.
+    """
+    global _REHYDRATED
+    if _REHYDRATED or _WINDOWS:
+        return window_size()
+    _REHYDRATED = True
+    try:
+        import json
+        from pathlib import Path
+        if log_path is None:
+            from ..kernel_daemon.collector import ACTIVATIONS_LOG
+            log_path = ACTIVATIONS_LOG
+        log = Path(log_path)
+        if not log.exists():
+            return 0
+        with log.open("rb") as fh:
+            fh.seek(0, 2)
+            size = fh.tell()
+            fh.seek(max(0, size - tail_bytes))
+            chunk = fh.read()
+        lines = chunk.split(b"\n")[1:] if size > tail_bytes else chunk.split(b"\n")
+        kept: dict[str, deque] = {}
+        for line in lines:
+            if not line.strip():
+                continue
+            try:
+                r = json.loads(line)
+            except Exception:
+                continue
+            model = str(r.get("model") or "unknown")
+            kept.setdefault(model, deque(maxlen=_MAXLEN)).append(r)
+        _WINDOWS.update(kept)
+    except Exception:
+        pass
+    return window_size()
+
+
 def reset() -> None:
+    global _REHYDRATED
     _WINDOWS.clear()
+    _REHYDRATED = False
 
 
 def window_size() -> int:

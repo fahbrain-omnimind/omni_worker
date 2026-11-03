@@ -50,6 +50,7 @@ def run_cycle() -> dict[str, Any]:
         # activation_beta: atratores sobre a janela de ativações (OW-STU-009)
         try:
             from ..activation_beta import attractor
+            attractor.rehydrate()  # semeia a janela do tail do jsonl pós-restart
             attractor.push(raw.get("activations") or [])
             att = attractor.features()
             if att:
