@@ -27,7 +27,7 @@ import numpy as np
 
 from . import adapters, bion_bridge, stages, store
 from .modulator import derive_modulation
-from .schema import CycleResult, new_cycle_id
+from .schema import CycleResult, ModuleState, new_cycle_id
 
 INTERVAL_S = float(os.getenv("OMNI_LOOP_INTERVAL_S", "60"))
 CYCLE_TIMEOUT_S = float(os.getenv("OMNI_LOOP_TIMEOUT_S", "25"))
@@ -45,6 +45,103 @@ def _publish_modulation(mod, resource_postures=None) -> bool:
         return True
     except Exception:
         return False
+
+
+_GOV: dict[str, Any] | None = None
+
+
+def _gov() -> dict[str, Any]:
+    """Governança por iteração: EventBus→TrustSystem + breakers + quarentena.
+
+    English: One lazy wiring — the gov EventBus feeds the SHARED
+    TrustSystem (same scores other consumers see), each stage runs
+    under a CircuitBreaker, and a stage that trips its breaker is
+    quarantined (skipped in later cycles until `release`) with a
+    witness record. Missing governance deps → empty dict, loop runs
+    unguarded (fail-open, same as before).
+    pt-BR: Uma fiação lazy — o EventBus de governança alimenta o
+    TrustSystem COMPARTILHADO (mesmos scores que outros consumidores
+    veem), cada estágio roda sob um CircuitBreaker, e um estágio que
+    abre o breaker é quarentenado (pulado nos ciclos seguintes até
+    `release`) com registro no witness. Dependências ausentes → dict
+    vazio, loop roda desguarnecido (fail-open, como antes).
+    """
+    global _GOV
+    if _GOV is not None:
+        return _GOV
+    try:
+        from ..orchestration.governance import (
+            EventBus, QuarantineSystem, get_trust_system)
+        bus, trust, quar = EventBus(), get_trust_system(), QuarantineSystem()
+
+        def _feed(etype: str, data: dict[str, Any]) -> None:
+            stage = (data or {}).get("stage")
+            trust.record_event(
+                etype, f"stage.{stage}" if stage else "integration_loop")
+
+        for et in ("loop.stage.ok", "loop.stage.failed",
+                   "loop.stage.quarantined",
+                   "loop.cycle.completed", "loop.cycle.failed"):
+            bus.subscribe(et, _feed)
+        _GOV = {"bus": bus, "trust": trust, "quarantine": quar,
+                "breakers": {}}
+    except Exception:
+        _GOV = {}
+    return _GOV
+
+
+def _run_stage(gov: dict[str, Any], name: str, fn) -> tuple[Any, str | None]:
+    """Stage sob breaker+quarentena; retorna (resultado, nota_de_skip).
+
+    English: Quarantined → skip without calling; open breaker → skip;
+    failure → record + publish; an opened breaker quarantines the stage
+    (witnessed) so a chronically failing component stops being retried
+    every cycle.
+    pt-BR: Quarentenado → pula sem chamar; breaker aberto → pula;
+    falha → registra + publica; breaker aberto quarentena o estágio
+    (testemunhado) para que um componente falhando cronicamente pare
+    de ser tentado a cada ciclo.
+    """
+    quar = gov.get("quarantine")
+    bus = gov.get("bus")
+    cid = f"stage.{name}"
+    if quar is not None and quar.is_quarantined(cid):
+        return None, "quarantined"
+    brs = gov.get("breakers")
+    br = None
+    if brs is not None:
+        from ..orchestration.governance import CircuitBreaker
+        br = brs.get(name) or brs.setdefault(
+            name, CircuitBreaker(failure_threshold=3,
+                                 recovery_timeout=120.0))
+        if not br.is_available():
+            return None, "circuit_open"
+    try:
+        out = fn()
+    except Exception as e:
+        if br is not None:
+            br.record_failure()
+        if bus is not None:
+            bus.publish("loop.stage.failed", {"stage": name,
+                                              "error": str(e)})
+        if br is not None and br.state == "open" and quar is not None:
+            quar.quarantine(cid, reason=str(e),
+                            evidence={"failures": br.failure_count})
+            if bus is not None:
+                bus.publish("loop.stage.quarantined", {"stage": name})
+            try:
+                from ..agency.witness import witness_event
+                witness_event("stage_quarantined",
+                              {"stage": name, "error": str(e),
+                               "failures": br.failure_count})
+            except Exception:
+                pass
+        return None, str(e)
+    if br is not None:
+        br.record_success()
+    if bus is not None:
+        bus.publish("loop.stage.ok", {"stage": name})
+    return out, None
 
 
 _PHYLO = None
@@ -100,51 +197,88 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
         bundle = bundle or {}
     status = "ok"
     err = None
+    skipped: list[str] = []
+    gov = _gov()
     try:
         ctx = {"bundle": bundle, "rng": rng,
                "history": _sensory_history(), "feat_stats": {}}
 
-        s = stages.sensory_input(ctx)
+        s, note = _run_stage(gov, "sensory_input",
+                             lambda: stages.sensory_input(ctx))
+        if s is None:
+            raise RuntimeError(f"sensory_input unavailable: {note}")
         stage_states["sensory_input"] = s
         x = np.asarray(s.embedding, dtype=float)
 
-        stage_states["qualia"] = stages.qualia(ctx, x)
-        stage_states["narrative"] = stages.narrative(ctx, x)
-        nvec = np.asarray(stage_states["narrative"].embedding, dtype=float)
+        # qualia e narrativa são independentes entre si (ambas leem x)
+        for name, fn in (("qualia", lambda: stages.qualia(ctx, x)),
+                         ("narrative", lambda: stages.narrative(ctx, x))):
+            r, note = _run_stage(gov, name, fn)
+            if r is None:
+                skipped.append(f"{name}:{note}")
+                stage_states[name] = ModuleState(
+                    name, metadata={"skipped": note})
+            else:
+                stage_states[name] = r
 
-        # quilting point: narrativa convergindo → tópico fixado temporário
-        try:
-            from .quilting import detect_quilting_point
-            qp = detect_quilting_point(*_narrative_history())
-            if qp:
-                stage_states["narrative"].metadata["quilting_point"] = qp
-        except Exception:
-            pass
+        nav = stage_states.get("narrative")
+        nvec = (np.asarray(nav.embedding, dtype=float)
+                if getattr(nav, "embedding", None) else None)
 
-        # filogenética: a produção matricial alimenta a assinatura —
-        # features vivos das janelas de ativação dobram o atrator do modelo
-        try:
-            sig = _phylo_signature()
-            if sig is not None and not sig.state.emergence_complete:
-                n_att = sig.ingest_from_activation_windows()
-                stage_states["narrative"].metadata["phylo_attractors"] = n_att
-        except Exception:
-            pass
+        if nvec is not None:
+            # quilting point: narrativa convergindo → tópico fixado
+            try:
+                from .quilting import detect_quilting_point
+                qp = detect_quilting_point(*_narrative_history())
+                if qp:
+                    nav.metadata["quilting_point"] = qp
+            except Exception:
+                pass
+            # filogenética: produção matricial alimenta a assinatura
+            try:
+                sig = _phylo_signature()
+                if sig is not None and not sig.state.emergence_complete:
+                    n_att = sig.ingest_from_activation_windows()
+                    nav.metadata["phylo_attractors"] = n_att
+            except Exception:
+                pass
 
-        hint = ",".join((ctx.get("bundle") or {}).get("mesh_topics") or
-                        (ctx.get("bundle") or {}).get("models") or ["omni"])
-        ctx["meaning_hit"] = adapters.collect_meaning_context(str(hint))
-        stage_states["meaning_maker"] = stages.meaning_maker(ctx, nvec)
+            hint = ",".join((ctx.get("bundle") or {}).get("mesh_topics") or
+                            (ctx.get("bundle") or {}).get("models") or ["omni"])
+            ctx["meaning_hit"] = adapters.collect_meaning_context(str(hint))
+            r, note = _run_stage(
+                gov, "meaning_maker",
+                lambda: stages.meaning_maker(ctx, nvec))
+            if r is None:
+                skipped.append(f"meaning_maker:{note}")
+                stage_states["meaning_maker"] = ModuleState(
+                    "meaning_maker", metadata={"skipped": note})
+            else:
+                stage_states["meaning_maker"] = r
+                # bion β→α: metabolize raw cycle state
+                arousal = float(
+                    (stage_states["qualia"].metadata or {}).get("arousal") or 0.0)
+                r.metadata["bion"] = bion_bridge.metabolize(
+                    ctx, arousal, _STATE["cycles"])
+        else:
+            skipped.append("meaning_maker:no_narrative")
+            stage_states["meaning_maker"] = ModuleState(
+                "meaning_maker", metadata={"skipped": "no_narrative"})
 
-        # bion β→α: metabolize raw cycle state (arousal = emotional_charge)
-        arousal = float(stage_states["qualia"].metadata.get("arousal") or 0.0)
-        stage_states["meaning_maker"].metadata["bion"] = bion_bridge.metabolize(
-            ctx, arousal, _STATE["cycles"])
-
-        stage_states["expectation"] = stages.expectation(ctx, x)
-        stage_states["sensory_feedback"] = stages.sensory_feedback(cid, stage_states)
+        for name, fn in (("expectation", lambda: stages.expectation(ctx, x)),
+                         ("sensory_feedback",
+                          lambda: stages.sensory_feedback(cid, stage_states))):
+            r, note = _run_stage(gov, name, fn)
+            if r is None:
+                skipped.append(f"{name}:{note}")
+                stage_states[name] = ModuleState(
+                    name, metadata={"skipped": note})
+            else:
+                stage_states[name] = r
     except Exception as e:
         status, err = "error", str(e)
+    if skipped and status == "ok":
+        status = "partial"
 
     dur = time.time() - t0
     if dur > CYCLE_TIMEOUT_S:
@@ -164,6 +298,20 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
     payload["resource_postures"] = resource_postures
     mod = derive_modulation(cycle, bundle)
     payload["modulation"] = mod.to_dict()
+    # governança por iteração: resumo visível + evento de ciclo p/ trust
+    if gov:
+        payload["governance"] = {
+            "skipped": skipped,
+            "quarantined": (gov["quarantine"].quarantined()
+                            if gov.get("quarantine") else []),
+            "breakers": {n: b.get_stats()["state"]
+                         for n, b in (gov.get("breakers") or {}).items()},
+        }
+        if gov.get("bus") is not None:
+            gov["bus"].publish(
+                "loop.cycle.failed" if status == "error"
+                else "loop.cycle.completed",
+                {"cycle_id": cid, "status": status, "skipped": skipped})
     store.append_cycle(payload)
     from .consumer import write_modulation
     write_modulation(mod.to_dict())

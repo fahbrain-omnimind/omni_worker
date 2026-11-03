@@ -12,7 +12,7 @@ CONTINUITY_MAP para evidência commit-a-commit).
 
 ## P0 — Segurança/governança (auditorias OpenCode/Kilo/Cline)
 - [x] gate fail-closed opcional (OMNI_GATE_FAIL_CLOSED=1) — `safety/gate.py:55`
-- [ ] wire do loop: EventBus→TrustSystem, breakers/quarentena/witness por iteração (parcial: witness existe, breakers/quarentena pendentes)
+- [x] wire do loop: EventBus→TrustSystem, breakers/quarentena/witness por iteração — `loop._gov()` lazy wiring: EventBus gov alimenta TrustSystem compartilhado (deltas loop.* honestos), cada estágio sob CircuitBreaker (3 falhas → abre → quarentena com witness; ciclos seguintes pulam como `quarantined`), status `partial` granular (falha de um estágio não derruba independentes), resumo `payload["governance"]`
 - [x] safety/jail.py — política real implementada (107 linhas, sem placeholder)
 - [x] safety/care.py — escalação territorial Brasil (251 linhas, CVV 188/CAPS/CRP)
 - [ ] residual: judges/orquestrador fail-open restantes (AUDIT_OPENCODE §1.4)

@@ -111,6 +111,12 @@ class TrustSystem:
     EVENT_DELTAS: dict[str, float] = {
         "tests_passed": +0.1,
         "review_dissent": -0.2,
+        # integration_loop: a confiança acumula evidência por estágio/ciclo
+        "loop.stage.ok": +0.02,
+        "loop.stage.failed": -0.05,
+        "loop.stage.quarantined": -0.1,
+        "loop.cycle.completed": +0.01,
+        "loop.cycle.failed": -0.03,
     }
     DEFAULT_TRUST = 0.5
 
