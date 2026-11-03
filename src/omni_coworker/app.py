@@ -147,7 +147,7 @@ def create_app() -> FastAPI:
         import sys
         pkgs: dict[str, int] = collections.Counter()
         natives: list[str] = []
-        for name, mod in sys.modules.items():
+        for name, mod in list(sys.modules.items()):
             pkgs[name.split(".")[0]] += 1
             f = getattr(mod, "__file__", None) or ""
             spec = getattr(mod, "__spec__", None)

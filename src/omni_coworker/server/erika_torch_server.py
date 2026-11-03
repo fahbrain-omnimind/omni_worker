@@ -138,6 +138,23 @@ def _emit_activation(record: dict[str, Any]) -> None:
 # hidden por camada em fp16 — permite SVD effective rank e bond
 # dimension reais no daemon (numpy-only). Amostrado via env, com
 # retenção; falha nunca bloqueia a geração.
+def _capture_cfg(key: str, default: str = "") -> str:
+    v = os.environ.get(key)
+    if v is not None:
+        return v
+    try:
+        for line in open("data/monitor/capture.env", encoding="utf-8"):
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, val = line.split("=", 1)
+            if k.strip() == key:
+                return val.strip()
+    except Exception:
+        pass
+    return default
+
+
 def _vec_dir() -> Path:
     override = _capture_cfg("OMNI_ACT_VEC_DIR")
     if override:
@@ -194,11 +211,6 @@ def _emit_vectors(last_step: tuple | None, record: dict[str, Any]) -> None:
 # já traz um tuple por token gerado; amostramos a cada OMNI_ACT_STEP_EVERY
 # passos (0=off) e guardamos (n_steps, n_layers, hidden) fp16 por call.
 # Opt-in — 4096 tokens a K=16 ≈ 256 passos ≈ ~90MB por call.
-STEP_DIR = ACTIVATIONS_LOG.parent / "activation_steps"
-_STEP_EVERY = int(os.environ.get("OMNI_ACT_STEP_EVERY", "0"))
-_STEP_KEEP = int(os.environ.get("OMNI_ACT_STEP_KEEP", "32"))
-
-
 def _emit_step_trajectory(hidden_states: tuple | None, record: dict[str, Any]) -> None:
     step_every = int(_capture_cfg("OMNI_ACT_STEP_EVERY", "0"))
     step_on = _capture_cfg("OMNI_ACT_STEP_ON", "1") != "0"
@@ -233,23 +245,6 @@ def _emit_step_trajectory(hidden_states: tuple | None, record: dict[str, Any]) -
                               "file": f"{ts}_{safe}.npz"}
     except Exception:
         pass
-
-
-def _capture_cfg(key: str, default: str = "") -> str:
-    v = os.environ.get(key)
-    if v is not None:
-        return v
-    try:
-        for line in open("data/monitor/capture.env", encoding="utf-8"):
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            k, val = line.split("=", 1)
-            if k.strip() == key:
-                return val.strip()
-    except Exception:
-        pass
-    return default
 
 
 # ── Model / Modelo ──────────────────────────────────────────────────────────
