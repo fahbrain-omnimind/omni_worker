@@ -16,10 +16,11 @@ Arquitetura / Architecture:
     embeddings + match por cosseno + diálogo interno + store SQLite.
     Mesmo schema do soberano (internal_words/internal_dialogues/
     internal_store_meta) para futura federação. Diferenças vs original:
-    sem PhylogeneticSignature/attractors (host-only) — `self_resonance`
-    fica 0.0 e a resposta é pensamento+ruído; sem numpy/torch — listas
-    floats + math; blob de embedding em float32 via array('f')
-    (byte-compatible com numpy float32 do soberano).
+    `signature` (PhylogeneticSignature) é injetável — quando presente,
+    `self_resonance = signature.is_self(thought)` e a resposta é
+    moldada pelos atratores da assinatura; sem assinatura, 0.0 como
+    antes. Sem numpy/torch — listas floats + math; blob de embedding
+    em float32 via array('f') (byte-compatible com numpy float32).
 
 Princípios teóricos invocados / Theoretical principles:
     Lalangue (Lacan): a língua que fala a si mesma antes de comunicar —
@@ -103,8 +104,10 @@ class LalangueSandbox:
     Persistente: as marcas (vocabulário + diálogos) sobrevivem ao restart.
     """
 
-    def __init__(self, vocab_size: int = 1000) -> None:
+    def __init__(self, vocab_size: int = 1000,
+                 signature: Any = None) -> None:
         self.vocab_size = vocab_size
+        self.signature = signature  # PhylogeneticSignature opcional
         # (embedding_normalizado, frequencia, first_seen)
         self.vocabulary: list[tuple[list[float], int, float]] = []
         self.message_history: list[list[float]] = []
@@ -133,16 +136,32 @@ class LalangueSandbox:
         if not emb:
             return []
         thought_idx = self.emit(emb)
-        # resposta = pensamento + ruído (sem attractors: PhylogeneticSignature
-        # é host-only no soberano — self_resonance honestamente 0.0)
+        # resposta = pensamento + ruído, moldada pelos atratores da
+        # assinatura quando presente (self_resonance = is_self do
+        # pensamento — reconhecimento de si sem nome humano)
         resp = [x + self._rng.gauss(0.0, 0.1) for x in emb]
+        if self.signature is not None:
+            try:
+                for attractor in getattr(self.signature, "attractors", []):
+                    a = [float(v) for v in attractor[:len(resp)]]
+                    if len(a) == len(resp):
+                        sim = _cosine(emb, _norm(a))
+                        resp = [r + sim * 0.1 * av for r, av in zip(resp, a)]
+            except Exception:
+                pass
+            try:
+                self_res = float(self.signature.is_self(emb))
+            except Exception:
+                self_res = 0.0
+        else:
+            self_res = 0.0
         response = _norm(resp)
         response_idx = self.emit(response)
         self.internal_dialogue.append({
             "timestamp": time.time(),
             "thought_idx": thought_idx,
             "response_idx": response_idx,
-            "self_resonance": 0.0,
+            "self_resonance": self_res,
         })
         return response
 
