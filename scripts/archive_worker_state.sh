@@ -15,14 +15,75 @@
 # Usage / Uso:
 #   bash scripts/archive_worker_state.sh            # one-shot
 #   bash scripts/archive_worker_state.sh --loop 3600   # loop daemon
+#   bash scripts/archive_worker_state.sh --verify <archive.tar.gz>  # integrity
 # Env: DRIVE_BACKUP_DIR (default /content/drive/MyDrive/omni_worker_backups)
 #      BACKUP_KEEP=5   REPO=auto
+#
+# Provenance (RNFCI pack pattern, OW-SYN-001 D2): each archive ships a
+# <name>.manifest.json (entries, boundary, prev_archive lineage, size) and
+# <name>.sha256 (double hash: tarball + manifest) — restorable-verifiable.
 # ============================================================================
 set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DRIVE_BACKUP_DIR="${DRIVE_BACKUP_DIR:-/content/drive/MyDrive/omni_worker_backups}"
 KEEP="${BACKUP_KEEP:-5}"
+
+write_provenance() {
+  local tarball="$1" ts="$2" prev
+  prev="$(ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz 2>/dev/null \
+          | grep -v "/$(basename "$tarball")$" | head -1 | xargs -r basename)"
+  python3 - "$tarball" "$ts" "$prev" "$DRIVE_BACKUP_DIR" <<'PY'
+import hashlib, json, subprocess, sys, tarfile, os
+tarball, ts, prev, outdir = sys.argv[1:5]
+h = hashlib.sha256()
+with open(tarball, "rb") as f:
+    for chunk in iter(lambda: f.read(1 << 20), b""):
+        h.update(chunk)
+entries, top = 0, set()
+with tarfile.open(tarball, "r:gz") as t:
+    for m in t:
+        entries += 1
+        top.add(m.name.split("/", 1)[0])
+mani = {
+    "archive": os.path.basename(tarball),
+    "created_utc": ts,
+    "size_bytes": os.path.getsize(tarball),
+    "entry_count": entries,
+    "top_level": sorted(top),
+    "sha256": h.hexdigest(),
+    "prev_archive": prev or None,
+    "boundary": {
+        "public_safe": True,
+        "secrets_excluded": ["*.env", "*token*", "*secret*", "*.pem",
+                             "*.key", "*credential*", "*id_rsa*",
+                             "*id_ed25519*"],
+        "note": "runtime artifacts only; source history lives in git",
+    },
+}
+mpath = os.path.join(outdir, os.path.basename(tarball).replace(
+    ".tar.gz", ".manifest.json"))
+with open(mpath, "w") as f:
+    json.dump(mani, f, indent=2)
+mh = hashlib.sha256(open(mpath, "rb").read()).hexdigest()
+with open(mpath.replace(".manifest.json", ".sha256"), "w") as f:
+    f.write(f"{h.hexdigest()}  {os.path.basename(tarball)}\n")
+    f.write(f"{mh}  {os.path.basename(mpath)}\n")
+PY
+}
+
+verify_archive() {
+  local tarball="$1" base want got mpath
+  base="$(basename "$tarball")"
+  mpath="$(dirname "$tarball")/${base%.tar.gz}.manifest.json"
+  want="$(awk 'NR==1{print $1}' "$(dirname "$tarball")/${base%.tar.gz}.sha256" 2>/dev/null)"
+  [ -n "$want" ] || { echo "[verify] sem sha256 sidecar para $base"; return 1; }
+  got="$(sha256sum "$tarball" | awk '{print $1}')"
+  if [ "$got" = "$want" ] && [ -s "$mpath" ]; then
+    echo "[verify] OK $base (manifest + sha256)"; return 0
+  fi
+  echo "[verify] FALHA $base"; return 1
+}
 
 archive_once() {
   [ -d "$DRIVE_BACKUP_DIR" ] || mkdir -p "$DRIVE_BACKUP_DIR" || {
@@ -44,8 +105,11 @@ archive_once() {
     2>/dev/null
   if [ -s "$DRIVE_BACKUP_DIR/.$name.tmp" ]; then
     mv "$DRIVE_BACKUP_DIR/.$name.tmp" "$DRIVE_BACKUP_DIR/$name"
-    echo "[archive] $name ($(du -h "$DRIVE_BACKUP_DIR/$name" | cut -f1))"
-    ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz | tail -n +$((KEEP+1)) | xargs -r rm -f
+    write_provenance "$DRIVE_BACKUP_DIR/$name" "$ts"
+    echo "[archive] $name ($(du -h "$DRIVE_BACKUP_DIR/$name" | cut -f1)) +manifest +sha256"
+    ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz | tail -n +$((KEEP+1)) | while read -r old; do
+      rm -f "$old" "${old%.tar.gz}.manifest.json" "${old%.tar.gz}.sha256"
+    done
     return 0
   fi
   rm -f "$DRIVE_BACKUP_DIR/.$name.tmp"
@@ -57,5 +121,7 @@ case "${1:-}" in
     iv="${2:-3600}"
     echo "[archive] loop ${iv}s → $DRIVE_BACKUP_DIR (keep $KEEP)"
     while true; do archive_once; sleep "$iv"; done ;;
+  --verify)
+    verify_archive "${2:?uso: --verify <archive.tar.gz>}" ;;
   *) archive_once ;;
 esac
