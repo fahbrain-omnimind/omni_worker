@@ -186,6 +186,13 @@ def run_one(idx: int, trust=None) -> dict:
         rec["llm"]["code"] = bool(gen.get("llm"))
         code_text = gen.get("code") or ""
         files = _extract_files(code_text)
+        # Detector precoce de falha estrutural [PRX]: cobertura de
+        # entry points no OUTPUT — atenção/entropy NÃO discrimina esta
+        # classe (12B e E4B geram com atenção saudável e ainda pulam
+        # arquivos). Scan de cobertura funciona no texto emitido.
+        REQUIRED_FILES = ("todo_api.py", "todo_stats.py", "store.py")
+        coverage_missing = sorted(f for f in REQUIRED_FILES
+                                  if not any(f == n for n in files))
         for name in list(out.iterdir()):
             if name.is_dir():
                 shutil.rmtree(name, ignore_errors=True)
@@ -200,6 +207,7 @@ def run_one(idx: int, trust=None) -> dict:
                  else {"passed": 0, "failed": 0, "rc": -1, "tail": "no files"})
         turns.append({
             "turn": turn, "files": sorted(files),
+            "coverage_missing": coverage_missing,
             "smoke": smoke, "review_approved": bool(review.get("approved")),
             "review_score": review.get("score"),
             "issues": (review.get("issues") or [])[:5],
@@ -207,9 +215,12 @@ def run_one(idx: int, trust=None) -> dict:
         if files and smoke["failed"] == 0 and smoke["passed"] > 0 \
                 and review.get("approved"):
             break
+        missing = ", ".join(coverage_missing) if coverage_missing else "none"
         feedback = (
             f"\n\n# Turn {turn} feedback — the previous attempt FAILED the "
             f"contract. Fix it, do not explain.\n"
+            f"CRITICAL — arquivos obrigatórios ausentes nesta rodada: {missing}.\n"
+            f"Emita TODOS estes arquivos: todo_api.py, todo_stats.py, store.py.\n"
             f"Smoke tail: {smoke.get('tail')}\n"
             f"Reviewer issues: {(review.get('issues') or ['none'])[:5]}\n")
 
