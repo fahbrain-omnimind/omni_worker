@@ -17,7 +17,6 @@ import ast
 import json
 import os
 from pathlib import Path
-from typing import Any
 
 _MODEL = None
 _INDEX = None
@@ -70,6 +69,7 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
     pt-BR: Escreve chunks.parquet (+ code_index.faiss quando faiss está
     instalado) e manifest.json em out_dir.
     """
+    import hashlib
     import numpy as np
     import pandas as pd
 
@@ -85,12 +85,49 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
     if not rows:
         return {"chunks": 0}
 
-    model = _get_model()
-    embs = model.encode([r["text"] for r in rows], normalize_embeddings=True)
-    embs = np.asarray(embs, dtype="float32")
+    # Tentativa de carregar cache incremental anterior
+    cached_vecs: dict[str, np.ndarray] = {}
+    old_parquet = out_dir / "chunks.parquet"
+    old_npy = out_dir / "embeddings.npy"
+    if old_parquet.exists() and old_npy.exists():
+        try:
+            old_df = pd.read_parquet(old_parquet)
+            old_embs = np.load(old_npy)
+            if len(old_df) == len(old_embs):
+                for idx, row in old_df.iterrows():
+                    th = hashlib.sha256(str(row["text"]).encode("utf-8")).hexdigest()
+                    cached_vecs[th] = old_embs[idx]
+        except Exception:
+            cached_vecs.clear()
+
+    # Identificar chunks novos vs cacheados
+    row_hashes = [hashlib.sha256(r["text"].encode("utf-8")).hexdigest() for r in rows]
+    missing_indices = [i for i, h in enumerate(row_hashes) if h not in cached_vecs]
+
+    if missing_indices:
+        model = _get_model()
+        new_texts = [rows[i]["text"] for i in missing_indices]
+        encoded = model.encode(new_texts, normalize_embeddings=True)
+        encoded = np.asarray(encoded, dtype="float32")
+        dim = int(encoded.shape[1])
+        for idx_in_new, orig_idx in enumerate(missing_indices):
+            cached_vecs[row_hashes[orig_idx]] = encoded[idx_in_new]
+    else:
+        # Nenhum chunk novo/modificado
+        if cached_vecs:
+            dim = next(iter(cached_vecs.values())).shape[0]
+        else:
+            model = _get_model()
+            dim = 384
+
+    # Monta matriz final preservando ordem
+    embs = np.empty((len(rows), dim), dtype="float32")
+    for i, h in enumerate(row_hashes):
+        embs[i] = cached_vecs[h]
 
     df = pd.DataFrame([{k: r[k] for k in ("path", "kind", "name", "text")} for r in rows])
     df.to_parquet(out_dir / "chunks.parquet", index=False)
+    np.save(out_dir / "embeddings.npy", embs)
 
     used_faiss = False
     try:
@@ -101,9 +138,16 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
         faiss.write_index(index, str(out_dir / "code_index.faiss"))
         used_faiss = True
     except Exception:
-        np.save(out_dir / "embeddings.npy", embs)
+        pass
 
-    manifest = {"model": MODEL_ID, "chunks": len(rows), "dim": int(embs.shape[1]), "faiss": used_faiss}
+    manifest = {
+        "model": MODEL_ID,
+        "chunks": len(rows),
+        "dim": int(embs.shape[1]),
+        "faiss": used_faiss,
+        "incremental_hits": len(rows) - len(missing_indices),
+        "incremental_misses": len(missing_indices),
+    }
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
     global _INDEX, _LOADED_DIR
     _INDEX, _LOADED_DIR = None, None

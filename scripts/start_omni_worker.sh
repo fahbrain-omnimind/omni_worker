@@ -120,22 +120,21 @@ esac
 
 echo -e "${GREEN}OmniMind Worker bring-up${NC} — repo $REPO, python $VENV_PYTHON"
 
-# Code index (symbolic body): rebuild when missing or stale vs newest
-# src .py — the build also pulls all-MiniLM-L6-v2 + writes chunks.parquet
-# + code_index.faiss that /dream/cycle and /curiosity/explore consume.
-index_stale() {
+# Code index (symbolic body): só reconstrói se ausente ou se chamado explicitamente com --reindex.
+# Se já existe índice válido, reutiliza imediatamente no startup para nunca atrasar os brains.
+index_missing() {
   local mani="$OMNI_CODE_INDEX_DIR/chunks.parquet"
-  [ -f "$mani" ] || return 0
-  [ -n "$(find "$REPO/src/omni_coworker" -name '*.py' -newer "$mani" -print -quit)" ]
+  [ ! -f "$mani" ]
 }
-if [ "${1:-}" = "--reindex" ] || index_stale; then
-  echo -e "${BLUE}>> code index rebuild → $OMNI_CODE_INDEX_DIR${NC}"
+
+if [ "${1:-}" = "--reindex" ] || index_missing; then
+  echo -e "${BLUE}>> code index build → $OMNI_CODE_INDEX_DIR${NC}"
   # CPU-only: rebuild com brains residentes não pode disputar VRAM
   CUDA_VISIBLE_DEVICES="" "$VENV_PYTHON" -c "from omni_coworker.store import code_index; \
     print(code_index.build_index('$REPO/src/omni_coworker', code_index.index_dir()))" \
     || echo -e "${YELLOW}[WARN] index build falhou (dream/curiosity degradam p/ fallback)${NC}"
 else
-  echo -e "${GREEN}[OK]${NC} code index atualizado ($OMNI_CODE_INDEX_DIR)"
+  echo -e "${GREEN}[OK]${NC} code index preservado/reutilizado ($OMNI_CODE_INDEX_DIR) — use --reindex para forçar"
 fi
 
 if [ "${1:-up}" != "--no-brains" ]; then
