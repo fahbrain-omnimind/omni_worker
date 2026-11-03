@@ -68,6 +68,7 @@ def run_cycle() -> dict[str, Any]:
         homeo.update_consciousness_state(
             ((bundle.get("soul") or {}).get("phi")) or 0.0)
         homeo_out = homeo.regulate(raw.get("soma") or {})
+        homeo_out["producing"] = bool(bundle.get("producing"))
         bundle["homeostasis"] = homeo_out
         _publish("kernel.homeostasis", homeo_out)
         # desire: falta estrutural = distância do ótimo homeostático;

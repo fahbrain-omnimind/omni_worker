@@ -99,5 +99,9 @@ def aggregate(raw: dict[str, Any]) -> dict[str, Any]:
             if m.get(k) is not None and prev.get(k) is not None:
                 drift.setdefault(model, {})[k] = round(m[k] - prev[k], 4)
     bundle["drift"] = drift
+    # D5: "void homeostático" — ótimo-em-repouso ≠ ótimo-produzindo;
+    # producing = houve ativação registrada neste ciclo (trabalho real).
+    bundle["producing"] = any(
+        (m.get("n_records") or 0) > 0 for m in per_model.values())
     _PREV.update(per_model)
     return bundle

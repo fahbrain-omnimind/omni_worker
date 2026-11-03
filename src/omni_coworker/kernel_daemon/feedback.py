@@ -45,9 +45,15 @@ def _publish(topic: str, payload: Any) -> bool:
 
 def publish_feedback(bundle: dict[str, Any]) -> list[str]:
     """Publish canonical kernel.* topics; returns published names."""
+    # Síndrome do Afeto Monotípico (OW-SYN-001 D4): afeto nunca pode
+    # depender de fonte única — mono_source=True = diversidade degradada,
+    # consumidores devem tratar o afeto como frágil nesse ciclo.
+    affect = dict(bundle.get("affect") or {})
+    affect["mono_source"] = sum(
+        1 for r in ("analyst", "executor") if affect.get(r)) < 2
     topics = {
         "kernel.cycle": bundle,
-        "kernel.affect": bundle.get("affect") or {},
+        "kernel.affect": affect,
         "kernel.soul": bundle.get("soul") or {},
         "kernel.soma": bundle.get("soma") or {},
         "kernel.drift": bundle.get("drift") or {},
