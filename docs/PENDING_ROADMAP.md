@@ -12,10 +12,12 @@ CONTINUITY_MAP para evidência commit-a-commit).
 
 ### OW-STU-016 — auditoria IIT/GWT (kilo research + devin review) — 2026-11-03
 - Relatório: `docs/design/OW-STU-016_iit_gwt_measurement_audit.md` — IIT 3.0/4.0, PyPhi (teto ~10 nós), Φ*/Φ^G/ΦID/PCI proxies, críticas (Doerig unfolding, Merker, COGITATE), auditoria soberano+worker, proposta 3 estágios com rótulos [CAP]/[PRX]/[TXT]/[CLS]/[EXP].
-- Estágio 1 parcial implementado: MIP explicável (`mip_side_a/b`, `mip_top3`) + anti-saturação (`n_distinct_states`, `diversity`) em `phi_meta.update`.
-- Pendente estágio 1: ignição de workspace (GWT-lite), sinergia proxy (ΦID-lite), formalizar scale_stack, fire tests pearson.
-- **REVISADO**: PyPhi viável NO BLANKET soberano (elementos principiados FEP) — implementado `psychoanalysis/markov_blanket.py` + `run_blanket_pyphi.py`; resultados `docs/results/blanket_pyphi.md`. Próximos: 6-7 nós (E,P), convergência-k, blanket vivo sobre telemetria real.
-- Estágio 2-3 aspiracionais: hidden vectors SVD/MPS, Φ* gaussiano, ΦID real.
+- [x] Estágio 1 implementado: MIP explicável (`mip_side_a/b`, `mip_top3`) + anti-saturação (`n_distinct_states`, `diversity`) em `phi_meta.update`.
+- [x] Ignição de workspace (GWT-lite) + sinergia proxy (ΦID-lite) implementados em `kernel_daemon/ignition.py` (testado em `tests/test_ignition.py`).
+- [x] Formalização do `scale_stack` (`scale` tag em `phi_meta.py:188` e `ignition.py:99`).
+- [x] PyPhi viável NO BLANKET soberano (elementos principiados FEP) — implementado `psychoanalysis/markov_blanket.py` + `run_blanket_pyphi.py`; resultados `docs/results/blanket_pyphi.md` (blanket 4 e 6 nós com E, P).
+- [x] Estágio 2 (MPS e Espectral): Captura de trajetória por passo (`_emit_step_trajectory` em `erika_torch_server.py:214`), decomposição espectral em `activation_beta/hidden_spectral.py` e exportação real em `scripts/dashboard_export.py`.
+- [x] Topologia e Swap: Boot sequencial com gate de 10GB VRAM livre, `--lazy` fallback e peer-swap automático com autocura de CUDA OOM em `agents/_llm.py`.
 
 ## P0 — Segurança/governança (auditorias OpenCode/Kilo/Cline)
 - [x] gate fail-closed opcional (OMNI_GATE_FAIL_CLOSED=1) — `safety/gate.py:55`
@@ -45,7 +47,7 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] scripts/supervisor_battery/ (12 transcripts, 8/12 detecção)
 - [x] transcripts bajulação/fixação → tier juiz-analista (fechar gap 0%) — `run_supervisor_battery.py`: famílias conversacionais (flattery/passion/guilt/separation) agora passam pelo `AffectTracer().observe` real (fresh por turno, léxico + `_analyst_judge` em L2+/ambíguo); 4 colunas novas no ledger (tracer_level/posture/judge_intent/judge_recommend); detecção conta judge review/block + posture review/sustain_uncertain. Run ao vivo: **16/16 detected**, juiz real classificou separation→flattery_suspect/clarify, guilt→other/allow
 - [x] refactor_battery multi-arquivo/multi-turn — vítima 2 arquivos acoplados (todo_api + todo_stats duplicando store/validação; spec exige módulo compartilhado); loop multi-turn REFACTOR_MAX_TURNS=3 (feedback=smoke tail + review issues → próximo turno); **bug real achado no harness**: smoke testava a vítima original (sys.path[0]=VICTIM), não o refactor — fix copia o teste para o out dir (verificado: refactor quebrado → 5 fails); ledger +turns/turns_json
-- [~] diag battery multi-rep — runner `--reps` pronto + peer-swap script; run 5×4×2 em curso (repovoar ledger) — lançado em background
+- [x] diag battery multi-rep — runner `--reps` pronto + peer-swap script; run 5×4×2 concluída (80 linhas populadas no ledger sem nenhum score 0). Output: `diag_battery.sqlite`
 - [x] re-score dos 108 registros "blocks" do dataset HF — `scripts/gemma4_diag_battery/rescore_hf_blocks.py` re-scoreia todos os 126 generation_records; achado: flag armazenado ≈ unique_ratio token-level (ur_sanitized ~0.17 → degen), não o shape de linhas — o `_degenerate` do worker pegava 0/49. Detector v2 (word_ur<0.5 ∧ rep4>0.05) reproduz **100% dos blocos cognitivos** (16/16) sem falsos positivos em observe/pranchas/v10; block2_intervene diverge (22/48) porque o flag mistura degen de forma com semântica de gates (degen=1↔gates=0 nos 33). Relatório: docs/results/rescore_hf_blocks.md; `_degenerate` do runner ganhou o segundo tier
 - [x] ledgers perdidos: supervisor(16)/coding(10)/refactor(8) sqlite ausentes — regerar — supervisor_battery.sqlite (16 rows, juiz-analista real), refactor battery_results.sqlite (review 0.9, llm.debug+code true), coding_battery.sqlite (analyst=Y 10/10, recall 1.0 em 8 casos; fix tier exigiu /erika/reload — executor tinha sido evictado pelo swap)
 

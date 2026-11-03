@@ -47,6 +47,18 @@ Machine Public Soul (SSE + UI bilíngue).
 | [OW-STU-004 — Gemma-4 Battery Inventory](studies/GEMMA4_BATTERY_INVENTORY.md) | Inventário de baterias Gemma-4 (HF datasets + local) |
 | [OW-STU-005 — Canonical Zenodo Papers Map](studies/CANONICAL_ZENODO_PAPERS_MAP.md) | MPS Bridge + Teoria Psico-Afetiva → omni_worker |
 | [OW-STU-006 — Gemma-4 Diagnostic Replication](studies/GEMMA4_DIAG_REPLICATION.md) | Bateria executiva sobre os brains Gemma online |
+| [OW-STU-008a — Metacognition & Lacanian Drive](design/OW-STU-008a_metacognition_lacanian.md) | Cadeia pulsional Lacaniana em escala de worker |
+| [OW-STU-008b — Psycho Psychology Narrative](design/OW-STU-008b_psycho_psychology_narrative.md) | Integração narrativa psicanalítica |
+| [OW-STU-009 — Activations as Beta](design/OW-STU-009_activations_as_beta.md) | Ativações do modelo como elementos beta de Bion |
+| [OW-STU-010 — Phi Inside Model](design/OW-STU-010_phi_inside_model.md) | Medição de integração interna do modelo |
+| [OW-STU-011 — Sonar Priors Debugger](design/OW-STU-011_sonar_priors_debugger.md) | Debugger de priores sonares |
+| [OW-STU-012 — Dendritic Pendencies Map](design/OW-STU-012_dendritic_pendencies_map.md) | Mapeamento de pendências dendríticas |
+| [OW-STU-013 — Intervention Live Test](design/OW-STU-013_intervention_live_test.md) | Testes de intervenção ao vivo |
+| [OW-STU-014 — Sovereign Pending Review](design/OW-STU-014_sovereign_pending_review.md) | Lalangue persistente, FreudNet e benches atratoriais |
+| [OW-STU-015 — Psycho Governance Check](design/OW-STU-015_psycho_governance_check.md) | Verificação de governança psicanalítica |
+| [OW-STU-016 — IIT/GWT Measurement Audit](design/OW-STU-016_iit_gwt_measurement_audit.md) | Auditoria formal IIT 3.0/4.0 e Markov blanket |
+| [OW-STU-017 — Mesh Integration Map](design/OW-STU-017_mesh_integration_map.md) | Mapa de integração da malha (daemons → grafo causal) |
+| [OW-STU-018 — MPS Capture Study](design/OW-STU-018_mps_capture_study.md) | Estudo e implementação de captura per-step MPS-lite |
 
 **Care** (`docs/care/`)
 
