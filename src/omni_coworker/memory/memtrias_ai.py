@@ -29,13 +29,14 @@ Arquitetura / Architecture:
                      bridge read-only, uso interno/privado).
       - state:       estado da máquina associado à memória (regime,
                      vram, phi, attractor no momento da escrita).
-    Embedding default `auto`: all-MiniLM-L6-v2 quando sentence-
-    transformers disponível (`OMNI_MEMTRIAS_EMBEDDER=auto|minilm|hash`;
-    hash determinístico offline sempre funciona). Cada registro marca
-    `analysis['embedder']`; recall prefere mesmo espaço vetorial
-    (registros pré-tagging contam como 'hash'). LIMITE medido: MiniLM
-    é inglês-dominante — paráfrase EN discrimina (0.463 vs 0.024), PT
-    cross-lingual fraco (~0.30 vs 0.31).
+    Embedding default `auto`: `tardellirs/colibri-embed-ptbr` (nativo
+    PT-BR, MTEB-BR 0.650, 157M params, Matryoshka 768d) tentado antes
+    de `all-MiniLM-L6-v2` (`OMNI_MEMTRIAS_EMBEDDER=auto|ptbr|minilm|
+    hash`; hash determinístico offline sempre funciona). Cada registro
+    marca `analysis['embedder']`; recall prefere mesmo espaço vetorial
+    (registros pré-tagging contam como 'hash'). Discriminação medida:
+    colibri PT-BR 0.629 vs 0.229 no probe que MiniLM empatou 0.30/0.31;
+    MiniLM é inglês-dominante (paráfrase EN 0.463 vs 0.024).
 
 Princípios teóricos invocados / Theoretical principles:
     Retorno do recalcado (Freud): o que foi registrado retorna quando o
@@ -110,27 +111,52 @@ def _cosine(a: np.ndarray, b: np.ndarray) -> float:
     return float(np.dot(a, b) / (na * nb))
 
 
-_ST_MODEL = None
-_ST_TRIED = False
+_ST_MODELS: dict[str, Any] = {}
+_ST_TRIED: set[str] = set()
+
+# modelos ST suportados: spec -> HF id (ordem de tentativa no 'auto')
+_ST_MODEL_IDS = {
+    "ptbr": "tardellirs/colibri-embed-ptbr",      # nativo PT-BR, MTEB-BR 0.650
+    "minilm": "all-MiniLM-L6-v2",                  # 384d, mesmo do acervo
+}
+_AUTO_ORDER = ("ptbr", "minilm")
+
+
+def _load_st(spec: str):
+    """Carrega lazy o modelo ST do spec; None se indisponível."""
+    if spec in _ST_TRIED:
+        return _ST_MODELS.get(spec)
+    _ST_TRIED.add(spec)
+    try:
+        from sentence_transformers import SentenceTransformer
+        _ST_MODELS[spec] = SentenceTransformer(_ST_MODEL_IDS[spec])
+    except Exception:
+        _ST_MODELS[spec] = None
+    return _ST_MODELS.get(spec)
+
+
+def _st_embedder(spec: str) -> Callable[[str], list[float]]:
+    """Retorna embedder real do modelo ST `spec` (dim nativa do modelo)."""
+    def _fn(text: str) -> list[float]:
+        model = _load_st(spec)
+        if model is None:
+            return hash_embedder(text)
+        v = np.asarray(model.encode([text or ""])[0], dtype=np.float64)
+        n = float(np.linalg.norm(v))
+        return (v / n).tolist() if n > 0 else v.tolist()
+    return _fn
 
 
 def minilm_embedder(text: str, dim: int = EMBED_DIM) -> list[float]:
     """Embedder semântico real: all-MiniLM-L6-v2 (mesmo do acervo).
 
-    Carrega lazy (singleton); fallback hash_embedder quando ST
-    indisponível — nunca quebra o caminho de memória.
+    Carrega lazy; fallback hash_embedder quando ST indisponível —
+    nunca quebra o caminho de memória.
     """
-    global _ST_MODEL, _ST_TRIED
-    if not _ST_TRIED:
-        _ST_TRIED = True
-        try:
-            from sentence_transformers import SentenceTransformer
-            _ST_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
-        except Exception:
-            _ST_MODEL = None
-    if _ST_MODEL is None:
+    model = _load_st("minilm")
+    if model is None:
         return hash_embedder(text, dim)
-    emb = _ST_MODEL.encode([text or ""])[0]
+    emb = model.encode([text or ""])[0]
     v = np.asarray(emb, dtype=np.float64)
     if v.size != dim:
         out = np.zeros(dim)
@@ -143,26 +169,22 @@ def minilm_embedder(text: str, dim: int = EMBED_DIM) -> list[float]:
 def _pick_embedder(spec: str | None) -> tuple[Callable[[str], list[float]], str]:
     """Resolve embedder + nome honesto para marcação por registro.
 
-    spec: 'minilm' | 'hash' | 'auto' (default) | None.
-    auto/minilm → tenta ST (marca 'minilm' se carregar, 'hash' senão);
-    'hash' → força hashing-trick.
+    spec: 'ptbr' | 'minilm' | 'hash' | 'auto' (default) | None.
+    'ptbr'/'minilm' → tenta o ST correspondente (marca o spec se
+    carregar, 'hash' senão); 'auto' tenta ptbr→minilm (PT-BR é a língua
+    de deploy); 'hash' → força hashing-trick.
     """
     spec = (spec or os.getenv("OMNI_MEMTRIAS_EMBEDDER") or "auto").lower()
     if spec == "hash":
         return hash_embedder, "hash"
-    if spec in ("auto", "minilm"):
-        global _ST_MODEL, _ST_TRIED
-        if not _ST_TRIED:
-            _ST_TRIED = True
-            try:
-                from sentence_transformers import SentenceTransformer
-                _ST_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
-            except Exception:
-                _ST_MODEL = None
-        if _ST_MODEL is not None:
-            return minilm_embedder, "minilm"
-        if spec == "minilm":
-            return hash_embedder, "hash"  # pedido mas indisponível
+    if spec in _ST_MODEL_IDS:
+        if _load_st(spec) is not None:
+            return _st_embedder(spec), spec
+        return hash_embedder, "hash"  # pedido mas indisponível
+    if spec == "auto":
+        for s in _AUTO_ORDER:
+            if _load_st(s) is not None:
+                return _st_embedder(s), s
     return hash_embedder, "hash"
 
 
@@ -622,15 +644,16 @@ class MemtriasAI:
         """Recuperação vetorial real: MiniLM-L6-v2 → faiss → manifest rows."""
         try:
             import faiss
-            from sentence_transformers import SentenceTransformer
         except Exception:
             return []
         try:
             if not hasattr(self, "_acervo_idx"):
                 self._acervo_idx = faiss.read_index(
                     str(self._acervo_dir / "acervo_index.faiss"))
-                self._acervo_model = SentenceTransformer("all-MiniLM-L6-v2")
-            q = self._acervo_model.encode([query or ""])
+            model = _load_st("minilm")
+            if model is None:
+                return []
+            q = model.encode([query or ""])
             _d, idxs = self._acervo_idx.search(q, top_k)
             con = sqlite3.connect(
                 f"file:{self._acervo_dir / 'acervo_manifest.sqlite'}?mode=ro",

@@ -289,7 +289,8 @@ def test_engram_benchmark_runs(mem):
 def test_embedder_tagged_per_record(mem):
     """analysis['embedder'] marca qual função embutiu cada registro."""
     rec = mem.remember("machine", "registro marcado pelo embedder")
-    assert rec["analysis"].get("embedder") in ("hash", "minilm", "custom")
+    assert rec["analysis"].get("embedder") in ("hash", "minilm", "ptbr",
+                                               "custom")
 
 
 def test_recall_prefers_same_embedder(mem):
@@ -315,9 +316,7 @@ def test_recall_prefers_same_embedder(mem):
 def test_minilm_semantic_when_available(tmp_path, monkeypatch):
     """Com ST disponível, minilm discrimina semântica que hash não dá."""
     import omni_coworker.memory.memtrias_ai as mod
-    if mod._ST_MODEL is None and not mod._ST_TRIED:
-        mod._pick_embedder("minilm")
-    if mod._ST_MODEL is None:
+    if mod._load_st("minilm") is None:
         import pytest
         pytest.skip("sentence-transformers indisponível")
     monkeypatch.setenv("OMNI_MEMTRIAS_EMBEDDER", "minilm")
@@ -329,3 +328,22 @@ def test_minilm_semantic_when_available(tmp_path, monkeypatch):
     m.remember("user", "quantum chromodynamics lattice gauge")
     hits = m.recall("a feline rested", namespaces=["user"], top_k=1)
     assert "cat" in hits[0]["content"]
+
+
+def test_ptbr_embedder_discrimina_pt(tmp_path, monkeypatch):
+    """Colibri-embed-ptbr: discriminação real em PT-BR (medido 0.63 vs 0.23)."""
+    import omni_coworker.memory.memtrias_ai as mod
+    if mod._load_st("ptbr") is None:
+        import pytest
+        pytest.skip("colibri-embed-ptbr indisponível")
+    monkeypatch.setenv("OMNI_MEMTRIAS_EMBEDDER", "ptbr")
+    m = mod.MemtriasAI(state_dir=tmp_path)
+    assert m._embedder_name == "ptbr"
+    m.remember("user", "gosto de café amargo de manhã")
+    m.remember("user", "o kernel relatou vram alta ontem")
+    hits = m.recall("bebida quente matinal", namespaces=["user"], top_k=1)
+    assert "café" in hits[0]["content"]
+    # e a língua psicanalítica em PT
+    m.remember("user", "o reprimido volta como sintoma")
+    hits = m.recall("o retorno do recalcado", namespaces=["user"], top_k=1)
+    assert "sintoma" in hits[0]["content"]

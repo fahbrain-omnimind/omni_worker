@@ -23,7 +23,7 @@ Varredura de `os.getenv` em `src/` — 25 variáveis. Classificação:
 | `OMNI_GATE_DB` | `/tmp/...` | — | não | gate db |
 | `OMNI_MODES_STATE`, `OMNI_ORCHESTRATOR_DIR` | `/tmp/...` | — | não | estados voláteis |
 | `OMNI_ANALYST_CONFIG`, `OMNI_NODE_ROOT` | — | — | não | opcionais |
-| `OMNI_MEMTRIAS_EMBEDDER` | `auto` | — | não | `auto`/`minilm`/`hash` — MiniLM-L6-v2 quando ST disponível; hash offline sempre funciona |
+| `OMNI_MEMTRIAS_EMBEDDER` | `auto` | — | não | `auto`/`ptbr`/`minilm`/`hash` — auto tenta `colibri-embed-ptbr` (nativo PT-BR, MTEB-BR 0.650) depois MiniLM-L6; hash offline sempre funciona |
 | `OMNI_ACERVO_DIR` | — | — | não | dir do acervo vetorizado (read-only, interno) |
 | `OMNI_MACHINE_SEED` | — | — | não | semente extra de chassi p/ PhylogeneticSignature |
 | `KAGGLE_*`/`COLAB_*` | — | plataforma | — | fornecidas pelo host |
