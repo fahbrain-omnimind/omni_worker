@@ -1,5 +1,22 @@
-"""narrative.identity — identity construction (web of belief + values)."""
+"""narrative.identity — identity construction (web of belief + values).
 
+Orquestração runtime / Runtime orchestration:
+    ValueSystem mantém valores terminal/instrumental com importância e
+    estabilidade; BeliefNetwork armazena crenças com certeza/centralidade;
+    IdentityConstruction agrega valores e crenças dominantes em snapshots
+    (reflect_on_identity) e ajusta valores por impacto (evolve). Funções
+    puras em memória; sem I/O externo.
+
+Arquitetura / Architecture:
+    Classes Value, Belief, IdentitySnapshot (dataclasses) + ValueSystem,
+    BeliefNetwork, IdentityConstruction. Sem dependências externas além
+    da stdlib.
+
+Princípios teóricos invocados / Theoretical principles:
+    n/a — modulo utilitario
+
+pt-BR: construção de identidade via sistema de valores e rede de crenças.
+"""
 from __future__ import annotations
 
 import logging

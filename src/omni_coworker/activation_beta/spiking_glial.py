@@ -93,49 +93,67 @@ class SpikingGlialVagusBridge:
         }
 
 
+def _raw_signal(item) -> float:
+    if not isinstance(item, dict):
+        try:
+            return float(item)
+        except (TypeError, ValueError):
+            return 0.0
+    for key in ("entropy", "attention_entropy_last", "signal", "value",
+                "norm", "norm_drift_mean", "attractor_score"):
+        if key in item and item[key] is not None:
+            try:
+                return float(item[key])
+            except (TypeError, ValueError):
+                continue
+    for v in item.values():
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            return float(v)
+    return 0.0
+
+
 def glial_features(window) -> dict[str, Any]:
+    """Glial features sobre sinal bruto com threshold relativo ao regime.
+
+    O bridge recebe a entropia bruta e threshold=mediana+2·mad da própria
+    janela: geração normal fica abaixo → sem stress; vagus só sobe com
+    entropia acima de ~2 desvios do regime recente. Registros sem `tags`
+    ganham tag sintética (modelo, banda de entropia 0.5) — habituação =
+    repetição de saída com perfil similar (degeneração real), não
+    contagem de janela.
+    """
     if not window:
         return {"habituated": 0.0, "sensitized": 0.0,
                 "vagus_sedative": 0.0, "pause_code": None, "n": 0}
-    bridge = SpikingGlialVagusBridge(rate=0.1, window=len(window))
+    raw = [_raw_signal(item) for item in window]
+    med = float(np.median(raw))
+    mad = max(0.1, float(np.median([abs(s - med) for s in raw])))
+    bridge = SpikingGlialVagusBridge(rate=0.1, window=len(window),
+                                    threshold=med + 2.0 * mad)
     signals = []
-    for item in window:
+    pressures: list[float] = []
+    for item, sig_raw in zip(window, raw):
         if isinstance(item, dict):
-            sig = None
-            for key in ("entropy", "attention_entropy_last", "signal", "value",
-                        "norm", "norm_drift_mean", "attractor_score"):
-                if key in item and item[key] is not None:
-                    try:
-                        sig = float(item[key])
-                        break
-                    except (TypeError, ValueError):
-                        continue
-            if sig is None:
-                for v in item.values():
-                    if isinstance(v, (int, float)) and not isinstance(v, bool):
-                        sig = float(v)
-                        break
-            if sig is None:
-                sig = 0.0
             tags = item.get("tags")
-            tags = tuple(tags) if isinstance(tags, (tuple, list)) else ()
-            bridge.observe(sig, tags)
-            # stress hint from pressure
+            if isinstance(tags, (tuple, list)):
+                tags = tuple(tags)
+            else:
+                tags = (str(item.get("model") or "m"), round(sig_raw * 2) / 2)
+            bridge.observe(sig_raw, tags)
+            # stress hint from pressure — canal absoluto [0,1+]
             for pk in ("pressure", "stress"):
                 if pk in item and item[pk] is not None:
                     try:
-                        bridge.observe_stress(float(item[pk]))
+                        pressures.append(float(item[pk]))
                     except (TypeError, ValueError):
                         pass
-            signals.append(sig)
         else:
-            try:
-                sig = float(item)
-            except (TypeError, ValueError):
-                sig = 0.0
-            bridge.observe(sig, ())
-            signals.append(sig)
+            bridge.observe(sig_raw, ())
+        signals.append(sig_raw)
     st = bridge.state()
+    if pressures and max(pressures) >= 0.8:
+        st["vagus_sedative"] = max(float(st.get("vagus_sedative") or 0.0), 0.5)
+        st["pause_code"] = "pause_code"
     st["n"] = len(window)
     st["mean_signal"] = round(float(__import__("numpy").mean(signals)), 4) if signals else 0.0
     return st

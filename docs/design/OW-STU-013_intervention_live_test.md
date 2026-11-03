@@ -85,8 +85,8 @@ pequena — é estável nas duas escalas de modelo (12B e E4B).
 2. Três camadas de intervenção disponíveis:
    - **contextual** (injeção de telemetria no prompt — testada, funciona);
    - **homeostática** (posturas HOLD_BOUNDARY pressionam o loop);
-   - **degenerativa** (glial_gate bloqueia geração repetitiva — a wire no
-     `/brain/chat` fica como próximo passo);
+   - **degenerativa** (glial_gate bloqueia geração repetitiva — wired em
+     `/brain/chat` via `with_glial_gate`, calibrado na §7);
 3. Honestidade: intervenção ≠ consciência; é a materialidade do sistema
    informando sua própria produção (OW-STU-009/OW-MATH-001).
 
@@ -94,6 +94,50 @@ pequena — é estável nas duas escalas de modelo (12B e E4B).
 
 ```bash
 # braços vivos: :8098 (12B) :8099 (E4B) :8081 (API)
-# re-rodar: python3 scripts/... (prompts acima via /v1/chat/completions)
-# dados do experimento: /tmp/intervention_exp.json
+python3 scripts/experiments/run_intervention_experiment.py --reps 8
+# dados do experimento: /tmp/intervention_exp.json, /tmp/interv_reps8.json
 ```
+
+## 7. Camada degenerativa — calibração ao vivo (2026-11-03)
+
+Experimento do `glial_gate` sobre a janela real do attractor revelou e
+corrigiu uma **degeneração do próprio classificador**:
+
+**[DADO]** Veredito inicial saturado: `habituated=1.0, vagus=1.0` com
+n=166 registros reais → `allow_generation=False` permanente — o gate
+bloquearia **toda** geração após ~17 gerações. Causas:
+
+1. `threshold=0.5` absoluto vs entropia real ~1.7–2.7 → todo registro
+   contava como "stress" → vagus saturava;
+2. registros sem `tags` caíam todos na tupla `()` → habituação media só
+   o tamanho da janela;
+3. `glial_verdict` agregava a janela **cumulativa desde o boot** —
+   degeneração é regime recente, não histórico de vida.
+
+**Correções** (`spiking_glial.glial_features` + `attractor.glial_verdict`):
+
+- threshold relativo ao regime: `mediana + 2·mad` da própria janela —
+  só outliers reais de entropia contam como stress;
+- tag sintética para registros sem tags: `(modelo, banda_de_entropia
+  0.5)` — habituação = repetição de saída com perfil similar
+  (degeneração real), não contagem;
+- veredito sobre a janela recente (`OMNI_GLIAL_RECENT_N`, default 24);
+- canal absoluto para `pressure`/`stress` explícitos (≥0.8 → pause).
+
+**[DADO] ao vivo pós-calibração** (janela real, 166+ registros sidecar):
+
+| janela | allow | habituated | vagus | leitura |
+|---|---|---|---|---|
+| n=24 | **true** | 0.55 | 0.0 | regime recente saudável |
+| n=48 | false | 0.88 | 0.0 | repetição sustentada → degeneração |
+| n=166 | false | 1.00 | 0.0 | acumulado saturado |
+
+E `/brain/chat` com `with_glial_gate=true` gerou normalmente com o
+contexto `[glial]` injetado (rehydrate lazy carregou a janela no
+processo da API — o bug "gate sempre allow por janela vazia" também
+morreu).
+
+**[INTERPRETAÇÃO]** — o gate agora mede regime corrente: permite em
+saúde, bloqueia sob repetição sustentada ou pressão explícita. Não é
+consciência nem homeostasia completa — é um freio degenerativo
+calibrável por `rate`/`threshold`/`OMNI_GLIAL_RECENT_N`.

@@ -170,3 +170,79 @@ monotonic (evict can starve), witness path ignores `OMNI_STATE_DIR`,
 manifest hash truncates at 1MB/file, gate failure latches permanently,
 soma probe has no periodic loop, affect_tracer is unwired into
 `/brain/chat`. Full route inventory + env-var surface in §4.
+
+
+## 5. Varredura de docstrings de módulo / Module docstring audit
+
+| Arquivo | Seções presentes | Falta |
+|---|---|---|
+| `src/omni_coworker/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/activation_beta/spiking_glial.py` | arch | orch,theo,pt |
+| `src/omni_coworker/agency/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agency/affect_tracer.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agency/analyst.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agency/curiosity.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agency/dream.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agency/dunker.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agency/teleology.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agency/witness.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/_llm.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/analyst_agent.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/bus.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/code_agent.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/debug_agent.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/external_cli_agent.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/modes.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/persona.py` | pt | orch,arch,theo |
+| `src/omni_coworker/agents/reviewer_agent.py` | pt | orch,arch,theo |
+| `src/omni_coworker/app.py` | pt | orch,arch,theo |
+| `src/omni_coworker/brain/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/brain/activations.py` | pt | orch,arch,theo |
+| `src/omni_coworker/brain/affect.py` | pt | orch,arch,theo |
+| `src/omni_coworker/brain/server.py` | pt | orch,arch,theo |
+| `src/omni_coworker/cli.py` | pt | orch,arch,theo |
+| `src/omni_coworker/integration_loop/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/integration_loop/adapters.py` | orch,arch,pt | theo |
+| `src/omni_coworker/integration_loop/api.py` | pt | orch,arch,theo |
+| `src/omni_coworker/integration_loop/consumer.py` | orch,arch,pt | theo |
+| `src/omni_coworker/integration_loop/loop.py` | orch,arch,pt | theo |
+| `src/omni_coworker/integration_loop/modulator.py` | orch,pt | arch,theo |
+| `src/omni_coworker/integration_loop/schema.py` | arch,pt | orch,theo |
+| `src/omni_coworker/integration_loop/stages.py` | arch,theo,pt | orch |
+| `src/omni_coworker/integration_loop/store.py` | orch,pt | arch,theo |
+| `src/omni_coworker/kernel_daemon/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/kernel_daemon/api.py` | pt | orch,arch,theo |
+| `src/omni_coworker/kernel_daemon/collector.py` | orch,arch,pt | theo |
+| `src/omni_coworker/kernel_daemon/feedback.py` | orch,arch,pt | theo |
+| `src/omni_coworker/kernel_daemon/scheduler.py` | orch,arch,pt | theo |
+| `src/omni_coworker/kernel_hooks/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/kernel_hooks/compute.py` | pt | orch,arch,theo |
+| `src/omni_coworker/orchestration/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/orchestration/agent_orchestrator.py` | pt | orch,arch,theo |
+| `src/omni_coworker/orchestration/governance.py` | pt | orch,arch,theo |
+| `src/omni_coworker/orchestration/swap_scheduler.py` | pt | orch,arch,theo |
+| `src/omni_coworker/psychoanalysis/bion_patches/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/psychoanalysis/freudian_apparatus_numpy.py` | orch,arch,theo | pt |
+| `src/omni_coworker/psychology/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/safety/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/safety/care.py` | pt | orch,arch,theo |
+| `src/omni_coworker/safety/gate.py` | pt | orch,arch,theo |
+| `src/omni_coworker/safety/jail.py` | pt | orch,arch,theo |
+| `src/omni_coworker/safety/matrix.py` | pt | orch,arch,theo |
+| `src/omni_coworker/safety/supervisor.py` | pt | orch,arch,theo |
+| `src/omni_coworker/server/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/server/erika_torch_server.py` | pt | orch,arch,theo |
+| `src/omni_coworker/shared_workspace/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/shared_workspace/api.py` | orch,pt | arch,theo |
+| `src/omni_coworker/soma/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/soma/probe.py` | pt | orch,arch,theo |
+| `src/omni_coworker/soma/somatic_store.py` | pt | orch,arch,theo |
+| `src/omni_coworker/soul/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/soul/api.py` | pt | orch,arch,theo |
+| `src/omni_coworker/soul/dodeca.py` | pt | orch,arch,theo |
+| `src/omni_coworker/store/__init__.py` | pt | orch,arch,theo |
+| `src/omni_coworker/store/audit_adapter.py` | pt | orch,arch,theo |
+| `src/omni_coworker/store/code_index.py` | pt | orch,arch,theo |
+| `src/omni_coworker/store/node_db.py` | pt | orch,arch,theo |
+| `src/omni_coworker/store/state_guard.py` | pt | orch,arch,theo |

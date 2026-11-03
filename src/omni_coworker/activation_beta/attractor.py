@@ -161,10 +161,15 @@ def _model_features(w: deque) -> dict[str, Any] | None:
     return out
 
 
-def glial_verdict(window=None) -> dict[str, Any]:
-    """Veredito glial para degeneração.
+GLIAL_RECENT_WINDOW = int(os.getenv("OMNI_GLIAL_RECENT_N", "24"))
 
-    Se window None, agrega todas as janelas do attractor.
+
+def glial_verdict(window=None, recent_n: int | None = None) -> dict[str, Any]:
+    """Veredito glial para degeneração — regime RECENTE, não histórico.
+
+    Se window None, agrega as últimas `recent_n` entradas de todas as
+    janelas do attractor (degeneração é o regime corrente, não a vida
+    inteira do processo — habituação cumulativa saturaria sempre).
     """
     global _REHYDRATED
     if not _REHYDRATED:
@@ -173,11 +178,14 @@ def glial_verdict(window=None) -> dict[str, Any]:
         except Exception:
             pass
         _REHYDRATED = True
+    n = recent_n or GLIAL_RECENT_WINDOW
     if window is None:
         combined = []
         for w in _WINDOWS.values():
-            combined.extend(list(w))
+            combined.extend(list(w)[-n:])
         window = combined
+    else:
+        window = list(window)[-n:] if n else list(window)
     try:
         return spiking_glial.glial_gate({}, window)
     except Exception:
