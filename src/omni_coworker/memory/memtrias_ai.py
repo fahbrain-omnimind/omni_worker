@@ -623,6 +623,24 @@ class MemtriasAI:
         con.close()
         return {"purged": int(cur.rowcount)}
 
+    def records_since(self, ts: float, *, limit: int = 50,
+                      exclude_namespaces: tuple[str, ...] = ("dream",)
+                      ) -> list[dict[str, Any]]:
+        """Registros não-esquecidos com ts > marca (integração incremental)."""
+        con = sqlite3.connect(self._dir / _DB, timeout=10)
+        sql = ("SELECT id, namespace, content, ts FROM memories"
+               " WHERE ts > ? AND COALESCE(forgotten,0)=0")
+        args: tuple = (float(ts),)
+        if exclude_namespaces:
+            excl = ",".join("?" for _ in exclude_namespaces)
+            sql += f" AND namespace NOT IN ({excl})"
+            args += tuple(exclude_namespaces)
+        rows = con.execute(f"{sql} ORDER BY ts ASC LIMIT ?",
+                           (*args, int(limit))).fetchall()
+        con.close()
+        return [{"id": r[0], "namespace": r[1], "content": r[2], "ts": r[3]}
+                for r in rows]
+
     def count(self, namespace: str | None = None) -> int:
         sql = "SELECT COUNT(*) FROM memories"
         args: tuple = ()

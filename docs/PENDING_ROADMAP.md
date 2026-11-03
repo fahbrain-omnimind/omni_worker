@@ -27,7 +27,7 @@ CONTINUITY_MAP para evidência commit-a-commit).
 ## P2 — Afeto conversacional (estudo + opencode)
 - [x] agency/affect_tracer.py L0-L4 + 6 testes (feito)
 - [x] wire no /brain/chat (escada L0-L4 real) + supervisor lane analyst — `affect_tracer.get_affect_tracer()` singleton (instância por chamada matava a trajetória — streaks/densidade nunca disparavam); `/brain/chat` com `with_affect` injeta `[affect]` + devolve veredito completo (posture/judge/trajectory); L4 retém geração sem chamar o brain; juiz-analista `_analyst_judge` já era chamado via `brain_chat_json` nos níveis L2-L3 — `_llm.brain_chat` também usa o singleton
-- [ ] teleology: remover probe canônico morto; metabolize real
+- [x] teleology: probe canônico morto removido (`src.cognitive.dream_weaver` — acoplamento host-morto); `dream.metabolize` real: marca d'água persistida + `memtrias.records_since` + digest tecido pelo analista (validado ao vivo — Gemma produziu síntese real) + memória `dream` com `source_ids` em events; contagens honestas (zero quando nada novo)
 
 ## P3 — Swap inteligente (alocação sob demanda)
 - [x] /brain/unload + /brain/reload → `/erika/unload|reload` no erika_torch_server portado — `brain/server.py:45-62`

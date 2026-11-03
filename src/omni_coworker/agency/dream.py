@@ -1,50 +1,121 @@
 """Dream mode (metabolization in inactivity).
 
-English: Symbolic metabolization during idle periods.
-pt-BR: Metabolização simbólica em períodos de inatividade.
+English: Real symbolic metabolization during idle periods — reads the
+memtrias records written since the last run (high-water mark persisted
+in OMNI_STATE_DIR/metabolize_state.json), weaves them into a compressed
+digest (analyst brain when online, extractive condensation offline)
+and inscribes the result as a `dream`-namespace memory carrying the
+source ids in `events`. Nothing is invented: no new records → zero.
+pt-BR: Metabolização simbólica real em períodos de inatividade — lê os
+registros memtrias escritos desde a última rodada (marca d'água
+persistida em OMNI_STATE_DIR/metabolize_state.json), tece-os num
+digest comprimido (brain analista online, condensação extrativa
+offline) e inscreve o resultado como memória do namespace `dream` com
+os ids de origem em `events`. Nada é inventado: sem registros novos →
+zero.
 """
 
 from __future__ import annotations
 
+import json
+import os
+from pathlib import Path
 from typing import Any
 
+_STATE_NAME = "metabolize_state.json"
+_MAX_SOURCES = 50
 
-def metabolize(idle_seconds: float = 0.0, context: dict | None = None) -> dict[str, Any]:
-    """Run dream metabolization.
-    
-    English: Returns metabolization summary.
-    pt-BR: Retorna resumo da metabolização.
-    """
-    context = context or {}
 
-    # Try canonical DreamWeaver bus listener if available
+def _state_path() -> Path:
+    return Path(os.getenv("OMNI_STATE_DIR", "data")) / _STATE_NAME
+
+
+def _load_mark() -> float:
     try:
-        from src.cognitive.dream_weaver import DreamWeaver
-        dw = DreamWeaver()
-        received = dw.listen_to_bus()
-        return {"metabolized": int(bool(received)), "source": "DreamWeaver", "bus_received": bool(received)}
+        return float(json.loads(_state_path().read_text()).get("last_ts", 0.0))
+    except Exception:
+        return 0.0
+
+
+def _save_mark(ts: float) -> None:
+    try:
+        p = _state_path()
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps({"last_ts": ts}))
     except Exception:
         pass
-    
-    # Fallback metabolization
-    metabolized_count = min(10, int(idle_seconds / 60) + 1)
-    return {
-        "metabolized": metabolized_count,
-        "source": "fallback",
-        "summary": {
-            "integrated": metabolized_count,
-            "compressed": metabolized_count // 2,
-            "tempo": "inatividade"
-        },
-        "idle_seconds": idle_seconds
-    }
+
+
+def _weave_dream(residue: list[dict[str, Any]]) -> tuple[str, str]:
+    """Analyst weaves a synthesis over the day's residues; extractive
+    fallback condenses sources verbatim. Returns (text, source)."""
+    corpus = "\n".join(
+        f"- [{r['namespace']}] {r['content'][:160]}" for r in residue)
+    try:
+        from ..agents._llm import brain_chat
+
+        text = brain_chat(
+            [{"role": "system", "content": (
+                "You are metabolizing the day's memory residues into dream "
+                "material. Compress these fragments into a short synthesis "
+                "(2-4 sentences): what recurs, what tensions, what was "
+                "integrated. No lists, no code.")},
+             {"role": "user", "content": corpus}],
+            role="analyst", max_tokens=180, temperature=0.85)
+        if text:
+            return text, "brain:analyst"
+    except Exception:
+        pass
+    return " | ".join(r["content"][:80] for r in residue[:8]), "extractive"
+
+
+def metabolize(idle_seconds: float = 0.0,
+               context: dict | None = None) -> dict[str, Any]:
+    """Run dream metabolization over unintegrated memtrias records.
+
+    English: Integrates records newer than the persisted high-water
+    mark into one compressed `dream` memory. Returns honest counts.
+    pt-BR: Integra registros mais novos que a marca d'água persistida
+    numa memória `dream` comprimida. Retorna contagens honestas.
+    """
+    try:
+        from ..memory.memtrias_ai import get_memtrias
+
+        mem = get_memtrias()
+    except Exception as e:
+        return {"metabolized": 0, "source": "unavailable", "reason": str(e)}
+
+    mark = _load_mark()
+    residue = mem.records_since(mark, limit=_MAX_SOURCES)
+    if not residue:
+        return {"metabolized": 0, "source": "memtrias",
+                "reason": "no_new_records", "mark": mark,
+                "idle_seconds": idle_seconds}
+
+    text, source = _weave_dream(residue)
+    ids = [r["id"] for r in residue]
+    new_mark = max(r["ts"] for r in residue)
+    rec = mem.remember(
+        "dream", text,
+        tags=["metabolized"],
+        instance="dream",
+        events=[{"type": "metabolize", "source_ids": ids,
+                 "source_count": len(ids), "idle_seconds": idle_seconds}],
+        state_ref={"mark": new_mark, "residue_ns":
+                   sorted({r["namespace"] for r in residue})},
+    )
+    _save_mark(new_mark)
+    return {"metabolized": len(residue), "source": source,
+            "dream_id": rec["id"], "mark": new_mark,
+            "namespaces": sorted({r["namespace"] for r in residue}),
+            "idle_seconds": idle_seconds}
 
 
 def weave(context: dict | None = None) -> dict[str, Any]:
-    """Weave dream narrative.
-    
-    English: Creates symbolic synthesis.
-    pt-BR: Cria síntese simbólica.
+    """Weave dream narrative — one metabolization pass.
+
+    English: Creates symbolic synthesis over pending residues.
+    pt-BR: Cria síntese simbólica sobre resíduos pendentes.
     """
     return metabolize(0, context)
 
@@ -67,7 +138,6 @@ def dream_cycle(
     LLM (fallback extrativo).
     """
     import random
-    from pathlib import Path
 
     from ..store import code_index
     from .witness import witness_event
