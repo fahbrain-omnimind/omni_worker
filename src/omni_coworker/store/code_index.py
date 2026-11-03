@@ -180,5 +180,17 @@ def search(query: str, out_dir: str | Path, k: int = 5) -> list[dict]:
 
 
 def index_dir() -> str:
-    """Default index directory (env-overridable)."""
-    return os.getenv("OMNI_CODE_INDEX_DIR", "/tmp/omni_code_index")
+    """Default index directory (env-overridable).
+
+    Falls back to the repo-root `omni_code_index/` when the env var is
+    absent and the directory exists there, then to /tmp (fresh build
+    target). Keeps manual starts working without the start script's
+    exports.
+    """
+    env = os.getenv("OMNI_CODE_INDEX_DIR")
+    if env:
+        return env
+    repo_dir = Path(__file__).resolve().parents[3] / "omni_code_index"
+    if (repo_dir / "chunks.parquet").exists():
+        return str(repo_dir)
+    return "/tmp/omni_code_index"

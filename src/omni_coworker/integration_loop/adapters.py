@@ -50,8 +50,8 @@ def collect_meaning_context(query: str) -> dict[str, Any]:
     if not query:
         return {}
     try:
-        from ..store.code_index import search
-        hits = search(query, k=1)
+        from ..store.code_index import index_dir, search
+        hits = search(query, index_dir(), k=1)
         return hits[0] if hits else {}
     except Exception:
         return {}
