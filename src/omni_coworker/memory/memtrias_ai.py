@@ -321,6 +321,91 @@ class MemtriasAI:
         scored.sort(key=lambda r: r["score"], reverse=True)
         return scored[:top_k]
 
+    # ── engram: síntese dinâmica vs recuperação estática ────────────────
+
+    def synthesize(self, query: str, *,
+                   namespaces: list[str] | None = None,
+                   top_k: int = 4) -> dict[str, Any]:
+        """Síntese dinâmica: reconstrói uma "memória" misturando os top-k.
+
+        Recuperação estática devolve o traço inscrito verbatim; a síntese
+        reconstrói — embedding = média ponderada (por score) dos top hits,
+        conteúdo = concatenação das fontes. Não persiste: é a memória
+        reconstruída do engrama, não um novo traço.
+        """
+        hits = self.recall(query, namespaces=namespaces, top_k=top_k)
+        if not hits:
+            return {"query": query, "sources": [], "embedding": None,
+                    "content": None, "diversity": 0}
+        embs = []
+        weights = []
+        con = sqlite3.connect(self._dir / _DB, timeout=10)
+        for h in hits:
+            row = con.execute("SELECT embedding FROM memories WHERE id=?",
+                              (h["id"],)).fetchone()
+            if row and row[0]:
+                embs.append(np.asarray(json.loads(row[0]), dtype=np.float64))
+                weights.append(max(h["score"], 1e-6))
+        con.close()
+        blend = None
+        if embs:
+            w = np.asarray(weights) / sum(weights)
+            blend = np.average(np.stack(embs), axis=0, weights=w)
+        ns_set = {h["namespace"] for h in hits}
+        return {"query": query,
+                "sources": [{"id": h["id"], "namespace": h["namespace"],
+                             "score": h["score"]} for h in hits],
+                "embedding": blend.tolist() if blend is not None else None,
+                "content": " || ".join(h["content"][:120] for h in hits),
+                "diversity": len(ns_set)}
+
+    def engram_benchmark(self, n_probes: int = 20, *,
+                         seed: int = 0) -> dict[str, Any]:
+        """Benchmark de alocação: recuperação estática vs síntese dinâmica.
+
+        Probes derivadas de registros reais (substring do conteúdo):
+        - estática: top-1 do recall retorna o registro-fonte? (hit rate,
+          score médio)
+        - síntese: cosine da mistura top-k vs probe + diversidade de fontes
+        """
+        con = sqlite3.connect(self._dir / _DB, timeout=10)
+        rows = con.execute(
+            "SELECT id, content FROM memories"
+            " WHERE COALESCE(forgotten,0)=0"
+            " AND content NOT NULL AND length(content)>=12"
+            " ORDER BY ts DESC LIMIT 500").fetchall()
+        con.close()
+        if not rows:
+            return {"n_probes": 0, "note": "sem registros para sondar"}
+        rng = np.random.default_rng(seed)
+        idx = rng.choice(len(rows), size=min(n_probes, len(rows)),
+                         replace=False)
+        probes = [(rows[i][0], rows[i][1]) for i in idx]
+        static_hits, static_scores, syn_scores, syn_div = [], [], [], []
+        for src_id, content in probes:
+            probe = content[:max(12, len(content) // 2)]
+            rec = self.recall(probe, top_k=1)
+            if rec:
+                static_hits.append(1 if rec[0]["id"] == src_id else 0)
+                static_scores.append(rec[0]["score"])
+            syn = self.synthesize(probe, top_k=4)
+            if syn["embedding"] is not None:
+                q = np.asarray(self._embedder(probe), dtype=np.float64)
+                syn_scores.append(_cosine(q, np.asarray(syn["embedding"])))
+                syn_div.append(syn["diversity"])
+        return {
+            "n_probes": len(probes),
+            "static_hit_rate": (round(float(np.mean(static_hits)), 4)
+                                if static_hits else None),
+            "static_mean_score": (round(float(np.mean(static_scores)), 4)
+                                  if static_scores else None),
+            "synthesis_mean_score": (round(float(np.mean(syn_scores)), 4)
+                                     if syn_scores else None),
+            "synthesis_mean_diversity": (round(float(np.mean(syn_div)), 2)
+                                        if syn_div else None),
+            "note": ("estática = traço verbatim; síntese = reconstrução "
+                     "dinâmica dos top-k (não persiste)")}
+
     # ── leitura afetiva do dia (motor afetivo) ───────────────────────────
 
     def daily_affect(self, day_ts: float | None = None, *,

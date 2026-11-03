@@ -255,3 +255,26 @@ def test_surgical_forgetting(tmp_path):
     assert r1["id"] not in ids
     assert r2["id"] in [r["id"] for r in
                         mem.recall("contexto", namespaces=["chat"])]
+
+
+def test_synthesize_blends_top_k(mem):
+    """synthesize: média ponderada dos top-k, não persiste."""
+    mem.remember("user", "gosto de café amargo forte")
+    mem.remember("user", "café coado de manhã cedo")
+    out = mem.synthesize("café amargo", namespaces=["user"], top_k=2)
+    assert out["embedding"] is not None
+    assert len(out["sources"]) >= 1
+    assert out["diversity"] >= 1
+    before = mem.count("user")
+    mem.synthesize("café amargo", namespaces=["user"], top_k=2)
+    assert mem.count("user") == before  # síntese não persiste
+
+
+def test_engram_benchmark_runs(mem):
+    """engram_benchmark: probes derivadas de registros reais."""
+    for i in range(8):
+        mem.remember("machine", f"evento do kernel número {i} com vram")
+    out = mem.engram_benchmark(n_probes=5, seed=1)
+    assert out["n_probes"] == 5
+    assert out["static_hit_rate"] is not None
+    assert 0.0 <= out["static_hit_rate"] <= 1.0
