@@ -21,8 +21,8 @@ def create_app() -> FastAPI:
     pt-BR: Monta sub-routers.
     """
     app = FastAPI(
-        title="omni-agent-coworker",
-        description="Sovereign agentic coworker - Machine Public Soul",
+        title="Omni-Gemma Lab-Agent Coworker",
+        description="Omni-Gemma Lab-Agent Coworker — for Google Competitions (Machine Public Soul)",
         version="0.1.0"
     )
     app.include_router(soul_router)
@@ -183,5 +183,39 @@ def create_app() -> FastAPI:
 
         chain = read_witness(limit=20)
         return {"entries": chain, "verify": verify_witness()}
+
+    @app.get("/", include_in_schema=False)
+    def root_dashboard():
+        """Serve the 4-view Machine Public Soul & Supervisory Dashboard."""
+        from pathlib import Path
+        from fastapi.responses import HTMLResponse
+
+        repo_root = Path(__file__).resolve().parents[2]
+        for candidate in (
+            repo_root / "docs" / "dashboard.html",
+            repo_root / "docs" / "index.html",
+            Path(__file__).parent / "soul" / "static" / "index.html",
+        ):
+            if candidate.exists():
+                return HTMLResponse(candidate.read_text(encoding="utf-8"))
+        return HTMLResponse("<html><body><h1>Omni-Gemma Lab-Agent Coworker</h1></body></html>")
+
+    @app.get("/data/dashboard/latest.json", include_in_schema=False)
+    def dashboard_latest_json() -> dict:
+        """Serve the exported real telemetry snapshot for the supervisory dashboard."""
+        import json
+        from pathlib import Path
+
+        repo_root = Path(__file__).resolve().parents[2]
+        for candidate in (
+            repo_root / "data" / "dashboard" / "latest.json",
+            repo_root / "docs" / "data" / "dashboard" / "latest.json",
+        ):
+            if candidate.exists():
+                try:
+                    return json.loads(candidate.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+        return {"source": "omni_worker real state", "error": "snapshot_not_generated"}
 
     return app

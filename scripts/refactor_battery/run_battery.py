@@ -120,12 +120,12 @@ def _ledger(con: sqlite3.Connection, rec: dict):
 
 
 def _ensure_executor(timeout_s: int = 90) -> bool:
-    """Reload :8099 if the swap scheduler evicted it mid-battery.
+    """Reload :8099 if the swap scheduler or peer-swap evicted it mid-battery.
 
     English: batteries span minutes — VRAM eviction between turns is a
     real failure mode (proven live 2026-11-03). Poll /health; on
-    model_loaded=false POST /erika/reload and wait like run_diag's
-    wait_loaded. Returns True when executor is loaded.
+    model_loaded=false, unload peer (:8098) if needed, POST /erika/reload
+    and wait. Returns True when executor is loaded.
     pt-BR: baterias levam minutos — eviction de VRAM entre turns é modo
     de falha real (provado ao vivo 2026-11-03).
     """
@@ -134,8 +134,26 @@ def _ensure_executor(timeout_s: int = 90) -> bool:
         with urllib.request.urlopen("http://127.0.0.1:8099/health", timeout=4) as r:
             if json.loads(r.read()).get("model_loaded"):
                 return True
+    except Exception:
+        pass
+    try:
         urllib.request.urlopen(urllib.request.Request(
             "http://127.0.0.1:8099/erika/reload", method="POST"), timeout=60)
+    except Exception:
+        pass
+    try:
+        with urllib.request.urlopen("http://127.0.0.1:8099/health", timeout=4) as r:
+            if json.loads(r.read()).get("model_loaded"):
+                return True
+    except Exception:
+        pass
+    # Peer (:8098) is likely holding VRAM after DebugAgent/ReviewerAgent; unload it first
+    try:
+        urllib.request.urlopen(urllib.request.Request(
+            "http://127.0.0.1:8098/erika/unload", method="POST"), timeout=30)
+        time.sleep(1.5)
+        urllib.request.urlopen(urllib.request.Request(
+            "http://127.0.0.1:8099/erika/reload", method="POST"), timeout=90)
     except Exception:
         pass
     t0 = time.time()
@@ -184,6 +202,8 @@ def run_one(idx: int, trust=None) -> dict:
     turns = []
     files = {}
     review = {}
+    code_text = ""
+    smoke = {"passed": 0, "failed": 0, "rc": -1, "tail": "no turns executed"}
     for turn in range(1, MAX_TURNS + 1):
         if not _ensure_executor():
             turns.append({"turn": turn, "error": "executor_unloaded"})

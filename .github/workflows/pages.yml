@@ -25,12 +25,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      - uses: actions/jekyll-build-pages@v1
-        with:
-          source: docs/
-          destination: ./_site
+      - name: Prepare static site root
+        run: |
+          cp -f docs/dashboard.html docs/index.html
+          touch docs/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: docs
       - id: deployment
         uses: actions/deploy-pages@v4
