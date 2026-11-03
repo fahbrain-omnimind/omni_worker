@@ -35,7 +35,7 @@ if [ -n "${GITLAB_TOKEN:-}" ] || [ -f /content/gitlab.txt ]; then
   if [ -n "$GITLAB_TOKEN" ]; then
     echo "[restore_env] GitLab: rebuscando variáveis fixas..."
     _vars="$(curl -s --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
-      "https://gitlab.com/api/v4/projects/fahbrain-omnimind%2Fomni_worker/variables")"
+      "https://gitlab.com/api/v4/projects/omni-group535144%2Fomni_worker/variables")"
     if [ -n "$_vars" ]; then
       echo "$_vars" | python3 - <<'PYEOF'
 import json, os, sys

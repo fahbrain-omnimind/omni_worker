@@ -111,6 +111,34 @@ def create_brain_router():
                         payload["messages"] = [{"role": "system", "content": note}] + msgs
                     except Exception:
                         pass
+                # gate glial degenerativo: bloqueia geração repetitiva (fail-open)
+                if payload.pop("with_glial_gate", False):
+                    try:
+                        from ..activation_beta.attractor import glial_verdict
+
+                        verdict = glial_verdict()
+                        if not verdict.get("allow_generation", True):
+                            return {
+                                "choices": [{
+                                    "message": {
+                                        "role": "assistant",
+                                        "content": ("[glial_gate] geração bloqueada: "
+                                                    f"{verdict.get('reason')}"),
+                                    }
+                                }],
+                                "glial_gate": verdict,
+                            }
+                        # injeta veredito glial como contexto (transparente)
+                        msgs = list(payload.get("messages") or [])
+                        glial = verdict.get("glial") or {}
+                        payload["messages"] = [{
+                            "role": "system",
+                            "content": ("[glial] habituated="
+                                        f"{glial.get('habituated', 0.0)} "
+                                        f"vagus={glial.get('vagus_sedative', 0.0)}"),
+                        }] + msgs
+                    except Exception:
+                        pass
                 async with httpx.AsyncClient(timeout=120.0) as client:
                     resp = await client.post(
                         f"{_base_for_role(role)}/v1/chat/completions", json=payload
