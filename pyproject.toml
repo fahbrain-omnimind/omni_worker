@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "omni-agent-coworker"
 version = "0.1.0"
-description = "Sovereign agentic coworker — somatic interoception, tensor-derived affect, teleology, autopoietic governance, Machine Public Soul (Kaggle Gemma 4, Best New Application)"
+description = "Omni-Gemma Lab-Agent Coworker — sovereign agentic coworker for Google Competitions (The Gemma 4 Developer Agent Paper Track & Competition)"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }

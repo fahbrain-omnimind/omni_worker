@@ -1,15 +1,18 @@
-# omni-agent-coworker (omni_worker)
+# Omni-Gemma Lab-Agent Coworker (omni_worker)
 
-**Status:** ATIVO — pacote standalone (Kaggle Gemma 4, Best New Application).
-Repositório privado; publicação futura Apache-2.0.
+**Status:** ATIVO — Omni-Gemma Lab-Agent Coworker for Google Competitions:
+- **Google — The Gemma 4 Developer Agent Paper Track** (Advancing the state-of-the-art for agentic software engineering)
+- **Google — The Gemma 4 Developer Agent Competition** (Autonomous coding agents)
 
-pt-BR: Coworker agêntico soberano: interocepção somática real, afeto derivado de
+Repositório de pesquisa & engenharia agêntica soberana (Apache-2.0).
+
+pt-BR: Coworker agêntico soberano para o ecossistema Google Gemma 4: interocepção somática real, afeto derivado de
 tensores (com hot-path Rust `kernel_hooks` quando compilado), teleologia
 endógena, governança autopoiética (PermissionMatrix + ConstitutionalGate +
 prótese anti-impulsividade), corpo simbólico vetorizado (all-MiniLM + faiss) com
 **dream cycle** e **curiosity mode**, e Machine Public Soul (SSE + UI bilíngue).
 
-English: Sovereign agentic coworker: real somatic interoception, tensor-derived
+English: Sovereign agentic coworker for Google Gemma 4 competitions: real somatic interoception, tensor-derived
 affect (with the Rust `kernel_hooks` hot-path when compiled), endogenous
 teleology, autopoietic governance (PermissionMatrix + ConstitutionalGate +
 anti-impulsivity prosthesis), vectorized symbolic body (all-MiniLM + faiss)
