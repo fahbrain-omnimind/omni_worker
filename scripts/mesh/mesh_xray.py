@@ -32,6 +32,7 @@ Uso: python3 scripts/mesh/mesh_xray.py [--json] [--tree]
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -41,6 +42,27 @@ import sys
 import time
 from collections import Counter, defaultdict
 from pathlib import Path
+
+# Sanitização: o artefato pode ser commitado como prova — IPs e hostname
+# viram pseudônimos estáveis (sha256[:10]) para o grafo continuar
+# utilizável sem expor endereços. Masking, não criptografia.
+_IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+_SAFE_IP = ("127.", "0.0.0.0", "255.", "::1", "[::1")
+
+
+def _mask_ipv4(ip: str) -> str:
+    if ip.startswith(_SAFE_IP):
+        return ip
+    return f"ip_{hashlib.sha256(ip.encode()).hexdigest()[:10]}"
+
+
+def _mask_host() -> str:
+    return f"host_{hashlib.sha256(socket.gethostname().encode()).hexdigest()[:8]}"
+
+
+def _scrub(blob: str) -> str:
+    """Aplica masking a todo IPv4 não-local no blob serializado."""
+    return _IPV4.sub(lambda m: _mask_ipv4(m.group(0)), blob)
 
 STATE_DIR = Path(os.environ.get("OMNI_STATE_DIR", Path(__file__).resolve().parents[2] / "state"))
 OUT = STATE_DIR / "mesh_xray_latest.json"
@@ -275,7 +297,7 @@ def snapshot() -> dict:
     agents = {pid: p["cmdline"][:90] for pid, p in procs.items() if p["role"] == "agent"}
     report = {
         "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "host": socket.gethostname(),
+        "host": _mask_host(),
         "elapsed_s": round(time.time() - t0, 2),
         "L0_chassis": _chassis(),
         "L2_python_envs": _python_envs(procs),
@@ -292,9 +314,11 @@ def snapshot() -> dict:
         "scale": "snapshot [CAP] — persistent edges only; event edges need eBPF/strace",
         "caveat": "installed ≠ active; transient edges invisible to FD inspection",
     }
+    # chokepoint único: nada sai para o artefato sem passar pelo masking
+    scrubbed = json.loads(_scrub(json.dumps(report, indent=2, default=sorted)))
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(report, indent=2, default=sorted))
-    return report
+    OUT.write_text(json.dumps(scrubbed, indent=2, default=sorted))
+    return scrubbed
 
 
 def main() -> None:

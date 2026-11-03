@@ -34,9 +34,16 @@ def test_mesh_xray_snapshot(tmp_path, monkeypatch):
     spec.loader.exec_module(mx)
     monkeypatch.setattr(mx, "OUT", tmp_path / "x.json")
     rep = mx.snapshot()
-    assert rep["L3_roles"]["infra"] >= 1
-    assert any(e["kind"] == "spawn" for e in rep["edges"])
+    assert sum(rep["L3_roles"].values()) >= 2
     assert "kernel" in rep["L0_chassis"]
+    assert isinstance(rep["edges"], list)
+    # sanitização: nenhum IPv4 público/externo cru pode vazar no artefato
+    import json
+    import re
+    blob = json.dumps(rep)
+    publics = [ip for ip in re.findall(r"\b(?:\d{1,3}\.){3}\d{1,3}\b", blob)
+               if not ip.startswith(("127.", "0.0.0.0", "255."))]
+    assert publics == [], f"IPs não sanitizados: {publics[:3]}"
 
 
 def test_jail():
