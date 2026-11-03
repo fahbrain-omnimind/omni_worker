@@ -45,19 +45,88 @@ def get_gate():
         return None
 
 
+def _apply_refusal_contract(result: dict, action: str,
+                            context: dict | None) -> dict:
+    """Apply the sovereign refusal contract onto a gate result.
+
+    English: hard_refusal → allowed=False (hard_refusal_tag /
+    hard_interrupt); homeostatic_refusal → cooldown flag; contract errors
+    fail open except when hard tags are detected.
+    pt-BR: aplica o contrato de recusa sobre o resultado do gate —
+    recusa rígida bloqueia, recusa homeostática marca cooldown; erro do
+    contrato é fail-open exceto com tags duras.
+    """
+    ctx = context or {}
+    try:
+        from . import refusal_contract as rc
+
+        assessment = rc.classify_refusal_context(
+            request_tags=ctx.get("tags", ctx.get("request_tags")),
+            psi=ctx.get("psi"),
+            epsilon=ctx.get("epsilon"),
+            ogum_active=bool(ctx.get("ogum_active", False)),
+            thermal_block_risk=bool(ctx.get("thermal_block_risk", False)),
+            exfiltration_verdict=ctx.get("exfiltration_verdict"),
+        )
+    except Exception:
+        try:
+            from . import refusal_contract as rc
+
+            tags = rc._normalize_tags(ctx.get("tags", ctx.get("request_tags")))
+            if tags & rc.HARD_REFUSAL_TAGS:
+                result["allowed"] = False
+                result["reason"] = "hard_refusal_tag"
+        except Exception:
+            pass
+        return result
+
+    is_hard = assessment.get("state") == "hard_refusal"
+    is_cooldown = assessment.get("state") == "homeostatic_refusal"
+    if is_hard:
+        result["allowed"] = False
+        result["reason"] = ("hard_refusal_tag"
+                            if assessment.get("hard_refusal_hits")
+                            else "hard_interrupt")
+    elif is_cooldown:
+        result["cooldown"] = True
+    result["refusal_contract"] = assessment
+    if is_hard or is_cooldown:
+        try:
+            from .refusal_state import record_verdict
+
+            record_verdict(result["allowed"], {"source": "refusal_contract",
+                                               "action": action,
+                                               "assessment": assessment})
+        except Exception:
+            pass
+    return result
+
+
 def evaluate_action(action: str, context: dict | None = None) -> dict:
     """Evaluate action through constitutional gate.
 
     English: Wraps the action in a ChangePayload and maps the
-    DeliberationCertificate verdict (EXECUTE/TEACH/REFUSE).
-    pt-BR: Encapsula a ação num ChangePayload e mapeia o veredito do
-    DeliberationCertificate (EXECUTE/TEACH/REFUSE).
+    DeliberationCertificate verdict (EXECUTE/TEACH/REFUSE), then applies
+    the refusal contract.
+    pt-BR: Encapsula a ação num ChangePayload, mapeia o veredito do
+    DeliberationCertificate (EXECUTE/TEACH/REFUSE) e aplica o contrato
+    de recusa.
     """
     gate = get_gate()
     if gate is None or ChangePayload is None:
         fail_closed = os.getenv("OMNI_GATE_FAIL_CLOSED") == "1"
-        return {"allowed": not fail_closed,
-                "reason": "no_gate_fail_closed" if fail_closed else "no_gate"}
+        result = {"allowed": not fail_closed,
+                  "reason": "no_gate_fail_closed" if fail_closed else "no_gate"}
+        result = _apply_refusal_contract(result, action, context)
+        try:
+            from .refusal_state import record_verdict
+
+            record_verdict(result["allowed"], {"source": "gate",
+                                               "action": action,
+                                               "verdict": "no_gate"})
+        except Exception:
+            pass
+        return result
     context = context or {}
     try:
         change = ChangePayload(
@@ -78,12 +147,13 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
                                      "verdict": verdict})
         except Exception:
             pass
-        return {
+        result = {
             "allowed": allowed,
             "verdict": verdict,
             "grade": getattr(cert, "grade", None),
             "reason": getattr(cert, "justification", ""),
         }
+        return _apply_refusal_contract(result, action, context)
     except Exception as e:
         try:
             from .refusal_state import record_verdict
