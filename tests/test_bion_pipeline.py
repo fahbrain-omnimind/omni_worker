@@ -19,6 +19,9 @@ def test_transform_basic():
 def test_transform_mock_brain_chat(monkeypatch):
     import omni_coworker.agents._llm as llm
     monkeypatch.setattr(llm, "brain_chat", lambda *a, **k: "alpha simbolico pensavel para teste")
+    # shared executor (2 workers) can be saturated by real brain calls from
+    # earlier tests when brains are live — give the pending future room.
+    monkeypatch.setenv("OMNI_WORKER_BION_SYMBOL_TIMEOUT", "30")
     beta = BetaElement(raw_data="raw", timestamp=datetime.now(), emotional_charge=0.1, source="sensor")
     f = BionAlphaFunction(use_llm_symbolizer=True)
     alpha = f.transform(beta)
