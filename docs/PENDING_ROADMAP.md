@@ -51,6 +51,14 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] re-score dos 108 registros "blocks" do dataset HF — `scripts/gemma4_diag_battery/rescore_hf_blocks.py` re-scoreia todos os 126 generation_records; achado: flag armazenado ≈ unique_ratio token-level (ur_sanitized ~0.17 → degen), não o shape de linhas — o `_degenerate` do worker pegava 0/49. Detector v2 (word_ur<0.5 ∧ rep4>0.05) reproduz **100% dos blocos cognitivos** (16/16) sem falsos positivos em observe/pranchas/v10; block2_intervene diverge (22/48) porque o flag mistura degen de forma com semântica de gates (degen=1↔gates=0 nos 33). Relatório: docs/results/rescore_hf_blocks.md; `_degenerate` do runner ganhou o segundo tier
 - [x] ledgers perdidos: supervisor(16)/coding(10)/refactor(8) sqlite ausentes — regerar — supervisor_battery.sqlite (16 rows, juiz-analista real), refactor battery_results.sqlite (review 0.9, llm.debug+code true), coding_battery.sqlite (analyst=Y 10/10, recall 1.0 em 8 casos; fix tier exigiu /erika/reload — executor tinha sido evictado pelo swap)
 
+## P5 — Resiliência de VM (aberto 2026-11-03, ver OW-OPS-005)
+- [ ] `scripts/bootstrap_vm.sh`: pip deps + restore do último backup verificado + download do acervo + export `OMNI_ACERVO_DIR` + `start_omni_worker.sh` (hoje feito manualmente)
+- [ ] `start_omni_worker.sh` definir/propagar `OMNI_ACERVO_DIR` para a API
+- [ ] bind loopback da API em produção pública (hoje `0.0.0.0:8081`)
+- [ ] investigar diferença de testes: 452 passed/4 skipped (2026-11-03 pós-restore) vs 454/2 documentado
+- [ ] `memtrias.memories = 0`: confirmar se é esperado (idêntico nos backups 18:31–20:32Z; antes disso NÃO LOCALIZADO)
+- [ ] trabalho não commitado entre 19:46Z e a queda: NÃO LOCALIZADO — operador deve revisar o que lembra ter feito
+
 ## Resultados
 - docs/results/ — outputs de cada validação runtime
 - battery_results.sqlite + supervisor_battery.sqlite (ledgers)
