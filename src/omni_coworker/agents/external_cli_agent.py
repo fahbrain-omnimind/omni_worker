@@ -28,6 +28,8 @@ import shlex
 import shutil
 import signal
 import subprocess
+import threading
+import time
 from pathlib import Path
 from typing import Any, Callable
 
@@ -40,6 +42,7 @@ __all__ = [
     "ShellCLIAdapter",
     "ACPClient",
     "ExternalCLIAgent",
+    "CLICircuitBreaker",
     "default_clis",
     "register_cli",
     "list_available",
@@ -695,6 +698,10 @@ class ExternalCLIAgent:
         self.cmd = cmd
         self.args_factory = args_factory
         self.adapter = self._resolve_adapter()
+        try:
+            self.circuit_breaker: Any = CLICircuitBreaker(self.name)
+        except Exception:
+            self.circuit_breaker = None  # fail-open: breaker ausente não bloqueia
 
     def _resolve_adapter(self) -> str:
         """Pick "acp", "shell" or "none" for the configured mode."""
@@ -722,6 +729,19 @@ class ExternalCLIAgent:
         self.last_result para o publish_to_bus().
         """
         context = context or {}
+        cb = self.circuit_breaker
+        try:
+            if cb is not None and not cb.is_available():
+                payload = {
+                    "agent": self.name, "ok": False, "output": "",
+                    "llm": False, "adapter": self.adapter, "json": None,
+                    "stderr": f"circuit breaker open for '{self.name}'",
+                    "exit": -1, "timed_out": False,
+                }
+                self.last_result = payload
+                return payload
+        except Exception:
+            pass
         if self.adapter == "acp":
             client = ACPClient(
                 self.name, self.cmd, self.args_factory, timeout=self.timeout, cwd=self.cwd
@@ -759,6 +779,13 @@ class ExternalCLIAgent:
             "exit": int(result["exit"]) if result.get("exit") is not None else -1,
         }
         self.last_result = payload
+        try:
+            if cb is not None:
+                failed = (not payload["ok"] or payload.get("timed_out")
+                          or not payload["output"].strip())
+                (cb.record_failure if failed else cb.record_success)()
+        except Exception:
+            pass
         return payload
 
     def publish_to_bus(self, channel: str, result: dict[str, Any] | None = None) -> dict[str, Any] | None:
@@ -780,3 +807,198 @@ class ExternalCLIAgent:
         payload.setdefault("channel", channel)
         get_message_bus().publish(channel, payload)
         return payload
+
+# ── CLI circuit breaker ───────────────────────────────────────────────────────
+
+_CB_LOCK = threading.RLock()
+
+
+def _cb_state_path(state_dir: str | Path | None = None) -> Path:
+    """Resolve the breaker JSON path (OMNI_STATE_DIR aware)."""
+    base = Path(state_dir or os.environ.get("OMNI_STATE_DIR", "data"))
+    try:
+        base.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        pass
+    return base / "cli_circuit_breaker.json"
+
+
+def _cb_load(path: Path) -> dict[str, Any]:
+    """Load persisted breaker state; {} on any error (fail-open)."""
+    try:
+        if path.exists():
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(raw, dict):
+                return dict(raw.get("agents") or raw)
+    except Exception:
+        pass
+    return {}
+
+
+def _cb_save(path: Path, data: dict[str, Any]) -> None:
+    """Persist breaker state atomically; never raises (fail-open)."""
+    try:
+        tmp = path.with_name(path.name + ".tmp")
+        tmp.write_text(json.dumps(data, ensure_ascii=False, default=str),
+                       encoding="utf-8")
+        os.replace(tmp, path)
+    except Exception:
+        pass
+
+
+class CLICircuitBreaker:
+    """Lightweight per-agent circuit breaker for delegated CLIs.
+
+    Orquestração runtime / Runtime orchestration:
+        Um por agente (ExternalCLIAgent.circuit_breaker), consultado em
+        execute() antes de spawnar. Estado relido do JSON a cada operação —
+        sobrevive restart e compartilha entre instâncias do mesmo processo.
+
+    Arquitetura / Architecture:
+        JSON plano {agent: {state, failures, last_failure_time}} em
+        OMNI_STATE_DIR/cli_circuit_breaker.json; RLock serializa acessos.
+        closed→open (N falhas consecutivas) →half_open (após cooldown,
+        uma sonda) →closed (sucesso). Transições publicadas no bus:
+        "agent.circuit_breaker"; abertura publica "agent.escalation".
+
+    Princípios teóricos invocados / Theoretical principles:
+        Fail-open estrito: erro interno do breaker degrada para
+        "disponível" — o breaker é proteção, nunca gate de disponibilidade.
+
+    pt-BR: disjuntor por agente CLI — falha×N abre, cooldown dá sonda.
+    """
+
+    def __init__(self, agent: str = "default",
+                 threshold: int | None = None,
+                 cooldown: float | None = None,
+                 state_dir: str | Path | None = None) -> None:
+        self.agent = str(agent or "default")
+        if threshold is None:
+            try:
+                threshold = int(float(
+                    os.environ.get("OMNI_CLI_CB_THRESHOLD", "3")))
+            except (TypeError, ValueError):
+                threshold = 3
+        self.threshold = max(1, int(threshold))
+        if cooldown is None:
+            try:
+                cooldown = float(
+                    os.environ.get("OMNI_CLI_CB_COOLDOWN_S", "300"))
+            except (TypeError, ValueError):
+                cooldown = 300.0
+        self.cooldown = float(cooldown)
+        self._path = _cb_state_path(state_dir)
+        self._state = "closed"
+        self._failures = 0
+        self._last_failure_time: float | None = None
+        self._load()
+
+    # -- persistence ---------------------------------------------------------
+    def _load(self) -> None:
+        try:
+            with _CB_LOCK:
+                entry = _cb_load(self._path).get(self.agent) or {}
+            self._state = str(entry.get("state", "closed"))
+            self._failures = int(entry.get("failures", 0) or 0)
+            lft = entry.get("last_failure_time")
+            self._last_failure_time = float(lft) \
+                if isinstance(lft, (int, float)) else None
+        except Exception:
+            pass
+
+    def _save(self) -> None:
+        try:
+            with _CB_LOCK:
+                data = _cb_load(self._path)
+                data[self.agent] = {
+                    "state": self._state,
+                    "failures": self._failures,
+                    "last_failure_time": self._last_failure_time,
+                    "threshold": self.threshold,
+                    "cooldown": self.cooldown,
+                }
+                _cb_save(self._path, data)
+        except Exception:
+            pass
+
+    def _publish(self, new_state: str) -> None:
+        try:
+            from ..shared_workspace import bus
+            bus.publish("agent.circuit_breaker",
+                        {"agent": self.agent, "state": new_state,
+                         "failures": self._failures})
+            if new_state == "open":
+                bus.publish("agent.escalation",
+                            {"from": self.agent,
+                             "reason": "circuit_breaker_open "
+                                       f"after {self._failures} failures"})
+        except Exception:
+            pass
+
+    # -- state machine -------------------------------------------------------
+    @property
+    def state(self) -> str:
+        self._load()
+        if (self._state == "open" and self._last_failure_time is not None
+                and (time.time() - self._last_failure_time) >= self.cooldown):
+            self._state = "half_open"
+            self._save()
+            self._publish("half_open")
+        return self._state
+
+    @property
+    def failures(self) -> int:
+        self._load()
+        return self._failures
+
+    def is_available(self) -> bool:
+        """True quando a chamada pode prosseguir (closed ou sonda half-open)."""
+        try:
+            return self.state in ("closed", "half_open")
+        except Exception:
+            return True  # fail-open
+
+    def record_success(self) -> None:
+        """Sucesso: zera falhas; fecha sonda half-open."""
+        try:
+            self._load()
+            self._failures = 0
+            prev, self._state = self._state, \
+                ("closed" if self._state == "half_open" else self._state)
+            self._save()
+            if prev != self._state:
+                self._publish(self._state)
+        except Exception:
+            pass
+
+    def record_failure(self) -> None:
+        """Falha consecutiva: abre o circuito no threshold."""
+        try:
+            self._load()
+            self._failures += 1
+            self._last_failure_time = time.time()
+            prev = self._state
+            if self._state == "half_open" \
+                    or self._failures >= self.threshold:
+                self._state = "open"
+            self._save()
+            if prev != self._state:
+                self._publish(self._state)
+        except Exception:
+            pass
+
+    def reset(self) -> None:
+        try:
+            self._load()
+            self._failures = 0
+            self._state = "closed"
+            self._last_failure_time = None
+            self._save()
+        except Exception:
+            pass
+
+    def get_stats(self) -> dict[str, Any]:
+        return {"agent": self.agent, "state": self.state,
+                "failures": self._failures, "threshold": self.threshold,
+                "cooldown": self.cooldown,
+                "last_failure_time": self._last_failure_time}

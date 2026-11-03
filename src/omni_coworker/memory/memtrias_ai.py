@@ -461,14 +461,49 @@ class MemtriasAI:
         return bool(self._acervo_dir
                     and (self._acervo_dir / "acervo_manifest.sqlite").exists())
 
-    def acervo_search(self, query: str, top_k: int = 5) -> list[dict[str, Any]]:
-        """Busca lexical no catálogo do acervo (manifest sqlite, read-only).
+    def _acervo_faiss_search(self, query: str, top_k: int) -> list[dict[str, Any]]:
+        """Recuperação vetorial real: MiniLM-L6-v2 → faiss → manifest rows."""
+        try:
+            import faiss
+            from sentence_transformers import SentenceTransformer
+        except Exception:
+            return []
+        try:
+            if not hasattr(self, "_acervo_idx"):
+                self._acervo_idx = faiss.read_index(
+                    str(self._acervo_dir / "acervo_index.faiss"))
+                self._acervo_model = SentenceTransformer("all-MiniLM-L6-v2")
+            q = self._acervo_model.encode([query or ""])
+            _d, idxs = self._acervo_idx.search(q, top_k)
+            con = sqlite3.connect(
+                f"file:{self._acervo_dir / 'acervo_manifest.sqlite'}?mode=ro",
+                uri=True, timeout=10)
+            out = []
+            for rid, dist in zip(idxs[0], _d[0]):
+                row = con.execute(
+                    "SELECT doc_id, nome_arquivo, pagina, texto_snippet"
+                    " FROM rows WHERE rid=?", (int(rid),)).fetchone()
+                if row:
+                    out.append({"doc_id": row[0], "nome_arquivo": row[1],
+                                "pagina": row[2], "snippet": row[3],
+                                "distance": float(dist)})
+            con.close()
+            return out
+        except Exception:
+            return []
 
-        Uso interno/privado — o acervo contém material de licença e não é
-        publicável; a bridge nunca escreve nele.
+    def acervo_search(self, query: str, top_k: int = 5) -> list[dict[str, Any]]:
+        """Recuperação de obras do acervo (read-only, uso interno).
+
+        Vetorial (faiss + MiniLM-L6-v2) quando disponível; fallback
+        lexical no manifest. O acervo contém material de licença —
+        nunca escreve nele e seus snippets não são publicáveis.
         """
         if not self.acervo_available():
             return []
+        hits = self._acervo_faiss_search(query, top_k)
+        if hits:
+            return hits
         try:
             con = sqlite3.connect(
                 f"file:{self._acervo_dir / 'acervo_manifest.sqlite'}?mode=ro",

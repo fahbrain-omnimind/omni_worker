@@ -30,7 +30,7 @@ import json
 
 CANONICAL_PREFIXES: tuple[str, ...] = (
     "soul", "soma", "agency", "witness", "swap",
-    "kernel", "feedback", "mesh", "dream", "loop",
+    "kernel", "feedback", "mesh", "dream", "loop", "agent",
 )
 
 
