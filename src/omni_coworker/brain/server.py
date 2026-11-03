@@ -7,7 +7,6 @@ pt-BR: Reutiliza src.erika.erika_torch_server como substrato cerebral.
 from __future__ import annotations
 
 import os
-from typing import Any
 
 __all__ = ["create_brain_router", "get_brain_client", "ERIKA_HOST", "ERIKA_PORT"]
 
@@ -144,8 +143,9 @@ def create_brain_router():
                 mem_recall = bool(payload.pop("memory_recall", False))
                 mem_log = bool(payload.pop("memory_log", False))
                 mem_chat = str(payload.pop("chat_id", "") or "")
+                acervo_recall = bool(payload.pop("acervo_recall", False))
                 mem = None
-                if mem_recall or mem_log:
+                if mem_recall or mem_log or acervo_recall:
                     try:
                         from ..memory.memtrias_ai import get_memtrias
 
@@ -166,6 +166,22 @@ def create_brain_router():
                         if hits:
                             note = "[memtrias] " + " | ".join(
                                 f"{h['namespace']}:{h['content'][:80]}"
+                                for h in hits)
+                            msgs = list(payload.get("messages") or [])
+                            payload["messages"] = [{"role": "system",
+                                                    "content": note}] + msgs
+                    except Exception:
+                        pass
+                # acervo: recuperação de obras vetorizadas (conhecimento sob
+                # demanda — faiss MiniLM-L6, read-only, uso interno)
+                if mem is not None and acervo_recall and user_turn:
+                    try:
+                        hits = mem.acervo_search(user_turn, top_k=3)
+                        if hits:
+                            note = "[acervo] " + " | ".join(
+                                f"{(h.get('nome_arquivo') or '?')[:40]}"
+                                f" p.{h.get('pagina')}:"
+                                f" {(h.get('snippet') or h.get('texto_snippet') or '')[:120]}"
                                 for h in hits)
                             msgs = list(payload.get("messages") or [])
                             payload["messages"] = [{"role": "system",
@@ -221,13 +237,14 @@ def create_brain_router():
             return out
 
         return router
-    except Exception as e:
+    except Exception as exc:
         # Return a dummy router if dependencies missing
         from fastapi import APIRouter
+        err = str(exc)
         router = APIRouter(prefix="/brain", tags=["brain"])
         @router.get("/health")
         def health_fallback():
-            return {"status": "unavailable", "error": str(e)}
+            return {"status": "unavailable", "error": err}
         return router
 
 

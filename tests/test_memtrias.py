@@ -46,8 +46,8 @@ def test_recall_filters(mem):
 
 
 def test_recall_recency_decay(mem):
-    old = mem.remember("machine", "evento antigo sobre kernel vram",
-                       ts=time.time() - 30 * 86400)
+    mem.remember("machine", "evento antigo sobre kernel vram",
+                 ts=time.time() - 30 * 86400)
     new = mem.remember("machine", "evento recente sobre kernel vram")
     hits = mem.recall("kernel vram", namespaces=["machine"], top_k=2)
     assert hits[0]["id"] == new["id"]
@@ -108,7 +108,6 @@ def test_chat_memory_flags_payload(tmp_path, monkeypatch):
     mem = mod.get_memtrias()
     mem.remember("user", "gosto de café amargo", chat_id="cx")
 
-    import asyncio
     from fastapi import FastAPI
     from fastapi.testclient import TestClient
     app = FastAPI()
@@ -121,6 +120,50 @@ def test_chat_memory_flags_payload(tmp_path, monkeypatch):
     sys_msgs = [m for m in calls["payload"]["messages"] if m["role"] == "system"]
     assert any("memtrias" in m["content"] for m in sys_msgs)
     assert mem.count("interaction") == 1 and mem.count("user") == 2
+
+
+def test_chat_acervo_recall_payload(tmp_path, monkeypatch):
+    """acervo_recall injeta [acervo] com snippets das obras vetorizadas."""
+    monkeypatch.setenv("OMNI_STATE_DIR", str(tmp_path))
+    import omni_coworker.memory.memtrias_ai as mod
+    mod._SINGLETON = None
+    from omni_coworker.brain import server
+
+    mem = mod.get_memtrias()
+    calls = {}
+
+    class _Resp:
+        def json(self):
+            return {"choices": [{"message": {"content": "resposta"}}]}
+
+    class _Client:
+        def __init__(self, *a, **k): pass
+        async def __aenter__(self): return self
+        async def __aexit__(self, *a): pass
+        async def post(self, url, json=None):
+            calls["payload"] = json
+            return _Resp()
+
+    import httpx
+    monkeypatch.setattr(httpx, "AsyncClient", _Client)
+    monkeypatch.setattr(server, "_base_for_role", lambda r: "http://x")
+    monkeypatch.setattr(mem, "acervo_search", lambda q, top_k=5: [
+        {"nome_arquivo": "Freud - Mal-estar.pdf", "pagina": 96,
+         "snippet": "a pulsão de destruição inscrita",
+         "distance": 0.7}])
+
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    app = FastAPI()
+    app.include_router(server.create_brain_router())
+    c = TestClient(app)
+    r = c.post("/brain/chat", json={
+        "messages": [{"role": "user", "content": "mal-estar na civilização"}],
+        "acervo_recall": True})
+    assert r.status_code == 200
+    sys_msgs = [m for m in calls["payload"]["messages"] if m["role"] == "system"]
+    assert any("[acervo]" in m["content"] and "Mal-estar" in m["content"]
+               for m in sys_msgs)
 
 
 def test_affect_inferred_by_engine(mem):
@@ -170,7 +213,8 @@ def test_schema_migration_old_db(tmp_path):
                 " chat_id TEXT, doc_ref TEXT, state_ref TEXT, ts REAL)")
     con.execute("INSERT INTO memories VALUES('a','user','velho','[]','[]',"
                 "NULL,NULL,NULL,NULL,1.0)")
-    con.commit(); con.close()
+    con.commit()
+    con.close()
     from omni_coworker.memory.memtrias_ai import MemtriasAI
     m = MemtriasAI(state_dir=tmp_path)
     assert m.count() == 1

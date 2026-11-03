@@ -101,15 +101,18 @@ Legenda de classificação:
 
 ## 3. Top 5 prioridades sugeridas para o worker
 
-> **Revisão Devin (2026-11-03)**: itens 2, 3 e 4 já foram fechados em
-> rodadas posteriores à escrita deste estudo — marcados [FEITO] abaixo.
-> Restantes reais: **A5 refusal transitions** e **MINJA provenance guard**.
+> **Revisão Devin (2026-11-03)**: todos os itens desta lista foram fechados —
+> marcados [FEITO] abaixo, com evidência em cada linha.
 
-1. **A5 — refusal_state transitions** (segurança/observabilidade): instrumentar `refusal_entered_at`/`refusal_exited_at` + trigger por episódio nos gates existentes (`safety/matrix.py`, `safety/gate.py`). Alto impacto, baixo custo. **[PENDENTE]**
+1. **A5 — refusal_state transitions** [FEITO]: `safety/refusal_state.py` — episódios com entered/exited_at+trigger persistentes, wired em gate+matrix, endpoint `/safety/refusal_state`.
 2. **P2 afeto — wire no `/brain/chat`** [FEITO]: `with_affect` injeta contexto afetivo via `AffectTracer` (escada L0-L4) e `safety/supervisor.py` está montado com endpoints `/supervisor/review` + `/soul/affect/conversation`.
 3. **Teleology stub** [FEITO]: `compute_omega_teleology` real em `agency/teleology.py` (numpy + persistência temporal).
 4. **Judges fail-open no orquestrador** [FEITO]: juízes retornam `approved=False`+reason quando brains caem; `run_audit` é auditoria real via AST (syntax, imports, cobertura honesta).
-5. **MINJA / Ogum memory provenance guard** (CONSOLIDADAS): estender guarda de proveniência (signature + trust class + quarantine) a todos os write-paths persistentes do worker (`memory/`, `store/`, `agency/dream.py`). **[PENDENTE — natural depois do memtrias_ai: `remember()` é candidato a write-path guardado]**
+5. **MINJA / Ogum memory provenance guard** [FEITO]: envelope {signature, trust_class, quarantined, reasons} aplicado em `memtrias.remember`, `witness_event` (hash-chain) e `shared_workspace store.put()` (coluna `provenance_json`, readers excluem quarantined por default).
+
+6. **Auditoria do corpus documental soberano** [FEITO — 2026-11-03, Hermes]: `docs/audit/OW-STU-014_sovereign_corpus_anomalies.md` — 3.686 links verificados (1.933 alvos quebrados), 10.950 arquivos com MD5 (774 grupos duplicados, 2.075 arquivos; pior caso 476 cópias idênticas de um mesmo doc), 2.100 arquivos com marcadores pendência. Top-10 priorizado no relatório; itens NÃO LOCALIZADO marcados.
+
+7. **Acervo vetorizado → recuperação no loop do Gemma** [FEITO — 2026-11-03]: `fabricioslv/omnimind-acervo-vetorizado` baixado (526 arquivos, 39GB → `/content/acervo_vetorizado`; FAISS 2.402.192 vetores 384d `all-MiniLM-L6-v2`, manifest 15.932 docs, catálogo 2.582 obras — 108 Freud, OCRs marcados). `memtrias.acervo_search` FAISS-first com fallback lexical (read-only, interno). `/brain/chat` aceita `acervo_recall=True` → injeta `[acervo]` com obra+página+snippet quando o modelo precisa de conhecimento. Verificado ao vivo (chunks reais: Roudinesco p.205, Lacan p.21, Bion p.30).
 
 ## 4. Resumo de contagens
 
