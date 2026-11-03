@@ -112,7 +112,8 @@ def create_brain_router():
                     except Exception:
                         pass
                 # gate glial degenerativo: bloqueia geração repetitiva (fail-open)
-                if payload.pop("with_glial_gate", False):
+                _gate_default = os.getenv("OMNI_GATE_FAIL_CLOSED") == "1"
+                if payload.pop("with_glial_gate", _gate_default):
                     try:
                         from ..activation_beta.attractor import glial_verdict
 

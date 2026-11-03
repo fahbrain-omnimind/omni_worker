@@ -82,9 +82,22 @@ def append_cycle(payload: dict[str, Any]) -> None:
 
 
 def history(n: int = 50) -> list[dict]:
-    """Most recent n cycle payloads (ring buffer first)."""
+    """Most recent n cycle payloads (ring buffer first, sqlite backfill)."""
     with _LOCK:
-        return list(_RING)[-n:]
+        items = list(_RING)
+    if len(items) >= n:
+        return items[-n:]
+    try:
+        con = _con()
+        rows = con.execute(
+            "SELECT payload_json FROM cycles ORDER BY ts DESC LIMIT ?",
+            (n - len(items),)).fetchall()
+        con.close()
+        backfill = [json.loads(r[0]) for r in reversed(rows)]
+        seen = {c.get("cycle_id") for c in items}
+        return [c for c in backfill if c.get("cycle_id") not in seen] + items
+    except Exception:
+        return items[-n:]
 
 
 def get_cycle(cycle_id: str) -> dict | None:

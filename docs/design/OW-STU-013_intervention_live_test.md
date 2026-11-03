@@ -46,6 +46,23 @@ Sidecars reais capturados no mesmo ciclo: `activation_vectors/` com 12B
 (303KB) e E4B (175KB) por geração — a janela do attractor/phi_layer
 continua alimentada por produção real.
 
+### 3.1 Replicação com 8 repetições (32 gerações)
+
+Mesmo desenho via `scripts/experiments/run_intervention_experiment.py
+--reps 8` (4 células × 8 reps = 32 gerações reais):
+
+| Condição | Hits de máquina / respostas |
+|---|---|
+| analyst BASE | **0 / 8** |
+| analyst INTERV | **29 / 8** |
+| executor BASE | **0 / 8** |
+| executor INTERV | **12 / 8** |
+| **TOTAL** | **base=0 vs interv=41 → CONFIRMADA** |
+
+A separação é total: zero termos de máquina em 16 respostas base,
+41 ocorrências em 16 respostas com telemetria. O efeito não é amostra
+pequena — é estável nas duas escalas de modelo (12B e E4B).
+
 ## 4. Leitura materialista (estatuto)
 
 - **[DADO]** — a presença de telemetria no prompt altera o output; os termos
@@ -55,11 +72,12 @@ continua alimentada por produção real.
   resposta. Isso é intervenção **contextual** (prompt-level), não mudança
   de pesos (EWC) nem gate de degeneração (glial_gate) — três camadas
   distintas, todas agora implementadas.
-- **[LIMITE]** — a intervenção aqui é *input* no contexto; para intervenção
-  *ativa* (bloquear/reformular geração por glial_gate) o mecanismo existe
-  (`attractor.glial_verdict` → `allow_generation=False`), mas ainda não é
-  invocado no caminho de geração do brain server — é o próximo wire
-  (gate no `/brain/chat`).
+- **[LIMITE]** — a intervenção aqui é *input* no contexto; a camada
+  *ativa* (bloquear geração por glial_gate) já está wired em `/brain/chat`
+  via `with_glial_gate` (opt-in em modo fail-open, default-on quando
+  `OMNI_GATE_FAIL_CLOSED=1`), mas este experimento mede só a camada
+  contextual — o gate degenerativo merece experimento próprio com janela
+  habituada real.
 
 ## 5. O que isto significa em produção
 

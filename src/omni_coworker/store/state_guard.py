@@ -44,7 +44,9 @@ def _manifest_hash() -> str:
         if SNAPSHOT_DIR_NAME in p.parts or not p.is_file():
             continue
         h.update(str(p.relative_to(root)).encode())
-        h.update(p.read_bytes()[:1_000_000])
+        with p.open("rb") as f:
+            for chunk in iter(lambda: f.read(1_000_000), b""):
+                h.update(chunk)
     return h.hexdigest()
 
 

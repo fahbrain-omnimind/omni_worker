@@ -120,14 +120,17 @@ def _is_forbidden_env_name(name: str) -> bool:
 def sanitized_env(overrides: dict[str, str] | None = None) -> dict[str, str]:
     """Build a sanitized environment for a child process.
 
-    English: Starts from SANITIZED_BASE_ENV, copies only allowlisted
-    variables from os.environ, applies a hard exclusion pass and then
-    merges `overrides` (also filtered). Never includes API keys/tokens.
-    pt-BR: Parte de SANITIZED_BASE_ENV, copia só variáveis da allowlist
-    de os.environ, aplica passada de exclusão dura e então mescla
-    `overrides` (também filtrados). Nunca inclui keys/tokens de API.
+    English: Starts from OPENAI_BASE_URL (env OMNI_BRAIN_BASE_URL, default
+    SANITIZED_BASE_ENV), copies only allowlisted variables from os.environ,
+    applies a hard exclusion pass and then merges `overrides` (also
+    filtered). Never includes API keys/tokens.
+    pt-BR: Parte de OPENAI_BASE_URL (env OMNI_BRAIN_BASE_URL, default
+    SANITIZED_BASE_ENV), copia só variáveis da allowlist de os.environ,
+    aplica passada de exclusão dura e então mescla `overrides` (também
+    filtrados). Nunca inclui keys/tokens de API.
     """
-    env: dict[str, str] = dict(SANITIZED_BASE_ENV)
+    base_url = os.environ.get("OMNI_BRAIN_BASE_URL", SANITIZED_BASE_ENV["OPENAI_BASE_URL"])
+    env: dict[str, str] = {"OPENAI_BASE_URL": base_url}
     for name in ALLOWED_ENV_NAMES:
         value = os.environ.get(name)
         if value:

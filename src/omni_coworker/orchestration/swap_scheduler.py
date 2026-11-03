@@ -100,7 +100,18 @@ class SwapScheduler:
 
         with httpx.Client(timeout=30.0) as client:
             if self.state["executor"] == "loaded":
-                if ratio >= evict_at and not self._executor_active(_executor_activations()):
+                # external unload detection (fail-open)
+                try:
+                    acts = _executor_activations()
+                except Exception:
+                    acts = None
+                if acts is None:
+                    self.state["executor"] = "unloaded"
+                    self.state["last_evict"] = time.time()
+                    self.state["events"].append({"t": time.time(), "evt": "externally_unloaded"})
+                    self.state["vram_ratio"] = round(ratio, 3)
+                    return dict(self.state)
+                if ratio >= evict_at and not self._executor_active(acts):
                     try:
                         r = client.post(f"{base}/erika/unload")
                         ok = r.json().get("status") in ("unloaded", "already_unloaded")

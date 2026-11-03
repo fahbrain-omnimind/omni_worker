@@ -21,6 +21,8 @@ Linha final pt-BR: a produção do modelo vira sinal observável.
 
 from __future__ import annotations
 
+import os
+
 from collections import deque
 from typing import Any
 
@@ -164,6 +166,13 @@ def glial_verdict(window=None) -> dict[str, Any]:
 
     Se window None, agrega todas as janelas do attractor.
     """
+    global _REHYDRATED
+    if not _REHYDRATED:
+        try:
+            rehydrate()
+        except Exception:
+            pass
+        _REHYDRATED = True
     if window is None:
         combined = []
         for w in _WINDOWS.values():
@@ -172,6 +181,9 @@ def glial_verdict(window=None) -> dict[str, Any]:
     try:
         return spiking_glial.glial_gate({}, window)
     except Exception:
+        if os.getenv("OMNI_GATE_FAIL_CLOSED") == "1":
+            return {"allow_generation": False, "glial": {},
+                    "reason": "fail-closed"}
         return {"allow_generation": True, "glial": {}, "reason": "fail-open"}
 
 

@@ -65,3 +65,71 @@ def test_intervention_script_imports():
     spec.loader.exec_module(mod)
     assert mod.BASE and mod.INTERV
     assert mod.hits("elevated memory pressure") == 2
+
+def test_glial_gate_fail_closed_on_error(monkeypatch):
+    import os
+    from omni_coworker.activation_beta import spiking_glial
+
+    monkeypatch.setenv("OMNI_GATE_FAIL_CLOSED", "1")
+
+    def boom(*a, **k):
+        raise RuntimeError("x")
+
+    monkeypatch.setattr(spiking_glial, "glial_features", boom)
+    gate = spiking_glial.glial_gate({}, [{"entropy": 1.0}])
+    assert gate["allow_generation"] is False
+    assert gate["reason"] == "fail-closed"
+
+
+def test_glial_verdict_fail_closed_on_error(monkeypatch):
+    import os
+    from omni_coworker.activation_beta import spiking_glial, attractor
+
+    monkeypatch.setenv("OMNI_GATE_FAIL_CLOSED", "1")
+    attractor.reset()
+
+    def boom(*a, **k):
+        raise RuntimeError("x")
+
+    monkeypatch.setattr(spiking_glial, "glial_gate", boom)
+    v = attractor.glial_verdict()
+    assert v["allow_generation"] is False
+    assert v["reason"] == "fail-closed"
+
+
+def test_rehydrate_lazy_on_first_gate(monkeypatch):
+    from omni_coworker.activation_beta import attractor
+
+    attractor.reset()
+    calls = {"n": 0}
+    orig = attractor.rehydrate
+
+    def spy(*a, **k):
+        calls["n"] += 1
+        return orig(*a, **k)
+
+    monkeypatch.setattr(attractor, "rehydrate", spy)
+    attractor.glial_verdict()
+    assert calls["n"] == 1
+
+
+def test_brain_chat_default_glial_gate_on(monkeypatch):
+    monkeypatch.setenv("OMNI_GATE_FAIL_CLOSED", "1")
+    from omni_coworker.brain import server as bs
+    from omni_coworker.activation_beta import attractor
+
+    monkeypatch.setattr(
+        attractor, "glial_verdict",
+        lambda *a, **k: {"allow_generation": False, "glial": {}, "reason": "blocked"},
+    )
+
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+
+    app = FastAPI()
+    app.include_router(bs.create_brain_router())
+    client = TestClient(app)
+    resp = client.post("/brain/chat", json={"messages": []})
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data.get("glial_gate", {}).get("reason") == "blocked"

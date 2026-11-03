@@ -44,7 +44,7 @@ def test_missing_returns_none(tmp_path):
 def test_scheduler_applies_delta(tmp_path, monkeypatch):
     _write_mod(tmp_path, swap_threshold_delta=0.03)
     monkeypatch.setattr(swap_scheduler, "_vram_ratio", lambda: 0.91)
-    monkeypatch.setattr(swap_scheduler, "_executor_activations", lambda: None)
+    monkeypatch.setattr(swap_scheduler, "_executor_activations", lambda: 0)
     captured = {}
 
     class _Client:
@@ -69,7 +69,7 @@ def test_scheduler_applies_delta(tmp_path, monkeypatch):
 
 def test_scheduler_no_modulation_default(tmp_path, monkeypatch):
     monkeypatch.setattr(swap_scheduler, "_vram_ratio", lambda: 0.91)
-    monkeypatch.setattr(swap_scheduler, "_executor_activations", lambda: None)
+    monkeypatch.setattr(swap_scheduler, "_executor_activations", lambda: 0)
     captured = {}
 
     class _Client:
