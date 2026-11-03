@@ -403,14 +403,66 @@ class CircuitBreaker:
         failure_threshold: int = 3,
         timeout: float = 30.0,
         recovery_timeout: float = 60.0,
+        name: str | None = None,
     ) -> None:
         self.failure_threshold = int(failure_threshold)
         self.timeout = float(timeout)
         self.recovery_timeout = float(recovery_timeout)
+        self.name = name
         self.failure_count = 0
         self.state = "closed"
         self.last_failure_time: float | None = None
         self.last_success_time: float | None = None
+        if name:
+            self._load()
+
+    # --- persistence (R2: governance amnesia on recycle) -------------
+    # Named breakers share OMNI_STATE_DIR/circuit_breakers.json. The
+    # timestamps are restored verbatim — an `open` left by a dead process
+    # expires on its own via recovery_timeout in is_available(), so a
+    # recycle inherits the failure memory without pinning the gate shut.
+    @classmethod
+    def _store_path(cls) -> Path:
+        import os
+        d = Path(os.getenv("OMNI_STATE_DIR", "data"))
+        d.mkdir(parents=True, exist_ok=True)
+        return d / "circuit_breakers.json"
+
+    @classmethod
+    def _read_store(cls) -> dict:
+        try:
+            return json.loads(cls._store_path().read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+
+    def _load(self) -> None:
+        rec = self._read_store().get(self.name) or {}
+        try:
+            self.failure_count = int(rec.get("failure_count", 0))
+            self.state = rec.get("state", "closed")
+            self.last_failure_time = rec.get("last_failure_time")
+            self.last_success_time = rec.get("last_success_time")
+        except Exception:
+            pass
+
+    def _save(self) -> None:
+        if not self.name:
+            return
+        try:
+            store = self._read_store()
+            store[self.name] = {
+                "failure_count": self.failure_count,
+                "state": self.state,
+                "last_failure_time": self.last_failure_time,
+                "last_success_time": self.last_success_time,
+            }
+            path = self._store_path()
+            tmp = path.with_name(path.name + ".tmp")
+            tmp.write_text(json.dumps(store, ensure_ascii=False),
+                           encoding="utf-8")
+            os.replace(tmp, path)
+        except Exception:
+            pass
 
     def is_available(self) -> bool:
         """True when calls may proceed.
@@ -438,6 +490,7 @@ class CircuitBreaker:
         self.last_success_time = time.time()
         if self.state == "half_open":
             self.state = "closed"
+        self._save()
 
     def record_failure(self) -> None:
         """Register a failure; opens the circuit at the threshold."""
@@ -447,6 +500,7 @@ class CircuitBreaker:
             self.state = "open"
         elif self.failure_count >= self.failure_threshold:
             self.state = "open"
+        self._save()
 
     def call_with_protection(self, func: Callable[..., Any], *args: Any, **kwargs: Any) -> Any:
         """Run a sync call guarded by the breaker.

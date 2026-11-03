@@ -72,7 +72,7 @@ Four per-folder READMEs, bilingual, high fidelity to code. Corrections needed: (
 | # | Risk | Where | Likelihood | Impact | Mitigation |
 |---|---|---|---|---|---|
 | R1 | Blind approval when brains down → bad patch ships | `agent_orchestrator.py:156,171,191`; `matrix.py:53`; `gate.py:55` | High (backends flap on Kaggle) | High | **MITIGADO**: consensus tri-state + approval queue + matrix fail-closed default (§1.4-5) |
-| R2 | Governance amnesia on process recycle | all of `governance.py`, `modes.py` state, stall count | Certain (tmpfs/ephemeral) | Med | persist to `node.db` + witness (§1.4-4) |
+| R2 | Governance amnesia on process recycle | all of `governance.py`, `modes.py` state, stall count | Certain (tmpfs/ephemeral) | Med | **MITIGADO**: trust/quarantine já persistiam (state dir); agora + `circuit_breakers.json` named-breaker store (timestamps → open expira naturalmente via recovery_timeout) + `stall_state.json` no audit_dir do orquestrador — verificado: state/failure_count e stall sobrevivem a reciclagem |
 | R3 | Subprocess credential leak | `external_cli_agent.py` — mitigated by allowlist, but `overrides` bypasses only via filter; PATH injection still possible | Low-Med | High | keep denylist, add binary hash pinning |
 | R4 | Perseveration without detection (repeated identical patches) | `feedback_loop` — SIMPLIFY fires only after 3 *stalls*, not repeated-output hash | Med | Med (wasted GPU time) | tool-call-hash loop detector (§2) + FailureReasonEvaluator |
 | R5 | Operator harm — distress in task text reaches judges verbatim | `execute_task` prompt, `run_judge_review` `result_text` | Unknown | Very high (safety-of-person) | SRP screening layer before prompt assembly (§4-B3) |

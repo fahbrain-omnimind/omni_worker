@@ -113,7 +113,8 @@ def _run_stage(gov: dict[str, Any], name: str, fn) -> tuple[Any, str | None]:
         from ..orchestration.governance import CircuitBreaker
         br = brs.get(name) or brs.setdefault(
             name, CircuitBreaker(failure_threshold=3,
-                                 recovery_timeout=120.0))
+                                 recovery_timeout=120.0,
+                                 name=f"loop.{name}"))
         if not br.is_available():
             return None, "circuit_open"
     try:

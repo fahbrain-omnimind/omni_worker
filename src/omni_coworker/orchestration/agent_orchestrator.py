@@ -32,13 +32,35 @@ class AgentOrchestrator:
         self.debug_agent = None
         self.analyst_agent = None
         self._db = None
-        self._stall_count = 0
+        self._stall_count = self._load_stall()
 
     # Fixed instruction injected into feedback_notes when the loop stalls
     # (cascade reset — inspired by the failure-reason evaluator concept:
     # classify WHY it is not converging and switch strategy, don't just retry).
     SIMPLIFY_NOTE = "SIMPLIFY: produce minimal viable deliverable"
     CASCADE_STALL_THRESHOLD = 3
+
+    def _stall_path(self):
+        return self.audit_dir / "stall_state.json"
+
+    def _load_stall(self) -> int:
+        """R2: stall memory survives process recycle (cascade detection
+        must not forget a task that already burned iterations)."""
+        try:
+            return int(json.loads(
+                self._stall_path().read_text(encoding="utf-8"))["stall"])
+        except Exception:
+            return 0
+
+    def _save_stall(self) -> None:
+        try:
+            self.audit_dir.mkdir(parents=True, exist_ok=True)
+            tmp = self._stall_path().with_name("stall_state.json.tmp")
+            tmp.write_text(json.dumps({"stall": self._stall_count}),
+                           encoding="utf-8")
+            tmp.replace(self._stall_path())
+        except Exception:
+            pass
 
     def stall(self) -> int:
         """Increment the consecutive non-approval counter.
@@ -47,6 +69,7 @@ class AgentOrchestrator:
         pt-BR: Conta iterações que terminaram em needs_revision.
         """
         self._stall_count += 1
+        self._save_stall()
         return self._stall_count
 
     def reset_count(self) -> None:
@@ -56,6 +79,7 @@ class AgentOrchestrator:
         pt-BR: Chamado na aprovação ou no início de um novo loop.
         """
         self._stall_count = 0
+        self._save_stall()
 
     @property
     def db(self):
