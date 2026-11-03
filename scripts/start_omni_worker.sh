@@ -66,8 +66,10 @@ start_proc() { # name, log, cmd...
   if pid_alive "$name"; then
     echo -e "${YELLOW}[SKIP]${NC} $name já vivo (PID $(cat "$PID_DIR/$name.pid"))"; return 0
   fi
-  nohup "$@" >> "$LOG_DIR/$log" 2>&1 &
-  echo $! > "$PID_DIR/$name.pid"
+  nohup setsid "$@" >> "$LOG_DIR/$log" 2>&1 &
+  local pid=$!
+  disown $pid 2>/dev/null || true
+  echo $pid > "$PID_DIR/$name.pid"
   echo -e "${BLUE}[START]${NC} $name (PID $(cat "$PID_DIR/$name.pid"), log $log)"
 }
 
@@ -81,13 +83,13 @@ wait_health() { # port, label, proc_name, timeout_s, probe_path
   echo -e "${RED}[FAIL]${NC} timeout $label :$port"; return 1
 }
 
-start_brain() { # label, model, port
-  local label="$1" model="$2" port="$3"
+start_brain() { # label, model, port, extra_flags
+  local label="$1" model="$2" port="$3" extra="${4:-}"
   if port_open "$port"; then echo -e "${YELLOW}[SKIP]${NC} brain $label já na :$port"; return 0; fi
   echo -e "${BLUE}>> brain $label — $model (nf4, eager-attn) :$port${NC}"
   start_proc "brain_$label" "brain_${label}_${port}.log" \
     env PYTHONPATH="$REPO/src" "$VENV_PYTHON" -m omni_coworker.server.erika_torch_server \
-      --model "$model" --load-4bit --eager-attn --port "$port"
+      --model "$model" --load-4bit --eager-attn --port "$port" $extra
   wait_health "$port" "$label" "brain_$label" 600
 }
 
@@ -138,9 +140,24 @@ else
 fi
 
 if [ "${1:-up}" != "--no-brains" ]; then
-  # sequencial de propósito: warmup nf4 concorrente OOMa a L4
+  # Sequencial estrito (warmup nf4 concorrente estoura a L4).
+  # Prioridade 1: Analyst (12B) — maior capacidade analítica.
   start_brain analyst "$ANALYST_MODEL" "$ANALYST_PORT" || exit 1
-  start_brain executor "$EXECUTOR_MODEL" "$EXECUTOR_PORT" || exit 1
+
+  # Prioridade 2: Executor (E4B). Verifica folga de VRAM antes de carregar.
+  # Se VRAM estiver apertada (< 10GB livres), sobe o executor em modo --lazy:
+  # o serviço :8099 fica ativo e o swap_scheduler gerencia o /erika/reload conforme a demanda.
+  free_vram_mb=$(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits 2>/dev/null | head -1 | tr -d ' ' || echo "0")
+  if [ -n "$free_vram_mb" ] && [ "$free_vram_mb" -ge 10000 ]; then
+    echo -e "${GREEN}[INFO]${NC} VRAM livre (${free_vram_mb}MB >= 10GB): tentando carregar executor residente..."
+    if ! start_brain executor "$EXECUTOR_MODEL" "$EXECUTOR_PORT"; then
+      echo -e "${YELLOW}[WARN]${NC} Carregamento direto do executor estourou VRAM. Recorrendo a modo --lazy..."
+      start_brain executor "$EXECUTOR_MODEL" "$EXECUTOR_PORT" "--lazy" || true
+    fi
+  else
+    echo -e "${YELLOW}[WARN]${NC} VRAM apertada (${free_vram_mb}MB livre < 10GB). Subindo executor em modo --lazy (alocação sob demanda via swap_scheduler)..."
+    start_brain executor "$EXECUTOR_MODEL" "$EXECUTOR_PORT" "--lazy" || true
+  fi
 fi
 
 if ! port_open "$API_PORT" /soul/state; then

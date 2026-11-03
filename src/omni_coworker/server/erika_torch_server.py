@@ -514,10 +514,24 @@ def main() -> None:
     ap.add_argument("--device", default="auto", help="auto|cuda|cpu")
     ap.add_argument("--max-vram-gb", type=float, default=None, help="cap VRAM — resto vai p/ CPU (device_map auto)")
     ap.add_argument("--cpu-offload", action="store_true", help="permite camadas/KV na RAM quando VRAM estoura")
+    ap.add_argument("--lazy", action="store_true", help="registra parâmetros mas sobe descarregado; aguarda POST /erika/reload")
     args = ap.parse_args()
-    load_model(args.model, args.load_4bit, args.device,
-               cpu_offload=args.cpu_offload, vram_gb=args.max_vram_gb,
-               eager_attn=args.eager_attn)
+    global _MODEL_ID, _LOAD_KWARGS
+    _MODEL_ID = args.model
+    _LOAD_KWARGS = {
+        "model_id": args.model,
+        "load_4bit": args.load_4bit,
+        "device": args.device,
+        "cpu_offload": args.cpu_offload,
+        "vram_gb": args.max_vram_gb,
+        "eager_attn": args.eager_attn,
+    }
+    if not args.lazy:
+        load_model(args.model, args.load_4bit, args.device,
+                   cpu_offload=args.cpu_offload, vram_gb=args.max_vram_gb,
+                   eager_attn=args.eager_attn)
+    else:
+        logger.info("Modo --lazy ativado: modelo %s registrado; aguardando /erika/reload", args.model)
     uvicorn.run(app, host=args.host, port=args.port, log_level="warning")
 
 
