@@ -177,3 +177,37 @@ def test_schema_migration_old_db(tmp_path):
     m.remember("user", "novo registro")
     hits = m.recall("velho", namespaces=["user"])
     assert hits and hits[0]["affect"] is None  # legado sem campo
+
+
+def test_surgical_forgetting(tmp_path):
+    from omni_coworker.memory.memtrias_ai import MemtriasAI
+
+    mem = MemtriasAI(state_dir=tmp_path)
+    r1 = mem.remember("chat", "segredo antigo", chat_id="c1")
+    r2 = mem.remember("chat", "contexto público", chat_id="c1")
+
+    # sem escopo → recusa
+    out = mem.forget()
+    assert out["error"] == "scope_required"
+    # dry_run conta sem marcar
+    out = mem.forget(chat_id="c1", contains="segredo")
+    assert out["forgotten"] == 1 and out["dry_run"] is True
+    assert len(mem.recall("segredo", namespaces=["chat"])) >= 1
+    # aplica: o id esquecido some do recall (outros registros ficam)
+    mem.forget(chat_id="c1", contains="segredo", dry_run=False)
+    ids = [r["id"] for r in mem.recall("segredo", namespaces=["chat"])]
+    assert r1["id"] not in ids and r2["id"] in ids
+    aud = mem.recall("segredo", namespaces=["chat"], include_forgotten=True)
+    assert r1["id"] in [r["id"] for r in aud]
+    # rollback
+    mem.restore(record_id=r1["id"])
+    assert r1["id"] in [r["id"] for r in
+                        mem.recall("segredo", namespaces=["chat"])]
+    # purge definitivo
+    mem.forget(record_id=r1["id"], dry_run=False)
+    assert mem.purge()["purged"] == 1
+    ids = [r["id"] for r in mem.recall("segredo", namespaces=["chat"],
+                                     include_forgotten=True)]
+    assert r1["id"] not in ids
+    assert r2["id"] in [r["id"] for r in
+                        mem.recall("contexto", namespaces=["chat"])]

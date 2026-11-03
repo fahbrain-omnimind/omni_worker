@@ -145,6 +145,9 @@ class MemtriasAI:
         for col in ("affect", "events", "analysis"):
             if col not in cols:
                 con.execute(f"ALTER TABLE memories ADD COLUMN {col} TEXT")
+        if "forgotten" not in cols:
+            con.execute(
+                "ALTER TABLE memories ADD COLUMN forgotten INTEGER DEFAULT 0")
         con.execute(
             "CREATE INDEX IF NOT EXISTS idx_mem_ns ON memories(namespace, ts)")
         con.commit()
@@ -268,17 +271,21 @@ class MemtriasAI:
                instance: str | None = None,
                chat_id: str | None = None,
                recency_halflife_s: float | None = 86400.0,
-               include_quarantined: bool = False) -> list[dict[str, Any]]:
+               include_quarantined: bool = False,
+               include_forgotten: bool = False) -> list[dict[str, Any]]:
         """Retrieval topológico: cosine(query) + filtros + recency decay.
 
         O "retorno do recalcado": o que foi inscrito volta quando a
         consulta o reconvoca — por proximidade vetorial e metadados.
+        Registros esquecidos (tombstone) ficam fora salvo auditoria.
         """
         q = np.asarray(self._embedder(query or ""), dtype=np.float64)
         sql = "SELECT id,namespace,content,embedding,tags,instance,chat_id," \
               "doc_ref,state_ref,affect,events,analysis,ts" \
               " FROM memories WHERE 1=1"
         args: list[Any] = []
+        if not include_forgotten:
+            sql += " AND COALESCE(forgotten,0)=0"
         if namespaces:
             sql += f" AND namespace IN ({','.join('?' * len(namespaces))})"
             args += [n.lower() for n in namespaces]
@@ -360,6 +367,82 @@ class MemtriasAI:
                 "family_sums": {k: round(v, 4) for k, v in fams.items()},
                 "flattery_counts": flattery, "per_namespace": per_ns,
                 "day": time.strftime("%Y-%m-%d", day)}
+
+    # ── esquecimento cirúrgico (tombstone + rollback + purge) ────────────
+
+    @staticmethod
+    def _forget_where(record_id=None, namespace=None, chat_id=None,
+                      doc_ref=None, contains=None, before_ts=None):
+        sql = " WHERE 1=1"
+        args: list[Any] = []
+        if record_id:
+            sql += " AND id=?"
+            args.append(record_id)
+        if namespace:
+            sql += " AND namespace=?"
+            args.append(namespace.lower())
+        if chat_id:
+            sql += " AND chat_id=?"
+            args.append(chat_id)
+        if doc_ref:
+            sql += " AND doc_ref=?"
+            args.append(doc_ref)
+        if contains:
+            sql += " AND content LIKE ?"
+            args.append(f"%{contains}%")
+        if before_ts:
+            sql += " AND ts<?"
+            args.append(float(before_ts))
+        return sql, args
+
+    def forget(self, *, record_id=None, namespace=None, chat_id=None,
+               doc_ref=None, contains=None, before_ts=None,
+               dry_run=True) -> dict[str, Any]:
+        """Esquecimento cirúrgico: tombstone escopado por id/ns/chat/doc.
+
+        English: marks records forgotten=1 — excluded from recall;
+        restore() rolls back; purge() hard-deletes tombstoned rows.
+        Sem escopo algum, recusa (proteção contra amnésia total).
+        pt-BR: esquecimento exato com rollback; dry_run só conta.
+        """
+        if not any([record_id, namespace, chat_id, doc_ref,
+                    contains, before_ts]):
+            return {"forgotten": 0, "error": "scope_required",
+                    "dry_run": dry_run}
+        where, args = self._forget_where(record_id, namespace, chat_id,
+                                         doc_ref, contains, before_ts)
+        con = sqlite3.connect(self._dir / _DB, timeout=10)
+        n_target = con.execute(
+            f"SELECT COUNT(*) FROM memories{where} AND COALESCE(forgotten,0)=0",
+            args).fetchone()[0]
+        if not dry_run and n_target:
+            con.execute(
+                f"UPDATE memories SET forgotten=1{where}"
+                " AND COALESCE(forgotten,0)=0", args)
+            con.commit()
+        con.close()
+        return {"forgotten": int(n_target), "dry_run": dry_run}
+
+    def restore(self, *, record_id=None, namespace=None, chat_id=None,
+                doc_ref=None, contains=None, before_ts=None) -> dict[str, Any]:
+        """Rollback do esquecimento: desmarca tombstones no escopo."""
+        where, args = self._forget_where(record_id, namespace, chat_id,
+                                         doc_ref, contains, before_ts)
+        where += " AND COALESCE(forgotten,0)=1"
+        con = sqlite3.connect(self._dir / _DB, timeout=10)
+        cur = con.execute(f"UPDATE memories SET forgotten=0{where}", args)
+        con.commit()
+        con.close()
+        return {"restored": int(cur.rowcount)}
+
+    def purge(self) -> dict[str, Any]:
+        """Apaga definitivamente os registros tombstoned (sem rollback)."""
+        con = sqlite3.connect(self._dir / _DB, timeout=10)
+        cur = con.execute(
+            "DELETE FROM memories WHERE COALESCE(forgotten,0)=1")
+        con.commit()
+        con.close()
+        return {"purged": int(cur.rowcount)}
 
     def count(self, namespace: str | None = None) -> int:
         sql = "SELECT COUNT(*) FROM memories"

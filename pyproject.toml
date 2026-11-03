@@ -33,4 +33,5 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "--continue-on-collection-errors"
 asyncio_mode = "auto"

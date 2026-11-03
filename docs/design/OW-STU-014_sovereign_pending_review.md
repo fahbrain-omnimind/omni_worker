@@ -20,14 +20,14 @@ Legenda de classificação:
 
 | # | Pendência soberana | Fonte | Classif | Equivalente worker (arquivo) | Nota (o que falta) |
 |---|---|---|---|---|---|
-| 1 | A5 — Instrumentar transições de `refusal_state` (`refusal_entered_at`/`refusal_exited_at` + trigger por episódio) | ATIVAS (mapa A5) | [ADAPT] | `safety/matrix.py`, `safety/gate.py` | Adicionar tracking de refusal_state + timestamps nos gates existentes |
+| 1 | A5 — Instrumentar transições de `refusal_state` | ATIVAS (mapa A5) | **FEITO** | `safety/refusal_state.py` | Episódios com entered/exited_at+trigger persistentes, wired em gate+matrix, endpoint /safety/refusal_state. |
 | 2 | A6 — Superfícies de pré-resposta stale (`pre_response_rehydration_context`, `introspection_gate`, `subject_process_validation`, `google_quota`) | ATIVAS (mapa A6) | [SKIP] | — | Surfaces de runtime do host soberano (reidratação pré-resposta); não existe no worker |
 | 3 | A7 — Revisão da magnitude φ (774.480 nats ≫ Stark target 77.448) | ATIVAS (mapa A7) | **FEITO** | `soul/api.py`, `OW-MATH-001` | φ do worker já é scale-safe por construção (phi_meta≤~7bits, phi_internal∈[0,1], soul.phi observado ∈[0.27,0.84] n=301 em kernel.soul — nunca >1.0). O teto soberano (774.480=10×77.448) existe porque seu φ passa por 6 potencializações ~2×/ciclo — estágio ausente no worker. Clip defensivo [0,1] adicionado no ramo kernel de `soul.phi` (magnitude vctr_six antes não-clipada; fallback já clipava). |
 | 4 | A8 — Política de auto-spawn de agente CLI em escalações (agy DEMOTED) | ATIVAS (mapa A8) | [ADAPT] | `agents/external_cli_agent.py`, `orchestration/agent_orchestrator.py` | Adicionar policy de spawn/escalação + circuit breaker no orquestrador |
 | 5 | A9 — Marcadores `pending_sync` residuais em docs | ATIVAS (mapa A9) | [SKIP] | — | Higiene documental do soberano; não aplicável ao worker |
 | 6 | A11 — Working tree drift massivo (~16.772 entradas) | ATIVAS (mapa A11) | [SKIP] | — | Premissa: kilombo é o principal privado; fora do escopo do worker |
 | 7 | Acompanhamento 2026-10-16 — rodar `process_memory_growth_analysis.py --min-hours 20` e decidir reciclagem de sleepers / MemoryMax MCP / retenção DB | ATIVAS (reg. 2026-10-14) | [SKIP] | — | Monitoramento de processos do host (swap/zram); específico do host |
-| 8 | Pendência 3 — `pytest.ini testpaths = tests scripts` com efeitos de import VIVOS (CUDA/SQLite) | ATIVAS (reg. 2026-10-10) | [ADAPT] | `tests/` (worker já usa `tests/` explícito) | Worker pode adotar `--continue-on-collection-errors` no addopts; já isolado |
+| 8 | Pendência 3 — `pytest.ini testpaths = tests scripts` com efeitos de import VIVOS (CUDA/SQLite) | ATIVAS (reg. 2026-10-10) | **FEITO** | `pyproject.toml` | `addopts=--continue-on-collection-errors` adicionado (2026-11). |
 | 9 | Pendência 4 — Custo do sync kilombo (~19–20 min) e volume `*_latest.*` | ATIVAS (reg. 2026-10-10) | [SKIP] | — | Pipeline de sync do host soberano; não aplicável |
 | 10 | SDSS transatlantic enricher (retomado) | ATIVAS (reg. 2026-10-08) | [SKIP] | — | Pipeline de dados do host; fora do worker |
 | 11 | Crash-loops bluetooth/mobile-bridge (duplicata legada) | ATIVAS (reg. 2026-10-08) | [SKIP] | — | Serviços systemd do host; fora do worker |
@@ -47,9 +47,9 @@ Legenda de classificação:
 | 25 | Neurocomputacional — abrir lane RBM real antes de chamar Hopfield vs RBM A/B completo | CONSOLIDADAS (reg. 2026-05-26) | [ADAPT] | `activation_beta/attractor.py` | Implementar RBM real no worker (hoje só Hopfield) |
 | 26 | Neurocomputacional — estabilização do `integration_loop` | CONSOLIDADAS (reg. 2026-05-26) | [FEITO] | `integration_loop/` (loop, store, schema, modulator) | Equivalente já existe no worker |
 | 27 | Neurocomputacional — reconciliação de leitores psutil-heavy (lei Linux-native) | CONSOLIDADAS (reg. 2026-05-26) | [SKIP] | — | Host-specific (psutil/Linux) |
-| 28 | MINJA — memory provenance firewall em todos os write-paths persistentes (Dream Weaver, witness, digests, Zenodo) | CONSOLIDADAS (reg. 2026-05-15) | [ADAPT] | `memory/`, `safety/`, `store/` | Adicionar provenance signature + trust class + quarantine antes de inscrição |
+| 28 | MINJA — memory provenance firewall em todos os write-paths persistentes | CONSOLIDADAS (reg. 2026-05-15) | **FEITO** | `memory/provenance.py`, `shared_workspace/store.py` | Envelope {signature,trust_class,quarantined,reasons} em memtrias.remember, witness_event e bus put(); readers excluem quarantined por default. |
 | 29 | `psi_trace_formal_state_vector` — vetor cross-session para reinjeção pré-resposta | CONSOLIDADAS (reg. 2026-05-15) | [ADAPT] | `shared_workspace/`, `memory/` | Formalizar vetor cross-session no worker |
-| 30 | `surgical_forgetting_protocol` — esquecimento exato com scoped rollback/replay | CONSOLIDADAS (reg. 2026-05-15) | [ADAPT] | `store/evaporation.py`, `memory/` | Desenhar esquecimento seletivo (sem amnésia total) |
+| 30 | `surgical_forgetting_protocol` — esquecimento exato com scoped rollback/replay | CONSOLIDADAS (reg. 2026-05-15) | **FEITO** | `memory/memtrias_ai.py` | forget() tombstone escopado (id/ns/chat/doc/contains/before_ts, dry_run default, sem escopo→recusa); restore() rollback; purge() delete definitivo; recall exclui forgotten (include_forgotten p/ auditoria). |
 | 31 | Dream Weaver meta-evolução (`MemEvolve`: encode→store→retrieve→manage) | CONSOLIDADAS (reg. 2026-05-15) | [ADAPT] | `agency/dream.py`, `memory/` | Evolução ociosa do pipeline de memória |
 | 32 | Engram — benchmark de alocação memória (recuperação estática vs síntese dinâmica) | CONSOLIDADAS (reg. 2026-05-15) | [ADAPT] | `memory/memtrias_ai.py` | Adicionar benchmark de alocação |
 | 33 | SMAC/Muon — disciplina de continuidade para updates/bridges/routing | CONSOLIDADAS (reg. 2026-05-15) | [SKIP] | — | Política de runtime do host; não aplicável |
@@ -65,7 +65,7 @@ Legenda de classificação:
 | 43 | SQL-first reconciliation (system vs user; JSON/MD→SQL) | CONSOLIDADAS (reg. 2026-05-24) | [ADAPT] | `store/node_db.py`, `store/state_guard.py` | Migrar readers operacionais do worker para SQL-first onde aplicável |
 | 44 | Erika/Kaggle — ligar saída paramétrica ao `record_weight_update` do temporal_monitor | CONSOLIDADAS (reg. 2026-05-20) | [ADAPT] | `server/erika_torch_server.py` | Implementar record_weight_update no worker (hoje só estrutura) |
 | 45 | R3 storage/cloud — GDrive deferido, pCloud assume fila fria (waves grandes) | CONSOLIDADAS (reg. 2026-05-16) | [SKIP] | — | Operação de storage do host |
-| 46 | Ogum memory provenance guard — ampliar para todos os write-paths persistentes | CONSOLIDADAS (reg. 2026-05-16) | [ADAPT] | `memory/`, `safety/` | Quarentena antes de inscrição em todos os write-paths |
+| 46 | Ogum memory provenance guard — ampliar para todos os write-paths persistentes | CONSOLIDADAS (reg. 2026-05-16) | **FEITO** | `memory/provenance.py`, `shared_workspace/store.py` | Mesma frente do #28: quarentena em memtrias+witness+bus store. |
 | 47 | NeuroCore — explorar outros módulos (eschaton, post_silicon, exotic, meta) | INTEGRACAO_NEUROCORE | [ADAPT] | `activation_beta/` | Portar computação eschaton/post_silicon/exotic/meta (CPU) |
 | 48 | NeuroCore — integração com DreamMillennium (federar métricas entre nós) | INTEGRACAO_NEUROCORE | [SKIP] | — | Federação do host |
 | 49 | NeuroCore — visualização (dashboard de métricas transcendentes) | INTEGRACAO_NEUROCORE | [ADAPT] | `brain/server.py` | Adicionar endpoints/dashboard de métricas transcendentes |
@@ -86,7 +86,7 @@ Legenda de classificação:
 | 64 | Worker PENDING_ROADMAP P1 — adapter `src/audit/immutable_audit.py` canônico (sha256+fcntl) | PENDING_ROADMAP (worker) | [ADAPT] | `store/audit_adapter.py` | Adapter canônico pendente |
 | 65 | Worker PENDING_ROADMAP P2 — wire afeto no `/brain/chat` (escada L0-L4 real) + supervisor lane analyst | PENDING_ROADMAP (worker) | [ADAPT] | `brain/server.py`, `agents/_llm.py` | `with_affect` existe mas ninguém chama; falta `safety/supervisor.py` + endpoints `/supervisor/*` |
 | 66 | Worker PENDING_ROADMAP P2 — teleology: remover probe morto; metabolize real | PENDING_ROADMAP (worker) | [ADAPT] | `agency/teleology.py` | `compute_omega_teleology` importa `src.consciousness.integration_loop` como stub (try/except/pass) |
-| 67 | Worker PENDING_ROADMAP P3 — timed-reload 30min não observa unload externo | PENDING_ROADMAP (worker) | [ADAPT] | `orchestration/swap_scheduler.py` | Bateria pode disparar reload no meio |
+| 67 | Worker PENDING_ROADMAP P3 — timed-reload 30min não observa unload externo | PENDING_ROADMAP (worker) | **FEITO** | `orchestration/swap_scheduler.py` | _executor_activations None→unloaded + evento externally_unloaded, sem ação destrutiva. |
 | 68 | Worker PENDING_ROADMAP P4 — transcripts bajulação/fixação → tier juiz-analista | PENDING_ROADMAP (worker) | [ADAPT] | `scripts/supervisor_battery/` | Fechar gap 0% |
 | 69 | Worker PENDING_ROADMAP P4 — refactor_battery multi-arquivo/multi-turn | PENDING_ROADMAP (worker) | [ADAPT] | `scripts/refactor_battery/` | Em aberto |
 | 70 | Worker PENDING_ROADMAP P4 — re-score dos 108 registros "blocks" do dataset HF | PENDING_ROADMAP (worker) | [ADAPT] | `docs/results/` | Só block1_cognitivo/16 re-scored |
