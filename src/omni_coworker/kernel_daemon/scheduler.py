@@ -122,7 +122,7 @@ def run_cycle() -> dict[str, Any]:
         _STATE["last_bundle"] = bundle
     except Exception as e:  # ciclo ruim não derruba o daemon
         _STATE["errors"] += 1
-        bundle = {"ts": t0, "error": str(e)}
+        bundle = {"ts": t0, "error": f"{type(e).__name__}: cycle_error"}
         try:
             from ..agency import rca
             rca.register_failure("kernel.cycle", str(e), t0)

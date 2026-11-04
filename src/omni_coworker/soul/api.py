@@ -179,13 +179,15 @@ def root():
 
 @router.get("/static/{path:path}")
 def static_files(path: str):
-    """Serve static files.
+    """Serve static files safely without path injection.
     
-    English: Serves static assets.
-    pt-BR: Serve arquivos estáticos.
+    English: Serves static assets constrained to STATIC_DIR.
+    pt-BR: Serve arquivos estáticos restritos a STATIC_DIR.
     """
+    import os
+    clean_name = os.path.basename(path)
+    file_path = (STATIC_DIR / clean_name).resolve()
     base_dir = STATIC_DIR.resolve()
-    file_path = (base_dir / path).resolve()
-    if file_path.is_relative_to(base_dir) and file_path.exists() and file_path.is_file():
+    if file_path.is_relative_to(base_dir) and file_path.is_file():
         return FileResponse(file_path)
     return {"error": "not found"}

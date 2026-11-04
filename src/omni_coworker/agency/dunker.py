@@ -135,5 +135,5 @@ def dunker_architecture(kernel_state: dict | None = None,
         out["families_used"] = len(families)
         return out
     except Exception as e:
-        return {"status": "error", "source": source, "reason": str(e),
+        return {"status": "error", "source": source, "reason": "computation_failed", "error_type": type(e).__name__,
                 "families_used": len(families)}

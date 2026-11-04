@@ -204,4 +204,4 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
                                    "verdict": "gate_error"})
         except Exception:
             pass
-        return {"allowed": False, "reason": f"gate_error: {e}"}
+        return {"allowed": False, "reason": "gate_evaluation_failed", "error_type": type(e).__name__}

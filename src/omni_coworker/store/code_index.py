@@ -390,7 +390,7 @@ def build_symbolic_hypergraph(
         "root": str(root),
         "node_count": len(nodes),
         "hyperedge_count": len(hyperedges),
-        "secret_redactions": redactions_total,
+        "redactions_total": redactions_total,
         "concepts": sorted(
             [n["name"] for n in nodes.values() if n.get("kind") == "concept"]
         ),
