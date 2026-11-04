@@ -63,7 +63,11 @@ def _import_pyphi():
     """pyphi 1.2.0 predates py3.10 — patch collections.abc shims."""
     import collections
     import collections.abc
-    for n in ("Iterable", "Mapping", "Sequence", "Hashable", "Callable"):
+    for n in ("Iterable", "Mapping", "MutableMapping", "Sequence",
+              "MutableSequence", "Hashable", "Iterator", "Set",
+              "MutableSet", "Callable", "Collection", "ItemsView",
+              "KeysView", "ValuesView", "Generator", "Reversible",
+              "Sized", "Container"):
         if not hasattr(collections, n):
             setattr(collections, n, getattr(collections.abc, n))
     import pyphi
