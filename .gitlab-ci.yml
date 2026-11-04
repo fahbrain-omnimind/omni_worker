@@ -1,6 +1,6 @@
 # Minimal CI for omni-agent-coworker (GitLab shared runners, no tags).
 # gate: compile + lint gate on every push/MR; test: unit suite.
-# Mirrors omni_node's layered style, portable (pip-installable image).
+# pages: deploy docs and dashboard to GitLab Pages.
 
 workflow:
   auto_cancel:
@@ -9,7 +9,7 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-stages: [gate, test]
+stages: [gate, test, deploy]
 
 gate:lint:
   stage: gate
@@ -33,3 +33,16 @@ test:unit:
   script:
     - pip install -q --cache-dir .pip-cache -e ".[test]"
     - pytest -q tests/
+
+pages:
+  stage: deploy
+  image: alpine:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script:
+    - mkdir -p public
+    - cp -r docs/* public/
+    - cp docs/.nojekyll public/ 2>/dev/null || true
+  artifacts:
+    paths:
+      - public
