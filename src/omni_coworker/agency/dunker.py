@@ -47,19 +47,28 @@ def _families_from_kernel(kernel_state: dict | None) -> list[dict[str, Any]]:
 def _load_canonical_dunker():
     """Resolve canonical compute_dunker_architecture.
 
-    English: Prefers a direct file load of dunker_architecture.py —
-    the module is pure stdlib, while `src.cognitive.__init__` pulls
-    python-chess transitively; file loading avoids that dep entirely.
-    Falls back to package import, then PYTHONPATH/OMNI_NODE_ROOT scan.
-    pt-BR: Prefere carregar dunker_architecture.py direto do arquivo —
-    o módulo é stdlib puro, enquanto `src.cognitive.__init__` puxa
-    python-chess transitivamente; carga por arquivo evita a dep por
-    completo. Fallback para import de pacote, depois scan PYTHONPATH/
-    OMNI_NODE_ROOT.
+    English: Prefers the vendored copy in omni_coworker.vendor — the
+    module is pure stdlib, while `src.cognitive.__init__` pulls
+    python-chess transitively. Falls back to a legacy file load
+    (OMNI_NODE_ROOT), then package import and PYTHONPATH scan.
+    pt-BR: Prefere a cópia vendored em omni_coworker.vendor — o módulo é
+    stdlib puro, enquanto `src.cognitive.__init__` puxa python-chess
+    transitivamente. Fallback para arquivo legado (OMNI_NODE_ROOT),
+    depois import de pacote e scan PYTHONPATH.
     """
     import importlib.util
     import os
     import sys
+
+    # 1) cópia vendored dentro do pacote — autossuficiente, sem omni_node
+    try:
+        from ..vendor.dunker_architecture import (
+            compute_dunker_architecture as _vendored,
+        )
+
+        return _vendored, "package:omni_coworker.vendor.dunker_architecture"
+    except Exception:
+        pass
 
     candidates: list[str] = []
     env_root = os.getenv("OMNI_NODE_ROOT")

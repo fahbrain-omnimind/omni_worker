@@ -16,7 +16,7 @@ documentados no estudo psicodiagnóstico do Gemma-4: submissão prematura
 (falha no smoke), evitação. Resultados persistem em ledger sqlite.
 
 Usage:
-  PYTHONPATH=/content/omni_node:/content/omni_node/src \
+  PYTHONPATH=$REPO/src \
     python scripts/refactor_battery/run_battery.py [--n 1]
 """
 

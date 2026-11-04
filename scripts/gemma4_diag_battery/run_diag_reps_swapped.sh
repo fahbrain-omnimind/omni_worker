@@ -17,17 +17,17 @@
 # Usage / Uso:
 #   bash scripts/gemma4_diag_battery/run_diag_reps_swapped.sh [REPS]
 # Env: API_PORT=8081 ANALYST_PORT=8098 EXECUTOR_PORT=8099 REPS=5
-#      VENV_PYTHON=/content/omni_node/.venv/bin/python
+#      VENV_PYTHON=<repo>/.venv/bin/python
 # ============================================================================
 set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-VENV_PYTHON="${VENV_PYTHON:-/content/omni_node/.venv/bin/python}"
+VENV_PYTHON="${VENV_PYTHON:-$REPO/.venv/bin/python}"
 API_PORT="${API_PORT:-8081}"
 ANALYST_PORT="${ANALYST_PORT:-8098}"
 EXECUTOR_PORT="${EXECUTOR_PORT:-8099}"
 REPS="${1:-${REPS:-5}}"
-export PYTHONPATH="/content/omni_node:/content/omni_node/src:$REPO/src"
+export PYTHONPATH="$REPO/src"
 
 post() { curl -s -m "${3:-300}" -X POST "http://127.0.0.1:$1$2"; }
 healthy() { curl -s -m 3 "http://127.0.0.1:$1/health" | grep -q '"model_loaded":true'; }

@@ -55,7 +55,9 @@ bash scripts/start_omni_worker.sh
 - Busca variáveis fixas via API do GitLab (token: `GITLAB_TOKEN` env ou
   `/content/gitlab.txt`);
 - Restaura `HF_TOKEN` (mascarado), defaults `OMNI_STATE_DIR`/`OMNI_CODE_INDEX_DIR`;
-- Escopo `public`: `OMNI_GATE_FAIL_CLOSED=1` + `ERIKA_HOST=127.0.0.1`;
+- Escopo `public`: `OMNI_GATE_FAIL_CLOSED=1` + `ERIKA_HOST=127.0.0.1` +
+  `OMNI_API_HOST=127.0.0.1` (API loopback; `serve --host`/`OMNI_API_HOST`
+  sobrescreve);
 - Escopo `domestic`: gate fail-open (laboratório);
 - Fail-open: sem token, segue com defaults de código.
 
@@ -68,7 +70,16 @@ bash scripts/start_omni_worker.sh
 - `OMNI_GATE_FAIL_CLOSED=0` em serviço exposto (gate aberto = fail-open);
 - endpoints HTTP vivos sem auth mínimo (prática security#5 — CSRF em loopback).
 
-## 5. Como criar/alterar (manual, se necessário)
+## 5. Dependências de sistema (bring-up)
+
+| Dep | Quem provê | Fallback |
+|---|---|---|
+| `cargo`/`rustc` >= 1.85 | `ensure_kernel` instala rustup stable minimal (`OMNI_KERNEL_AUTO_RUSTUP=0` desativa) | kernel Rust opcional — sem ele, `kernel_hooks` usa fallback Python e `/agency/dunker` fica sem `affective_vector_28d` |
+| `python3-dev` headers | imagem base (pyo3 precisa de `Python.h`) | idem |
+| fontes dos crates | `vendor/kernel/` (vendored, CC-BY-NC-ND-4.0) → `OMNI_KERNEL_SRC` → clone público | — |
+| `dunker_architecture.py` | `omni_coworker/vendor/` (vendored) → `OMNI_NODE_ROOT` legado | endpoint retorna `status: unavailable` |
+
+## 6. Como criar/alterar (manual, se necessário)
 
 GitHub: `gh secret set HF_TOKEN --repo fahbrain-omnimind/omni_worker`
 GitLab: Settings → CI/CD → Variables → key `HF_TOKEN`, masked+protected;

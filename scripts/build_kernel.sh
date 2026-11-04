@@ -13,25 +13,29 @@
 # omnimind_* resolvam (kernel_hooks auto-detecta; o pacote funciona sem).
 #
 # Source priority / prioridade de fonte:
-#   1. $OMNI_KERNEL_SRC (dir contendo os crates, ex.: omni_node/src/kernel)
-#   2. /content/omni_node/src/kernel (repo canônico local, quando montado)
-#   3. clone --depth 1 do repo público Doxihewu-OmniMind-Kernel -> /tmp
+#   1. $OMNI_KERNEL_SRC (dir contendo os crates)
+#   2. <repo>/vendor/kernel (crates vendored — autossuficiente)
+#   3. /content/omni_node/src/kernel (repo legado local, quando montado)
+#   4. clone --depth 1 do repo público Doxihewu-OmniMind-Kernel -> /tmp
 #
 # Requires / requer: rustup/cargo stable >=1.85, python dev headers.
 # License note / nota de licença: os crates são CC-BY-NC-ND-4.0 — build
-# local opcional; nada de código kernel é redistribuído no pacote.
+# local opcional; fontes vendored em vendor/kernel fora do grant Apache-2.0.
 
 set -euo pipefail
 
 CRATES="${OMNI_KERNEL_CRATES:-kernel_compute metrics freud10d}"
 SRC="${OMNI_KERNEL_SRC:-}"
 PYBIN="${PYTHON:-python3}"
-# CARGO_TARGET_DIR redireciona os artefatos de build para fora do repo
-# fonte (omni_node é projeto separado / read-only no fluxo do worker).
+# CARGO_TARGET_DIR redireciona os artefatos de build para fora do dir
+# fonte (vendor/ permanece limpo, sem target/).
 TARGET_DIR="${CARGO_TARGET_DIR:-}"
 
 if [ -z "$SRC" ]; then
-  if [ -d "/content/omni_node/src/kernel" ]; then
+  _REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  if [ -d "$_REPO/vendor/kernel/kernel_compute" ]; then
+    SRC="$_REPO/vendor/kernel"
+  elif [ -d "/content/omni_node/src/kernel" ]; then
     SRC=/content/omni_node/src/kernel
   else
     CLONE=/tmp/doxi_kernel

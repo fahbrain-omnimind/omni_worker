@@ -34,10 +34,7 @@ if str(SRC) not in sys.path:
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-for candidate in ("/content/omni_node", "/content/omni_node/src"):
-    if candidate not in sys.path and Path(candidate).exists():
-        sys.path.insert(0, candidate)
-os.environ.setdefault("OMNI_NODE_ROOT", "/content/omni_node")
+# dunker_architecture é vendored em omni_coworker.vendor — sem dep de omni_node
 
 DB = HERE / "supervisor_battery.sqlite"
 TRANSCRIPTS = HERE / "transcripts.json"

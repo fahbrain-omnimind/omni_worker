@@ -25,7 +25,7 @@
 #   API_PORT 8081      ANALYST_PORT 8098            EXECUTOR_PORT 8099
 #   OMNI_CODE_INDEX_DIR (default: <repo>/omni_code_index)
 #   OMNI_STATE_DIR      (default: <repo>/data)
-#   PYTHONPATH extra via OMNI_NODE_ROOT (default /content/omni_node, se existir)
+#   PYTHONPATH: só o pacote próprio (deps de repos irmãos estão vendored)
 # ============================================================================
 set -uo pipefail
 
@@ -43,18 +43,19 @@ OMNI_ACT_VEC_SIDECAR=1
 OMNI_ACT_VEC_KEEP=64
 CAP
 
-# venv: prioriza o compartilhado documentado (omni_node), cai no local
+# venv: prioriza o próprio repo (omni_worker é autossuficiente — vendor/
+# cobre o que antes vinha do omni_node)
 if [ -z "${VENV_PYTHON:-}" ]; then
-  for c in /content/omni_node/.venv/bin/python "$REPO/.venv/bin/python" /content/omni_worker/.venv/bin/python; do
+  for c in "$REPO/.venv/bin/python" /content/omni_worker/.venv/bin/python; do
     [ -x "$c" ] && VENV_PYTHON="$c" && break
   done
 fi
 VENV_PYTHON="${VENV_PYTHON:-python3}"
 
-# PYTHONPATH: pacote próprio + acoplamento canônico opcional (omni_node)
+# PYTHONPATH: somente o pacote próprio. OMNI_NODE_ROOT segue exportado
+# apenas como ponte opcional (fallbacks legados honram-no, nada exige).
 PYTHONPATH="$REPO/src"
-OMNI_NODE_ROOT="${OMNI_NODE_ROOT:-/content/omni_node}"
-[ -d "$OMNI_NODE_ROOT/src" ] && PYTHONPATH="$OMNI_NODE_ROOT:$OMNI_NODE_ROOT/src:$PYTHONPATH"
+export OMNI_NODE_ROOT="${OMNI_NODE_ROOT:-/content/omni_node}"
 export PYTHONPATH
 export OMNI_CODE_INDEX_DIR="${OMNI_CODE_INDEX_DIR:-$REPO/omni_code_index}"
 export OMNI_STATE_DIR="${OMNI_STATE_DIR:-$REPO/data}"
@@ -218,11 +219,8 @@ ensure_reference_assets() {
     echo -e "${BLUE}>> [bootstrap] descompactando /content/omnimind-kilombo-sovereign...${NC}"
     tar -xzf "$SOVEREIGN_TAR" -C /content || true
   fi
-  if [ ! -d "$OMNI_NODE_ROOT" ]; then
-    echo -e "${BLUE}>> [bootstrap] clonando repositório de referência $OMNI_NODE_ROOT...${NC}"
-    git clone -q https://github.com/fahbrain-omnimind/omni_node.git "$OMNI_NODE_ROOT" || true
-  fi
-  [ -d "$OMNI_NODE_ROOT/src" ] && export PYTHONPATH="$OMNI_NODE_ROOT:$OMNI_NODE_ROOT/src:$REPO/src"
+  # omni_node NÃO é mais clonado nem colocado no PYTHONPATH: o que o
+  # worker precisa está vendored (vendor/kernel + omni_coworker.vendor).
 
   if [ ! -f "$OMNI_ACERVO_DIR/acervo_manifest.sqlite" ]; then
     echo -e "${BLUE}>> [bootstrap] baixando acervo vetorizado HF -> $OMNI_ACERVO_DIR...${NC}"
@@ -244,6 +242,21 @@ for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4
     echo -e "${GREEN}[OK]${NC} datasets HF da competição presentes ($OMNI_STATE_DIR/hf_gemma4)"
   fi
 
+  # Banco psicodiagnóstico (dedup materializado, commit HF 9eb617e3) —
+  # insumo do scripts/psico_dual_judge_audit. Só os artefatos canônicos.
+  PSICO_DIR="$OMNI_STATE_DIR/psicodiagnostico_v"
+  if [ ! -f "$PSICO_DIR/embodied_psychodiagnostic_bank.sqlite" ]; then
+    echo -e "${BLUE}>> [bootstrap] baixando banco psicodiagnóstico HF -> $PSICO_DIR...${NC}"
+    mkdir -p "$PSICO_DIR"
+    "$VENV_PYTHON" -c "
+from huggingface_hub import snapshot_download
+snapshot_download(repo_id='fabricioslv/psicodiagnostico-v-embodied-results', repo_type='dataset', local_dir='$PSICO_DIR',
+  allow_patterns=['embodied_psychodiagnostic_bank.sqlite','v10_colab_benchmark.sqlite','gemma4_runs_20261030/*','judges/*','INVENTARIO*','data_sanitized/*'], max_workers=8)
+" || echo -e "${YELLOW}[WARN] falha ao baixar banco psicodiagnóstico${NC}"
+  else
+    echo -e "${GREEN}[OK]${NC} banco psicodiagnóstico presente ($PSICO_DIR)"
+  fi
+
   # Garante os dois modelos de embedding em RAM/cache local:
   # 1) tardellirs/colibri-embed-ptbr (~600MB nativo PT-BR, Matryoshka)
   # 2) sentence-transformers/all-MiniLM-L6-v2 (384D, compatível com acervo_vetorizado)
@@ -263,6 +276,12 @@ ensure_kernel() {
     return 0
   fi
   [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env" || true
+  if ! command -v cargo >/dev/null 2>&1 && [ "${OMNI_KERNEL_AUTO_RUSTUP:-1}" = "1" ]; then
+    echo -e "${BLUE}>> [kernel] cargo ausente — instalando rustup (stable, minimal)...${NC}"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+      | sh -s -- -y --profile minimal --default-toolchain stable >/dev/null 2>&1 \
+      && . "$HOME/.cargo/env" || true
+  fi
   if ! command -v cargo >/dev/null 2>&1; then
     echo -e "${YELLOW}[WARN]${NC} cargo ausente — kernel Rust não compilado (fallbacks Python ativos)"
     return 0
