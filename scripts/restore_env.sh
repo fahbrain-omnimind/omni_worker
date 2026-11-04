@@ -73,7 +73,8 @@ fi
 if [ "$SCOPE" = "public" ]; then
   export OMNI_GATE_FAIL_CLOSED="${OMNI_GATE_FAIL_CLOSED:-1}"   # gate fechado em produção
   export ERIKA_HOST="${ERIKA_HOST:-127.0.0.1}"                 # bind local apenas
-  echo "[restore_env] escopo public: OMNI_GATE_FAIL_CLOSED=1, ERIKA_HOST=127.0.0.1"
+  export OMNI_API_HOST="${OMNI_API_HOST:-127.0.0.1}"           # API loopback em produção
+  echo "[restore_env] escopo public: OMNI_GATE_FAIL_CLOSED=1, ERIKA_HOST=127.0.0.1, OMNI_API_HOST=127.0.0.1"
 else
   export OMNI_GATE_FAIL_CLOSED="${OMNI_GATE_FAIL_CLOSED:-0}"   # laboratório: fail-open
   echo "[restore_env] escopo domestic: OMNI_GATE_FAIL_CLOSED=0 (fail-open)"

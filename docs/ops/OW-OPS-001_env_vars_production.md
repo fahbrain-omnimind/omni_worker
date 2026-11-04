@@ -13,6 +13,7 @@ Varredura de `os.getenv` em `src/` — 25 variáveis. Classificação:
 | `OMNI_CODE_INDEX_DIR` | fallback repo | fixa (start script) | não | índice FAISS |
 | `OMNI_GATE_FAIL_CLOSED` | — (fail-open) | **fixa em produção** | não | `1` = gate fechado |
 | `ERIKA_HOST` | `127.0.0.1` | — | não | bind (produção: loopback) |
+| `OMNI_API_HOST` | `0.0.0.0` | `127.0.0.1` (escopo public) | não | bind da worker API (`serve --host` sobrescreve) |
 | `ERIKA_PORT`/`ERIKA_EXECUTOR_PORT` | `8098`/`8099` | — | não | brains |
 | `API_PORT` | `8081` | — | não | worker API |
 | `OMNI_SWAP_EVICT/RELOAD/MAX_UNLOADED` | `0.9/0.75/30` | — | não | swap scheduler |

@@ -144,13 +144,13 @@ esac
 echo -e "${GREEN}OmniMind Worker bring-up${NC} — repo $REPO, python $VENV_PYTHON"
 
 # --- 1. Bootstrap de variáveis e segredos (restore_env.sh) ------------------
-_HF_VAR="HF_TOKEN"
-if [ -z "${!_HF_VAR:-}" ] && [ ! -f "$HOME/.cache/huggingface/token" ]; then
-  if [ -f "$REPO/scripts/restore_env.sh" ]; then
-    echo -e "${BLUE}>> [bootstrap] restaurando variáveis de ambiente (restore_env.sh)...${NC}"
-    # shellcheck disable=SC1090
-    source "$REPO/scripts/restore_env.sh" --scope public || true
-  fi
+# Sempre sourced: além dos segredos, aplica os defaults de escopo
+# (OMNI_GATE_FAIL_CLOSED, ERIKA_HOST, OMNI_API_HOST). Antes ficava condicionado
+# à ausência de HF_TOKEN — numa VM já hidratada o gate subia fail-open.
+if [ -f "$REPO/scripts/restore_env.sh" ]; then
+  echo -e "${BLUE}>> [bootstrap] restaurando variáveis de ambiente (restore_env.sh)...${NC}"
+  # shellcheck disable=SC1090
+  source "$REPO/scripts/restore_env.sh" --scope public || true
 fi
 
 # --- 2. Bootstrap de venv e dependências (pyproject.toml [all]) -------------
@@ -160,7 +160,9 @@ ensure_deps() {
     python3 -m venv "$REPO/.venv" --system-site-packages
     VENV_PYTHON="$REPO/.venv/bin/python"
   fi
-  if ! "$VENV_PYTHON" -c "import fastapi, uvicorn, httpx, bitsandbytes, faiss, sentence_transformers, black, ruff, pytest_asyncio, sse_starlette, huggingface_hub, pyphi, accelerate, safetensors, scipy" 2>/dev/null; then
+  # pyphi fica fora do check: só é usado por scripts/experiments/ e quebra no
+  # Python 3.13 (collections.Iterable) — incluí-lo aqui reinstalaria [all] a cada boot.
+  if ! "$VENV_PYTHON" -c "import fastapi, uvicorn, httpx, bitsandbytes, faiss, sentence_transformers, black, ruff, pytest_asyncio, sse_starlette, huggingface_hub, accelerate, safetensors, scipy" 2>/dev/null; then
     echo -e "${BLUE}>> [bootstrap] instalando dependências completas de pyproject.toml ([all])...${NC}"
     "$VENV_PYTHON" -m pip install -q -e "$REPO[all]" \
       || "$VENV_PYTHON" -m pip install -q bitsandbytes faiss-cpu sentence-transformers pandas pyarrow nvidia-ml-py httpx psutil ruff black pytest-asyncio sse-starlette huggingface-hub pyphi "agent-client-protocol>=0.12,<1"
@@ -252,7 +254,27 @@ for m in ('tardellirs/colibri-embed-ptbr', 'sentence-transformers/all-MiniLM-L6-
 " >/dev/null 2>&1 || true
 }
 
+# --- 2b. Kernel Rust opcional (omnimind_*: kernel_compute/metrics/freud10d) --
+# Sem os .so, kernel_hooks degrada p/ fallback Python e /agency/dunker fica sem
+# o affective_vector_28d (léxico zerado). Build é opcional: falha → warn.
+ensure_kernel() {
+  if "$VENV_PYTHON" -c "import omnimind_kernel_compute" 2>/dev/null; then
+    echo -e "${GREEN}[OK]${NC} kernel Rust omnimind_* importável"
+    return 0
+  fi
+  [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env" || true
+  if ! command -v cargo >/dev/null 2>&1; then
+    echo -e "${YELLOW}[WARN]${NC} cargo ausente — kernel Rust não compilado (fallbacks Python ativos)"
+    return 0
+  fi
+  echo -e "${BLUE}>> [kernel] compilando crates omnimind_* (kernel_compute, metrics, freud10d)...${NC}"
+  CARGO_TARGET_DIR="${OMNI_KERNEL_TARGET_DIR:-$REPO/.kernel_target}" \
+    PYTHON="$VENV_PYTHON" bash "$REPO/scripts/build_kernel.sh" \
+    || echo -e "${YELLOW}[WARN]${NC} build do kernel falhou — seguindo com fallback Python"
+}
+
 ensure_deps
+ensure_kernel
 ensure_state_restored
 ensure_reference_assets
 

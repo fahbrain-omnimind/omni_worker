@@ -53,3 +53,4 @@ scripts/coding_battery/out/
 scripts/gemma4_diag_battery/diag_battery.sqlite
 state/
 pyphi.log
+.kernel_target/

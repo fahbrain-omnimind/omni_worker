@@ -11,17 +11,21 @@ import json
 from pathlib import Path
 
 
-def serve(port: int = 8080) -> int:
+def serve(port: int = 8080, host: str | None = None) -> int:
     """Start server.
 
     English: Start uvicorn server.
     pt-BR: Inicia servidor uvicorn.
     """
     try:
+        import os
+
         import uvicorn
+
         from .app import create_app
         app = create_app()
-        uvicorn.run(app, host="0.0.0.0", port=port)
+        bind = host or os.getenv("OMNI_API_HOST", "0.0.0.0")
+        uvicorn.run(app, host=bind, port=port)
     except Exception as e:
         print(f"Error starting server: {e}")
         return 1
@@ -170,7 +174,9 @@ def main(argv: list[str] | None = None) -> int:
 
     p_serve = sub.add_parser("serve", help="Run the FastAPI app via uvicorn")
     p_serve.add_argument("--port", type=int, default=8080)
-    p_serve.set_defaults(func=lambda a: serve(a.port))
+    p_serve.add_argument("--host", default=None,
+                         help="Bind host (default: OMNI_API_HOST env or 0.0.0.0)")
+    p_serve.set_defaults(func=lambda a: serve(a.port, a.host))
 
     p_doctor = sub.add_parser("doctor", help="Diagnostics: deps, kernel, brain topology")
     p_doctor.set_defaults(func=lambda a: doctor())

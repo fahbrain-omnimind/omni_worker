@@ -26,6 +26,9 @@ set -euo pipefail
 CRATES="${OMNI_KERNEL_CRATES:-kernel_compute metrics freud10d}"
 SRC="${OMNI_KERNEL_SRC:-}"
 PYBIN="${PYTHON:-python3}"
+# CARGO_TARGET_DIR redireciona os artefatos de build para fora do repo
+# fonte (omni_node é projeto separado / read-only no fluxo do worker).
+TARGET_DIR="${CARGO_TARGET_DIR:-}"
 
 if [ -z "$SRC" ]; then
   if [ -d "/content/omni_node/src/kernel" ]; then
@@ -45,7 +48,8 @@ export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 for c in $CRATES; do
   echo "==> build $c"
   (cd "$SRC/$c" && cargo build --release)
-  cp "$SRC/$c/target/release/libomnimind_${c}.so" "$SITE/omnimind_${c}.so"
+  RELEASE_DIR="${TARGET_DIR:-$SRC/$c/target}/release"
+  cp "$RELEASE_DIR/libomnimind_${c}.so" "$SITE/omnimind_${c}.so"
 done
 
 echo "==> installed crates: $CRATES -> $SITE"
