@@ -399,3 +399,86 @@ omnimind-kilombo-sovereign/ [READ-ONLY]
 ---
 
 *Gerado por Kiro em 2026-11-04. Atualizar a cada sessão de trabalho.*
+
+---
+## §10 Histórico — CONTINUITY_MAP (merged 2026-11-04)
+
+## 7. English summary — what the next session must know
+
+**Live state**: a 5-rep diagnostic battery repopulation
+(`run_diag_reps_swapped.sh`, launched 21:59 UTC) is RUNNING — analyst rep0
+done (~22:03), then peer-swap → 5 executor reps → dual-residency restore.
+Do not kill PID 27872. Executor is currently unloaded by design.
+
+**Truth vs docs**: `PENDING_ROADMAP.md` checkboxes lag reality — P0/P1/P3
+are committed and working; the genuinely open P2 item is the affect
+supervisor wire (`with_affect` exists but nothing calls it on the request
+path; no `/supervisor/*` endpoints; `safety/supervisor.py` unwritten).
+Three of four battery ledgers cited in OW-STU-007 are gone
+(`supervisor/coding/refactor` sqlite absent); `diag_battery.sqlite` was
+wiped and is being repopulated with a new `rep` column.
+
+**Blocks**: the HF E4B-bf16 dataset (124 ledger + 126 gen records) has 5
+experiments; only `block1_cognitivo` (16 rows) was canonically re-scored.
+108 records (observe/v10 cenas, pranchas, 4-arm SWE block) await
+re-scoring + local nf4 replication. Payloads are committed under
+`scripts/gemma4_diag_battery/payloads/`.
+
+**Batteries needing more reps**: `coding` (1 rep/case → 3–5),
+`refactor` (--n 10–20 for verdict distribution), `diag` (5-rep run in
+flight fixes it). `supervisor` is deterministic until an LLM judge tier
+exists.
+
+**Operational traps**: swap_scheduler doesn't observe external
+unload/reload — its `max_unloaded` clock can fire `/erika/reload`
+mid-battery; dual-resident brains + activation capture OOM at high
+max_tokens (keep peer-swap flow); `node.db`/`witness.jsonl` outside
+snapshot root; orchestrator trust/quarantine in-memory only.
+
+## Addendum 2026-11-02 (session 2 — live findings)
+
+**Resolved traps**: (a) `swap_scheduler` timed-reload now requires
+`ratio < evict_at` — commit `f439dbf`; the 30-min clock can no longer
+fire `/erika/reload` into a saturated GPU mid-battery. (b) `code_index`
+rebuild is automatic on staleness (`--reindex` forces, CPU-only build)
+and `_load()` keys its cache on parquet mtime — in-place rebuilds are
+picked up live, no API restart.
+
+**Open anomaly — executor residual VRAM**: after `/erika/unload`,
+`/health` reports `memory_allocated ≈ 0.01GB` but `nvidia-smi` still
+shows the erika_torch_server process holding ~9.0GB (bnb/accelerate
+allocator residue or unreleased reserved pool). Effect: the "freed"
+VRAM is not actually available to the peer — the analyst phase runs
+with ~1GB OS headroom instead of ~10GB. Mitigation shipped
+(`vram_reserved_gb` in `/health`, `ipc_collect` + second `empty_cache`
+in unload) — verify empirically on next brain restart/reload; if
+reservation persists, candidates are `remove_hook_from_submodules`
+(accelerate) or allocator `expandable_segments`.
+
+**In flight**: `run_diag_reps_swapped.sh 5` — rep ledger at
+`scripts/gemma4_diag_battery/diag_battery.sqlite` (expect 40 rows:
+5 reps × 4 tasks × 2 roles). Analyst rep0≈87.7, rep1≈85.2, rep2≈82.5.
+
+**diag battery 5-rep run COMPLETE (40/40 rows)**: peer-swap run with
+per-role eviction. Mean±range per task (n=5):
+
+| task | analyst (12B) | executor (E4B) |
+|---|---|---|
+| wcst | 73.0 (45–90) | 86.8 (70–90) |
+| stroop | 97.0 (95–100) | 100.0 |
+| nback | 65.7 (flat) | 68.6 (65.7–74.3) |
+| igt | 100.0 | 100.0 |
+
+`degenerate=0` on all 40 rows — consistent with OW-STU-006: local NF4
+runs show no lexical degeneration even at 1800 tokens. Per-rep spread
+is driven by WCST variance on the analyst (77.7–87.7 rep means);
+executor is nearly deterministic (86.1–88.9). Garbage 503 rows from
+the failed mid-run reload were deleted (latency<1s, all-zero) — real
+executor rows were re-run with the allocator fix.
+
+**Residual VRAM root cause SOLVED**: `expandable_segments` (torch 2.9+
+VMM allocator default) pinned whole segments while any interior block
+survived — `empty_cache()` could not unmap them, so unload freed
+`memory_allocated` but not driver memory, and `device_map="auto"`
+reload then saw ~1GB free → bnb dispatch ValueError. Fix shipped:
+`PYTORCH_CUDA_ALLOC_CONF=expandable_segments:False` set by the brain

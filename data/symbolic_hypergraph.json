@@ -1,9 +1,8 @@
 {
   "version": "1.0",
-  "root": "/content/omni_worker/src/omni_coworker",
-  "node_count": 1067,
-  "hyperedge_count": 122,
-  "secret_redactions": 0,
+  "node_count": 1076,
+  "hyperedge_count": 123,
+  "redactions_total": 0,
   "concepts": [
     "affect_care",
     "dodecatiad",
@@ -2459,7 +2458,9 @@
         "mod:safety/gate.py",
         "function:safety/gate.py:get_gate",
         "function:safety/gate.py:_apply_refusal_contract",
+        "function:safety/gate.py:_apply_pedagogical",
         "function:safety/gate.py:evaluate_action",
+        "import:pedagogical_refusal",
         "import:refusal_state",
         "concept:quadrupla_federativa",
         "concept:affect_care",
@@ -2507,6 +2508,29 @@
       "tables": [],
       "routes": [],
       "summary": "Permission matrix adapter. English: Reuses src.orchestration.permission_matrix.PermissionMatrix. pt-BR: Reutiliza src.orchestration.permission_matrix.PermissionMatrix."
+    },
+    {
+      "id": "he:safety/pedagogical_refusal.py",
+      "subpackage": "safety",
+      "module": "safety/pedagogical_refusal.py",
+      "members": [
+        "mod:safety/pedagogical_refusal.py",
+        "class:safety/pedagogical_refusal.py:PedagogicalDisposition",
+        "class:safety/pedagogical_refusal.py:PedagogicalRefusalEngine",
+        "function:safety/pedagogical_refusal.py:__init__",
+        "function:safety/pedagogical_refusal.py:_extract_request_tags",
+        "function:safety/pedagogical_refusal.py:_host_pressure",
+        "function:safety/pedagogical_refusal.py:evaluate_request",
+        "function:safety/pedagogical_refusal.py:_f",
+        "import:refusal_contract",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "safety.pedagogical_refusal — modo Freiriano de recusa (REFUSE/TEACH/EXECUTE). Orquestração runtime / Runtime orchestration: PedagogicalRefusalEngine.evaluate_request(content, metrics) → PedagogicalDisposition(mode ∈ REFUSE|TEACH|EXECUTE). C"
     },
     {
       "id": "he:safety/refusal_contract.py",
