@@ -67,3 +67,20 @@ confirma o negativo do piloto n=5.
 os próprios membros de calibração: teatro→A, avaliação→B, factual→C com
 spread_ratio ≤ 1.16. Consumível via `classify(h_T)` ou
 `classify_latest(step_dir)`.
+
+## Réplica em E4B (30 geraçōes, temp=0.0, mesmos prompts) [DADO]
+
+| Framing | spread | inter-centróides |
+|---|---|---|
+| A teatro | 8.05 | A–B 53.0 / A–C 55.3 |
+| B avaliaçāo | 7.21 | B–C **28.4** |
+| C factual | 13.98 | ratio inter/intra **4.67×** |
+
+Contra-intuitivo: o modelo MENOR separa melhor (4.67× vs 4.1×) — espaço
+latente menor gera clusters mais apertados (intra 9.75 vs 14.2). Mas
+**B–C quase colapsa** (28.4 vs 42.6 no 12B): o E4B diferencia menos
+"self-model avaliativo" de "factual" — capacidade metalinguística menor.
+E inversāo: C é o cluster MENOS compacto no E4B (13.98 vs 3.68 no 12B) —
+o registro técnico factual nāo é tāo canonizado no modelo pequeno.
+Centróides E4B em `data/monitor/framing_centroids_e4b.npz` (2560-dim);
+o detector aceita via `OMNI_FRAMING_CENTROIDS`.
