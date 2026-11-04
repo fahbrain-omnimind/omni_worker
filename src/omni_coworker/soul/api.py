@@ -40,7 +40,8 @@ def _compute_state() -> dict:
     kernel_state = None
     try:
         from ..kernel_hooks.compute import affect_state
-        kernel_state = affect_state(payload)
+        from ..kernel_hooks.host_state import build_host_state
+        kernel_state = affect_state(build_host_state(soma=soma, affect=affect))
     except Exception:
         kernel_state = None
 
@@ -112,7 +113,9 @@ def dodeca() -> dict:
     kernel_state = None
     try:
         from ..kernel_hooks.compute import affect_state
-        kernel_state = affect_state({"soma": state.get("soma") or {}, "affect": state.get("brain") or {}})
+        from ..kernel_hooks.host_state import build_host_state
+        kernel_state = affect_state(build_host_state(
+            soma=state.get("soma") or {}, affect=state.get("brain") or {}))
     except Exception:
         pass
     return compute_dodeca(

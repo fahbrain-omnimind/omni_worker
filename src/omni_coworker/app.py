@@ -168,13 +168,39 @@ def create_app() -> FastAPI:
         """Dunker/Soler 5-level psychoaffective architecture (canonical adapter)."""
         from .agency.dunker import dunker_architecture
         from .kernel_hooks.compute import affect_state
+        from .kernel_hooks.host_state import build_host_state, collect_kernel_bundle
         from .soma.probe import probe
         kernel_state = None
         try:
-            kernel_state = affect_state({"soma": probe()})
+            kernel_state = affect_state(build_host_state(soma=probe()))
         except Exception:
             pass
-        return dunker_architecture(kernel_state=kernel_state)
+        # P1 (OW-STU-019 §5b): alimenta os campos que ficavam vazios —
+        # free_energy <- pred_err do integration loop; regime homeostático
+        # e fragmentação topológica <- bundle kernel.cycle. [INTERPRETAÇÃO]
+        free_energy = None
+        psycho_metrics = None
+        topo_metrics = None
+        try:
+            bundle = collect_kernel_bundle()
+            mod = ((bundle.get("loop") or {}) if bundle else {}) or {}
+            fe = mod.get("pred_err")
+            if fe is not None:
+                free_energy = float(fe)
+            homeo = bundle.get("homeostasis") or {}
+            if homeo:
+                psycho_metrics = {"psychoanalytic_regime": homeo.get("state")}
+            att = bundle.get("attractor") or {}
+            if att:
+                topo_metrics = {"topology_fragmentation": att.get("entropy_collapse", 0.0)}
+        except Exception:
+            pass
+        return dunker_architecture(
+            kernel_state=kernel_state,
+            psychoanalytic_metrics=psycho_metrics,
+            topology_metrics=topo_metrics,
+            free_energy=free_energy,
+        )
 
     @app.get("/agency/witness")
     def agency_witness() -> dict:

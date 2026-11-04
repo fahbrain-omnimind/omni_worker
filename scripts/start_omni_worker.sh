@@ -251,7 +251,7 @@ for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4
     "$VENV_PYTHON" -c "
 from huggingface_hub import snapshot_download
 snapshot_download(repo_id='fabricioslv/psicodiagnostico-v-embodied-results', repo_type='dataset', local_dir='$PSICO_DIR',
-  allow_patterns=['embodied_psychodiagnostic_bank.sqlite','v10_colab_benchmark.sqlite','gemma4_runs_20261030/*','judges/*','INVENTARIO*','data_sanitized/*'], max_workers=8)
+  allow_patterns=['embodied_psychodiagnostic_bank.sqlite','v10_colab_benchmark.sqlite','gemma4_runs_20261030/*','judges/*','INVENTARIO*','MONOGRAFIA*','analise_emergente*/*','appendices/*','data_sanitized/*'], max_workers=8)
 " || echo -e "${YELLOW}[WARN] falha ao baixar banco psicodiagnóstico${NC}"
   else
     echo -e "${GREEN}[OK]${NC} banco psicodiagnóstico presente ($PSICO_DIR)"
