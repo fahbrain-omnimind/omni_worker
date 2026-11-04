@@ -387,7 +387,6 @@ def build_symbolic_hypergraph(
 
     graph = {
         "version": "1.0",
-        "root": str(root),
         "node_count": len(nodes),
         "hyperedge_count": len(hyperedges),
         "redactions_total": redactions_total,
