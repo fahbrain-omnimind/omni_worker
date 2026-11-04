@@ -217,8 +217,10 @@ def create_app() -> FastAPI:
         from fastapi.responses import HTMLResponse
 
         repo_root = Path(__file__).resolve().parents[2]
+        # docs/index.html é o entrypoint canônico (linkado no README);
+        # docs/dashboard.html virou stub de redirect — não servir aqui,
+        # pois o refresh apontaria para /index.html (rota inexistente).
         for candidate in (
-            repo_root / "docs" / "dashboard.html",
             repo_root / "docs" / "index.html",
             Path(__file__).parent / "soul" / "static" / "index.html",
         ):

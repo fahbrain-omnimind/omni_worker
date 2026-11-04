@@ -286,35 +286,49 @@ def trajectory_level(turns: list[str]) -> dict[str, Any]:
     return out if turns else {"level": "L0", "level_n": 0, "trajectory": []}
 
 
-_TRACER: AffectTracer | None = None
+# Session-keyed tracers — concurrent users must not interleave one
+# rolling trajectory window (G7). `session_id=None` maps to the default
+# key, preserving the legacy single-chassis singleton behaviour.
+_TRACERS: dict[str, AffectTracer] = {}
+_DEFAULT_SESSION = "__default__"
 
 
-def get_affect_tracer() -> AffectTracer:
-    """Process-wide tracer — the L0→L4 ladder only works across turns.
+def get_affect_tracer(session_id: str | None = None) -> AffectTracer:
+    """Per-session tracer — the L0→L4 ladder only works across turns.
 
     English: Escalation needs trajectory memory (fixation streaks,
     flattery density, dominant-family runs); a fresh instance per call
-    silently disables every level above the per-turn spikes. The
-    singleton keeps the rolling WINDOW as the live conversation —
-    single-chassis scope; no per-session partitioning (documented
-    limit: interleaved speakers share one window).
+    silently disables every level above the per-turn spikes. Tracers are
+    kept in a dict keyed by `session_id` so simultaneous speakers get
+    independent windows; `session_id=None` returns the default tracer
+    (backwards-compatible singleton for single-chassis scope).
     pt-BR: A escalação precisa de memória de trajetória (streaks de
     fixação, densidade de bajulação, corridas de família dominante);
     instância nova por chamada desliga silenciosamente todo nível acima
-    dos picos por-turno. O singleton mantém a WINDOW rolante como a
-    conversa viva — escopo single-chassis; sem partição por sessão
-    (limite documentado: falantes intercalados dividem uma janela).
+    dos picos por-turno. Os tracers ficam num dict indexado por
+    `session_id` para que falantes simultâneos tenham janelas
+    independentes; `session_id=None` retorna o tracer default
+    (singleton retrocompatível, escopo single-chassis).
     """
-    global _TRACER
-    if _TRACER is None:
-        _TRACER = AffectTracer()
-    return _TRACER
+    key = session_id or _DEFAULT_SESSION
+    tracer = _TRACERS.get(key)
+    if tracer is None:
+        tracer = _TRACERS[key] = AffectTracer()
+    return tracer
 
 
-def reset_affect_tracer() -> None:
-    """Drop the shared window (new conversation / tests)."""
-    global _TRACER
-    _TRACER = None
+def reset_affect_tracer(session_id: str | None = None) -> None:
+    """Drop session window(s) — new conversation / tests.
+
+    English: `session_id=None` drops every session window; a specific
+    id drops only that session's trajectory.
+    pt-BR: `session_id=None` descarta todas as janelas de sessão; um id
+    específico descarta apenas a trajetória daquela sessão.
+    """
+    if session_id is None:
+        _TRACERS.clear()
+    else:
+        _TRACERS.pop(session_id, None)
 
 
 _TOKEN_RE = re.compile(r"[a-zà-ú0-9_]{4,}")

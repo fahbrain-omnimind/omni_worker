@@ -105,9 +105,15 @@ def create_brain_router():
                             for m in (payload.get("messages") or [])
                             if m.get("role") == "user"
                         )
-                        # singleton: a escada L0-L4 só escala com janela
-                        # acumulada — instância por chamada mata a trajetória
-                        affect_verdict = get_affect_tracer().observe(user_turn)
+                        # tracer por sessão: a escada L0-L4 só escala com
+                        # janela acumulada — instância por chamada mata a
+                        # trajetória; chat_id/session_id isolam falantes
+                        # simultâneos (chat_id é consumido adiante p/ memtrias)
+                        session = (payload.get("session_id")
+                                   or payload.get("chat_id"))
+                        affect_verdict = get_affect_tracer(
+                            session_id=str(session) if session else None,
+                        ).observe(user_turn)
                         if affect_verdict.get("level_n", 0) >= 4:
                             # L4 = caos/jailbreak sustentado — postura da
                             # escada é bloquear; o veredito vai na resposta

@@ -26,8 +26,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
       - name: Prepare static site root
+        # docs/index.html is the canonical landing (README-linked);
+        # docs/dashboard.html is a redirect stub — do not copy it over.
         run: |
-          cp -f docs/dashboard.html docs/index.html
           touch docs/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
