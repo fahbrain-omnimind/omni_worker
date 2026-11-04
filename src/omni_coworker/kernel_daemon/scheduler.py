@@ -139,6 +139,15 @@ def run_cycle() -> dict[str, Any]:
                 _publish("kernel.freud10d", fr)
         except Exception:
             pass
+        # dendritic: morfologia do grafo de camadas MPS (OW-STU-019 P3)
+        try:
+            from ..activation_beta.dendritic_scan import scan_latest
+            ds = scan_latest()
+            if ds:
+                bundle["dendritic"] = ds
+                _publish("kernel.dendritic", ds)
+        except Exception:
+            pass
         # ignition: GWT-lite broadcast diversity + synergy proxy (OW-STU-016)
         try:
             from . import ignition
