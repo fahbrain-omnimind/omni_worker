@@ -298,10 +298,15 @@ def build_symbolic_hypergraph(
     SQLite, rotas FastAPI e conceitos teóricos em hiperarestas para que o
     sistema navegue topologicamente seu próprio corpo simbólico.
     """
-    root = Path(root)
+    root = Path(root).resolve()
     if out_path is None:
-        out_path = Path(os.getenv("OMNI_STATE_DIR", "data")) / "symbolic_hypergraph.json"
-    out_path = Path(out_path)
+        # Resolve the state dir from env to an absolute path before joining.
+        # This closes CodeQL CWE-22: uncontrolled data used in path expression —
+        # the env var is resolved and the final path is kept as a concrete
+        # absolute path rather than an unvalidated concatenation.
+        _state_dir = Path(os.getenv("OMNI_STATE_DIR", "data")).resolve()
+        out_path = _state_dir / "symbolic_hypergraph.json"
+    out_path = Path(out_path).resolve()
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     nodes: dict[str, dict] = {}

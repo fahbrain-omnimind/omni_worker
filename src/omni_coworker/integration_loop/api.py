@@ -40,5 +40,21 @@ def loop_modulation() -> dict:
 
 @router.post("/run")
 def loop_run() -> dict:
-    """On-demand cycle (short-horizon observation)."""
-    return _loop.run_once()
+    """On-demand cycle (short-horizon observation).
+
+    English: Runs one full integration cycle and returns the payload.
+    Internal error details are stripped from the HTTP response — only
+    a sanitized status string is exposed (closes CodeQL CWE-209:
+    information exposure through an exception).
+    pt-BR: Executa um ciclo completo e retorna o payload. Detalhes de
+    erro interno são removidos da resposta HTTP — apenas status sanitizado.
+    """
+    payload = _loop.run_once()
+    # Sanitize: replace any internal error detail with a safe sentinel
+    # before the dict reaches the HTTP response layer. The loop already
+    # sanitizes to "TypeName: loop_execution_failed" in loop.py, but we
+    # remove it entirely here so the API never leaks internal state paths
+    # or exception messages regardless of future changes to loop.py.
+    if payload.get("error") is not None:
+        payload = {**payload, "error": "cycle_error"}
+    return payload

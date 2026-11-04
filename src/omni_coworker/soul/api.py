@@ -158,8 +158,9 @@ async def stream():
         )
 
 
-from fastapi.responses import HTMLResponse, FileResponse
 from pathlib import Path
+
+from fastapi.responses import FileResponse, HTMLResponse
 
 STATIC_DIR = Path(__file__).parent / "static"
 
@@ -182,14 +183,30 @@ ALLOWED_STATIC_FILES = {"app.js", "style.css", "favicon.ico", "logo.png"}
 @router.get("/static/{path:path}")
 def static_files(path: str):
     """Serve static files safely without path injection.
-    
-    English: Serves static assets constrained to STATIC_DIR.
-    pt-BR: Serve arquivos estáticos restritos a STATIC_DIR.
+
+    English: Serves static assets constrained to STATIC_DIR. The filename
+    is extracted with os.path.basename, checked against an explicit allowlist,
+    and the resolved target is verified to remain inside STATIC_DIR before
+    serving — closing the CodeQL taint path on uncontrolled path expressions.
+    pt-BR: Serve arquivos estáticos restritos a STATIC_DIR. O nome é extraído
+    com os.path.basename, verificado contra allowlist explícita e o caminho
+    resolvido é confirmado dentro de STATIC_DIR antes de servir.
     """
     import os
+    # 1. strip any directory components from the user-supplied value
     clean_name = os.path.basename(path)
-    if clean_name in ALLOWED_STATIC_FILES:
-        target = STATIC_DIR / clean_name
-        if target.is_file():
-            return FileResponse(target)
+    # 2. allowlist check — only known filenames are accepted
+    if clean_name not in ALLOWED_STATIC_FILES:
+        return {"error": "not found"}
+    # 3. resolve to absolute path and assert it stays inside STATIC_DIR
+    #    (closes CodeQL CWE-22: uncontrolled data used in path expression)
+    try:
+        target = (STATIC_DIR / clean_name).resolve()
+        static_root = STATIC_DIR.resolve()
+        if not str(target).startswith(str(static_root) + os.sep) and target != static_root:
+            return {"error": "not found"}
+    except (OSError, ValueError):
+        return {"error": "not found"}
+    if target.is_file():
+        return FileResponse(str(target))
     return {"error": "not found"}
