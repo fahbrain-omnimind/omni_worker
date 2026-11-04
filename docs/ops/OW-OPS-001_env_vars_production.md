@@ -90,3 +90,10 @@ ou API: `POST /projects/fahbrain-omnimind%2Fomni_worker/variables`.
 Nota de proveniência: valores de segredo **nunca** entram em commits, logs ou
 mensagens. O inventário acima é [DADO] (varredura do código); as regras de
 produção são [DERIVADO] das práticas OW-STU-011 §3.6.
+## Security posture — Dependabot dismissals
+
+- **Alert #2 (torch `jit.script` memory corruption, low)** — dismissed
+  `not_used` 2026-11-04: zero `torch.jit`/TorchScript call sites in
+  `src/` ou `scripts/` (server usa `from_pretrained`+`generate`).
+  ⚠️ Se alguém introduzir TorchScript/jit.script no futuro, reabrir a
+  avaliação — o vetor passa a ser alcançável.
