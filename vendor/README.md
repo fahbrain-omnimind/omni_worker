@@ -11,9 +11,9 @@ depender de outros repositórios em build ou runtime.
 - **Proveniência**: `omni_node/src/kernel/{kernel_compute,metrics,freud10d}`
   (upstream público: `devomnimind/Doxihewu-OmniMind-Kernel`), copiado verbatim
   em 2026-11-04.
-- **Licença**: `CC-BY-NC-ND-4.0` (campo `license` de cada `Cargo.toml`) —
-  **excluída do grant Apache-2.0** que cobre o restante deste repositório.
-  Uso local não-comercial; não redistribuir derivados.
+- **Licença**: `Apache-2.0` — upstream relicenciado pelo titular único em
+  2026-11-04 (`devomnimind/Doxihewu-OmniMind-Kernel` PR#1 merged); mesma
+  licença do restante deste repositório.
 - **Build**: `bash scripts/build_kernel.sh` (cargo >= 1.85, headers Python).
   Produz `libomnimind_<crate>.so` instalado como `omnimind_<crate>` no
   site-packages do interpretador ativo. Opcional: `kernel_hooks` degrada
