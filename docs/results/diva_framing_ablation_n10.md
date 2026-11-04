@@ -58,3 +58,12 @@ confirma o negativo do piloto n=5.
   — copiado p/ `scripts/experiments/` no commit.
 - Sidecars: `data/monitor/activation_steps/*` com `run_id=diva{A,B,C}_r*`.
 - Estatística: `scipy.stats.kruskal` + PCA via SVD (numpy) — código no log.
+
+## Operacionalização — detector de encenação em runtime [DADO]
+
+`activation_beta/framing_detector.py` + `data/monitor/framing_centroids.npz`
+(calibrado nos 30 sidecars desta ablação): classifica qualquer geração por
+`d_k = ||h_T - c_k||_2` contra os centróides A/B/C. Validação cruzada sobre
+os próprios membros de calibração: teatro→A, avaliação→B, factual→C com
+spread_ratio ≤ 1.16. Consumível via `classify(h_T)` ou
+`classify_latest(step_dir)`.
