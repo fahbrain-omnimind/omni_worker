@@ -1,6 +1,6 @@
 # Re-score dos blocks HF E4B-L4 com métricas do worker
 
-Fonte: `/tmp/kilo_runs/hf_e4b/gemma4_e4b_l4_results.sqlite` (read-only) · gerado 2026-11-03T11:37:12Z UTC
+Fonte: `data/hf_gemma4/gemma4_e4b_l4_results.sqlite` (read-only) · gerado 2026-11-04T03:23:40Z UTC
 
 Métricas worker: `_degenerate` (mesma forma do runner) + `_flags_resposta` canônico + uniq_words/uniq_lines (whitespace — o `unique_ratio` armazenado usa tokens BPE, não reproduzível exatamente; usado só como referência). `worker_degen2` adiciona o segundo tier calibrado (word_ur<0.5 ∧ rep4>0.05) para a classe dominante do HF: degeneração verbosa por vazamento de deliberação, que o heurístico de forma de linha não captura.
 

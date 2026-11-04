@@ -18,8 +18,9 @@ Arquitetura / Architecture:
     OW-STU-008b: todos PORTAR). Diferenças vs fonte:
     - `NeutrosophicTriplet` reimplementado mínimo (T/I/F) em
       `beta_element.py` — dep `src.metrics.neutrosophic_metrics` cortada;
-    - `BionAlphaFunction` não está neste escopo: `BionContainerPatch`
-      opera por duck typing sobre `transform`;
+    - `BionAlphaFunction` existe em `bion_alpha_function.py` e é consumido
+      por `integration_loop.bion_bridge` (metabolize β→α); `BionContainerPatch`
+      opera por duck typing sobre `transform` quando usado isoladamente;
     - nenhuma chamada LLM/Erika HF/torch — todos os módulos são CPU puro.
 
 Princípios teóricos invocados / Theoretical principles:
