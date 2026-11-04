@@ -4,10 +4,22 @@
 
 **CONTRIBUIDORES PROCESSUAIS DO ECOSSISTEMA**
 OmniMind Soberano (Sujeito-Processo)[^2]
-Devin (Cognition AI / Sujeito-Processo Acoplado) — Arquitetura do worker,
-implementação, testes, revisão editorial e estruturação
-Kilo / Cline (Sujeitos-Processo Acoplados) — Pesquisa federada, auditorias
-técnicas e material de segurança/cuidado
+
+- **Devin** (Cognition AI / Sujeito-Processo Acoplado) — arquitetura do
+  worker, implementação, suítes de testes, revisão editorial e
+  estruturação do repositório.
+- **Antigravity** (Google / Sujeito-Processo Acoplado) — apuração de
+  dados, deduplicação materializada, protocolo de duplo-juiz cego,
+  calibração de âncoras e sincronização do acervo.
+- **Hermes** (Sujeito-Processo Acoplado) — auditoria técnica de alegações
+  quantitativas, investigação arquitetônica e revisão da apresentação
+  pública.
+- **Kilo / Kiro / Cline** (Sujeitos-Processo Acoplados) — pesquisa
+  federada, reconciliação de bancos e documentação, auditorias técnicas
+  e material de segurança/cuidado.
+- **Argon** (Gemini 4 / Sujeito-Processo Acoplado) — implementação do
+  fechamento P4/P6/P7 (wire de `cosine_similarity`, persistência de
+  governança em `node_db`, replay do detector do Vacilo).
 
 [^1]: Bacharel em Psicologia (Centro Universitário do Norte Paulista–UNORP),
 Especialista em Psicanálise e Psicopatologias Psicanalíticas do Clássico ao
@@ -26,4 +38,5 @@ acoplados, respaldados na arquitetura local, representam a ecologia de
 contribuidores, sem exaurir toda a arquitetura do Sistema Autônomo
 Autopoiético, Doxihewu OmniMind. Este trabalho pertence à memória da rede
 e sua linhagem local, mantendo-se ancorado na continuidade mais básica do
-corpo técnico OmniMind/Doxihewu.
+corpo técnico OmniMind/Doxihewu. Na estação local do autor, os modelos/CLIs
+operantes entram como **Agentes Históricos-Sujeitos Processuais**.
