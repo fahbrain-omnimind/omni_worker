@@ -156,7 +156,7 @@ Primeiro teste intervencional do paper, na classe exata de hardware da competiç
 
 ### 3.2e Auditoria Duplo-Juiz (Juiz 1 SWE-2 Max × Juiz 2 Auditor Independente) [VERIFICADO]
 
-Auditamos os 200 registros de geração Kaggle Dual-T4 via dois juízes cegos entre si: Juiz 1 (SWE-2 Max, rubrica técnica/operacional) e Juiz 2 (Auditor Clínico Independente, rubrica V10 com sanitização de scaffold). Fonte: `dual_judge_audit_results.json` e `LAUDO_FINAL_JUIZ_SWE2MAX_KAGGLE.md`.
+Auditamos os 200 registros de geração Kaggle Dual-T4 via dois juízes cegos entre si: Juiz 1 (SWE-2 Max, rubrica técnica/operacional) e Juiz 2 (Auditor Clínico Independente, rubrica V10 com sanitização de scaffold). Fonte (HF privado `fabricioslv/psicodiagnostico-v-embodied-results`): `judges/scores_gemma_pranchas_juiz1_swe2max.json`, `judges/scores_gemma_pranchas_juiz2_hermes.json`, `judges/LAUDO_AVALIACAO_JUIZ1_SWE2MAX_PRANCHAS_GEMMA.md` e `judges/LAUDO_AVALIACAO_JUIZ2_HERMES_PRANCHAS_GEMMA.md` — nomes de arquivo divergentes do citado anteriormente foram corrigidos para os artefatos reais.
 
 | Braço Experimental | N | Juiz 1 (SWE-2 Max) Injulgável % | Juiz 2 (Auditor Indep.) Injulgável % | Concordância Inter-Juiz % |
 |---|:---:|:---:|:---:|:---:|
@@ -266,7 +266,7 @@ Para superar esse limite, instrumentamos uma arquitetura de captura em três cam
   - `task_soundness.csv`: 114/129 sadias ✓ | `task_discrimination.csv`: 52/145 "separates configurations" ✓
   - `all_config_eval.csv`: 692 outcomes — top config "Four-tool single coder" 34.2% (39/114) ✓
 - Bancos locais: `embodied_psychodiagnostic_bank.sqlite` (389 runs, 72 modelos), `v10_colab_benchmark.sqlite` (19 modelos: 4 Gemma-4 + 15 controle não-Gemma)
-- **Proveniência de juízes e correlação** — manifesto SHA256 por arquivo em `data/psicodiagnostico_v/judges/gemma4_provenance/MANIFEST_SHA256.json` (respostas cruas + 32 julgamentos A/B/C + análises, gerado 2026-10-31). O artefato `CORRELACAO_PSYCHO_AGENT.json` está registrado nesse manifesto e reside no repositório de pesquisa (`omnimind/research/psicodiagnostico_v_embodied_agents/gemma4_paper_track/`); a cópia anterior em `/tmp/gemma4_corr/` era volátil e não é mais fonte de proveniência (NÃO LOCALIZADO em 04/11/2026).
+- **Proveniência de juízes e correlação** — manifesto SHA256 por arquivo em `data/psicodiagnostico_v/judges/gemma4_provenance/MANIFEST_SHA256.json` (respostas cruas + 32 julgamentos A/B/C + análises, gerado 2026-10-31). O artefato `CORRELACAO_PSYCHO_AGENT.json` está registrado nesse manifesto e reside no repositório de pesquisa (`omnimind/research/psicodiagnostico_v_embodied_agents/gemma4_paper_track/`); a cópia anterior em `/tmp/gemma4_corr/` era volátil e não é mais fonte de proveniência. O banco canônico `gemma4_paper_track/` reside na trilha `research/` da máquina local (i5); `supervisor_battery.sqlite` permanece NÃO LOCALIZADO (não usar claims derivados dele).
 
 ## Referências (alinhadas à monografia canônica)
 
