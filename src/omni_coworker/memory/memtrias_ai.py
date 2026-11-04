@@ -105,16 +105,18 @@ def hash_embedder(text: str, dim: int = EMBED_DIM) -> list[float]:
 
 
 def _cosine(a: np.ndarray, b: np.ndarray) -> float:
-    if a.size != b.size:
-        m = min(a.size, b.size)
-        if m == 0:
-            return 0.0
-        a = a[:m]
-        b = b[:m]
-    na, nb = float(np.linalg.norm(a)), float(np.linalg.norm(b))
-    if na == 0.0 or nb == 0.0:
+    a_arr = np.asarray(a, dtype=np.float64).reshape(-1)
+    b_arr = np.asarray(b, dtype=np.float64).reshape(-1)
+    if a_arr.size != b_arr.size or a_arr.size == 0:
         return 0.0
-    return float(np.dot(a, b) / (na * nb))
+    try:
+        from ..kernel_hooks.compute import cosine_similarity as _kh_cos
+        return float(_kh_cos(a_arr.tolist(), b_arr.tolist()))
+    except Exception:
+        na, nb = float(np.linalg.norm(a_arr)), float(np.linalg.norm(b_arr))
+        if na == 0.0 or nb == 0.0:
+            return 0.0
+        return float(np.dot(a_arr, b_arr) / (na * nb))
 
 
 _ST_MODELS: dict[str, Any] = {}
@@ -122,21 +124,20 @@ _ST_TRIED: set[str] = set()
 
 # modelos ST suportados: spec -> HF id (ordem de tentativa no 'auto')
 _ST_MODEL_IDS = {
-    "ptbr": "tardellirs/colibri-embed-ptbr",      # nativo PT-BR (~600MB RAM), MTEB-BR 0.650, Matryoshka
+    "ptbr": "tardellirs/colibri-embed-ptbr",      # nativo PT-BR, MTEB-BR 0.650
     "minilm": "all-MiniLM-L6-v2",                  # 384d, mesmo do acervo
 }
 _AUTO_ORDER = ("ptbr", "minilm")
 
 
 def _load_st(spec: str):
-    """Carrega lazy o modelo ST do spec em RAM (CPU default); None se indisponível."""
+    """Carrega lazy o modelo ST do spec; None se indisponível."""
     if spec in _ST_TRIED:
         return _ST_MODELS.get(spec)
     _ST_TRIED.add(spec)
     try:
         from sentence_transformers import SentenceTransformer
-        device = os.getenv("OMNI_EMBED_DEVICE", "cpu")
-        _ST_MODELS[spec] = SentenceTransformer(_ST_MODEL_IDS[spec], device=device)
+        _ST_MODELS[spec] = SentenceTransformer(_ST_MODEL_IDS[spec])
     except Exception:
         _ST_MODELS[spec] = None
     return _ST_MODELS.get(spec)
@@ -293,10 +294,6 @@ class MemtriasAI:
         ns = (namespace or "").strip().lower()
         if ns not in self._namespaces:
             self.register_namespace(ns)
-        if not chat_id:
-            chat_id = os.getenv("OMNI_DEFAULT_CHAT_ID", "omni-session")
-        if state_ref is None:
-            state_ref = {"tag": "auto", "ts": time.time() if ts is None else ts}
         # MINJA provenance guard (fail-open)
         try:
             q = quarantine_check(content)

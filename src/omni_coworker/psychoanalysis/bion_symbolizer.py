@@ -86,14 +86,21 @@ def _sanitize_for_embedding(raw_data: Any) -> str:
 
 
 def _cosine_similarity(a, b) -> float:
-    import numpy as np
-    a = np.asarray(a, dtype=np.float64)
-    b = np.asarray(b, dtype=np.float64)
-    na = np.linalg.norm(a)
-    nb = np.linalg.norm(b)
-    if na == 0 or nb == 0:
-        return 0.0
-    return float(np.dot(a, b) / (na * nb))
+    try:
+        from ..kernel_hooks.compute import cosine_similarity as _kh_cos
+        import numpy as np
+        a_flat = np.asarray(a, dtype=np.float64).reshape(-1).tolist()
+        b_flat = np.asarray(b, dtype=np.float64).reshape(-1).tolist()
+        return float(_kh_cos(a_flat, b_flat))
+    except Exception:
+        import numpy as np
+        a = np.asarray(a, dtype=np.float64)
+        b = np.asarray(b, dtype=np.float64)
+        na = np.linalg.norm(a)
+        nb = np.linalg.norm(b)
+        if na == 0 or nb == 0:
+            return 0.0
+        return float(np.dot(a, b) / (na * nb))
 
 
 def _simple_fallback(raw_data: Any, emotional_charge: float) -> str:
@@ -108,9 +115,8 @@ def _allmini_fallback(raw_data: Any, emotional_charge: float) -> str:
     global _allmini_engine, _allmini_ready
     try:
         if not _allmini_ready:
-            import os
             from sentence_transformers import SentenceTransformer
-            _allmini_engine = SentenceTransformer("all-MiniLM-L6-v2", device=os.getenv("OMNI_EMBED_DEVICE", "cpu"))
+            _allmini_engine = SentenceTransformer("all-MiniLM-L6-v2")
             _allmini_ready = _allmini_engine is not None
         if _allmini_ready and _allmini_engine is not None:
             texts = [text] + _ALPHA_ARCHETYPES

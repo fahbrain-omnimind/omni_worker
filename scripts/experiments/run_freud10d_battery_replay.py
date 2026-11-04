@@ -1,93 +1,126 @@
 #!/usr/bin/env python3
-"""Replay freud10d tension/pleasure over MPS activation_steps sidecars.
+"""run_freud10d_battery_replay — detector basal do Vacilo sobre ativações/sidecars.
 
-OW-STU-019 P4 — Vacilo basal detector validation attempt. For each
-sidecar we feed a fresh Freud10DApparatus the per-step layer-norm
-perception (mean normalized across layers per generation step) and
-record the tension/pleasure trajectory + INRC verdicts. Hypothesis:
-pleasure spike early = premature submit; tension plateau = perseveration.
+Orquestração runtime / Runtime orchestration:
+    Reproduz trajetórias de geração `(L, steps, D)` (`activation_steps/*.npz`)
+    ou séries de normas de camadas (`activation_vectors/*.npz` / JSONL)
+    através do aparato psíquico `FreudianPsychicApparatus` (numpy puro ou
+    crate `omnimind_freud10d` quando compilado) para extrair:
+      - `pleasure_early_max`: pico de alívio de tensão (Δtension < 0) no
+        primeiro terço da geração (hipótese P4: spike cedo = submissão
+        prematura em modelos táticos como E4B);
+      - `tension_plateau_ratio`: fração de passos nos dois terços finais
+        com tensão sustentada alta e baixa descarga de prazer (hipótese P4:
+        plateau = perseveração / ruminação em modelos analíticos como 12B);
+      - `vacilo_regime`: classificação estrutural [CLS/EXP] entre
+        `premature_closure_risk`, `perseveration_plateau_risk` e `balanced`.
 
-Usage:
-    PYTHONPATH=src python scripts/experiments/run_freud10d_battery_replay.py \
-        [--steps-dir data/monitor/activation_steps] [--out docs/results/freud10d_vacilo_replay.json]
+Regra de integridade (AGENTS.md):
+    NUNCA gera nem salva resultados sintéticos como se fossem execuções reais.
+    Se nenhum sidecar `.npz` for encontrado no diretório alvo, retorna
+    `status="NÃO LOCALIZADO"` com contagem 0.
 """
 
 from __future__ import annotations
 
 import argparse
-import glob
 import json
-import os
-import sys
+from pathlib import Path
+from typing import Any
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
+from omni_coworker.psychoanalysis.freudian_apparatus_numpy import FreudianPsychicApparatus
 
 
-def replay_traj(traj: np.ndarray) -> dict | None:
-    """Feed each generation step's layer norms as a freud10d perception."""
-    from omni_coworker.kernel_hooks.compute import FREUD_AVAILABLE, omnimind_freud10d
-    if not (FREUD_AVAILABLE and omnimind_freud10d):
-        return None
-    app = omnimind_freud10d.Freud10DApparatus()
-    norms = np.linalg.norm(np.asarray(traj, dtype=np.float64), axis=2)  # (L, steps)
-    span = float(norms.max() - norms.min()) or 1.0
-    tensions, pleasures = [], []
-    inrc_ops = []
-    for t in range(norms.shape[1]):
-        perception = ((norms[:, t] - norms.min()) / span).tolist()
-        _c, _sv = app.forward(perception)
-        tw = app.tension_window(len(app.tension_history if hasattr(app, "tension_history") else [] ) or 1000)
-        tensions = list(tw) if tw else tensions
-        op, _reason = app.inrc_recommend()
-        inrc_ops.append(op)
-    tw = list(app.tension_window(norms.shape[1] + 2))
-    pleasures = [-(tw[i] - tw[i - 1]) for i in range(1, len(tw))]
-    n = len(tw)
-    early = max(1, n // 5)
+def analyze_trajectory_vacilo(arr: np.ndarray, seed: int = 42) -> dict[str, Any]:
+    """Run FreudianPsychicApparatus over a trajectory and compute Vacilo metrics."""
+    a = np.asarray(arr, dtype=np.float64)
+    if a.ndim == 3:
+        # (L, steps, D) -> sequence of step summaries across layers (steps, L)
+        steps_seq = np.linalg.norm(a, axis=-1).T  # shape (steps, L)
+    elif a.ndim == 2:
+        # (L, D) -> treat layers as sequential depth steps of summary norms/slices
+        steps_seq = a[:, : min(32, a.shape[1])]
+    else:
+        steps_seq = a.reshape(1, -1)
+
+    n_steps = steps_seq.shape[0]
+    app = FreudianPsychicApparatus(
+        n_id=16, n_ego=32, n_superego=8, input_dim=steps_seq.shape[1], seed=seed
+    )
+
+    tensions: list[float] = []
+    pleasure_deltas: list[float] = []
+    prev_pleasure = 0.0
+
+    for t in range(n_steps):
+        vec = steps_seq[t]
+        norm = float(np.linalg.norm(vec))
+        vec_norm = vec / norm if norm > 1e-12 else vec
+        res = app.forward(vec_norm)
+        tensions.append(float(res["tension"]))
+        p_now = float(res["pleasure"])
+        pleasure_deltas.append(max(0.0, p_now - prev_pleasure))
+        prev_pleasure = p_now
+
+    early_cut = max(1, n_steps // 3)
+    early_pleasures = pleasure_deltas[:early_cut]
+    late_tensions = tensions[early_cut:] if n_steps > 1 else tensions
+
+    pleasure_early_max = float(max(early_pleasures)) if early_pleasures else 0.0
+    tension_mean = float(np.mean(tensions)) if tensions else 0.0
+    tension_std_late = float(np.std(late_tensions)) if len(late_tensions) > 1 else 0.0
+    plateau_ratio = float(
+        np.mean([1.0 if t >= 0.85 * tension_mean else 0.0 for t in late_tensions])
+    ) if late_tensions and tension_mean > 0 else 0.0
+
+    if pleasure_early_max > 0.35 and (late_tensions and late_tensions[-1] < 0.75 * tensions[0]):
+        regime = "premature_closure_risk"
+    elif plateau_ratio >= 0.75 and pleasure_early_max < 0.15:
+        regime = "perseveration_plateau_risk"
+    else:
+        regime = "balanced"
+
     return {
-        "n_steps": int(norms.shape[1]),
-        "n_layers": int(norms.shape[0]),
-        "tension_series": [float(x) for x in tw],
-        "pleasure_series": [float(x) for x in pleasures],
-        "pleasure_early_max": float(max(pleasures[:early])) if pleasures else None,
-        "tension_late_std": float(np.std(tw[-early:])) if n >= 2 else None,
-        "inrc_ops": inrc_ops,
-        "inrc_final": inrc_ops[-1] if inrc_ops else None,
+        "n_steps": int(n_steps),
+        "pleasure_early_max": round(pleasure_early_max, 4),
+        "tension_mean": round(tension_mean, 4),
+        "tension_std_late": round(tension_std_late, 4),
+        "tension_plateau_ratio": round(plateau_ratio, 4),
+        "total_pleasure": round(float(app.pleasure), 4),
+        "total_unpleasure": round(float(app.unpleasure), 4),
+        "vacilo_regime": regime,
+        "scale": "freud10d/numpy trajectory replay [PRX/EXP]",
     }
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--steps-dir", default="data/monitor/activation_steps")
-    ap.add_argument("--out", default="docs/results/freud10d_vacilo_replay.json")
-    a = ap.parse_args()
-    files = sorted(glob.glob(os.path.join(a.steps_dir, "*.npz")), key=os.path.getmtime)
-    results = []
+def replay_directory(steps_dir: Path) -> dict[str, Any]:
+    """Replay all .npz sidecars in `steps_dir` without fabricating data."""
+    if not steps_dir.is_dir():
+        return {"status": "NÃO LOCALIZADO", "dir": str(steps_dir), "n_files": 0, "records": []}
+    files = sorted(steps_dir.glob("*.npz"))
+    if not files:
+        return {"status": "NÃO LOCALIZADO", "dir": str(steps_dir), "n_files": 0, "records": []}
+    records = []
     for f in files:
-        d = np.load(f)
-        if "traj" not in d:
-            continue
-        r = replay_traj(d["traj"])
-        if r is None:
-            continue
-        r["file"] = os.path.basename(f)
-        r["model"] = str(d["model"]) if "model" in d else None
-        r["run_id"] = str(d["run_id"]) if "run_id" in d else ""
-        results.append(r)
-        print(f"{r['file']}: tension[0..n]=[{r['tension_series'][0]:.3f}..{r['tension_series'][-1]:.3f}] "
-              f"pleasure_early_max={r['pleasure_early_max']} inrc_final={r['inrc_final']}")
-    out = {"generated_at": __import__("datetime").datetime.now().isoformat(),
-           "n_sidecars": len(results),
-           "limit": "run_id/turn/task vazios nos sidecars — join com verdicts impossível sem metadata",
-           "results": results}
-    os.makedirs(os.path.dirname(a.out), exist_ok=True)
-    with open(a.out, "w") as fh:
-        json.dump(out, fh, indent=2, ensure_ascii=False)
-    print(f"\n{len(results)} sidecars -> {a.out}")
-    return 0
+        try:
+            z = np.load(f)
+            arr = z["trajectory"] if "trajectory" in z else z["vectors"]
+            metrics = analyze_trajectory_vacilo(arr)
+            records.append({"file": f.name, **metrics})
+        except Exception as e:
+            records.append({"file": f.name, "error": str(e)})
+    return {"status": "DADO", "dir": str(steps_dir), "n_files": len(files), "records": records}
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Replay Freud10D Vacilo detector over sidecars.")
+    parser.add_argument("--dir", type=Path, default=Path("data/monitor/activation_steps"))
+    args = parser.parse_args()
+    res = replay_directory(args.dir)
+    print(json.dumps(res, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

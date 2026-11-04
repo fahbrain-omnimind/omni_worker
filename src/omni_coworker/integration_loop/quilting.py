@@ -87,8 +87,19 @@ def detect_quilting_point(
         "end": (now + timedelta(seconds=window_seconds)).isoformat(),
         "seconds": window_seconds,
     }
+    mean_cosine = 1.0
+    try:
+        from ..kernel_hooks.compute import cosine_similarity as _kh_cos
+        pairs = []
+        for i in range(arr.shape[0] - 1):
+            pairs.append(_kh_cos(arr[i].tolist(), arr[i + 1].tolist()))
+        if pairs:
+            mean_cosine = float(np.mean(pairs))
+    except Exception:
+        pass
     return {
         "fixed_topic": fixed_topic,
         "stability": round(stability, 6),
+        "mean_cosine": round(mean_cosine, 6),
         "window": window,
     }

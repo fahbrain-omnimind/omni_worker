@@ -129,6 +129,10 @@ class TrustSystem:
         self._events: list[dict[str, Any]] = []
         self._load()
 
+    def _node_db(self):
+        from ..store.node_db import NodeDB
+        return NodeDB(str(self._state_dir / "node.db"))
+
     def _load(self) -> None:
         try:
             if self._scores_path.exists():
@@ -138,6 +142,8 @@ class TrustSystem:
                         str(k): float(v) for k, v in raw.items()
                         if isinstance(v, (int, float)) and not isinstance(v, bool)
                     }
+            if not self._scores:
+                self._scores = self._node_db().get_trust_scores()
         except Exception:
             self._scores = {}
 
@@ -152,12 +158,23 @@ class TrustSystem:
                 tmp.unlink(missing_ok=True)
             except Exception:
                 pass
+        try:
+            db = self._node_db()
+            ts = _now()
+            for agent, sc in self._scores.items():
+                db.upsert_trust_score(agent, sc, ts=ts)
+        except Exception:
+            pass
 
     def _append_event(self, record: dict[str, Any]) -> None:
         try:
             self._events_path.parent.mkdir(parents=True, exist_ok=True)
             with self._events_path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
+        except Exception:
+            pass
+        try:
+            self._node_db().append_trust_event(record)
         except Exception:
             pass
 
@@ -239,6 +256,10 @@ class QuarantineSystem:
         self._records: dict[str, dict[str, Any]] = {}
         self._load()
 
+    def _node_db(self):
+        from ..store.node_db import NodeDB
+        return NodeDB(str(self._state_dir / "node.db"))
+
     def _load(self) -> None:
         for p in self._paths:
             try:
@@ -249,6 +270,10 @@ class QuarantineSystem:
                         return
             except Exception:
                 continue
+        try:
+            self._records = self._node_db().get_quarantine_records()
+        except Exception:
+            pass
 
     def _save(self) -> None:
         for p in self._paths:
@@ -262,6 +287,17 @@ class QuarantineSystem:
                     tmp.unlink(missing_ok=True)
                 except Exception:
                     pass
+        try:
+            db = self._node_db()
+            for cid, rec in self._records.items():
+                db.upsert_quarantine(
+                    cid,
+                    str(rec.get("reason", "")),
+                    rec.get("evidence") if isinstance(rec.get("evidence"), dict) else {},
+                    ts=str(rec.get("ts") or _now()),
+                )
+        except Exception:
+            pass
 
     def quarantine(
         self, component_id: str, reason: str, evidence: dict[str, Any] | None = None
@@ -282,6 +318,10 @@ class QuarantineSystem:
         removed = self._records.pop(component_id, None) is not None
         if removed:
             self._save()
+            try:
+                self._node_db().delete_quarantine(component_id)
+            except Exception:
+                pass
         return removed
 
     def is_quarantined(self, component_id: str) -> bool:

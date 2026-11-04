@@ -84,7 +84,11 @@ def _norm(vec: Iterable[float]) -> list[float]:
 def _cosine(a: list[float], b: list[float]) -> float:
     if len(a) != len(b) or not a:
         return 0.0
-    return sum(x * y for x, y in zip(a, b))
+    try:
+        from ..kernel_hooks.compute import cosine_similarity as _kh_cos
+        return float(_kh_cos(a, b))
+    except Exception:
+        return sum(x * y for x, y in zip(a, b))
 
 
 def _encode(vec: list[float]) -> tuple[bytes, int]:
