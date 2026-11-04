@@ -98,8 +98,8 @@ def collect_cycle(log: Path | None = None) -> dict[str, Any]:
         pass
     soma = None
     try:
-        from ..soma.probe import probe
-        soma = probe()
+        from ..soma.probe import probe_recorded
+        soma = probe_recorded()
     except Exception:
         pass
     mesh = None

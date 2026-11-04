@@ -293,6 +293,10 @@ class MemtriasAI:
         ns = (namespace or "").strip().lower()
         if ns not in self._namespaces:
             self.register_namespace(ns)
+        if not chat_id:
+            chat_id = os.getenv("OMNI_DEFAULT_CHAT_ID", "omni-session")
+        if state_ref is None:
+            state_ref = {"tag": "auto", "ts": time.time() if ts is None else ts}
         # MINJA provenance guard (fail-open)
         try:
             q = quarantine_check(content)

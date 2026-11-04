@@ -237,8 +237,9 @@ def _no_args(task: str, context: dict[str, Any]) -> list[str]:
 DEFAULT_CLIS: dict[str, dict[str, Any]] = {
     "dev": {"cmd": "devin -p", "args_factory": _task_as_args},
     "opencode": {"cmd": "opencode run -m provider/model --format json", "args_factory": _task_as_args},
-    "kilo": {"cmd": "kilo run", "args_factory": _task_as_args},
+    "kilo": {"cmd": "kilo run --auto -m kilo/kilo-auto/free", "args_factory": _task_as_args},
     "hermes": {"cmd": "hermes -z", "args_factory": _task_as_args},
+    "agent": {"cmd": "agent -p --yolo", "args_factory": _task_as_args},
 }
 
 # Runtime-registered overrides (register_cli) take precedence over env.

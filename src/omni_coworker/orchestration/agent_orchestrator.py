@@ -106,6 +106,10 @@ class AgentOrchestrator:
             "opencode": {
                 "cmd": "opencode",
                 "models": ["opencode/big-pickle", "opencode/glm-5.3-flash-free"]
+            },
+            "agent": {
+                "cmd": "agent -p --yolo",
+                "models": ["cursor-default"]
             }
         }
         with open(self.agents_dir / "agents_config.json", "w") as f:

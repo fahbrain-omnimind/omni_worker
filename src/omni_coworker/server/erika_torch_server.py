@@ -360,17 +360,30 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
 
     last_step = gen.hidden_states[-1] if getattr(gen, "hidden_states", None) else None
     attn_last = gen.attentions[-1] if getattr(gen, "attentions", None) else None
+    attn_tail_note = None
+    if attn_last is None:
+        # long prompt: cheap 1-pass attention on the tail window only
+        try:
+            tail = seq[:, -256:].to(_MODEL.device)
+            out_t = _MODEL(tail, output_attentions=True)
+            attn_last = out_t.attentions[-1] if getattr(out_t, "attentions", None) else None
+            attn_tail_note = "tail_window_256" if attn_last is not None else "attn_unavailable"
+            del out_t
+        except Exception as exc:  # noqa: BLE001
+            attn_tail_note = "attn_skipped:" + type(exc).__name__
     act = {
         "ts": datetime.now(timezone.utc).isoformat(),
         "model": _MODEL_ID,
-        "run_id": _capture_cfg("OMNI_ACT_RUN_ID", ""),
-        "turn": _capture_cfg("OMNI_ACT_TURN", ""),
-        "task": _capture_cfg("OMNI_ACT_TASK", ""),
+        "run_id": _capture_cfg("OMNI_ACT_RUN_ID", "") or "runtime-" + datetime.now(timezone.utc).strftime("%Y%m%d"),
+        "turn": _capture_cfg("OMNI_ACT_TURN", "") or str(int(time.time())),
+        "task": _capture_cfg("OMNI_ACT_TASK", "") or "serve:" + _MODEL_ID.split("/")[-1],
         "prompt_tokens": int(prompt_ids.shape[1]),
         "gen_tokens": int(new_ids.shape[0]),
         "layers": _summarize_hidden(last_step),
         **_summarize_attention(attn_last),
     }
+    if attn_tail_note:
+        act["attn_source"] = attn_tail_note
     _emit_activation(act)
     _emit_vectors(last_step, act)
     _emit_step_trajectory(getattr(gen, "hidden_states", None), act)
@@ -381,7 +394,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
                 out = _MODEL(prompt_ids.to(_MODEL.device), output_hidden_states=True)
             ph = np.stack([h[0, -1, :].detach().float().cpu().numpy()
                            for h in out.hidden_states]).astype(np.float16)
-            d = _step_dir() if False else _vec_dir().parent / "prompt_hidden"
+            d = _vec_dir().parent / "prompt_hidden"
             d.mkdir(parents=True, exist_ok=True)
             ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
             safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
