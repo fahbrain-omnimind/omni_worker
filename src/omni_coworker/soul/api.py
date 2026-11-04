@@ -178,7 +178,13 @@ def root():
     return "<html><body><h1>Machine Public Soul</h1></body></html>"
 
 
-ALLOWED_STATIC_FILES = {"app.js", "style.css", "favicon.ico", "logo.png"}
+STATIC_FILE_PATHS = {
+    "app.js": STATIC_DIR / "app.js",
+    "style.css": STATIC_DIR / "style.css",
+    "favicon.ico": STATIC_DIR / "favicon.ico",
+    "logo.png": STATIC_DIR / "logo.png",
+}
+ALLOWED_STATIC_FILES = set(STATIC_FILE_PATHS)
 
 @router.get("/static/{path:path}")
 def static_files(path: str):
@@ -201,7 +207,7 @@ def static_files(path: str):
     # 3. resolve to absolute path and assert it stays inside STATIC_DIR
     #    (closes CodeQL CWE-22: uncontrolled data used in path expression)
     try:
-        target = (STATIC_DIR / clean_name).resolve()
+        target = STATIC_FILE_PATHS[clean_name].resolve()
         static_root = STATIC_DIR.resolve()
         if not str(target).startswith(str(static_root) + os.sep) and target != static_root:
             return {"error": "not found"}
