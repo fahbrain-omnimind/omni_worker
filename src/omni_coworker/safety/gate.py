@@ -102,6 +102,46 @@ def _apply_refusal_contract(result: dict, action: str,
     return result
 
 
+_READ_ONLY = {"read_file", "search_files", "list_files", "inspect_context",
+              "codebase_search", "list_code_definitions",
+              "communicate_with_agent"}
+
+
+def _apply_pedagogical(result: dict, action: str, context: dict | None) -> dict:
+    """Freirean REFUSE/TEACH/EXECUTE layer (advisory + TEACH-blocks-mutation).
+
+    English: runs only when context carries textual content. Always adds
+    result["pedagogical"]; TEACH on a mutating action sets allowed=False
+    (guide, do not mutate); hard contract refusals already won upstream.
+    pt-BR: roda só com conteúdo textual no contexto; TEACH em ação
+    mutante bloqueia (ensina, não muta).
+    """
+    ctx = context or {}
+    content = ctx.get("content") or ctx.get("text")
+    if not isinstance(content, str) or not content.strip():
+        return result
+    try:
+        from .pedagogical_refusal import PedagogicalRefusalEngine
+
+        metrics = {k: ctx[k] for k in ("phi", "psi", "epsilon", "ogum_active",
+                                       "thermal_block_risk", "load_pressure",
+                                       "exfiltration_verdict") if k in ctx}
+        metrics.setdefault("phi", 0.5)
+        d = PedagogicalRefusalEngine().evaluate_request(content, metrics)
+        result["pedagogical"] = {"mode": d.mode, "justification": d.justification,
+                                 "alienation_index": d.alienation_index,
+                                 "dialectical_potential": d.dialectical_potential,
+                                 "evidence": d.evidence}
+        mutating = action not in _READ_ONLY and not action.startswith("read_")
+        if d.mode == "TEACH" and mutating and result.get("allowed"):
+            result["allowed"] = False
+            result["verdict"] = "TEACH"
+            result["reason"] = "pedagogical_teach_no_mutation"
+    except Exception:
+        pass
+    return result
+
+
 def evaluate_action(action: str, context: dict | None = None) -> dict:
     """Evaluate action through constitutional gate.
 
@@ -118,6 +158,7 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
         result = {"allowed": not fail_closed,
                   "reason": "no_gate_fail_closed" if fail_closed else "no_gate"}
         result = _apply_refusal_contract(result, action, context)
+        result = _apply_pedagogical(result, action, context)
         try:
             from .refusal_state import record_verdict
 
@@ -153,7 +194,8 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
             "grade": getattr(cert, "grade", None),
             "reason": getattr(cert, "justification", ""),
         }
-        return _apply_refusal_contract(result, action, context)
+        result = _apply_refusal_contract(result, action, context)
+        return _apply_pedagogical(result, action, context)
     except Exception as e:
         try:
             from .refusal_state import record_verdict

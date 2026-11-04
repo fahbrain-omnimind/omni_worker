@@ -17,6 +17,12 @@ except Exception:  # pragma: no cover
     PermissionMatrix = None  # type: ignore
 
 
+_READ_ONLY_ACTIONS = {
+    "read_file", "search_files", "list_files", "inspect_context",
+    "codebase_search", "list_code_definitions", "communicate_with_agent",
+}
+
+
 def get_matrix():
     """Return a permission matrix instance.
 
@@ -58,6 +64,10 @@ def check_permission(action: str, context: dict | None = None) -> bool:
             trust_level=float(context.get("trust_level", 0.5)),
         )
         allowed = bool(allowed)
+        if (not allowed and "action_not_defined" in str(_reason)
+                and (action in _READ_ONLY_ACTIONS or action.startswith("read_"))):
+            # canônico não define ações de leitura: política local = leitura livre
+            allowed = True
         _record_matrix_verdict(allowed, action)
         return allowed
     except Exception as e:
