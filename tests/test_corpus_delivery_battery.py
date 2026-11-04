@@ -96,6 +96,7 @@ def test_local_corpus_and_symbolic_hypergraph(tmp_path):
     )
     hg_out = tmp_path / "hg.json"
     summary = build_symbolic_hypergraph(root=src_sub, out_path=hg_out)
+    assert str(src_sub) not in hg_out.read_text(encoding="utf-8")
     assert summary["node_count"] >= 2
     assert summary["hyperedge_count"] >= 1
     hits = search_hypergraph("compute_spectral_mps", hypergraph_path=hg_out, k=3)
