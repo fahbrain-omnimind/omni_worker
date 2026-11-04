@@ -257,7 +257,7 @@ Para superar esse limite, instrumentamos uma arquitetura de captura em três cam
 
 ## Dados já verificados (proveniência)
 
-- **Agent-runs públicos** — Gluzdov, D. (2026). *gemma-4-task-soundness-and-local-results* (datasetVersionNumber=8). Kaggle Datasets. **Licença CC BY 4.0**. https://www.kaggle.com/datasets/dmitriigluzdov/gemma-4-task-soundness-and-local-results — cópia local com SHA256 por arquivo em `/tmp/gemma4_corr/provenance.json`:
+- **Agent-runs públicos** — Gluzdov, D. (2026). *gemma-4-task-soundness-and-local-results* (datasetVersionNumber=8). Kaggle Datasets. **Licença CC BY 4.0**. https://www.kaggle.com/datasets/dmitriigluzdov/gemma-4-task-soundness-and-local-results — cópia local com SHA256 por arquivo em `data/datasets/gemma4_gluzdov_v8/provenance.json` (baixada via Kaggle CLI, v8):
   - `model_screen_task_outcomes.csv`: 288 runs (12B=187, 31B=70, E4B=31) — resolved/patch_submitted/patch_bytes/session_timeout/tool_calls ✓ verificado
   - `task_soundness.csv`: 114/129 sadias ✓ | `task_discrimination.csv`: 52/145 "separates configurations" ✓
   - `all_config_eval.csv`: 692 outcomes — top config "Four-tool single coder" 34.2% (39/114) ✓
