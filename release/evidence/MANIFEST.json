@@ -1,0 +1,25 @@
+{
+ "artifact": "omni_worker_evidence_pack",
+ "created_utc": "2026-11-04T17:28:36.658995+00:00",
+ "repo": "github.com/fahbrain-omnimind/omni_worker",
+ "commit": "89a86fae9559d9d5ab1a6c9cd81032ed54d68cba",
+ "content": "Unified public evidence DB \u2014 battery ledgers merged + spectral_aggregates (pack-verifiable IPR/eff_rank/chi)",
+ "tables": {
+  "diag_battery__diag_battery": 40,
+  "coding_battery__coding_battery": 60,
+  "supervisor_battery__supervisor_battery": 16,
+  "corpus_delivery_battery__corpus_reading_runs": 5,
+  "sqlite_sequence": 3,
+  "corpus_delivery_battery__app_delivery_runs": 1,
+  "corpus_delivery_battery__dream_self_curriculum": 1,
+  "blanket_pyphi__blanket_phi": 6,
+  "spectral_aggregates": 2
+ },
+ "total_rows": 134,
+ "sanitization": "scanned: tokens/keys/passwords/absolute-paths/emails \u2014 0 hits",
+ "license": "Apache-2.0",
+ "files": [
+  "omni_worker_evidence.sqlite"
+ ],
+ "reconciled_20261104": "coding 30/40 vs 0/20; phi k=600 0.0017/0.0017/0.0009; spectral_aggregates analyst 117.0/2.008/59.9, executor 34.28/2.188/40.0"
+}
