@@ -195,10 +195,12 @@ deps declared**; adapters + build script instead.
 | `github.com/devomnimind/Doxihewu-OmniMind-Kernel` | public, cloneable | all 14 crates (local omni_node ≥ public snapshot; pyo3 0.29 + py3.14 builds fine) | **no pip dep possible** (no Python packaging upstream) → `scripts/build_kernel.sh` builds crates + installs `omnimind_*.so` |
 | `omnimind-psychoanalytic-mesh` (PyPI 2.1.1) | yes | **does NOT contain dunker_architecture** — different artifact (464D torch mesh); would drag `torch` + CC-BY-NC-ND | **do not declare** |
 
-License note: kernel crates and the PyPI mesh are CC-BY-NC-ND-4.0 —
-incompatible with vendoring into this Apache-2.0 package; runtime
-optional imports keep zero license entanglement (dual-licensing the
-needed crates to Apache-2.0 is the clean unblock if wheels are wanted).
+License note (atualizada 2026-11-04): os kernel crates foram
+**relicenciados upstream para Apache-2.0** (`devomnimind/Doxihewu-
+OmniMind-Kernel` PR#1, titular único) — os vendored em `vendor/kernel/`
+estão sob a mesma licença do repo, sem restrição de derivados. O PyPI
+`omnimind-psychoanalytic-mesh` é artefato distinto (ainda CC-BY-NC-ND,
+não contém `dunker_architecture`) — segue não declarado.
 
 Fix applied from audit: `agency/dunker.py` now loads
 `dunker_architecture.py` via `importlib` file-load (stdlib-only file)

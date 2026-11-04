@@ -76,7 +76,7 @@ bash scripts/start_omni_worker.sh
 |---|---|---|
 | `cargo`/`rustc` >= 1.85 | `ensure_kernel` instala rustup stable minimal (`OMNI_KERNEL_AUTO_RUSTUP=0` desativa) | kernel Rust opcional — sem ele, `kernel_hooks` usa fallback Python e `/agency/dunker` fica sem `affective_vector_28d` |
 | `python3-dev` headers | imagem base (pyo3 precisa de `Python.h`) | idem |
-| fontes dos crates | `vendor/kernel/` (vendored, CC-BY-NC-ND-4.0) → `OMNI_KERNEL_SRC` → clone público | — |
+| fontes dos crates | `vendor/kernel/` (vendored, Apache-2.0 — upstream PR#1 merged 2026-11-04) → `OMNI_KERNEL_SRC` → clone público | — |
 | `dunker_architecture.py` | `omni_coworker/vendor/` (vendored) → `OMNI_NODE_ROOT` legado | endpoint retorna `status: unavailable` |
 
 ## 6. Como criar/alterar (manual, se necessário)

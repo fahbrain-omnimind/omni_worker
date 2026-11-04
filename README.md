@@ -31,7 +31,7 @@ with **dream cycle** and **curiosity mode**, and a Machine Public Soul
 (SSE + bilingual UI).
 
 > Nota operacional: os crates Rust `omnimind_*` (`kernel_compute`, `metrics`,
-> `freud10d`) são **vendored** em `vendor/kernel/` (CC-BY-NC-ND-4.0) e o Dunker
+> `freud10d`) são **vendored** em `vendor/kernel/` (Apache-2.0) e o Dunker
 > canônico em `src/omni_coworker/vendor/` — sem dependência de repos irmãos.
 > O bind padrão do `serve` é `0.0.0.0`; para exposição pública use
 > `OMNI_API_HOST=127.0.0.1` + `OMNI_GATE_FAIL_CLOSED=1` (ver
