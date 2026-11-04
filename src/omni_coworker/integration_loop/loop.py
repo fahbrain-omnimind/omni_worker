@@ -277,7 +277,7 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
             else:
                 stage_states[name] = r
     except Exception as e:
-        status, err = "error", str(e)
+        status, err = "error", f"{type(e).__name__}: loop_execution_failed"
     if skipped and status == "ok":
         status = "partial"
 

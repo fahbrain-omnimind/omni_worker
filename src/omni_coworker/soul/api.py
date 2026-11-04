@@ -177,6 +177,8 @@ def root():
     return "<html><body><h1>Machine Public Soul</h1></body></html>"
 
 
+ALLOWED_STATIC_FILES = {"app.js", "style.css", "favicon.ico", "logo.png"}
+
 @router.get("/static/{path:path}")
 def static_files(path: str):
     """Serve static files safely without path injection.
@@ -186,8 +188,8 @@ def static_files(path: str):
     """
     import os
     clean_name = os.path.basename(path)
-    file_path = (STATIC_DIR / clean_name).resolve()
-    base_dir = STATIC_DIR.resolve()
-    if file_path.is_relative_to(base_dir) and file_path.is_file():
-        return FileResponse(file_path)
+    if clean_name in ALLOWED_STATIC_FILES:
+        target = STATIC_DIR / clean_name
+        if target.is_file():
+            return FileResponse(target)
     return {"error": "not found"}
