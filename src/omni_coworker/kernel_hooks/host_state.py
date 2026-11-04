@@ -108,6 +108,10 @@ def build_host_state(
         "angst_residual_pressure": _clip01(_f(meta.get("c_soma"))),
         "groddeck_somatic_tension": _clip01(_f(meta.get("c_soma"))),
 
+        # --- freud10d (P2): tensão do aparato freudiano persistente ---
+        # circularidade virtuosa: freud10d -> kernel -> dunker [INTERP]
+        "freud_tension": _clip01(_f((bundle.get("freud10d") or {}).get("tension")) / 10.0),
+
         # --- activity counters (phi_meta binariza activity flags) ---
         "sovereign_daemons_active_n": int(_f((bundle.get("phi_meta") or {}).get("active_subsystems"))),
     }

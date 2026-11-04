@@ -10,8 +10,10 @@ import math
 from typing import Any, Dict, Sequence
 
 from . import (
+    FREUD_AVAILABLE,
     KERNEL_AVAILABLE,
     METRICS_AVAILABLE,
+    omnimind_freud10d,
     omnimind_kernel_compute,
     omnimind_metrics,
 )
@@ -115,3 +117,46 @@ def kernel_status() -> Dict[str, bool]:
         "freud10d": FREUD_AVAILABLE,
         "metrics": METRICS_AVAILABLE,
     }
+
+
+_FREUD_APPARATUS = None
+
+
+def freud10d_cycle(perception: Sequence[float] | None = None) -> Dict[str, Any] | None:
+    """One Freud10D forward pass on a persistent apparatus.
+
+    English: Singleton apparatus across calls — tension/pleasure history
+    accumulates per cycle (the Vacilo basal detector signal). Returns
+    consciousness scalar, freudian soul axes, INRC recommendation and
+    the last tension/pleasure windows; None when the crate is absent.
+    pt-BR: Aparato singleton entre chamadas — histórico de
+    tensão/prazer acumula por ciclo (sinal do detector basal do
+    Vacilo). Retorna escalar de consciência, eixos freudianos do soul,
+    recomendação INRC e janelas de tensão/prazer; None sem o crate.
+    """
+    global _FREUD_APPARATUS
+    if not (FREUD_AVAILABLE and omnimind_freud10d):
+        return None
+    try:
+        if _FREUD_APPARATUS is None:
+            _FREUD_APPARATUS = omnimind_freud10d.Freud10DApparatus()
+        perc = [float(x) for x in (perception or [])]
+        consciousness, state_vec = _FREUD_APPARATUS.forward(perc)
+        values = omnimind_freud10d.freudian_values_from_state(list(state_vec))
+        op, reason = _FREUD_APPARATUS.inrc_recommend()
+        tension = float(sum(abs(float(v)) for v in state_vec))
+        pleasure = None
+        tw = list(_FREUD_APPARATUS.tension_window(32))
+        if len(tw) >= 2:
+            pleasure = float(-(tw[-1] - tw[-2]))
+        return {
+            "consciousness": float(consciousness),
+            "state": values,
+            "state_vec": [float(v) for v in state_vec],
+            "inrc": {"op": op, "reason": reason},
+            "tension": tension,
+            "pleasure": pleasure,
+            "tension_window": tw,
+        }
+    except Exception:
+        return None

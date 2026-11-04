@@ -108,6 +108,37 @@ def run_cycle() -> dict[str, Any]:
             _publish("kernel.metastability", meta)
         except Exception:
             pass
+        # freud10d: aparato freudiano persistente — estado interno vivo
+        # (tensão/prazer/INRC) alimentando soul axes + detector basal
+        # do Vacilo (OW-STU-019 P2). perception = sinais MPS normalizados.
+        try:
+            from ..kernel_hooks.compute import freud10d_cycle
+            _soma = raw.get("soma") or {}
+            _soul = bundle.get("soul") or {}
+            _aff = bundle.get("affect") or {}
+            _meta = bundle.get("metastability") or {}
+            _des = bundle.get("desire") or {}
+            _ent = [float((_aff.get(r) or {}).get("attention_entropy_mean") or 0.0)
+                    for r in ("analyst", "executor")]
+            _ent = [e for e in _ent if e and e > 0]
+            perception = [
+                float(_soma.get("cpu_percent", 0.0)) / 100.0,
+                float(_soma.get("ram_percent", 0.0)) / 100.0,
+                min(1.0, float(_soma.get("load_per_core", 0.0))),
+                float(_soul.get("phi", 0.0)),
+                float(_soul.get("psi", 0.0)),
+                float(_soul.get("sigma", 0.0)),
+                float(_soul.get("epsilon", 0.0)),
+                (sum(_ent) / len(_ent) / 8.0) if _ent else 0.0,
+                float(_meta.get("angst", 0.0) or 0.0),
+                float(_des.get("intensity", 0.0) or 0.0),
+            ]
+            fr = freud10d_cycle(perception)
+            if fr:
+                bundle["freud10d"] = fr
+                _publish("kernel.freud10d", fr)
+        except Exception:
+            pass
         # ignition: GWT-lite broadcast diversity + synergy proxy (OW-STU-016)
         try:
             from . import ignition
