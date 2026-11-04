@@ -1,0 +1,1281 @@
+AI & SOCIETY
+https://doi.org/10.1007/s00146-026-03367-1
+
+REVIEW
+
+Constructing AI power: anthropomorphising imaginaries of generative
+AI by AI companies
+Anastasia Glawatzki1
+Received: 10 March 2026 / Accepted: 20 August 2026
+© The Author(s) 2026
+
+Abstract
+In descriptions of generative artificial intelligence (GenAI), companies often anthropomorphise their innovations by attributing human-associated characteristics or capabilities to them, e.g. intelligence, understanding or reasoning. I argue that
+anthropomorphism can become a structuring part of sociotechnical imaginaries—visions of desirable futures attainable
+through advances in science and technology. While imaginaries of GenAI have been addressed in existing research, both the
+connection between anthropomorphism and imaginaries as well as the perspective of AI companies as creators of hegemonic imaginaries remain understudied. Drawing on a qualitative content analysis of 35 documents from OpenAI, Meta and
+Mistral AI, I explored which anthropomorphising imaginaries are employed by AI companies and how anthropomorphism
+constructs the technology as powerful in future societies. The analysis reveals that companies anthropomorphise GenAI
+both in terms of content and language, creating three anthropomorphising imaginaries. In the imaginary of GenAI as a tool
+with human capabilities, the companies construct a neoliberal future in which human cognitive capabilities will be embedded in GenAI to serve as an intelligent productivity tool. The imaginary of AI as an empowering helper draws a future
+with human–AI-cooperation and transhumanistic enhancement. Finally, the imaginary of GenAI as an anthropomorphised
+superintelligence assumes that GenAI will surpass humans and act autonomously through advanced cognitive abilities.
+These imaginaries imply three types of AI power: instrumental, collaborative and autonomous. The imaginaries and their
+according constructions of AI power fuel post- and transhumanist ideologies, depoliticise AI from the exploitative conditions of its creation, legitimise AI companies as authoritative creators of this technology and foster technical dependencies
+as well as an uncritical appropriation and integration of AI. The findings contribute to critical AI research by (1) explicitly
+reconstructing the anthropomorphising imaginaries of AI companies as under-researched yet increasingly dominant actors
+in shaping AI futures, (2) broadening the critique of anthropomorphisation as an instrument of corporate power in steering
+sociotechnical developments and (3) advancing a theoretical account for the effects of anthropomorphisation as embedded
+in sociotechnical imaginaries.
+Keywords Anthropomorphism · Generative AI · AI power · Sociotechnical imaginaries · Anthropomorphising imaginaries
+
+1 Introduction
+“o1 thinks before it answers” (OpenAI 2024)—this quote by
+OpenAI exemplifies a broader tendency in AI companies to
+present their models as thinking, understanding or generally
+intelligent (Meta 2025c; Mistral AI 2025b). Such attributions of traditionally human-associated characteristics to
+non-human entities are referred to as anthropomorphisation
+* Anastasia Glawatzki
+anastasia.glawatzki@uni-muenster.de
+1
+
+Department of Communication, University of Münster,
+Münster, Germany
+
+(Epley et al. 2007), a phenomenon increasingly researched
+in the context of generative AI (GenAI) (e.g. van Es and
+Nguyen 2024; Wagner and Schramm-Klein 2019). Drawing on science and technology studies that view technology
+as sociotechnically constructed (Bijker 1995), I argue that
+anthropomorphisation can be understood as constructing
+GenAI’s characteristics and capabilities. For AI companies, anthropomorphisation often serves strategic purposes,
+shaping performance promises, creating fear of missing out
+(FOMO) and fostering investments and sales by equating
+technical and human capabilities (Bender and Hanna 2025).
+Acknowledging that the anthropomorphisation of GenAI
+can become integral to sociotechnical imaginaries—collective
+Vol.:(0123456789)
+
+AI & SOCIETY
+
+visions of desirable futures enabled by scientific and technological progress (Jasanoff 2015)—I propose the term anthropomorphising imaginaries: a conceptual synthesis that emphasises how future visions are structured by anthropomorphising
+ascriptions to technology. I suggest that anthropomorphising
+imaginaries not only position GenAI as desirable in future
+societies but also construct it as powerful in these, framing the
+technology as performing at a human level and possessing a
+human-like trustworthiness. I define power in a Foucauldian
+way as relational and emerging in practices (Foucault 1977)
+between humans and GenAI. In line with previous work that
+illustrates the influence of imaginaries on economic, political and scientific agendas (Richter et al. 2023), I argue that
+AI companies hold infrastructural power (Flensburg and Lai
+2023) to realise their anthropomorphising imaginaries—especially in view of the regulatory vacuum and the AI race. In
+doing so, they impose their corporate understandings of desirability on society and foreclose the democratic discussion of
+alternative futures.
+Although scholars have recently begun to explore imaginaries of GenAI (e.g. Cohen et al. 2024; Dishon 2024;
+van Es and Nguyen 2024), two research gaps persist. First,
+existing works focus on anthropomorphisation through
+users (e.g. Go and Sundar 2019; Klein and Martinez 2023;
+Wagner and Schramm-Klein 2019), whilst the perspective of AI companies remains understudied. Since Big
+Tech companies increasingly occupy a “hegemonic position in imagining and shaping future society” (Mager and
+Katzenbach 2021: 233) through their private research and
+development, an analysis of their future visions is urgently
+required. Second, anthropomorphisation has so far been
+investigated only as a sub-aspect of imaginaries (de Seta
+and Shchetvina 2024; Markelius et al. 2024; van Es and
+Nguyen 2024). However, the anthropomorphism-driven
+construction of AI power with its far-reaching consequences for present and future societies calls for an explicit
+analysis of anthropomorphising imaginaries. In this paper,
+I address both desiderata by examining (1) which anthropomorphising imaginaries are employed by AI companies,
+and (2) how anthropomorphism constructs the technology
+as powerful in future societies. Through a qualitative structuring content analysis (Kuckatz and Rädiker 2022) of 35
+corporate documents from OpenAI, Meta and Mistral AI,
+I identified three anthropomorphising imaginaries: GenAI
+as a tool with human capabilities, as an empowering assistant and anthropomorphised superintelligence. As I will
+show, these imaginaries and their according constructions
+of AI power fuel post- and transhumanist ideologies, depoliticise AI from the exploitative conditions of its creation,
+legitimise AI companies as authoritative creators of this
+technology and foster technical dependencies as well as
+an uncritical appropriation and integration of AI. In light
+of AI companies’ infrastructural power to realise their
+
+imaginaries, it is crucial to discuss their normative implications and reimagine desirable futures with GenAI.
+
+2 State of research
+GenAI is a type of AI that creates new content based on
+the patterns and relationships identified in its training data
+(Brindha et al. 2025: 2). Technically, it often builds on
+Large Language Models (LLMs) that recognise and produce natural language by predicting the probability of subsequent characters and strings in text (Bender et al. 2021:
+611). Within this long history, not only the term artificial
+intelligence has been contested (McCarthy et al. 1995; Wiener 1961/2019), but the capabilities and characteristics of
+AI have also been intensely discussed. For example, scholars disagree on whether AI is able to think and understand
+(Davis and Marcus 2015; Firt 2024), exert autonomy (Butlin
+2024; Formosa et al. 2025) and act creatively (Boden 2009;
+Franceschelli and Musolesi 2023) in a human way. This
+debate largely draws on anthropocentric notions of intelligence, creativity and autonomy, revealing an ideological
+divide between those who consider these capacities as technically reproducible and those who view the human preconditions of these qualities as evidence for AI’s limitations.
+This foreshadows an anthropomorphising tendency in how
+AI is conceptualised.
+Anthropomorphisation—defined as the attribution of traditionally human-associated qualities to non-human objects
+(Epley et al. 2007)—has been identified as a rhetorical strategy serving interest-driven, often capitalist agendas (Hunger
+2023; Rehak 2021). I argue that AI companies deploy it strategically, framing their technologies as humanly intelligent
+and autonomous to advance their commercial interests. The
+anthropomorphic exaggeration of AI capabilities (Placani
+2024) frames this technology as powerful, fostering trust and
+motivating adoption whilst simultaneously fuelling hype and
+attracting investment (Bender and Hanna 2025).
+Previous literature has examined anthropomorphisation
+of AI primarily from the perspective of users. For example, scholars have positioned conversational aspects of AI
+as triggers for anthropomorphisation and have examined
+the attribution of human characteristics—e.g. friendliness,
+helpfulness, autonomy or intelligence (Laban 2021; Wagner
+and Schramm-Klein 2019)—as well as human roles—e.g.
+servant, partner or master (Sarigul et al. 2024; Schweitzer
+et al. 2019)—to AI. Concerning the effects of anthropomorphisation, studies suggest that it positively affects the feeling
+of social presence (Go and Sundar 2019), trust in technology
+(Klein and Martinez 2023) and emotional connection to it
+(Araujo 2018). While these works trace the mechanisms and
+effects of anthropomorphisation on an individual level, they
+do not account for anthropomorphisation as a structural part
+
+AI & SOCIETY
+
+of broader sociotechnical visions. However, I argue that this
+perspective is essential to extend the anthropomorphisation
+concept from an individual psychological process to a strategic practice in which technology companies envision future
+societies and construct their technology as powerful in them.
+To understand how anthropomorphisation gains traction in shaping sociotechnical realities, it can be situated
+within the concept of sociotechnical imaginaries. Rooted in
+science and technology studies and originally proposed in
+the context of nation states (Jasanoff and Kim 2009) before
+spreading into other areas such as energy, environment and
+technology (Hendriks et al. 2025), this concept helps to
+understand which sociotechnical visions of the future are
+considered desirable by certain actors, how these visions are
+negotiated, and which of them prevail and influence societal
+decisions. Jasanoff (2015: 4) defines sociotechnical imaginaries as “collectively held, institutionally stabilised, and
+publicly performed visions of desirable futures, animated
+by shared understandings of forms of social life and social
+order attainable through, and supportive of, advances in
+science and technology”, entailing both visions of society
+and of GenAI. Imaginaries function constitutively in reflecting the political structure and social order in which they
+were formulated (Bareis and Katzenbach 2022: 863–864).
+Simultaneously, they operate performatively because their
+articulation generates expectations and structures actions
+(Bareis and Katzenbach 2022; Hautala and Ahlqvist 2022),
+consequently influencing economic, political and scientific
+agendas (Richter et al. 2023).
+In context of GenAI, Big Tech companies increasingly
+shape powerful imaginaries (Mager and Katzenbach 2021).
+This influential position can be traced back to two reasons.
+First, their research ideas have higher contagiousness in
+comparison with academia (Giziński et al. 2024: 13). Second, their technical innovations often precede regulation,
+which grants AI companies freedom to realise their imaginaries without political constraints. Sociotechnical futures,
+in this way, become commodified “as they are enacted and
+performed by hegemonic technology companies and their
+expanding infrastructures, services, and products” (Mager
+and Katzenbach 2021: 232–233). This has significant consequences: through naturalising, neutralising and legitimising
+technologies in their imaginaries, companies create impression of technological inevitability and prelude the discussion
+of alternatives (Markham 2021).
+Given the powerful position of AI companies in shaping AI imaginaries, the need for research becomes evident. However, only few studies have addressed corporate imaginaries to date, revealing abstract, futuristic and
+fantastical visions of superintelligence alongside visions
+of human–AI-cooperation or AI as an efficiency-oriented
+force for innovation (de Seta and Shchetvina 2024; Hsiao
+and Shorey 2025; van Es and Nguyen 2024). Previous
+
+research on AI imaginaries has instead focussed on states
+(e.g. Hoff 2023), media (e.g. Dishon 2024; Natale and Ballatore 2020), public sphere (e.g. Cohen et al. 2024) and AI
+practitioners (e.g. Hautala and Ahlqvist 2022; Stanusch
+and Rogers 2026). Furthermore, the role of anthropomorphism in imaginaries has not been sufficiently explored
+yet. However, studies show that anthropomorphism is
+central to the construction of a technological myth of
+human-like AI, fuelling transhumanist discourses (Natale
+and Ballatore 2020), creating technological hypes (Bender
+and Hanna 2025) and influencing use of and political decisions upon the technology (Rehak 2021). It is therefore
+crucial to explicitly analyse anthropomorphising imaginaries, with anthropomorphisation conceptualised as a constitutive, structural part of sociotechnical future visions.
+I argue that by reconstructing AI companies’ anthropomorphising imaginaries, it becomes possible to reveal
+and critically examine ideologies, values and images of
+humanity which undergird and stabilise the social order
+that these actors advance.
+
+3 Methods and sample
+My study aims at analysing anthropomorphising imaginaries
+and constructions of power within AI companies through a
+qualitative research approach. Since imaginaries only take
+shape through their collective representation (Jasanoff 2015:
+4), their analysis requires the perspectives of multiple actors
+in order to derive shared visions. Simultaneously, a cultural
+and political proximity between the actors must be ensured
+in the analysis: since imaginaries are “a projection of a
+political culture” (Bareis and Katzenbach 2022: 865), differences will emerge in the ways how Western versus Southern AI companies envision desirable futures. My analysis
+focussed on Western companies, including cases from U.S.
+and France. Within this cultural context, I aimed at a most
+diverse sample that accounts for different approaches and
+priorities in AI development to capture anthropomorphising
+imaginaries in their heterogeneity. My sample consisted of
+three companies developing GenAI:
+• OpenAI, a U.S. AI research and development company
+
+based in San Francisco (OpenAI 2025) with 800 million
+weekly active users (Reuters 2026)
+• Mistral AI, a French AI start-up based in Paris (Mistral
+AI 2025a), which is often referred to as Europe’s most
+promising competitor to U.S. models (Sun and Berthelot
+2025)
+• Meta, a U.S. technology company based in Menlo Park
+(Meta 2025b), which provides its Llama models as open
+source (Meta 2025a)
+
+AI & SOCIETY
+
+The anthropomorphising imaginaries of these three
+companies are reflected in corporate documents and can
+be reconstructed from them. Within a publishing period
+between November 2024 and April 2025, I selected the most
+recent documents from each company that met one or both
+inclusion criteria. These criteria were (1) the explanation of
+abilities, features or performance of the model and (2) the
+discussion of the model’s context of use. Here again, my
+goal was to ensure diversity: the final sample consists of
+35 documents (see Fig. 1), including company updates and
+“About us” pages, product announcements, research updates,
+case studies and user guides/documentation. In three cases,
+I used documents from outside the sample period: for Meta,
+to broaden thematic coverage; for Mistral AI, due to a high
+relevance of a 2023 company update; and for all companies’
+user guides/documentation, as I sampled these living documents by content rather than recency. For better readability,
+I will abbreviate the documents with a letter and a number
+in the results section: O stands for OpenAI, M for Mistral
+AI, and L for Meta (Llama). The number following the letter
+indicates the document (e.g. O1, M2, L3). The full list of
+analysed material is provided in the appendix.
+To answer the first part of the research question—which
+anthropomorphising imaginaries are employed by AI
+companies?—I imported the documents into MAXQDA
+and analysed them using Kuckartz and Rädiker’s (2022)
+qualitative structuring content analysis approach. The hermeneutical, reflexive orientation of the qualitative analysis
+allowed for a careful reconstruction of the anthropomorphising attributions to GenAI within the documents, as well
+as the imaginaries these attributions give rise to. I initially
+coded the material using deductive categories derived from
+the theory and the state of research: (1) practices of AI use,
+(2) promises of AI performance, (3) linguistic strategies of
+Fig. 1  Sample: distribution of
+analysed documents. Note. The
+categories are partly based on
+the labels used in the company
+blogs. Furthermore, the categories “Research update” and
+“Product announcement” are
+not entirely distinct in the cases
+of OpenAI and Mistral AI
+
+anthropomorphisation (anthropomorphising language and
+comparisons with humans), (4) attributed abilities of AI
+(intelligence, thinking, learning and creativity), (5) attributed characteristics of AI (autonomy, intentionality and
+trustworthiness), (6) attributed roles of AI (tool, assistant,
+partner and master), (7) responsibility for AI decisions and
+(8) power over AI decisions (both: user, AI, AI company and
+shared responsibility/power). During this initial coding, I
+developed inductive categories. After a second coding with
+the refined category system, I analysed the material within
+and across categories. Repeated close readings of the coded
+sections revealed the future visions of GenAI underpinning
+the corporate documents.
+For the second part of the research question—how
+anthropomorphisation constructs AI as powerful in future
+societies—I developed a typology of AI power. I drew on
+Kelle and Kluge’s (2010) approach, which allowed me to
+systematically derive these types from the GenAI imaginaries through a process of contrasting. First, I derived dimensions of power from the imaginaries of the AI companies.
+Then, I contrasted the imaginaries along these dimensions to
+derive central features of power and to interpret their meanings through further comparisons within and between the
+imaginaries. The aim was to create internally homogenous
+and externally heterogeneous idealised types of AI power
+which represent the imaginaries of the AI companies.
+
+4 Results
+My analysis of corporate documents indicates that companies anthropomorphise GenAI by ascribing cognition, sociality, communication and personality to it. These anthropomorphisms give rise to three imaginaries, each represented
+
+Company update
+Research update
+Product announcement
+User guide/documentation
+Case study
+Website
+0
+
+2
+OpenAI
+
+4
+
+6
+
+Mistral AI
+
+Meta
+
+8
+
+10
+
+12
+
+AI & SOCIETY
+
+by all three companies: GenAI as a tool with human capabilities, GenAI as an empowering helper and GenAI as a
+superintelligence. As I will show in the next sections, these
+imaginaries encompass not only desirable futures of GenAI,
+but also of society, including human image, ideology, social
+order and the relationship between human and technology. In
+addition, three types of AI power stem from these imaginaries: instrumental, collaborative and autonomous.
+
+4.1 Abilities‑ and characteristics‑based
+anthropomorphisation of GenAI
+The analysed AI companies anthropomorphise GenAI by
+attributing human cognitive, communicative, social and personal abilities and characteristics to it, with the cognitive
+ascriptions being the most prominent across the documents.
+Terms such as “chain of thought” (O2: para. 2) or “smart[]”
+(L3: para. 5) frame algorithmic processes by using human
+cognitive metaphors. GenAI, so the companies’ argument
+goes, leverages its knowledge as well as deep and systematic understanding and reasoning to comprehend the task
+and give “accurate answers” (L7: para. 5). This anthropomorphising language conflates AI calculation and human
+cognition, setting the expectation for human-like problemsolving and complexity handling. When ascribing intelligence to GenAI, the companies often present its cognitive skills as intrinsic. For instance, Mistral AI claims that
+“LLMs, by nature, aren’t great at performing calculations”
+(L8: Program-aided language models section). This rhetoric
+of naturalisation positions GenAI as an independently evolving, even organic entity—a portrayal that negates the human
+design of the technology and conceals its material costs and
+consequences (Elish and boyd 2017: 2).
+In addition to cognitive aspects, another domain of
+anthropomorphisation in the documents concerns communication skills. By attributing GenAI linguistic adaptation
+and formal responsiveness, the companies construct it as
+a dialogic counterpart—a representation that scholars have
+identified as an anthropomorphisation trigger on the part
+of users (Wagner and Schramm-Klein 2019). This demonstrates parallels between the anthropomorphisation by
+AI companies and users, with companies preconfiguring
+anthropomorphising interpretations through their design and
+description of technology—a mechanism commonly referred
+to as scripts (Akrich 1992) or affordances (Hutchby 2001).
+As a communicative agent, the companies characterise
+GenAI as empathetic, friendly and humorous, yet also highly
+responsive to the user’s needs. Meta, for instance, claims that
+its Llama model is able “to switch casually between tonal
+types, including but not limited to humour, empathy, intellectualism, creativity and problem-solving” (L10: Prompt
+template section). This quote creates the impression of a
+friendly and human-oriented GenAI, corresponding to the
+
+self-representation of ChatGPT observed by van Es and
+Nguyen (2024).
+Regarding social skills, the companies draw on the argument of cognitive sophistication—especially understanding,
+thinking, planning and reflecting—to attribute “instruction
+following” (M4: Use cases section) and helping abilities to
+GenAI in both everyday and professional contexts. While
+this anthropomorphisation frames GenAI as a servant or
+assistant under human control, the companies also describe
+more technically advanced models as collaborators.
+Finally, the AI companies anthropomorphise GenAI by
+attributing a human personality to it. For instance, Meta
+states that Llama is “an expert conversationalist” and “companionable and confident” (L10: Prompt template section).
+This prescription of individual character to GenAI traits
+allows it to narratively transcend its function as technology
+and appear as a human-like subject.
+Apart from these cases of anthropomorphisation, the
+companies refrain from depicting GenAI in a human-like
+way in four cases. First, anthropomorphisation in the analysed documents applies only to certain characteristics such
+as intelligence, autonomy and communication, whereas
+others—most notably creativity—remain outside its scope.
+Second, many attributions of skills to GenAI emerging
+throughout the documents retain a primary technical character. Third, when describing use contexts of GenAI, the companies often employ non-anthropomorphising terminology.
+However, the surrounding context often lends these technical
+descriptions a humanising tone. Fourth, when addressing
+the responsibility for shaping GenAI—particularly regarding
+safety—the companies also refrain from anthropomorphisation, positioning themselves as responsible agents for AI
+development.
+
+4.2 Imaginary 1: GenAI as a tool with human
+capabilities
+The anthropomorphisation of GenAI in corporate documents
+gives rise to three anthropomorphising imaginaries, the
+first of which depicts GenAI as a tool endowed with human
+capabilities. It resembles the “smooth everyday” imaginary
+identified by de Seta and Shchetvina (2024) in machine
+vision companies, where a convenient, reliable, ubiquitous
+technology is expected to make everyday life easier. In addition, it pictures a future in which human intelligence will be
+replicated in a seemingly neutral, human-controllable tool,
+which will be commodified with the promise to enhance
+productivity and democratise human skills whilst simultaneously devaluing them. Building on the notion of usefulness,
+the companies echoing this imaginary position the technology as fundamentally desirable, legitimising themselves as
+indispensable actors in the neoliberal social order whilst
+excluding the option of non-use.
+
+AI & SOCIETY
+
+Within this first imaginary, the companies construct a
+future in which human cognitive abilities will be technically
+encoded into GenAI, thereby increasing its performance and
+enhancing the appeal of its use. Previously described anthropomorphic notions of cognition gain special relevance in this
+context. Referring to intelligence as “build-in” (O3: para.
+13) within their systems, the companies suggest that human
+thinking, understanding, learning, reflection and knowledge
+can, should and will be technically replicable and optimisable, echoing the general promise to automate the human
+with sufficient data (Andrejevic 2020: 3–4). Intelligence,
+in this vision, becomes a property of a technical tool—a
+commodity managed and sold by private companies, with
+anthropomorphism driving the commodification. This not
+only provokes the question of whose intelligence is encoded
+into the tool, opening space for racist and ableist conceptions
+of intelligence, but also conceals the human, often exploitative practices of data collection and verification through
+which AI is manually produced (Mühlhoff 2020).
+Within their documents, the companies instrumentalise
+cognitive anthropomorphisms for promises of enhanced performance. For example, Mistral AI associates the attribution of understanding to GenAI with the notion of “unprecedented accuracy” (M5: para. 3) in tasks such as document
+analysis and image recognition. This anthropomorphismdriven imagination of a high-performance tool directly translates into promises of user value, motivating GenAI adoption
+in present and future societies.
+Although the companies acknowledge some technical
+shortcomings in their current systems—for example, Meta
+states that Llama may “hallucinate information or make up
+facts” (L8: Reduce hallucinations section)—they imagine
+a future in which GenAI’s abilities will be optimised and
+flaws corrected. OpenAI, for instance, claims that they are
+“continually refining the models’ reasoning capabilities with
+images to be more concise, less redundant, and more reliable” (O2: para. 15). This vision of an almost-there future in
+which current technical errors will be fixed shifts the focus
+from current functions to abstract potentials (Elish and boyd
+2017: 10). As Stanusch and Rogers (2026: 2) argue, it allows
+the AI industry to absorb current critiques by “making the
+future emerge as if it had already happened in the present”.
+For present-day societies, this could lead to the AI trust
+paradox: using GenAI despite its limitations and risks not
+justifying trust, but doing so because of the prospect of better technology (Kreps et al. 2023).
+The companies further envision a future in which
+GenAI will serve as a neutral tool under human control
+and execute human instructions without possessing intention or autonomy of its own. This characterisation is most
+evident in Mistral AI’s framing of GenAI as a “practical
+tool” (M2: para. 7). In this future vision, initiative, autonomy and intention are expected to remain with the user. For
+
+instance, the companies claim that users and developers
+can “shape and control the outputs for their particular use
+cases” (O8: Instruction following section) through technical parameters and prompt engineering. This quote, whilst
+presenting GenAI as a neutral tool for user and developer
+interests, naturalises the design processes, decisions and
+actions implemented by AI companies, depoliticising their
+technologies and obscuring political and economic motivations and biases.
+Deeply intertwined with this imagination of an intelligent
+and neutral tool under human control is the societal role that
+the companies envision for GenAI. Building on a neoliberal
+society concept, they construct a future in which GenAI will
+permeate all areas of life and increase the productive performance of the individual. For example, Meta’s promise
+that GenAI will “save time and expand capacity” (L6: title)
+outlines a future in which humans will be augmented by
+AI to remain competitive and productive, paying obedience
+to neoliberal principles of quantification, performance and
+efficiency (Rehak 2021: 163). Other companies share this
+vision: in an interview with OpenAI, Cameron Adams, Chief
+Product Officer and Co-founder of Canva, states that “people with AI are going to do way better than people without
+AI” (O7: heading 8). This optimistic argument of productive
+value delivered by GenAI frames non-use as non-desirable,
+as it will be penalised in the collective competition for performance. Under the guise of usefulness, the coupling of
+performance and AI use creates FOMO, establishes compulsions to use and invisibly reinforces dependencies on AI
+companies.
+Imagining GenAI as a tool endowed with human capabilities also draws on a future in which human capacities will
+be democratised through technology. OpenAI elaborates on
+that promise in creative contexts by stating that “the early
+stages of the creative process … are now accelerated and
+democratised so that anyone with an idea can come up with
+a visual” (O7: para. 16). The future suggested here is one
+in which humans will be able to compensate deficiencies
+in skills through GenAI use. However, the shiny argument
+of democratisation overshadows unequal access to technology and veils negative consequences that occur when human
+skills are replicated in GenAI, e.g. devaluation of human
+creative labour (De Cremer et al. 2023) and AI-induced job
+losses in the creative industries (Zhao 2024). In doing so,
+this imaginary strengthens a techno-solutionist (Morozov
+2013), corporate-driven understanding of democracy.
+
+4.3 Imaginary 2: GenAI as an empowering assistant
+The second anthropomorphising imaginary envisions GenAI
+as a learning and helpful assistant controlled by humans
+and integrated in all areas of life to compensate human
+deficiency. In this context, “helpfulness” is defined by AI
+
+AI & SOCIETY
+
+companies who position themselves in realising this service for a passive and grateful humanity. This legitimises a
+paternalistic, technocratic approach to the shaping of GenAI.
+Throughout the imaginary, the companies oscillate between
+anthropomorphising competence attributions that present
+GenAI a helpful assistant and assurances of human control
+and superiority that frame the societal future with GenAI as
+safe and harmless.
+A central assertion in this imaginary is that GenAI will
+become human-compatible in the future. In contrast to the
+first imaginary where anthropomorphisms are employed for
+the narrative of usefulness, they are used here to picture
+GenAI as a cooperative, helpful counterpart in future societies. For example, Mistral AI links the notion of “highquality pre-trained knowledge” to the promise of “nuanced,
+evidence-based responses” (M2: para. 5). This illustrates
+how the cognitive anthropomorphisation depicts GenAI as
+a knowledgeable dialogue partner. Human-compatibility is
+further reinforced through Meta’s anthropomorphisation
+of GenAI as “natural, conversational, and, most important,
+helpful” (L1: 2025 section). This attribution of conversational abilities to GenAI, whilst mirroring anthropomorphisation of AI found in user literature (Wagner and SchrammKlein 2019), outlines a future where interaction with GenAI
+will be indistinguishable from human communication. Blurring ontological lines, this promise of natural conversation
+conceals the data-based nature of GenAI technology, obscuring how its communicative aspects are designed to motivate use and enable data processing for monetary corporate
+benefit.
+The human-compatible character of GenAI in this imaginary is further developed in its depiction as a helper for
+humans. The companies imagine a future in which GenAI
+will be integrated within daily routines as a “a comprehensive AI assistant for your life and work” (M2: heading).
+According to them, GenAI’s helping abilities extend from
+general assistance in “manag[ing] tasks, milestones and
+events to stay on top of everyday life” (M2: para. 15) to
+professional and even emotional support. Through anthropomorphising GenAI as an entity able to “understand user
+intent”, Meta claims that Llama would be aware of “the user
+… looking for chit‑chat, emotional support, humour or venting” (L10: Prompt Template section). Anthropomorphising
+GenAI as an empathetic listener comparable to a human
+constructs a vision of a future in which GenAI will offer
+psychological aid on par with humans. This development,
+whilst questionable in light of emotional dependencies on AI
+(Laestadius et al. 2024), raises broader questions about the
+desirability of human substitution in emotional relationships.
+Besides this imagined help by GenAI, the companies also
+outline a future where the technology will complete tasks
+autonomously. For example, OpenAI claims that GenAI can
+“independently execute tasks on your behalf” (O3: para. 1),
+
+anthropomorphising the technology as an actor guided, but
+not controlled by humans. The companies’ suggestion to
+delegate work to GenAI is again underpinned by a neoliberal
+societal order, with the promise to “get the job done faster,
+better” (M11: subheading) consolidating capitalist fantasies of maximal efficiency. However, this anthropomorphic
+imagination of GenAI as an efficiency-boosting work assistant veils how the growing delegation of tasks to AI leads to
+de-skilling, depriving humans of experiences with forgotten
+skills and weakening resilience of communities through AI
+dependencies (Valenzuela et al. 2024: 244). The criticism
+must go even further, touching upon the pure imagination
+of human liberation through GenAI. As Andrejevic (2020:
+2) argues:
+The machines won’t free us up to fish or philosophise—they will do these in our stead—and according to the priorities set by those who own and control
+the automated infrastructure. This is automation not as
+liberation but as total control.
+Notably, the imagined role of GenAI as an empowering
+helper goes beyond the neoliberal ideology. It entails an
+argument of human deficiency: the pure need of a GenAI
+assistant implies the premise of an exhausted or otherwise
+limited human. Thus, the companies imagine a future in
+which fallible, limited humans are to be enhanced by GenAI
+in a transhumanist logic. In this context, OpenAI uses the
+anthropomorphising attribution of intelligence to ChatGPT
+to highlight how it helps in complex problem-solving: “ChatGPT’s enhanced visual intelligence helps you solve tougher
+problems by analysing images more thoroughly, accurately,
+and reliably than ever before” (O2: para. 3). Framing ChatGPT as an enhancer of human intelligence, the company
+echoes Kurzweil’s (2006) transhumanist singularity thesis,
+which expects human and artificial intelligence to merge and
+produce an even more powerful entity. The implicit pointing
+to human limitations in information processing is economised as a strategic argument for GenAI deployment. The
+human is devalued to better sell the assistance capabilities
+of GenAI.
+Despite this powerful role of GenAI in future societies,
+this imaginary depicts the technology as unfinished and
+evolving, tied to a prospect of a future in which GenAI will
+progress even further through human guidance. In this context, the companies anthropomorphise GenAI as a humanlike learner, a mentee that needs advice from a more experienced human. For example, OpenAI states that “a GPT
+model is like a junior coworker” (O8: Prompting reasoning
+models section) because it needs explicit instructions to
+perform well. This anthropomorphising comparison with a
+junior coworker projects learning potentials into the future.
+Quotes like “help[] the language to think” (M10: Summarization section) demonstrate how companies expect users
+
+AI & SOCIETY
+
+and developers to actively support GenAI in this “learning”
+process. Through this anthropomorphisation, they reframe
+human training of GenAI as pedagogical care, reinterpreting
+unpaid labour as desirable and obscuring how this labour
+serves to optimise their products, generate profit and consolidate market positions. This extends human exploitation
+for GenAI from invisible ghost work (Gray and Suri 2019)
+to ubiquitous everyday GenAI interactions.
+
+4.4 Imaginary 3: GenAI as an anthropomorphised
+superintelligence
+The third anthropomorphising imaginary constructs a transhumanist, technocratic future in which GenAI will not only
+reach but surpass human-level intelligence and knowledge
+through self-directed evolution. Here, anthropomorphism is
+used in a dual form. On the one hand, attributions of intelligence promise intellectual partnership and collaboration
+with GenAI, fuelling AI hype and positioning AI companies
+as powerful creators of a technical superintelligence whilst
+discouraging human shaping of AI and critical scrutiny of its
+epistemology. On the other hand, they are instrumentalised
+to depict an abstract AI threat, legitimising a protectionist
+development agenda according to corporate interests.
+Within this imaginary, the companies envision a future
+in which GenAI will reach superior levels of intelligence.
+Anthropomorphic notions of a “groundbreaking intelligence” (L5: Build with Llama section), tied to promises of a
+“new class of problem-solving” (O3: para. 8), portray GenAI
+as unprecedentedly powerful. This science-fiction driven,
+futuristic rhetoric of a superintelligence can be classified
+as a mechanism of AI hype, imbuing the technology with
+superior qualities and presenting AI companies as “powerful—if not godlike—in their technical creation” (Bender and
+Hanna 2025: 4). It is even strengthened by the anthropomorphising expectation of an independent cognitive evolution.
+Meta, for instance, claims that due to its “advanced intelligence”, Llama 4 Behemoth was “the perfect choice to teach
+the smaller Llama 4 models” (L3: Pushing Llama section).
+Through anthropomorphising one model as a human-like
+teacher for other models, the company constructs a future
+in which GenAI progress will unfold independently from
+humans. Resonating with Kurzweil’s (2006: 44) transhumanist notion of autonomous technical evolution, this future
+vision displaces humans as active shapers of GenAI and
+evokes a technocratic imaginary in which the future will
+not be socially negotiated but determined by AI itself.
+Anthropomorphising notions of AI intelligence are
+closely linked to attributions of domain expertise, creating the vision of a future in which GenAI will act as a
+human-like expert. For example, OpenAI claims that its o3
+model “pushes the frontier across coding, math, science,
+visual perception, and more” (O3: para. 2). The implicit
+
+anthropomorphisation in this quote is that GenAI possesses
+human-like knowledge in STEM fields. This anthropomorphism attributes epistemic authority to a technology that
+generates text based on data and probability calculations
+(Bender et al. 2021), reducing the meaning of expertise to
+the amount of processed data (Elish and boyd 2017: 10)
+and devaluing richer, situated ways of knowing in human
+experts. Additionally, since the label “expert” contains normative assumptions about whose knowledge and experience
+are valid and trustworthy (Díaz and Smith 2024: 358) and
+creates an epistemic obligation to rely on the experts’ statements (Ferrario et al. 2024: 12), the attribution of an expert
+role to GenAI neutralises criticism of its output and portrays
+it as infallible.
+In a future where GenAI is anticipated to reach a humanlike level of intelligence and expertise, its relationship with
+humans is expected to change. The companies envision a
+society in which humans and GenAI will collaborate as
+equals. Anthropomorphising GenAI as a “thought partner”
+(O3: para. 2) continues the argument of AI evolution from
+the second imaginary, presenting the technology as fully
+trained, mature entity that has left the roles of mentee and
+assistant to think and solve problems alongside humans. This
+partner role culminates in OpenAI equating GenAI with
+human professionals on senior level: “A reasoning model is
+like a senior co-worker. You can give them a goal to achieve
+and trust them to work out the details” (O8: Prompting
+reasoning models section). The anthropomorphising comparison here renders rust in GenAI as desirable given its
+assumed human-like expertise. This not only exaggerates
+GenAI performance whilst obscuring risks and limitations;
+the label of trustworthiness also normalises the opacity of
+its inner workings and de-prioritises human oversight and
+control which are essential in light of bias and discrimination in and through GenAI (Methnani et al. 2021).
+Within some documents, the partner role of GenAI
+evolves into a teacher role, underpinned by the anthropomorphising narrative that the intelligence and competence of
+technology will turn it into a superior and altruistic advisor
+for humans. For example, Meta states that developers can
+ask GenAI “to explain code, help detect and fix bugs” (L7:
+2). The anthropomorphisation in this quote is subtle, framing GenAI more competent than the human counterpart in
+routine tasks. “Explain this to me” (L8: Explicit instructions
+section) thus becomes a linguistic shorthand that positions
+humans as intellectually inferior to AI in societal futures.
+This vision again echoes Kurzweil’s (2006: 26) transhumanist singularity thesis, which predicts that rapid technological
+progress will soon subsume “all human knowledge and proficiency”. While this scenario casts humanity as threatened
+by AI dominance, the anthropomorphising teacher metaphor
+evokes safety and goodwill, reassuring that AI will guide
+rather than overpower humans.
+
+AI & SOCIETY
+
+The companies further imagine a future in which GenAI
+will act intentionally and autonomously, growing independent from humans. This becomes particularly visible in OpenAI’s argument of self-directed reasoning:
+Reasoning allows the models to react and pivot as
+needed to information it encounters. For example, they
+can search the web multiple times with the help of
+search providers, look at results, and try new searches
+if they need more info. (O3: para. 13)
+Anthropomorphising GenAI as an actor capable of
+informed decision-making, critical reflection and iteration,
+the company suggests that human contribution to AI will no
+longer be required. The desirability of this vision is linked
+to the notion of technical progress, implying that more technical independence results in higher innovation. However,
+promoting GenAI as intentional and autonomous conceals
+its dependence on human labour—e.g. programming, tuning, repairing, training and debugging (Rehak 2021: 161). In
+addition, it raises the question of accountability by positioning technical self-regulation as a prerequisite for desirable
+innovation, removing companies from the responsibility to
+shape GenAI in accordance with ethical standards.
+While the companies generally emphasise the desirability of GenAI autonomy, they imagine GenAI developing
+dangerous capabilities in the future, which will necessitate
+their intervention to save humanity from the technological
+threat. For example, OpenAI predicts “AI Self-improvement
+capabilities” (O11: para. 6) and the ability of GenAI for
+“Autonomous Replication and Adaptation” (O11: para. 7) to
+emerge and pledges to “measure progress on these capabilities, and build safeguards against the risks that these capabilities create” (O11: para. 4). Here, anthropomorphisms are
+used to frame GenAI as powerful beyond human control,
+evoking a science-fiction fantasy of Frankenstein’s monster
+with human-like autonomy and superior capabilities rebelling against its human creators (Dishon 2024). This vision of
+a future threat is thus instrumentalised by AI companies to
+
+legitimise themselves as protectors of an abstractly vulnerable humanity.
+
+4.5 Construction of AI power in future societies
+The three anthropomorphising imaginaries give rise to three
+constructions of GenAI power in future societies: instrumental, cooperative and autonomous (see Table 1). These types
+build on each other, with the first type locating power mainly
+in the hands of humans, the second assuming a shared power
+between humans and GenAI and the third locating the power
+mainly within GenAI. They differ along six dimensions: AI
+performance, AI development, integration into human practices, type of human trust in AI, AI’s positioning in society
+and legitimisation of AI power. In what follows, I will present these types of AI power and discuss their normative
+implications for present and future societies.
+Instrumental AI power: The first type of AI power corresponds to the imaginary of GenAI as a tool with human
+capabilities. By anthropomorphising the technology with
+cognitive abilities such as thinking, knowing, understanding and learning, the companies project expectations of high
+performance onto it, thus constructing it as powerful in present and future societies. However, since this performance
+is expected to emerge as a result of human optimisation,
+GenAI’s power remains framed as under human control.
+Besides this narrated performance as an intelligent tool,
+the construction of instrumental AI power rests on its integration in human routines, which is encouraged through
+anthropomorphism-fuelled promises of GenAI’s usefulness
+to enhance productivity in neoliberal societies. Within these
+use settings, the companies further construct GenAI’s power
+by encouraging a functional trust into the technology. Here,
+cognitive anthropomorphisms portray GenAI as trustworthy
+due to its intelligence, suggesting that it will reliably complete tasks under human control.
+On a broader level, the companies construct GenAI as
+powerful in future societies through positioning it as an
+
+Table 1  Types and comparative dimensions of constructed AI power
+Instrumental power
+
+Collaborative power
+
+Autonomous power
+
+AI performance through
+
+Intelligence
+
+AI development through
+Integration into human practices through
+
+Human optimisation
+AI integration into routines
+
+Intelligence
+Human compatibility
+Human guidance
+Collaboration
+
+Type of human trust in AI
+
+Functional
+
+AI’s positioning within society
+Legitimisation of AI power through
+
+Enabling
+AI advantages
+
+Intelligence
+Expertise
+AI self-optimisation
+Human work
+delegation to AI
+Functional
+Epistemic
+Replacing
+Transhumanist AI evolution
+
+Functional
+Affective
+Expanding
+AI advantages
+Human limitations
+
+AI & SOCIETY
+
+enabler for human productivity and creativity. This argument
+already points to the legitimisation of AI power: by referring
+to GenAI advantages—e.g. the democratisation of creative
+self-realisation—the companies justify this technology as
+meaningful and valuable in present and future contexts.
+Cooperative AI power: The second type of AI power
+corresponds to the imaginary of GenAI as an empowering
+helper. Here, expectations of performance are shaped by
+cognitive, communicative and social anthropomorphisms
+that construct GenAI as both intelligent and human-compatible in present and future societies. By further anthropomorphising GenAI as a mentee or assistant, the companies frame
+future performance improvements as outcomes of human
+contribution, particularly human guidance in “thinking”,
+“understanding” and problem-solving.
+Both anthropomorphising roles of student and assistant construct a collaborative AI power by suggesting a
+human–AI relationship in which humans “teach” GenAI
+and GenAI supports humans in everyday and professional
+tasks. Thus, AI power is expected to emerge in collaboration between humans and GenAI rather than through GenAI
+use by humans. Within this collaboration, the companies
+promote functional trust in GenAI by creating expectations
+of it reliably executing tasks under human supervision. In
+addition, they encourage affective trust in the technology by
+employing the anthropomorphising rhetoric of a benevolent
+and helpful GenAI assistant. Notably, both trust in and collaboration with GenAI are reflected in ChatGPT’s visual
+self-representation as a “friendly AI assistant” identified
+by van Es and Nguyen (2024). This suggests an overlap
+between the AI power that the companies construct in their
+imaginaries and the technology’s actual output, illustrating
+the formative power of anthropomorphising imaginaries on
+design.
+Regarding GenAI’s societal position, cognitive anthropomorphisms construct the technology as an expansion of
+human intelligence. The corresponding transhumanist promise to overcome human cognitive limitations with GenAI
+legitimises its power in present and future societies. In
+addition, the companies frame GenAI as socially desirable
+through pointing to its potential to support and free humans
+from work—an argument that further legitimises AI power.
+Autonomous power: The third type of AI power corresponds to the imaginary of GenAI as an anthropomorphised superintelligence. Here, the companies use cognitive anthropomorphisms to suggest superior levels of
+intelligence within GenAI, constructing it as an unprecedently high-performance, powerful technology disrupting
+present and future societies. This argument is reinforced
+through anthropomorphised intelligence attributions to
+GenAI, positioning it as an expert or teacher capable of
+directional and normative action. Unlike the first two types
+of AI power, future performance improvements are here
+
+framed as product of GenAI’s self-optimisation, premised
+on anthropomorphic ascriptions of autonomy and intentionality. This contributes to the construction of autonomous AI power by presenting GenAI as independent from
+humans.
+Building on these anthropomorphising notions of autonomy and intelligence, the companies present work delegation
+to GenAI as both desirable and efficient, framing it as powerful in successfully fulfilling tasks with only minor human
+instructions. This narrative motivates both functional and
+epistemic trust in GenAI. The functional trust in GenAI is
+promoted through references to the companies’ safety precautions designed to protect humanity from the abstractly
+dangerous, anthropomorphised superintelligence, whilst the
+epistemic trust is fostered by the anthropomorphisation of
+GenAI as an expert whose outputs merit confidence.
+Echoing the findings by Hsiao and Shorey (2025: 411),
+the companies position GenAI as a human substitute in
+future societies. Through anthropomorphisms, they portray
+GenAI as sufficiently human-like to replace humans whilst
+simultaneously endowed with superior capabilities that justify this replacement. To legitimise GenAI’s power, the companies invoke the argument of a transhumanist AI evolution,
+using anthropomorphising metaphors to construct GenAI’s
+progress as technically determined. Notably, states also
+often portray GenAI as disruptive and inevitable, citing the
+increasing power of big tech companies (Hoff 2023). This
+illustrates how corporate GenAI imaginaries—and the AI
+power they construct—shape the imaginaries of other actors.
+This anthropomorphisation-driven construction of AI
+power has normative implications for present and future
+societies. First, its underlying assumptions of GenAI intelligence, human compatibility and expertise foster an uncritical acceptance of—and trust in—the technology. Second, it
+frames the use of and collaboration with GenAI as inherently desirable, stabilising the technology as an integral
+part of individual routines and broader societal structures
+whilst sidelining the discussion of alternatives. Third, the
+construction of AI power calls for a sociotechnical realisation, promoting human labour for GenAI whilst simultaneously obscuring it to frame the technology as intelligent
+and autonomous. This depoliticises GenAI by concealing
+the exploitative practices of its creation. Fourth, this power
+construction normalises post- and transhumanist ideologies
+along with their corresponding conceptions of the human
+and human–AI relationships. Fifth, it legitimises AI companies as creators of an ostensibly powerful technology and
+strengthens their authority in shaping GenAI in line with
+their corporate imaginaries. These implications demonstrate that the social desirability of GenAI is not given but
+constructed by AI companies. This prompts the question to
+what extent their imaginaries should be accepted—and how
+alternative sociotechnical futures can be imagined instead.
+
+AI & SOCIETY
+
+5 Conclusion
+In this paper, I have proposed the term anthropomorphising imaginaries as a conceptual synthesis of sociotechnical imaginaries and anthropomorphism, theorising how
+anthropomorphising attributions structure sociotechnical
+future visions. Drawing on a qualitative content analysis
+of corporate documents from OpenAI, Meta and Mistral
+AI, I have shown that the companies anthropomorphise
+GenAI both in terms of content and language, leveraging
+three anthropomorphising imaginaries. In the imaginary
+of GenAI as a tool with human capabilities, the companies
+construct a neoliberal future in which human cognitive
+capabilities will be embedded in GenAI to serve as an
+intelligent productivity tool. The imaginary of GenAI as
+an empowering helper outlines a future with human–AIcooperation and transhumanistic enhancement. Lastly, the
+imaginary of GenAI as an anthropomorphised superintelligence assumes that GenAI will surpass humans and
+act autonomously through advanced cognitive abilities.
+These findings suggest that anthropomorphising imaginaries construct not only a vision of GenAI, but also of
+society itself, including human image, ideology, social
+order and the relationship between human and technology.
+Furthermore, I have identified three types of AI power that
+the companies construct within their anthropomorphising
+imaginaries: instrumental, cooperative and autonomous.
+These power types emerge through the projection of specific performance capacities and developmental trajectories, cultivating trust in GenAI, promoting its integration
+into human practices, positioning it within social structures and ultimately legitimising its expanding power.
+Within their anthropomorphising imaginaries, the
+companies promote largely techno-solutionist as well as
+post- and transhumanist agendas, positioning GenAI as an
+indispensable and desirable part of their promised futures.
+However, I argue that AI companies not only articulate
+anthropomorphising imaginaries but have the capacity to
+materially shape sociotechnical futures. Their infrastructural power (Flensburg and Lai 2023) allows them to realise imaginaries in infrastructures of AI research and development—creating “technological, economic, political,
+and behavioural lock-ins” (Böschen et al. 2024: 95) that
+impede change and foreclose alternative future visions.
+Especially in a regulatory vacuum, AI companies can
+impose their imaginaries on society, thereby sidestepping
+democratic negotiation. The AI race further exacerbates
+this problem: in an environment where technical supremacy is the priority, visions and realisations of the future
+will be determined not by their collective societal acceptance, but by the speed and resources of the AI companies.
+This urges to critically consider normative implications of
+
+corporate imaginaries and their corresponding constructions of AI power to counter Big Tech’s dominance and
+reimagine desirable futures with GenAI.
+The findings of my analysis have theoretical implications
+for the concepts of imaginaries and anthropomorphisation.
+While the concept of imaginaries was originally proposed
+for nation states (Jasanoff and Kim 2009), AI companies
+increasingly gain relevance in shaping sociotechnical futures
+(Mager and Katzenbach 2021). In light of this, I argue that
+the concept needs to be politicised and developed in a critically-normative direction, challenging its predominantly
+descriptive use that risks uncritically reproducing and legitimising the societal implications of corporate imaginaries.
+The same holds true for the concept of anthropomorphism.
+In addition, linking both concepts to anthropomorphising imaginaries has helped moving anthropomorphisation
+beyond the conscious or unconscious attribution of human
+qualities to non-human entities (Epley et al. 2007) to a
+strategic ascription that constructs power in the anthropomorphised object. Therefore, I propose to integrate actors
+and outcomes of anthropomorphisation into the theoretical
+concept. While prior scholarship has criticised the anthropomorphisation of technology as exaggerated and misleading
+(Hunger 2023; Placani 2024), my analysis demonstrates that
+this critique remains insufficient. It advances a new theoretical argument regarding anthropomorphisation’s effects,
+which prior scholarship has often assumed without sufficient
+theoretical grounding. Anthropomorphisation gains power
+through its embedding in sociotechnical imaginaries—as a
+structuring part of these, it shapes how technology is being
+researched, developed, appropriated and regulated. Deployed
+strategically by AI companies, it operates as an instrument
+of hegemonic power in ordering present and future societies.
+In sum, the findings contribute to the critical AI research
+by (1) explicitly reconstructing the anthropomorphising imaginaries of AI companies as under-researched yet
+increasingly dominant actors in shaping AI futures, (2)
+broadening the critique of anthropomorphisation as an
+instrument of corporate power in steering sociotechnical
+developments and (3) advancing a theoretical account for
+the effects of anthropomorphisation as embedded in sociotechnical imaginaries.
+While enriching the theory and state of research in
+anthropomorphism and imaginaries, the findings of this
+study remain limited to the Western context. Companies
+from other cultural contexts—such as the Chinese DeepSeek—may articulate different anthropomorphising imaginaries that not only shape not only their national AI research,
+development, regulation and appropriation, but increasingly
+influence Western imaginaries due to the international
+popularity of their AI models. Future studies may thus
+widen the analysis to a cross-cultural comparison, carefully
+
+AI & SOCIETY
+
+investigating the differences and similarities between the
+anthropomorphising imaginaries.
+
+Appendix
+List of analysed empirical material
+OpenAI
+O1: OpenAI (2025) OpenAI’s EU economic blueprint.
+https://​openai.​com/​global-​affai​rs/​opena​is-​eu-​econo​mic-​
+bluep​r int/
+O2: OpenAI (2025) Thinking with images. https://​openai.​com/​index/​think​ing-​with-​images/
+O3: OpenAI (2025) Introducing OpenAI o3
+a n d o 4 - m i n i . h t t p s : / / ​o p e n a i . ​c o m / ​i n d ex / ​i n t r o​
+ducing-​o3-​and-​o4-​mini/
+O4: OpenAI (2025) Introducing our latest image generation model in the API. https://​openai.​com/​index/​image-​
+gener​ation-​api/
+O5: OpenAI (2025) Get answers. Find inspiration. Be
+more productive. https://​openai.​com/
+O6: OpenAI (2025) Speak is personalizing language learning with AI. https:// ​ o penai. ​ c om/ ​ i ndex/​
+speak-​connor-​zwick/
+O7: OpenAI (2025) Canva enables creativity with AI.
+https://​openai.​com/​index/​canva-​cam-​adams/
+O8: OpenAI (2025) Text generation and prompting.
+https://​platf​orm.​openai.​com/​docs/​guides/​text?​api-​mode=​
+respo​nses
+O9: OpenAI (2025) Images and vision. https://​platf​orm.​
+openai.​com/​docs/​guides/​images-​vision?​api-​mode=​respo​
+nses
+O10: OpenAI (2025) Audio and speech. https://​p latf​
+orm.​openai.​com/​docs/​guides/​audio
+O11: OpenAI (2025) Our updated preparedness framework. https://​openai.​com/​index/​updat​ing-​our-​prepa​redne​
+ss-​frame​work/
+O12: OpenAI (2025) Disrupting malicious uses of
+AI. https://​o penai.​c om/​g lobal-​a ffai​r s/​d isru​p ting-​m alic​
+ious-​uses-​of-​ai/
+Mistral AI
+M1: Mistral AI (2023) Bringing open AI models to the frontier. https://​mistr​al.​ai/​news/​about-​mistr​al-​ai
+M2: Mistral AI (2025) The all new le Chat: Your
+AI assistant for life and work. https://​m istr​a l.​a i/​n ews/​
+all-​new-​le-​chat
+
+M3: Mistral AI (2024) Mistral has entered the chat.
+https://​mistr​al.​ai/​news/​mistr​al-​chat
+M4: Mistral AI (2025) Mistral Small 3.1. https://​mistr​al.​
+ai/​news/​mistr​al-​small-3-1
+M5: Mistral AI (2025) Mistral OCR. https://​mistr​al.​ai/​
+news/​mistr​al-​ocr
+M6: Mistral AI (2025) Bringing customers to the frontier.
+https://​mistr​al.​ai/​custo​mers
+M7: Mistral AI (2025) Text and chat completions. https://​
+docs.​mistr​al.​ai/​capab​iliti​es/​compl​etion/
+M8: Mistral AI (2025) Vision. https://​docs.​mistr​al.​ai/​
+capab​iliti​es/​vision/
+M9: Mistral AI (2025) OCR and document understanding. https://​docs.​mistr​al.​ai/​capab​iliti​es/​docum​ent/
+M10: Mistral AI (2025) Prompting capabilities. https://​
+docs.​mistr​al.​ai/​guides/​promp​ting_​capab​iliti​es/
+M11: Mistral AI (2025) Frontier AI. In your hands.
+https://​mistr​al.​ai/
+M12: Mistral AI (2025) Evaluating RAG with LLM as a
+judge. https://​mistr​al.​ai/​news/​llm-​as-​rag-​judge
+Meta
+L1: Meta (2024) The future of AI: Built with Llama. https://​
+ai.​meta.​com/​blog/​future-​of-​ai-​built-​with-​llama/
+L2: Meta (2025) Our open source Llama models are helping to spur economic growth in the US. https://​ai.​meta.​com/​
+blog/​built-​with-​llama-​write​sea-​fynop​sis-​srimo​yee-​mukho​
+padhy​ay-​united-​states-​econo​my/
+L3: Meta (2025) The Llama 4 herd: The beginning of
+a new era of natively multimodal AI innovation. https://​ai.​
+meta.​com/​blog/​llama-4-​multi​modal-​intel​ligen​ce/
+L4: Meta (2024) Llama 3.2: Revolutionizing edge AI and
+vision with open, customizable models. https://a​ i.m
+​ eta.c​ om/​
+blog/​llama-3-​2-​conne​ct-​2024-​vision-​edge-​mobile-​devic​es/
+L5: Meta (nd) Llama 4: Leading intelligence. Unrivaled
+speed and efficiency. https://​www.​llama.​com/
+L6: Meta (2025) Proving automated clinical documentation can save time and expand capacity. https://​www.​llama.​
+com/​static-​resou​rce/​llama-​case-​study-​major-​health-​system/
+L7: Meta (2025) Helping developers manage high-stakes,
+high-security codebases. https://​www.​llama.​com/​static-​
+resou​rce/​llama-​case-​study-​leidos/
+L8: Meta (2025) How-to guides. Prompting. https://w
+​ ww.​
+llama.​com/​docs/​how-​to-​guides/​promp​ting/
+L9: Meta (2025) How-to guides. Llama vision capabilities. https://​www.​llama.​com/​docs/​how-​to-​guides/​vision-​
+capab​iliti​es/
+L10: Meta (2025) Model cards & prompt formats. Llama
+4. https://​www.​llama.​com/​docs/​model-​cards-​and-​prompt-​
+forma​ts/​llama4/
+
+AI & SOCIETY
+
+L11: Meta (2025) Sharing new open source protection tools and advancements in AI privacy and security.
+https://​ai.​meta.​com/​blog/​ai-​defen​ders-​progr​am-​llama-​prote​
+ction-​tools/
+Acknowledgements This paper presents the results of my Master’s
+thesis. I would like to thank my supervisors Dr. Anne Mollen and Prof.
+Dr. Sigrid Kannengießer for their thoughtful comments and support
+throughout the process.
+Author contributions The author confirms the sole responsibility
+for the conception of the study, presented results and manuscript
+preparation.
+Funding Open Access funding enabled and organized by Projekt
+DEAL.
+Data availability The data that supports the findings of this study is
+openly available, see appendix for additional details.
+
+Declarations
+Conflict of interest The author declares no competing interests.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long
+as you give appropriate credit to the original author(s) and the source,
+provide a link to the Creative Commons licence, and indicate if changes
+were made. The images or other third party material in this article are
+included in the article’s Creative Commons licence, unless indicated
+otherwise in a credit line to the material. If material is not included in
+the article’s Creative Commons licence and your intended use is not
+permitted by statutory regulation or exceeds the permitted use, you will
+need to obtain permission directly from the copyright holder. To view a
+copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+
+References
+Akrich M (1992) The description of technical objects. In: Bijker W,
+Law J (eds) Shaping technology/building society. Studies in sociotechnical change. MIT Press, Cambridge, pp 205–224
+Andrejevic M (2020) Automated media. Routledge, New York
+Araujo T (2018) Living up to the chatbot hype: the influence of anthropomorphic design cues and communicative agency framing on
+conversational agent and company perceptions. Comput Human
+Behav 85:183–189. https://​doi.​org/​10.​1016/j.​chb.​2018.​03.​051
+Bareis J, Katzenbach C (2022) Talking AI into being: the narratives
+and imaginaries of national AI strategies and their performative
+politics. Sci Technol Human Values 47(5):855–881. https://​doi.​
+org/​10.​1177/​01622​43921​10300​07
+Bender EM, Hanna A (2025) The AI con: how to fight big tech’s hype
+and create the future we want, 1st edn. Harper Collins, New York
+Bender EM, Gebru T, McMillan-Major A, Shmitchell S (2021) On the
+dangers of stochastic parrots: can language models be too big?. In:
+Proceedings of the 2021 ACM conference on fairness, accountability, and transparency. ACM, pp 610–623. https://d​ oi.​org/​10.​
+1145/​34421​88.​34459​22
+Bijker WE (1995) Sociohistorical technology studies. In: Jasanoff S,
+Markle GE, Peterson JC, Pinch T (eds) Handbook of science and
+technology studies. SAGE, Thousand Oaks, pp 229–256
+
+Boden MA (2009) Computer models of creativity. AI Mag 30(3):23–
+34. https://​doi.​org/​10.​1609/​aimag.​v30i3.​2254
+Böschen S, Hermens S, Jakobs E-M, Lohrberg F, Madlener R, MützeNiewöhner S, Reicher C, Schöpper Y (2024) Infrastructures and
+transformation: Between path dependency and opening-up for
+experimental change. In: Letmathe P, Roll C, Balleer A, Böschen
+S, Breuer W, Förster A, Gramelsberger G, Greiff K, Häußling R,
+Lemme M, Leuchner M, Paegert M, Piller FT, Seefried E, Wahlbrink T (eds) Transformation towards sustainability. Springer,
+Cham, pp 93–117
+Brindha R, Pongiannan RK, Bharath A, Sanjeevi VKSM (2025) Introduction to multimodal generative AI. In: Singh A, Singh KK (eds)
+Multimodal generative AI. Springer Nature, Singapore, pp 1–36
+Butlin P (2024) Reinforcement learning and artificial agency. Mind
+Lang 39(1):22–38. https://​doi.​org/​10.​1111/​mila.​12458
+Cohen M, Khavkin M, Movsowitz Davidow D, Toch E (2024) ChatGPT in the public eye: ethical principles and generative concerns
+in social media discussions. New Media Soc 0(0):1–27. https://​
+doi.​org/​10.​1177/​14614​44824​12790​34
+Davis E, Marcus G (2015) Commonsense reasoning and commonsense
+knowledge in artificial intelligence. Commun ACM 58(9):92–103.
+https://​doi.​org/​10.​1145/​27014​13
+De Cremer D, Morini Bianzino N, Falk B (2023) How generative AI
+could disrupt creative work. Harvard Bus Rev. https://​hbr.​org/​
+2023/​04/​how-​gener​ative-​ai-​could-​disru​pt-​creat​ive-​work
+de Seta G, Shchetvina A (2024) Imagining machine vision: four visual
+registers from the Chinese AI industry. AI Soc 39(5):2267–2284.
+https://​doi.​org/​10.​1007/​s00146-​023-​01733-x
+Díaz M, Smith ADR. (2024) What makes an expert? Reviewing how
+ML researchers define “expert”. In: Proceedings of the seventh
+AAAI/ACM conference on AI, ethics, and society. AIES-24,
+San Hose, pp 358–370. https://​doi.​org/​10.​1609/​aies.​v7i1.​31642
+Dishon G (2024) From monsters to mazes: sociotechnical imaginaries of AI between Frankenstein and Kafka. Postdig Sci Educ
+6(3):962–977. https://​doi.​org/​10.​1007/​s42438-​024-​00482-4
+Elish MC, boyd d (2017) Situating methods in the magic of Big Data
+and AI. Commun Monogr 85(1):57–80. https://​doi.​org/​10.​1080/​
+03637​751.​2017.​13751​30
+Epley N, Waytz A, Cacioppo JT (2007) On seeing human: a threefactor theory of anthropomorphism. Psychol Rev 114(4):864–
+886. https://​doi.​org/​10.​1037/​0033-​295X.​114.4.​864
+Ferrario A, Facchini A, Termine A (2024) Experts or authorities?
+The strange case of the presumed epistemic superiority of artificial intelligence systems. Minds Mach 34(3):30. https://​doi.​
+org/​10.​1007/​s11023-​024-​09681-1
+Firt E (2024) Artificial understanding: a step toward robust
+AI. AI Soc 39(4):1653–1665. https:// ​ d oi. ​ o rg/ ​ 1 0. ​ 1 007/​
+s00146-​023-​01631-2
+Flensburg S, Lai SS (2023) Follow the data! A strategy for tracing
+infrastructural power. Media Commun 11(2):319–329. https://d​ oi.​
+org/​10.​17645/​mac.​v11i2.​6464
+Formosa P, Hipólito I, & Montefiore T (2025) Artificial intelligence
+(AI) and the relationship between agency, autonomy, and moral
+patiency. arXiv. https://​doi.​org/​10.​48550/​ARXIV.​2504.​08853
+Foucault M (1977) Discipline & punish. The birth of the prison. Vintage books, New York
+Franceschelli, G, Musolesi M (2023) On the creativity of large language models. arXiv. https://​doi.​org/​10.​48550/​ARXIV.​2304.​
+00008
+Giziński S, Kaczyńska P, Ruczyński H, Wiśnios E, Pieliński B, Biecek
+P, Sienkiewicz J (2024) Big tech influence over AI research revisited: memetic analysis of attribution of ideas to affiliation. J Infometr 18(4):101572. https://​doi.​org/​10.​1016/j.​joi.​2024.​101572
+
+AI & SOCIETY
+Go E, Sundar SS (2019) Humanizing chatbots: the effects of visual,
+identity and conversational cues on humanness perceptions.
+Comput Human Behav 97:304–316. https://​doi.​org/​10.​1016/j.​
+chb.​2019.​01.​020
+Gray ML, Suri S (2019) Ghost work: how to stop Silicon Valley from
+building a new global underclass, 1st edn. Houghton Mifflin Harcourt, New York
+Hautala J, Ahlqvist T (2022) Integrating futures imaginaries, expectations and anticipatory practices: practitioners of artificial intelligence between now and future. Technol Anal Strateg 36(9):2100–
+2112. https://​doi.​org/​10.​1080/​09537​325.​2022.​21300​41
+Hendriks A, Karhunmaa K, Delvenne P (2025) Shaping the future:
+a conceptual review of sociotechnical imaginaries. Futures
+170:103607. https://​doi.​org/​10.​1016/j.​futur​es.​2025.​103607
+Hoff J-L (2023) Unavoidable futures? How governments articulate
+sociotechnical imaginaries of AI and healthcare services. Futures
+148:103131. https://​doi.​org/​10.​1016/j.​futur​es.​2023.​103131
+Hsiao W-J, Shorey S (2025) Machine visions: a corporate imaginary
+of artificial sight. New Media Soc 27(1):404–423. https://​doi.​org/​
+10.​1177/​14614​44823​11767​65
+Hunger F (2023) Unhype artificial ’intelligence’! A proposal to replace
+the deceiving terminology of AI. Training the archive—working
+paper series, vol 6, pp 1–12. 10.5281/ZENODO.7524493
+Hutchby I (2001) Technologies, texts and affordances. Sociology
+35(2):441–456. https://​doi.​org/​10.​1177/​s0038​03850​10002​19
+Jasanoff S (2015) Future imperfect: science, technology, and the imaginations of modernity. In: Jasanoff S, Kim S-H (eds) Dreamscapes
+of modernity: sociotechnical imaginaries and the fabrication of
+power. University of Chicago Press, Chicago, pp 1–31
+Jasanoff S, Kim S-H (2009) Containing the atom: sociotechnical imaginaries and nuclear power in the United States and
+South Korea. Minerva 47(2):119–146. https://​doi.​org/​10.​1007/​
+s11024-​009-​9124-4
+Kelle U, Kluge S (2010) Vom Einzelfall zum Typus, 2nd edn. Springer
+VS, Wiesbaden
+Klein K, Martinez LF (2023) The impact of anthropomorphism on customer satisfaction in chatbot commerce: an experimental study in
+the food sector. Electron Commer Res 23(4):2789–2825. https://​
+doi.​org/​10.​1007/​s10660-​022-​09562-8
+Kreps S, George J, Lushenko P, Rao A (2023) Exploring the artificial
+intelligence “trust paradox”: evidence from a survey experiment
+in the United States. PLoS ONE 18(7):e0288109. https://​doi.​org/​
+10.​1371/​journ​al.​pone.​02881​09
+Kuckartz U, Rädiker S (2022) Qualitative Inhaltsanalyse: Methoden,
+Praxis, Computerunterstützung: Grundlagentexte Methoden, 5th
+edn. Beltz Juventa, Weinheim
+Kurzweil R (2006) The singularity is near: when humans transcend
+biology. Penguin Books, New York
+Laban G (2021) Perceptions of anthropomorphism in a chatbot dialogue: the role of animacy and intelligence. In: Proceedings of the
+9th international conference on human-agent interaction. HAI ’21,
+pp 305–310. https://​doi.​org/​10.​1145/​34723​07.​34846​86
+Laestadius L, Bishop A, Gonzalez M, Illenčík D, Campos-Castillo C
+(2024) Too human and not human enough: a grounded theory
+analysis of mental health harms from emotional dependence on
+the social chatbot Replika. New Media Soc 26(10):5923–5941.
+https://​doi.​org/​10.​1177/​14614​44822​11420​07
+Mager A, Katzenbach C (2021) Future imaginaries in the making and
+governing of digital technology: multiple, contested, commodified. New Media Soc 23(2):223–236. https://​doi.​org/​10.​1177/​
+14614​44820​929321
+Markelius A, Wright C, Kuiper J, Delille N, Kuo Y-T (2024) The
+mechanisms of AI hype and its planetary and social costs. AI
+Ethics 4(3):727–742. https://d​ oi.o​ rg/1​ 0.1​ 007/s​ 43681-0​ 24-0​ 0461-2
+
+Markham A (2021) The limits of the imaginary: challenges to intervening in future speculations of memory, data, and algorithms.
+New Media Soc 23(2):382–405. https://​doi.​org/​10.​1177/​14614​
+44820​929322
+McCarthy J, Minsky ML, Rochester N, Shannon CE (1995) A proposal
+for the Dartmouth summer research project on artificial intelligence. http://​jmc.​stanf​ord.​edu/​artic​les/​dartm​outh/​dartm​outh.​pdf
+Meta (2025a) Llama 4: leading intelligence. Unrivaled speed and efficiency. https://​www.​llama.​com/
+Meta (2025b) Technologies that build the future of human connection.
+https://​www.​meta.​com/​de-​de/​techn​ologi​es/
+Meta (2025c) The Llama 4 herd: the beginning of a new era of natively
+multi-modal AI innovation. Meta. https://a​ i.m
+​ eta.c​ om/b​ log/l​ lama4-​multi​modal-​intel​ligen​ce/
+Methnani L, Aler Tubella A, Dignum V, Theodorou A (2021) Let me
+take over: variable autonomy for meaningful human control. Front
+Artif Intell 4:737072. https://​doi.​org/​10.​3389/​frai.​2021.​737072
+Mistral AI (2025a) Frontier AI. For all of us. https://​mistr​al.​ai/​about
+Mistral AI (2025b) The all new le Chat: your AI assistant for life and
+work. Mistral AI. https://​mistr​al.​ai/​news/​all-​new-​le-​chat
+Morozov E (2013) To save everything, click here: the folly of technological solutionism. PublicAffairs, New York
+Mühlhoff R (2020) Human-aided artificial intelligence: or, how to run
+large computations in human brains? Toward a media sociology
+of machine learning. New Media Soc 22(10):1868–1884. https://​
+doi.​org/​10.​1177/​14614​44819​885334
+Natale S, Ballatore A (2020) Imagining the thinking machine: technological myths and the rise of artificial intelligence. Convergence
+(London Engl) 26(1):3–18. https://​doi.​org/​10.​1177/​13548​56517​
+715164
+OpenAI (2024) Learning to reason with LLMs. OpenAI. https://o​ penai.​
+com/​index/​learn​ing-​to-​reason-​with-​llms/
+OpenAI (2025) About. https://​openai.​com/​about/
+Placani A (2024) Anthropomorphism in AI: hype and fallacy. AI Ethics
+4:691–698. https://​doi.​org/​10.​1007/​s43681-​024-​00419-4
+Rehak R (2021) “Action” and ascription: on misleading metaphors in
+the debate about artificial intelligence and transhumanism. In:
+Hofkirchner W, Kreowski H-J (eds) Transhumanism: the proper
+guide to a posthuman condition or a dangerous idea? Springer,
+Cham, pp 155–165
+Reuters (2026) OpenAI CEO says ChatGPT back to over 10% monthly
+growth, CNBC reports. Reuters. https://​www.​reute​rs.​com/​busin​
+ess/​openai-​ceo-​says-​chatg​pt-​back-​over-​10-​month​ly-​growth-​cnbc-​
+repor​ts-​2026-​02-​09/
+Richter V, Katzenbach C, Schäfer M (2023) Imaginaries of artificial
+intelligence. In: Lingren S (ed) Handbook of critical studies of
+artificial intelligence. Edward Elgar Publishing, Northhamptom,
+pp 209–223
+Sarigul B, Schneider FM, Utz S (2024) Believe it or not? Investigating
+the credibility of voice assistants in the context of social roles
+and relationship types. Int J Hum-Comput Int 41(10):6253–6265.
+https://​doi.​org/​10.​1080/​10447​318.​2024.​23757​97
+Schweitzer F, Belk R, Jordan W, Ortner M (2019) Servant, friend or
+master? The relationships users build with voice-controlled smart
+devices. J Mark Manag 35(7–8):693–715. https://d​ oi.o​ rg/1​ 0.1​ 080/​
+02672​57X.​2019.​15969​70
+Stanusch N, Rogers R (2026) How AI is imagined by industry during
+the Sam Altman controversy. New Media Soc. https://​doi.​org/​10.​
+1177/​14614​44826​14191​09
+Sun Y, Berthelot B (2025) Mistral emerges as last, best hope for European AI contender (2). Bloomberg Law. https://​news.​bloom​bergl​
+aw.​com/​artif​i cial-​intel​ligen​ce/​mistr​al-​emerg​es-​as-​last-​best-​hope-​
+for-​europ​ean-​ai-​conte​nder
+
+AI & SOCIETY
+Valenzuela A, Puntoni S, Hoffman D, Castelo N, De Freitas J, Dietvorst
+B, Hildebrand C, Huh YE, Meyer R, Sweeney ME, Talaifar S,
+Tomaino G, Wertenbroch K (2024) How artificial intelligence
+constrains the human experience. J Assoc Consum Res 9(3):241–
+256. https://​doi.​org/​10.​1086/​730709
+van Es K, Nguyen D (2024) “Your friendly AI assistant”: the anthropomorphic self-representations of ChatGPT and its implications
+for imagining AI. AI Soc 40:3591–3603. https://​doi.​org/​10.​1007/​
+s00146-​024-​02108-6
+Wagner K, Schramm-Klein H (2019) Alexa, are you human? Investigating anthropomorphism of digital voice assistants—a qualitative
+approach. In: Proceedings of the 2019 international conference on
+information systems 2019. ICIS, Munich, pp 1–17. https://​aisel.​
+aisnet.o​ rg/i​ cis20​ 19/h​ uman_c​ omput​ er_i​ ntera​ ct/h​ uman_c​ omput​ er_​
+inter​act/7/
+
+Wiener N (1961/2019) Cybernetics or control and communication in
+the animal and the machine. Reissue of the 1961 second edition.
+MIT Press, Cambridge
+Zhao B (2024) Replacement of human artists by AI systems in creative
+industries. UN trade & development. https://u​ nctad.o​ rg/n​ ews/r​ epla​
+cement-​human-​artis​ts-​ai-​syste​ms-​creat​ive-​indus​tries
+Publisher's Note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.
+
+

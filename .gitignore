@@ -33,7 +33,14 @@ secrets*.json
 .omnimind/
 scripts/refactor_battery/out/
 scripts/supervisor_battery/*.sqlite
-/data/
+/data/*
+!/data/corpus/
+!/data/corpus/**
+!/data/symbolic_hypergraph.json
+!/data/app_delivery_workspace/
+/data/app_delivery_workspace/*
+!/data/app_delivery_workspace/corpus_integrity_app/
+/data/app_delivery_workspace/corpus_integrity_app/*.sqlite
 /data/witness.jsonl
 /data/hf_gemma4/
 /data/somatic_probes.sqlite*

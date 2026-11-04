@@ -16,7 +16,50 @@ from __future__ import annotations
 import ast
 import json
 import os
+import re
 from pathlib import Path
+
+_SECRET_PATTERNS = [
+    re.compile(r"(ghp|gho|ghu|ghs|github_pat)_[A-Za-z0-9_]{20,}"),
+    re.compile(r"glpat-[A-Za-z0-9_\-]{16,}"),
+    re.compile(r"hf_[A-Za-z0-9]{20,}"),
+    re.compile(r"sk-[A-Za-z0-9]{20,}"),
+    re.compile(r"AIza[0-9A-Za-z_-]{20,}"),
+    re.compile(r"-----BEGIN (RSA|OPENSSH|EC|PRIVATE) KEY-----"),
+    re.compile(r"HF_TOKEN\s*[=:]\s*\S+"),
+    re.compile(
+        r"(api[_-]?key|secret|password|token)\s*[=:]\s*[\"'][A-Za-z0-9_\-]{12,}[\"']",
+        re.I,
+    ),
+    re.compile(r"AKIA[0-9A-Z]{16}"),
+]
+
+_CONCEPT_KEYWORDS = {
+    "dodecatiad": ("dodecatíade", "dodecatiad", "d12", "poincaré", "mobius"),
+    "quadrupla_federativa": ("phi", "psi", "sigma", "epsilon", "borromean", "quádrupla"),
+    "markov_blanket": ("markov blanket", "blanket", "fep", "free energy", "pyphi"),
+    "memtrias_recalcado": ("memtrias", "recalcado", "provenance", "minja", "acervo"),
+    "affect_care": ("affect_tracer", "flattery", "passion", "care", "cvv", "caps"),
+    "mps_spectral": ("mps", "ipr", "eff_rank", "spectral", "bond_dim", "entanglement"),
+    "dual_brain_swap": ("analyst", "executor", "peer-swap", "unload", "reload", "vram"),
+    "governance_witness": ("witness", "constitutional", "circuit_breaker", "quarantine", "scar"),
+}
+
+
+def sanitize_secret_text(text: str) -> tuple[str, int]:
+    """Redact any secret-like token before indexing or embedding.
+
+    English: Returns (sanitized_text, redaction_count).
+    pt-BR: Retorna (texto_sanitizado, contagem_de_redações).
+    """
+    if not text:
+        return "", 0
+    redactions = 0
+    out = text
+    for pat in _SECRET_PATTERNS:
+        out, n = pat.subn("<REDACTED_SECRET>", out)
+        redactions += n
+    return out, redactions
 
 _MODEL = None
 _INDEX = None
@@ -26,12 +69,12 @@ MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
 
 
 def _get_model():
-    """Lazy sentence-transformers model singleton."""
+    """Lazy sentence-transformers model singleton (defaults to CPU to preserve GPU VRAM for brains)."""
     global _MODEL
     if _MODEL is None:
         from sentence_transformers import SentenceTransformer
 
-        _MODEL = SentenceTransformer(MODEL_ID)
+        _MODEL = SentenceTransformer(MODEL_ID, device=os.getenv("OMNI_EMBED_DEVICE", "cpu"))
     return _MODEL
 
 
@@ -49,14 +92,15 @@ def _chunk_file(path: Path, root: Path) -> list[dict]:
     chunks = []
     doc = ast.get_docstring(tree)
     if doc:
-        chunks.append({"path": rel, "kind": "module", "name": path.stem, "text": doc[:1200]})
+        clean_doc, _ = sanitize_secret_text(doc[:1200])
+        chunks.append({"path": rel, "kind": "module", "name": path.stem, "text": clean_doc})
     for node in tree.body:
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
             seg = ast.get_docstring(node) or ""
-            header = f"{type(node).__name__} {node.name}: {seg}"
+            header, _ = sanitize_secret_text(f"{type(node).__name__} {node.name}: {seg}"[:1200])
             chunks.append({
                 "path": rel, "kind": type(node).__name__.lower(),
-                "name": node.name, "text": header[:1200],
+                "name": node.name, "text": header,
             })
     return chunks
 
@@ -238,3 +282,160 @@ def index_dir() -> str:
     if (repo_dir / "chunks.parquet").exists():
         return str(repo_dir)
     return "/tmp/omni_code_index"
+
+
+def build_symbolic_hypergraph(
+    root: str | Path,
+    out_path: str | Path | None = None,
+) -> dict:
+    """Build a sanitary symbolic hypergraph of the repository codebase.
+
+    English: Extracts modules, classes, functions, internal imports,
+    SQLite tables, FastAPI routes, and theoretical concepts into multi-way
+    hyperedges so the system can traverse its own symbolic architecture.
+    All strings pass through `sanitize_secret_text`.
+    pt-BR: Extrai módulos, classes, funções, imports internos, tabelas
+    SQLite, rotas FastAPI e conceitos teóricos em hiperarestas para que o
+    sistema navegue topologicamente seu próprio corpo simbólico.
+    """
+    root = Path(root)
+    if out_path is None:
+        out_path = Path(os.getenv("OMNI_STATE_DIR", "data")) / "symbolic_hypergraph.json"
+    out_path = Path(out_path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    nodes: dict[str, dict] = {}
+    hyperedges: list[dict] = []
+    redactions_total = 0
+
+    for py in sorted(root.rglob("*.py")):
+        if "__pycache__" in py.parts:
+            continue
+        rel = str(py.relative_to(root))
+        try:
+            raw_src = py.read_text(encoding="utf-8", errors="replace")
+            src, n_red = sanitize_secret_text(raw_src)
+            redactions_total += n_red
+            tree = ast.parse(src)
+        except Exception:
+            continue
+
+        mod_id = f"mod:{rel}"
+        subpkg = rel.split("/")[0] if "/" in rel else "root"
+        doc = (ast.get_docstring(tree) or "").strip()
+        doc_short, _ = sanitize_secret_text(" ".join(doc.split())[:240])
+        nodes[mod_id] = {
+            "id": mod_id,
+            "kind": "module",
+            "subpackage": subpkg,
+            "path": rel,
+            "summary": doc_short,
+        }
+
+        defs: list[str] = []
+        imports: list[str] = []
+        routes: list[str] = []
+        tables: list[str] = []
+        concepts: list[str] = []
+
+        lower_src = src.lower()
+        for cname, kw_tuple in _CONCEPT_KEYWORDS.items():
+            if any(kw in lower_src for kw in kw_tuple):
+                cid = f"concept:{cname}"
+                nodes.setdefault(cid, {"id": cid, "kind": "concept", "name": cname})
+                concepts.append(cid)
+
+        for tbl_match in re.findall(r"CREATE TABLE IF NOT EXISTS\s+([a-zA-Z0-9_]+)", src, re.I):
+            tid = f"table:{tbl_match}"
+            nodes.setdefault(tid, {"id": tid, "kind": "sqlite_table", "name": tbl_match})
+            if tid not in tables:
+                tables.append(tid)
+
+        for route_match in re.findall(r'@\w+\.(?:get|post|put|delete)\(\s*["\']([^"\']+)["\']', src):
+            rid = f"route:{route_match}"
+            nodes.setdefault(rid, {"id": rid, "kind": "endpoint", "path": route_match})
+            if rid not in routes:
+                routes.append(rid)
+
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                kind = "class" if isinstance(node, ast.ClassDef) else "function"
+                did = f"{kind}:{rel}:{node.name}"
+                if len(defs) < 25:
+                    defs.append(did)
+                    nodes.setdefault(did, {"id": did, "kind": kind, "name": node.name, "module": rel})
+            elif isinstance(node, ast.ImportFrom) and node.module:
+                if "omni_coworker" in node.module or (node.level and node.level > 0):
+                    imp = f"import:{node.module}"
+                    if imp not in imports:
+                        imports.append(imp)
+
+        members = [mod_id, *defs[:12], *imports[:8], *tables, *routes, *concepts]
+        if len(members) > 1:
+            hyperedges.append(
+                {
+                    "id": f"he:{rel}",
+                    "subpackage": subpkg,
+                    "module": rel,
+                    "members": members,
+                    "concepts": [c.removeprefix("concept:") for c in concepts],
+                    "tables": [t.removeprefix("table:") for t in tables],
+                    "routes": [r.removeprefix("route:") for r in routes],
+                    "summary": doc_short,
+                }
+            )
+
+    graph = {
+        "version": "1.0",
+        "root": str(root),
+        "node_count": len(nodes),
+        "hyperedge_count": len(hyperedges),
+        "secret_redactions": redactions_total,
+        "concepts": sorted(
+            [n["name"] for n in nodes.values() if n.get("kind") == "concept"]
+        ),
+        "tables": sorted(
+            [n["name"] for n in nodes.values() if n.get("kind") == "sqlite_table"]
+        ),
+        "routes": sorted(
+            [n["path"] for n in nodes.values() if n.get("kind") == "endpoint"]
+        ),
+        "hyperedges": hyperedges,
+    }
+    out_path.write_text(json.dumps(graph, indent=2, ensure_ascii=False), encoding="utf-8")
+    return graph
+
+
+def search_hypergraph(
+    query: str,
+    hypergraph_path: str | Path | None = None,
+    k: int = 4,
+) -> list[dict]:
+    """Retrieve the top-k symbolic hyperedges matching a task or difficulty query."""
+    if hypergraph_path is None:
+        hypergraph_path = Path(os.getenv("OMNI_STATE_DIR", "data")) / "symbolic_hypergraph.json"
+    p = Path(hypergraph_path)
+    if not p.exists():
+        return []
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    tokens = [
+        t.lower()
+        for t in re.split(r"[^a-zA-Z0-9_À-ÿ]+", query or "")
+        if len(t) >= 3
+    ]
+    if not tokens:
+        return data.get("hyperedges", [])[:k]
+    scored: list[tuple[float, dict]] = []
+    for he in data.get("hyperedges", []):
+        blob = (
+            f"{he.get('module', '')} {he.get('subpackage', '')} "
+            f"{' '.join(he.get('members', []))} {he.get('summary', '')}"
+        ).lower()
+        score = sum(2.0 if tok in he.get("module", "").lower() else 1.0 for tok in tokens if tok in blob)
+        if score > 0:
+            scored.append((score, he))
+    scored.sort(key=lambda x: -x[0])
+    return [he for _, he in scored[:k]]

@@ -1,0 +1,304 @@
+Title: Diverse Intelligence: an essential field for questions of AI and Consciousness
+Short Commentary on:
+
+Author:
+
+Conscious artificial intelligence and biological naturalism
+by Anil K. Seth, in Behavioral and Brain Sciences, published
+online April 21, 2025
+
+Michael Levin,
+Allen Discovery Center at Tufts University,
+200 Boston Ave., Suite 4600
+Medford, MA 02155
+(617) 627-6161
+Email: michael.levin@tufts.edu
+url: https://www.drmichaellevin.org/
+
+ABSTRACT
+Seth’s insightful discussion must be extended in light of the field of Diverse
+Intelligence. Broader understanding of embodiment in unconventional spaces, of
+hybrids between evolved and engineered materials, and of unexpected competencies
+in very minimal systems make it very unlikely that we can place convincing limits on
+the possible substrates of consciousness. Doing so risks underestimating not only
+“machines” but also ourselves.
+
+MAIN TEXT
+There is much to agree with in Seth’s clear, cogent, and insightful analysis of
+the problem of consciousness in AI’s [1]. Most convincing are the points regarding
+the potential dissociation of intelligence and consciousness, the need to avoid making
+synthetic systems with significant consciousness, the importance of lessons from
+biology, and the insufficiency of computational functionalism. Here I focus on a few
+foundational assumptions which I believe must be expanded significantly in order for
+discussions of this topic to effectively inform both technical and ethical dimensions of
+this problem in the decades to come.
+A critical context for this discussion is the emerging field of Diverse
+Intelligence [2, 3], in which we seek to understand what all agents, regardless of their
+origin story or composition, have in common. Seth references critiques of the neural
+replacement argument, but this is only the tip of the iceberg. The real issue concerns
+the interoperability of life: cyborgs, hybrots, biobots, AI-mediated interfaces to the
+collective intelligence of somatic cells, and all manner of products of synthetic
+bioengineering are already here and will increasingly share our world. The question
+isn’t whether a standard human can be replaced piece by piece with components, but
+rather whether a being who develops as a coherent, functional integration of both
+natural and synthetic components should be subjected to some sort of purity test
+
+seeking to neatly classify them (with all the legal and ethical implications) as “real
+human” vs. “machine”.
+Advances in biology and bioengineering are making it clear that colloquial
+linguistic categories of “life” vs. “machine” are not going to survive into the future [4,
+5]. These ancient heuristics (and the ethical stances they drive) are simply not
+keeping up with the development of science. Moreover, although Seth is not a carbonchauvinist, his understandable emphasis on “life” as a unique substrate for
+consciousness must be evaluated in the context of a lack of agreement on what it
+means to be living – not just because of thorny corner cases, but because we do not
+fundamentally understand what the secret sauce is that is supposed to separate the
+living from the non-living [6]. Despite the honorable efforts of organicist thinkers [7,
+8], no convincing criteria have been proposed that are compatible with the facts and
+capabilities of modern life sciences.
+All of us make the smooth, continuous journey from a tiny, quiescent bag of
+chemicals (the unfertilized oocyte) to that of a conscious adult who will make
+statements about not being a machine. Developmental biology offers no bright line
+where the system crosses over from being fully describable by chemistry and physics
+to being fodder for behavioral science, psychoanalysis, and love. The former can be
+assembled synthetically (as cell-free systems) and shades into the field of active
+matter research [9, 10] that will surely merge with efforts to make AI. The lessons of
+developmental biology and evolution are ones of gradualism – not magical binary
+categories, but the need to understand metamorphosis, scaling, and self-assembly of
+true minds from components that, whether proteinaceous or silicon, begin as minimal
+systems and develop an inner perspective.
+Given the continuity of our own origins, the onus is on those seeking to
+establish distinctions to specify exactly what the special ingredient is. The
+meandering trial-and-error origin process (evolution), analog computation,
+multiscale autonomy architecture, etc. – all of these can be (and already are)
+replicated by engineers. Seth asks, “Why might we think that AI could be or become
+conscious?”. Our own journey from “matter” to “mind” suggests that that the null
+hypothesis, given the remarkable magic of ensouled biochemistry in human beings
+and other animals, should likely be “Why would we think that it would not be?”. And
+while we seek to identify an optimal impedance match between systems and our
+attributions of agency, I argue that the risks of false positives (objectophelia) are
+smaller than those of false negatives (ethical lapses towards beings who can suffer).
+The moral imperative, as well as the science of our own origins, suggests we should
+skew high, not low, with estimates of consciousness until proven otherwise. Seth is
+right to critique anthropocentrism as human exceptionalism. But I interpret it in the
+opposite way: the danger is not to inappropriately view other systems as human-like;
+rather, it is to believe that humans have some special magic that other systems surely
+cannot have.
+
+Our intuitions, shaped by our own evolutionary history, are in no way
+sufficient to handle the problem of AI and diverse intelligence in general, unaided.
+New theory and new technology were needed in order to detect and exploit regions
+of the electromagnetic spectrum to which we are natively insensitive, and crucially,
+to unify disparate-seeming embodiments of electromagnetism (static electricity,
+lightning, magnetism, light, etc.) as being fundamentally manifestations of the same
+thing. For the same reason we need new unifying concepts that find deep invariants
+across embodied minds with different compositions and histories, to overcome our
+innate mind-blindness.
+We are unprepared to recognize intelligence, nevermind consciousness, in
+systems that operate at unfamiliar spatial and temporal scales or in unconventional
+substrates [11]. We can warm up with data on basal cognition in cells, tissues, plants,
+etc. [3, 12], none of which are effectively encompassed by simple machine metaphors.
+Recent advances in regenerative medicine provide empirical support to the use of
+tools of behavioral science to understand and manipulate their function. Groups of
+cells implement a collective intelligence that forms memories, pursues goals, makes
+decisions, and solves novel problems in creative and ingenious ways [13, 14]. This
+model system is important for discussions of consciousness in AI because it forms a
+stepping-stone to more alien cases. The mechanisms underlying cell intelligence are
+the same (indeed, evolutionarily homologous) to those that seem to underpin
+consciousness in human bodies) – electrophysiological networks that scale memory
+and cognitive light cone [15]. But they exert their competencies in unconventional
+spaces: cells perform their sensing-deciding-acting loop in the high-dimensional
+spaces of gene expression, physiological states, and anatomical morphospace. The ion
+channels of our brain form electrical networks that navigate us through 3D space
+using memories of the past and predictions of the future, but this system evolved from
+a much more ancient use of these same electrical networks to similarly navigate the
+state of the body from a single egg cell to that of a complex body shape [16]. Along the
+way, both systems pursue goals, avoid obstacles, and deal with unexpected
+perturbations with various degrees of ingenuity and success. In other words, they
+sense, strive, and perhaps suffer, in these other spaces largely invisible to our
+obsession with medium sized objects moving at medium speeds through 3D space
+which we often take as the one “real” space for embodiment but is as constructed by
+our cognitive autopoiesis as any of the others.
+We are just beginning to adjust our intuitions (and vocabulary) to
+accommodate the empirical discoveries that intelligence extends far beyond brainy
+animals, and crucially, into problem spaces which are difficult for us to visualize. This
+has several implications for AI. First, cognition (in its basal form) is far, far older that
+neurons and brains. This means that AI should not be exclusively focused on
+neuromorphic architectures, but the more fundamental principles that enable life to
+project itself into diverse problem spaces. Second, “embodiment” does not mean a
+robotic body that can trundle around in 3D space: both organoids and software AI’s,
+which look to us as un-embodied (and thus critiqued as “not engaging with the real
+world, and thus not really binding their symbols” etc.) may well be navigating spaces
+
+that we are not primed to recognize. Embodiment is critical for minds, but that does
+not mean only in 3D space. Finally, this is not just about intelligence. All of the criteria
+commonly used to underpin allowance of consciousness with each other (the
+problem of other minds) – similar composition, common evolutionary origin,
+behavioral competencies that suggest valence, and causal architectures – now reveal
+that we absolutely must take seriously the likelihood that our body structures have
+their own (non-verbal) consciousness (i.e., the right hemisphere in split brain
+patients is only the tip of the iceberg). Of course, it is not accessible to the main
+linguistic Self who often says, “but I don’t feel my liver being conscious!” (but of
+course, it doesn’t feel other humans to be conscious either). Most people find it
+difficult to think this way; but if we cannot expand our detection of consciousness to
+this close test case, any discussion of consciousness in AI is hopeless.
+Some seek criteria for consciousness in the materials: they can consider
+consciousness in biological tissues besides the brain, but surely the silicon-based AI’s
+are different? It’s not impossible that some special aspect (e.g., quantum properties
+of microtubules [17], of which all cells are full) turns out to be important, but at the
+moment there is no reason to think so. Indeed, an excessive focus on mechanisms at
+the bottom risks devaluing us all – it is an easy slide toward the reductionist thesis
+that the deterministic laws of biochemistry and the acausal randomness of quantum
+physics are all there is, and that our consciousness is an illusion. When there is no one
+to speak out for beings embodied in unconventional materials, there will eventually
+be no one left to speak out for all of us, who are embodied in “proteins that are just
+doing what proteins do”.
+What of the computationalist thesis? I agree with Seth that this does not suffice
+for consciousness, but for an unusual reason. While many find it plausible that
+biochemistry does not tell the full story of the mind, it is universally believed that
+algorithms and materials tell the full story of “machines”. I urge us to remember, in
+synthetic beings as much as in evolved ones, that our formal models never tell the full
+story of what something is or what it can and cannot do. The limitations of Turing
+paradigms and algorithm metaphors are just that – limitations of the formal models,
+not of the system itself. Even humble Bubble Sort has competencies (not just
+complexity or unpredictability, but properties recognizable by behavioral scientists)
+and pursues unexpected side-quests not apparent from the short, transparent,
+deterministic algorithm [18]. Simple sets of coupled differential equations can do
+several different kinds of learning [19]. All of these were not recognized despite
+decades of study, until looked at through the diverse intelligence lens [20]. If even
+these truly minimal systems can do that, how many competencies, in what spaces,
+perhaps having absolutely nothing to do with language, could be present in current
+and future AI’s? These intrinsic motivations (things they do that are specifically not
+prescribed by their algorithm) are likely to have much to do with being substrates for
+consciousness, free will, etc. Perhaps there is no dead matter, no “machines” that are
+not somewhere on the spectrum of life and mind.
+
+I propose an unconventional position on the issues Seth addresses. We
+already know that non-physical patterns (properties of mathematical objects)
+constrain physics and are exploited by biology. Perhaps this is the mind-matter
+interface we should explore for consciousness. I suggest that consciousness is not due
+to physics, algorithms, or evolutionary processes per se. We don’t make
+consciousness, neither during traditional reproduction nor in bioengineering. What
+we make, with some competency but limited comprehension in both cases (for now),
+are interfaces to patterns of form and behavior from a non-physical latent space that
+contains low-agency truths of mathematics, and a very wide range of higher-agency
+forms we recognize as minds. Consciousness is what we call the view from inside that
+space. Consciousness is primary, and it is far too early to have anything but great
+humility about our knowledge of what kinds of artificial or hybrid interfaces would
+make embodiments for what kinds of minds. The exciting research program facing us
+is to begin to map out that space (as mathematicians are doing for one corner of it),
+and to work out the relationship between the causal architecture of physical,
+biological, and other constructs and the patterns that ingress through it. On a practical
+level, perhaps our relationship to future AI’s should be the familiar one used for
+raising children: less Skinner (reinforcement learning etc.) and more Piaget:
+recognize, understand, and help positively channel the intrinsic motivations that
+were not forced on them by either our “algorithms” or the materials of which they are
+made.
+In summary, I think Seth raises key questions that are not really [21] about AI
+at all. Certainly they are not about today’s software language models. They are
+fundamentally about how it is possible to have conscious, morally important minds
+in a world in which their embodiments are made of parts following rules (whether
+those be rules of biochemistry, electronics, algorithms, etc.), and whether anything in
+our world is only what our computational or other models say it is. I would
+complement Seth’s powerful conclusion “If we sell our minds too cheaply to our
+machine creations, we not only overestimate them – we underestimate ourselves” as
+follows. If we seek to buy our exceptionalism too cheaply, we underestimate not only
+“machines” but also ourselves.
+COMPETING INTERESTS STATEMENT
+M.L. is a minor shareholder and an advisor to Softmax and Astonishing labs,
+companies working in the space of Artificial Intelligence.
+FUNDING STATEMENT
+M.L. gratefully acknowledges the support of the ARO (under grant W911NF23-1-0100), AFOSR (under grant FA9550-22-1-0465), and JTF (under grant 62212).
+
+Figure:
+
+Legend: The space of possible embodied minds is truly vast, breaking ancient
+linguistic categories of “living being” vs. “machine”. Because of the interoperability of
+life, almost any combination of evolved, engineered, and hybrid materials can support
+forms of embodiment and behavior that must be taken seriously as possible
+conscious kin. Our pre-scientific heuristics for recognizing other minds must be
+significantly expanded to enable ethical synthbiosis with beings who are not like us,
+as humanity matures. Image by Jeremy Guay of Peregrine Creative.
+
+References Cited:
+1.
+Seth, A.K., Conscious artificial intelligence and biological naturalism. Behavioral
+and Brain Sciences, 2025: p. 1-42.
+2.
+Lyon, P., The biogenic approach to cognition. Cogn Process, 2006. 7(1): p. 1129.
+3.
+Reber, A.S. and F. Baluska, Cognition in some surprising places. Biochem
+Biophys Res Commun, 2021. 564: p. 150-157.
+4.
+Clawson, W.P. and M. Levin, Endless forms most beautiful 2.0: teleonomy and
+the bioengineering of chimaeric and synthetic organisms. Biological Journal of
+the Linnean Society, 2022.
+5.
+Levin, M., Technological Approach to Mind Everywhere: An ExperimentallyGrounded Framework for Understanding Diverse Bodies and Minds. Frontiers in
+Systems Neuroscience, 2022. 16: p. 768201.
+6.
+Bender, R., K. Kofman, B. Agüera y Arcas, and M. Levin What Lives? A metaanalysis of diverse opinions on the definition of life. 2025. arXiv:2505.15849
+DOI: 10.48550/arXiv.2505.15849.
+7.
+Rosen, R., Anticipatory systems : philosophical, mathematical, and
+methodological foundations. 1st ed. IFSR international series on systems
+science and engineering ; v. 1. 1985, Oxford, England ; New York: Pergamon
+Press. x, 436.
+8.
+Varela, F.G., H.R. Maturana, and R. Uribe, Autopoiesis: the organization of living
+systems, its characterization and a model. Currents in modern biology, 1974.
+5(4): p. 187-96.
+9.
+Cejkova, J., T. Banno, M.M. Hanczyc, and F. Stepanek, Droplets As Liquid Robots.
+Artif Life, 2017. 23(4): p. 528-549.
+10.
+Kaygisiz, K. and R.V. Ulijn, Can Molecular Systems Learn? ChemSystemsChem,
+2024. n/a(n/a): p. e202400075.
+11.
+Fields, C. and M. Levin, Competency in Navigating Arbitrary Spaces as an
+Invariant for Analyzing Cognition in Diverse Embodiments. Entropy (Basel),
+2022. 24(6).
+12.
+Baluška, F. and M. Levin, On Having No Head: Cognition throughout Biological
+Systems. Front Psychol, 2016. 7: p. 902.
+13.
+Levin, M., The Multiscale Wisdom of the Body: Collective Intelligence as a
+Tractable Interface for Next-Generation Biomedicine. Bioessays, 2024: p.
+e202400196.
+14.
+McMillen, P. and M. Levin, Collective intelligence: A unifying concept for
+integrating biology across scales and substrates. Commun Biol, 2024. 7(1): p.
+378.
+15.
+Fields, C., J. Bischof, and M. Levin, Morphological Coordination: A Common
+Ancestral Function Unifying Neural and Non-Neural Signaling. Physiology,
+2020. 35(1): p. 16-30.
+16.
+Levin, M., Bioelectric networks: the cognitive glue enabling evolutionary scaling
+from physiology to mind. Anim Cogn, 2023.
+17.
+Hameroff, S.R., T.J. Craddock, and J.A. Tuszynski, Quantum effects in the
+understanding of consciousness. Journal of integrative neuroscience, 2014.
+13(2): p. 229-52.
+
+18.
+
+19.
+20.
+
+21.
+
+Zhang, T., A. Goldstein, and M. Levin, Classical sorting algorithms as a model of
+morphogenesis: Self-sorting arrays reveal unexpected competencies in a
+minimal model of basal intelligence. Adaptive Behavior, 2024. 0(0): p.
+10597123241269740.
+Biswas, S., S. Manicka, E. Hoel, and M. Levin, Gene Regulatory Networks Exhibit
+Several Kinds of Memory: Quantification of Memory in Biological and Random
+Transcriptional Networks. iScience, 2021. 24(3): p. 102131.
+Manicka, S. and M. Levin, The Cognitive Lens: a primer on conceptual tools for
+analysing information processing in developmental and regenerative
+morphogenesis. Philos Trans R Soc Lond B Biol Sci, 2019. 374(1774): p.
+20180369.
+Levin, M., Ingressing Minds: Causal Patterns Beyond Genetics and Environment
+in Natural, Synthetic, and Hybrid Embodiments. preprint, 2025.
+
+

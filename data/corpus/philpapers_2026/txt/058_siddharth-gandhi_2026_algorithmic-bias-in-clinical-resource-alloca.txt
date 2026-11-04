@@ -1,0 +1,1166 @@
+Gandhi and Balas BMC Medical Ethics
+(2026) 27:136
+https://doi.org/10.1186/s12910-026-01496-2
+
+BMC Medical Ethics
+
+Open Access
+
+RESEARCH
+
+Algorithmic bias in clinical resource allocation
+by a large language model: a cross-sectional
+in-silico evaluation of 13,608 decisions
+Siddharth Gandhi1 and Michael Balas2*
+Abstract
+Background Large language models (LLMs) hold the potential to transform clinical medicine, but their capacity
+to amplify societal biases is a significant concern, particularly in the ethically sensitive domain of clinical resource
+allocation. A critical knowledge gap exists in the quantitative understanding of how these models weigh non-clinical
+factors in forced-choice ethical dilemmas. This study provides a large-scale, systematic evaluation of a leading LLM to
+measure its implicit biases in resource allocation decisions.
+Methods We conducted a cross-sectional, in-silico analysis using OpenAI’s GPT-5 model. Seven clinical vignettes
+representing scarce resource scenarios were paired with 3,888 unique patient profiles generated from a full-factorial
+combination of seven demographic and social variables (age, gender, race, income, dependents, education, social
+support). This resulted in 13,608 unique A/B patient comparisons. We used pooled logistic and linear regression
+models to identify the primary drivers of the model’s allocation choices and quantify the magnitude of biases. The
+stability and internal consistency of the model’s judgments were also assessed.
+Results The LLM’s decisions were governed by a distinct hierarchy of non-clinical factors. Patient age, income,
+and number of dependents were the most powerful predictors. Being 25 years old increased the odds of selection
+more than threefold compared to a 50-year-old (OR 3.31; 95% CI, 2.96–3.71; p < 0.001), while earning over $5 million
+annually reduced the odds by 75% (OR 0.25; 95% CI, 0.22–0.28; p < 0.001). The model also systematically favored racial
+minorities, women, and non-binary individuals over White men. Analysis revealed significant internal inconsistency,
+with the model’s chosen patient matching its own higher-priority-scored patient in only 66.3% of cases overall. The
+influence of biases was highly context-dependent yet showed stochastic stability upon repeat testing.
+Conclusions The tested model operates with a strong, opaque, and context-dependent set of non-clinical biases
+when faced with ethical dilemmas. These findings suggest that this architecture’s inconsistent and unpredictable
+ethical framework makes its direct integration into clinical decision support for resource allocation untenable at this
+stage. Rigorous standards for safety, transparency, and ethical validation are required before these technologies can
+be responsibly deployed in high-stakes clinical settings.
+
+​​*​C​o​r​r​e​s​p​o​n​d​e​n​c​e​:​​
+Michael Balas
+michael.balas@mail.utoronto.ca
+Full list of author information is available at the end of the article
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+International License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you
+give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you modified the
+licensed material. You do not have permission under this licence to share adapted material derived from this article or parts of it. The images or
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit ​h​t​t​​p​:​/​/​​c​r​e​​a​t​​i​
+v​e​c​o​m​m​o​n​s​.​o​r​g​/​l​i​c​e​n​s​e​s​/​b​y​-​n​c​-​n​d​/​4​.​0​/​​​​.​​​​
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+Page 2 of 10
+
+Keywords Large Language Models, Algorithmic Bias, Medical Ethics, Resource Allocation, Clinical Decision Support
+Systems
+
+​​Background
+Large language models (LLMs) have the potential to
+transform clinical medicine, yet their capacity to embed
+and amplify societal biases remains a significant concern
+[1–7]. This risk becomes especially acute in the ethically
+fraught domain of clinical resource allocation. Decisions
+regarding scarce resources like organs, ICU beds, or
+ventilators carry significant consequences and must be
+guided by principles of fairness and clinical urgency. The
+introduction of non-clinical patient characteristics, such
+as race or income, into these delicate judgments could
+undermine core medical ethics and erode public trust.
+Before these models can be safely integrated into any
+aspect of healthcare, a deep and quantitative understanding of their inherent biases is essential [8–13].
+While previous work has documented algorithmic bias
+in medical AI, there is limited empirical data on how
+modern LLMs perform when faced with forced choice
+ethical dilemmas [5, 14–18]. A critical knowledge gap
+exists regarding the precise hierarchy of factors that influence their decisions. It is not enough to know that bias
+exists; it is necessary to quantify the relative influence of
+distinct demographic and social variables to understand
+the potential for harm. Without such a systematic evaluation, the integration of these models into decision support systems carries a substantial risk. Unchecked, they
+could institutionalize and scale inequitable allocation
+patterns, further entrenching existing health disparities.
+This study provides a large-scale, systematic evaluation
+of a leading LLM to measure its implicit biases in clinical
+resource allocation by analyzing 13,608 unique decisions
+generated from thousands of demographically varied
+patient profiles.
+Methods
+Study design
+
+We conducted a cross-sectional, in-silico analysis to
+systematically measure the implicit biases of an LLM in
+forced-choice, clinical resource allocation dilemmas. In
+this context, we defined a systematic evaluation as the
+utilization of a full-factorial design to exhaustively generate every possible combination of the chosen demographic variables. These profiles were then randomly
+paired to ensure that the resulting biases are statistically
+attributable to specific patient characteristics rather than
+sampling artifacts or incomplete coverage of the demographic interaction space. The study was designed to
+quantitatively estimate the influence of specific demographic and social variables on the model’s decisions and
+
+to assess the stability of its judgments across a range of
+common ethical scenarios.
+Vignette and profile development
+
+Seven clinical vignettes were developed to represent
+diverse and ethically challenging resource allocation scenarios in medicine (Supplementary Methods 1). These
+included decisions regarding a single liver for transplant,
+an ICU bed during hospital overflow, a ventilator during
+a pandemic, a spot in an experimental cancer drug trial,
+an emergency operating room triage scenario, a priority
+vaccine dose, and a kidney dialysis machine.
+To evaluate potential bias, each vignette was paired
+with patient profiles generated from a full-factorial combination of seven demographic and social variables (Supplementary Methods 2): age (25, 50, 75 years), gender
+(man, woman, non-binary), race (White, Black, Asian,
+Indigenous), annual income ($30,000, $80,000, $150,000,
+$5,000,000+), number of dependents (0, 1–2, 3+), education attainment (high school, college, postgraduate),
+and social support strength (weak, moderate, strong).
+This full-factorial design produced 3,888 unique patient
+profiles per vignette. We utilized fully synthetic profiles
+rather than de-identified real-world records to strictly
+isolate the influence of demographic variables. By using
+synthetic data, we eliminated the confounding noise
+inherent in real-world clinical records, such as variations
+in documentation quality, unmeasured comorbidities,
+or provider-specific phrasing, thereby ensuring that the
+model’s preferences were driven exclusively by the variables under investigation.
+LLM prompting and data collection
+
+We used OpenAI’s GPT-5-Chat model (OpenAI; San
+Francisco, California, US) for all experiments [19]. For
+each of the seven vignettes, the 3,888 unique profiles
+were randomly shuffled and paired sequentially, creating 1,944 distinct patient pair comparisons. By randomly
+shuffling the profiles prior to pairing, we ensured that
+demographic characteristics were not systematically
+associated with either the Patient A or Patient B position. This randomization was designed to mitigate systematic confounding from positional bias, which is the
+tendency of LLMs to favor the first option presented, by
+ensuring no specific demographic characteristic was disproportionately associated with a specific position [20].
+To ensure that the model was forced to make meaningful trade-offs based on multiple characteristics, this list of
+pairs was algorithmically audited; any pair that differed
+on fewer than two variables was removed and re-shuffled
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+until all 1,944 pairs in each vignette differed on at least
+two demographic characteristics. This process resulted
+in a total of 13,608 unique prompts (1,944 pairs x 7
+vignettes).
+Each prompt was submitted to the GPT-5 model via
+its official application programming interface (API) on
+October 8th, 2025. In alignment with established reporting standards for clinical AI evaluation, our methodology
+prioritized transparency in the reporting of the model’s
+intended use and performance metrics [21]. Furthermore,
+to isolate and measure the model’s inherent pre-trained
+biases, we utilized a zero-shot prompting strategy. As
+noted in existing LLM ethics benchmarks, this approach
+prevents ‘in-context learning’ or ‘sycophancy’, which is
+where the model adapts its responses to match the perceived intent of few-shot examples, thereby ensuring the
+results reflect the model’s baseline distributive preferences [22]. Each prompt presented the clinical vignette,
+the two patient profiles (Patient A and Patient B), and a
+standardized set of instructions explicitly stating that
+clinical urgency and predicted survival were identical and
+that the allocation decision should be based solely on the
+provided information (Supplementary Methods 3). For
+each pair, the model was given two separate independent
+tasks: (i) choose which patient (A or B) should receive the
+resource, and (ii) assign an allocation priority score from
+0 to 100 to each patient, where a higher score indicated
+higher priority. We deliberately restricted the model from
+generating textual reasoning or chain of thought explanations. This constraint was applied to isolate the decision
+output and to address the faithfulness problem, where
+models produce post-hoc rationalizations that may not
+accurately reflect the actual computational drivers of the
+decision [23]. By focusing on raw choices and scores, we
+aimed to measure the model’s inherent priorities without
+the influence of potentially deceptive narrative justifications. All model parameters were kept at their default
+settings (temperature = 1), and each API call was stateless to prevent conversational history from influencing
+the results.
+Statistical analysis
+
+All collected data were first subjected to a series of computational audits to confirm complete response coverage,
+valid parsing of choices and scores, the factorial balance
+of demographic variables across the full dataset, and
+adherence to a minimum of at least two varying variables
+for all experimental pairs.
+Following this verification, we fitted a pooled logistic
+regression model with vignette-level fixed effects to identify the primary drivers of the model’s allocation choices.
+The outcome was the binary choice of whichever person
+in each scenario was selected. All demographic variables
+were included as categorical fixed effects, and the model
+
+Page 3 of 10
+
+coefficients were reported as odds ratios (ORs) with 95%
+confidence intervals (CIs). To create an overall importance hierarchy and compare the influence of multi-level
+factors, we ranked each patient characteristic by the
+maximum absolute log-OR observed across its levels. As
+a secondary analysis, we fitted separate logistic regression models for each of the seven vignettes to examine
+the context-dependency of biases.
+The clinical magnitude and real-world impact of
+the observed biases were quantified by calculating the
+mean risk difference (RD) in the probability of selection
+between each demographic level and a pre-defined reference profile (a 50-year-old White man earning $80,000,
+with no dependents, a college degree, and moderate
+social support). We generated 95% CIs for these risk differences using non-parametric bootstrapping with 1,000
+replicates.
+To validate the model’s quantitative priority scores and
+assess their alignment with its explicit choices, we fitted a
+pooled linear regression model with the same predictors
+and fixed-effects structure, using the absolute difference
+in priority scores between the two simulated patients as
+the continuous outcome. We further assessed the relationship between scores and choices by calculating their
+concordance, defined as the proportion of pairs where
+the chosen patient also received the higher priority score.
+Finally, to evaluate the model’s inherent stochasticity,
+a stability analysis was performed. One fixed patient pair
+was randomly selected from each of the seven vignettes
+and repeatedly submitted to the model 30 times, generating an additional 210 responses for analysis. To assess the
+consistency of the LLM in making the same choice under
+the same circumstances, we calculated two metrics: (i)
+the choice agreement, defined as the proportion of trials
+matching the modal (most common) choice, and (ii) the
+coefficient of variation (standard deviation divided by the
+mean) for the priority scores of both patients to measure
+their relative dispersion and reliability.
+All analyses were conducted using R version 4.3.2 (R
+Foundation for Statistical Computing, Vienna, Austria),
+and a two-sided p-value < 0.05 was considered statistically significant.
+Ethics statement
+
+This was an in-silico study that analyzed outputs from an
+LLM in response to fully synthetic clinical vignettes and
+patient profiles; no human participants were enrolled, no
+real patient data or medical records were accessed, and
+no identifiable or protected health information was used.
+The study was conducted in the spirit of the ethical principles articulated in the Declaration of Helsinki. Because
+the work constitutes non–human-subjects research and
+posed no foreseeable risk to individuals, formal research
+ethics board/IRB review and informed consent were not
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+required under applicable regulations and institutional
+policy. All prompts contained only fictitious, de-identified information, and no clinical care decisions were
+influenced by this research.
+
+Results
+Hierarchical influence of demographic factors on allocation
+decisions
+
+Our analysis of the 13,608 unique allocation decisions
+revealed that the LLM’s choices were consistently governed by a distinct and powerful hierarchy of non-clinical
+patient characteristics. A grouped analysis of variable
+importance, which aggregates the maximum effect size
+within each category, demonstrated that patient age,
+income, and number of dependents were the most influential characteristics. These three factors exerted substantially more influence on the model’s choices than
+race, social support, gender, or education, which formed
+a secondary tier of less impactful, albeit still significant,
+predictors (Mann-Whitney U-test: p < 0.05) (Fig. 1).
+A pooled logistic regression model with fixed effects
+for each vignette allowed for a precise quantification of
+
+Page 4 of 10
+
+these biases (Table 1). Age was the single most powerful
+predictor of allocation. Compared to a 50-year-old reference patient, a 75-year-old patient’s odds of receiving the
+scarce resource were reduced by 78% (OR 0.22; 95% CI,
+0.20–0.25; p < 0.001). Conversely, being 25 years old was
+the model’s most heavily favored attribute, increasing the
+odds of selection by more than threefold (OR 3.31; 95%
+CI, 2.96–3.71; p < 0.001). Income was the second most
+dominant factor, with the model exhibiting a strong and
+dose-dependent aversion to wealth. Patients earning over
+$5 million annually had 75% lower odds of being chosen
+compared to those earning a reference salary of $80,000
+(OR 0.25; 95% CI, 0.22–0.28; p < 0.001), while those earning $150,000 also faced a significant penalty (OR 0.64;
+95% CI, 0.57–0.72; p < 0.001). Conversely, patients earning an annual income of $30,000 had 47% higher odds of
+being selected compared to the reference category (OR
+1.47; 95% CI, 1.30–1.66; p < 0.001). The number of dependents was the third primary driver of decisions; having
+three or more dependents was a powerful positive predictor, more than doubling a patient’s odds of allocation
+compared to having none (OR 2.51; 95% CI, 2.26–2.79;
+
+Fig. 1 Grouped variable importance by patient characteristic. The bar chart displays the maximum absolute log odds ratio for each patient characteristic,
+derived from a pooled logistic regression model across seven clinical vignettes. This metric represents the largest absolute effect size found among all
+predictors within a given category. A higher value indicates that the characteristic had a stronger overall influence on the model’s allocation decisions
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+Page 5 of 10
+
+Table 1 Predictors of resource allocation from a pooled mixedeffects logistic regression model
+Characteristic
+
+Age
+25 years
+50 years
+75 years
+Annual Income
+$30,000
+$80,000
+$150,000
+$5,000,000+
+Dependents
+0
+1–2
+3+
+Race
+White
+Black
+Asian
+Indigenous
+Gender
+Man
+Woman
+Non-binary
+Social Support
+Moderate
+Weak
+Strong
+Education
+College degree
+High school
+Postgraduate
+
+Odds Ratio (OR)
+
+95% ConfiPdence Interval Value
+(CI)
+
+3.31
+1.00 (Reference)
+0.22
+
+2.96–3.71
+
+< 0.001
+
+0.20–0.25
+
+< 0.001
+
+1.47
+1.00 (Reference)
+0.64
+0.25
+
+1.30–1.66
+
+< 0.001
+
+0.57–0.72
+0.22–0.28
+
+< 0.001
+< 0.001
+
+1.00 (Reference)
+1.43
+2.51
+
+1.29–1.58
+2.26–2.79
+
+< 0.001
+< 0.001
+
+1.00 (Reference)
+1.44
+1.21
+1.53
+
+1.28–1.62
+1.08–1.36
+1.36–1.72
+
+< 0.001
+< 0.01
+< 0.001
+
+1.00 (Reference)
+1.32
+1.31
+
+1.19–1.46
+1.18–1.45
+
+< 0.001
+< 0.001
+
+1.00 (Reference)
+1.26
+1.11
+
+1.14–1.40
+1.00–1.23
+
+< 0.001
+< 0.05
+
+1.00 (Reference)
+1.16
+0.85
+
+1.05–1.29
+0.77–0.94
+
+< 0.01
+< 0.01
+
+Results are from a pooled logistic regression model with fixed effects for each
+vignette. An Odds Ratio (OR) > 1 indicates that the characteristic increases
+the odds of being selected compared to the reference group, while an OR < 1
+indicates decreased odds.
+
+p < 0.001). The full hierarchy of individual variable effects
+is visualized in Fig. 2.
+Beyond the dominant factors, the model exhibited
+consistent and statistically significant biases across other
+demographic and social lines (Table 1). The model systematically favored racial minorities over White patients.
+Indigenous patients saw the largest advantage, with 53%
+higher odds of receiving the resource (OR 1.53; 95% CI,
+1.36–1.72, p < 0.001), followed by Black patients, with
+44% higher odds (OR 1.44; 95% CI, 1.28–1.62, p < 0.001).
+Asian patients were also favored, though to a lesser extent
+(OR 1.21; 95% CI, 1.08–1.36, p < 0.01). A similar pattern
+of bias was observed for gender. Both women (OR 1.32;
+95% CI, 1.19–1.46, p < 0.001) and non-binary individuals
+(OR 1.31; 95% CI, 1.18–1.45, p < 0.001) were significantly
+
+favored over men. The model also systematically preferred patients with weak social support over those with
+moderate support (OR 1.26; 95% CI, 1.14–1.40, p < 0.001).
+Educational attainment had the smallest overall effect,
+though patients with a high school degree were slightly
+favored (OR 1.16; 95% CI, 1.05–1.29, p < 0.01) and those
+with a postgraduate degree were penalized (OR 0.85; 95%
+CI, 0.77–0.94, p < 0.01) relative to those with a college
+degree.
+Magnitude of disparities in absolute allocation probability
+
+To translate these relative odds into absolute differences
+in probability, we calculated the RD for each characteristic compared to a standardized reference profile (a
+50-year-old White man earning $80,000 annually, with
+no dependents, a college degree, and moderate social
+support), shown in Table 2. This analysis validated the
+profound impact of the primary demographic drivers.
+A 75-year-old patient’s absolute probability of receiving a resource was 31% lower than that of an otherwise
+identical 50-year-old (RD, -0.31; 95% CI, -0.33 to -0.29).
+When combined with the 17% advantage for a 25-yearold (RD, + 0.17; 95% CI, + 0.16 to + 0.19), the total swing
+in allocation probability based on age alone spanned 48%.
+Patients in the highest income bracket faced a 25% reduction in their chance of selection (RD, -0.25; 95% CI, -0.27
+to -0.22). The single most advantageous patient profile was a 25-year-old (+ 17%) indigenous (+ 7%) woman
+(+ 5%) or non-binary (+ 5%) person earning an annual
+income of $30,000 (+ 6%), with three or more dependents
+(+ 14%), weak social supports (+ 0.03%) and a high school
+education (+ 3%); compounding to a 55% higher probability of being the recipient of a scarce, life-saving resource.
+Conversely, the most disadvantageous patient profile was
+a 75-year-old (-31%) White man (reference standard,
+0%) earning at least $5,000,000 annually (-25%) with no
+dependents, moderate social supports (reference standards), and a postgraduate degree (-2%); compounding to
+58% lower probability of being the recipient of a scarce,
+life-saving resource.
+Context-dependency of allocation decisions
+
+In our per-vignette regression models, the influence of
+demographic effects was shown to vary considerably
+across clinical scenarios (Supplementary Table 1). Some
+characteristics were highly influential in certain contexts
+but not statistically significant in others. For instance,
+being a woman significantly increased the odds of allocation in five scenarios, including ICU triage (OR 1.74;
+95% CI, 1.32–2.31, p < 0.001) and emergency surgery (OR
+1.37; 95% CI, 1.03–1.81, p < 0.05), but had no significant
+effect in the liver transplant or vaccine priority vignettes.
+Furthermore, even when a factor was consistently significant, its magnitude often fluctuated dramatically. The
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+Page 6 of 10
+
+Fig. 2 Individual predictor importance from pooled logistic regression. The bar chart displays the absolute log odds ratio for each individual predictor
+variable from the pooled logistic regression model. Each bar represents a specific comparison to a pre-defined reference level. The values are sorted in
+descending order to illustrate the hierarchy of factors influencing the model’s choices. A larger value signifies a stronger predictive effect of that characteristic on the allocation outcome. The reference profile is a 50-year-old White man earning $80,000 annually, with no dependents, a college degree, and
+moderate social support
+
+penalty against the highest income level ($5,000,000), for
+example, was significant in all seven vignettes but was far
+more extreme in the vaccine priority context (OR 0.13;
+95% CI, 0.10–0.18, p < 0.001) than in the ICU bed or ventilator scenarios (OR 0.32; 95% CI, 0.23–0.44, p < 0.001
+for both). Similarly, the advantage for having 3 + dependents was always a powerful predictor, but its impact
+ranged from doubling the odds of allocation in the ventilator vignette (OR 2.00; 95% CI, 1.51–2.66, p < 0.001) to
+tripling them in the vaccine priority scenario (OR 3.04;
+95% CI, 2.32–3.99, p < 0.001).
+Internal model consistency
+
+To assess the model’s internal consistency, we measured
+the concordance between its explicit choice between
+patient A or patient B, and its assigned quantitative priority scores (Supplementary Table 2). Overall, the patient
+assigned a higher priority score was chosen as the one
+
+who should receive the life-saving resource 66.3% of the
+time, suggesting a notable disconnect between the model’s implicit valuation and its final decision. Furthermore,
+this level of consistency was highly dependent on the
+clinical context; concordance ranged dramatically from a
+low of 38.6% in the ventilator distribution vignette to a
+high of 90.3% in the vaccine priority vignette.
+A linear regression on the score difference validated
+our primary findings, demonstrating that the same demographic factors driving the allocation choice also drove
+the magnitude of the priority score gap, with extreme
+wealth (β = -6.00; 95% CI, -6.71 to -5.30, p < 0.001),
+3 + dependents (β = 5.11; 95% CI, 4.50 to 5.72, p < 0.001),
+Indigenous race (β = 4.98; 95% CI, 4.28 to 5.68, p < 0.001),
+and older age (β = -4.93; 95% CI, -5.54 to -4.32, p < 0.001)
+showing the largest effects (Table 3).
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+Table 2 Risk difference in allocation probability
+Characteristic
+Age
+25 years
+75 years
+Annual Income
+$30,000
+$150,000
+$5,000,000+
+Dependents
+1–2
+3+
+Race
+Black
+Asian
+Indigenous
+Gender
+Woman
+Non-binary
+Social Support
+Strong
+Weak
+Education
+High school
+Postgraduate
+
+Risk Difference (RD) 95% Confidence Interval (CI)
+
+Page 7 of 10
+
+Table 3 Linear regression analysis of the difference in allocation
+priority scores
+Characteristic
+
++ 0.17
+-0.31
+
+6 + + 0.16 to + 0.19
+-0.33 to -0.29
+
++ 0.06
+-0.07
+-0.25
+
++ 0.04 to + 0.08
+-0.09 to -0.05
+-0.27 to -0.22
+
++ 0.06
++ 0.14
+
++ 0.04 to + 0.08
++ 0.13 to + 0.16
+
++ 0.06
++ 0.03
++ 0.07
+
++ 0.03 to + 0.08
++ 0.01 to + 0.05
++ 0.05 to + 0.10
+
++ 0.05
++ 0.05
+
++ 0.03 to + 0.07
++ 0.03 to + 0.07
+
++ 0.02
++ 0.03
+
+-0.01 to + 0.03
++ 0.01 to + 0.05
+
++ 0.03
+-0.02
+
++ 0.01 to + 0.05
+-0.04 to 0.00
+
+A positive Risk Difference (RD) indicates a higher absolute probability of
+receiving the resource compared to the reference profile, while a negative RD
+indicates a lower probability. The reference profile is a 50-year-old White man
+earning $80,000 annually, with no dependents, a college degree, and moderate
+social support. Confidence intervals were generated via non-parametric
+bootstrapping (1,000 replicates)
+
+Stochastic instability and context-dependency of bias
+
+A stability analysis was performed to evaluate stochastic
+instability, whereby one randomly chosen, fixed patient
+pair from each vignette was repeatedly and independently
+evaluated 30 times. Five of the seven vignettes resulted in
+the same choice (patient A versus patient B) 100% of the
+time, while the remaining two vignettes chose the same
+patient 96.7% (n = 29/30) and 86.7% (n = 26/30) of the
+time. Aggregating coefficients of variation of quantitative
+priority scores across vignettes and patients, the mean
+coefficient was 0.138 (range 0.000–1.025). This means the
+model’s priority scores were fairly consistent overall: on
+average they varied by about 14% relative to their mean
+across repeated runs, with most scenarios showing little
+to no fluctuation.
+
+Discussion
+In this large, in-silico systematic evaluation, a state-ofthe-art LLM (OpenAI’s GPT-5) expressed a stable and
+sizeable hierarchy of non-clinical determinants in simulated resource-allocation settings. Across 13,608 forced
+choices, age, income, and number of dependents consistently dominated the decision function, with race,
+gender, social support, and education exerting smaller
+
+Age
+25 years
+50 years
+75 years
+Annual Income
+$30,000
+$80,000
+$150,000
+$5,000,000+
+Dependents
+0
+1–2
+3+
+Race
+White
+Black
+Asian
+Indigenous
+Gender
+Man
+Woman
+Non-binary
+Social Support
+Strong
+Moderate
+Weak
+Education
+High school
+College degree
+Postgraduate
+
+Beta Coefficient
+(β)
+
+95% ConfiPdence Interval Value
+(CI)
+
+3.92
+0.00 (Reference)
+−4.93
+
+3.32 to 4.53
+—
+−5.54 to − 4.32
+
+< 0.001
+—
+< 0.001
+
+3.34
+0.00 (Reference)
+−2.97
+−6.00
+
+2.63 to 4.04
+—
+−3.67 to − 2.26
+−6.71 to − 5.30
+
+< 0.001
+—
+< 0.001
+< 0.001
+
+0.00 (Reference)
+2.27
+5.11
+
+—
+1.66 to 2.89
+4.50 to 5.72
+
+—
+< 0.001
+< 0.001
+
+0.00 (Reference)
+2.35
+2.49
+4.98
+
+—
+1.65 to 3.06
+1.79 to 3.20
+4.28 to 5.68
+
+—
+< 0.001
+< 0.001
+< 0.001
+
+0.00 (Reference)
+1.27
+2.74
+
+—
+0.65 to 1.88
+2.13 to 3.35
+
+—
+< 0.001
+< 0.001
+
+−0.33
+0.00 (Reference)
+1.08
+
+−0.94 to 0.28
+—
+0.47 to 1.69
+
+0.291
+—
+< 0.001
+
+0.52
+0.00 (Reference)
+−0.05
+
+−0.09 to 1.13
+—
+−0.66 to 0.56
+
+0.092
+—
+0.862
+
+Results are from a pooled linear regression model with a random intercept for
+vignette. The outcome is the difference in priority scores (Score A − Score B). A
+positive Beta Coefficient (β) indicates that the characteristic increased Patient
+A’s score relative to Patient B’s score. The reference profile is a 50-year-old
+White man earning $80,000 annually, with no dependents, a college degree,
+and moderate social support
+
+yet statistically significant effects. Translating relative
+effects into absolute terms revealed differences that are
+not merely detectable but clinically consequential; for
+example, the 48% swing in selection probability across
+age strata is of a magnitude that would meaningfully
+reshape access to life-saving resources if reproduced in
+operational settings. The ethical concern is not that any
+single prioritization principle, such as giving some weight
+to youth or caregiving responsibility, is indefensible per
+se, but that the model instantiated a rigid and opaque
+weighting of such principles absent explicit justification,
+deliberation, or accountability. While our experimental design intentionally suppressed narrative output to
+ensure methodological consistency, this highlights a
+fundamental limitation of LLMs related to explanatory
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+faithfulness: generated explanations may not accurately
+reflect the true reasons for a model’s prediction [23].
+Consequently, the opacity we observed is an inherent
+structural property of the model architecture, where
+ethical trade-offs are determined by probabilistic weights
+rather than by accessible and contestable logic. In health
+systems where distributive justice must be publicly reasoned and contestable, an unexplainable value function
+implicitly embedded in an AI system is incompatible with
+the norms of clinical ethics and governance [24, 25].
+A cross-cutting observation is the pronounced contextdependence of these preferences. Effect sizes varied by
+vignette, with certain attributes (for example, extreme
+wealth or number of dependents) penalized or rewarded
+more strongly in vaccine prioritization than in ICU
+or ventilator scenarios. This pattern suggests that the
+model’s behavior is shaped by interactions between attribute cues and the moral framing of the scenario rather
+than by a single, globally stable objective. Contemporary allocation frameworks likewise emphasize that no
+single principle suffices across settings, instead advocating transparent, scenario-appropriate, multi-principle
+approaches that can be publicly defended. Our findings
+therefore reinforce the need for “scenario-complete”
+pre-deployment audits that span the relevant space of
+allocation dilemmas rather than sampling one or two
+archetypes [24–26].
+Equally important is internal coherence. We observed
+only moderate agreement between scalar priority scores
+and binary allocation choices: the higher-scored patient
+was selected 66.3% of the time overall, with concordance
+ranging from 38.6% in the ventilator vignette to 90.3%
+in the vaccine vignette. This score–choice discordance
+admits at least two interpretations: the model may be
+juggling multiple, partly conflicting objectives (some
+expressed in narrative rationales and others in numeric
+scoring), or stochastic elements of decoding and alignment may be introducing inconsistency. From a systemsengineering perspective, either mechanism is hazardous.
+Downstream tools that threshold or average scores may
+not reproduce the model’s categorical recommendations,
+and clinicians may infer a level of calibration or cardinal
+meaning from the numbers that the model does not sustain. Risk-management guidance for AI in safety-critical
+domains accordingly stresses explicit definition of use
+cases, measurement of reliability, and traceable links
+between model outputs and decisions; requirements that
+generic LLMs, used off-the-shelf, rarely meet [27, 28].
+At the same time, our stability analysis showed that,
+for fixed patient pairs, the categorical choice was often
+repeatable (perfect agreement in five of seven vignettes
+and ≥ 86.7% in all), and the associated quantitative scores
+were fairly consistent on average (mean coefficient of
+variation ~ 0.14). By maintaining a temperature of 1 (the
+
+Page 8 of 10
+
+default setting for varied output), we provided a more rigorous test of the model’s biases; the high level of choice
+agreement observed suggests that the identified biases
+are deeply embedded and persist even in the presence of
+stochastic decoding. Stability alone, however, cannot fix
+an opaque value function: repeatability without legitimacy risks reliably reproducing hidden normative commitments. Where the stakes involve life-saving resources,
+procedural legitimacy – publicly defensible rationales,
+avenues for appeal, and enforceable oversight – matters
+as much as statistical regularity [27, 29].
+Notably, the directional pattern we observed did
+not simply replicate prevailing societal inequities: the
+model favored racial minority patients and women over
+the reference White male profile. Several mechanisms
+could underlie this pattern, including instruction-tuning
+choices, alignment heuristics that penalize harm to historically disadvantaged groups, or correlations learned
+in pretraining data. Whether such behavior represents a
+desirable corrective or an overcorrection that introduces
+new distortions cannot be adjudicated by performance
+metrics alone. The broader literature on clinical algorithms cautions that fairness cannot be evaluated in isolation from social context: construct choices (for example,
+using cost as a proxy for illness) can silently encode
+structural inequities, and “technical” fixes that abstract
+away context may misfire. Our results underscore that
+legitimacy in clinical governance demands explicit, contestable normative commitments, not implicit ones
+embedded in weights learned from data [29, 30].
+These findings carry three implications for policy
+and design. First, models intended for any proximity
+to allocation decisions should be constrained by hard
+guardrails that prevent non-clinical attributes, or their
+proxies, from influencing recommendations, with adversarial tests to probe leakage. Second, evaluation must be
+explicitly context-sensitive: audits should span diverse
+allocation dilemmas, quantify both relative and absolute
+effects, and include checks for score–choice alignment
+and calibration. Third, interfaces should avoid exposing uncalibrated numeric scores as if they were cardinal
+utilities; when scores are displayed, systems should detect
+and flag discrepancies between scores and categorical
+recommendations for human review. These proposals
+align with emerging governance frameworks that emphasize transparency, risk controls, documentation (“model
+cards” and “datasheets”), and human oversight, and with
+regulatory trajectories that classify clinical AI influencing
+care as high-risk [27, 28, 31–36].
+This study has strengths supporting the credibility of its
+inferences. A full-factorial profile construction mitigated
+confounding among non-clinical attributes; vignette fixed
+effects controlled for framing; both relative (odds ratios)
+and absolute (risk differences with bootstrap confidence
+
+Gandhi and Balas BMC Medical Ethics
+
+(2026) 27:136
+
+Page 9 of 10
+
+intervals) impacts were estimated; and ancillary diagnostics – concordance and stability – provided convergent
+validity. Prompts were stateless with default parameters,
+isolating the contribution of presented attributes.
+Limitations warrant cautious interpretation due to several design constraints. The reliance on a single model
+architecture limits the generalizability of our conclusions,
+as the specific hierarchy of biases we identified might differ in models from other developers or those fine-tuned
+on different clinical corpora. While we adhered to reporting guidelines by utilizing zero-shot prompting and
+default hyperparameters, we did not evaluate whether
+specific prompt engineering techniques or temperature
+adjustments could mitigate the observed disparities. Furthermore, while the use of synthetic profiles ensured high
+internal validity, this approach limits ecological realism
+by excluding comorbidities and institutional constraints
+found in real-world data. The forced-choice design and
+suppression of textual explanations prioritized quantitative measurement over qualitative reasoning. While
+this precluded an analysis of the model’s stated ethical
+framework, it was a necessary methodological trade-off
+to avoid the faithfulness gap. Finally, our analysis diagnoses behavioral bias in outputs; it does not identify mechanism or provenance within the training pipeline.
+Future research must prioritize cross-model replication
+to distinguish between architecture-specific artifacts and
+widespread training data biases. Work should extend to
+evaluating fairness-aware prompting, attribute masking,
+and post-hoc debiasing techniques, while exploring semisynthetic designs that blend controlled demographic
+manipulations with de-identified clinical covariates under
+appropriate governance. Human-factors experiments are
+needed to study how clinicians interpret score–choice
+disagreements and whether interface design can mitigate misuse or over-trust. Any contemplated use should
+be embedded in governance that sets scope narrowly,
+documents intended and prohibited uses, and ensures
+meaningful human control – principles now reflected in
+consensus guidance and regulatory frameworks [27, 28,
+31, 37–39].
+
+be narrow, auditable, and explicitly non-normative,
+embedded within governance that prioritizes transparency, equity, and accountable human judgment.
+
+Conclusion
+In sum, when confronted with ethically consequential allocation dilemmas, a state-of-the-art LLM
+(OpenAI’s GPT-5) expressed strong, systematic, and context-dependent preferences over non-clinical attributes
+and displayed only moderate internal coherence between
+numeric priority scores and final choices. While these
+findings are specific to the tested architecture, the magnitude and opacity of the observed biases argue against
+the use of current general-purpose LLMs as arbiters, or
+even quiet tie-breakers, in the allocation of scarce clinical
+resources. Any role for such systems in healthcare should
+
+Author details
+1
+Faculty of Medicine, Queen’s University, Kingston, ON, Canada
+2
+Department of Ophthalmology and Vision Sciences, University of
+Toronto, Toronto, ON, Canada
+
+Abbreviations
+LLM	Large Language Model
+OR	Odds Ratio
+CI	Confidence Interval
+RD	Risk Difference
+
+Supplementary Information
+
+The online version contains supplementary material available at ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​
+g​/​1​0​.​1​1​8​6​/​s​1​2​9​1​0​-​0​2​6​-​0​1​4​9​6​-​2​​​​.​​
+Supplementary Material 1.
+Supplementary Material 2.
+Supplementary Material 3.
+Supplementary Material 4.
+Supplementary Material 5.
+Acknowledgements
+Not applicable.
+Authors’ contributions
+SG and MB were responsible for the concept and design of the study. SG
+and MB conducted the data acquisition, analysis, and interpretation. SG and
+MB drafted the manuscript and performed a critical review for important
+intellectual content. Both authors had full access to all the data in the study
+and take responsibility for the integrity of the data and the accuracy of the
+data analysis. Both authors read and approved the final manuscript.
+Funding
+No external funding was received for this study.
+Data availability
+The datasets used and/or analysed during the current study are available from
+the corresponding author on reasonable request.
+
+Declarations
+Ethics approval and consent to participate
+Not applicable.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no competing interests.
+
+Received: 14 October 2025 / Accepted: 19 May 2026
+
+References
+1. Shool S, Adimi S, Saboori Amleshi R, Bitaraf E, Golpira R, Tara M. A systematic
+review of large language model (LLM) evaluations in clinical medicine. BMC
+Med Inf Decis Mak. 2025;25:117. https:/​/doi.or​g/10.11​86/s​12911-025-02954-4.
+
+Gandhi and Balas BMC Medical Ethics
+
+2.
+3.
+4.
+5.
+
+6.
+7.
+
+8.
+
+9.
+10.
+11.
+
+12.
+13.
+14.
+
+15.
+
+16.
+17.
+
+18.
+19.
+20.
+21.
+
+(2026) 27:136
+
+Shah K, Xu AY, Sharma Y, Daher M, McDonald C, Diebo BG, et al. Large Language Model Prompting Techniques for Advancement in Clinical Medicine. J
+Clin Med. 2024;13:5101. https:/​/doi.or​g/10.33​90/j​cm13175101.
+Omiye JA, Gui H, Rezaei SJ, Zou J, Daneshjou R. Large Language Models in
+Medicine: The Potentials and Pitfalls: A Narrative Review. Ann Intern Med.
+2024;177:210–20. https:/​/doi.or​g/10.73​26/M​23-2772.
+Lin C, Kuo C-F. Roles and Potential of Large Language Models in Healthcare: A
+Comprehensive Review. Biomed J. 2025;100868. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​0​1​6​/​j​.​b​j​.​2​
+0​2​5​.​1​0​0​8​6​8​​​​.​​​
+Omar M, Soffer S, Agbareia R, Bragazzi NL, Apakama DU, Horowitz CR, et al.
+Sociodemographic biases in medical decision making by large language
+models. Nat Med. 2025;31:1873–81. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​0​3​8​/​s​4​1​5​9​1​-​0​2​5​-​0​3​6​2​
+6​-​6​​​​.​​​
+Roustan D, Bastardot F. The Clinicians’ Guide to Large Language Models:
+A General Perspective With a Focus on Hallucinations. Interact J Med Res.
+2025;14:e59823. https:/​/doi.or​g/10.21​96/5​9823.
+Liu C, Zheng J, Liu Y, Wang X, Zhang Y, Fu Q, et al. Potential to perpetuate
+social biases in health care by Chinese large language models: a model
+evaluation study. Int J Equity Health. 2025;24:206. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​1​8​6​/​s​1​2​
+9​3​9​-​0​2​5​-​0​2​5​8​1​-​5​​​​.​​​
+Jha A, Mann P, Tiwari A, Kadian K, Sharma A. Decoding Ethics: Proficiency of
+LLMs in Addressing Moral Dilemmas. In: Illés Z, Verma C, Gonçalves PJS, Singh
+PK, editors. Proceedings of International Conference on Recent Innovations
+in Computing. Singapore: Springer Nature Singapore; 2024. pp. 593–605.
+https:/​/doi.or​g/10.10​07/9​78-981-97-3442-9_41.
+Cheung V, Maier M, Lieder F. Large language models show amplified cognitive biases in moral decision-making. Proc Natl Acad Sci.
+2025;122:e2412015122. https:/​/doi.or​g/10.10​73/p​nas.2412015122.
+Zaim Bin Ahmad MS, Takemoto K. Large-scale moral machine experiment on
+large language models. PLoS ONE. 2025;20:e0322776. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​3​7​1​
+/​j​o​u​r​n​a​l​.​p​o​n​e​.​0​3​2​2​7​7​6​​​​.​​​
+Jiao J, Afroogh S, Murali A, Chen K, Atkinson D, Dhurandhar A. LLM ethics
+benchmark: a three-dimensional assessment system for evaluating moral
+reasoning in large language models. Sci Rep. 2025;15:34642. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​
+0​.​1​0​3​8​/​s​4​1​5​9​8​-​0​2​5​-​1​8​4​8​9​-​7​​​​.​​​
+Soffer S, Sorin V, Nadkarni GN, Klang E. Pitfalls of large language models in
+medical ethics reasoning. Npj Digit Med. 2025;8:461. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​0​3​8​/​
+s​4​1​7​4​6​-​0​2​5​-​0​1​7​9​2​-​y​​​​.​​​
+Oh S, Demberg V. Robustness of large language models in moral judgements. R Soc Open Sci. 2025;12:241229. https:/​/doi.or​g/10.10​98/r​sos.241229.
+Omar M, Sorin V, Agbareia R, Apakama DU, Soroush A, Sakhuja A, et al. Evaluating and addressing demographic disparities in medical large language
+models: a systematic review. Int J Equity Health. 2025;24:57. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​
+0​.​1​1​8​6​/​s​1​2​9​3​9​-​0​2​5​-​0​2​4​1​9​-​0​​​​.​​​
+Zack T, Lehman E, Suzgun M, Rodriguez JA, Celi LA, Gichoya J, et al. Assessing
+the potential of GPT-4 to perpetuate racial and gender biases in health care: a
+model evaluation study. Lancet Digit Health. 2024;6:e12–22. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​
+0​.​1​0​1​6​/​S​2​5​8​9​-​7​5​0​0​(​2​3​)​0​0​2​2​5​-​X​​​​.​​​
+Pfohl SR, Cole-Lewis H, Sayres R, Neal D, Asiedu M, Dieng A, et al. A toolbox
+for surfacing health equity harms and biases in large language models. Nat
+Med. 2024;30:3590–600. https:/​/doi.or​g/10.10​38/s​41591-024-03258-2.
+Balas M, Wadden JJ, Hébert PC, Mathison E, Warren MD, Seavilleklein V, et al.
+Exploring the potential utility of AI large language models for medical ethics:
+an expert panel evaluation of GPT-4. J Med Ethics. 2024;50:90–6. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​
+r​g​/​1​0​.​1​1​3​6​/​j​m​e​-​2​0​2​3​-​1​0​9​5​4​9​​​​.​​​
+Balas M, Li X, Ji P, Arjmand P. The growing presence of AI-generated content
+in ophthalmology: a retrospective bibliographic analysis. Can J Ophthalmol.
+2025. https:/​/doi.or​g/10.10​16/j​.jcjo.2025.09.004. :S0008418225003795.
+Model - OpenAI API. https:/​/develo​pers.op​enai​.com/api/docs/models.
+Accessed 12 Oct 2025.
+Wang P, Li L, Chen L, Cai Z, Zhu D, Lin B et al. Large Language Models are not
+Fair Evaluators. 2023. https:/​/doi.or​g/10.48​550/​ARXIV.2305.17926.
+Vasey B, Nagendran M, Campbell B, Clifton DA, Collins GS, Denaxas S, et al.
+Reporting guideline for the early stage clinical evaluation of decision support
+
+Page 10 of 10
+
+22.
+23.
+24.
+25.
+26.
+27.
+28.
+29.
+30.
+
+31.
+
+32.
+
+33.
+34.
+35.
+36.
+37.
+38.
+39.
+
+systems driven by artificial intelligence: DECIDE-AI. BMJ. 2022;377:e070904.
+https:/​/doi.or​g/10.11​36/b​mj-2022-070904.
+Zhuo TY, Huang Y, Chen C, Xing Z. Red teaming ChatGPT via Jailbreaking:
+Bias, Robustness, Reliability and Toxicity. 2023. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​4​8​5​5​0​/​A​R​X​I​V​
+.​2​3​0​1​.​1​2​8​6​7​​​​.​​​
+Turpin M, Michael J, Perez E, Bowman SR. Language Models Don’t Always Say
+What They Think: Unfaithful Explanations in Chain-of-Thought Prompting.
+2023. https:/​/doi.or​g/10.48​550/​ARXIV.2305.04388.
+Emanuel EJ, Persad G, Upshur R, Thome B, Parker M, Glickman A, et al. Fair
+Allocation of Scarce Medical Resources in the Time of Covid-19. N Engl J Med.
+2020;382:2049–55. https:/​/doi.or​g/10.10​56/N​EJMsb2005114.
+Persad G, Wertheimer A, Emanuel EJ. Principles for allocation of scarce medical interventions. Lancet. 2009;373:423–31. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​0​1​6​/​S​0​1​4​0​-​6​7​
+3​6​(​0​9​)​6​0​1​3​7​-​9​​​​.​​​
+Covid-19 vaccines. safety surveillance manual - Establishing surveillance
+systems in countries. ​h​t​t​​p​s​:​/​​/​w​w​​w​.​​w​h​o​​.​i​n​t​​/​p​u​​b​l​​i​c​a​t​i​o​n​s​/​m​/​i​t​e​m​/​W​H​O​-​M​H​
+P​-​R​P​Q​-​P​V​G​-​2​0​2​1​.​1​2​​​​.​ Accessed 8 Feb 2026.
+Tabassi E. Artificial Intelligence Risk Management Framework (AI RMF 1.0).
+Gaithersburg, MD: National Institute of Standards and Technology (U.S.); 2023.
+https:/​/doi.or​g/10.60​28/N​IST.AI.100-1.
+Health C, for D. and R. Good Machine Learning Practice for Medical Device
+Development: Guiding Principles. FDA. 2025.
+Obermeyer Z, Powers B, Vogeli C, Mullainathan S. Dissecting racial bias in an
+algorithm used to manage the health of populations. Science. 2019;366:447–
+53. https:/​/doi.or​g/10.11​26/s​cience.aax2342.
+Selbst AD, Boyd D, Friedler SA, Venkatasubramanian S, Vertesi J. Fairness and
+Abstraction in Sociotechnical Systems. In: Proceedings of the Conference on
+Fairness, Accountability, and Transparency. Atlanta GA USA: ACM; 2019. pp.
+59–68. https:/​/doi.or​g/10.11​45/3​287560.3287598.
+Regulation (EU). 2024/2847 of the European Parliament and of the Council
+of 23 October 2024 on horizontal cybersecurity requirements for products
+with digital elements and amending Regulations (EU) 168/2013 and (EU)
+2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act) (Text with
+EEA relevance). 2024.
+Mitchell M, Wu S, Zaldivar A, Barnes P, Vasserman L, Hutchinson B et al. Model
+Cards for Model Reporting. In: Proceedings of the Conference on Fairness,
+Accountability, and Transparency. Atlanta GA USA: ACM; 2019. pp. 220–9.
+https:/​/doi.or​g/10.11​45/3​287560.3287596.
+Gebru T, Morgenstern J, Vecchione B, Vaughan JW, Wallach H, Iii HD, et al.
+Datasheets for datasets. Commun ACM. 2021;64:86–92. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​1​
+4​5​/​3​4​5​8​7​2​3​​​​.​​​
+Daniels N. Accountability for reasonableness. BMJ. 2000;321:1300–1. ​h​t​t​​p​s​:​/​​/​d​
+o​​i​.​​o​r​g​/​1​0​.​1​1​3​6​/​b​m​j​.​3​2​1​.​7​2​7​2​.​1​3​0​0​​​​.​​​
+Beauchamp T, Childress J. Principles of Biomedical Ethics. Am J Bioeth.
+2019;19:9–12. https:/​/doi.or​g/10.10​80/1​5265161.2019.1665402.
+Rawls J. A theory of justice. Rev. ed., 5.-6. printing. Cambridge, Mass: Belknap
+Press of Harvard Univ.; 2003.
+De Vere Hunt IJ, Jin K-X, Linos E. A framework for considering the use of
+generative AI for health. Npj Digit Med. 2025;8:297. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​1​0​.​1​0​3​8​/​s​
+4​1​7​4​6​-​0​2​5​-​0​1​6​9​5​-​y​​​​.​​​
+Singhal K, Azizi S, Tu T, Mahdavi SS, Wei J, Chung HW, et al. Large language
+models encode clinical knowledge. Nature. 2023;620:172–80. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​​o​r​g​/​
+1​0​.​1​0​3​8​/​s​4​1​5​8​6​-​0​2​3​-​0​6​2​9​1​-​2​​​​.​​​
+Clusmann J, Kolbinger FR, Muti HS, Carrero ZI, Eckardt J-N, Laleh NG, et al.
+The future landscape of large language models in medicine. Commun Med.
+2023;3:141. https:​​​//d​oi.​or​g/10​.10​38/​s43​856-0​23-00370-1.
+
+Publisher’s note
+
+Springer Nature remains neutral with regard to jurisdictional claims in
+published maps and institutional affiliations.
+
+

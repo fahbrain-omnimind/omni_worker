@@ -105,6 +105,12 @@ def hash_embedder(text: str, dim: int = EMBED_DIM) -> list[float]:
 
 
 def _cosine(a: np.ndarray, b: np.ndarray) -> float:
+    if a.size != b.size:
+        m = min(a.size, b.size)
+        if m == 0:
+            return 0.0
+        a = a[:m]
+        b = b[:m]
     na, nb = float(np.linalg.norm(a)), float(np.linalg.norm(b))
     if na == 0.0 or nb == 0.0:
         return 0.0
@@ -116,20 +122,21 @@ _ST_TRIED: set[str] = set()
 
 # modelos ST suportados: spec -> HF id (ordem de tentativa no 'auto')
 _ST_MODEL_IDS = {
-    "ptbr": "tardellirs/colibri-embed-ptbr",      # nativo PT-BR, MTEB-BR 0.650
+    "ptbr": "tardellirs/colibri-embed-ptbr",      # nativo PT-BR (~600MB RAM), MTEB-BR 0.650, Matryoshka
     "minilm": "all-MiniLM-L6-v2",                  # 384d, mesmo do acervo
 }
 _AUTO_ORDER = ("ptbr", "minilm")
 
 
 def _load_st(spec: str):
-    """Carrega lazy o modelo ST do spec; None se indisponível."""
+    """Carrega lazy o modelo ST do spec em RAM (CPU default); None se indisponível."""
     if spec in _ST_TRIED:
         return _ST_MODELS.get(spec)
     _ST_TRIED.add(spec)
     try:
         from sentence_transformers import SentenceTransformer
-        _ST_MODELS[spec] = SentenceTransformer(_ST_MODEL_IDS[spec])
+        device = os.getenv("OMNI_EMBED_DEVICE", "cpu")
+        _ST_MODELS[spec] = SentenceTransformer(_ST_MODEL_IDS[spec], device=device)
     except Exception:
         _ST_MODELS[spec] = None
     return _ST_MODELS.get(spec)

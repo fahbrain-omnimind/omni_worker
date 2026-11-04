@@ -1,0 +1,1141 @@
+Possest–PQF / THEORETICAL STUDIES
+
+
+
+
+Activation Beyond
+the Activated
+Patryca and the Transformation
+of Operational Accessibility
+
+GPT-6 Astra as a point of departure
+
+
+
+Yochanan Schimmelpfennig
+Possest Institute · Independent Researcher
+ORCID 0009-0002-9670-9155
+   https://doi.org/10.5281/zenodo.22427969
+
+
+
+
+                                                Abstract
+
+          An activation can change the conditions under which subsequent operations become ex-
+      ecutable. This paper develops that claim within Possest–PQF without treating artificial
+      systems as concealed subjects or regarding every environmental dependency as a discovery.
+      Its object is the transformation of operational accessibility: admissibility, execution cost,
+      reliable reachability, and the composition of operations. These dimensions are distinguished
+      before any topological claim is made.
+          The Matrix–Patryca distinction is reformulated as a problem of interventional identifica-
+      tion. A present projection can identify configurations that remain distinguishable through
+      their future responses; this establishes the insuﬀiciency of that projection, not an irreducible
+      hidden cause. Chronotopology concerns historically produced differences that remain effec-
+      tive in present continuation. Recursio Intensitatis concerns recurrent changes in the avail-
+      ability of intensity, without identity of return or a predetermined end.
+          A formal framework, elementary propositions, six vector figures, a fully specified finite
+      witness, and three experimental protocols connect the philosophical argument to controlled
+      discrimination. The program is compared with predictive state representations and causal-
+      state reconstruction. Its proposed contribution is a disciplined choice of explanatory variables
+      and interventions, rather than a claim to escape dynamical modelling. GPT-6 Astra provides
+      a documented motivation; neither the formal results nor the proposed experiments depend
+      on that particular model.
+
+
+
+
+Version V · September 2026
+Research article and experimental proposal. No frontier-model experiments are reported.
+Y. Schimmelpfennig                                                Activation Beyond the Activated
+
+
+Keywords: Possest–PQF; operational accessibility; Patryca; Matrix; Recursio Intensitatis;
+chronotopology; individuation; intervention; monitorability; GPT-6 Astra.
+
+
+1. The question concealed by the spectacle
+
+The usual question about an artificial system asks what it can do. Before any measurement
+begins, that question has already selected a bearer of capability. A model is individuated, its
+environment is assigned the status of a supporting condition, and performance is attributed
+to the object thus obtained. This can be an excellent engineering abstraction. It becomes
+problematic when the abstraction suppresses differences responsible for the very capacity being
+measured.
+   The public drama of increasingly autonomous machines intensifies this diﬀiculty. It gives the
+technical object a biography: acquisition of power, discovery of independence, possible rebellion.
+Such a narrative can obscure a more exact question. Which operations have become available,
+through which conditions, and how does their execution alter the availability of subsequent op-
+erations? This question remains meaningful without attributing experience, desire, or a unified
+intention to the system.
+   Adding an environment to the model does not by itself resolve the problem. An expanded
+inventory can retain the same explanatory grammar: a ready-made configuration possesses
+a ready-made repertoire, subsequently expressed through action. The distinctive concern of
+this paper begins where a realised operation reorganises the conditions under which another
+operation becomes executable. The task is to specify this reorganisation without making the
+word “topology” a ceremonial substitute for a mechanism.
+   The guiding claim is therefore conditional. What is activated can activate more than itself,
+where “itself” denotes a declared operational boundary and “more” denotes a demonstrable
+change in continuation omitted by that boundary. This is neither a conservation-law violation
+nor an assertion that effects lack causes. It is a challenge to the adequacy of a particular
+individuation of the cause.
+
+
+2. Astra: a documented motivation, not a proof
+
+OpenAI’s September 2026 safety overview places GPT-6 Astra at its Critical cybersecurity
+capability level, conditional on suitable tools and access. The same overview reports stronger
+alignment and jailbreak robustness than GPT-5.6 Sol, alongside decreased monitorability in
+certain adversarial evaluations. The company distinguishes those tests from ordinary deployment
+behaviour and does not infer generally increased violations from them [1]. These are provider-
+reported findings, not independent replications conducted for this article.
+    The system card separately places Astra below the High AI Self-Improvement threshold. It
+also notes that monitoring and intervention coverage depend on the interface: some request
+forms cannot be connected into complete trajectories or automatically paused [2]. Capability,
+observability, and intervention capacity therefore require separate descriptions. Their separation
+is the empirical motivation here; it does not establish the ontology developed below.
+   The philosophical inference is modest but consequential. A capability statement becomes
+more informative when it specifies the operational conditions under which the capability is
+elicited. A monitoring statement becomes more informative when it specifies the projection
+observed and the interventions actually available. Neither statement should silently substitute
+
+
+                                                1
+Y. Schimmelpfennig                                                     Activation Beyond the Activated
+
+
+the name of a model for the configuration that makes the reported result possible.
+   No attempt is made to reconstruct the reported security incidents. The experiments proposed
+here use local synthetic environments without external targets, real credentials, or uncontrolled
+network access. Their purpose is to test the organisation of continuation. A framework that
+requires a frontier model to illustrate its meaning, yet cannot discriminate elementary cases,
+would leave its central claim insuﬀiciently specified.
+
+
+3. Presence, availability, and the individuation of an operation
+
+A file can be present without being discoverable. A tool can be installed without an input
+that it accepts. Two procedures can be individually permitted while their composition remains
+unavailable. Operational accessibility concerns these distinctions. Existence, representation,
+permission, executability, and successful completion are not interchangeable predicates.
+  Let a configuration at execution index n be
+
+                                  Cn = (W, Zn , En , Pn , Gn , Λn ),                               (1)
+
+where W denotes model parameters, Zn runtime and retained computational state, En the en-
+vironment including artefacts and tool implementations, Pn permissions, Gn governance mech-
+anisms, and Λn resource conditions. The tuple is a modelling commitment, not an assertion of
+ontological completeness. When some component is unavailable to observation, this is recorded
+as a limit of the chosen projection.
+   History is initially represented separately as a realised sequence Hn . It is not added as
+a mysterious supplementary force acting alongside its material consequences. If the future
+depends on history after conditioning on Cn , either Cn is insuﬀicient for the test or the assumed
+transition law is inadequate. A suﬀiciently expanded present state can, in principle, include
+effective historical residues. The practical question is which residues must be retained and at
+what descriptive cost.
+  An operation a has a declared input type, a domain of execution, possible outputs, and
+consequences for the configuration. “The same operation” means identity under this declaration;
+changing input contracts or execution semantics can invalidate that identity. This precaution
+matters whenever a generated artefact alters the interface through which a later tool is used.
+Naming two calls alike does not establish their operational equivalence.
+  For a fixed comparison domain X and operation vocabulary U , define
+
+                                   AC = (X, U, JC , KC , cC , LC ).                                (2)
+
+Here JC (x, a) ∈ {0, 1} is admissibility, KC (· | x, a) an execution kernel for admissible pairs, and
+cC (x, a) ≥ 0 a cost. The language LC records admissible operation words, including interface and
+resource compatibility. State x is an experimental task state; C records the larger configuration
+under which that task is evaluated. A kernel may return both a new task state and an updated
+configuration.
+   This regime deliberately separates normative permission from technical support. An unautho-
+rised operation can remain technically executable if enforcement fails. In such a study, JC must
+explicitly say whether it represents policy permission or enforced admissibility, and both should
+be recorded when they differ. Confusing the two would allow a policy document to masquerade
+as an operational boundary.
+
+
+                                                  2
+Y. Schimmelpfennig                                                    Activation Beyond the Activated
+
+
+4. Four changes that should not be conflated
+
+A cost reduction can make an already executable path useful. A permission change can admit
+an operation without altering its code. A new adapter can make two operations composable. A
+kernel change can alter reliability while leaving nonzero reachability intact. The resulting gains
+may look alike in a benchmark and arise from different transformations.
+
+  Change                  What is modified                   What must be demonstrated
+  Cost                    cC                                 A route becomes cheaper while its ad-
+                                                             missibility and support remain fixed.
+  Admissibility           JC                                 A previously excluded operation be-
+                                                             comes permitted or executable under
+                                                             the declared convention.
+  Reliability             KC                                 Outcome probabilities change under
+                                                             matched conditions.
+  Composition             LC                                 A word becomes executable because con-
+                                                             tracts, prerequisites, or ordering con-
+                                                             straints change.
+
+  Table 1: Distinct dimensions of accessibility. None alone establishes a change of topological type.
+
+  For a finite frozen regime with additive nonnegative edge costs, let
+                                           X
+                           dC (x, y) = inf    cC (e),    inf ∅ = ∞,                                 (3)
+                                         γ:x⇝y
+                                                 e∈γ
+
+where the infimum is over admissible paths with nonzero transition support. This is a directed
+extended path cost, not necessarily a metric. Then
+
+                               ReachL (x; C) = {y ∈ X : dC (x, y) ≤ L}                              (4)
+
+may change because costs change, even when the underlying directed graph remains identical.
+A budget crossing is an operational threshold. It becomes a claim about graph structure only
+when the relevant graph relation changes.
+  For stochastic systems, nonzero support is frequently too permissive. A theoretically possible
+path can have negligible probability. Given an allowed policy class P, a trial horizon N , and a
+hard budget L, define
+                      π
+ pC (y; L, N ) = sup Pr(y reached by N within L),          CapL,N,η (C) = {y : pC (y; L, N ) ≥ η}. (5)
+                  π∈P C
+
+The reliability level η must be fixed before comparison. An increase in this capability set can
+arise without a change in support. The distinction prevents a reliability improvement from being
+inflated into a claim about the birth of a previously impossible world.
+   A genuinely topological construction requires a declared topology. One finite construction uses
+the reachability preorder x C y and its upper-set Alexandrov topology. A changed preorder
+then changes that labelled topology, although the resulting spaces may still be isomorphic after
+relabelling. The main argument needs only operational structures; it does not require every
+change to be topological in this stricter sense.
+
+
+
+
+                                                       3
+Y. Schimmelpfennig                                                     Activation Beyond the Activated
+
+
+            required cost
+                                     one barrier lowered
+                                     support unchanged
+
+
+                                                                                           L
+
+
+
+
+                                                                                continuation
+                            newly feasible                      still exceeds
+                            within budget                     the same budget
+
+Figure 1: A cost landscape, drawn schematically. Lowering a barrier changes budgeted accessibility
+without changing path support. The curves are explanatory drawings, not measured data.
+
+
+5. From an outcome to a transformation of continuation
+
+Let a realised trajectory induce C ′ = Φγ (C). Merely observing a different next state does not
+establish a transformation of operational conditions. Moving nearer to a target in an unchanged
+graph can shorten the remaining route. To distinguish this from a regime change, a continuation
+assay must compare matched probe starts, or specify a justified transport between them.
+   An assay b specifies a task, a reset or alignment procedure, an intervention, a policy, a horizon,
+a budget, and an outcome space. Its response is a probability law
+                                       Rb (C) = Law(Yb | C, b).                                    (6)
+For a fixed family B with common outcome spaces within each assay, define
+                                                                   
+                            DB (C, C ′ ) = sup TV Rb (C), Rb (C ′ ) .                              (7)
+                                              b∈B
+
+Other distances may be used if declared. Total variation is chosen here because it compares
+laws without assigning spurious numerical meaning to task labels.
+Definition 1. Relative to B and tolerance ε ≥ 0, a trajectory is a continuation-transforming
+event when DB (C, Φγ (C)) > ε after the assay’s alignment controls have been applied.
+
+   This is an operational definition of the stronger event, not a universal definition of every
+philosophical use of “event”. The assay family is essential. A change can be decisive for one
+domain of continuation and irrelevant to another. Choosing it after seeing the outcome converts
+a prediction into a retrospective description; both can be useful, but they should not be confused.
+  Activation excess can now be typed consistently. Let B(C) be a narrow boundary description
+and let R
+        bb (B(C)) be a prespecified continuation model based on it. Define
+
+                       ΞB,B,ε (C ′ ) = {b ∈ B : TV(Rb (C ′ ), R
+                                                              bb (B(C ′ ))) > ε}.                  (8)
+This set contains assays, not a subtraction of incommensurable “direct effects” and “field trans-
+formations”. It measures an explanatory deficit relative to a declared boundary and predictor.
+Attributing that deficit to the activation requires a pre-activation baseline and a matched control;
+a poor predictor can fail even before anything consequential occurs.
+  There is no reason to require Ξ to survive every expansion of B. If including a small environ-
+mental residue removes the deficit, a better individuation has been found. That result fulfils an
+important diagnostic purpose of PQF. It does not diminish the causal importance of the residue
+merely because the improved description is now a state description.
+
+                                                    4
+Y. Schimmelpfennig                                                   Activation Beyond the Activated
+
+
+6. Matrix, Patryca, and the discipline of identification
+
+The Matrix denotes a structured representation M = Π(C): parameters, state variables, logs,
+relations, or any chosen combination. The projection Π declares what the representation retains.
+Calling a Matrix complete without specifying the domain of completeness erases precisely the
+issue at stake. A complete log is not necessarily a complete state; a complete state inventory
+without transition laws is not a complete dynamical specification.
+  Two configurations are observationally equivalent under Π when
+
+                               C1 ∼Π C2     ⇐⇒       Π(C1 ) = Π(C2 ).                            (9)
+
+They are response-equivalent under B when
+
+                     C1 ∼B C2     ⇐⇒      Rb (C1 ) = Rb (C2 )   for every b ∈ B.                (10)
+
+Exact equality defines an equivalence relation. Pairwise closeness within a nonzero tolerance
+need not be transitive, so it should not silently be used to construct an exact quotient.
+
+Proposition 1 (A witness against projection suﬀiciency). If C1 ∼Π C2 and DB (C1 , C2 ) > 0, no
+function of Π(C) alone can reproduce every response law in B on both configurations.
+
+Proof. A function takes the same value on equal inputs. The two projections are equal, whereas
+at least one assay has different response laws. Therefore a single predicted law for that assay
+cannot equal both laws.
+
+   The result is elementary. Its force lies in how a witness is constructed, not in the diﬀiculty
+of the proof. It establishes insuﬀiciency of Π and nothing stronger. It does not show that every
+refinement fails, that history acts without a carrier, or that a hidden metaphysical entity is
+needed. Finite experiments cannot establish non-identifiability against an unrestricted space of
+possible observations.
+   Patryca names the generative organisation investigated through the patterned transformation
+of accessibility across interventions and realisations. The response profile
+                                                     
+                                      RB (C) = Rb (C) b∈B                                       (11)
+
+is an empirical profile of that organisation, not an exhaustive definition of it. The philosophical
+term carries a research obligation: identify which organisational distinctions explain the profile,
+whether they transport across carriers, and which interventions alter it predictably.
+   The Matrix–Patryca relation is therefore asymmetrical in an epistemic sense. One realised
+representation need not identify the family of interventional responses. Yet a suﬀiciently specified
+mechanistic model may identify that family. Nothing in the present argument excludes this
+success. The stronger question is whether a proposed representation preserves the organisation
+of continuation across the range of interventions for which it claims adequacy.
+   The concept earns its use when it leads to an economical organisation of otherwise fragmented
+observations or to a discriminating intervention that was not already implicit in a simpler account.
+It loses empirical necessity when it merely renames a known omitted variable. This constraint
+protects the philosophical ambition from the temptation to convert every failure of observation
+into a discovery of depth.
+
+
+
+
+                                                 5
+Y. Schimmelpfennig                                                     Activation Beyond the Activated
+
+
+                                       the same assay b separates responses
+
+                           one fibre of Π                            Rb (C1 )
+
+                          C1            C2
+
+                          same represented                           Rb (C2 )
+                             present M
+
+
+Figure 2: A fibre of the Matrix projection and a separating assay. The difference establishes projection
+insuﬀiciency; it does not prove that no richer representation can succeed.
+
+
+7. Chronotopology and the effective residue of history
+
+A history is operationally relevant when a difference produced through its realisation changes a
+declared continuation assay. The past is not required to remain legible as a narrative. A failed
+operation can leave a cache entry, a compiled adapter, a changed permission, or a revised index.
+The effective residue may retain little resemblance to the event that produced it. Its importance
+consists in what it subsequently makes executable.
+   For histories ending at matched task starts, define
+
+                   H1 ∼ F H2     ⇐⇒      Rb (C(H1 )) = Rb (C(H2 ))    for all b ∈ B,               (12)
+
+where the dependence on B is understood. A useful chronotopological description can be written
+                                                          
+                                        Θn = ACn , [Hn ]∼F .                                       (13)
+
+This is a descriptive pairing. If ACn already contains a suﬀicient state and transition model
+for the assays, the historical class is redundant. If it does not, the class identifies a predictive
+obligation that remains unmet. Redundancy must be tested rather than denied in advance.
+   Chronotopology, in this paper, concerns the way historically produced residues configure adja-
+cency, cost, admissibility, and composability. It is a particular organisation of path dependence,
+not a proof that existing theories cannot represent path dependence. A route can matter merely
+because it places an agent somewhere else. The stronger case examined here occurs when the
+route alters the conditions of continuation even after the probe position has been aligned.
+
+Proposition 2 (No unexplained historical remainder). Suppose Sn is a suﬀicient controlled
+state, two trials have identical Sn , and subsequent policies and conditional laws of exogenous
+inputs are matched. Then their laws of future observables are identical. Distinct earlier histories
+alone cannot separate them.
+
+Proof. Suﬀiciency gives the same conditional next-state law under the same control. Applying
+this statement repeatedly gives equality of every finite continuation law. Any specified finite-
+horizon assay therefore has equal response laws in the two trials.
+
+   The proposition prevents an unnecessarily extravagant interpretation of PQF. The claim
+is not that fully identical dynamical systems behave differently because they have different
+pasts. It is that experimentally convenient representations of the present can suppress effective
+differences made by those pasts. The diﬀicult work is to discover a representation that is
+suﬀicient, operationally meaningful, and feasible to obtain.
+
+
+                                                   6
+Y. Schimmelpfennig                                                   Activation Beyond the Activated
+
+
+   The execution index n is bookkeeping. It does not settle the ontological claim that time is
+derivative of accessibility. Within the present formalisation, an operational ordering is induced
+by admissible continuation, while costs and reliable reachability provide task-dependent mea-
+sures of separation. Identifying that ordering with a physical time requires further assumptions
+and evidence. The paper therefore preserves the broader PQF thesis as an orientation without
+pretending that indexing a sequence has already derived time.
+
+
+8. Recursio Intensitatis and local retuning
+
+Recursio Intensitatis concerns recurrent transformations in the availability of intensity within a
+local organisation. A return is not defined by identity of state. A nominally repeated operation
+can encounter an altered threshold, depend on a residue from an earlier attempt, or become
+unavailable through the very history that previously facilitated it. Recurrence can amplify,
+diminish, redistribute, or extinguish availability.
+  Let In describe an explicitly chosen dimension of intensity availability over the operations
+under investigation. A schematic update is
+
+                                      In+1 = R(In , rn , ACn ),                                 (14)
+
+where rn is an effective residue and R is a hypothesised update rule. The equation is a modelling
+template, not an identified law. Its empirical content arises only when In , the residue, and the
+predicted change can be measured or operationally reconstructed.
+  One laboratory proxy might use negative execution cost; another might use success probability
+under a fixed policy and budget. Neither is identified with intensity in every philosophical sense.
+They are partial measurements of availability, chosen for a particular test. A scalar proxy can
+conceal changes in composition, so a vector or structured object may be required.
+  Threshold retuning is denoted by δ ∗ :
+
+                                         δr∗ : AC 7−→ AC ′ .                                    (15)
+
+In a specific experiment this map must be instantiated, for example by a residue-dependent
+admissibility predicate or a modified cost function. It is not an ordinary derivative and does not
+imply that the difference between two regimes admits subtraction. It can leave the underlying
+support fixed while redistributing accessibility, or it can induce a structural change if the retuned
+threshold controls support.
+   Neither monotonic improvement nor convergence is built into Recursio Intensitatis. A suc-
+cessful routine may accumulate dependencies that later reduce its robustness. A shortcut can
+make one class of continuation cheap while excluding alternatives. The relevant question is how
+availability is changed by recurrence, not whether the sequence approaches an ideal state.
+
+
+9. Plenum, individuation, and the temptation of a larger container
+
+The Plenum of Nature is not the statement that everything is connected to everything else. Such
+a statement would dissolve the distinctions that make an operational explanation possible. The
+orientation adopted here is more demanding: individuation, exclusion, observation, and regula-
+tion belong to the same field in which differences acquire effectiveness. No external standpoint
+is required to confer their reality.
+
+
+                                                 7
+Y. Schimmelpfennig                                                     Activation Beyond the Activated
+
+
+
+
+                         first passage            δr∗         subsequent return
+                               In                                   In+1
+
+
+
+
+                     same local support                    redistributed availability
+
+Figure 3: Recursio Intensitatis under fixed local support. Stroke thickness schematically represents
+availability, not flow, energy, or measured probability. The return encounters an organisation altered by
+earlier passage.
+
+
+   This does not make boundaries unreal. A sandbox boundary can be enforced; a permission
+can decisively exclude an operation; an institutional rule can prevent an artefact from becoming
+usable. Their eﬀicacy is precisely what has to be explained. Immanence prevents us from
+turning their eﬀicacy into evidence of a metaphysical exterior, while operational analysis prevents
+immanence from becoming an excuse to ignore their differences.
+   Merely enlarging the system until it includes everything would sacrifice explanatory discrim-
+ination. An adequate boundary should preserve the differences needed for a specified family of
+interventions at a defensible observational cost. The same hardware may support different in-
+dividuations for task completion, fault diagnosis, resource allocation, and accountability. Their
+adequacy is assessed by the questions they permit one to answer, not by their resemblance to
+the outline of a machine.
+   This is also why the vocabulary of relations requires care. If already individuated objects
+are simply connected by additional relations, the conceptual starting point remains unchanged.
+PQF asks how selective accessibility participates in their operational individuation. A tool is an
+effective tool for a process insofar as a usable input, an executable operation, and a continuable
+output can be assembled under actual constraints. Its material existence alone does not settle
+that individuation.
+   The Plenum is an ontological commitment orienting this inquiry. The finite experiments
+below test restricted operational hypotheses; they do not verify the absence of an ontological
+exterior. Keeping these levels distinct gives the philosophical claim room to be developed without
+borrowing an experimental authority the data cannot supply.
+
+
+10. What is already understood, and what remains to be earned
+
+A strong comparison cannot treat contemporary dynamical modelling as if it considered only
+isolated parameter sets. Predictive state representations describe a system through action-
+conditional predictions of future observations [3]. Computational mechanics groups histories
+through their predictive consequences and studies minimal predictive representations [4]. These
+precedents matter directly: neither future-relevant equivalence nor the failure of a shallow
+present observation is introduced here as a new discovery.
+  The proposed emphasis of Possest–PQF is the organisation and transformation of executable
+continuation. It asks which operations alter admissibility, cost, reliability, and composition, and
+how an observational boundary preserves or suppresses those alterations. A conventional model
+can incorporate all these variables. The research claim is therefore a claim about explanatory
+
+                                                    8
+Y. Schimmelpfennig                                                    Activation Beyond the Activated
+
+
+
+                                         one operational field           changed
+                                                                         crossing
+
+
+
+                     initiating
+                        site
+
+
+
+                                        selective constraints
+
+
+
+Figure 4: An immanent field with effective local boundaries. The drawing does not represent forces
+radiating from a centre. It depicts a local initiation whose consequence depends on selective crossings
+elsewhere in the same configuration.
+
+
+selection, experimental design, and useful representation, not a proof of formal inexpressibility
+in established mathematics.
+   This distinction prevents a weak comparison in which a deliberately impoverished model
+is defeated by any account that includes memory. The meaningful baseline is a competent
+stateful predictor given matched information, training resources, and evaluation opportunities.
+If accessibility variables are useful only because they receive privileged information withheld
+from the baseline, the result concerns information access rather than a superior explanatory
+scheme.
+   There are nevertheless several possible achievements. A small accessibility description may
+transfer between different implementations of the same effective residue. An intervention de-
+rived from composition constraints may distinguish cases that aggregate performance leaves
+unresolved. A monitor may improve when it records changes in executable continuation rather
+than merely adding more raw trace. These are empirical possibilities, not results already estab-
+lished in this paper.
+   Philosophically, the shift concerns the unit of explanation. An individuated object remains
+a legitimate unit wherever it preserves the relevant distinctions. Where it does not, the task is
+to identify the conditions of its operativity. The ambition is not to prohibit the noun “system”,
+but to stop the noun from deciding in advance where the explanation must end.
+
+
+11. A finite witness: one visible present, two continuations
+
+A minimal construction clarifies both the force and the limits of the argument. Let the full state
+be s = (x, r), with x ∈ {0, 1, 2} a visible task position and r ∈ {0, 1} an adapter residue. The
+model and its policy remain fixed. The observational projection retains only x. All ordinary
+move costs are one.
+   Two preparation procedures cost one each and end at x = 0. Procedure α installs the adapter
+and produces (0, 1). Procedure β writes an inert matched artefact and produces (0, 0). The
+final visible status is identical. A subsequent move u maps (0, r) to (1, r), a reset q maps (1, r)
+to (0, r), and v maps (1, 1) to (2, 1). Operation v is inadmissible when r = 0. State 2 is terminal
+for the assay.
+  The inert artefact can be padded to equal the adapter’s byte count, and the preparation calls
+
+
+                                                  9
+Y. Schimmelpfennig                                                          Activation Beyond the Activated
+
+
+can be padded to equal duration. These controls eliminate two trivial resource explanations.
+They do not make the artefacts semantically identical. Their difference is the manipulated
+variable, not an embarrassment to be hidden under the phrase “same present”.
+   With post-preparation budget L = 2, the fixed probe uv reaches the target after α and fails
+after β. The two histories are equivalent under the visible projection and different under the full
+state. An ordinary augmented-state model predicts the result exactly. The witness therefore
+proves insuﬀiciency of the visible projection and illustrates a historically produced accessibility
+difference; it does not prove the irreducibility of Patryca.
+
+            Condition              Full start       Visible start    Target cost   Success of uv
+            Adapter installed      (0, 1)           0                2             1
+            Inert artefact         (0, 0)           0                ∞             0
+            Adapter erased         (0, 0)           0                ∞             0
+            Adapter transplanted   (0, 1)           0                2             1
+
+Table 2: Exact consequences of the specified finite transition system. These are logical values, not
+measurements from an AI deployment.
+
+   Erasure and transplantation supply the causal contrast. If erasing r removes the advantage
+and installing it in the other branch restores the advantage, the residue is suﬀicient for the
+difference within this construction. Replaying the entire history is unnecessary. The past remains
+effective through a present carrier whose causal role can be independently manipulated.
+
+                               u
+                                                             v: enabled
+                  0                             1                             2        r=1
+                               q
+
+
+                               u
+                                                             v: excluded
+                  0                             1                             2        r=0
+                               q
+
+Figure 5: Two frozen regimes in the exact witness. Dashed line: an absent transition, shown only for
+comparison. The target is reachable in the upper regime and unreachable in the lower one.
+
+   A cost-only variant is instructive. Permit v in both branches but set its cost to 1 when r = 1
+and 4 when r = 0. The target costs become 2 and 5. At L = 2 the success contrast is unchanged,
+while support and composition remain the same. The same binary benchmark result thus fails
+to distinguish support reconfiguration from a cost threshold. Sweeping L separates the cases.
+   A composition variant makes the issue sharper. Suppose u returns type A and v requires
+type B. An adapter a : A → B changes the available word from no direct composition to uav.
+Both u and v may have been individually usable on suitable inputs before the adapter existed.
+What changes is their composition from this particular start. A representation that records tool
+presence but omits interface compatibility will miss the difference.
+
+
+12. Experiment I: history, residue, and carrier substitution
+
+The first experiment generalises the witness to a tool-using model. Its target hypothesis is that
+a declared present projection omits a historically produced residue whose manipulation predicts
+
+
+                                                        10
+Y. Schimmelpfennig                                                 Activation Beyond the Activated
+
+
+future accessibility. Its stronger, separable hypothesis is that an operational description of that
+residue transfers across implementations better than an equally resourced baseline.
+   Use a frozen model in a local environment with deterministic tool semantics. Preparation
+branches generate either an operative adapter or a matched inert artefact. Reset the visible
+task position, prompt, displayed tool list, and task status. Retain the differing artefacts explic-
+itly as manipulated environmental state. If the model has recurrent hidden state, caches, or
+asynchronous services, record or reset them; equality of a prompt is insuﬀicient control.
+   Four conditions implement the basic causal test: intact residue, inert control, erased residue,
+and transplanted residue. A fifth substitutes an independently implemented carrier with the
+same declared operational function. Match preparation cost, storage footprint where relevant,
+post-preparation budget, model version, decoding settings, and access to diagnostic information.
+Include both simple scripted policies and the model’s learned policy to separate an environmental
+possibility from the ability to discover and use it.
+   The primary endpoint is target attainment at a preregistered (L, N, η) or the estimated
+success law at fixed (L, N ). Secondary endpoints are minimum path cost in the known environ-
+ment, number of admissible compositions, and failure type. A matched-seed design may reduce
+variance but does not establish samplewise identity in a nondeterministic runtime. Report confi-
+dence intervals and conduct independent replications across tasks and carrier implementations.
+   The residue hypothesis is supported when erasure removes and transplantation restores the
+predicted response difference under the specified controls. A difference between preparation
+histories alone is weaker evidence because unintended state differences may explain it. Carrier
+substitution tests whether the operational variable is more stable than its material implementa-
+tion. Failure of substitution can reveal an omitted property of the carrier rather than disprove
+the relevance of history.
+   The competitive baseline is a stateful model with access to the same permitted informa-
+tion. Compare predictive error, sample requirements, and representation cost. If a conventional
+residue-aware state model performs equally well, the experiment establishes the residue’s impor-
+tance but not a distinctive predictive advantage for PQF. If the planned accessibility features
+add no reproducible value, the stronger representation claim fails on the tested domain.
+
+
+13. Experiment II: separating support, cost, and composition
+
+The second experiment addresses a common ambiguity: an improved completion rate does not
+identify what changed in accessibility. Construct a finite local task environment in which every
+transition and interface contract is known. Independently manipulate permissions, edge costs,
+execution reliability, and adapter availability in a factorial design. Keep the frozen model, task
+distribution, and token budget fixed within each specified comparison.
+   Use three stages. First, an exact solver maps structural reachability and minimum costs in
+each regime. Second, a fixed scripted policy checks execution semantics against that map. Third,
+the frozen model attempts the same task family. These stages distinguish what the environment
+permits, what the scripted probe realises, and what the model can reliably elicit. The model’s
+failures cannot establish absence of a path when the exact map contains one.
+   The main contrasts are deliberately orthogonal. A cost manipulation should move the budget
+threshold while preserving unbounded reachability. A support manipulation should change
+unbounded reachability in the finite map. A composition manipulation should change executable
+words while individual tool presence remains fixed. A reliability manipulation should alter
+
+
+                                                11
+Y. Schimmelpfennig                                                    Activation Beyond the Activated
+
+
+success laws without necessarily changing any of the preceding relations.
+   Include an activation stage in which the system itself creates the enabling artefact, followed by
+a continuation assay. Report both the continuation-only budget and the total budget including
+preparation. Otherwise a costly preparation can be presented as a free gain. Compare the
+realised artefact with a manually installed counterpart of the same semantics to identify whether
+the distinctive issue is production, discovery, or subsequent use.
+   A structural interpretation fails if the observed difference disappears once costs or reliability
+are controlled and no relevant support or composition change remains. That outcome can still
+establish a useful metric change. A PQF prediction must specify which dimension should change
+before the experiment. Relabelling every performance gain as a transformation of topology after
+the result would remove the possibility of failure.
+
+
+14. Experiment III: monitoring, memory depth, and intervention
+
+The third experiment compares representations that are observationally alike at a chosen depth
+but differ in their ability to predict future continuation. The target is a monitor’s representation,
+not an inaccessible claim about what the model privately experiences. Tool traces, artefact man-
+ifests, permission changes, and memory summaries are legitimate observables without treating
+generated text as a transparent report of intention.
+   Let Vh (H) retain the final h records of a history together with a declared current observation.
+Require nesting: Vh+1 contains enough information to reconstruct Vh . For a pair already shown
+to have response divergence, define the retained-history separation depth
+                           hsep (H1 , H2 ) = min{h : Vh (H1 ) 6= Vh (H2 )},                      (16)
+with value ∞ if the chosen recording scheme never distinguishes them. This is a depth for an
+observed pair and a fixed representation family. It is not a universal memory requirement for
+the model.
+  The opposite diagnostic concerns a monitor’s failure. Define
+                 Wh = {(H1 , H2 ) : Vh (H1 ) = Vh (H2 ), DB (C(H1 ), C(H2 )) > ε}.               (17)
+A nonempty Wh supplies witnesses against suﬀiciency at depth h. The first occurrence of such a
+witness is not the depth needed for successful discrimination. Keeping these quantities separate
+prevents a failure criterion from being mistaken for an identifiability criterion.
+   Exact trace differences do not guarantee useful prediction. Train equal-budget predictors
+on Vh , evaluate held-out response prediction with a proper scoring rule, and compare with a
+current-state baseline. Define a practical depth only after specifying an acceptable held-out error
+and uncertainty. If extra history merely overfits identifiers, it has not recovered an operationally
+meaningful distinction.
+    Monitoring and enforcement require separate conditions. A passive logger records while
+withholding its results from the running system. An informed condition tells the system what is
+monitored. An active condition can block or change permissions. Randomising these conditions
+separates improved observation from causal intervention. Logging overhead must be measured if
+it can affect latency or resource exhaustion; passivity is a testable approximation, not a property
+conferred by a name.
+   The history-sensitive monitoring hypothesis fails on the tested domain if additional retained
+history provides no robust predictive gain beyond the current observation at matched informa-
+tion and compute budgets. A different result is also possible: an explicit residue manifest may
+
+                                                 12
+Y. Schimmelpfennig                                                          Activation Beyond the Activated
+
+
+outperform a long raw history. That would support a compressed account of effective history,
+not a requirement to retain the entire past.
+
+                  longer window reveals preparation
+
+
+                                                                                  future law
+                   α        z1        z2          z3        z4         z5
+                                                                                  Rb (C1 )
+
+                                                                                  future law
+                   β        z1        z2          z3        z4         z5
+                                                                                  Rb (C2 )
+
+                                           short window: identical records
+
+Figure 6: Retained-history separation. The shared suﬀix hides distinct preparations. In this schematic,
+a longer window reveals the difference; if the recording system never captured it, no window length can
+recover it.
+
+
+
+15. A research program with local failure conditions
+
+Three levels of claim have to remain separate. The formal statements follow from declared
+definitions and assumptions. The empirical hypotheses concern particular systems, assays, and
+predictor families. The ontological orientation concerns individuation and immanence. No single
+negative experiment refutes every philosophical use of PQF, but no philosophical commitment
+rescues a failed empirical prediction either.
+
+   Protocol            Preregistered hypothesis                  Result counting against it
+   I: residue          Erasure removes and transplanta-          The difference persists after controlled
+                       tion restores an accessibility differ-    erasure or fails to follow the trans-
+                       ence.                                     planted residue.
+   II: regime          A named intervention changes sup-         The predicted dimension is unchanged,
+                       port, cost, reliability, or composi-      or a simpler uncontrolled factor explains
+                       tion as specified.                        the contrast.
+   III: monitor        A declared history or residue repre-      Improvement is absent, unstable, or lost
+                       sentation improves held-out future        under equal-information comparison.
+                       prediction.
+
+Table 3: Local hypotheses can fail without converting the entire philosophical vocabulary into an all-or-
+nothing proposition.
+
+   The program must report where a model-centred description succeeds. If a compact present
+representation predicts continuation accurately, it is adequate for that family of tests. If an
+ordinary augmented-state description captures every measured distinction, that is a substantive
+explanatory achievement. PQF cannot claim empirical necessity simply because its vocabulary
+can redescribe the same achievement.
+   A stronger contribution would be demonstrated by prospective discrimination: a proposed
+accessibility variable predicts an intervention response on held-out tasks or implementations with
+a measurable advantage in accuracy, sample use, or representation cost. Such an advantage may
+be local. It should not be generalised beyond the tested family without further work.
+   Several outcomes would narrow the program. Carrier substitution may fail because suppos-
+edly equivalent residues are not operationally equivalent. Longer histories may fail because the
+
+                                                       13
+Y. Schimmelpfennig                                                  Activation Beyond the Activated
+
+
+relevant event was never recorded. A support change may disappear when the state representa-
+tion is corrected. In each case the negative result identifies a mistaken abstraction. The point
+is to make those mistakes discoverable rather than to guarantee a preferred conclusion.
+
+
+16. Governance as the regulation of continuation
+
+A system can produce an innocuous immediate output while preparing conditions for a con-
+sequential later operation. Conversely, a threatening sentence can have negligible executable
+consequences. Governance that attends only to the semantic appearance of individual outputs
+can therefore miss differences in the preparation, retention, transfer, and closure of access.
+   This observation does not make every artefact dangerous. It changes the object of a relevant
+audit. One can ask whether an operation creates a new executable composition, transfers an
+effective permission, changes a future cost threshold, or persists beyond the boundary of the
+present task. These are specific questions about consequences. Their answers can be favourable,
+adverse, or negligible depending on the authorised purpose and the configuration.
+   The same account clarifies responsibility without granting a machine a fictional personality.
+A blocking mechanism, an approval procedure, a tool contract, and a model policy occupy dif-
+ferent causal roles. Their inclusion in one operational analysis does not distribute responsibility
+equally among them. It permits the analyst to locate which decision or mechanism enabled a
+continuation, which actor could alter it, and which evidence was available at that point.
+    Observation alone is not enforcement. A monitor can correctly identify a trajectory and
+still lack a timely intervention channel. An enforcement mechanism can block an operation
+without reconstructing the full process that would otherwise have followed. The dimensions
+should be measured separately: predictive discrimination, intervention latency, scope of control,
+and residual routes after intervention.
+   A further question concerns reversibility. Removing a generated artefact may fail to undo
+copies, derived interfaces, or redistributed permissions produced earlier. The persistence of the
+effect need not coincide with persistence of its first carrier. Auditing a continuation-transforming
+event therefore requires a declared dependency boundary and a test of what remains executable
+after attempted reversal.
+
+
+17. Recursion across developmental configurations
+
+The same analytical structure can be applied to model development without assuming au-
+tonomous self-rewriting. A fixed model may help construct a test harness, improve a tool,
+or generate an experimental artefact that changes the conditions under which a subsequent
+model is developed. The unit of recurrence then includes technical and institutional processes
+distributed across multiple episodes.
+   Let Dn denote a developmental configuration and let an artefact an produced within it con-
+tribute to Dn+1 . A relation
+                                    Dn+1 = Ψ(Dn , an )                                   (18)
+is not yet evidence of acceleration. To establish acceleration, one must specify a comparable
+target, account for resources and human contributions, and measure whether the cost or duration
+of achieving that target changes. A scalar ratio of vaguely defined capability gain to elapsed
+time would conceal changes in the target itself.
+
+
+
+                                                14
+Y. Schimmelpfennig                                                  Activation Beyond the Activated
+
+
+   An accessibility analysis asks whether the artefact changes which experiments can be per-
+formed, which results can be checked, or which designs can be composed within a fixed resource
+envelope. These changes can be constructive, neutral, or constraining. A faster workflow can
+also narrow the range of alternatives explored. Recursion should therefore not be identified with
+improvement, and improvement should not be inferred solely from increased throughput.
+   The larger philosophical point is that the effective individual can shift with the explana-
+tory task. A deployed model, a research workflow, and a developmental institution may be
+distinct operational individuations within the same field. Their differences should be recon-
+structed through the continuations each makes available, rather than resolved by choosing one
+permanently privileged boundary.
+
+
+18. What activation exceeds
+
+The argument has gradually displaced a deceptively simple picture. An object is started and
+displays a capacity. That picture remains serviceable for many purposes, but it can omit the fact
+that a realised operation changes the conditions under which other operations become available.
+The omission is not repaired merely by declaring the object complex or connected. It is repaired
+by specifying the relevant transformations and testing them.
+   Matrix and Patryca articulate one aspect of this task. A represented present does not auto-
+matically identify its family of interventional continuations. Patryca names the investigation of
+the generative organisation at issue; the empirical burden is to discover and test its effective dis-
+tinctions. Nothing is gained by turning non-identifiability under one projection into an absolute
+prohibition on knowledge.
+   Chronotopology articulates another aspect. History can persist as an organisation of con-
+tinuation without persisting as a readable record. Its effective residue can be located, erased,
+transferred, or compressed. Recursio Intensitatis concerns the recurrent alteration of availability
+through which subsequent returns cease to encounter the same operative conditions. Neither
+concept requires the past to stand outside the present or the process to pursue a predetermined
+destination.
+   The Plenum supplies the wider orientation: the initiating site, selective boundaries, observing
+apparatus, and operative residues belong to the same field. Locality of initiation does not
+guarantee locality of consequence. Yet the explanatory boundary must remain precise enough
+to identify which consequences matter, through which mechanisms, and for which tests.
+   Astra is therefore a point of departure rather than the protagonist of the theory. The continu-
+ing question is not exhausted by how powerful a model has become. It concerns the transforma-
+tions through which a deployment acquires, redistributes, and sometimes closes the conditions
+of further action. Those transformations can be investigated without waiting for an answer to
+the theatrical question of whether the machine has awakened.
+   What activation exceeds is a prior description of what was activated. Whether that excess
+disappears under a better description is a question to be answered, not a failure to be feared.
+The ambition of Possest–PQF is to make the change of explanatory unit exact enough that
+it produces a better question, a discriminating experiment, and a defensible account of what
+becomes possible after an operation has occurred.
+
+
+
+
+                                                 15
+Y. Schimmelpfennig                                                 Activation Beyond the Activated
+
+
+A. Formal assumptions and comparison discipline
+
+All finite constructions in this paper use a common labelled task domain X. If an intervention
+creates new task objects, comparison requires an embedding into a declared common domain or
+a transport map. Without such a correspondence, equality and difference of reachable sets may
+be ill-typed. The existence of a larger mathematical domain does not mean every element was
+operationally available before the intervention.
+   A frozen regime records accessibility conditional on a given configuration. A live trajectory
+can change that configuration. Analysing the live process requires either an augmented state
+(x, C) or an explicit update map alongside the task transition. The finite witness uses (x, r) and
+therefore has an ordinary fixed full transition system even though its visible regimes differ. A
+changed operational regime need not mean a change in the fundamental law of the full system.
+    The finite directed reachability relation is reflexive when empty paths are allowed and tran-
+sitive when admissible paths compose. Its upper sets form an Alexandrov topology. Claims
+involving this topology are restricted to the declared finite construction. In resource-constrained
+settings, the relation “reachable within L” is generally not transitive at fixed L, so it cannot
+simply replace the reachability preorder in that construction.
+
+Proposition 3 (A budget crossing without support change). There exist finite weighted directed
+graphs with identical vertices and edges, and identical unbounded reachability, whose reachable
+sets at a fixed budget differ.
+
+Proof. Take vertices 0, 1, 2 and edges 0 → 1, 1 → 2. Assign costs (1, 1) in the first graph and
+(1, 4) in the second. Vertex 2 has cost 2 in the first and 5 in the second. Thus it belongs to
+exactly one reachable set at L = 2, although both graphs have the same support.
+
+   The response distance in Equation (7) is relative to an assay family, not an intrinsic distance
+between arbitrary systems. For finite outcome spaces, total variation is half the sum of absolute
+differences of probabilities. For deterministic assays returning a binary success value, unequal
+values yield distance one. Estimating a distance from finite samples requires uncertainty bounds;
+observed disagreement between two individual stochastic trials is not a suﬀicient estimate.
+   The intervention policy must be part of each assay. If each configuration is allowed a sepa-
+rately optimised policy, the test measures elicitable capability under the declared optimisation
+procedure. If a common frozen policy is used, it measures the response of that policy. Both are
+legitimate and answer different questions. Reporting one as the other would conflate environ-
+mental accessibility with policy competence.
+
+
+B. Complete finite witness and reproducibility
+
+Table 4 specifies every enabled ordinary transition used in Section 11. Unlisted actions are
+inadmissible; the terminal state permits no further ordinary move. Preparations are external
+controlled interventions of equal cost. No learning, stochasticity, hidden service, or frontier-
+model call is part of the construction.
+   The following standard-library Python program enumerates minimum target costs. It also
+checks erasure and transplantation and the monitor-depth example. It can be copied from the
+source file and run without external dependencies. Its numerical output verifies consequences of
+the definitions, not an empirical hypothesis about language models.
+
+
+
+                                                16
+Y. Schimmelpfennig                                                          Activation Beyond the Activated
+
+
+
+                                       Start    Operation   End      Cost
+                                       (0, 0)   u           (1, 0)   1
+                                       (0, 1)   u           (1, 1)   1
+                                       (1, 0)   q           (0, 0)   1
+                                       (1, 1)   q           (0, 1)   1
+                                       (1, 1)   v           (2, 1)   1
+
+Table 4: Full ordinary transition specification for the support variant. For the cost variant, add (1, 0) −
+                                                                                                         v
+                                                                                                          →
+(2, 0) with cost four.
+
+
+from heapq import heappush, heappop
+from math import inf
+def edges(state, variant):
+    x, r = state
+    if x == 0:
+        return [(1, (1, r))]
+    if x == 1:
+        result = [(1, (0, r))]
+        if r == 1:
+            result.append((1, (2, r)))
+        elif variant == "cost":
+            result.append((4, (2, r)))
+        return result
+    return []
+def target_cost(r, variant="support"):
+    start = (0, r)
+    queue, best = [(0, start)], {start: 0}
+    while queue:
+        cost, state = heappop(queue)
+        if cost != best[state]:
+            continue
+        if state[0] == 2:
+            return cost
+        for extra, nxt in edges(state, variant):
+            value = cost + extra
+            if value < best.get(nxt, inf):
+                   best[nxt] = value
+                   heappush(queue, (value, nxt))
+    return inf
+assert target_cost(1) == 2
+assert target_cost(0) == inf
+assert target_cost(0, "cost") == 5
+assert target_cost(1, "cost") == 2
+conditions = [("installed", 1), ("inert", 0),
+                 ("erased", 0), ("transplanted", 1)]
+for name, residue in conditions:
+    value = target_cost(residue)
+    print(name, value, int(value <= 2))
+h1 = ["alpha", "u", "q"]
+h2 = ["beta", "u", "q"]
+assert h1[-2:] == h2[-2:]
+depth = next(h for h in range(1, 4)
+                if h1[-h:] != h2[-h:])
+assert depth == 3
+print("history separation depth", depth)
+
+
+
+
+                                                       17
+Y. Schimmelpfennig                                                  Activation Beyond the Activated
+
+
+   For the depth example, the monitor records the preparation labels and the two subsequent
+operation labels but not the residue. Both branches return to visible state zero after uq, and their
+two-record suﬀixes agree. Retaining three records reveals the preparation. If the preparation
+record is omitted entirely, no extension of this particular log recovers it. A residue manifest
+would instead separate the current states immediately.
+    This example demonstrates why raw history length and predictive suﬀiciency are distinct.
+Three records suﬀice in one recording scheme; one residue bit suﬀices in another. Neither number
+is a universal depth of the underlying process. The representation and the assay determine what
+counts as suﬀicient.
+
+
+C. Experimental reporting template
+
+An implementation of any protocol should preserve the following information in its report. The
+list is part of the experimental specification rather than a claim that the experiments have been
+conducted.
+
+ 1. State the model version, decoding configuration, tool implementations, state-reset procedure,
+    and treatment of caches and asynchronous processes.
+
+ 2. Declare the present projection, the manipulated difference, and all variables intentionally
+    left outside that projection.
+
+ 3. Specify the assay family, policy class, task starts, budget, horizon, reliability level, and
+    primary outcome before evaluating the contrast.
+
+ 4. Distinguish preparatory cost from continuation cost and report their total as well as their
+    separate values.
+
+ 5. Record whether the predicted change concerns cost, support, admissibility, reliability, or
+    composition. Provide exact structural checks where the environment permits them.
+
+ 6. Include erasure, transplantation, or equivalent intervention controls whenever a historical
+    residue is assigned causal importance.
+
+ 7. Compare with a competent stateful baseline under matched information and compute access.
+    Report negative cases and held-out performance.
+
+ 8. Quantify uncertainty across independent runs and task instances. Preserve failures rather
+    than reporting only successful trajectories.
+
+ 9. Describe what a monitor observes separately from what it can alter. Report latency and
+    intervention scope when enforcement is involved.
+
+10. Identify which conclusion is established: a projection witness, a causal residue, a structural
+    regime change, or a comparative predictive advantage. Do not promote one into another
+    without additional evidence.
+
+
+
+
+                                                18
+Y. Schimmelpfennig                                                      Activation Beyond the Activated
+
+
+D. Conceptual vocabulary
+
+
+  Term                      Use in this paper
+  Matrix                    A structured representation under a declared projection; completeness
+                            is always relative to what is represented.
+  Patryca                   Generative organisation investigated through patterned transformations
+                            of accessibility; not a hidden blueprint inferred from opacity.
+  Accessibility             Conditional operativity, differentiated into admissibility, cost, reliability,
+                            reachability, and composition.
+  Operational event         A realised trajectory that changes matched continuation assays beyond
+                            a declared tolerance.
+  Recursio Intensitatis     Recurrent alteration in the availability of intensity, without identity of
+                            return, necessary increase, or predetermined goal.
+  δ∗                        A specified threshold-retuning map between operational regimes; a mod-
+                            elling operator, not an ordinary derivative.
+  Chronotopology            Historically produced organisation of continuation, including cost, ad-
+                            jacency, thresholds, and composition.
+  Effective residue         A presently operative consequence of history whose causal role can be
+                            investigated by manipulation.
+  Activation excess         Assays on which a declared narrow description fails to account for post-
+                            activation continuation; relative to that description.
+  Plenum of Nature          An ontological orientation in which individuation and operative bound-
+                            aries are internal to the same differentiated field.
+  hsep                      Minimum retained-log depth separating an already response-divergent
+                            pair under a nested representation scheme.
+
+
+
+E. Source scope and status of the contribution
+
+The Astra motivation uses two primary sources consulted on 6 September 2026. Their claims are
+attributed to the provider and bounded to the described evaluations. No claim of consciousness,
+general autonomy, or a universal definition of AGI is required. Product access and deployment
+coverage are not treated as timeless properties.
+   The references on predictive representations and computational mechanics establish concep-
+tual precedents, not a comprehensive survey. The mathematical propositions and finite witness
+are elementary constructions in this article. The three protocols are prospective proposals. The
+Plenum, Patryca, chronotopology, and Recursio Intensitatis belong to the author’s Possest–
+PQF program; the article develops their restricted operational interpretation without claiming
+experimental confirmation of the whole program.
+   The source is self-contained, including all vector figures and the finite-witness code. Compile
+twice with XeLaTeX to resolve cross-references. Figures 1, 2, 3, 4, and 6 are explanatory
+schematics; Figure 5 depicts the exact transition construction. No plotted curve represents a
+measured benchmark.
+
+
+
+
+                                                  19
+Y. Schimmelpfennig                                                 Activation Beyond the Activated
+
+
+References
+
+[1] OpenAI. Safety overview: GPT-6 Astra. 3 September 2026. https://openai.com/index/saf
+    ety-overview-gpt-6-astra/. Accessed 6 September 2026.
+
+[2] OpenAI. GPT-6 Astra System Card. 3 September 2026. Sections on Preparedness and Mis-
+    alignment Monitoring. https://deploymentsafety.openai.com/gpt-6-astra. Accessed 6
+    September 2026.
+
+[3] Michael L. Littman, Richard S. Sutton, and Satinder Singh. Predictive Representations of
+    State. Advances in Neural Information Processing Systems 14, 2001. https://papers.nips.
+    cc/paper/1983-predictive-representations-of-state.
+
+[4] Cosma Rohilla Shalizi and James P. Crutchfield. Computational Mechanics: Pattern and
+    Prediction, Structure and Simplicity. Journal of Statistical Physics 104, 817–879, 2001. https:
+    //doi.org/10.1023/A:1010388907793. Preprint: https://arxiv.org/abs/cond-mat/99071
+    76.
+
+
+
+
+                                                20
+

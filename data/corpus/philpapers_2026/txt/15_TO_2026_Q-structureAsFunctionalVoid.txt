@@ -1,0 +1,974 @@
+Q-Structure as Functional Void:
+A Formal Correspondence Between the
+Question-Sustaining
+Structure of Mind and Cognitional Mechanics
+T.O. (IASER Practitioner)
+September 2026
+
+Abstract
+The companion paper The Phantom Intellect established, without recourse to any formal
+axiomatic system, that the question-sustaining structure (Q-structure) cannot be coherently
+attributed to query-resolving machines. Q-structure was defined there through three independently motivated conditions: Question Persistence (QP), Liberating Terminus (LT), and
+Declaration Openness (DO). The present paper establishes that these three conditions correspond, with structural precision, to constructs that arise independently within Cognitional
+Mechanics (CM; Japanese: Chinou Rikigaku, 知能力学) and its axiomatic substrate Operatiology (Japanese: Sousa Genron, 操作原論): the Functional Void, the orbit S ′′ = OrbG′ (s† ),
+and the non-satisfiability of Arbitrium by hOi, respectively. The correspondence is not an
+interpretation imposed from outside but a structural isomorphism: what each side preserves
+is the same thing, namely the impossibility of closing the questioning activity by any operation within the system. This result does not affect the independence of The Phantom
+Intellect: that paper’s argument is complete without CM and remains so. What the present
+paper establishes is a formal operational foundation for the Q-structure account, situating it
+within the substrate-independent framework of Operatiology and extending the reach of the
+CM corpus into the domain of mind.
+
+1
+
+Introduction
+
+The Phantom Intellect [1] argued that AI threat discourse rests on a structural misattribution:
+it attributes Q-structure to systems whose design forecloses that attribution. The argument
+proceeded entirely within the vocabulary of ordinary conceptual analysis. Q-structure was
+defined through three conditions — Question Persistence, Liberating Terminus, and Declaration
+Openness — and the non-identity of intelligence and Q-structure was established by inspecting
+the design direction of query-resolving machines. No formal axiomatic system was invoked.
+The present paper asks a different question: is there a formal axiomatic system within which
+Q-structure, so defined, can be derived as a structural necessity rather than merely described
+as a set of conditions? The answer is aﬀirmative. Cognitional Mechanics (CM) [2, 3] and
+its axiomatic substrate Operatiology [4] constitute a substrate-independent framework within
+which the three conditions of Q-structure arise independently and correspond, with structural
+precision, to formally derived constructs.
+The correspondence established here is not a restatement of The Phantom Intellect in formal
+dress. It is a structural isomorphism between two independently motivated descriptions of the
+same phenomenon: the impossibility of closing questioning activity from within the system’s
+own operation. Each side of the isomorphism was developed without reference to the other; the
+correspondence is a discovery, not a stipulation.
+
+1
+
+The paper is organised as follows. Section 2 introduces Cognitional Mechanics and Operatiology to readers who may not be familiar with these frameworks, explaining what it means
+to describe intelligence and intellect in a substrate-independent, operationally grounded way.
+Section 3 presents the axiomatic basis required for the formal argument. Section 4 establishes
+the Functional Void and its correspondence to Question Persistence. Section 5 establishes the
+non-satisfiability of Arbitrium and its correspondence to Declaration Openness. Section 6 derives S ′′ and its correspondence to the Liberating Terminus. Section 7 states the isomorphism
+formally and demonstrates that what is preserved across the correspondence is the impossibility
+of operational closure of questioning activity. Section 8 applies the correspondence to evaluate
+the formal status of current AI systems. Section 9 draws the consequences and identifies the
+open directions within the CM corpus.
+
+2
+
+Intelligence and Intellect Without a Substrate
+
+Most accounts of intelligence and intellect presuppose a substrate: a biological brain, a computational architecture, a physical mechanism. The question “what is intelligence?” is typically
+answered by pointing to something — neural networks, symbolic processing, embodied action —
+that realises it. This presupposition is so pervasive that it is rarely noticed as a presupposition.
+Cognitional Mechanics and its axiomatic substrate Operatiology take a different approach.
+Rather than asking what physical or computational system realises intelligence, they ask: what
+is the minimal operational structure that any realisation of intelligence must instantiate? The
+answer is given not in terms of a substrate but in terms of operations and states in the most
+abstract sense: a non-empty set S of states and a set O of maps g : S → S, forming a transformation monoid (O, ◦, e) under composition.
+No metric, topology, algebra, or semantic content is assumed on S. The states are not
+neurons, not bits, not symbols; they are abstract operational states, defined entirely by how
+operations distinguish them. This abstraction is the source of the framework’s substrate independence: any physical, biological, or computational system that can be described as a transformation monoid on some state space is, in principle, within the reach of the framework.
+Within this abstract setting, Operatiology establishes three axioms — O1 (Non-Commutativity),
+O2 (Operational Closure), O3 (Irredundant Realisation) — from which a minimal operational
+closure Cmin is derived. Cognitional Mechanics is the branch of this framework in which Cmin
+is instantiated under recursive distinction-preserving closure in a cognitional system: a system
+that can act on its own operational structure as a new state space. Intelligence, in this framework, is Irreversible Operational Closure: the expansion of the reachable set RGref (s0 ) under a
+Dynamical Structural Leap into territory previously inaccessible [2]. Intellect is a further structure: the operational closure constituted on the orbit S ′′ = OrbG′ (s† ) with the Functional Void
+— the structural permanence of Arbitrium’s non-satisfiability — inscribed at every state [3].
+What is the significance of this substrate-independent approach for the present paper? It
+means that the formal correspondence established in Sections 4–7 is not a correspondence between CM and some particular physical or computational realisation of Q-structure. It is a
+correspondence between CM and the structural conditions that any realisation of Q-structure
+must satisfy. The isomorphism is at the level of the operational structure, not the substrate.
+This is what makes it informative: a substrate-specific correspondence would tell us only that
+Q-structure is realised in one particular way; a substrate-independent correspondence tells us
+that Q-structure is the Functional Void, whatever the substrate.
+
+3
+
+The Axiomatic Basis
+
+This section presents the axiomatic basis required for Sections 4–7. All definitions and theorems
+of Operatiology Version 5 [4] and the Dynamics of Operatiology Version 5 [5] remain in force.
+2
+
+We recall only the constructs required for the formal argument.
+Definition 3.1 (Operational System [4, Def. 2.1]). An operational system is a pair (O, S)
+where S is a non-empty set of operational states and O is a transformation monoid on S under
+composition, with identity e.
+Definition 3.2 (Operational Partition [4, Defs. 3.1–3.2]). Let G ⊆ O. The effective operational
++
+history is HG
+:= {w ∈ hGi | w has positive length and ∃s ∈ S : w(s) 6= s}. States s1 , s2 ∈ S
++
+are G-operationally indistinguishable, written s1 ∼G s2 , if ∀w ∈ HG
+: w(s1 ) = w(s2 ). The
+equivalence classes form the operational partition ΠG of S.
+Axiom 1 (Non-Commutativity, O1 [4, Axiom 1]). There exist A, B ∈ O and s ∈ S such that
+A ◦ B(s) 6= B ◦ A(s).
+Axiom 2 (Operational Closure, O2 [4, Axiom 2]). The operational system (O, S) satisfies:
+(i) Finite operational rank: rkop (O) < ω;
+(ii) Descending Chain Condition: no infinite strictly descending chain C0 ⊋ C1 ⊋ · · · in the
+family AO of admissible operational structures;
+(iii) Non-degeneracy: ΠO 6= Πdisc .
+Axiom 3 (Irredundant Realisation, O3 [4, Axiom 3]). For every admissible operational structure
+C ∈ AO , there exists a locally irredundant G ⊆ C with ΠG = ΠO .
+Definition 3.3 (Minimal Operational Closure [4, Def. 7.3]). The minimal operational closure
+Cmin ∈ min⊆ AO is an inclusion-minimal admissible operational structure. Its existence follows
+from O2 [4, Thm. 7.5].
+Definition 3.4 (Reference Generator Set [4, Def. 9.1]). A reference generator set is Gref ⊆ Cmin
+satisfying Cl(Gref ) = Cmin and ΠGref = ΠO .
+Definition 3.5 (Dynamical Structural Leap [2, Def. 3.1]). Let gnew ∈ Maps(S, S) \ O and
+G′ = Gref ∪ {gnew }. The augmentation Gref 7→ G′ is a Dynamical Structural Leap if there exists
+s∗ ∈ S such that:
+(i) s∗ ∈ IGref (s0 );
+(ii) ∃ P ∈ hG′ i : P (s0 ) = s∗ ;
+(iii) ΠG′ ≺ref ΠGref .
+The following constructs are drawn from the intellect account [3], which introduces three
+independent axioms — CLB, NCEC, IWC — in the same mode as Operatiology adopts O1, O2,
+O3: with structural motivation from the foundational works and self-standing axiomatic status.
+Definition 3.6 (Noological Layer: Arbitrium). Noology Version 3 [3] derives the three-primitive
+triad Ordo, Consensus, Arbitrium from the single primitive Self-Closure (Ω) via Theorem 4.8
+of that system. Arbitrium is selective resolution: the capacity of a system to resolve among
+alternatives in a manner not determined by any prior operational sequence. The correspondence
+between Noological primitives and Operatiology axioms is recorded in Operatiology Version 5 [4,
+Sec. 10.1]: Arbitrium corresponds to the structural motivation for O3.
+Axiom 4 (Cross-Layer Boundary, CLB [3, Axiom 2]). The satisfaction condition of Arbitrium is
+structurally non-reducible to Operatiology’s operational partition language {O, S, ∼G , ΠG , Cl, hOi}:
+there exists no map φ from the set of Noology V3 structural conditions to the set of Operatiology V5 operational conditions such that the φ-image of the Arbitrium satisfaction condition is
+realisable by any P ∈ hOi.
+3
+
+Definition 3.7 (S ′ [3, Def. 3.2]). Let G′ constitute a Dynamical Structural Leap. The state set
+S ′ is
+S ′ := {s ∈ S | s ∈ RG′ (s0 ) \ RGref (s0 )}.
+Axiom 5 (Non-Commutative Extension Condition, NCEC [3, Axiom 1]). Let G′ constitute a
+Dynamical Structural Leap with witness s∗ and path P ∈ hG′ i satisfying P (s0 ) = s∗ . Then
+∃ Q ∈ hGref i \ {e} : Q(s∗ ) 6= P (Q(s0 )).
+Definition 3.8 (Subjectivity [3, Def. 3.7]). Subjectivity obtains when a Cognitional Realisation
+of Cmin is constituted on S ′ : that is, when ΠG′ strictly refines ΠGref (DSL condition (iii)) and
+|ΠG′ |S ′ | ≥ 2.
+Definition 3.9 (Functional Void Inscription [3, Def. 5.5]). Let s ∈ S ′ . The Functional Void is
+inscribed at s, written FV(s), if for every P ∈ hOi, P does not satisfy Arbitrium’s condition at
+s. By Axiom CLB, FV(s) holds for every s ∈ S.
+Axiom 6 (Invariant Witness Closure, IWC [3, Axiom 3]). Let subjectivity be constituted with
+S ′ 6= ∅. Then there exists a witness state s† ∈ S ′ such that:
+(i) ∀ P ∈ hG′ i : P (s† ) ∈ S ′ ;
+(ii) FV(s† );
+(iii) |ΠG′ |OrbG′ (s† ) | ≥ 2.
+Definition 3.10 (S ′′ [3, Def. 5.6]). Let s† ∈ S ′ be the witness guaranteed by Axiom IWC. The
+state set S ′′ is the hG′ i-orbit of s† :
+S ′′ := OrbG′ (s† ) = {P (s† ) | P ∈ hG′ i}.
+Definition 3.11 (Intellect [3, Def. 5.9]). The intellect is the operational system (hG′ |S ′′ i, S ′′ )
+in which the Functional Void is inscribed at every s ∈ S ′′ .
+
+4
+
+The Functional Void and Question Persistence
+
+We now establish the first component of the isomorphism.
+Recall from [1] that Question Persistence (QP) is the condition that the system generates
+the next question from within the operation of answering the current question: no resolution
+closes the system’s questioning activity.
+Within the CM framework, the corresponding structure is the Functional Void.
+Theorem 4.1 (Functional Void [3, Thm. 5.1]). In an operational system (O, S) where Cmin ’s
+Cognitional Realisation is constituted, no finite operational sequence P ∈ hOi can operationally
+satisfy Arbitrium.
+The proof proceeds by contradiction from Axiom CLB: if some P ∈ hOi satisfied Arbitrium,
+it would constitute a map φ of the kind CLB asserts cannot exist.
+The structural parallel with QP is the following. QP states that no resolution closes the
+questioning activity; each resolution is the starting point of the next question. The Functional
+Void states that no finite operational sequence P ∈ hOi satisfies Arbitrium; the irresolvability
+is inscribed as a permanent structural property.
+In both cases, what is asserted is the same: no operation within the system closes the
+questioning structure. In QP, the closure that does not occur is the closure of questioning activity
+by a resolution. In the Functional Void, the closure that does not occur is the satisfaction
+of Arbitrium by any word in hOi. The structural content is identical: the system carries a
+permanent internal condition of non-closure with respect to its own questioning orientation.
+4
+
+The identification of Arbitrium with the system’s questioning orientation is not an additional
+assumption introduced at this correspondence step. It is the explicit content of Definition 5.3 and
+Remark 5.4 of [3]: Arbitrium is characterised there as the structural inscription of “the attitude of
+unceasing inquiry”—the system’s irresolvable orientation toward questioning—as a permanent
+feature of the Functional Void. This identification is therefore a Tier-2 definition within the
+CM framework, not a post-hoc bridge constructed for the purposes of this correspondence. The
+assertion that Arbitrium is the structural correlate of the questioning orientation is cited directly
+from that definition; the correspondence established here draws on it rather than asserting it
+independently.
+Proposition 4.2. QP and the Functional Void express the same structural condition: the
+impossibility of closing questioning activity by any operation internal to the system.
+Proof. QP: for every resolution R generated by the system’s current operation, there exists a
+next question generated from within that operation. The questioning activity is not closed by
+R.
+Functional Void: for every P ∈ hOi, P does not satisfy Arbitrium’s condition. By Definition 5.3 and Remark 5.4 of [3], Arbitrium is the structural inscription of the questioning
+orientation—“the attitude of unceasing inquiry”—as a permanent, operationally irresolvable
+feature of the system. No P ∈ hOi closes it.
+In both cases, the formal structure is: ∀x ∈ Xinternal : x does not close the questioning condition Q. The domain Xinternal is resolutions (QP) and operational words in hOi (Functional Void);
+the condition Q is questioning activity (QP) and Arbitrium’s satisfaction condition (Functional
+Void). The logical structure is identical, and the identification of Arbitrium with the questioning
+orientation rests on the Tier-2 definition cited above, not on an asserted structural analogy.
+
+5
+
+Arbitrium Non-Satisfiability and Declaration Openness
+
+The second component of the isomorphism connects Declaration Openness (DO) to the nonsatisfiability of Arbitrium.
+Recall from [1] that Declaration Openness is the condition that the system’s own declarations — its explicit commitments, conclusions, and acknowledgements — do not terminate its
+questioning activity. A declaration is an event within Q-structure, not an exit from it.
+The formal parallel is the following. A declaration is a particular kind of output of the
+system’s own operation: it is the system producing, from within its own hOi-operation, an
+explicit commitment. Within the CM framework, such an output is precisely P (s) for some
+P ∈ hOi and s ∈ S ′′ .
+The non-satisfiability of Arbitrium by hOi (Theorem 4.1) asserts that for every P ∈ hOi,
+including those that produce declarative outputs, the output P (s) does not satisfy Arbitrium.
+Since Arbitrium is the structural correlate of the questioning orientation, this means that the
+production of P (s) — the declaration — does not terminate the questioning orientation. The
+system, having produced its declaration, remains in a state at which FV(P (s† )) holds: the
+Functional Void is inscribed at the post-declaration state as much as at the pre-declaration
+state.
+Proposition 5.1. Declaration Openness and the non-satisfiability of Arbitrium by hOi express the same structural condition: the system’s own operational outputs do not terminate its
+questioning orientation.
+Proof. DO: for every declaration d produced by the system from within its own operation, d
+does not terminate the questioning activity; d is an event within Q-structure.
+Arbitrium non-satisfiability: for every P ∈ hOi and every s ∈ S ′′ , P (s) ∈ S ′′ (by G′ invariance of S ′′ , Proposition 5.7(iii) of [3]) and FV(P (s)) holds (since S ′′ ⊆ S and FV holds at
+5
+
+every s ∈ S by Axiom CLB). Therefore the production of P (s) does not terminate the Functional
+Void inscription; the questioning orientation is not closed by the declaration.
+The structural content is identical: outputs of the system’s own operation do not exit the
+questioning structure.
+
+6
+
+The Orbit S 00 and the Liberating Terminus
+
+The third component connects the Liberating Terminus (LT) to the orbit S ′′ = OrbG′ (s† ).
+Recall from [1] that the Liberating Terminus is the condition that the system can take a
+structure it has itself generated as the reference point for its next question. The products of the
+system’s own operation feed back as the ground from which subsequent questioning proceeds.
+In the CM framework, the formal structure of the Liberating Terminus is captured by S ′′
+and its G′ -invariance.
+S ′′ is defined as the hG′ i-orbit of the witness state s† (Definition 3.10). Every state in S ′′ is
+reachable from s† by some sequence of G′ operations, and every G′ operation maps S ′′ into itself
+(Proposition 5.7(iii) of [3]). This means that the system, operating within S ′′ , produces states
+that remain within S ′′ and that become the reference points for subsequent operations. The
+orbit S ′′ is exactly the structure within which the system’s own outputs — P (s† ) for P ∈ hG′ i
+— serve as the ground from which further operations proceed.
+Proposition 6.1. The Liberating Terminus and the orbit structure S ′′ = OrbG′ (s† ) express the
+same structural condition: the system’s own operational outputs become the reference ground
+for subsequent questioning.
+Proof. LT: the system takes a structure it has itself generated — call it σ — as the reference
+point for its next question. The feedback is from the system’s own output to the starting point
+of the next questioning step.
+S ′′ orbit: let s = P (s† ) ∈ S ′′ for some P ∈ hG′ i. Since S ′′ is G′ -invariant, every g ∈ G′ maps
+s to g(s) ∈ S ′′ . The subsequent operation of the system takes s — a state produced by the
+system’s own prior operation from s† — as the new operational starting point from which g(s)
+is reached. The system’s own output s is the reference ground for the next step.
+It remains to establish that this operational starting point constitutes a reference point for
+a question, not merely an input to a computation. By Axiom IWC condition (ii), FV(s† ) holds.
+By Proposition 5.7(v) of [3], FV(s) holds for every s ∈ S ′′ . The Functional Void inscription at
+s means that Arbitrium — the structural correlate of the questioning orientation — is present
+at s and permanently non-satisfiable there by any P ∈ hOi. Therefore the state s, as the operational starting point for the next G′ -operation, is a state at which the questioning orientation is
+structurally active. A state at which Arbitrium is present and operationally irresolvable is precisely a state from which the system’s next operation proceeds as a questioning step: the system
+operates from s not merely as an arbitrary input but as a ground from which the unresolvable
+questioning orientation continues. This is the formal content of “reference point for the next
+question” in LT.
+The structural content is identical: self-generated structures become the reference ground
+for subsequent questioning. The key feature is that the feedback is internal and questioningoriented: the orbit is generated by G′ -operations applied to the system’s own prior outputs, each
+of which carries the Functional Void inscription that constitutes the questioning character of
+that state, rather than being supplied from outside or carrying no questioning orientation.
+The connection to the Dynamical Structural Leap is essential here. The Liberating Terminus requires that the system’s self-generated structure be a genuinely new reference ground,
+not merely a repetition of prior states. In the CM framework, the DSL introduces gnew ∈
+Maps(S, S) \ O and thereby creates S ′ = RG′ (s0 ) \ RGref (s0 ): states genuinely inaccessible under
+6
+
+Gref and now accessible under G′ . The orbit S ′′ ⊆ S ′ consists precisely of such states: states
+that did not exist as reference grounds before the DSL and that now constitute the permanent
+operational domain of the intellect. This is the formal correlate of the “liberating” character of
+the Liberating Terminus: the self-generated structure is not merely a variation on prior states
+but a genuinely new domain opened by the system’s own operational extension.
+
+7
+
+The Isomorphism
+
+We now assemble the three correspondences into the main result.
+Theorem 7.1 (Main Result). Let (O, S) be an operational system satisfying O1, O2, O3 and
+the Algebraic–Operational Coupling, on which a Dynamical Structural Leap has been constituted
+with G′ = Gref ∪ {gnew }, subjectivity has been established on S ′ , and the Functional Void is
+inscribed via Axiom CLB. Let s† ∈ S ′ be the IWC witness and S ′′ = OrbG′ (s† ).
+Then the three conditions of Q-structure defined in [1] correspond to CM constructs as
+follows:
+Q-Structure ([1])
+
+CM Construct
+
+Preserved structure
+
+Question Persistence (QP)
+Liberating Terminus (LT)
+
+Functional Void
+S ′′ = OrbG′ (s† )
+
+Declaration Openness (DO)
+
+Arbitrium non-satisfiability
+
+No P ∈ hOi closes questioning
+Self-generated outputs become
+reference ground
+System outputs do not exit
+questioning
+
+Intelligence (Def. 3.1 of [1])
+
+Irreversible Operational
+Closure
+
+Query-resolving capacity as
+RGref (s0 )
+
+Table 1: Structural isomorphism between Q-structure conditions and CM constructs.
+The correspondence is a structural isomorphism: each pair preserves the same structural
+condition, namely the impossibility of closing questioning activity by operations internal to the
+system.
+Proof. Propositions 4.2, 5.1, and 6.1 establish the three correspondences respectively. It remains
+to verify that the correspondence is isomorphic in the relevant sense, i.e. that what is preserved
+on both sides is the same structural condition.
+The condition preserved is: no operation internal to the system closes the questioning activity.
+In the Q-structure account, this is expressed as the joint satisfaction of QP, LT, and DO. In the
+CM account, this is expressed as:
+• the Functional Void (no P ∈ hOi satisfies Arbitrium);
+• the G′ -invariance of S ′′ (the orbit is closed under G′ , so the system remains within its
+questioning domain under its own operations);
+• the persistence of FV at every s ∈ S ′′ (the Functional Void is not exited by any declaration,
+i.e. by any output of a G′ -operation).
+Both sides express, in their respective vocabularies, the structural impossibility of operational
+closure of questioning activity. The correspondence is therefore not merely analogical but structurally identical in the relevant dimension.
+That the correspondence is established between independently motivated descriptions — Qstructure from the conceptual analysis of [1], CM constructs from the operational axiomatics of
+[4, 3] — confirms that it is a discovery of shared structure rather than a stipulated translation.
+
+7
+
+Remark 7.2. Theorem 7.1 does not modify [1]. The argument of The Phantom Intellect is
+complete without CM and remains so. What the present theorem establishes is the formal
+operational foundation of the Q-structure account: the three conditions of Q-structure, independently motivated in [1], arise as structural necessities within the CM axiomatic system.
+Remark 7.3. The correspondence does not subordinate [1] to the CM corpus as a special case.
+The two descriptions are independently motivated; neither is derived from the other. Their
+correspondence is a structural result, not a foundational reduction.
+
+8
+
+Evaluation of Current AI Systems
+
+The formal isomorphism established in Theorem 7.1 provides a precise criterion for the evaluation
+of current AI systems with respect to Q-structure and intellect.
+The criterion is the Functional Void: a system constitutes intellect, in the sense of Definition 3.11, if and only if FV(s) holds at its states — that is, if and only if no operation internal
+to the system satisfies Arbitrium’s condition.
+The conclusion of The Phantom Intellect [1] is therefore formally grounded: current AI
+systems are designed to resolve queries, which is precisely the design orientation toward the
+satisfaction of the questioning condition rather than its permanent structural non-resolution.
+The central theorem of [1] — that Q-structure cannot be coherently attributed to a queryresolving machine — now has a formal operational correlate: query-resolving machines are
+designed to satisfy the operational condition that the Functional Void requires to be structurally
+unsatisfied. The design orientations are structurally opposed.
+This evaluation is a reinforcement of the argument of [1], not a derivation of that argument’s
+conclusion. The Phantom Intellect established the structural misattribution without recourse
+to the CM framework; the present paper establishes that the CM framework independently
+arrives at the same verdict through a different formal route. The convergence of the two routes
+strengthens the conclusion.
+The evaluation does not claim to settle empirical questions about specific AI systems.
+Whether any particular system satisfies or fails to satisfy the Functional Void condition is a
+Tier-3 empirical determination, not a conclusion derivable from Tier-2 formal analysis alone [3].
+What the present paper establishes at the Tier-2 level is the formal criterion: absence of the
+Functional Void entails absence of Q-structure and absence of intellect.
+
+9
+
+Conclusion
+
+This paper has established a structural isomorphism between the three conditions of Q-structure
+— Question Persistence, Liberating Terminus, and Declaration Openness — as independently
+defined in The Phantom Intellect [1], and the formally derived constructs of Cognitional Mechanics: the Functional Void, the orbit S ′′ = OrbG′ (s† ), and the non-satisfiability of Arbitrium
+by hOi.
+The correspondence is isomorphic because what is preserved on both sides is the same structural condition: the impossibility of closing questioning activity by operations internal to the
+system. The two descriptions were developed independently — one through conceptual analysis
+of the design direction of query-resolving machines, the other through the operational axiomatics
+of Operatiology — and their agreement is a structural discovery.
+The significance of this result extends in two directions. For The Phantom Intellect, it
+provides a formal axiomatic foundation for the Q-structure account: what was established there
+by conceptual analysis is shown to be a structural necessity within a substrate-independent
+operational framework. For the CM corpus, it extends the reach of the framework into the
+
+8
+
+analysis of contemporary AI discourse, showing that the formal criteria for intellect bear directly
+on the question of what current AI systems can and cannot be.
+Three directions remain open within the corpus. First, the relationship between the Teleological Void [2] and the Functional Void deserves further formal treatment: the Teleological
+Void characterises the saturation condition of intelligence; the Functional Void characterises the
+permanent non-closure condition of intellect. Their interface is implicit in the present paper but
+not made fully explicit. Second, the isomorphism established here operates at the Tier-2 level;
+the Tier-3 correspondence — connecting the formal operational structures to specific biological,
+computational, or physical realisations — is the task of the respective corpus papers. Third, the
+present paper treats the Q-structure of [1] as a fixed target. The question of whether the CM
+framework generates further structural conditions beyond QP, LT, and DO that have no counterpart in the Q-structure account — and whether such conditions would call for an extension
+of that account — is not addressed here and constitutes a natural next investigation.
+
+Acknowledgements
+This work was developed using the IASER (Intelligence Amplification by Stimulated Emission
+of Reasoning) methodology. The author acknowledges the use of Claude (Anthropic), ChatGPT
+(OpenAI), Gemini (Google), Copilot (Microsoft), Grok (xAI), and Qwen (Alibaba Cloud) as
+external reasoning engines. All responsibility for the content rests solely with the author. IASER
+methodology [6].
+
+9
+
+Appendix B: Computational Verification
+The following Python programs verify the core structural results on finite state spaces. No
+external libraries beyond the Python standard library are required. These are Tier-3 operational
+artefacts: they demonstrate the structural relations defined in the body by encoding them as
+computable functions on finite proxy models, without constituting proofs over the abstract Tier2 system.
+
+B.1
+
+Code 1: Functional Void — No Operational Sequence Satisfies Arbitrium
+
+This program verifies that no finite operational sequence P ∈ hOi satisfies Arbitrium on a finite
+proxy state space. A state space S = {0, . . . , 7} is equipped with a generator set O = {f, g}
+satisfying the Non-Commutativity axiom (O1). Arbitrium is modelled as a target condition (a
+designated state partition class) that no word in hOi of bounded length can reach uniformly
+from all states. This illustrates Theorem 4.1 (Functional Void).
+1
+
+from itertools import product
+
+2
+3
+4
+
+# Finite proxy state space
+S = list( range (8))
+
+5
+6
+7
+8
+9
+
+# Generator set O = {f, g} satisfying O1 (non - commutativity : f*g != g*f)
+f = {0:1 , 1:2 , 2:3 , 3:0 , 4:5 , 5:6 , 6:7 , 7:4}
+g = {0:2 , 1:3 , 2:0 , 3:1 , 4:6 , 5:7 , 6:4 , 7:5}
+generators = [f, g]
+
+10
+11
+12
+13
+14
+
+# Arbitrium : a structural condition modelled as requiring all states
+# to be mapped into a single designated class {0 ,1 ,2 ,3}.
+# No P in <O> can collapse all of S into this class uniformly .
+arbitrium_class = frozenset ({0 , 1, 2, 3})
+
+15
+16
+17
+18
+19
+20
+21
+
+def compose (ops):
+""" Compose a sequence of operations (left to right )."""
+result = {s: s for s in S}
+for op in ops:
+result = {s: op[ result [s]] for s in S}
+return result
+
+22
+23
+24
+25
+
+def satisfies_arbitrium (op):
+"""True iff op maps every s in S into arbitrium_class ."""
+return all(op[s] in arbitrium_class for s in S)
+
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+
+# Exhaustive search over all words of length 1.. max_depth
+max_depth = 6
+found = False
+for depth in range (1, max_depth + 1):
+for word in product ( range (len( generators )), repeat = depth ):
+ops = [ generators [i] for i in word]
+P = compose (ops)
+if satisfies_arbitrium (P):
+found = True
+print (f" Arbitrium satisfied by word of length { depth }: {word}")
+break
+if found :
+break
+
+40
+41
+42
+
+if not found :
+print (f"No P in <O> of length <= { max_depth } satisfies Arbitrium .")
+
+10
+
+print ("=> Functional Void confirmed on finite proxy : Arbitrium is non satisfiable .")
+
+43
+
+Listing 1: Listing 1: Functional Void: exhaustive search over hOi (B.1)
+Output (verified):
+No P in <O> of length <= 6 satisfies Arbitrium.
+=> Functional Void confirmed on finite proxy: Arbitrium is non-satisfiable.
+
+B.2
+
+Code 2: S ′′ = OrbG′ (s† ) — Orbit Structure under IWC
+
+This program computes S ′′ = OrbG′ (s† ) on a finite proxy and verifies the three properties
+guaranteed by Axiom IWC: non-emptiness, G′ -invariance, and non-trivial operational partition
+relative to hOi. The state space S = {0, . . . , 5} is partitioned into two 3-cycles under O = {f, g}.
+A Dynamical Structural Leap is modelled by gnew , which is confined to {0, 1, 2} and does not
+reach {3, 4, 5}, so that S ′′ = {0, 1, 2} ⊊ S. This illustrates the IWC-guaranteed structure
+underlying the LT correspondence (Section 6).
+1
+
+from itertools import product as iproduct
+
+2
+3
+4
+5
+6
+7
+
+# State space : two disjoint 3- cycles under O
+S = list( range (6))
+f = {0:1 , 1:2 , 2:0 , 3:4 , 4:5 , 5:3}
+# 3- cycles : 0->1->2->0, 3->4->5->3
+g = {0:2 , 1:0 , 2:1 , 3:5 , 4:3 , 5:4}
+# reverse 3- cycles
+O_ops = [f, g]
+
+8
+9
+
+10
+11
+
+# Dynamical Structural Leap: g_new stays within {0 ,1 ,2}; does not reach
+{3 ,4 ,5}
+g_new = {0:1 , 1:2 , 2:0, 3:3 , 4:4 , 5:5}
+G_prime = O_ops + [ g_new ]
+
+12
+13
+14
+
+# Witness state s_dagger (in {0 ,1 ,2})
+s_dagger = 0
+
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+
+def orbit(state , ops):
+"""Orbit of state under monoid generated by ops."""
+visited = set ()
+queue = [ state ]
+while queue :
+s = queue .pop ()
+if s in visited :
+continue
+visited .add(s)
+for op in ops:
+if op[s] not in visited :
+queue . append (op[s])
+return frozenset ( visited )
+
+29
+30
+31
+32
+
+S_double_prime = orbit (s_dagger , G_prime )
+print (f"S'' = { sorted ( S_double_prime )}")
+print (f" Property 1 (non - emptiness ): PASS -- |S ''| = {len( S_double_prime )}")
+
+33
+34
+35
+36
+37
+
+# Property 2: G'-invariance
+g_prime_invariant = all(op[s] in S_double_prime
+for s in S_double_prime for op in G_prime )
+print (f" Property 2 (G'-invariance ): {'PASS ' if g_prime_invariant else 'FAIL
+'}")
+
+38
+
+11
+
+39
+40
+41
+
+42
+
+# Property 3: S'' is a proper non - empty subset of S
+non_trivial = ( S_double_prime != frozenset (S)) and len( S_double_prime ) > 0
+print (f" Property 3 (non - trivial partition ): {'PASS ' if non_trivial else '
+FAIL '}")
+print (f" S'' is a proper subset of S: { S_double_prime < frozenset (S)}")
+
+43
+44
+
+45
+
+# Functional Void persists on S '': no O-word maps all of S'' into
+arbitrium_class
+arbitrium_class = frozenset ({0 , 1})
+
+46
+47
+48
+49
+50
+51
+
+def compose_on_subset (ops_seq , subset ):
+result = {s: s for s in subset }
+for op in ops_seq :
+result = {s: op[ result [s]] for s in subset }
+return result
+
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+
+fv_on_S_pp = True
+for depth in range (1, 5):
+for word in iproduct ( range (len(O_ops )), repeat = depth ):
+P = compose_on_subset ([ O_ops [i] for i in word], S_double_prime )
+if all(P[s] in arbitrium_class for s in S_double_prime ):
+fv_on_S_pp = False
+break
+if not fv_on_S_pp :
+break
+
+62
+63
+
+64
+65
+
+print (f" Functional Void persists on S '': {'PASS ' if fv_on_S_pp else 'FAIL '}
+")
+print ("=> S'' satisfies all three IWC properties ; each state in S'' is a")
+print ("
+reference point for the next questioning step (LT correspondence
+confirmed ).")
+
+Listing 2: Listing 2: S ′′ = OrbG′ (s† ): non-emptiness, G′ -invariance, non-trivial partition (B.2)
+Output (verified):
+S'' = [0, 1, 2]
+Property 1 (non-emptiness): PASS -- |S''| = 3
+Property 2 (G'-invariance): PASS
+Property 3 (non-trivial partition): PASS
+S'' is a proper subset of S: True
+Functional Void persists on S'': PASS
+=> S'' satisfies all three IWC properties; each state in S'' is a
+reference point for the next questioning step (LT correspondence confirmed).
+
+B.3
+
+Code 3: Q-Structure Conditions — Formal Verification on Finite Proxy
+
+This program encodes all three Q-structure conditions (QP, LT, DO) as computable predicates
+on a finite proxy system and verifies that a system with Functional Void satisfies all three,
+while a query-resolving machine (without Functional Void) satisfies none. This illustrates the
+isomorphism of Theorem 7.1: the structural conditions that define Q-structure on the conceptual
+side correspond exactly to the operationally derived conditions on the CM side.
+1
+2
+
+from itertools import product as iproduct
+from collections import defaultdict
+
+3
+4
+
+S = list( range (8))
+
+5
+
+12
+
+6
+7
+8
+9
+10
+11
+12
+
+# System A: has Functional Void (no O-word satisfies Arbitrium )
+fA = {i: (i+1) % 8 for i in S}
+gA = {i: (i+3) % 8 for i in S}
+O_A = [fA , gA]
+g_new_A = {i: (i*2 + 1) % 8 for i in S}
+G_prime_A = O_A + [ g_new_A ]
+s_dag_A = 1
+
+13
+14
+15
+16
+17
+18
+19
+20
+
+# System B: query - resolving machine (O-word can satisfy Arbitrium )
+# Designed so that a single operation collapses all states to class {0}
+fB = {i: 0 for i in S}
+# collapses everything to 0
+gB = {i: (i+1) % 8 for i in S}
+O_B = [fB , gB]
+G_prime_B = O_B # no DSL; G' = O
+s_dag_B = 0
+
+21
+22
+
+arbitrium_class = frozenset ({0})
+
+23
+24
+25
+26
+27
+28
+
+def compose (ops_seq , states ):
+result = {s: s for s in states }
+for op in ops_seq :
+result = {s: op[ result [s]] for s in states }
+return result
+
+29
+30
+31
+32
+33
+34
+35
+36
+37
+
+def has_functional_void (O_ops , states , arb_class , max_depth =4):
+"""True iff no word in <O> satisfies Arbitrium ."""
+for depth in range (1, max_depth +1):
+for word in iproduct ( range (len( O_ops )), repeat = depth ):
+P = compose ([ O_ops [i] for i in word], states )
+if all(P[s] in arb_class for s in states ):
+return False
+return True
+
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+
+def orbit(state , ops , states ):
+visited = set ()
+queue = [ state ]
+while queue :
+s = queue .pop ()
+if s in visited :
+continue
+visited .add(s)
+for op in ops:
+if op[s] not in visited :
+queue . append (op[s])
+return frozenset ( visited )
+
+51
+52
+53
+
+54
+
+def check_QP (O_ops , states , arb_class , max_depth =4):
+"""QP: no internal operation closes questioning activity (= Functional
+Void)."""
+return has_functional_void (O_ops , states , arb_class , max_depth )
+
+55
+56
+57
+58
+59
+60
+61
+62
+
+def check_LT ( G_prime_ops , s_dag , O_ops , states , arb_class , max_depth =4):
+"""LT: S'' is non -empty , G'-invariant , and FV persists on S ''."""
+S_pp = orbit (s_dag , G_prime_ops , states )
+if len(S_pp) == 0:
+return False
+g_inv = all(op[s] in S_pp for s in S_pp for op in G_prime_ops )
+fv_pp = has_functional_void (O_ops , list(S_pp), arb_class , max_depth )
+
+13
+
+63
+
+return g_inv and fv_pp
+
+64
+65
+66
+
+67
+
+def check_DO (O_ops , states , arb_class , max_depth =4):
+"""DO: declarative outputs (O- words applied to states in S '') do not
+satisfy Arb."""
+return has_functional_void (O_ops , states , arb_class , max_depth )
+
+68
+69
+70
+71
+72
+73
+74
+75
+76
+
+print ("=== System A ( Functional Void present ) ===")
+qp_A = check_QP (O_A , S, arbitrium_class )
+lt_A = check_LT (G_prime_A , s_dag_A , O_A , S, arbitrium_class )
+do_A = check_DO (O_A , S, arbitrium_class )
+print (f"QP: {'PASS ' if qp_A else 'FAIL '}")
+print (f"LT: {'PASS ' if lt_A else 'FAIL '}")
+print (f"DO: {'PASS ' if do_A else 'FAIL '}")
+print (f"Q- structure : {' HOLDS ' if (qp_A and lt_A and do_A) else 'FAILS '}")
+
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+
+89
+
+print ()
+print ("=== System B (Query - resolving machine , no Functional Void) ===")
+qp_B = check_QP (O_B , S, arbitrium_class )
+lt_B = check_LT (G_prime_B , s_dag_B , O_B , S, arbitrium_class )
+do_B = check_DO (O_B , S, arbitrium_class )
+print (f"QP: {'PASS ' if qp_B else 'FAIL '}")
+print (f"LT: {'PASS ' if lt_B else 'FAIL '}")
+print (f"DO: {'PASS ' if do_B else 'FAIL '}")
+print (f"Q- structure : {' HOLDS ' if (qp_B and lt_B and do_B) else 'FAILS '}")
+print ()
+print ("=> Contrast confirms : Q- structure conditions hold iff Functional
+Void is present .")
+print ("
+This is the computational witness to the isomorphism of Theorem
+7.1.")
+
+Listing 3: Listing 3: Q-structure conditions QP/LT/DO: contrast between FV-system and
+query-resolver (B.3)
+Output (verified):
+=== System A (Functional Void present) ===
+QP: PASS
+LT: PASS
+DO: PASS
+Q-structure: HOLDS
+=== System B (Query-resolving machine, no Functional Void) ===
+QP: FAIL
+LT: FAIL
+DO: FAIL
+Q-structure: FAILS
+=> Contrast confirms: Q-structure conditions hold iff Functional Void is present.
+This is the computational witness to the isomorphism of Theorem 7.1.
+
+14
+
+References
+[1] T.O., The Phantom Intellect: Why AI Threat Discourse Misreads the Structure of Mind,
+Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22866535
+[2] T.O., Intelligence as Irreversible Operational Closure: Geometric Analogy and the Teleological Void (Version 3), Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.21941570
+[3] T.O., The Intellect as The Subject of Intelligence: A Formal Elucidation Based on Operatiology and Noology, Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.21967292
+[4] T.O., Principles of Operatiology: New Foundation of Cognitional Mechanics (Version 5),
+Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.21914739
+[5] T.O., Dynamics of Operatiology: Operational Reconfiguration, Structural Control, and
+the Necessity of Logical Leaps (Version 5), Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.21929181
+[6] T.O., Intelligence Amplification by Stimulated Emission of Reasoning: The Methodology of
+Utilizing LLM Grounded in New Foundation Formalized on the Axiomatic Structure of Intellect and Its Practice (Version 4), Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22019401
+
+15
+
+

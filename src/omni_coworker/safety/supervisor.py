@@ -53,17 +53,16 @@ def create_supervisor_router():
                     }
                 return {"affect_level": "L0", "turns_recorded": 0, "reasons": []}
             except Exception as e:
-                return {"affect_level": "L0", "reasons": [str(e)]}
+                return {"affect_level": "L0", "reasons": [type(e).__name__]}
 
         return router
-    except Exception as err:
+    except Exception:
         from fastapi import APIRouter
 
-        err_msg = str(err)
         router = APIRouter(tags=["supervisor"])
 
         @router.get("/health")
         def health():
-            return {"status": "unavailable", "error": err_msg}
+            return {"status": "unavailable", "error": "supervisor_init_failed"}
 
         return router

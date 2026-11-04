@@ -184,7 +184,8 @@ def static_files(path: str):
     English: Serves static assets.
     pt-BR: Serve arquivos estáticos.
     """
-    file_path = STATIC_DIR / path
-    if file_path.exists() and file_path.is_file():
+    base_dir = STATIC_DIR.resolve()
+    file_path = (base_dir / path).resolve()
+    if file_path.is_relative_to(base_dir) and file_path.exists() and file_path.is_file():
         return FileResponse(file_path)
     return {"error": "not found"}

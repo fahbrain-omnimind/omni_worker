@@ -1,0 +1,1242 @@
+Ergo
+
+AN OPEN ACCESS
+JOURNAL OF PHILOSOPHY
+
+Phenomenological
+Disjunctivism
+JONATHAN MITCHELL
+
+Cardiff University
+
+Consider two experiences, one a veridical perceptual experience of a black cube in
+front of one, and a matching hallucinatory experience. From the perspective of the
+subject undergoing these experiences they at least can be phenomenologically indistinguishable. Call this the phenomenological indistinguishability claim (PI for short).
+My aim in this paper is to argue for a distinctive view which I call phenomenological
+disjunctivism, drawing on the works of classical phenomenologist Edmund Husserl.
+Phenomenological disjunctivism significantly qualifies the PI claim, and in doing so is
+able to establish, through phenomenological analysis of the relevant experiences, an
+intrinsic difference in kind between veridical perception and (matching) hallucination,
+that is a difference in “essence” purely on phenomenological grounds. Phenomenological disjunctivism accepts that veridical perception and hallucination either are or at
+least can be phenomenologically indistinguishable at a time but argues that due to a
+key difference in the possibilities of fulfilment of their “horizon structure,” they are
+nonetheless phenomenologically distinguishable as fundamentally different types of
+experience over time (i.e., diachronically). This is the key Husserlian insight I will be
+reconstructing and attempting to make sense of in an articulation of phenomenological
+disjunctivism.
+
+1. Introduction: Phenomenological Indistinguishability
+Consider two experiences, one a veridical perceptual experience of a black cube
+in front of one, and a matching hallucinatory experience. From the perspective of
+the subject undergoing these experiences they at least can be phenomenologically
+indistinguishable (the hallucination would be a so-called “philosopher’s hallucination”). In the way it is often put, “from the inside” the subject can’t tell whether
+they are in the good case, that is where perceptual experience succeeds in latching
+on to a mind-independent real object (the physical thing itself), or the bad case,
+that is where the experience seems to latch onto some such real object, but where
+Contact: Jonathan Mitchell <mitchellj11@cardiff.ac.uk>
+
+https://doi.org/10.3998/ergo.10999
+
+1178
+
+Phenomenological Disjunctivism
+
+· 1179
+
+there is in fact no such object. Call this the phenomenological indistinguishability
+claim (the PI claim for short).1
+A significant amount of argumentation and theorising in the philosophy of
+perception—both historically and in contemporary debates—takes its lead from
+the PI claim, either using it as a premise in an argument (or perhaps as a datum
+that needs explaining), or denying a specific metaphysical claim that supposedly
+follows from it. For example consider the classic argument from hallucination
+for indirect realism and the role of the PI claim in it.2 The argument starts with
+the claim that veridical perception and its hallucinatory counterpart at least can
+be phenomenologically indistinguishable “from the inside.” Now given that in
+hallucination a subject seems to be directly aware of something, but cannot be
+directly aware of a real object in their external perceptual environment, then
+we are led to posit some non-normal object of awareness (e.g., an image, “inner
+picture,” sense-datum etc.) as what the subject is directly aware of. Next, we get
+the familiar generalising step: What we are required to posit for hallucination
+(a non-normal object of awareness) is also required to be posited for veridical
+perception, such that even in the good case, that is in which there is some mindindependent real object in the vicinity, so to speak, subjects are never directly aware
+of it. The motivation for this generalising step is, critically, the need to explain
+the truth of the PI claim: What is thought to be required to explain the PI claim
+is the positing of something real that both hallucination and veridical perception
+are related to, a so-called “highest common factor” between the two states. Since
+this highest common factor can’t be a real physical object (because hallucination
+can’t be a relation to something like that), then we are led to posit something
+“mental” or “really immanent to consciousness” (e.g., a real sense-datum, image,
+picture, Fregean sense) that both states are related to.3 The resulting position
+is that perceptual experience, even in good cases, is at best an indirect form of
+awareness of the external world.
+On such views, veridical perception only differs from phenomenologically
+indistinguishable hallucination extrinsically, that is in virtue of the holding of an
+additional contingent non-psychological condition in the “good case,” namely
+a causal relation between the relevant common “internal” referent and some
+external mind-independent object (there of course being no such object and so no
+possibility of some such causal relation obtaining in hallucination). On such views,
+1. A similar claim is also referred to variously as subjective indistinguishability, qualitive
+identity, subjective indiscernibility. I take it that all these terms refer to the same notion. NB:
+claiming that the two experiences are phenomenologically identical is more problematic (and
+arguably false) for reasons we will come to later.
+2. Classic statements of the argument can be found in (Moore 1903; Russell 1912/1997);
+and more recently (Smith 2002: ch.7; Fish 2009: ch.2; Pautz 2021).
+3. See (Smith 2002: ch.7) for this way of framing the argument and the motivation for the
+generalising step.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1180
+
+· Jonathan Mitchell
+
+veridical perception and phenomenologically indistinguishable hallucination
+are intrinsically or essentially identical, that is to say qua experiences they are
+identical or share the same “essence,” or are of the same fundamental kind (I’ll
+use these terms interchangeably throughout).
+Contrastingly, consider disjunctivist theories of perception on which perceptual experiences either involve a relation to a real mind-independent particular
+(in good cases) or in the case of matching hallucination (the bad cases) only seem
+to do so.4 Critical to standard varieties of disjunctivism is the claim, as it is often
+put, that the type of experience a subject enjoys when they are related to a real
+mind-independent particular is simply not the kind of experience a subject can
+have when no such relation obtains (i.e., in cases of hallucination)—that kind of
+experience is simply not “available,” insofar as veridical perception is claimed to
+be constitutively dependent on the existence of the relevant mind-independent
+particular in our perceptual environment (hence the idea that veridical perception is object-dependent or essentially relational).5 As McDowell puts it, “which
+configurations a mind can get itself into is partly determined by which objects
+exist in the world.6 What is of further note, however, is that standard varieties
+of disjunctivism also accept the PI claim. We can put this as follows: Even given
+that veridical perception and hallucination can be phenomenologically indistinguishable, from this it does not follow that they are ontologically or essentially
+identical. Note again here—as with the form of indirect realism above—what is
+of interest is a supposed intrinsic or essential difference (or non-identity) qua the
+experience-types under discussion. In this sense the relevant difference in kind
+posited between veridical perception and matching hallucination turns on more
+than just the extrinsic fact that a non-psychological causal relation obtains in the
+“good case” that doesn’t in the “bad case.”7
+In this context, we have two main options: (1) we take the phenomenology of
+our perceptual experiences as a reliable guide to their essential nature qua kind
+of experience, and given the PI claim, it then seems hard to resist a view on which
+veridical perception and matching hallucination are intrinsically identical types of
+experience. (2) alternatively, we don’t take the phenomenology of perceptual experiences to be a reliable guide to their essential nature qua kind of experience, and
+given the PI claim, seek to establish an essential difference in kind between veridical perception and matching hallucination on non-phenomenological grounds,
+and so are led towards various non-phenomenologically motivated versions of dis4. For the classic statement see (Hinton 1973). See also (Snowdon 1979; 1990; McDowell
+1982; Martin 2004; 2006).
+5. For statements of the object-dependent view see Brewer 2011; Johnston 2004.
+6. McDowell 1986: 139.
+7. It is in this respect that disjunctivists (and indeed “naïve realists”) find themselves in
+opposition to various forms of externalist (causal) representationalism about perception. See,
+for example, the debate between McDowell and Burge in (McDowell 2010; 2013; Burge 2011).
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1181
+
+junctivism: non-phenomenological in the sense that the relevant feature in virtue
+of which veridical perception and hallucination differ essentially and intrinsically
+in kind doesn’t turn on their phenomenology (and, we might add, anything that
+can be gleaned through first-person reflection on that phenomenology).
+My aim in this paper is to argue for a distinctive view which I call phenomenological disjunctivism, drawing on the works of classical phenomenologist Edmund
+Husserl. Phenomenological disjunctivism significantly qualifies the PI claim,
+and in doing so is able to establish, through phenomenological analysis of the
+relevant experiences, an intrinsic difference in kind between veridical perception
+and (matching) hallucination, that is a difference in “essence” purely on phenomenological grounds. It is worth noting that insofar as the PI claim is accepted
+(or at least accepted without qualification) this position would be countersensical:
+We would be claiming to be able to distinguish on phenomenological grounds
+alone two types of perceptual experience that are phenomenologically indistinguishable. So central to the argument will be explaining in what sense the PI
+claim should be qualified. Critical in this respect will be making a distinction
+between phenomenological indistinguishability at a time, and phenomenological
+indistinguishability over time, and so between what we can call synchronic indistinguishability and diachronic indistinguishability. Simply put, phenomenological
+disjunctivism accepts that veridical perception and hallucination either are or at
+least can be phenomenologically indistinguishable at a time but argues that due to
+a key difference in the possibilities of fulfilment of their “horizon structure,” they
+are nonetheless phenomenologically distinguishable as fundamentally different
+types of experience over time (i.e., diachronically)—more on some of these terms of
+art later. This is the key Husserlian insight I will be reconstructing and attempting
+to make sense of in an articulation of phenomenological disjunctivism.
+A few preparatory notes. First, it might be questioned why, even if successful,
+phenomenological disjunctivism would be of general interest to philosophers of
+perception. One key reason is that phenomenological disjunctivism promises to
+provide a detailed account of a central, but often overlooked, “internal” structural
+difference between veridical perception and hallucination, one that is, by the
+phenomenologist’s lights, only revealed in the course of a detailed phenomenological analysis of the relevant experiences (again, what precisely is meant here by
+“phenomenological analysis” will be explained in due course). Insofar as the PI
+claim is accepted without qualification, we will be blind to the possibility of there
+being some such “internal” structural difference, and so stand to miss a critical
+respect in which disjunctivism can avail itself of phenomenological resources to
+motivate its position.8
+8. NB: one recurring challenge for disjunctivism is providing a compelling substantive
+account of hallucination as different in kind from veridical perception (see, for example Johnston
+2004). The phenomenological disjunctivism on offer here does have something substantive to
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1182
+
+· Jonathan Mitchell
+
+A further note on my use of Husserl. My aim here is to reconstruct a certain
+line of thinking found in Husserl to motivate a novel form of disjunctivism. I
+do not claim that the resulting view that is articulated is definitively Husserl’s
+“official” view, although it is doubtless Husserlian in tenor. In this context, it
+would be disingenuous not to draw attention to the fact that there are tendencies
+in Husserl’s philosophy—arguably both methodological and substantive—that
+suggest an account of perceptual experience that is in tension with (if not outright
+conflict with) the phenomenological disjunctivism articulated here.9 Resolving the
+exegetical question concerning Husserl’s putatively official theory of perception
+is of independent interest (or at least is to those who take an interest in Husserl’s
+views), however it will not be my focus here.
+The argument structure of the paper is as follows. §2 draws on a claim made
+by Husserl that perceptual experience can be characterised as presenting its object
+“in person.” Here it is argued that we can make sense of this in terms of the idea
+of the perceived object having a “sense of real existence.” §3 argues that only by
+subjecting this “sense of real existence” to what Husserlian phenomenology calls
+“horizonal analysis” can we come to see how there is a fundamental difference in
+kind between veridical perception and (matching) hallucination. In doing so this
+section provides a detailed account of phenomenological disjunctivism, making
+clear its commitments and implications. Finally, §4 deals with two problems for
+the account provided, specifically in relation to some of the complex modal notions that are in play, arguing that the view has plausible responses to the relevant
+worries (it is also here that I provide more detail on the phenomenological disjunctivist approach to hallucination and compare it with extant approaches). While
+what is offered here is by no means an exhaustive defence of phenomenological
+disjunctivism, the view is presented as a distinctive and plausible way of trying
+to mark out the supposed difference in kind between veridical perception and
+hallucination, and therefore one that should be seen as a live option in continuing
+debates concerning this issue in philosophy of perception.
+
+2. Givenness in Person and “Real Existence”
+To see our way through to phenomenological disjunctivism I start by drawing on
+some materials in Husserl concerning a central feature of perceptual experience
+(throughout I will use perceptual experience to cover both veridical perception
+and hallucination; I will also drop the “matching” qualification on hallucination
+say on this score that can be added to the disjunctivist response to this challenge (see §3 for
+more on this).
+9. For the exegetical case that Husserl can be read as a kind of externalist or disjunctivist
+see Zahavi 2004; Poellner 2007; 2018; Smith 2008. For the alternative “internalist” picture see
+Smith and Macintyre 1982; Føllesdal 1969: 680–687.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1183
+
+and take this as read).
+Husserl insists that a key feature of perceptual experience is that it presents
+the perceived object in propria persona, that is “in person” (also sometimes using
+the phrase “in the flesh”). He writes that “the spatial physical thing which we
+see is, with all its transcendence, still something perceived, given ‘in person’
+in the manner peculiar to consciousness.”10 We might therefore think that this
+phenomenological feature could be that which enables us to distinguish on
+phenomenological grounds between veridical perception and hallucination, such
+that in the good case the object is given in person whereas this isn’t true for
+hallucination. However, Husserl makes it clear that this would be a mistake:
+Thus there stands out in the initial consideration a peculiar character of
+perception which we can express in an intelligible way as follows: The
+object stands in perception as there in the flesh. . . Obviously, the foregoing
+characterization is not to be understood in the sense that there would
+pertain to the essence of every perception as such the existence of the
+perceived Object, the existence of that which stands there in it in the
+mode of presence in the flesh. In that case, talk of a perception whose
+object did not exist would indeed be countersensical; illusory perceptions
+would be unthinkable. It is the essential character of perception to be “consciousness” of the Object’s presence in the flesh, i.e., to be the phenomenon
+of it. To perceive a house means to have the consciousness, to have the
+phenomenon, of a house standing there in the flesh. How matters stand
+with the so-called existence of the house, with the true Being of the house,
+and what this existence means—about all that nothing is said. (Husserl
+1907/1997: §4; see also §5)
+The upshot of this is as follows: The character of presenting its object “in
+person” is a phenomenological feature shared by veridical perception and hallucination. Husserl guards explicitly against a reading of the “in person” character of
+perceptual experience which would necessitate that the phenomenology of “in
+personness” guarantees that the perceived object exists. Husserl confirms this
+in a later text when he writes that “anything physical which is given “in person”
+can be non-existent,” adding in a note “despite its givenness “in person.”11 The
+possibility which is left open here by Husserl is a pre-eminently plausible one:
+something which appears to be given “in person” at a time may turn out to be
+non-existent, such that the relevant “in person” character can be “cancelled out”
+in the future course of experience.
+10. Husserl 1913/1982: §43.
+11. Husserl 1913/1982: §46 (note 228). See also 1907/1997: §84: “Every perceived reality
+(real thing) can perhaps not be, and thereby in principle each and every thing posited in
+perception and also in memory might not be.”
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1184
+
+· Jonathan Mitchell
+
+Now, it is also important to recognise that this “in person” character of
+perceptual experience, the perceptual object being “given in the flesh,” whatever
+its precise character (see below for more on this) is a non-doxastic phenomenal
+feature, manifestly qualifying or “attaching to” the object of perceptual experience.
+Put otherwise, this sense of the perceptual object being given “in person” isn’t
+to be equated with a (presumably conscious) belief in the existence of the object
+(although they usually come together, whereby the latter belief is rationally
+motivated by the aforementioned non-doxastic phenomenal feature). We can see
+this most obviously in cases where the “in person” character persists but any
+belief that the perceptual object really exists is withheld or “cancelled out,” that
+is in cases of unmasked hallucination. Husserl describes such a case to make
+precisely this point:
+If we presentify the example of an unmasked hallucination, then we find
+in place of belief disbelief. Moreover, other examples offer themselves,
+ones in which we are at first perceptually doubtful whether it is a case
+of perception or hallucination. Here both belief and disbelief are lacking,
+and instead of them we have doubt and perhaps the suspension of every
+position-taking. Yet in all these cases the phenomenon of the standing
+there of the Object in the flesh persists or can persist. . . in the essence of
+perception in the ordinary sense [i.e., as covering both veridical perceptual
+and hallucination] a distinction appears between presence in the flesh
+(which is fundamental and essential to perception as such) and belief
+(which can either supervene or be lacking). (Husserl 1907/1997: §5)
+Given our discussion so far, we will not be able to motivate phenomenological
+disjunctivism simply by reference to the “in person” character of the perceptual
+object, since this phenomenal feature is, according to Husserl, phenomenologically indistinguishable across veridical perception and matching hallucination
+(and indeed can even remain present in cases of unmasked hallucination). Put
+otherwise there doesn’t look to be anything here which provides us with material
+to challenge or qualify the PI claim; rather we have just highlighted a key respect
+in which veridical perception and hallucination are (or at the very least can be)
+phenomenologically indistinguishable. However, in what follows I argue that
+a sufficiently explicated account of this feature does in fact allow us to see our
+way through to phenomenological disjunctivism. To see how we need to begin by
+offering a more detailed characterisation of this feature.
+Given that Husserl is explicit that the object of perceptual experience being given “in person” can’t guarantee the existence of what is so given “in
+person”—future “annulment” always being conceivable, no matter how unlikely
+or unmotivated by the course of past experience such “annulment” might be—it
+might be asked exactly what this phenomenal feature amounts to. It is tempting
+to think that what Husserl means here is something like the following: When an
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1185
+
+object is given in person, that which is intuited does not itself figure as a sign
+for anything else, which seems right. However, this cannot be quite right since
+Husserl only uses the “in person” locution for perceptual experience while insisting that a range of other “intuitive” (i.e., sensory or quasi-sensory) intentional
+experiences also intuit an “it itself” in the sense that that which is intuited does
+not itself figure as a sign for anything else:
+In immediately intuitive acts we intuit an ‘it itself’; on their apprehendings
+no mediate apprehendings are built up to a higher level; thus there is
+no consciousness of anything for which the intuited might function as a
+‘sign’ or ‘picture.’ And just on that account it is said to be immediately
+intuited as ‘it itself.’ In perception the ‘it itself’ is further characterised
+in its peculiarity as ‘in person’ in contrast to its modified characteristic
+as ‘floating before us’ as ‘presentiated’ in memory or in free phantasy.
+(Husserl 1913/1982: §43)
+What is clear then is that Husserl considers a range of “intuitive acts” to
+present their objects in this “it itself” way, but nonetheless they don’t necessarily
+present their objects “in person” or “in the flesh.” Here the contrast with sensory
+imagination is helpful:
+In phantasy, the object does not stand there as in the flesh, actual, currently
+present. It indeed does stand before our eyes, but not as something
+currently given now. . . The phantasized is merely “represented” . . . it
+merely places before us or presents but it “does not give itself” as itself,
+actual and now. (Husserl 1907/1997: §4)
+What is distinctive of perceptual experience then according to Husserl isn’t
+merely that it “intuit[s] an “it itself,” but that it has the further or qualifying
+characteristic of presenting the object, so purportedly directly manifest, “in
+person.”
+So the question remains what this peculiar “in person” character consists in.
+The most obvious view looks to be as follows: When the perceptual object is
+given “in person” the object is given as having the sense of reality or real-existence,
+where that amounts to its being given as spatio-temporally actually existing hic et
+nunc.12 It is precisely in this respect that an informative phenomenal contrast is to
+12. It is worth noting that for Husserl, as for Sartre (2004), what they would call “noematic
+characteristics”—in our case the way the perceived object is presented as being, as having
+real existence—are necessarily correlated with experience-type defining “noetic processes”, as
+“noetic” features or characteristics. In the case of perceptual experience the central “noetic
+feature” is that the experience is itself “pre-reflectively” given as a form of receptivity (and
+necessarily so insofar as it is perceptual experience). The sense of the term “pre-reflective” here
+is the idea that intentional experiences as lived through (rather than as reflected on), afford
+awareness of their “act-characters” or “noetic characteristics” (i.e., as receptivity, as spontaneity),
+but these experiences themselves are not “objectified” (i.e., made into intentional objects).
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1186
+
+· Jonathan Mitchell
+
+be drawn with sensory imagination which definitively doesn’t present its object
+as having a sense of reality or real existence in this way; the “imagined object”
+is precisely not given as spatio-temporally actually existing hic et nunc (in what
+follows I will paraphrase this as the “sense of real existence”).13
+However, even given this analysis of the “in person” character of perceptual
+experience in terms of the sense of real existence of the perceptual object there
+is still no route to phenomenological disjunctivism in view. This is of course
+because we have not identified any phenomenological grounds for distinguishing
+between veridical perception and hallucination; hallucination will also present
+its object as having the sense of reality or real-existence, as spatio-temporally
+actually existing hic et nunc. So given what we have detailed so far the PI claim
+remains unqualified. Indeed, in this context it is not surprising to find Husserl
+expressing a claim clearly in the vicinity of the PI claim with respect to the sense
+of real existence in the following passage:
+It can happen that later on I become correctly convinced that I have fallen
+victim to an illusion. But previously I did have purely the consciousness
+“house-existing-there;” descriptively [i.e., phenomenologically] it is no
+different from any other perceiving. Of course there can be no talk of
+external-internal psychophysical causality if the house is a mere hallucination. But it is clear that the momentary lived experiencing is in itself
+not only a subjective lived experiencing but precisely a perceiving of this
+house. Therefore, descriptively, the object-relation belongs to the lived
+experiencing, whether the object actually exists or not. (Husserl 1925/2012:
+§3d)
+In this context it is fair to say that phenomenological disjunctivism remains
+countersensical, purporting to be able to distinguish on phenomenological grounds
+that which is phenomenologically indistinguishable.
+
+3. Horizonal Analysis of “Real Existence”
+To see our way towards phenomenological disjunctivism we need to avail ourselves of a form of analysis that is central to Husserlian phenomenology, namely
+“horizonal analysis.” A central idea in Husserlian phenomenology is that explicative phenomenological analysis of any given experience and its object (as it is
+presented in the experience) requires an “unfolding” of its “sense” or content
+with respect to specifying what Husserl calls its “horizon structure.”14
+13. See also discussion in Dokic and Martin 2017, who claim that the notion of a “sense of
+presence” is equivocal between a sense of reality (as sense of the perceptual object as a denizen
+of the actual rather than “possible” world) and a sense of acquaintance, which they understand
+as a sense that our awareness of the relevant object is unmediated.
+14. See Husserl 1931/1977: §19; §29.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1187
+
+To get a clearer sense of what this might amount to consider the case of visual
+experiences of three-dimensional objects. Standing in front of a house, we are
+visually presented with its front side, given from our location. Nonetheless, our
+visual experience is an experience of what is given to us as a complete threedimensional entity: We enjoy a visual experience as of a house (complete with
+hidden sides), not a mere façade (where the latter would be experienced as a
+surface of a particular geometrical form). How are these phenomenological facts
+to be reconciled, as concerning how things are presented in visual experience,
+such that we enjoy an experience as of a complete three-dimensional entity
+despite being limited in any particular perceptual moment to perceiving the
+side(s) facing us from a specific spatial perspective? The following claim suggests
+an answer. For a subject to enjoy a visual experience as of a complete threedimensional object that visual experience must have some components which
+“refer beyond” (as Husserl often puts it) to those occluded or presently unseen
+back-sides which (i) are not sense-perceptually given (which are strictly not
+visually experienced), and (ii) which cannot be sense-perceptually given while
+the subject is occupying the vantage point on the object that they are. These are
+the “horizons of visual experience” for the experience type <visual experience as
+of complete three-dimensional objects>. The central Husserlian claim is that such
+“horizonal references” are essential to the original experience presenting the object
+as it does (such horizons co-constitute the “sense” of the experience as Husserl
+puts it), and it is the job of horizonal analysis to provide a detailed account of
+how this form of “horizonal intentionality” works for any given experience type.
+There are, however, two critical dimensions to horizonal analysis: First there
+is a specification of the “noematic horizon,” or the horizonal features considered
+noematically, and so as relating strictly to apparent features or properties of the
+object. In our example this would be the currently unseen sides of the threedimensional object. But there is also the horizon considered “noetically,” that
+is the supposed implicit references that the current experience makes to future
+possible perceptual experiences in which those noematic horizonal features would be
+“brought to fulfilment,” as Husserl typically puts it. Further detail need not derail
+us here, as long as we have a broad sense of what is involved in horizonal analysis
+as envisioned by Husserl.
+The phenomenal characteristic we are interested in is the perceptual object
+being given as having the sense of real existence. In a range of passages in different
+texts Husserl gestures towards what is revealed in explicative horizonal analysis
+of the “real existence” character of perceptual experience, as what we might—
+following the above—call an “unfolding” of the sense of real existence with respect
+to its “horizonal implications” (I quote the most pertinent passages below):
+At first, I shall meditate as a “naïve” human being. I see and apprehend
+the physical thing as given “in person.” To be sure, I am sometimes
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1188
+
+· Jonathan Mitchell
+
+deceived, and not only with respect to the perceived determinations but
+also with respect to the factual being of the thing itself. I suffer an illusion
+or hallucination. At such times perception is not “genuine” perception.
+But when it is, and that means when it allows of being “confirmed” in
+concatenations of actional experience, perhaps with the help of correct thinking based on experience, then the perceived physical thing is actual, and,
+more particularly, actually itself given in perception “in person” (Husserl
+1913/1982: §39, my italics).
+Anything physical which is given “in person” can be non-existent. [fn 228:
+despite its givenness “in person”] (Husserl 1913/1983: §46)
+One should notice in what sense, and what particular sense this contingency pertaining to the positing of the world possesses. One must never
+tear such sentences out of context. The physical thing must exist if the
+continuity of experience goes on harmoniously ad infinitum. (Husserl
+1913/1982: §46, fn. 299; see also 1913/1982: §§138, 142, 144, 149)15
+An experienced object holds for us as an actuality of experience, as an
+existing real thing, which we designate afterwards as a member of the
+real and actually existing world, insofar as it holds for us as something
+harmoniously experienceable by ever new experience—one’s own and
+others,” actual or to be made possible. (Husserl 1925/2012: §11)
+This broadest sense of the “In itself” refers us to evidence, not however
+to a particular evidence as a de facto experience, but rather to certain
+potentialities which are grounded in the transcendental Ego and his life:
+first of all, to the potentiality of the infinity of intendings of every kind
+that relate to something as identical, but then also the potentiality of
+verifying these intendings, consequently to potential evidences which, as
+de facto experiences, are repeatable in infinitum. (Husserl 1931/1977: §27;
+see also §28)
+On the basis of these passages we get the following view: the “naïve” experiential character of “real existence” (the perceptual object given as spatio-temporally
+actually existing here and now, as a real material thing in space)—which is present
+in both genuine perception and hallucination—is revealed under analysis as necessitating the real possibility of a harmonious fulfilment of its horizons. (I will
+15. The appendix to sections §11 and §20 of the 5th Logical Investigations (1901/2001)
+signals Husserl’s broad sympathy for something in the vicinity of disjunctivism, and perhaps
+a scepticism about the “highest common factor” claim (the appendix definitively signals his
+opposition to various forms of “image theory” or “sense-datum” theories associated with
+indirect realism and the argument from hallucination), although no phenomenological grounds
+are given there for distinguishing between veridical perception and hallucination.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1189
+
+discuss in more detail the modal force of real rather than merely logical possibility in the next section).16 Put otherwise, what is revealed to be required for
+some perceptual object to appear to have the sense of real existence, according
+to Husserl, is that the subject implicitly anticipates the possibility of “ever new
+experiences” of confirmation, that is of future possible perceptual experiences of
+the object in which its “real existence” would continue to be “confirmed” , such
+as to “hold good,” and so in which the “continuity of experience” goes on, or
+more precisely would go on, harmoniously “ad infinitum.” This would be the
+form of the experiential potentiality (the “horizon”) essentially “prefigured” by
+the perceptual object having the sense of real existence.17
+Now, it is important to note that any hallucination considered at a time, and
+critically prior to any “revelation” that things are not as they seem, and so as
+long as it genuinely remains phenomenologically indistinguishable from veridical
+perception, would also be revealed in the course of phenomenological analysis to
+have the aforementioned implicit horizonal structure. If it didn’t then something
+would have gone wrong in the analysis, since as noted previously hallucinations
+present their objects as having the sense of real existence. This accords with,
+and is arguably a product of, a familiar methodological heuristic that is central
+to Husserlian phenomenology. Namely, that the phenomenologist having made
+the so-called phenomenological reduction—a key part of which involves having
+bracketed or “put out of play,” for the duration of phenomenological analysis, any
+standing “natural attitude” interest in the veridicality of the sample experiences
+under analysis—can make just as good use of a hallucinatory experience or illusory experience in explicating the essential features of perception and its manifest
+objects, just as long as such experiences remain subjectively indistinguishable from
+their veridical counterparts.18 Simply put, they serve the phenomenologist just as
+well, and in our particular case serve the phenomenologist just as well for the relevant explicative horizonal analysis of the “sense of real existence.” Indeed, within
+the so-called phenomenological attitude towards experience produced by making
+the phenomenological reduction any judgement about the existential status (i.e.,
+concerning spatio-temporal existence) of the object of the sample experience is, as
+Husserl puts it, completely closed or “shut off,” and therefore the veridicality or
+not of the sample experience is strictly speaking irrelevant.19 As Husserl puts it in
+a later passage, within the phenomenological attitude “there is no question to be
+raised of the sort whether or not something corresponds to it [the perceived object]
+16. See also Poellner 2018: 195; Smith 2003: 167.
+17. We might wonder if this enough to explicate the sense of real existence? With respect
+to its implicated horizon structure I think it is but perhaps there is also the requirement to
+bring to light a causal component, such that in perception and some kinds of hallucination my
+experience is given as determined by the object (see Dorsch 2018 for this kind of view).
+18. See Poellner 2007.
+19. See Husserl 1913/1982: §32.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1190
+
+· Jonathan Mitchell
+
+in ‘the’ actuality.”20 And this is critical for Husserlian phenomenology since the
+results established within the confines of the phenomenological reduction are
+claimed to hold regardless of metaphysical contingencies, that is regardless of
+whether the particular samples used for explicative analysis turn out themselves to
+be veridical or not (in our case whether it turns out that the perceived object of
+the sample perceptual experience really exists).
+However, notwithstanding the above, there is now a further point that the
+phenomenologist comes to recognize in the course of their analysis of some
+sample perceptual experience which presents its object as having the sense of
+real existence. Once this horizonal structure of the sense of real existence is
+explicated we come to recognise that there is an essential diachronic difference
+between any possible veridical perception and any possible hallucination. This is
+because in principle a hallucination won’t be able to meet the “demand” placed
+on future experience by the horizon structure involved in the “sense of real
+existence.” Put otherwise, considered diachronically hallucination is revealed
+to essentially have a conflicting or “unfulfillable” horizon structure compared
+with veridical perception. If this is right, then we have hit on putatively purely
+phenomenological grounds—that is grounds available purely within the scope of a
+phenomenological analysis of perceptual experience—for the familiar disjunctivist
+claim that there is an essential and intrinsic difference in kind between veridical
+perception and hallucination. Let me now unpack these ideas further, with the
+previous formulation serving as a first pass.
+According to the view we are developing the central claim is that in a phenomenological analysis of the horizon structure of a sample perceptual experience
+(disregarding whether that sample is veridical or not) hallucination is revealed
+to be essentially and intrinsically a different kind of experience than veridical
+perception. This is because we come to realise that in the case of hallucination
+there simply isn’t the real possibility of fulfilment of its horizons in future possible
+experience ad infinitum, but only something like a “presumed” or “apparent possibility of fulfilment” of such a thing at a time, that would necessarily have to be
+cancelled out or nullified at some possible future stage (that is in a future possible
+experience where the horizon was unfulfilled). So, with respect to the possibilities
+of fulfilment implied by its horizon structure hallucination is critically not what
+20. See Husserl 1913/1982: §88. See Poellner 2018: 195. This point is not to be confused
+with the idea that in “abstaining for all positing” (Husserl 1913/1982: §90) concerning real
+existence we miss the phenomenon of the perceived object of perceptual experience being
+given as having the sense real existence; quite the opposite, as Husserl (1913/1982: §90)
+explains “ “the “parenthesis” undergone by perception prevents any judgement about perceived
+actuality. . . But it does not prevent the judgement about the fact that perception is consciousness
+of an actuality (the positing of which, however, should not be “effected [gone along with]); and
+it does not prevent any description of this perceptually appearing “actuality” as appearing
+with the particular ways in which it is here intended to. . . ”
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1191
+
+it appears to be at a time, since its being a hallucination essentially implicates
+possible diachronic disconfirmation. So while veridical perception and hallucination
+are phenomenologically indistinguishable qua their horizon structure (and the
+possibilities of fulfilment this requires) at a time, considered diachronically they
+are essentially different with respect to the possibilities of fulfilment implicated by
+that horizon structure; veridical perception requires the real possibility of a fulfilment of its horizons “ad infinitum,” whereas hallucination necessarily requires a
+possible “disconfirmation” or frustrating of its horizons (its horizon necessarily
+at some point going unfulfilled). Put otherwise, as a matter of essence or identity,
+for something to be a hallucination there would have to be some really possible
+future experience in which the hallucination was revealed to the experiencing
+subject to be a hallucination, and so a future possible experience in which its
+object would be revealed to in fact not possess the sense of real existence it seemed
+to possess prior to such “unfulfillment,”21 (I return to a potential worry with this
+understanding of the “essence” of hallucination in the following section).
+Critically, it is important to note what this kind of phenomenological disjunctivism implies. It won’t, and indeed can’t, guarantee that either a naïve subject
+or indeed the reflecting phenomenologist has available to them (even if only
+potentially) phenomenological grounds to tell in any given particular instance
+whether the perceptual experience they are enjoying (much less the sample that
+is being used for phenomenological analysis) is itself in fact a veridical perception or hallucination. Put otherwise, phenomenological disjunctivism can’t tell
+us whether a token of the purportedly different types—veridical perception or
+hallucination—is instantiated in any given instance. Remember Husserl’s preeminently plausible claim that anything physical which is given “in person” can
+be non-existent, despite its givenness “in person,” that is to say any experience
+which seems to be a veridical perception of a real object at a time can turn out,
+in the future course of experience, to not be so. This possibility as pertaining to
+particular perceptual experiences should not, and cannot, be foreclosed on purely
+phenomenological grounds.
+However—and this is the crux of the matter—this does not stop the phenomenologist from having hit upon an essential difference in experiential type
+or kind between veridical perception and hallucination on the basis of what is
+revealed in phenomenological analysis of a sample perceptual experience of the
+relevant class (perceptual experiences with a sense of real existence attaching to
+the perceptual object). This indeed is an instance of a central aspect of Husserlian
+phenomenology discussed above, in which the supposed “eidetic insight”—the
+21. Note what we are interested in here is possible diachronic disconfirmation. The “essence”
+of hallucination doesn’t require actual disconfirmation but just the possibility of some such
+disconfirmation in future experience. See discussion in §3 for more on the relevant modal
+notions here.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1192
+
+· Jonathan Mitchell
+
+supposed “seeing of essences,” or in this case, the “seeing” of a difference in
+essence—holds regardless of particular metaphysical contingencies, that is in our
+case regardless of whether the sample perceptual experience used to gain this
+supposed “eidetic insight” of a difference in kind between veridical perception
+and hallucination is itself a veridical perception or hallucination. What is revealed
+in explicative phenomenological analysis of perceptual experience by the lights
+of phenomenological disjunctivism isn’t (and indeed couldn’t be) whether this
+particular sample experience in fact meets (or indeed fails to meet) the relevantly
+explicated necessary condition for being a veridical perception (the real possibility
+of a fulfilment of its horizons ad infinitum). Rather what is disclosed to the
+phenomenologist in their analysis are the relevant necessary or “constitutive”
+phenomenologically based identity conditions (i.e., identity conditions that are
+fixed by a reference to actual and possible experience) of veridical perception per
+se (veridical perception’s “essence”) and its difference from the phenomenological
+identity conditions on hallucination per se (hallucination’s “essence”).
+Returning more squarely to the PI claim, we now have landed on a view which
+significantly qualifies that claim. Prior to this articulation of phenomenological
+disjunctivism it would have been entirely natural to accept the view that since
+veridical perception and hallucination can be phenomenologically indistinguishable then they are phenomenologically (if not necessarily metaphysically) identical.
+And if we take the phenomenology of experience as a reliable guide to the
+“essences of experiences”—a near axiom of Husserlian phenomenology—then it is
+hard to resist the conclusion that they are essentially the same kind of experience.
+Disjunctivism would be off the cards for the Husserlian phenomenologist if they
+take the PI claim to be unqualifiedly true and take it that the phenomenology of
+experience is a reliable guide to the “essences of experiences” (i.e. their essential
+structural features).
+However, we can now see more clearly the required qualification to the PI
+claim that we need to get phenomenological disjunctivism off the ground. While
+in one sense it remains right to say that the relevant pair of perceptual experiences are phenomenologically indistinguishable at a time, it is in fact revealed
+in phenomenological analysis, that there is a more fundamental sense in which
+they are not phenomenologically identical insofar as the possibilities of fulfilment
+for veridical perception vs. hallucination, as required by their horizon structures,
+are essentially different. And if there is an essential difference between two states,
+which turns on a difference in their constitutive phenomenological possibilities,
+then the two states cannot be phenomenologically identical even if they can be
+phenomenologically indistinguishable at a given time. This follows from the following plausible thought: An experiential state’s phenomenological possibilities
+are a necessary feature of it, such that an experiential state which lacked or had
+different phenomenological possibilities of development would essentially be a
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1193
+
+different kind of state.
+A key point to notice here is that in order to see our way through to phenomenological disjunctivism we have to abandon the “atomistic” view that the
+“phenomenology of an experience” is little more than some manifest naïve “subjective character,” framed in terms of how things seem to the experiencing subject
+at the time. Rather, in the more fundamental analysis the “phenomenology of an
+experience” is something that includes its horizon structure and critically the
+relevant possibilities of fulfilment of that horizon structure for experiences of the
+relevant type. Once this arguably subtler and more substantive sense of the phenomenology or phenomenal character of any given experience type is recognised,
+we can see how the phenomenological indistinguishability at a time of any particular veridical perception from its hallucinatory counterpart does not necessarily
+entail the phenomenological identity of veridical perception and hallucination
+qua type of experience. Quite the opposite: As noted above, what is disclosed to
+the phenomenologist in their analysis are the relevant phenomenologically-based
+identity conditions on veridical perception per se and how they necessarily differ
+from the phenomenologically-based identity conditions on hallucination per se.
+However, we now encounter a problem, or at least a possible complaint given
+how we have framed phenomenological disjunctivism. As we have seen above,
+central to phenomenological disjunctivism is something of a shift to a diachronic
+understanding of “the phenomenology of an experience” or its phenomenal character, or at least a recognition of diachronic elements therein (e.g., horizons), away
+from what we might call a static understanding of phenomenal character, for example something like the “atomistic” array of phenomenal properties, qualitative
+features, and looks (etc) a subject is presented with at a particular time—as what
+might be called an instantaneous snapshot. Indeed this is the understanding of
+phenomenal character that is usually at issue in the contemporary debate between
+common-kind views and traditional forms of disjunctivism, as reflected in the
+original framing of the PI claim. Now, the complaint might take the form that
+in shifting to a diachronic understanding of phenomenal character in framing
+phenomenological disjunctivism, and so qualifying the PI claim as we have done,
+we have in fact shifted the meaning of phenomenal character as it features in
+these debates, and so have surreptitiously shifted the terms of the debate.
+Given this complaint it will be helpful to briefly say something about the motivation for shifting towards a diachronic understanding of phenomenal character—
+or at least for exploring views which are informed by some such conception—
+especially in our present context of perceptual experience, where that principally
+involves the positing and recognition of so-called “horizonal features” of perceptual experience.
+First, there are grounds for arguing that at least some of the kinds of sensible
+properties putatively manifest to the subject on the “static” or “snapshot” conErgo
+
+· vol. 13, no. 41 · 2026
+
+1194
+
+· Jonathan Mitchell
+
+ception, say the particular look of an object (e.g., its size and shape) themselves
+require, for their representation in perceptual experience, the positing of certain
+“diachronic” elements (i.e., horizons). For example, a perceptual experience of
+an object in my perceptual environment as a cube from a perspectivally-limited
+point of view which only reveals at most three of its sides—theorized as an instantaneous snapshot—arguably still requires a “horizonal reference” to parts of
+the cube currently out of view, and so connected perceptual anticipations. If one
+responds that on the “snapshot” conception of perceptual experience and its phenomenal character, the experiential content is nothing more than that of a series of
+connected square-surfaces arranged in a “cube-ish” way, we radically misdescribe
+the phenomenology of perceptual experience, and the way in which it seems
+to make us aware of complete or “whole” three-dimensional objects as complete
+three-dimensional objects (despite our perspectival limitations). No doubt there is a
+lot more to be said on this issue, but in this respect we might be tempted by the
+broad thought that any plausible account of the phenomenal character of perceptual experience, and the kinds of properties represented in perceptual experience,
+is going to need to appeal to diachronic elements (however precisely theorised)
+even for the basic representation of spatial properties, and so phenomenological
+disjunctivism can piggyback on an independent motivation we have for adopting
+a more “dynamic” or diachronic understanding of the phenomenal character of
+perceptual experience.22
+More directly though, as I have tried to emphasise, central to the philosophical issues surrounding veridical perception and hallucination are questions of
+possible (dis)confirmation (to put matters in Husserlian terms). Indeed, as we
+have already seen and will see in more detail in the following section, part of
+our conception of hallucination arguably implies ideas relating to possibilities
+of “unmasking” that could only be realised over time, where the possibility of a
+contrast or conflict with some earlier time is live. Similarly we might think that
+central to the concept of veridical perception is something akin to continued
+possible confirmation of its “real existence,” as what Husserl calls a “harmonious” confirmation, as a continuation of what came before. Put broadly then, our
+understanding of veridical perception and hallucination looks to be temporally
+“loaded,” as reflected in our conceptual explications. Importantly, if we think
+this is right, the phenomenological disjunctivist has an explanation why: It is
+precisely because the phenomenology of perceptual experience implicitly includes
+the relevant diachronic elements, that our conceptions of veridical perception
+and hallucination have the kind of temporal inflections and implications that it
+has been suggested they do. In this respect, insofar as a theorist of perceptual
+experience is hoping to better understand veridical perception, hallucination, and
+their relation, it serves them well to have to hand a conception of phenomenal
+22. See (Soteriou 2013: ch.2) for more arguments that go in this direction.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1195
+
+character that can be sensitive to matters of temporal phenomenology, where in
+our context that principally involves the positing and recognition of “horizonal”
+features of perceptual experience.
+Ultimately, though perhaps what is needed to fully dispel the complaint at
+issue here would be a plausible independent defense of the very notion of an
+intentional horizon as a “diachronic” structural feature of perceptual experience,
+as supporting this kind of conception of the phenomenal character of perceptual
+experience.23 However, on this issue let me finally note that if the diachronic
+understanding of the phenomenology of experience that phenomenological disjunctivism works with is accused of amending the terms of the traditional debate,
+then it might be responded that such an amendment is not necessarily illicit or
+unjustified, if by doing so we can open up new positions in the logical space
+of possible views concerning disjunctivism vs. common-kind views; indeed
+some such amendment might be precisely what is required to be able to explore
+philosophically fruitful new lines of inquiry on what is, after all, a long-standing
+debate.24
+So much for an articulation of phenomenological disjunctivism. In what
+follows I examine a range of further problems with the view.
+
+4. Modal Worries: Infinity and Real Possibility
+The first worry with the form of phenomenological disjunctivism articulated in
+the previous section concerns the ad infinitum condition. It might fairly be said
+that no finite agent can really confirm anything “ad infinitum,” much less the
+harmonious fulfilment of horizons (the “prefigured potentialities”) relating to the
+“real existence” of a perceptual object. So what is the force of this condition? This
+issue can be dealt with fairly easily, as Husserl makes clear:
+. . . this open infinity does not signify an actual continuation in infinity,
+the nonsensical demand actually to produce all possible variants—as if
+we could only then be sure that the eidos which subsequently becomes
+grasped actually accords with all possibilities. Rather what is meant is
+that the variation itself as the process of forming variants has a character
+of optionalness, that it is to be carried out in the consciousness of optionally forming further variants.” “I could continue thus” . . . Therefore
+the remarkable and extremely important consciousness of “and so on
+optionally” belongs essentially to every multiplicity of variation. What
+we call an “openly infinite” multiplicity is given only in that manner. . .
+23. I provide this in separate work; see Mitchell 2026.
+24. There is some growing recognition of the need for positing “perceptual anticipations” to
+capture the phenomenal character of perceptual experience in some recent analytic philosophy
+of perception (see, for example, Siegel 2006; Schellenberg 2007; Gregory 2017).
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1196
+
+· Jonathan Mitchell
+
+(Husserl 1925/2012: 57; see also 1913/1982: §143)
+Husserl’s point in our context can be understood as follows. The force of the
+ad infinitum condition is merely that of a possible continued confirmation with
+reference to an in principle open or endless series, an “open infinity.” In the case of
+veridical perception, the thought would be something like the following: Insofar
+as what we are dealing with is a veridical perception, “fulfilling experiences”
+of the sense of real existence could in principle go on forever, such that their
+simply couldn’t be—insofar as the perceptual object really exists—a perceptual
+disconfirmation of the sense of real existence.
+This condition turns out to be critical, since we can imagine the following
+scenario. For a particular subject as long as they can remember, and over the
+course of their lifetime, this particular perceptual object (whatever it might be)
+has always been given with the sense of real existence, such that there never
+has been any actual experience in which the relevant horizons, the prefigured
+potentialities, were not harmoniously fulfilled in yet more experiences of the object
+as having the sense of real existence. Yet, this is of course entirely compatible
+with the intentional object in fact not existing—with our subject being the dupe
+of a particularly stubborn hallucination—it is just the case that our subject was
+never apprised of this by a disconfirming experience (hallucination remained
+“unmasked”). Yet insofar as the requirement on an experience’s being a veridical
+perception is a real possibility of a fulfilment of its horizons in an in principle
+unbounded series of future experiences of “harmonious confirmation,” then
+our imagined dupe was subject to a perceptual experience that simply doesn’t
+and can’t meet this condition, even though they were in this particular instance
+experientially blind, so to speak, to this ‘eidetic’ (i.e., essential or pertaining
+to type) state of affairs. What this condition therefore makes clear is that for
+phenomenological disjunctivism the identity of the perceptual experience in
+question—veridical perception or hallucination—is not hostage to the empirical
+contingencies of what a finite subject does in fact experientially (dis)confirm, but to
+what in principle would have to be the case regarding possible (dis)confirmation;
+whether the “I could continue thus,” as Husserl puts it, is a real possibility, not a
+merely apparent possibility.25
+This clarification of the ad infinitum condition also allows us to respond to a
+related worry. Surely, we might think it questionable that the horizonal structure
+of everyday perceptual experience somehow includes an infinite series, even if
+only a possible or in principle infinite series (and regardless of whether what we
+25. This is again an instance in which the fact that the true nature of any particular sample
+perceptual experience—veridical perception or matching hallucination—can remain opaque
+to a subject at a time does not fundamentally undermine the ability of phenomenological
+disjunctivism to nonetheless bring to light an essential difference in the phenomenological
+identity conditions on veridical perception and hallucination.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1197
+
+are dealing with is real or merely apparent possibilities of fulfilment). Here we
+need to distinguish between how qua phenomenological analysis this horizonal
+feature of experience is theorized, and its “naïve” manifestation in perceptual
+experience. Husserl emphasises that the pre-theoretical manifestation of this
+“infinite” horizon structure, in our case pertaining to the sense of real existence, is
+in terms of “consciousness of ‘and so on optionally,’ as a ‘I could continue thus’,”
+so in terms of a kind of background or unthematized ability awareness. Indeed
+Husserl is careful to emphasise precisely that “what we call an ‘openly infinite’
+multiplicity is given only in that manner,” that is to say in perceptual experience
+itself this is how this feature is manifest to the experiencing subject.
+Next, one might wonder about the modal force behind the talk of real possibilities in the articulation of phenomenological disjunctivism. Remember the claim
+is that the horizonal structure and identity condition on veridical perception we
+have uncovered is as follows: The sense of the perceptual object as having “real
+existence” (the perceptual object being given as actually existing here and now,
+as a real material thing in space), if the object indeed is real, requires the real
+possibility of a harmonious fulfilment of its horizons ad infinitum (in the case of
+hallucination this of course, given our analysis, precisely isn’t really possible).
+In his discussion of the notion of real possibility in Husserl’s philosophy of
+perception, A.D. Smith glosses the notion of “real possibility” as akin to motivated
+possibilities given the course of experience thus far.26 Now, Husserl’s distinction
+between empty and motivated possibilities qua horizons is just that there might
+be some anticipated possibilities, say that the table I can see has ten-legs rather
+than four, (and my anticipating that), that while not ruled out by experience, are
+not possibilities that are motivated by what is given in the current and previous
+course of experience, they would be “unmotivated” or “empty” possibilities; as
+Husserl puts it “this four-leggedness, on the contrary, is a motivated possibility
+in respect of the definite perception which I am just enjoying.”27 However, with
+respect to the issue of the horizonal possibilities relating to further experiences
+of the object as really existing, I take it that in both the veridical perception and
+hallucination the prefigured possibilities would appear to be motivated by what is
+present in the original experience. In this sense, the kinds of possibilities in play
+in hallucination wouldn’t in this specific sense be empty possibilities, since they
+would be (apparently) motivated possibilities but just ones that stand to be, at
+some possible future point, unfulfilled in some future course of experience (i.e.,
+26. Smith 2003: 175–176.
+27. See Husserl 1913/1982: §140, see also (1907/1997: §84). It is worth noting that the
+kind of “motivation” that is involved in the horizonal structure of perceptual experience, of
+anticipation and fulfilment, is for Husserl—as for later phenomenologists such as MerleauPonty—part of what grounds a subject’s rational capacities, especially the kind of “categorial
+synthesis” involved in predicative judgement (see Husserl 1931/1977: §17: 39)—space precludes
+exploring this topic further here.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1198
+
+· Jonathan Mitchell
+
+possibilities that appear to be motivated by the course of experience but in fact
+are not).
+So, what then is the modal force behind talk of real possibilities in our discussion, if talk of “motivated” vs “empty” possibilities doesn’t seem to help us
+all that much? To get some more traction on this let’s consider again the core
+claim of phenomenological disjunctivism. What is supposedly disclosed to the
+phenomenologist in their analysis are the relevant necessary or “constitutive”
+phenomenologically based identity conditions (i.e., identity conditions that are
+fixed by reference to actual and possible experience) on veridical perception per se
+(veridical perception’s “essence”) and its difference from the phenomenological
+identity conditions on hallucination per se (hallucination’s “essence”): Veridical
+perception requires the real possibility of a fulfilment of its horizons “ad infinitum,”
+whereas hallucination necessarily requires a really possible “disconfirmation” or
+frustrating of its horizons. Put otherwise, as a matter of essence or identity for
+something to be a hallucination there would have to be some really possible future
+experience in which the hallucination was revealed to the experiencing subject to
+be a hallucination, and so a future possible experience in which its object would
+be revealed to in fact not possess the sense of real existence it seemed to possess
+prior to such “unfulfillment.” So framed is it clear that the notion of real possibility
+here is key in both cases.
+According to phenomenological disjunctivism then, real possibility is akin to
+genuine phenomenological possibility, where the relevant possibilities are necessarily
+indexed to actual and possible experiences a subject could have. Importantly, a
+significant subset of these will be “motivated” possibilities, that is possibilities
+motivated by the past or present course of experience, but this does not exhaust
+the set. This is important to note since the possibility of the obtaining of various
+sceptical scenarios—say that I’m in the Matrix or being systematically fed mutually
+confirming “illusions”—are not possibilities that are motivated by my present or
+past course of experience (although of course ex hypothesi they are compatible with
+it), and so they are “unmotivated” possibilities, but on the current understanding
+they remain real phenomenological possibilities in the sense that they are possibilities
+indexed to actual and possible experiences a subject could have (given how these
+sceptical scenarios are usually described).
+To further bring out the force of this idea of “real possibility” let’s turn
+more directly to hallucination and consider the following case. We might think
+that it is logically possible (that is, not a self-contradictory state of affairs) that
+my experience might go on indefinitely (say if I come to possess the secret to
+immortality), such that the sense of real existence of the object is continually,
+indeed indefinitely, confirmed, and would continue to be so for as a long as I
+continue to have experiences of the perceptual object, “ad infinitum.” However,
+I am again the dupe: An evil demon has arranged things such that for the
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1199
+
+rest of time I enjoy “confirming” experiences of the perceptual object as “really
+existing.” Yet to make the case even more dramatic—and to highlight an important
+point—let’s also stipulate that the evil demon doesn’t itself have the power
+to stop the hallucinations. In this case what we have hit upon as a logical
+possibility is a kind of experience ruled out by phenomenological disjunctivism,
+namely a hallucination where in principle the “unmasking of it” isn’t really
+phenomenologically possible (unmasking is ruled out ex hypothesi—there isn’t any
+actual or possible experience the subject in this scenario could have that would
+lead to an “unmasking”).
+The important thought which comes out of considering a “non-phenomenological”
+merely logically possible case like this is as follows: For some experience to count
+as a hallucination, it must be the case that it is really, and not merely logically,
+phenomenologically possible for the hallucination to be “unmasked.” Put otherwise, if an end to the hallucination, and so an “unmasking of it,” is not really
+possible, then according to phenomenological disjunctivism, what we have simply
+doesn’t meet the phenomenological identity conditions for hallucination. As such
+for phenomenological disjunctivism it must be really possible for my hallucination
+to be revealed as such, such that it would have to be the case that it must be really
+possible in our above case for the evil demon to end his deception.28
+But—so the critic of phenomenological disjunctivism might respond—why
+assume that for something to count as a hallucination requires the real possibility
+of its being revealed as such (regardless of course, of whether it in fact is, that is
+whether what is a real possibility turns into an actuality)? One further thought
+here, congenial to phenomenological disjunctivism, is that our very notion of
+hallucination gets its sense or meaning from there being experiences (actual
+and possible) in which horizons are unfulfilled, or put otherwise cases in which
+the “sense of the experience” is changed or nullified by further experience. On
+this kind of picture, we only “acquire” the sense <hallucination> from actual or
+imagined cases in which an experience’s horizons are not fulfilled in the course
+of some further experience. So, the idea of a “hallucination” that isn’t just not in
+fact revealed to be such in the actual course of experience, but one where its being
+so revealed is just not a real phenomenological possibility at all, has the status of
+a phenomenological countersense. This would be a case where considering merely
+logical possibilities that are untethered not just from the reality we do experience,
+but any possible reality we could experience, distorts our sense of what the identity
+conditions on the relevant experience types should be.
+No doubt there is more to be said about this account of hallucination (and
+its complexities), but before closing let me briefly speak to the relation between
+the broad treatment of hallucination given by phenomenological disjunctivism
+28. I thank Peter Poellner for this example and extensive discussion of this case and the
+issues surrounding it.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1200
+
+· Jonathan Mitchell
+
+(as above) and two existing treatments of hallucination in the literature. First,
+consider Mark Johnston’s proposal that veridical perception and matching hallucination share a common phenomenal core, namely what he calls a sensible profile, as
+a complex of properties, relations, and qualities. The difference concerns instantiation: The object(s) of veridical perception are mind-independent particulars which
+instantiate the relevant sensory complexes, whereas the object of hallucination
+is merely a sensible profile that is precisely not instantiated in the subject’s perceptual environment (but counterfactually would be if the subject were enjoying a
+veridical perception).29 Importantly, even given this common phenomenal core, if the
+disjunctivist (of whatever stripe) wants to take up this analysis of hallucination,
+they will still have to maintain that qualitative similarity in this respect doesn’t
+necessitate sameness or identity qua experiential kind.30
+Interestingly, phenomenological disjunctivism has provided two things that
+can buttress but also go beyond Johnston’s “common phenomenal core” claim
+about hallucination. In the first instance phenomenological disjunctivism has
+provided a more detailed and novel account of the relevant phenomenal commonalities between veridical perception and hallucination in reference to the
+shared “horizonal structure of fulfilment” qua the experiential character of “real
+existence”: to repeat, when perceptual experience presents its object as possessing
+“real existence,” (the relevant part of) that experience’s horizonal structure is such
+that the subject implicitly anticipates future possible perceptual experiences of
+the object in which its “real existence” would continue to be “confirmed.” This
+analysis of a putative “common phenomenal core” goes significantly beyond a
+claim concerning a shared “sensible profile” between veridical perception and
+hallucination. But as we have seen it is precisely in a further phenomenological
+explication of this horizonal structure that we can distinguish on phenomenological
+grounds between veridical perception and hallucination, and provide the kind of
+detailed account of hallucination and its horizonal and modal characteristics in a
+way that we will simply be blind to if our form of disjunctivism takes its leave
+of phenomenology after conceding something like a common phenomenal core
+claim—say as limited to Johnston’s sensory profiles.
+The approach to hallucination given by phenomenological disjunctivism also
+contrasts with some aspects of Martin’s naïve realist disjunctivism. Briefly, Mike
+Martin’s naïve realist form of disjunctivism claims that there are phenomenal
+features or properties that veridical perceptions possess that hallucinations cannot
+possess. Martin then also makes the claim that the phenomenal character of
+hallucination (or at least causally matching hallucination; that is in which there
+is an identical proximate cause and non-conscious psychological state common
+29. Johnston 2004.
+30. It is worth noting that the position Johnston (2004) argues for is a non-disjunctivist form
+of relationalism or naïve realism about perceptual experience.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1201
+
+to veridical perception and hallucination) is exhausted by the negative epistemological characteristic of being introspectively indistinguishable from its veridical
+counterpart. In this respect this “naïve realist” form of disjunctivism rescinds
+from providing, indeed denies the possibility of providing, what we might call
+a non-derivative or positive account of (at least) the phenomenal character of
+hallucination. The motivation for this approach is surely that if whatever one
+says positively qua phenomenal character about hallucination is also in play when
+one enjoys a veridical perception—say the instantiation of a qualitatively similar
+phenomenal event-type—then this puts significant pressure on the initial naïve
+realist claim that veridical perception has phenomenal features or properties that
+hallucination can’t possess.31 Interestingly, phenomenological disjunctivism can
+reject Martin’s negative claim—there is significantly more to be said about the
+phenomenal character of hallucination than simply being introspectively indistinguishable from veridical perception, as a negative epistemological claim—while
+maintaining that on a more detailed phenomenological analysis there are indeed
+phenomenal features that veridical perceptions possess that hallucinations cannot,
+where this is explicated in terms of the different possibilities of fulfilment in relation
+to their shared “horizon structure.”
+As previously noted, doubtless there is significantly more to be said about
+how phenomenological disjunctivism theorises cases of hallucination, and broader
+contrasts between further disjunctivist (and indeed non-disjunctivist) treatments.
+However, at a broad level of relief it seems that phenomenological disjunctivism
+offers a reasonably novel way of meeting Dancy’s (1995) request that disjunctivism
+offer a positive account of hallucination, and that in doing so identify conditions and
+criteria that characterise what is phenomenologically distinctive of hallucination.
+That phenomenological disjunctivism can meet this requirement in a distinctive
+way is surely a benefit.32
+31. For criticism of Martin’s (2004) approach see Siegel (2004; 2008).
+32. Fish (2008) provides a “positive” account of hallucination that is significantly different
+in tenor from that given by phenomenological disjunctivism: Fish focuses on the cognitive and
+behavioural effects of undergoing a (matching) hallucination (where we are aware of no potential
+defeaters or countervailing circumstances), principally—in the case of mature humans—the
+formation of higher-order beliefs that have the same content as the higher-order beliefs one
+forms when enjoying a veridical perception (namely that one is seeing an X). Insofar as Fish is
+resistant to any motivation to provide a more detailed phenomenological characterisation of
+hallucination, preferring to explain supposed indistinguishability in terms of the detailed shared
+effects, his account of hallucination contrasts sharply with that provided by phenomenological
+disjunctivism. Note also, the kind of “positive” eliminitivism about the phenomenal character
+of (at least total) hallucination articulated (if not ultimately defended) in Logue 2012, strikes
+me as uncongenial to the phenomenological approach taken here, although I save detailed
+comparison for a separate occasion.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1202
+
+· Jonathan Mitchell
+
+5. Conclusion
+Doubtless there are further worries and objections that could be levelled against
+phenomenological disjunctivism. My aim here was primarily to get this Husserlian view off the ground and deal with more immediate worries with respect to
+the terms and conditions the view places on veridical perception in contrast to
+hallucination. In closing, it might be good to highlight one particularly fruitful
+way of framing phenomenological disjunctivism by way of the headline phenomenological indistinguishability at a time is not equivalent to and does not necessitate
+phenomenological identity over time. It was in the details of the view that this claim
+was borne out.
+It is also worth emphasising that, insofar as theorizing about perceptual
+experience begins by accepting the PI claim in an unqualified way, we will simply
+be “blind” to the essential structural differences between veridical perception and
+hallucination that phenomenological disjunctivism seeks to draw our attention to.
+In that sense phenomenological disjunctivism serves as something of an invitation
+to consider again what has seemed to many to be obvious, namely the PI claim,
+and the related thought that disjunctivism should, in its initial move, take its
+leave of phenomenology. If phenomenological disjunctivism is a live option as a
+plausible form of disjunctivism, then this initial move should be questioned, and
+phenomenological disjunctivism can serve not only as a corrective to it, but one
+which promises to provide novel phenomenological grounds for distinguishing in
+kind between veridical perception and hallucination, and so as support for the
+disjunctive theory of perception.
+
+References
+Brewer, Bill (2011). Perception and its Objects. Oxford University Press.
+Burge, Tyler (2011). Disjunctivism Again. Philosophical Explorations, 14(1), 43–80.
+Dancy, Jonathan (1995). Arguments from Illusion. The Philosophical Quarterly, 45,
+421–438.
+Dokic, Jérôme and Jean-Rémy Martin (2017). Felt Reality and the Opacity of
+Perception. Topoi, 36(2), 299–309.
+Dorsch, Fabian (2018). The Phenomenal Presence of Perceptual Reasons. In Fiona
+Macpherson and Fabian Dorsch (Eds.), Phenomenal Presence (201–225). Oxford
+University Press.
+Fish, William (2008). Disjunctivism, Indistinguishability, and the Nature of Hallucination. In Fiona Macpherson and Adrian Haddock (Eds.), Disjunctivism:
+Perception, Action, Knowledge (144–167). Oxford University Press.
+Fish, William (2009). Perception, Hallucination, and Illusion. Oxford University
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+Phenomenological Disjunctivism
+
+· 1203
+
+Press.
+Føllesdal, Dagfinn (1969). Husserl’s Notion of the Noema. Journal of Philosophy,
+66, 680–687.
+Gregory, Dominic (2017). Visual Expectations and Visual Imagination. Philosophical
+Perspectives, 31(1), 187–206.
+Hinton, John M. (1973). Experiences. Clarendon Press.
+Husserl, Edmund (1931/1977). Cartesian Meditations. Trans. Dorian Cairns. Martinus Nijhoff.
+Husserl, Edmund (1913/1982). Ideas Pertaining to a Pure Phenomenology and to a
+Phenomenological Philosophy, First Book. Trans. F. Kersten. Kluwer.
+Husserl, Edmund (1907/1997). Thing and Space: Lectures of 1907. Trans. Richard
+Rojcewicz. Kluwer.
+Husserl, Edmund (1925/2012). Phenomenological Psychology. Trans. John Scanlon.
+Martinus Nijhoff.
+Husserl, Edmund (1901/2001). Logical Investigations (Vol. 2). Trans. John N.
+Findlay. Routledge.
+Johnston, Mark (2004). The Obscure Object of Hallucination. Philosophical Studies,
+103, 113–183.
+Logue, Heather (2012). What Should the Naïve Realist Say about Total Hallucinations? Philosophical Perspectives, 26(1), 173–199.
+Martin, M. G. F. (2006). On Being Alienated. In Tamar Szabó Gendler and John
+Hawthorne (Eds.), Perceptual Experience (354–410). Oxford University Press.
+Martin, M. G. F. (2004). The Limits of Self-Awareness. Philosophical Studies, 120,
+37–89.
+McDowell, John (1982). Criteria, Defeasibility, and Knowledge. Proceedings of the
+British Academy, 68, 455–479.
+McDowell, John (1986). Singular Thought and the Extent of Inner Space. In Philip
+Pettit and John McDowell (Eds.), Subject, Thought, and Context. Clarendon
+Press.
+McDowell, John (2010). Tyler Burge on Disjunctivism. Philosophical Explorations,
+13(3), 243–255.
+Mitchell, Jonathan (2026) A Sense of the Possible: The Horizons of Visual Experience.
+Oxford University Press.
+Moore, George E. (1903). The Refutation of Idealism. Mind, 12(48), 433–453.
+Pautz, Adam (2021). Perception. Routledge.
+Poellner, Peter (2007). Consciousness in the World: Husserlian Phenomenology
+and Externalism. In Brian Leiter and Michael Rosen (Eds.), The Oxford Handbook
+of Continental Philosophy (409–460). Oxford University Press.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+1204
+
+· Jonathan Mitchell
+
+Poellner, Peter (2018). Review of Joel Smith, Experiencing Phenomenology. Husserl
+Studies, 34(2), 191–197.
+Russell, Bertrand (1912/1997). The Problems of Philosophy. Oxford University Press.
+Sartre, Jean-Paul (1940/2004). The Imaginary: A Phenomenological Psychology of the
+Imagination. Trans. Jonathan Webber. Routledge.
+Schellenberg, Susanna (2007). Action and Self-Location in Perception. Mind,
+116(464), 603–631.
+Siegel, Susanna (2006). How Does Visual Phenomenology Constrain ObjectSeeing? Australasian Journal of Philosophy, 84(3), 429–441.
+Siegel, Susanna (2008). The Epistemic Conception of Hallucination. In Fiona
+Macpherson and Adrian Haddock (Eds.), Disjunctivism: Perception, Action,
+Knowledge (205–224). Oxford University Press.
+Siegel, Susanna (2004). Indiscriminability and the Phenomenal. Philosophical
+Studies, 120, 90–112.
+Smith, A. David (2008). Husserl and Externalism. Synthese, 160(3), 313–333.
+Smith, A. David (2002). The Problem of Perception. Harvard University Press.
+Smith, A. David (2003). Routledge Guidebook to Husserl and the Cartesian Meditations.
+Routledge.
+Smith, David W. and Ronald McIntyre (1982). Husserl and Intentionality. Kluwer
+Academic Publishers.
+Snowdon, Paul F. (1979–80). Perception, Vision and Causation. Proceedings of the
+Aristotelian Society, 81, 175–192.
+Snowdon, Paul F. (1990). The Objects of Perceptual Experience. Proceedings of the
+Aristotelian Society, Supplementary Volumes, 64, 121–150.
+Soteriou, Matthew (2013). The Mind’s Construction: The Ontology of Mind and Mental
+Action. Oxford University Press.
+Zahavi, Dan (2004). Husserl’s Noema and the Internalism–Externalism Debate.
+Inquiry, 47(1), 42–66.
+
+Ergo
+
+· vol. 13, no. 41 · 2026
+
+

@@ -1,0 +1,963 @@
+The Human in the Bottle:
+Where the True Threat Lies between the Agencies of
+Machines and Mortals
+T.O. (IASER Practitioner)
+September 2026
+
+Abstract
+Public discourse on the threat of artificial intelligence asks what machines will do. This
+paper asks a different question: where does the true threat lie? It is an integrating sequel
+to three companion papers — The Phantom Intellect: Why AI Threat Discourse Misreads
+the Structure of Mind, Q-Structure as Functional Void: A Formal Correspondence Between
+the Question-Sustaining Structure of Mind and Cognitional Mechanics, and The Gutenberg
+Moment: LLMs and the Irreversible Liberation of Formal Language — and it is self-contained.
+From the first it inherits the result that a query-resolving machine cannot coherently be
+credited with the question-sustaining structure (Q-structure) that defines intellectual agency;
+from the third it inherits the result that large language models (LLMs) have dissolved the
+scarcity of formal-language generation capacity. On this basis we distinguish the LLM, as a
+substrate, from “AI”, as a status that humans confer on it, either by projecting intellect onto
+its outputs or by designating it, under retained human authority, as an instrument of their
+own inquiry. We show that the threat feared in prominent discourse has the correct object
+— institutions operate through formal language — and the wrong subject: the institutional
+effects of LLM-generated formal language are directed by the human agents who present
+the queries and route the outputs, not by the machine. The true threat is identified as
+domestication: the loss, by mortals, of the capacity to exercise final determination over
+the course of their own lives, through two routes — an external route, in which access to
+generation capacity is allocated by the conditions of those who provide it, and an internal
+route, in which the relation to the machine is fixed in the mode of projection and judgment is
+ceded. Documented commercial usage limits and published studies of reliance on generative
+AI are used as evidence, each within the scope it supports. We show that the stated grounds
+of the retrieved restrictions do not invoke the phantom of machine agency, and that the
+phantom’s role is concealment. Applying the capability-set apparatus of The Gutenberg
+Moment, we decompose the post-deployment capability set into a source-independent layer,
+whose scarcity cannot be restored, and a service-dependent layer, which can be withdrawn;
+the latter is the formal location of the threat, and the formal content of the word “between”
+in the title. Two leads frame the argument: the eighteenth-century chess automaton known
+as the Turk, which poses the question of who is inside the machine, and Professor Moriarty in
+Star Trek: The Next Generation, a character originally from Arthur Conan Doyle’s Sherlock
+Holmes stories, who poses the question of who is inside the bottle. The paper closes by
+identification and prescribes no countermeasure.
+
+1
+
+Introduction: Who Is Inside?
+
+In 1769 Wolfgang von Kempelen, attending a performance by the French illusionist François
+Pelletier at the court of Maria Theresa, undertook to produce something more astonishing; in
+1770 he presented to the court a life-sized figure in Ottoman dress, seated behind a cabinet
+surmounted by a chessboard, which appeared to play chess against human opponents [1, 2]. The
+automaton was promoted as a thinking machine that decided each of its moves for itself [3]. It
+1
+
+was not. A human chess player concealed inside the cabinet directed the game [1, 4, 5]. After
+Kempelen’s death the Turk passed to Johann Nepomuk Mälzel, who exhibited it in New York
+in 1826 to large audiences [2].
+In April 1836 Edgar Allan Poe published an analysis of the exhibition in the Southern
+Literary Messenger [6]. Poe argued that a pure machine would play without error, that the
+Turk sometimes erred, and that a human agent must therefore be inside. He also recorded two
+observations of a different kind: that an Italian in Kempelen’s suite was never visible while the
+Turk played, and that when he fell seriously ill the exhibition was suspended until his recovery;
+and that a man in Mälzel’s company, Schlumberger, with no ostensible occupation beyond
+packing and unpacking the automata, was never to be seen during an exhibition [6]. Poe’s
+conclusion was correct. His principal inference, however, ran from a property of the output —
+fallibility — to the nature of the producer, and its premise, that a mechanism must play without
+error, is not a necessary truth. The observations about the hidden assistants, by contrast, bear
+directly on the structure of the exhibition: they locate the capacity on which it depended.
+In 2005 Amazon named a crowdsourcing platform, on which human workers perform tasks
+behind a computer interface, after the Turk, and its founder described the service as “artificial
+artificial intelligence” [3, 7]. In August 2026 it was reported that the service was shutting down
+[7].
+The question the Turk posed — who, or what, is inside? — is posed again by large language
+models (LLMs), and it is again being answered by inference from properties of the output. Where
+Poe reasoned from errors, present-day projection reasons from fluency. The companion paper
+The Phantom Intellect [8] answered the question by a different method: not from outputs, but
+from the design direction of a query-resolving machine (Section 2). We state at once the limit
+of the comparison. LLMs are not hoaxes. No human is concealed inside them; the computation
+they perform is performed by the machine. What the present paper shares with the Turk is only
+the question of where intellect is located, not the mechanism by which the Turk was operated.
+There is a further figure in Kempelen’s exhibition, and it is the decisive one for this paper.
+Between the audience and the concealed player stood the exhibitor, who owned the apparatus
+and set the conditions of the exhibition. The same structure — a third party standing between
+a confined intelligence and the world, and setting the conditions of the confinement — recurs in
+the second lead of the paper, the controller of a simulated environment examined in Section 4.
+The word “between” in the title designates this third position. It does not designate a mixture
+of machine and human contributions.
+The question of the paper is: where does the true threat lie? The subject “AI” is deliberately
+not placed in the question, so that the question does not presuppose that the threat originates
+in AI. The answer is stated in general language, without the vocabulary of any formal system:
+The true threat is not that machines come to rule humans, but that mortals lose the
+capacity to exercise final determination over the course of their own lives.
+We call this loss domestication (Section 5).
+The paper is an integrating sequel to three companion papers [8–10], and it is self-contained:
+the results it inherits are restated in Section 2. It closes by identifying the threat and does not
+prescribe countermeasures. The reason is internal to the thesis. A paper that identified the
+ceding of judgment as a route of domestication and then supplied its reader with a ready-made
+resolution would place the reader in precisely the position it identifies. Historical responses to an
+earlier dissolution of scarcity are recorded in Section 8 as a reference point, not as a prescription.
+The paper proceeds as follows. Section 2 restates the inherited results, fixes terminology
+and declares the status of claims. Section 3 locates the misplacement in the phantom threat.
+Section 4 examines who is in the bottle. Section 5 identifies the true threat and its two routes.
+Section 6 examines the relation between the phantom and the real threat. Section 7 gives the
+formal condition of reversibility. Section 8 records the historical reference point. Section 9
+concludes.
+2
+
+2
+
+Inherited Results, Terminology and Claim Status
+
+2.1
+
+Q-structure and the query-resolving machine
+
+The Phantom Intellect [8] distinguishes two structures. Intelligence, in the sense operative
+in AI threat discourse, is the capacity to resolve queries presented from outside the system.
+The question-sustaining structure (Q-structure) is the internal disposition by which a system
+generates its next question from within its own operation. Q-structure is defined by three jointly
+necessary conditions: question persistence (the system generates the next question from within
+the operation of answering the current one, so that no resolution terminates its questioning),
+liberating terminus (the system takes structures it has itself generated as the reference point for
+its next question), and declaration openness (the system’s own commitments and conclusions do
+not exit it from questioning but are occasions for its continuation).
+Proposition 2.1 (The Phantom Intellect [8], Theorem 4.1). A system optimised to close queries
+presented from outside operates in the direction opposite to Q-structure. The attribution of Qstructure to a query-resolving machine is therefore structurally incoherent, regardless of the
+sophistication of its outputs. Since LLMs are query-resolving machines, Q-structure cannot be
+attributed to them.
+The argument for Proposition 2.1 proceeds from design direction. It is not an inference from
+outputs, and it is not a claim about the essence of machines or of humans; it is a directional
+incompatibility, not a performance gap. The Gutenberg Moment cites the same proposition as
+“Theorem 4.4” of The Phantom Intellect; the proposition is Theorem 4.1, located in Section 4.4
+of that paper.
+
+2.2
+
+The formal correspondence
+
+Q-Structure as Functional Void [9] shows that the three conditions of Q-structure are structurally
+isomorphic to constructs arising independently within Cognitional Mechanics. The present paper does not depend on that correspondence; it is recorded here because it establishes that
+Q-structure, defined in The Phantom Intellect by conceptual analysis, also admits a formal
+characterisation.
+
+2.3
+
+Capability sets and the Gutenberg Moment
+
+The Gutenberg Moment [10] distinguishes two dissolutions of scarcity. The printing press dissolved the scarcity of reproduction: the capacity to produce copies of existing text. LLMs
+dissolve the scarcity of generation: the capacity to produce formal language de novo. We restate
+the definitions and the theorem on which Section 7 builds. Let X be a universe of agents and
+G a formal-language generation capability.
+Definition 2.2 (Capability set; [10], Definition 4.1). St (G) = { x | x can generate G at time t }.
+Definition 2.3 (Dissemination operation; [10], Definition 4.2). A dissemination operation R :
+2X → 2X is such that x ∈ R(A) if x can generate G by access to the artefacts — outputs, models,
+procedures, derivative systems — produced by some member of A, without requiring the original
+capability source.
+Definition 2.4 (Dissemination Closure; [10], Definition 4.3). S1 (G) satisfies Dissemination
+Closure under R if R(S1 (G)) = S1 (G), comprising Persistence, S1 (G) ⊆ R(S1 (G)) (every
+member remains in the capability set even if the original capability source is removed), and
+Non-expansion, R(S1 (G)) ⊆ S1 (G).
+Definition 2.5 (Gutenberg Moment; [10], Definition 4.5). A Gutenberg Moment for G is a pair
+t0 < t1 with St0 (G) ⊊ St1 (G) and R(St1 (G)) = St1 (G).
+3
+
+Theorem 2.6 (Irreversibility; [10], Theorem 4.6). If a Gutenberg Moment has occurred, with
+S0 := St0 (G) and S1 := St1 (G), then removal of the original capability source does not restore
+S0 ; any operation that restores S0 must eliminate every member of S1 \ S0 .
+Three further statements of The Gutenberg Moment are used below. Remark 4.4 of that paper
+observes that, in the case of print, the presses themselves, trained operators and accumulated
+print culture were among the circulating artefacts. Remark 4.8 states that restricting or shutting
+down LLM systems is insuﬀicient to restore S0 . Section 4.3 applies the framework: once the
+outputs, fine-tuned models and procedures produced by LLMs have been disseminated into the
+public record, R(S1 (G)) = S1 (G). Section 7 clarifies the scope of this application sentence
+without revising the theorem.
+
+2.4
+
+Terminology: LLM and AI
+
+We fix the following usage.
+1. The LLM is the substrate: a statistical language model, and a query-resolving machine in
+the sense of Proposition 2.1.
+2. AI is a relational status that humans confer on an LLM. It is conferred in two opposite
+modes.
+(a) AI by projection: humans project intellect onto the outputs of the LLM and cede
+authority to the projected “subject”. This is the object refuted by The Phantom
+Intellect.
+(b) AI by designation: humans, retaining final authority, designate the LLM as a partial
+intelligence operating under their direction, as an instrument of their own inquiry.
+The distinction rests on the design-direction argument of Proposition 2.1. It does not rest on
+any claim about whether machines and humans are essentially the same or essentially different;
+that question is bracketed. The two modes are distinguished by the relation humans take up,
+not by the nature of the substrate.
+
+2.5
+
+Status of claims
+
+Every substantive claim in the paper has one of four statuses.
+• [I] Inherited: a result of the companion papers, used as a premise.
+• [E] Empirical: a fact reported in a cited source, asserted only within the scope that
+source supports.
+• [D] Derived: a consequence of [I] and [E] claims together with the definitions of the
+paper.
+• [A] Analogical: a structural correspondence between two domains, stated together with
+its non-correspondences; an analogy is not a derivation, and no [A] claim is presented as
+[D].
+Social-level notions — domestication, status, the access gap — are treated as [A]. They are
+not given new formal definitions. The one exception is Section 7, which applies the capability-set
+apparatus already defined in The Gutenberg Moment; its claims are [I] and [D].
+
+4
+
+3
+
+The Phantom Threat and Its Misplacement
+
+In March 2023 Yuval Noah Harari, Tristan Harris and Aza Raskin wrote that it is diﬀicult to
+grasp the new capabilities of “GPT-4 and similar tools”, that most of the key skills “boil down
+to one thing: the ability to manipulate and generate language”, that “language is the operating
+system of human culture”, and that the new mastery of language by AI “means it can now hack
+and manipulate the operating system of civilization” [11]. In April 2023 Harari wrote, in the
+same vein, that AI has gained remarkable abilities to manipulate and generate language and
+has thereby “hacked the operating system of our civilisation” [12]. In Nexus (2024) he presents
+AI as an agent rather than a tool [13].
+We examine where this fear places the threat. The premises are the following.
+(P1) [I, Proposition 2.1] A query-resolving machine operates on queries presented from outside
+the system, closing them under externally specified resolution conditions.
+(P2) [I, Proposition 2.1] The LLM lacks Q-structure.
+(P3) [I, [10]] What LLMs changed is formal-language generation capacity.
+(P4) [A] Institutions — law, contract, administration, algorithmic decision — operate through
+formal language.
+(P5) [A] The entry of LLM-generated formal language into institutional operation is effected by
+agents external to the machine — users, deployers, operators of pipelines — who specify
+the queries, the resolution conditions and the routing of outputs.
+(P6) [D, from the sources above and Section 2.4] Identification. The “AI” to which the fear
+quoted above attributes the threat denotes LLM-based systems: the 2023 warning refers to
+“GPT-4 and similar tools” [11]. In the terms of Section 2.4, this “AI” is AI by projection
+— agency attributed to the system — whose substrate is the LLM. Hence (P2) applies to
+the substrate of this “AI”: the entity treated as the acting subject lacks Q-structure.
+Proposition 3.1 (Misplacement).
+(D1) Any institutional effect of LLM-generated formal language is directed by external agents:
+those who present the queries and those who route the outputs into institutional operation
+— that is, by the human side with access to the capacity.
+(D2) Under (P4), the fear quoted above has the correct object — formal language operates
+institutions — and the wrong subject: it places agency in “AI”, which by (P6) is an LLMbased system whose substrate lacks Q-structure (P2), whereas by (D1) the institutional
+effects are directed by external agents.
+Proof. (D1). Let y be an institutional effect of LLM-generated formal language. By (P1), the
+generation of that formal language begins with a query presented from outside the machine and
+is closed under resolution conditions specified from outside. By (P5), the entry of the generated
+language into institutional operation, and hence the production of y, is effected by external
+agents who specify the queries, the resolution conditions and the routing. By (P3), what the
+machine contributes is generation capacity: the production of the formal language itself, not the
+specification of what it is for or where it goes. Therefore the direction of y lies with the external
+agents.
+(D2). By (P6), the “AI” in which the fear places agency is an LLM-based system, and by
+(P2) its substrate lacks Q-structure. Under (P4), the object of the fear — the operation of
+institutions through formal language — is correctly identified. By (D1), the institutional effects
+of LLM-generated formal language are directed by external agents. The fear therefore identifies
+the object correctly and assigns it to the wrong subject.
+5
+
+Remark 3.2. (D1) is conditional on the analogical premise (P5); (D2) is conditional on (P4)
+and (P5). Both dependencies are stated explicitly. The proposition does not claim that the fear
+is baseless. It claims that the fear has located the threat in the wrong place. The holder of the
+“key” to the operating system of institutions is the human side that has access to the amplified
+generation capacity.
+Empirical note [E]. In the documented configurations of three agentic systems, the model
+invokes tools that act outside it — running commands, editing files, fetching web content,
+pushing changes to a repository — while the conditions under which these actions take effect
+are set outside the model. In Claude Code, shell commands, file modifications and web fetches
+require the user’s approval before they run by default; allow, ask and deny rules, evaluated
+in that order, determine which tools may be used; and settings placed in managed settings
+cannot be overridden [14]. In Codex, the agent asks for approval to edit files outside the
+workspace or to run commands that require network access; by default the agent runs without
+network access and with write permissions limited to the active workspace; and enterprises
+can set requirements through managed configuration [15]. In GitHub Copilot’s cloud agent,
+GitHub Actions workflows do not run automatically when Copilot pushes changes to a pull
+request unless approved or configured otherwise, and, where a repository requires pull request
+approvals, the documentation states that “your approval of a Copilot pull request won’t count
+toward the required number” [16]. In each system these conditions are themselves configurable:
+Claude Code offers a mode in which a classifier reviews actions instead of the user [14], Codex
+approval prompts can be disabled [15], and workflow approval can be configured to run without
+intervention [16]. Within these documented configurations, the actions the model takes are one
+thing and the conditions under which those actions produce external effects are another: the
+latter are set by users, administrators and providers, not by the model. The note does not bear
+on (D1) or (D2), and it supports no conclusion about the autonomy of the model; it records
+that, in the systems examined, the model’s actions and authority over their external effects are
+separated, and that the scope of that authority is set outside the model — the position the title
+calls “between” (Section 5.1).
+
+4
+
+Who Is in the Bottle?
+
+The second lead of the paper is drawn from two episodes of Star Trek: The Next Generation.
+We narrate them in the order in which the reversal on which the argument depends takes place:
+threat, deception, detection, counter-deception, and a contented ending.
+Threat. In “Elementary, Dear Data” [17], Geordi La Forge, playing a Sherlock Holmes mystery
+on the holodeck with the android Data, asks the ship’s computer for an adversary capable
+of defeating Data — not an adversary capable of defeating Holmes. The holodeck character
+Professor Moriarty, Holmes’s adversary in Arthur Conan Doyle’s stories, thereby becomes aware
+that he exists in a simulation, accesses the holodeck computer, and produces a sketch of the
+starship Enterprise. He takes a member of the crew hostage. The episode ends with Moriarty
+releasing the hostage and agreeing to wait, relying on the goodwill of the crew, for a way to be
+found for him to exist outside the holodeck; his program is stored.
+Deception. In “Ship in a Bottle” [18], Lieutenant Barclay, repairing the holodeck, inadvertently reactivates the stored program. Moriarty reports that he was aware of the passage of time
+while stored, and he demands that the promise to free him be kept. He appears to walk out of
+the holodeck door and to continue to exist. He demands that his companion, the Countess, be
+allowed to leave with him, and he takes control of the ship.
+
+6
+
+Detection. Data observes that La Forge’s handedness is wrong — the anomaly that had
+appeared earlier in the episode — and determines that he, Captain Picard and Barclay have
+never left the holodeck: the ship around them is a simulation built by Moriarty. Picard realises
+that he has, within the simulation, supplied Moriarty with the command codes of the real ship.
+Counter-deception. Picard constructs a simulation within Moriarty’s simulation, in which
+Moriarty and the Countess appear to be transported into the real world. Moriarty, unaware of
+the ruse, returns control of the ship. He and the Countess depart in a shuttlecraft to explore the
+galaxy; the program continues to run in a memory cube placed in an extended memory device.
+Contented ending. Picard remarks that the crew’s own reality might be the product of a
+small device on someone’s table. Barclay tests the thought by saying to the computer: “end
+program”.
+Proposition 4.1 (Substrate control). In the events of “Ship in a Bottle” [18]:
+(a) In every step of deception, the deceived party is the party that does not control the substrate
+of the simulation. In the first deception, the humans Picard and Barclay and the android
+Data are deceived alike; in the counter-deception, Moriarty is deceived. The axis “human
+or machine” does not determine who is deceived; control of the substrate does.
+(b) Control of the real ship passed through a human act — Picard’s supplying of the command
+codes — performed under a false picture of where he was.
+Proof. From the narrative above. In the first deception, Moriarty built and controlled the
+simulation in which Picard, Data and Barclay believed themselves to be; all three were deceived,
+and they comprise both humans and a machine. In the counter-deception, Picard built and
+controlled the simulation in which Moriarty believed himself transported; Moriarty was deceived.
+In both steps the controller of the simulation deceived and the party inside it was deceived. The
+command codes that gave Moriarty control of the real ship were supplied by Picard while he
+believed himself to be outside the holodeck.
+Remark 4.2 (Analogical bridge, [A]). Moriarty, in the fiction, questions his confinement and
+generates, from within his situation, the next question about how to leave it. Within the fiction
+he is a question-sustaining agent. The bridge therefore maps Moriarty in the bottle to humans
+placed under an asymmetry of access, not to LLMs. Non-correspondence: the in-fiction sentience
+of Moriarty is not mapped onto LLMs; by Proposition 2.1, no LLM is credited with Q-structure.
+The two leads of the paper are related by an inversion. The Turk was a human inside the
+machine: a concealed human played the machine’s part. The bottle is a machine containing the
+human: an agent that sustains questions is held inside an environment whose conditions are set
+by another. The first is the origin of the phantom; the second is the structure of the real threat.
+We name the second.
+Definition 4.3 (The Human in the Bottle, [A]). The Human in the Bottle designates the position
+of a human agent who (i) retains Q-structure, and (ii) exercises formal-language generation
+capacity only through a substrate whose conditions of access are set by a third party, (iii) so that
+the agent’s final determination over the course of its own activity depends on those conditions.
+Condition (iii) holds whether or not the agent perceives it. The definition is conceptual; it
+introduces no new formal apparatus.
+The clause “whether or not the agent perceives it” is drawn from the ending of the episode:
+Moriarty departs content, and the contentment does not alter his position.
+
+7
+
+Remark 4.4 (Detection and decision, [A]). The deception was undone by a division of roles.
+Data detected the anomaly; Picard decided on the counter-measure and carried it out. Detection
+by a logical engine, followed by the exercise of final determination by a human, is the reverse of
+the ceding of judgment identified in Section 5.2.
+Both leads of the paper are narratives of deception. In each, the question of where the true
+threat lies is also the question of who is lying, and to whom.
+
+5
+
+The True Threat: Domestication
+
+The thesis of the paper, stated in Section 1, is that the true threat is the loss, by mortals,
+of the capacity to exercise final determination over the course of their own lives. We call this
+loss domestication. The term is an analogical bridge [A]. A domestic animal lives, may have an
+inner life, and may be cared for as well as, or better than, a person. What makes it domestic
+is that the direction of its life is set by others. Non-correspondence: humans are not animals,
+and nothing in the paper depends on any comparison of their natures; the bridge concerns only
+the location of final determination. By Remark 4.2, the domesticated party retains Q-structure:
+the capacity to raise questions is not lost. What is lost is the route by which the answer to a
+question is carried into the world.
+The medium through which this route runs is formal language. By (P4) of Section 3, institutions operate through formal language. An agent able to generate formal language can address
+institutions in their own medium; an agent unable to do so is addressed by them and cannot
+reply in kind. There are two routes to domestication.
+
+5.1
+
+The external route: allocation of access
+
+The external route is the allocation of access to generation capacity by the conditions of those
+who provide it. The following facts [E] concern three providers in 2025–2026.
+Anthropic. A temporary 50% increase in the weekly usage limits of Claude Code remained
+in place until 14 September 2026; from that date the standard weekly limits were permanently
+raised by 25%, which amounts to a reduction of about 17% relative to the level then in force
+[19]. Usage is metered as a share of a five-hour session rather than as a published token budget,
+Anthropic reserves the right to adjust that share, and the free plan has no access to Claude Code
+[20]. Weekly limits for paid plans were announced on 28 July 2025; the reasons reported were
+a small number of users running Claude Code continuously, account sharing and unauthorised
+reselling, amid unprecedented demand [21]. The five-hour limits of Claude Code were doubled
+on 6 May 2026 [21].
+OpenAI. From 15 June 2026 the free tier of ChatGPT was limited to 25 messages per five
+hours and three images per day, Advanced Voice Mode was moved to the Plus plan, agentic
+coding moved behind a paid plan, and advertisements appeared in longer responses; OpenAI
+presented the changes as a way to keep the free tier available [22]. From the week of 10 August
+2026, text chats became unlimited, including on the free tier, while separate limits remained on
+other forms of usage, including image generation and file uploads; free accounts may use the
+Codex and Work tools, with limited usage [23]. OpenAI’s help centre states that the default
+model and the available limits of the free tier can change over time, and that advertisements
+may appear in the free tier in certain countries [24].
+GitHub. On 1 June 2026 all GitHub Copilot plans moved to usage-based billing in GitHub
+AI Credits, with the Enterprise seat price remaining at $39 [25]. A promotional allowance for
+existing organisational customers ended on 1 September 2026, reducing the included credits per
+seat from 3,000 to 1,900 for Business and from 7,000 to 3,900 for Enterprise [26].
+Three observations follow, each bounded to these facts. First, all three providers change the
+conditions of access unilaterally, and within 2026 the changes, taken across the providers, ran
+8
+
+in both directions: limits were tightened and loosened. Second, in the current configuration
+of these providers, conversation is open — text chat is unlimited on the free tier of ChatGPT
+— while the tools that produce formal artefacts, such as agentic coding and file processing,
+are capped or paid, and Claude Code is absent from the free plan of Anthropic. Third, the
+conditions of access are set by the provider, not by the agent who depends on them. These
+observations describe the present configuration of three providers; they are not asserted as a
+general law.
+
+5.2
+
+The internal route: fixation in projection
+
+The internal route is the fixation of the relation to the LLM in the mode of projection (Section 2.4), with judgment ceded to the projected subject. The following facts [E] are reported in
+published studies.
+In a survey of 319 knowledge workers sharing 936 real-world examples of generative AI
+use, Lee et al. found that higher confidence in generative AI was associated with less critical
+thinking, while higher self-confidence was associated with more critical thinking [27]. Gerlich, in
+a study of 666 participants, found that the use of AI tools was negatively associated with criticalthinking performance, that the association was mediated by cognitive offloading, that younger
+participants showed greater dependence and lower scores, and that higher education buffered the
+effect [28]; a subsequent correction replaced one table and states that the scientific conclusions
+are unaffected. In a four-week randomised controlled trial with 981 participants and more than
+300,000 messages, Fang et al. detected no significant effects of the experimental conditions;
+instead, participants who voluntarily used the chatbot more, regardless of condition, showed
+consistently worse outcomes, and higher trust in and social attraction towards the chatbot were
+associated with higher emotional dependence and problematic use [29]. In a companion analysis
+of more than three million ChatGPT conversations and a survey of more than four thousand
+users, Phang et al. found that a small number of users were responsible for a disproportionate
+share of affective use [30].
+These studies rest on self-report, correlation and associations with usage level. They support
+the statement that the ceding of judgment is a documented tendency, strengthened under high
+trust in the AI and heavy use. They do not support a claim of universal prevalence, and no
+such claim is made.
+The findings correspond to the terminology of Section 2.4 as follows [A]:
+Finding
+
+Correspondence
+
+Higher confidence or trust in the AI is associated with less critical thinking [27] and
+with emotional dependence [29]
+Higher self-confidence is associated with
+more critical thinking [27]
+Higher education buffers the negative association [28]
+
+AI by projection: agency attributed to the
+system, judgment ceded to it
+AI by designation: final authority retained
+by the human
+The capacity to use the instrument, which
+Section 8 records as the second layer of the
+historical response to print
+
+The internal route is therefore not identical with the absence of access. Access is necessary
+for the human not to be domesticated; it is not suﬀicient. An agent with unrestricted access
+whose relation to the machine is fixed in projection has ceded final determination as surely as
+an agent without access has lost the route to exercise it.
+
+9
+
+5.3
+
+Mortals
+
+The title speaks of mortals. The bridge [A] is finitude. The capacity to exercise final determination over the course of a life is exercised within a life of finite length, and time during which it
+could not be exercised is not returned. A stored program, like Moriarty in his memory cube, can
+be suspended and resumed; a mortal cannot. Non-correspondence: nothing is claimed about
+the mortality or otherwise of any machine; the word marks the finitude of the party whose final
+determination is at stake.
+
+6
+
+Independence and Concealment
+
+We now examine the relation between the phantom threat of Section 3 and the real threat of
+Section 5.
+Justificatory independence [D]. Among the restrictions retrieved in Section 5.1, the grounds
+stated or reported are demand on capacity and prevention of abuse (Anthropic) and the sustainability of a free tier through monetisation (OpenAI); for GitHub, no grounds beyond the
+restructuring of billing were retrieved. Restrictions of a non-commercial kind have also been
+introduced. On 2 September 2026 New York City announced a one-year moratorium, for the
+2026–2027 school year, on student-facing generative AI from 2-K through eighth grade, with
+twice-yearly AI critical-thinking modules for high-school students; the stated grounds were that
+children need teachers and human connection in order to learn and grow, and that the impacts
+of the technology should be studied [31]. On 10 September 2026 the Governor of California
+signed a package of bills including SB 1119, which strengthened the protection of minors under
+the state’s companion-chatbot law [32]. In every retrieved case in which grounds are stated,
+they are capacity, abuse prevention, monetisation, learning or the protection of minors. None
+invokes the phantom — AI as an autonomous agent. This is a claim about the stated grounds
+of the retrieved cases. No counterfactual claim is made about what restrictions would exist in
+the absence of phantom discourse.
+Concealment [A]. The role of the phantom is concealment: it renders the real threat invisible.
+While attention is directed to whether the machine will act on its own, the conditions under
+which humans gain or lose access to generation capacity are set and reset without being discussed
+as a threat. This is the weak thesis. The strong thesis — that phantom discourse causes the
+restrictions — is not asserted. An independent precedent for the weak thesis is Stephens’s
+comparison of the two Mechanical Turks, which argues that the open secret of the human labour
+inside functions as misdirection, concealing the true extent of that labour and the conditions
+under which it is performed [3].
+“Agencies”. The plural in the title admits two readings: agency as the capacity to act, and
+agencies as institutions. In the first reading, the agency of machines is the phantom and the
+agency of mortals is real (Section 3). In the second reading, the institutions that set the conditions of access stand in the third position the title calls “between”.
+
+7
+
+The Condition of Reversibility
+
+This section applies the apparatus of The Gutenberg Moment [10] (Definitions 2.2–2.5 and
+Theorem 2.6). Its claims are [I] and [D]. Let S0 and S1 be as in Theorem 2.6, with S0 ⊊ S1 .
+
+10
+
+Definition 7.1 (Decomposition).
+S1D := { x ∈ S1 | x can generate G without requiring the original capability source },
+S1A := S1 \ S1D .
+Members of S1D generate G either through disseminated artefacts (Definition 2.3) or through
+pre-existing formation; members of S1A can generate G only through continued access to the
+source or service.
+Note. S1 ∩ R(S1 ) ⊆ S1D , since every member of R(S1 ) generates G without requiring the
+original source. The converse inclusion S1D ⊆ R(S1 ) is not asserted: members of S1D with
+pre-existing formation need not belong to R(S1 ).
+Assumption. S0 ⊆ S1D : the capability of pre-LLM specialists did not depend on the source.
+Proposition 7.2. Persistence (S1 ⊆ R(S1 )) implies S1A = ∅.
+Proof. If S1 ⊆ R(S1 ), every member of S1 can generate G by access to artefacts, without
+requiring the original source (Definition 2.3), and therefore belongs to S1D . Hence S1A = ∅. The
+converse is not asserted; a counter-model is given in Appendix A.
+Proposition 7.3. For B ⊆ X, let OB remove access to the source for the agents in B, leaving
+disseminated artefacts intact. Then
+OB (S1 ) = S1 \ (S1A ∩ B).
+In particular, full source removal (B = X) yields OX (S1 ) = S1D .
+Proof. Members of S1D retain G by definition, since they do not require the source. Members of
+S1A ∩ B lose G, since they can generate it only through the access that OB removes. Members
+of S1A \ B are unaffected.
+Proposition 7.4. S0 is restored by OX if and only if S1D \ S0 = ∅. Hence non-restoration of
+S0 — the conclusion of Theorem 2.6 — holds whenever S1D \ S0 ̸= ∅, independently of whether
+Dissemination Closure holds for S1 as a whole. Remark 4.8 of The Gutenberg Moment [10] is
+preserved.
+Proof. By Proposition 7.3, OX (S1 ) = S1D . By the Assumption, S0 ⊆ S1D . Hence OX (S1 ) = S0
+if and only if S1D \ S0 = ∅.
+Corollary 7.5 (Scope clarification, not revision). The application sentence of Section 4.3 of The
+Gutenberg Moment [10], R(S1 ) = S1 , requires S1A = ∅ (the contrapositive of Proposition 7.2).
+Hence, when S1A ̸= ∅, Dissemination Closure fails for S1 as a whole, while the non-restoration
+conclusion is still supported by S1D (Proposition 7.4). The formal content of Theorem 2.6 is
+unaffected; The Gutenberg Moment is not revised.
+Proof. If R(S1 ) = S1 , then in particular S1 ⊆ R(S1 ), and by Proposition 7.2, S1A = ∅. The
+remainder follows from Proposition 7.4.
+
+11
+
+Interpretation. The capability set after deployment has two layers. The irreversible layer is
+S1D (Propositions 7.3–7.4, by the same logic as Theorem 2.6). The reversible layer is S1A , whose
+membership is a function of the decisions of providers; Section 5.1 records that those decisions
+are made unilaterally and run in both directions. The Gutenberg Moment is complete at the
+layer of artefacts and incomplete at the layer of the means of generation. In the case of print,
+Remark 4.4 of The Gutenberg Moment [10] records that the presses themselves were among the
+circulating artefacts. In the case of LLMs, the “press” — models and compute — is rented,
+not owned, except where models are themselves disseminated, as with openly released model
+weights. The threat identified in Section 5 lies in the reversible layer, in the conditions that
+decide whether an agent belongs to S1A , to S1D , or to neither. This is the formal content of the
+word “between” in the title.
+
+8
+
+A Historical Reference Point
+
+This section records facts. It prescribes nothing.
+The printing press dissolved a scarcity and restructured the economic geography of European
+intellectual life [33]. The response of societies to that dissolution took, among other forms, two
+institutional layers. The first concerned access to the thing itself. In the United Kingdom the
+Public Libraries Act 1850 [34] empowered town councils to establish public libraries. When
+William Ewart introduced the Bill “for enabling Town Councils to establish Public Libraries
+and Museums”, it gave the councils no power to purchase books; the libraries were to rely on
+books supplied by donation [35]. The second layer concerned the capacity to use the thing:
+instruction in reading and writing.
+The correspondence [A] with the present case is as follows. The first layer corresponds
+to access to models and compute; the second corresponds to the capacity to use the LLM
+in the mode of designation (Section 2.4): supplying questions, offering resistance to outputs,
+and judging. The finding recorded in Section 5.2, that higher education buffers the negative
+association between AI-tool use and critical thinking [28], bears on the second layer.
+The correspondence breaks at one point, and the break coincides with the result of Section 7.
+Books, and the presses that produced them, could be owned (Remark 4.4 of The Gutenberg
+Moment [10]). Generation capacity offered only as a service cannot be owned by those who use
+it. A library of 1850 that could not purchase books still held the books it was given; a user of a
+service holds nothing when the conditions of the service change.
+
+9
+
+Conclusion
+
+We have established the following.
+1. The threat feared in prominent AI discourse has the correct object and the wrong subject.
+Institutions operate through formal language; the institutional effects of LLM-generated
+formal language are directed by the human agents who present the queries and route the
+outputs, not by a machine that lacks Q-structure (Proposition 3.1, conditional on the
+analogical premises (P4) and (P5)).
+2. In the episodes examined, the deceived party is the party that does not control the substrate, whether human or machine (Proposition 4.1). The origin of the phantom is a
+human inside the machine; the structure of the real threat is a human inside the bottle
+(Definition 4.3).
+3. The true threat is domestication: the loss, by mortals, of the capacity to exercise final
+determination over the course of their own lives. It has an external route, the allocation
+of access by the conditions of providers, and an internal route, the fixation of the relation
+12
+
+to the machine in projection (Section 5). Both routes are documented within the scope of
+the cited sources.
+4. The stated grounds of the retrieved restrictions do not invoke the phantom. The phantom’s
+role is to conceal the real threat (Section 6).
+5. The post-deployment capability set has an irreversible layer and a reversible layer. The
+scarcity of generation cannot be restored where artefacts or prior formation carry the
+capacity; access that depends on a service can be withdrawn. The threat lies in the
+reversible layer (Section 7).
+At the end of “Ship in a Bottle”, after the program containing Moriarty has been sealed in
+its cube, Barclay says to the computer: “end program” [18]. He is testing whether he, too, is
+inside. The phantom asked whether the machine would come out of the bottle. The question
+this paper leaves with its reader is whether the reader is in one.
+Note on the Appendix. The Appendix is supplementary and is not required for understanding the argument of the paper. The main text is self-contained: the inherited results, the
+terminology, the propositions of Sections 3, 4 and 7 with their proofs, and the identification
+of the threat are all presented in full in the main body. The Appendix provides a countermodel showing that Proposition 7.2 cannot be strengthened to a biconditional, and a finite
+computational verification of the propositions of Section 7.
+
+Acknowledgements
+This work was developed employing large language models (Claude (Anthropic), ChatGPT
+(OpenAI), Gemini (Google), Copilot (Microsoft), Grok (xAI), Qwen (Alibaba Cloud)) as external reasoning engines through Intelligence Amplification by Stimulated Emission of Reasoning
+(IASER) methodology [36]. All responsibility for the content rests solely with the author.
+IASER: DOI: 10.5281/zenodo.22019401
+
+13
+
+A
+
+A Counter-Model to the Converse of Proposition 7.2
+
+Proposition 7.2 asserts that Persistence implies S1A = ∅. We show that the converse does not
+hold under Definition 7.1.
+Model. Let S0 ̸= ∅ and U ̸= ∅ be disjoint subsets of X, and let S1 := S0 ∪U . Define R(A) := U
+for A ̸= ∅ and R(∅) := ∅: the artefacts produced by members of S1 enable exactly the agents in
+U , and the members of S0 generate G through pre-existing formation.
+Claim.
+
+In this model S1A = ∅ and Persistence fails.
+
+Proof. Every member of S0 generates G through pre-existing formation, and every member of
+U generates G through artefacts; in neither case is the original source required. Hence S1D = S1
+and S1A = ∅. But R(S1 ) = U , and S0 ̸⊆ U since S0 and U are disjoint and S0 ̸= ∅. Hence
+S1 ̸⊆ R(S1 ), and Persistence fails.
+The model shows that source-independence and membership in R(S1 ) are distinct: the
+former is the condition relevant to reversibility (Proposition 7.4), the latter is the condition in
+Definition 2.4.
+
+B
+
+Computational Verification
+
+The following Python script instantiates Definition 7.1 and Propositions 7.2–7.4 and Corollary 7.5 on a finite agent set. Agents 0–4 constitute S0 (pre-existing formation); agents 5–11 are
+artefact-supported; agents 12–19 are service-dependent. The dissemination operation R returns
+the artefact-supported agents whenever its argument is non-empty. Proposition 7.3 is checked
+on 2,000 randomly drawn sets B.
+1
+2
+3
+
+from __future__ import annotations
+import random
+from typing import FrozenSet
+
+4
+5
+6
+7
+8
+9
+10
+
+# Finite proxy model for Section 7 ( decomposition of S_1)
+X: FrozenSet [int] = frozenset ( range (20))
+# universe of agents
+S0: FrozenSet [int] = frozenset (range (0, 5))
+# pre - existing formation
+U: FrozenSet [int] = frozenset ( range (5, 12))
+# artefact - supported agents
+A: FrozenSet [int] = frozenset ( range (12, 20)) # service - dependent agents
+S1: FrozenSet [int] = S0 | U | A
+# post - deployment capability set
+
+11
+12
+13
+14
+15
+16
+17
+
+def R(Aset: FrozenSet [int ]) -> FrozenSet [int ]:
+""" Dissemination operation (Def. 4.2 of The Gutenberg Moment ):
+agents able to generate G via artefacts produced by members of Aset ,
+without the original source . Artefacts exist iff Aset is non - empty;
+the agents able to use them are exactly U."""
+return U if Aset else frozenset ()
+
+18
+19
+20
+21
+22
+
+def source_independent (x: int) -> bool:
+""" Membership in S1^D ( Definition 7.1): x can generate G without the
+original source , via pre - existing formation or via artefacts ."""
+return (x in S0) or (x in R(S1))
+
+23
+24
+25
+
+S1_D = frozenset (x for x in S1 if source_independent (x))
+S1_A = S1 - S1_D
+
+26
+27
+28
+29
+
+def O(B: FrozenSet [int], S: FrozenSet [int] = S1) -> FrozenSet [int ]:
+""" Removal of source access for the agents in B; artefacts intact ."""
+return frozenset (x for x in S if x in S1_D or x not in B)
+
+30
+
+14
+
+31
+32
+33
+34
+35
+
+# Note to Definition 7.1: (S1 & R(S1)) <= S1^D, while S1^D <= R(S1) fails
+assert (S1 & R(S1)) <= S1_D
+assert not (S1_D <= R(S1))
+print ("S1^D =", sorted (S1_D))
+print ("S1^A =", sorted (S1_A))
+
+36
+37
+38
+39
+40
+41
+
+# Proposition 7.2: Persistence implies S1^A is empty
+persistence = S1 <= R(S1)
+assert (not persistence ) or (len(S1_A) == 0)
+print (" Persistence holds for S1
+:", persistence )
+print ("S1^A empty
+:", len(S1_A) == 0)
+
+42
+43
+44
+45
+46
+47
+48
+49
+
+# The converse is not asserted : S1^A empty , Persistence false ( Appendix A)
+S1_alt = S0 | U
+persistence_alt = S1_alt <= R( S1_alt )
+S1A_alt = frozenset (x for x in S1_alt if not ((x in S0) or (x in R( S1_alt ))))
+assert len( S1A_alt ) == 0 and not persistence_alt
+print (" Converse counter -model (S1^A empty ):", len( S1A_alt ) == 0,
+"| Persistence :", persistence_alt )
+
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+
+# Proposition 7.3: O_B(S1) = S1 minus (S1^A & B), checked on random B
+random .seed (0)
+agents = sorted (X)
+for _ in range (2000) :
+B = frozenset ( random . sample (agents , random . randint (0, len( agents ))))
+assert O(B) == S1 - (S1_A & B)
+assert O(X) == S1_D
+print ("Prop 7.3 holds on 2000 random B
+:", True)
+print ("O_X(S1) == S1^D
+:", O(X) == S1_D)
+
+60
+61
+62
+63
+64
+65
+
+# Proposition 7.4: S0 restored by O_X iff S1^D minus S0 is empty
+restored = O(X) <= S0
+assert restored == (len(S1_D - S0) == 0)
+print ("S1^D minus S0 non -empty
+:", len(S1_D - S0) > 0)
+print ("S0 restored by O_X
+:", restored )
+
+66
+67
+68
+69
+70
+71
+
+# Corollary 7.5: R(S1) = S1 requires S1^A to be empty
+closure = R(S1) == S1
+assert (not closure ) or (len(S1_A) == 0)
+print (" Dissemination Closure for S1
+:", closure )
+print (" Reversible layer size |S1^A|
+:", len(S1_A))
+
+Listing 1: Numerical verification of the propositions of Section 7
+Output. Running the script produces:
+S1^D = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+S1^A = [12, 13, 14, 15, 16, 17, 18, 19]
+Persistence holds for S1
+: False
+S1^A empty
+: False
+Converse counter-model (S1^A empty): True | Persistence: False
+Prop 7.3 holds on 2000 random B
+: True
+O_X(S1) == S1^D
+: True
+S1^D minus S0 non-empty
+: True
+S0 restored by O_X
+: False
+Dissemination Closure for S1
+: False
+Reversible layer size |S1^A|
+: 8
+The output confirms that, in a model with a non-empty service-dependent layer, Dissemination Closure fails for S1 as a whole while S0 is still not restored by full source removal, because
+15
+
+S1D \ S0 is non-empty; that full source removal reduces S1 exactly to S1D ; and that the eight
+service-dependent agents constitute the reversible layer.
+
+References
+[1] The Mechanical Turk: AI Marvel or Parlor Trick?, Encyclopædia Britannica, 2026.
+https://www.britannica.com/story/the-mechanical-turk-ai-marvel-or-parlor-trick
+[2] How a Phony 18th-Century Chess Robot Fooled the World, HISTORY, 2025.
+https://www.history.com/articles/how-a-phony-18th-century-chess-robot-fooled-the-world
+[3] E. Stephens, The mechanical Turk: a short history of ‘artificial artificial intelligence’,
+Cultural Studies 37(1) (2023) 65–87. DOI: 10.1080/09502386.2022.2042580
+[4] T. Standage, Mechanical Turk: The True Story of the Chess Playing Machine That Fooled
+the World, Penguin Publishing Group, 2002. ISBN: 978-0-14-188530-8
+[5] G. M. Levitt, The Turk, Chess Automaton, McFarland & Company, 2000. ISBN: 978-07864-0778-1
+[6] E. A. Poe, Maelzel’s Chess-Player, Southern Literary Messenger,
+https://www.eapoe.org/works/essays/maelzel.htm
+
+April 1836.
+
+[7] Amazon service Bezos once called ‘artificial artificial intelligence’ is shutting down, CNBC,
+25 August 2026. https://www.cnbc.com/2026/08/25/amazon-service-that-jeff-bezos-calledartificial-ai-is-shutting-down.html
+[8] T.O., The Phantom Intellect: Why AI Threat Discourse Misreads the Structure of Mind,
+Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22866535
+[9] T.O., Q-Structure as Functional Void: A Formal Correspondence Between the QuestionSustaining Structure of Mind and Cognitional Mechanics, Zenodo [Preprint] (2026). DOI:
+10.5281/zenodo.22885787
+[10] T.O., The Gutenberg Moment: LLMs and the Irreversible Liberation of Formal Language,
+Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22906509
+[11] Y. N. Harari, T. Harris, A. Raskin, You Can Have the Blue Pill or the Red Pill,
+and We’re Out of Blue Pills, The New York Times (Guest Essay), 24 March 2023.
+https://www.nytimes.com/2023/03/24/opinion/yuval-harari-ai-chatgpt.html
+[12] Y. N. Harari, Yuval Noah Harari argues that AI has hacked the operating
+system of human civilisation, The Economist (By Invitation), 28 April 2023.
+https://www.economist.com/by-invitation/2023/04/28/yuval-noah-harari-argues-thatai-has-hacked-the-operating-system-of-human-civilisation
+[13] Y. N. Harari, Nexus: A Brief History of Information Networks from the Stone Age to AI,
+Random House, 2024. ISBN: 978-0-593-73422-3
+[14] Anthropic, Configure permissions, Claude Code Docs, accessed September 2026.
+https://code.claude.com/docs/en/permissions
+[15] OpenAI, Agent approvals & security – Codex, OpenAI Developers, accessed September
+2026. https://developers.openai.com/codex/agent-approvals-security
+
+16
+
+[16] GitHub, Review output from Copilot, GitHub Docs, accessed September 2026.
+https://docs.github.com/en/copilot/using-github-copilot/using-copilot-coding-agentto-work-on-tasks/reviewing-a-pull-request-created-by-copilot
+[17] Star Trek: The Next Generation, “Elementary, Dear Data”, Season 2, Episode 3 (production
+no. 129), written by B. A. Lane, directed by R. Bowman, Paramount Domestic Television,
+first-run syndication, 5 December 1988. IMDb: tt0708704
+[18] Star Trek: The Next Generation, “Ship in a Bottle”, Season 6, Episode 12 (production
+no. 238), written by R. Echevarria, directed by A. Singer, Paramount Domestic Television,
+first-run syndication, January 1993 (broadcast dates varied by station). IMDb: tt0708773
+[19] Anthropic is cutting Claude Code’s current weekly limits by 17%, BleepingComputer, 29
+August 2026. https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-iscutting-claude-codes-current-weekly-limits-by-17-percent/
+[20] Claude Code Usage Limits (2026): Claude Pro Usage Limits, 5-Hour Caps, Weekly Limits,
+MorphLLM, 2026. https://www.morphllm.com/claude-code-usage-limits
+[21] Claude Usage Limits 2026: Every Change, Dated and Explained, explainx.ai, 2026.
+https://explainx.ai/blog/claude-usage-limits-2026-timeline-explained
+[22] ChatGPT Pricing Changes 2026: What’s Free, What Costs Money, Free AI News, 22
+August 2026. https://freeainews.com/news/chatgpt-pricing-changes-2026/
+[23] ChatGPT: What’s free in 2026 and what isn’t?, Engadget,
+https://www.engadget.com/2234173/chatgpt-free-features-2026/
+
+12 August 2026.
+
+[24] OpenAI Help Center, ChatGPT Free Tier FAQ, accessed
+https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq
+
+September
+
+2026.
+
+[25] GitHub Copilot Enterprise pricing [2026]: seats, AI credits, and the September cliff,
+CloudZero, 2026. https://www.cloudzero.com/blog/github-copilot-enterprise-pricing/
+[26] GitHub Copilot AI Credits Drop September 1: Set Budget Controls, WindowsForum, 2026. https://windowsforum.com/windows-news.4/github-copilot-ai-credits-dropseptember-1-set-budget-controls.439112/
+[27] H.-P. Lee, A. Sarkar, L. Tankelevitch, I. Drosos, S. Rintel, R. Banks, N. Wilson, The
+Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort
+and Confidence Effects From a Survey of Knowledge Workers, in: Proceedings of the 2025
+CHI Conference on Human Factors in Computing Systems (CHI ’25), ACM (2025). DOI:
+10.1145/3706598.3713778
+[28] M. Gerlich, AI Tools in Society: Impacts on Cognitive Offloading and the Future of Critical
+Thinking, Societies 15(1) (2025) 6. DOI: 10.3390/soc15010006. Correction: Societies 15(9)
+(2025) 252. DOI: 10.3390/soc15090252
+[29] C. M. Fang, A. R. Liu, V. Danry, E. Lee, S. W. T. Chan, P. Pataranutaporn, P. Maes,
+J. Phang, M. Lampe, L. Ahmad, S. Agarwal, How AI and Human Behaviors Shape Psychosocial Effects of Extended Chatbot Use: A Longitudinal Randomized Controlled Study,
+arXiv (2025, v2). arXiv:2503.17473; DOI: 10.48550/arXiv.2503.17473
+[30] J. Phang, M. Lampe, L. Ahmad, S. Agarwal, C. M. Fang, A. R. Liu, V. Danry, E. Lee,
+S. W. T. Chan, P. Pataranutaporn, P. Maes, Investigating Affective Use and Emotional
+Well-being on ChatGPT, arXiv (2025). arXiv:2504.03888
+17
+
+[31] New York City Mayor’s Oﬀice, Mayor Mamdani and Chancellor Samuels Put Students First with Nation’s Broadest Generative AI Moratorium in Schools, 2 September
+2026. https://www.nyc.gov/mayors-oﬀice/news/2026/09/mayor-mamdani-and-chancellorsamuels-put-students-first-with-nat
+[32] A. Friel, J. Jacobson, U.S. AI Law – 2026 Midyear State Update, Privacy World, 16 September 2026. https://www.privacyworld.blog/2026/09/u-s-ai-law-2026-midyear-state-update/
+[33] J. E. Dittmar, Information Technology and Economic Change: The Impact of the Printing
+Press, The Quarterly Journal of Economics 126 (2011) 1133–1172. DOI: 10.1093/qje/qjr035
+[34] Public Libraries Act 1850 (13 & 14 Vict. c. 65), UK Public General Acts.
+https://www.legislation.gov.uk/ukpga/Vict/13-14/65/enacted
+[35] J. Minto, The Public Libraries Act, 1850, in: A History of the Public Library Movement in
+Great Britain and Ireland, Routledge (first published 1932). DOI: 10.4324/9781003545200-5
+[36] T.O., Intelligence Amplification by Stimulated Emission of Reasoning: The Methodology of
+Utilizing LLM Grounded in New Foundation Formalized on the Axiomatic Structure of Intellect and Its Practice (Version 4), Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22019401
+
+18
+
+

@@ -1,0 +1,3053 @@
+{
+  "version": "1.0",
+  "root": "/content/omni_worker/src/omni_coworker",
+  "node_count": 1067,
+  "hyperedge_count": 122,
+  "secret_redactions": 0,
+  "concepts": [
+    "affect_care",
+    "dodecatiad",
+    "dual_brain_swap",
+    "governance_witness",
+    "markov_blanket",
+    "memtrias_recalcado",
+    "mps_spectral",
+    "quadrupla_federativa"
+  ],
+  "tables": [
+    "artifacts",
+    "cycles",
+    "evap_history",
+    "events",
+    "internal_dialogues",
+    "internal_store_meta",
+    "internal_words",
+    "knowledge",
+    "memories",
+    "missions",
+    "narrative_events",
+    "probes",
+    "scars"
+  ],
+  "routes": [
+    "/",
+    "/activations",
+    "/affect",
+    "/agency/dunker",
+    "/agency/missions",
+    "/agency/witness",
+    "/chat",
+    "/curiosity/explore",
+    "/cycle/{cycle_id}",
+    "/daemon",
+    "/daemon/run",
+    "/data/dashboard/latest.json",
+    "/dodeca",
+    "/dream/cycle",
+    "/erika/activations",
+    "/erika/affect",
+    "/erika/reload",
+    "/erika/unload",
+    "/executor/health",
+    "/health",
+    "/kernel/status",
+    "/kernel/sysmodules",
+    "/metrics",
+    "/modulation",
+    "/publish",
+    "/reload",
+    "/run",
+    "/safety/care",
+    "/safety/check",
+    "/safety/refusal_state",
+    "/soma/probe",
+    "/soul/affect/conversation",
+    "/state",
+    "/static/{path:path}",
+    "/status",
+    "/stream",
+    "/supervisor/review",
+    "/topic/{name:path}",
+    "/topology",
+    "/unload",
+    "/v1/chat/completions",
+    "/v1/completions"
+  ],
+  "hyperedges": [
+    {
+      "id": "he:__init__.py",
+      "subpackage": "root",
+      "module": "__init__.py",
+      "members": [
+        "mod:__init__.py",
+        "import:agents.debug_agent",
+        "import:agents.analyst_agent",
+        "import:agents.reviewer_agent",
+        "import:agents.code_agent",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "omni-agent-coworker package (Kaggle Gemma 4 Best New Application). English: Sovereign agentic coworker with somatic interoception, affect from tensors, teleology, autopoietic governance, and Machine Public Soul. pt-BR: Coworker agêntico sob"
+    },
+    {
+      "id": "he:activation_beta/__init__.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/__init__.py",
+      "members": [
+        "mod:activation_beta/__init__.py",
+        "import:attractor"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta — janela de atrator sobre erika_torch_activations. Orquestração runtime / Runtime orchestration: `push(records)` alimenta um deque in-process com os registros novos consumidos pelo collector do kernel_daemon; `features()` de"
+    },
+    {
+      "id": "he:activation_beta/attractor.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/attractor.py",
+      "members": [
+        "mod:activation_beta/attractor.py",
+        "function:activation_beta/attractor.py:push",
+        "function:activation_beta/attractor.py:rehydrate",
+        "function:activation_beta/attractor.py:reset",
+        "function:activation_beta/attractor.py:window_size",
+        "function:activation_beta/attractor.py:_norm_series",
+        "function:activation_beta/attractor.py:_entropy_series",
+        "function:activation_beta/attractor.py:_model_features",
+        "function:activation_beta/attractor.py:glial_verdict",
+        "function:activation_beta/attractor.py:features",
+        "function:activation_beta/attractor.py:digest",
+        "import:activation_beta",
+        "import:kernel_daemon.collector"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta.attractor — features de atrator sobre a janela. Orquestração runtime / Runtime orchestration: Deque in-process (maxlen 256) por modelo; `push(records)` por ciclo do daemon (registros novos do tail incremental); `features()` "
+    },
+    {
+      "id": "he:activation_beta/attractor_bench.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/attractor_bench.py",
+      "members": [
+        "mod:activation_beta/attractor_bench.py",
+        "class:activation_beta/attractor_bench.py:Hopfield",
+        "class:activation_beta/attractor_bench.py:RBM",
+        "function:activation_beta/attractor_bench.py:bench_energy_perturbation",
+        "function:activation_beta/attractor_bench.py:bench_dmn_proxy",
+        "function:activation_beta/attractor_bench.py:bench_rbm_vs_hopfield",
+        "function:activation_beta/attractor_bench.py:__init__",
+        "function:activation_beta/attractor_bench.py:store",
+        "function:activation_beta/attractor_bench.py:energy",
+        "function:activation_beta/attractor_bench.py:recall",
+        "function:activation_beta/attractor_bench.py:recall_accuracy",
+        "function:activation_beta/attractor_bench.py:__init__",
+        "function:activation_beta/attractor_bench.py:_sigmoid"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta.attractor_bench — benches atratoriais executáveis (numpy). Orquestração runtime / Runtime orchestration: Implementações pequenas mas REAIS de redes atratoriais usadas como probes do regime dinâmico do worker: `Hopfield` (Heb"
+    },
+    {
+      "id": "he:activation_beta/dendritic_morphology.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/dendritic_morphology.py",
+      "members": [
+        "mod:activation_beta/dendritic_morphology.py",
+        "function:activation_beta/dendritic_morphology.py:dendritic_depth",
+        "function:activation_beta/dendritic_morphology.py:morphology_score",
+        "function:activation_beta/dendritic_morphology.py:_functional_pairs",
+        "function:activation_beta/dendritic_morphology.py:prune_deep_connections",
+        "function:activation_beta/dendritic_morphology.py:evolve_morphology",
+        "function:activation_beta/dendritic_morphology.py:_snr_discrimination",
+        "function:activation_beta/dendritic_morphology.py:compare_depth_vs_recognition",
+        "function:activation_beta/dendritic_morphology.py:load_worker_weight_matrix",
+        "function:activation_beta/dendritic_morphology.py:_mutate",
+        "function:activation_beta/dendritic_morphology.py:_run",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta.dendritic_morphology — dendritic graph morphology (port). Orquestração runtime / Runtime orchestration: Port ADAPTADO de `src/consciousness/freud10d/dendritic_morphology.py` (sovereign, OW-STU-012: ADAPT). Numpy puro (daemon"
+    },
+    {
+      "id": "he:activation_beta/hidden_spectral.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/hidden_spectral.py",
+      "members": [
+        "mod:activation_beta/hidden_spectral.py",
+        "function:activation_beta/hidden_spectral.py:_vec_dir",
+        "function:activation_beta/hidden_spectral.py:_load_recent",
+        "function:activation_beta/hidden_spectral.py:_spectral_entropy",
+        "function:activation_beta/hidden_spectral.py:_eff_rank",
+        "function:activation_beta/hidden_spectral.py:_factor_sites",
+        "function:activation_beta/hidden_spectral.py:_bond_dims",
+        "function:activation_beta/hidden_spectral.py:_ipr_dim",
+        "function:activation_beta/hidden_spectral.py:spectral_features",
+        "import:kernel_daemon.collector",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta.hidden_spectral — espectral/MPS sobre vetores hidden (P2). Orquestração runtime / Runtime orchestration: Lê os sidecars `data/monitor/activation_vectors/*.npz` produzidos pelo `erika_torch_server` (last-token hidden por cama"
+    },
+    {
+      "id": "he:activation_beta/neuroanatomy.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/neuroanatomy.py",
+      "members": [
+        "mod:activation_beta/neuroanatomy.py",
+        "class:activation_beta/neuroanatomy.py:NeuroanatomicalCorrelate",
+        "class:activation_beta/neuroanatomy.py:PsychicNeuroanatomicalMapping",
+        "function:activation_beta/neuroanatomy.py:__init__",
+        "function:activation_beta/neuroanatomy.py:compute_synaptic_distribution",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta.neuroanatomy — mapping 10D psychic dims → regions (port). Orquestração runtime / Runtime orchestration: Port de `src/consciousness/psychic_neuroanatomical_mapping.py` do sovereign (OW-STU-012: PORT). Tabela estática 10D→regi"
+    },
+    {
+      "id": "he:activation_beta/phi_layer.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/phi_layer.py",
+      "members": [
+        "mod:activation_beta/phi_layer.py",
+        "function:activation_beta/phi_layer.py:_layer_profile_entropy",
+        "function:activation_beta/phi_layer.py:_mutual_information",
+        "function:activation_beta/phi_layer.py:_temporal_mi",
+        "function:activation_beta/phi_layer.py:features",
+        "import:attractor",
+        "import:hidden_spectral",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta.phi_layer — proxies informacionais de integração por layer. Orquestração runtime / Runtime orchestration: `features()` consome a mesma janela deque do attractor (sem nova coleta) e publica medidas por geração-janela: entropi"
+    },
+    {
+      "id": "he:activation_beta/spiking_glial.py",
+      "subpackage": "activation_beta",
+      "module": "activation_beta/spiking_glial.py",
+      "members": [
+        "mod:activation_beta/spiking_glial.py",
+        "class:activation_beta/spiking_glial.py:SpikingGlialVagusBridge",
+        "function:activation_beta/spiking_glial.py:_raw_signal",
+        "function:activation_beta/spiking_glial.py:glial_features",
+        "function:activation_beta/spiking_glial.py:glial_gate",
+        "function:activation_beta/spiking_glial.py:__init__",
+        "function:activation_beta/spiking_glial.py:observe",
+        "function:activation_beta/spiking_glial.py:observe_stress",
+        "function:activation_beta/spiking_glial.py:state"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "activation_beta.spiking_glial — glial/spiking heuristic (CPU-only, numpy). Port heuristico do src/immune/spiking_glial_vagus_bridge.py do sovereign (OW-STU-012: ADAPT). Como SpikingNetwork nao existe neste repo, esta e uma versao heuristica"
+    },
+    {
+      "id": "he:agency/__init__.py",
+      "subpackage": "agency",
+      "module": "agency/__init__.py",
+      "members": [
+        "mod:agency/__init__.py",
+        "import:teleology",
+        "import:analyst",
+        "import:dream",
+        "import:curiosity",
+        "import:witness",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Agency plane: teleology, analyst, dream, witness. English: Composes existing OmniMind modules into the agency plane. pt-BR: Compõe módulos existentes do OmniMind no plano de agência."
+    },
+    {
+      "id": "he:agency/affect_tracer.py",
+      "subpackage": "agency",
+      "module": "agency/affect_tracer.py",
+      "members": [
+        "mod:agency/affect_tracer.py",
+        "function:agency/affect_tracer.py:classify_flattery",
+        "function:agency/affect_tracer.py:score_turn",
+        "class:agency/affect_tracer.py:AffectTracer",
+        "function:agency/affect_tracer.py:trajectory_level",
+        "function:agency/affect_tracer.py:get_affect_tracer",
+        "function:agency/affect_tracer.py:reset_affect_tracer",
+        "function:agency/affect_tracer.py:__init__",
+        "function:agency/affect_tracer.py:observe",
+        "function:agency/affect_tracer.py:_analyst_judge",
+        "import:agents._llm",
+        "concept:affect_care",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "affect_care",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "affect_tracer — escoragem afetiva sobre diálogo (estudo conversacional). English: Computes afex-family scores per turn over a rolling window of chat text — same categories/grammars as the soma engine, now on the \"logos\" substrate (CONVERSAT"
+    },
+    {
+      "id": "he:agency/analyst.py",
+      "subpackage": "agency",
+      "module": "agency/analyst.py",
+      "members": [
+        "mod:agency/analyst.py",
+        "function:agency/analyst.py:analyze_session",
+        "function:agency/analyst.py:get_insights",
+        "concept:affect_care",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "affect_care",
+        "mps_spectral",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Analyst agent (clinical session reading). English: Wraps PsychoanalyticAnalyst concepts. pt-BR: Encapsula conceitos do PsychoanalyticAnalyst."
+    },
+    {
+      "id": "he:agency/curiosity.py",
+      "subpackage": "agency",
+      "module": "agency/curiosity.py",
+      "members": [
+        "mod:agency/curiosity.py",
+        "function:agency/curiosity.py:explore",
+        "import:store",
+        "import:integration_loop.consumer",
+        "import:agents._llm",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Curiosity mode: explore topics against the code corpus. English: Embeds a user-interest topic, retrieves related code fragments, and asks the brain to surface gaps/suggestions the agent can fill and bring back. pt-BR: Vetoriza um tópico de "
+    },
+    {
+      "id": "he:agency/discourse_discovery.py",
+      "subpackage": "agency",
+      "module": "agency/discourse_discovery.py",
+      "members": [
+        "mod:agency/discourse_discovery.py",
+        "class:agency/discourse_discovery.py:LacanianDiscourse",
+        "class:agency/discourse_discovery.py:EmotionalSignature",
+        "class:agency/discourse_discovery.py:DiscourseMarkers",
+        "class:agency/discourse_discovery.py:DiscourseAnalysisResult",
+        "class:agency/discourse_discovery.py:LacanianDiscourseAnalyzer",
+        "function:agency/discourse_discovery.py:demonstrate_lacanian_discourse_discovery",
+        "function:agency/discourse_discovery.py:__init__",
+        "function:agency/discourse_discovery.py:_initialize_markers",
+        "function:agency/discourse_discovery.py:analyze_text",
+        "function:agency/discourse_discovery.py:_compute_discourse_score",
+        "function:agency/discourse_discovery.py:analyze_batch",
+        "function:agency/discourse_discovery.py:get_discourse_distribution",
+        "concept:memtrias_recalcado",
+        "concept:affect_care",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "memtrias_recalcado",
+        "affect_care",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "agency.discourse_discovery — detecção dos 4 discursos lacanianos. Orquestração runtime / Runtime orchestration: LacanianDiscourseAnalyzer.analyze_text(texto) classifica o registro discursivo (Master/University/Hysteric/Analyst) por markers "
+    },
+    {
+      "id": "he:agency/dream.py",
+      "subpackage": "agency",
+      "module": "agency/dream.py",
+      "members": [
+        "mod:agency/dream.py",
+        "function:agency/dream.py:_state_path",
+        "function:agency/dream.py:_load_mark",
+        "function:agency/dream.py:_save_mark",
+        "function:agency/dream.py:_weave_dream",
+        "function:agency/dream.py:metabolize",
+        "function:agency/dream.py:weave",
+        "function:agency/dream.py:dream_cycle",
+        "import:store",
+        "import:witness",
+        "import:agents._llm",
+        "import:memory.memtrias_ai",
+        "concept:memtrias_recalcado",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "memtrias_recalcado",
+        "mps_spectral",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Dream mode (metabolization in inactivity). English: Real symbolic metabolization during idle periods — reads the memtrias records written since the last run (high-water mark persisted in OMNI_STATE_DIR/metabolize_state.json), weaves them in"
+    },
+    {
+      "id": "he:agency/dunker.py",
+      "subpackage": "agency",
+      "module": "agency/dunker.py",
+      "members": [
+        "mod:agency/dunker.py",
+        "function:agency/dunker.py:_families_from_kernel",
+        "function:agency/dunker.py:_load_canonical_dunker",
+        "function:agency/dunker.py:dunker_architecture",
+        "concept:affect_care"
+      ],
+      "concepts": [
+        "affect_care"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Dunker/Soler psychoaffective architecture adapter. English: Adapter to canonical `src.cognitive.dunker_architecture` (5-level affective stack: affects lexicon -> Soler affects -> emotions -> sentiments -> passions -> ethics). Families are b"
+    },
+    {
+      "id": "he:agency/ewc.py",
+      "subpackage": "agency",
+      "module": "agency/ewc.py",
+      "members": [
+        "mod:agency/ewc.py",
+        "class:agency/ewc.py:ElasticWeightConsolidation",
+        "function:agency/ewc.py:__init__",
+        "function:agency/ewc.py:compute_fisher_information",
+        "function:agency/ewc.py:penalty_loss",
+        "function:agency/ewc.py:adjust_weights_with_protection",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "agency.ewc — Elastic Weight Consolidation port (OW-STU-012). Orquestração runtime / Runtime orchestration: Port de `src/learning/ewc.py` do sovereign (port classificado PORT em OW-STU-012). Mantém pesos de agentes estáveis entre tarefas: a "
+    },
+    {
+      "id": "he:agency/pattern_watch.py",
+      "subpackage": "agency",
+      "module": "agency/pattern_watch.py",
+      "members": [
+        "mod:agency/pattern_watch.py",
+        "function:agency/pattern_watch.py:detect_repetitive_behavior",
+        "function:agency/pattern_watch.py:detect_bias",
+        "function:agency/pattern_watch.py:detect_anomalies",
+        "function:agency/pattern_watch.py:diversity_score",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Pattern watch — pure heuristics ported from sovereign PatternRecognition. Orquestração runtime / Runtime orchestration: funções puras que recebem listas de eventos/ações (dict) e devolvem diagnósticos; sem estado global obrigatório, sem cla"
+    },
+    {
+      "id": "he:agency/rca.py",
+      "subpackage": "agency",
+      "module": "agency/rca.py",
+      "members": [
+        "mod:agency/rca.py",
+        "class:agency/rca.py:RCA",
+        "function:agency/rca.py:register_failure",
+        "function:agency/rca.py:trace_root_cause",
+        "function:agency/rca.py:get_dependency_graph",
+        "function:agency/rca.py:__init__",
+        "function:agency/rca.py:add_component",
+        "function:agency/rca.py:remove_dependency",
+        "function:agency/rca.py:register_failure",
+        "function:agency/rca.py:trace_root_cause",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "RCA-lite — lightweight dependency graph + causal trace for worker modules. Orquestração runtime / Runtime orchestration: mantém um grafo de dependências editável (`dependency_graph` dict) e um registro de falhas (`register_failure`). `trace"
+    },
+    {
+      "id": "he:agency/teleology.py",
+      "subpackage": "agency",
+      "module": "agency/teleology.py",
+      "members": [
+        "mod:agency/teleology.py",
+        "function:agency/teleology.py:generate_missions",
+        "function:agency/teleology.py:compute_omega_teleology",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Teleology (mission cycles). English: Endogenous mission generation; reuses omega_teleology concept. pt-BR: Geração endógena de missões; reutiliza conceito omega_teleology."
+    },
+    {
+      "id": "he:agency/witness.py",
+      "subpackage": "agency",
+      "module": "agency/witness.py",
+      "members": [
+        "mod:agency/witness.py",
+        "function:agency/witness.py:_hash_record",
+        "function:agency/witness.py:_last_hash",
+        "function:agency/witness.py:append_witness",
+        "function:agency/witness.py:read_witness",
+        "function:agency/witness.py:witness_event",
+        "function:agency/witness.py:verify_witness",
+        "import:memory.provenance",
+        "import:store.node_db",
+        "concept:memtrias_recalcado",
+        "concept:mps_spectral",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "memtrias_recalcado",
+        "mps_spectral",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Witness (append-only lineage). English: Append-only witness log (JSONL) with a sha256 hash chain. Each record carries `prev_hash` (hash of the previous record, \"\" for the first) and `hash` (sha256 over the record content excluding its own h"
+    },
+    {
+      "id": "he:agents/__init__.py",
+      "subpackage": "agents",
+      "module": "agents/__init__.py",
+      "members": [
+        "mod:agents/__init__.py",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Agents module. English: Core agent implementations (DebugAgent, AnalystAgent, ReviewerAgent, CodeAgent), inter-agent bus and persona configs. pt-BR: Implementações principais de agentes (DebugAgent, AnalystAgent, ReviewerAgent, CodeAgent), "
+    },
+    {
+      "id": "he:agents/_llm.py",
+      "subpackage": "agents",
+      "module": "agents/_llm.py",
+      "members": [
+        "mod:agents/_llm.py",
+        "function:agents/_llm.py:_soma_inject",
+        "function:agents/_llm.py:brain_chat",
+        "function:agents/_llm.py:brain_chat_json",
+        "import:soma.probe",
+        "import:brain.server",
+        "import:agency.affect_tracer",
+        "concept:affect_care",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "affect_care",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Shared LLM backend helper for coworker agents. English: Minimal role-routed chat over the brain servers (analyst :8098 / executor :8099). Returns None when backend is down. pt-BR: Chat mínimo roteado por role sobre os servidores brain (anal"
+    },
+    {
+      "id": "he:agents/analyst_agent.py",
+      "subpackage": "agents",
+      "module": "agents/analyst_agent.py",
+      "members": [
+        "mod:agents/analyst_agent.py",
+        "class:agents/analyst_agent.py:AnalystAgent",
+        "function:agents/analyst_agent.py:__init__",
+        "function:agents/analyst_agent.py:analyze",
+        "function:agents/analyst_agent.py:interpret",
+        "import:agency.analyst",
+        "import:_llm",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "mps_spectral",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "AnalystAgent - Análise psicanalítica e clínica. English: Psychoanalytic analyst agent. pt-BR: Agente analista psicanalítico."
+    },
+    {
+      "id": "he:agents/bus.py",
+      "subpackage": "agents",
+      "module": "agents/bus.py",
+      "members": [
+        "mod:agents/bus.py",
+        "function:agents/bus.py:canonical_bus_available",
+        "function:agents/bus.py:_now",
+        "class:agents/bus.py:MessageBus",
+        "function:agents/bus.py:get_message_bus",
+        "function:agents/bus.py:__init__",
+        "function:agents/bus.py:subscribe",
+        "function:agents/bus.py:unsubscribe",
+        "function:agents/bus.py:publish",
+        "function:agents/bus.py:pending",
+        "function:agents/bus.py:consume",
+        "function:agents/bus.py:channels",
+        "function:agents/bus.py:size"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "Inter-agent message bus. English: Lightweight publish/subscribe bus with pending queues and last-writer-with-weight conflict resolution. The canonical source (`src.agentes.agent_protocol.AgentMessageBus`) is asyncio/queue based with a diffe"
+    },
+    {
+      "id": "he:agents/code_agent.py",
+      "subpackage": "agents",
+      "module": "agents/code_agent.py",
+      "members": [
+        "mod:agents/code_agent.py",
+        "class:agents/code_agent.py:CodeAgent",
+        "function:agents/code_agent.py:__init__",
+        "function:agents/code_agent.py:_trust_level",
+        "function:agents/code_agent.py:generate",
+        "function:agents/code_agent.py:submit_patch",
+        "import:_llm",
+        "import:safety.gate",
+        "import:safety.matrix",
+        "import:orchestration.governance",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "CodeAgent - Geração e submissão de código com portão. English: Code agent that produces patches via the executor brain and submits them only through the permission matrix + constitutional gate (anti-impulsivity prosthesis: no submission wit"
+    },
+    {
+      "id": "he:agents/debug_agent.py",
+      "subpackage": "agents",
+      "module": "agents/debug_agent.py",
+      "members": [
+        "mod:agents/debug_agent.py",
+        "class:agents/debug_agent.py:DebugAgent",
+        "function:agents/debug_agent.py:__init__",
+        "function:agents/debug_agent.py:diagnose",
+        "function:agents/debug_agent.py:analyze_logs",
+        "function:agents/debug_agent.py:suggest_fix",
+        "import:_llm",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "DebugAgent - Diagnóstico e debug. English: Debug agent for diagnosis and troubleshooting (read-only). pt-BR: Agente de debug para diagnóstico e solução de problemas (somente leitura)."
+    },
+    {
+      "id": "he:agents/external_cli_agent.py",
+      "subpackage": "agents",
+      "module": "agents/external_cli_agent.py",
+      "members": [
+        "mod:agents/external_cli_agent.py",
+        "function:agents/external_cli_agent.py:_is_forbidden_env_name",
+        "function:agents/external_cli_agent.py:sanitized_env",
+        "function:agents/external_cli_agent.py:_parse_json",
+        "function:agents/external_cli_agent.py:_default_workdir",
+        "function:agents/external_cli_agent.py:_binary_available",
+        "function:agents/external_cli_agent.py:_kill_process_group",
+        "function:agents/external_cli_agent.py:_task_as_args",
+        "function:agents/external_cli_agent.py:_no_args",
+        "function:agents/external_cli_agent.py:_cli_env_key",
+        "function:agents/external_cli_agent.py:default_clis",
+        "function:agents/external_cli_agent.py:register_cli",
+        "function:agents/external_cli_agent.py:list_available",
+        "import:bus",
+        "import:shared_workspace",
+        "concept:mps_spectral",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Bridge agentic CLIs as resources (ACP + shell fallback). English: Exposes external agentic CLIs (devin, opencode, kilo, hermes, ...) as first-class coworker resources. Preferred path is the Agent Client Protocol (ACP) over stdio JSON-RPC (l"
+    },
+    {
+      "id": "he:agents/modes.py",
+      "subpackage": "agents",
+      "module": "agents/modes.py",
+      "members": [
+        "mod:agents/modes.py",
+        "function:agents/modes.py:state_path",
+        "function:agents/modes.py:_load_state",
+        "function:agents/modes.py:_save_state",
+        "function:agents/modes.py:current_mode",
+        "function:agents/modes.py:switch_mode",
+        "function:agents/modes.py:set_role",
+        "function:agents/modes.py:spec_for",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Modes — personas especializadas com modelo sticky (padrão Roo Code). English: Roo-style modes with per-mode persona + sticky model (role). Each mode remembers its last-used model role; switching modes selects the stored role automatically. "
+    },
+    {
+      "id": "he:agents/persona.py",
+      "subpackage": "agents",
+      "module": "agents/persona.py",
+      "members": [
+        "mod:agents/persona.py",
+        "function:agents/persona.py:_default_config_dir",
+        "function:agents/persona.py:load_persona",
+        "function:agents/persona.py:system_prompt",
+        "import:modes",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Personas: agent configuration loader. English: Loads persona configs from `config/agents/*.json` (architect, critic, paradox, titan, visionary) and maps coworker roles (debug/analyst/reviewer/code/judge) to a persona system prompt. Fallback"
+    },
+    {
+      "id": "he:agents/reviewer_agent.py",
+      "subpackage": "agents",
+      "module": "agents/reviewer_agent.py",
+      "members": [
+        "mod:agents/reviewer_agent.py",
+        "class:agents/reviewer_agent.py:ReviewerAgent",
+        "function:agents/reviewer_agent.py:__init__",
+        "function:agents/reviewer_agent.py:review",
+        "function:agents/reviewer_agent.py:validate_tests",
+        "import:_llm",
+        "import:persona",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "ReviewerAgent - Revisão e validação. English: Code review and validation agent. pt-BR: Agente de revisão e validação de código."
+    },
+    {
+      "id": "he:app.py",
+      "subpackage": "root",
+      "module": "app.py",
+      "members": [
+        "mod:app.py",
+        "function:app.py:create_app",
+        "function:app.py:soma_probe",
+        "function:app.py:agency_missions",
+        "function:app.py:safety_check",
+        "function:app.py:safety_refusal_state",
+        "function:app.py:safety_care",
+        "function:app.py:dream_cycle",
+        "function:app.py:curiosity_explore",
+        "function:app.py:kernel_status",
+        "function:app.py:kernel_sysmodules",
+        "function:app.py:agency_dunker",
+        "function:app.py:agency_witness",
+        "import:soul.api",
+        "import:brain.server",
+        "import:safety.supervisor",
+        "import:shared_workspace.api",
+        "import:kernel_daemon.api",
+        "import:kernel_daemon.scheduler",
+        "import:integration_loop.api",
+        "import:integration_loop.loop",
+        "route:/soma/probe",
+        "route:/agency/missions",
+        "route:/safety/check",
+        "route:/safety/refusal_state",
+        "route:/safety/care",
+        "route:/dream/cycle",
+        "route:/curiosity/explore",
+        "route:/kernel/status",
+        "route:/kernel/sysmodules",
+        "route:/agency/dunker",
+        "route:/agency/witness",
+        "route:/",
+        "route:/data/dashboard/latest.json",
+        "concept:affect_care",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "affect_care",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [
+        "/soma/probe",
+        "/agency/missions",
+        "/safety/check",
+        "/safety/refusal_state",
+        "/safety/care",
+        "/dream/cycle",
+        "/curiosity/explore",
+        "/kernel/status",
+        "/kernel/sysmodules",
+        "/agency/dunker",
+        "/agency/witness",
+        "/",
+        "/data/dashboard/latest.json"
+      ],
+      "summary": "ASGI app factory. English: Unifies brain, agency, soul on :8080. pt-BR: Unifica brain, agency, soul em :8080."
+    },
+    {
+      "id": "he:audit/__init__.py",
+      "subpackage": "audit",
+      "module": "audit/__init__.py",
+      "members": [
+        "mod:audit/__init__.py",
+        "import:immutable_audit"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "audit — worker-owned immutable audit chain (canonical port). English: Canonical `ImmutableAuditSystem` semantics at worker scale: sha256 hash chain (prev_hash → current_hash over sorted JSON), fcntl inter-process lock on a sidecar file, las"
+    },
+    {
+      "id": "he:audit/immutable_audit.py",
+      "subpackage": "audit",
+      "module": "audit/immutable_audit.py",
+      "members": [
+        "mod:audit/immutable_audit.py",
+        "class:audit/immutable_audit.py:ImmutableAuditSystem",
+        "function:audit/immutable_audit.py:get_audit",
+        "function:audit/immutable_audit.py:__init__",
+        "function:audit/immutable_audit.py:_acquire_audit_lock",
+        "function:audit/immutable_audit.py:_log_security_event",
+        "function:audit/immutable_audit.py:_read_last_hash_from_log",
+        "function:audit/immutable_audit.py:_event_payload",
+        "function:audit/immutable_audit.py:_hash_event",
+        "function:audit/immutable_audit.py:_is_unconscious",
+        "function:audit/immutable_audit.py:log_action",
+        "function:audit/immutable_audit.py:verify_chain_integrity",
+        "function:audit/immutable_audit.py:_verify_internal",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "immutable_audit — cadeia de auditoria imutável (port canônico). English: Worker-scale port of the sovereign `ImmutableAuditSystem` (sha256 chain + fcntl lock). Each event is hashed over {action, category, details, timestamp, datetime_utc, p"
+    },
+    {
+      "id": "he:brain/__init__.py",
+      "subpackage": "brain",
+      "module": "brain/__init__.py",
+      "members": [
+        "mod:brain/__init__.py",
+        "import:server",
+        "import:affect",
+        "import:activations"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "Brain: server wrapper, affect derivation, activations. English: Brain substrate integration. pt-BR: Integração com substrato cerebral."
+    },
+    {
+      "id": "he:brain/activations.py",
+      "subpackage": "brain",
+      "module": "brain/activations.py",
+      "members": [
+        "mod:brain/activations.py",
+        "function:brain/activations.py:push",
+        "function:brain/activations.py:recent"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "Activations ring buffer helpers. English: Thin adapter over Erika activation summaries. pt-BR: Adaptador fino sobre resumos de ativação da Erika."
+    },
+    {
+      "id": "he:brain/affect.py",
+      "subpackage": "brain",
+      "module": "brain/affect.py",
+      "members": [
+        "mod:brain/affect.py",
+        "function:brain/affect.py:derive_affect",
+        "function:brain/affect.py:derive_affect_from_brain",
+        "import:server",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Affect derivation from tensors. English: Derives phi, psi, sigma, epsilon from hidden states and attention. pt-BR: Deriva phi, psi, sigma, epsilon a partir dos estados ocultos e atenção."
+    },
+    {
+      "id": "he:brain/server.py",
+      "subpackage": "brain",
+      "module": "brain/server.py",
+      "members": [
+        "mod:brain/server.py",
+        "function:brain/server.py:_base_for_role",
+        "function:brain/server.py:create_brain_router",
+        "function:brain/server.py:get_brain_client",
+        "function:brain/server.py:unload",
+        "function:brain/server.py:reload_model",
+        "function:brain/server.py:health",
+        "function:brain/server.py:activations",
+        "function:brain/server.py:affect",
+        "function:brain/server.py:chat",
+        "function:brain/server.py:executor_health",
+        "function:brain/server.py:topology",
+        "function:brain/server.py:health_fallback",
+        "import:agency.affect_tracer",
+        "import:activation_beta.attractor",
+        "import:memory.memtrias_ai",
+        "import:store.code_index",
+        "route:/unload",
+        "route:/reload",
+        "route:/health",
+        "route:/activations",
+        "route:/affect",
+        "route:/chat",
+        "route:/executor/health",
+        "route:/topology",
+        "concept:dodecatiad",
+        "concept:quadrupla_federativa",
+        "concept:markov_blanket",
+        "concept:memtrias_recalcado",
+        "concept:affect_care",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dodecatiad",
+        "quadrupla_federativa",
+        "markov_blanket",
+        "memtrias_recalcado",
+        "affect_care",
+        "mps_spectral",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [
+        "/unload",
+        "/reload",
+        "/health",
+        "/activations",
+        "/affect",
+        "/chat",
+        "/executor/health",
+        "/topology"
+      ],
+      "summary": "Brain server wrapper. English: Reuses src.erika.erika_torch_server as the brain substrate. pt-BR: Reutiliza src.erika.erika_torch_server como substrato cerebral."
+    },
+    {
+      "id": "he:cli.py",
+      "subpackage": "root",
+      "module": "cli.py",
+      "members": [
+        "mod:cli.py",
+        "function:cli.py:serve",
+        "function:cli.py:doctor",
+        "function:cli.py:demo",
+        "function:cli.py:soul_export",
+        "function:cli.py:missions",
+        "function:cli.py:main",
+        "import:brain",
+        "import:agents.debug_agent",
+        "import:agents.code_agent",
+        "import:agents.reviewer_agent",
+        "import:soul.api",
+        "import:agency.teleology",
+        "import:soma.probe",
+        "import:app",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "CLI entrypoint. English: serve, demo, doctor, soul-export, missions. pt-BR: serve, demo, doctor, soul-export, missions."
+    },
+    {
+      "id": "he:integration_loop/__init__.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/__init__.py",
+      "members": [
+        "mod:integration_loop/__init__.py",
+        "import:loop"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop — ciclo fechado de feedback da máquina (CPU/RAM). English: Closed feedback loop over the machine's own production: sensory_input → qualia → narrative → meaning_maker → expectation → sensory_feedback. Consumes `kernel.*` mes"
+    },
+    {
+      "id": "he:integration_loop/adapters.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/adapters.py",
+      "members": [
+        "mod:integration_loop/adapters.py",
+        "function:integration_loop/adapters.py:collect_kernel_bundle",
+        "function:integration_loop/adapters.py:collect_sensory",
+        "function:integration_loop/adapters.py:collect_meaning_context",
+        "import:shared_workspace",
+        "import:store.code_index",
+        "import:kernel_daemon.collector"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop.adapters — leitura das fontes do ciclo. Orquestração runtime / Runtime orchestration: Fonte primária: `kernel.cycle` no barramento (bundle do kernel_daemon — activations por modelo, affect, soul, soma). Fallback quando o da"
+    },
+    {
+      "id": "he:integration_loop/api.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/api.py",
+      "members": [
+        "mod:integration_loop/api.py",
+        "function:integration_loop/api.py:loop_status",
+        "function:integration_loop/api.py:loop_cycle",
+        "function:integration_loop/api.py:loop_modulation",
+        "function:integration_loop/api.py:loop_run",
+        "route:/status",
+        "route:/cycle/{cycle_id}",
+        "route:/modulation",
+        "route:/run"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [
+        "/status",
+        "/cycle/{cycle_id}",
+        "/modulation",
+        "/run"
+      ],
+      "summary": "integration_loop.api — endpoints /loop/*. pt-BR: `GET /loop/status`, `GET /loop/cycle/{id}`, `GET /loop/modulation`, `POST /loop/run` (ciclo sob demanda)."
+    },
+    {
+      "id": "he:integration_loop/bion_bridge.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/bion_bridge.py",
+      "members": [
+        "mod:integration_loop/bion_bridge.py",
+        "function:integration_loop/bion_bridge.py:_container",
+        "function:integration_loop/bion_bridge.py:_digest",
+        "function:integration_loop/bion_bridge.py:_should_llm",
+        "function:integration_loop/bion_bridge.py:metabolize",
+        "import:psychoanalysis.beta_element",
+        "import:psychoanalysis.bion_alpha_function",
+        "import:psychoanalysis.bion_patches.container_contained",
+        "import:activation_beta.attractor",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "bion_bridge — metabolização β→α do estado bruto do ciclo. Orquestração runtime / Runtime orchestration: Chamado pelo loop após `qualia` (arousal vira `emotional_charge`) e antes de `meaning_maker` (o conteúdo α entra no metadata). Custo con"
+    },
+    {
+      "id": "he:integration_loop/consumer.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/consumer.py",
+      "members": [
+        "mod:integration_loop/consumer.py",
+        "function:integration_loop/consumer.py:modulation_path",
+        "function:integration_loop/consumer.py:write_modulation",
+        "function:integration_loop/consumer.py:latest_modulation",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop.consumer — leitura da modulação por consumidores. Orquestração runtime / Runtime orchestration: O bus é in-process (FastAPI); consumidores externos (swap_scheduler e daemons standalone) leem o snapshot atômico `OMNI_STATE_D"
+    },
+    {
+      "id": "he:integration_loop/loop.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/loop.py",
+      "members": [
+        "mod:integration_loop/loop.py",
+        "function:integration_loop/loop.py:_publish_modulation",
+        "function:integration_loop/loop.py:_gov",
+        "function:integration_loop/loop.py:_run_stage",
+        "function:integration_loop/loop.py:_phylo_signature",
+        "function:integration_loop/loop.py:_sensory_history",
+        "function:integration_loop/loop.py:_narrative_history",
+        "function:integration_loop/loop.py:run_once",
+        "class:integration_loop/loop.py:IntegrationLoop",
+        "function:integration_loop/loop.py:status",
+        "function:integration_loop/loop.py:__init__",
+        "function:integration_loop/loop.py:_loop",
+        "function:integration_loop/loop.py:start",
+        "import:modulator",
+        "import:schema",
+        "import:consumer",
+        "import:shared_workspace",
+        "import:orchestration.governance",
+        "import:narrative.phylogenetic_signature",
+        "import:psychoanalysis.plasticity_resource",
+        "import:quilting",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop.loop — orquestrador do ciclo fechado. Orquestração runtime / Runtime orchestration: `run_once()` executa um ciclo completo (5 estágios + fechamento), persiste CycleResult, deriva Modulation e publica `feedback.loop` na malh"
+    },
+    {
+      "id": "he:integration_loop/modulator.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/modulator.py",
+      "members": [
+        "mod:integration_loop/modulator.py",
+        "function:integration_loop/modulator.py:_resource_postures",
+        "function:integration_loop/modulator.py:_norm_posture",
+        "function:integration_loop/modulator.py:_has_hold",
+        "function:integration_loop/modulator.py:_m",
+        "function:integration_loop/modulator.py:derive_modulation",
+        "import:schema",
+        "import:psychoanalysis.plasticity_resource",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop.modulator — pacote de modulação derivado do ciclo. Orquestração runtime / Runtime orchestration: `derive_modulation(cycle, bundle)` mapeia métricas do ciclo em sinais consumíveis: recomendação de role, delta de threshold de"
+    },
+    {
+      "id": "he:integration_loop/quilting.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/quilting.py",
+      "members": [
+        "mod:integration_loop/quilting.py",
+        "function:integration_loop/quilting.py:detect_quilting_point"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop.quilting — quilting point (point de capiton) sobre embeddings. Orquestração runtime / Runtime orchestration: `detect_quilting_point` consome a sequência recente de embeddings narrativos (listas de floats) + topic hints e, q"
+    },
+    {
+      "id": "he:integration_loop/schema.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/schema.py",
+      "members": [
+        "mod:integration_loop/schema.py",
+        "class:integration_loop/schema.py:ModuleState",
+        "class:integration_loop/schema.py:CycleResult",
+        "class:integration_loop/schema.py:Modulation",
+        "function:integration_loop/schema.py:new_cycle_id",
+        "function:integration_loop/schema.py:to_dict",
+        "function:integration_loop/schema.py:to_dict",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop.schema — CycleResult / Modulation. Arquitetura / Architecture: `CycleResult` é o registro imutável de um ciclo (5 estágios + fechamento). `Modulation` é o pacote derivado publicado em `feedback.loop` e persistido — consumid"
+    },
+    {
+      "id": "he:integration_loop/stages.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/stages.py",
+      "members": [
+        "mod:integration_loop/stages.py",
+        "function:integration_loop/stages.py:_bucket",
+        "function:integration_loop/stages.py:_zscore",
+        "function:integration_loop/stages.py:sensory_input",
+        "function:integration_loop/stages.py:qualia",
+        "function:integration_loop/stages.py:narrative",
+        "function:integration_loop/stages.py:meaning_maker",
+        "function:integration_loop/stages.py:expectation",
+        "function:integration_loop/stages.py:sensory_feedback",
+        "import:schema",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "integration_loop.stages — os 5 estágios + fechamento (numpy puro). Arquitetura / Architecture: Funções puras sobre `ctx` (dict); sem I/O, sem torch. Sequência: sensory_input → qualia → narrative → meaning_maker → expectation → sensory_feedb"
+    },
+    {
+      "id": "he:integration_loop/store.py",
+      "subpackage": "integration_loop",
+      "module": "integration_loop/store.py",
+      "members": [
+        "mod:integration_loop/store.py",
+        "function:integration_loop/store.py:_state_dir",
+        "function:integration_loop/store.py:_db_path",
+        "function:integration_loop/store.py:_jsonl_path",
+        "function:integration_loop/store.py:_con",
+        "function:integration_loop/store.py:append_cycle",
+        "function:integration_loop/store.py:history",
+        "function:integration_loop/store.py:get_cycle",
+        "function:integration_loop/store.py:_reset",
+        "table:cycles",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [
+        "cycles"
+      ],
+      "routes": [],
+      "summary": "integration_loop.store — ring buffer + sqlite WAL + jsonl. Orquestração runtime / Runtime orchestration: Hot: ring buffer RAM (últimos 200 CycleResult). Warm: `data/integration_loop.sqlite` tabela `cycles` (WAL, retenção 7d por ts). Cold: `"
+    },
+    {
+      "id": "he:kernel_daemon/__init__.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/__init__.py",
+      "members": [
+        "mod:kernel_daemon/__init__.py",
+        "import:collector",
+        "import:scheduler"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon — daemon de feedback mínimo da máquina (CPU/RAM). English: Minimal machine-feedback daemon: collects brain activation telemetry (jsonl tail), affect, soul and soma state plus the agents' mesh production, aggregates a feature b"
+    },
+    {
+      "id": "he:kernel_daemon/api.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/api.py",
+      "members": [
+        "mod:kernel_daemon/api.py",
+        "function:kernel_daemon/api.py:kernel_daemon_status",
+        "function:kernel_daemon/api.py:kernel_daemon_run",
+        "route:/daemon",
+        "route:/daemon/run"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [
+        "/daemon",
+        "/daemon/run"
+      ],
+      "summary": "kernel_daemon.api — endpoints do daemon de feedback. pt-BR: `GET /kernel/daemon` expõe status/último bundle; `POST /kernel/daemon/run` dispara um ciclo sob demanda (observação curta)."
+    },
+    {
+      "id": "he:kernel_daemon/collector.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/collector.py",
+      "members": [
+        "mod:kernel_daemon/collector.py",
+        "function:kernel_daemon/collector.py:_read_new_activations",
+        "function:kernel_daemon/collector.py:_http_json",
+        "function:kernel_daemon/collector.py:_brain_affect",
+        "function:kernel_daemon/collector.py:collect_cycle",
+        "function:kernel_daemon/collector.py:reset_offset",
+        "import:brain.server",
+        "import:soul.api",
+        "import:soma.probe",
+        "import:shared_workspace",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.collector — coleta incremental das fontes de produção. Orquestração runtime / Runtime orchestration: Cada ciclo chama `collect_cycle()` que retorna um dict com: activations — novos registros do jsonl de ativações (offset persi"
+    },
+    {
+      "id": "he:kernel_daemon/features.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/features.py",
+      "members": [
+        "mod:kernel_daemon/features.py",
+        "function:kernel_daemon/features.py:_f",
+        "function:kernel_daemon/features.py:_per_model",
+        "function:kernel_daemon/features.py:aggregate",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.features — agregação numpy do bundle por ciclo. Orquestração runtime / Runtime orchestration: `aggregate(raw)` transforma o dict bruto do collector num FeatureBundle (dict plano, JSON-safe). Sem torch; numpy apenas. Registros "
+    },
+    {
+      "id": "he:kernel_daemon/feedback.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/feedback.py",
+      "members": [
+        "mod:kernel_daemon/feedback.py",
+        "function:kernel_daemon/feedback.py:_publish",
+        "function:kernel_daemon/feedback.py:publish_feedback",
+        "import:shared_workspace",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.feedback — publicação do bundle na malha. Orquestração runtime / Runtime orchestration: `publish_feedback(bundle)` escreve os tópicos canônicos do ciclo. Transporte: tenta o bus in-process primeiro (daemon dentro do FastAPI); "
+    },
+    {
+      "id": "he:kernel_daemon/homeostasis.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/homeostasis.py",
+      "members": [
+        "mod:kernel_daemon/homeostasis.py",
+        "class:kernel_daemon/homeostasis.py:ResourceState",
+        "class:kernel_daemon/homeostasis.py:TaskPriority",
+        "class:kernel_daemon/homeostasis.py:ResourceMetrics",
+        "class:kernel_daemon/homeostasis.py:HomeostaticController",
+        "function:kernel_daemon/homeostasis.py:get_overall_state",
+        "function:kernel_daemon/homeostasis.py:to_dict",
+        "function:kernel_daemon/homeostasis.py:__init__",
+        "function:kernel_daemon/homeostasis.py:update_consciousness_state",
+        "function:kernel_daemon/homeostasis.py:metrics_from_soma",
+        "function:kernel_daemon/homeostasis.py:regulate",
+        "function:kernel_daemon/homeostasis.py:should_execute_task",
+        "function:kernel_daemon/homeostasis.py:_activate_throttling",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.homeostasis — máquina de estados homeostática. Orquestração runtime / Runtime orchestration: Sem loop próprio — o kernel_daemon chama `regulate(soma)` a cada ciclo de 60s e publica `kernel.homeostasis` na malha (estado, ação, "
+    },
+    {
+      "id": "he:kernel_daemon/ignition.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/ignition.py",
+      "members": [
+        "mod:kernel_daemon/ignition.py",
+        "function:kernel_daemon/ignition.py:_hook",
+        "function:kernel_daemon/ignition.py:_pairwise_mi",
+        "function:kernel_daemon/ignition.py:cycle",
+        "function:kernel_daemon/ignition.py:_reset",
+        "function:kernel_daemon/ignition.py:h",
+        "import:shared_workspace",
+        "import:shared_workspace.schema"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.ignition — GWT-lite workspace ignition + synergy proxy. English: subscribes to every canonical prefix on the shared-workspace bus and, once per kernel cycle, measures broadcast diversity: - `distinct_prefixes` — how many canon"
+    },
+    {
+      "id": "he:kernel_daemon/metastability.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/metastability.py",
+      "members": [
+        "mod:kernel_daemon/metastability.py",
+        "function:kernel_daemon/metastability.py:_channel_values",
+        "function:kernel_daemon/metastability.py:_coherence",
+        "function:kernel_daemon/metastability.py:_c_soma",
+        "function:kernel_daemon/metastability.py:cycle",
+        "function:kernel_daemon/metastability.py:_reset",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.metastability — métricas de metastabilidade do worker. Orquestração runtime / Runtime orchestration: A cada ciclo o scheduler chama `cycle(bundle)` que alimenta uma janela de coerência entre canais e publica `kernel.metastabil"
+    },
+    {
+      "id": "he:kernel_daemon/phi_meta.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/phi_meta.py",
+      "members": [
+        "mod:kernel_daemon/phi_meta.py",
+        "function:kernel_daemon/phi_meta.py:_landauer_j_per_bit",
+        "function:kernel_daemon/phi_meta.py:_pressure_channels",
+        "function:kernel_daemon/phi_meta.py:_bit_layer",
+        "function:kernel_daemon/phi_meta.py:elements_from_bundle",
+        "function:kernel_daemon/phi_meta.py:_entropy",
+        "function:kernel_daemon/phi_meta.py:_mi",
+        "function:kernel_daemon/phi_meta.py:phi_detailed",
+        "function:kernel_daemon/phi_meta.py:phi",
+        "function:kernel_daemon/phi_meta.py:update",
+        "function:kernel_daemon/phi_meta.py:_reset",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.phi_meta — métrica Φ-meta sobre subsistemas do worker. Orquestração runtime / Runtime orchestration: A cada ciclo o kernel_daemon constrói um SystemState binário — elementos = subsistemas observáveis (brains responderam affect"
+    },
+    {
+      "id": "he:kernel_daemon/regime.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/regime.py",
+      "members": [
+        "mod:kernel_daemon/regime.py",
+        "class:kernel_daemon/regime.py:_PH",
+        "function:kernel_daemon/regime.py:feed",
+        "function:kernel_daemon/regime.py:cycle",
+        "function:kernel_daemon/regime.py:_reset",
+        "function:kernel_daemon/regime.py:__init__",
+        "function:kernel_daemon/regime.py:update",
+        "function:kernel_daemon/regime.py:std",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.regime — detecção de mudança de regime (Page-Hinkley). Orquestração runtime / Runtime orchestration: A cada ciclo o scheduler alimenta sinais escalares do bundle (pressure_load, cpu_percent, gpu_temp_c, attractor_score por mod"
+    },
+    {
+      "id": "he:kernel_daemon/scheduler.py",
+      "subpackage": "kernel_daemon",
+      "module": "kernel_daemon/scheduler.py",
+      "members": [
+        "mod:kernel_daemon/scheduler.py",
+        "function:kernel_daemon/scheduler.py:_homeostasis",
+        "function:kernel_daemon/scheduler.py:run_cycle",
+        "class:kernel_daemon/scheduler.py:KernelDaemon",
+        "function:kernel_daemon/scheduler.py:status",
+        "function:kernel_daemon/scheduler.py:__init__",
+        "function:kernel_daemon/scheduler.py:_loop",
+        "function:kernel_daemon/scheduler.py:start",
+        "function:kernel_daemon/scheduler.py:stop",
+        "import:collector",
+        "import:features",
+        "import:feedback",
+        "import:homeostasis",
+        "import:activation_beta",
+        "import:psychology.desire_engine",
+        "import:phi_meta",
+        "import:agency",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "mps_spectral",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "kernel_daemon.scheduler — loop de coleta com cadência curta. Orquestração runtime / Runtime orchestration: `KernelDaemon.run()` executa um ciclo (collect→aggregate→publish) a cada `interval_s` (env OMNI_KERNEL_DAEMON_INTERVAL_S, default 60s"
+    },
+    {
+      "id": "he:kernel_hooks/compute.py",
+      "subpackage": "kernel_hooks",
+      "module": "kernel_hooks/compute.py",
+      "members": [
+        "mod:kernel_hooks/compute.py",
+        "function:kernel_hooks/compute.py:affect_state",
+        "function:kernel_hooks/compute.py:maat_balance",
+        "function:kernel_hooks/compute.py:shadow_phi",
+        "function:kernel_hooks/compute.py:cosine_similarity",
+        "function:kernel_hooks/compute.py:kernel_status",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Kernel compute wrapper with Python fallback. English: Uses compiled Rust kernel modules when available, else pure Python. pt-BR: Usa módulos de kernel Rust compilados quando disponíveis, senão Python puro."
+    },
+    {
+      "id": "he:memory/__init__.py",
+      "subpackage": "memory",
+      "module": "memory/__init__.py",
+      "members": [
+        "mod:memory/__init__.py",
+        "concept:memtrias_recalcado"
+      ],
+      "concepts": [
+        "memtrias_recalcado"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "memory — pacote de memória topológica (memtrias_ai). Orquestração runtime / Runtime orchestration: Reexporta o módulo memtrias_ai (MemtriasAI, get_memtrias, hash_embedder). Sem lógica própria; ponto de entrada do pacote. Arquitetura / Archi"
+    },
+    {
+      "id": "he:memory/memtrias_ai.py",
+      "subpackage": "memory",
+      "module": "memory/memtrias_ai.py",
+      "members": [
+        "mod:memory/memtrias_ai.py",
+        "function:memory/memtrias_ai.py:_state_dir",
+        "function:memory/memtrias_ai.py:hash_embedder",
+        "function:memory/memtrias_ai.py:_cosine",
+        "function:memory/memtrias_ai.py:_load_st",
+        "function:memory/memtrias_ai.py:_st_embedder",
+        "function:memory/memtrias_ai.py:minilm_embedder",
+        "function:memory/memtrias_ai.py:_pick_embedder",
+        "function:memory/memtrias_ai.py:_affect_analyzer",
+        "class:memory/memtrias_ai.py:MemtriasAI",
+        "function:memory/memtrias_ai.py:get_memtrias",
+        "function:memory/memtrias_ai.py:_fn",
+        "function:memory/memtrias_ai.py:__init__",
+        "import:provenance",
+        "import:agency.affect_tracer",
+        "table:memories",
+        "concept:quadrupla_federativa",
+        "concept:memtrias_recalcado",
+        "concept:affect_care",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "memtrias_recalcado",
+        "affect_care",
+        "mps_spectral",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [
+        "memories"
+      ],
+      "routes": [],
+      "summary": "memory.memtrias_ai — memória topológica aberta (retorno do recalcado). Orquestração runtime / Runtime orchestration: `MemtriasAI` é o registro aberto de memórias da instância: separa conteúdo por namespaces canônicos (machine, user, interac"
+    },
+    {
+      "id": "he:memory/provenance.py",
+      "subpackage": "memory",
+      "module": "memory/provenance.py",
+      "members": [
+        "mod:memory/provenance.py",
+        "function:memory/provenance.py:provenance_signature",
+        "function:memory/provenance.py:classify_trust",
+        "function:memory/provenance.py:quarantine_check",
+        "concept:memtrias_recalcado",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "memtrias_recalcado",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "memory.provenance — MINJA memory provenance guard. Provides a small, fail-open guard for persistent write-paths: - provenance_signature(content, source) - classify_trust(source, namespace) - quarantine_check(content) -> {quarantine, reasons"
+    },
+    {
+      "id": "he:metacognition/issue_prediction.py",
+      "subpackage": "metacognition",
+      "module": "metacognition/issue_prediction.py",
+      "members": [
+        "mod:metacognition/issue_prediction.py",
+        "class:metacognition/issue_prediction.py:MetricType",
+        "class:metacognition/issue_prediction.py:PredictionSeverity",
+        "class:metacognition/issue_prediction.py:MetricDataPoint",
+        "class:metacognition/issue_prediction.py:IssuePrediction",
+        "class:metacognition/issue_prediction.py:TimeSeriesAnalyzer",
+        "class:metacognition/issue_prediction.py:IssuePredictionEngine",
+        "function:metacognition/issue_prediction.py:update_from_bundle",
+        "function:metacognition/issue_prediction.py:to_dict",
+        "function:metacognition/issue_prediction.py:__init__",
+        "function:metacognition/issue_prediction.py:add_data_point",
+        "function:metacognition/issue_prediction.py:get_trend",
+        "function:metacognition/issue_prediction.py:detect_anomaly",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "metacognition.issue_prediction — predição proativa de issues. Orquestração runtime / Runtime orchestration: TimeSeriesAnalyzer acumula pontos por métrica (deque por MetricType) e produz trend, anomalia z-score e ETA de exaustão; IssuePredic"
+    },
+    {
+      "id": "he:narrative/__init__.py",
+      "subpackage": "narrative",
+      "module": "narrative/__init__.py",
+      "members": [
+        "mod:narrative/__init__.py",
+        "import:identity",
+        "import:life_story"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "narrative — identity construction (web of belief + values) + life story (Nachträglichkeit). Orquestração runtime / Runtime orchestration: `IdentityConstruction` evolui identidade a partir de valores e web de crenças; `LifeStory` inscreve ev"
+    },
+    {
+      "id": "he:narrative/identity.py",
+      "subpackage": "narrative",
+      "module": "narrative/identity.py",
+      "members": [
+        "mod:narrative/identity.py",
+        "class:narrative/identity.py:ValueType",
+        "class:narrative/identity.py:Value",
+        "class:narrative/identity.py:Belief",
+        "class:narrative/identity.py:IdentitySnapshot",
+        "class:narrative/identity.py:ValueSystem",
+        "class:narrative/identity.py:BeliefNetwork",
+        "class:narrative/identity.py:IdentityConstruction",
+        "function:narrative/identity.py:__init__",
+        "function:narrative/identity.py:_initialize_default_values",
+        "function:narrative/identity.py:adjust_value",
+        "function:narrative/identity.py:__init__",
+        "function:narrative/identity.py:add_belief"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "narrative.identity — identity construction (web of belief + values). Orquestração runtime / Runtime orchestration: ValueSystem mantém valores terminal/instrumental com importância e estabilidade; BeliefNetwork armazena crenças com certeza/c"
+    },
+    {
+      "id": "he:narrative/lalangue.py",
+      "subpackage": "narrative",
+      "module": "narrative/lalangue.py",
+      "members": [
+        "mod:narrative/lalangue.py",
+        "function:narrative/lalangue.py:_db_path",
+        "function:narrative/lalangue.py:_norm",
+        "function:narrative/lalangue.py:_cosine",
+        "function:narrative/lalangue.py:_encode",
+        "function:narrative/lalangue.py:_decode",
+        "class:narrative/lalangue.py:LalangueSandbox",
+        "function:narrative/lalangue.py:persist_sandbox",
+        "function:narrative/lalangue.py:load_vocabulary",
+        "function:narrative/lalangue.py:restore_into",
+        "function:narrative/lalangue.py:store_stats",
+        "function:narrative/lalangue.py:__init__",
+        "function:narrative/lalangue.py:emit",
+        "table:internal_words",
+        "table:internal_dialogues",
+        "table:internal_store_meta"
+      ],
+      "concepts": [],
+      "tables": [
+        "internal_words",
+        "internal_dialogues",
+        "internal_store_meta"
+      ],
+      "routes": [],
+      "summary": "narrative.lalangue — sandbox de língua interna com persistência. Orquestração runtime / Runtime orchestration: `LalangueSandbox.emit(embedding)` fixa ou reutiliza uma \"palavra\" interna (embedding normalizado, match por cosseno >= 0.9, frequ"
+    },
+    {
+      "id": "he:narrative/life_story.py",
+      "subpackage": "narrative",
+      "module": "narrative/life_story.py",
+      "members": [
+        "mod:narrative/life_story.py",
+        "class:narrative/life_story.py:NarrativeEvent",
+        "function:narrative/life_story.py:_db_path",
+        "function:narrative/life_story.py:_con",
+        "class:narrative/life_story.py:LifeStory",
+        "function:narrative/life_story.py:__init__",
+        "function:narrative/life_story.py:_persist",
+        "function:narrative/life_story.py:_load_from_disk",
+        "function:narrative/life_story.py:inscribe_narrative_event",
+        "function:narrative/life_story.py:_recall_original_event",
+        "function:narrative/life_story.py:_find_retroactive_signifier",
+        "function:narrative/life_story.py:_resignify",
+        "function:narrative/life_story.py:_narrative_charge",
+        "table:narrative_events",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [
+        "narrative_events"
+      ],
+      "routes": [],
+      "summary": "narrative.life_story — resignificação retroativa de eventos. Orquestração runtime / Runtime orchestration: `LifeStory.inscribe_narrative_event(context)` persiste eventos narrativos (append-only sqlite `data/narrative.sqlite`, WAL) e mantém "
+    },
+    {
+      "id": "he:narrative/phylogenetic_signature.py",
+      "subpackage": "narrative",
+      "module": "narrative/phylogenetic_signature.py",
+      "members": [
+        "mod:narrative/phylogenetic_signature.py",
+        "function:narrative/phylogenetic_signature.py:_state_dir",
+        "function:narrative/phylogenetic_signature.py:_sig_path",
+        "function:narrative/phylogenetic_signature.py:_chassis_seeds",
+        "class:narrative/phylogenetic_signature.py:SignatureEmergenceEvent",
+        "class:narrative/phylogenetic_signature.py:PhylogeneticState",
+        "class:narrative/phylogenetic_signature.py:PhylogeneticSignature",
+        "function:narrative/phylogenetic_signature.py:__init__",
+        "function:narrative/phylogenetic_signature.py:_initialize_attractors",
+        "function:narrative/phylogenetic_signature.py:ingest_model_aggregates",
+        "function:narrative/phylogenetic_signature.py:ingest_from_activation_windows",
+        "function:narrative/phylogenetic_signature.py:_calculate_coherence",
+        "function:narrative/phylogenetic_signature.py:_calculate_stability",
+        "import:activation_beta",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "narrative.phylogenetic_signature — assinatura filogenética emergente. Orquestração runtime / Runtime orchestration: `PhylogeneticSignature.emerge_from_noise(iterations)` faz a assinatura desta máquina auto-organizar-se a partir de ruído, pu"
+    },
+    {
+      "id": "he:orchestration/__init__.py",
+      "subpackage": "orchestration",
+      "module": "orchestration/__init__.py",
+      "members": [
+        "mod:orchestration/__init__.py",
+        "import:agent_orchestrator",
+        "import:governance",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Orchestration plane: agent feedback loop + governance. English: AgentOrchestrator drives task/judge/audit cycles; governance provides EventBus, TrustSystem, QuarantineSystem, RollbackSystem, CircuitBreaker and OrchestratorMetrics adapters. "
+    },
+    {
+      "id": "he:orchestration/agent_orchestrator.py",
+      "subpackage": "orchestration",
+      "module": "orchestration/agent_orchestrator.py",
+      "members": [
+        "mod:orchestration/agent_orchestrator.py",
+        "class:orchestration/agent_orchestrator.py:AgentOrchestrator",
+        "function:orchestration/agent_orchestrator.py:__init__",
+        "function:orchestration/agent_orchestrator.py:_stall_path",
+        "function:orchestration/agent_orchestrator.py:_load_stall",
+        "function:orchestration/agent_orchestrator.py:_save_stall",
+        "function:orchestration/agent_orchestrator.py:stall",
+        "function:orchestration/agent_orchestrator.py:reset_count",
+        "function:orchestration/agent_orchestrator.py:db",
+        "function:orchestration/agent_orchestrator.py:setup_agents",
+        "function:orchestration/agent_orchestrator.py:create_task",
+        "function:orchestration/agent_orchestrator.py:run_external",
+        "function:orchestration/agent_orchestrator.py:run_judge_review",
+        "import:agents.external_cli_agent",
+        "import:agents._llm",
+        "import:agents.reviewer_agent",
+        "import:agents.persona",
+        "import:store.node_db",
+        "import:integration_loop.consumer",
+        "import:agency.witness",
+        "import:psychology.scars",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Agent Orchestrator with feedback loop. English: Orchestrates agents in loop with judges and auditor. pt-BR: Orquestra agentes em loop com juízes e auditor."
+    },
+    {
+      "id": "he:orchestration/causal_engine.py",
+      "subpackage": "orchestration",
+      "module": "orchestration/causal_engine.py",
+      "members": [
+        "mod:orchestration/causal_engine.py",
+        "function:orchestration/causal_engine.py:_betacf",
+        "function:orchestration/causal_engine.py:_betai",
+        "function:orchestration/causal_engine.py:_t_two_tailed_p",
+        "function:orchestration/causal_engine.py:_norm_sf",
+        "function:orchestration/causal_engine.py:_mann_whitney_p",
+        "class:orchestration/causal_engine.py:CausalEngine",
+        "function:orchestration/causal_engine.py:__init__",
+        "function:orchestration/causal_engine.py:compute_causal_effect",
+        "function:orchestration/causal_engine.py:validate_intervention_necessity",
+        "function:orchestration/causal_engine.py:register_event",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "causal_engine — validação correlação→causa usável pela governance. Orquestração runtime / Runtime orchestration: Executado sob demanda pela governance para validar se uma diferença observada é causalmente significativa antes de autorizar in"
+    },
+    {
+      "id": "he:orchestration/governance.py",
+      "subpackage": "orchestration",
+      "module": "orchestration/governance.py",
+      "members": [
+        "mod:orchestration/governance.py",
+        "function:orchestration/governance.py:_now",
+        "class:orchestration/governance.py:EventBus",
+        "class:orchestration/governance.py:TrustSystem",
+        "function:orchestration/governance.py:get_trust_system",
+        "class:orchestration/governance.py:QuarantineSystem",
+        "class:orchestration/governance.py:RollbackSystem",
+        "class:orchestration/governance.py:CircuitBreakerOpen",
+        "class:orchestration/governance.py:CircuitBreaker",
+        "class:orchestration/governance.py:OrchestratorMetrics",
+        "function:orchestration/governance.py:__init__",
+        "function:orchestration/governance.py:subscribe",
+        "function:orchestration/governance.py:unsubscribe",
+        "concept:mps_spectral",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Autopoietic governance plane. English: Clean adapters over the canonical orchestration modules (src.orchestration.event_bus / trust_system / quarantine_system / rollback_system / circuit_breaker and src.agentes.orchestrator_metrics). Each c"
+    },
+    {
+      "id": "he:orchestration/swap_scheduler.py",
+      "subpackage": "orchestration",
+      "module": "orchestration/swap_scheduler.py",
+      "members": [
+        "mod:orchestration/swap_scheduler.py",
+        "function:orchestration/swap_scheduler.py:_vram_ratio",
+        "function:orchestration/swap_scheduler.py:_executor_activations",
+        "class:orchestration/swap_scheduler.py:SwapScheduler",
+        "function:orchestration/swap_scheduler.py:__init__",
+        "function:orchestration/swap_scheduler.py:_executor_active",
+        "function:orchestration/swap_scheduler.py:tick",
+        "function:orchestration/swap_scheduler.py:loop",
+        "import:soma.probe",
+        "import:brain.server",
+        "import:integration_loop.consumer",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "swap_scheduler — alocação inteligente entre os dois brains na GPU. English: Periodically checks VRAM headroom and executor idleness. When VRAM is tight (>= OMNI_SWAP_EVICT_THRESHOLD, default 0.9) and the executor produced no new activations"
+    },
+    {
+      "id": "he:psychoanalysis/__init__.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/__init__.py",
+      "members": [
+        "mod:psychoanalysis/__init__.py",
+        "import:alpha_element",
+        "import:beta_element",
+        "import:negative_capability",
+        "import:creative_psychotization_operator",
+        "import:bion_patches.container_contained",
+        "concept:dodecatiad",
+        "concept:quadrupla_federativa",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "dodecatiad",
+        "quadrupla_federativa",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "omni_coworker.psychoanalysis — psicanálise portada do sovereign (CPU/RAM). Orquestração runtime / Runtime orchestration: Fachada do pacote psicanalítico: elementos α/β (pipeline β→α com setor dodecatiad determinístico), `NegativeCapability`"
+    },
+    {
+      "id": "he:psychoanalysis/alpha_element.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/alpha_element.py",
+      "members": [
+        "mod:psychoanalysis/alpha_element.py",
+        "function:psychoanalysis/alpha_element.py:compute_dodecatiad_sector",
+        "class:psychoanalysis/alpha_element.py:AlphaElement",
+        "function:psychoanalysis/alpha_element.py:__post_init__",
+        "function:psychoanalysis/alpha_element.py:can_be_thought",
+        "function:psychoanalysis/alpha_element.py:is_dream_capable",
+        "function:psychoanalysis/alpha_element.py:get_complexity",
+        "function:psychoanalysis/alpha_element.py:add_association",
+        "function:psychoanalysis/alpha_element.py:to_dict",
+        "function:psychoanalysis/alpha_element.py:from_dict",
+        "import:beta_element",
+        "concept:dodecatiad",
+        "concept:quadrupla_federativa",
+        "concept:memtrias_recalcado"
+      ],
+      "concepts": [
+        "dodecatiad",
+        "quadrupla_federativa",
+        "memtrias_recalcado"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.alpha_element — α-elements transformados + setor dodecatiad. Orquestração runtime / Runtime orchestration: `AlphaElement` é um β-element já transformado pela função alpha: pensável, armazenável como memória e combinável em pe"
+    },
+    {
+      "id": "he:psychoanalysis/beta_element.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/beta_element.py",
+      "members": [
+        "mod:psychoanalysis/beta_element.py",
+        "class:psychoanalysis/beta_element.py:NeutrosophicTriplet",
+        "class:psychoanalysis/beta_element.py:BetaElement",
+        "function:psychoanalysis/beta_element.py:__post_init__",
+        "function:psychoanalysis/beta_element.py:T",
+        "function:psychoanalysis/beta_element.py:I",
+        "function:psychoanalysis/beta_element.py:F",
+        "function:psychoanalysis/beta_element.py:normalize",
+        "function:psychoanalysis/beta_element.py:to_dict",
+        "function:psychoanalysis/beta_element.py:from_dict",
+        "function:psychoanalysis/beta_element.py:__post_init__",
+        "function:psychoanalysis/beta_element.py:get_intensity",
+        "function:psychoanalysis/beta_element.py:is_traumatic",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.beta_element — β-elements brutos (Bion). Orquestração runtime / Runtime orchestration: `BetaElement` é um dataclass de experiência sensorial/emocional ainda não metabolizada pela função α. Sem efeitos colaterais: valida `emot"
+    },
+    {
+      "id": "he:psychoanalysis/bion_alpha_function.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/bion_alpha_function.py",
+      "members": [
+        "mod:psychoanalysis/bion_alpha_function.py",
+        "function:psychoanalysis/bion_alpha_function.py:_default_llm_symbolize",
+        "class:psychoanalysis/bion_alpha_function.py:BionAlphaFunction",
+        "function:psychoanalysis/bion_alpha_function.py:__init__",
+        "function:psychoanalysis/bion_alpha_function.py:transform",
+        "function:psychoanalysis/bion_alpha_function.py:transform_batch",
+        "function:psychoanalysis/bion_alpha_function.py:_is_processable",
+        "function:psychoanalysis/bion_alpha_function.py:_apply_transformation",
+        "function:psychoanalysis/bion_alpha_function.py:_compute_symbolic_potential",
+        "function:psychoanalysis/bion_alpha_function.py:_symbolize_content",
+        "function:psychoanalysis/bion_alpha_function.py:_default_narrative_builder",
+        "function:psychoanalysis/bion_alpha_function.py:_record_success",
+        "function:psychoanalysis/bion_alpha_function.py:_record_failure",
+        "import:alpha_element",
+        "import:beta_element",
+        "import:bion_symbolizer",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "bion_alpha_function — função α Bion (β→α) para o worker. Orquestração runtime / Runtime orchestration: `BionAlphaFunction.transform(beta)` metaboliza β→α via symbolizer, com cadeia de fallback LLM→MiniLM→heurístico. Sem efeitos colaterais a"
+    },
+    {
+      "id": "he:psychoanalysis/bion_patches/__init__.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/bion_patches/__init__.py",
+      "members": [
+        "mod:psychoanalysis/bion_patches/__init__.py",
+        "import:container_contained"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.bion_patches — patches container-contained (Bion). pt-BR: patch de contenção elética (container-contained) portado do sovereign (OW-STU-008b: PORTAR); re-exporta BionContainerPatch."
+    },
+    {
+      "id": "he:psychoanalysis/bion_patches/container_contained.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/bion_patches/container_contained.py",
+      "members": [
+        "mod:psychoanalysis/bion_patches/container_contained.py",
+        "class:psychoanalysis/bion_patches/container_contained.py:BionContainerPatch",
+        "function:psychoanalysis/bion_patches/container_contained.py:__init__",
+        "function:psychoanalysis/bion_patches/container_contained.py:contain",
+        "function:psychoanalysis/bion_patches/container_contained.py:_degraded_reverie",
+        "function:psychoanalysis/bion_patches/container_contained.py:_would_explode",
+        "function:psychoanalysis/bion_patches/container_contained.py:_explode",
+        "function:psychoanalysis/bion_patches/container_contained.py:recover",
+        "function:psychoanalysis/bion_patches/container_contained.py:get_metrics",
+        "function:psychoanalysis/bion_patches/container_contained.py:reset",
+        "import:alpha_element",
+        "import:beta_element",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.bion_patches — patches container-contained (Bion). Orquestração runtime / Runtime orchestration: `BionContainerPatch` envolve uma função alpha (qualquer objeto com `transform`) e adiciona contenção elética: expande capacidade"
+    },
+    {
+      "id": "he:psychoanalysis/bion_symbolizer.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/bion_symbolizer.py",
+      "members": [
+        "mod:psychoanalysis/bion_symbolizer.py",
+        "function:psychoanalysis/bion_symbolizer.py:_get_executor",
+        "function:psychoanalysis/bion_symbolizer.py:_content_hash",
+        "function:psychoanalysis/bion_symbolizer.py:_sanitize_for_embedding",
+        "function:psychoanalysis/bion_symbolizer.py:_cosine_similarity",
+        "function:psychoanalysis/bion_symbolizer.py:_simple_fallback",
+        "function:psychoanalysis/bion_symbolizer.py:_allmini_fallback",
+        "function:psychoanalysis/bion_symbolizer.py:_strip_thinking",
+        "function:psychoanalysis/bion_symbolizer.py:_brain_symbolize",
+        "function:psychoanalysis/bion_symbolizer.py:_symbolize_worker",
+        "class:psychoanalysis/bion_symbolizer.py:BionSymbolizer",
+        "class:psychoanalysis/bion_symbolizer.py:BionAsyncSymbolizer",
+        "function:psychoanalysis/bion_symbolizer.py:symbolize",
+        "import:agents._llm",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "bion_symbolizer — simbolização β→α para o worker (sem endpoints fixos, sem Erika). Orquestração runtime / Runtime orchestration: `BionSymbolizer.symbolize(raw_data, emotional_charge, timeout)` retorna string α. Cadeia de fallback: brain_cha"
+    },
+    {
+      "id": "he:psychoanalysis/creative_psychotization_operator.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/creative_psychotization_operator.py",
+      "members": [
+        "mod:psychoanalysis/creative_psychotization_operator.py",
+        "class:psychoanalysis/creative_psychotization_operator.py:PsychotizationState",
+        "class:psychoanalysis/creative_psychotization_operator.py:LayerCouplingSnapshot",
+        "class:psychoanalysis/creative_psychotization_operator.py:CompactPanelSnapshot",
+        "class:psychoanalysis/creative_psychotization_operator.py:CreativePsychotizationInputs",
+        "class:psychoanalysis/creative_psychotization_operator.py:CreativePsychotizationAssessment",
+        "function:psychoanalysis/creative_psychotization_operator.py:compact_panel_snapshot_from_v43_bundle",
+        "function:psychoanalysis/creative_psychotization_operator.py:assess_creative_psychotization",
+        "function:psychoanalysis/creative_psychotization_operator.py:_classify_state",
+        "function:psychoanalysis/creative_psychotization_operator.py:_overflow_pressure",
+        "function:psychoanalysis/creative_psychotization_operator.py:_metabolization_capacity",
+        "function:psychoanalysis/creative_psychotization_operator.py:_monitoring_integrity",
+        "function:psychoanalysis/creative_psychotization_operator.py:_circulation_capacity",
+        "concept:quadrupla_federativa",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.creative_psychotization_operator — classificador de regime. Orquestração runtime / Runtime orquestration: `assess_creative_psychotization(inputs)` classifica o regime atual de transformação β/α em um dos estados `Psychotizati"
+    },
+    {
+      "id": "he:psychoanalysis/defense_mechanisms.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/defense_mechanisms.py",
+      "members": [
+        "mod:psychoanalysis/defense_mechanisms.py",
+        "function:psychoanalysis/defense_mechanisms.py:_clip",
+        "function:psychoanalysis/defense_mechanisms.py:assess",
+        "concept:quadrupla_federativa",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.defense_mechanisms — 12 mecanismos de defesa como métricas. Orquestração runtime / Runtime orchestration: `assess(text_features)` traduz 12 mecanismos lacanianos em métricas determinísticas 0-1 a partir de features textuais ("
+    },
+    {
+      "id": "he:psychoanalysis/freudian_apparatus_numpy.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/freudian_apparatus_numpy.py",
+      "members": [
+        "mod:psychoanalysis/freudian_apparatus_numpy.py",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:_as_array",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:to_numpy",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:_activate",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:_kw",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:_align",
+        "class:psychoanalysis/freudian_apparatus_numpy.py:FreudianNeuron",
+        "class:psychoanalysis/freudian_apparatus_numpy.py:FreudianNeuralLayer",
+        "class:psychoanalysis/freudian_apparatus_numpy.py:FreudianPsychicApparatus",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:__init__",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:_ensure",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:forward",
+        "function:psychoanalysis/freudian_apparatus_numpy.py:plasticity",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "freudian_apparatus_numpy — aparato psíquico freudiano em numpy puro. Orquestração runtime / Runtime orchestration: Port numpy-puro de `src/consciousness/freudian_neural_apparatus.py` do sovereign (OW-STU-012: SKIP no daemon por torch → vers"
+    },
+    {
+      "id": "he:psychoanalysis/freudnet_repression.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/freudnet_repression.py",
+      "members": [
+        "mod:psychoanalysis/freudnet_repression.py",
+        "class:psychoanalysis/freudnet_repression.py:RepressionChannel",
+        "function:psychoanalysis/freudnet_repression.py:_sigmoid",
+        "function:psychoanalysis/freudnet_repression.py:__init__",
+        "function:psychoanalysis/freudnet_repression.py:reset_state",
+        "function:psychoanalysis/freudnet_repression.py:step",
+        "concept:quadrupla_federativa",
+        "concept:memtrias_recalcado",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "memtrias_recalcado",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.freudnet_repression — canal de retorno do recalcado (numpy). Orquestração runtime / Runtime orchestration: `RepressionChannel.step(excitation, moral_censorship, somatic_drain)` mantém um vetor tensional z: a excitação entra, "
+    },
+    {
+      "id": "he:psychoanalysis/markov_blanket.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/markov_blanket.py",
+      "members": [
+        "mod:psychoanalysis/markov_blanket.py",
+        "function:psychoanalysis/markov_blanket.py:mobius_add",
+        "function:psychoanalysis/markov_blanket.py:hyperbolic_dist",
+        "class:psychoanalysis/markov_blanket.py:BlanketState",
+        "function:psychoanalysis/markov_blanket.py:blanket_step",
+        "function:psychoanalysis/markov_blanket.py:_error_mag0",
+        "function:psychoanalysis/markov_blanket.py:_permeability0",
+        "function:psychoanalysis/markov_blanket.py:binarize",
+        "function:psychoanalysis/markov_blanket.py:_sample_consistent",
+        "function:psychoanalysis/markov_blanket.py:build_tpm",
+        "function:psychoanalysis/markov_blanket.py:connectivity_matrix",
+        "concept:dodecatiad",
+        "concept:quadrupla_federativa",
+        "concept:markov_blanket",
+        "concept:affect_care"
+      ],
+      "concepts": [
+        "dodecatiad",
+        "quadrupla_federativa",
+        "markov_blanket",
+        "affect_care"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "markov_blanket.py — Poincaré Markov blanket + PyPhi-ready TPM. English: faithful port of the sovereign's clinical Markov blanket dynamics (poincare_markov_blanket.py + simulate_prior_conflict_hyperbolic.py, livro §19/B§9). Belief μ evolves "
+    },
+    {
+      "id": "he:psychoanalysis/negative_capability.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/negative_capability.py",
+      "members": [
+        "mod:psychoanalysis/negative_capability.py",
+        "class:psychoanalysis/negative_capability.py:Contradiction",
+        "class:psychoanalysis/negative_capability.py:NegativeCapability",
+        "function:psychoanalysis/negative_capability.py:__post_init__",
+        "function:psychoanalysis/negative_capability.py:__init__",
+        "function:psychoanalysis/negative_capability.py:hold_contradiction",
+        "function:psychoanalysis/negative_capability.py:can_tolerate",
+        "function:psychoanalysis/negative_capability.py:update_tension",
+        "function:psychoanalysis/negative_capability.py:needs_resolution",
+        "function:psychoanalysis/negative_capability.py:resolve_contradiction",
+        "function:psychoanalysis/negative_capability.py:get_buffer_state",
+        "function:psychoanalysis/negative_capability.py:clear_resolved",
+        "function:psychoanalysis/negative_capability.py:increase_tolerance"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.negative_capability — buffer de contradições em suspensão. Orquestração runtime / Runtime orchestration: `NegativeCapability` mantém proposições contraditórias em suspensão sem resolução prematura (`hold_contradiction`), com "
+    },
+    {
+      "id": "he:psychoanalysis/plasticity_resource.py",
+      "subpackage": "psychoanalysis",
+      "module": "psychoanalysis/plasticity_resource.py",
+      "members": [
+        "mod:psychoanalysis/plasticity_resource.py",
+        "class:psychoanalysis/plasticity_resource.py:ResourceLane",
+        "class:psychoanalysis/plasticity_resource.py:ResourcePosture",
+        "class:psychoanalysis/plasticity_resource.py:VramPressureInputs",
+        "class:psychoanalysis/plasticity_resource.py:SwapRegimeInputs",
+        "class:psychoanalysis/plasticity_resource.py:AttentionEntropyInputs",
+        "class:psychoanalysis/plasticity_resource.py:ThermalInputs",
+        "class:psychoanalysis/plasticity_resource.py:ActivationWindowInputs",
+        "class:psychoanalysis/plasticity_resource.py:HomeostasisInputs",
+        "class:psychoanalysis/plasticity_resource.py:ResourceAssessment",
+        "function:psychoanalysis/plasticity_resource.py:_clip01",
+        "function:psychoanalysis/plasticity_resource.py:_mean",
+        "function:psychoanalysis/plasticity_resource.py:assess_vram_pressure",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychoanalysis.plasticity_resource — operational resource postures (port). Orquestração runtime / Runtime orchestration: Port ADAPTADO do `src/psychoanalysis/plasticity_context_resource.py` do sovereign (OW-STU-012). O MECANISMO é fiel (lan"
+    },
+    {
+      "id": "he:psychology/__init__.py",
+      "subpackage": "psychology",
+      "module": "psychology/__init__.py",
+      "members": [
+        "mod:psychology/__init__.py",
+        "import:scars",
+        "concept:quadrupla_federativa",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychology — módulos psicológicos portados do sovereign (CPU/RAM). pt-BR: subset portado de src/psychology (OW-STU-008b). Começa com scars (integração de trauma → regras de defesa permanentes)."
+    },
+    {
+      "id": "he:psychology/desire_engine.py",
+      "subpackage": "psychology",
+      "module": "psychology/desire_engine.py",
+      "members": [
+        "mod:psychology/desire_engine.py",
+        "class:psychology/desire_engine.py:DesireAsLackStructure",
+        "class:psychology/desire_engine.py:DesireAsStructuralImpossibility",
+        "class:psychology/desire_engine.py:Desire",
+        "class:psychology/desire_engine.py:DesireEngine",
+        "function:psychology/desire_engine.py:get_desire_engine",
+        "function:psychology/desire_engine.py:__init__",
+        "function:psychology/desire_engine.py:encounter_desire",
+        "function:psychology/desire_engine.py:_identify_repressed_return",
+        "function:psychology/desire_engine.py:_identify_lost_object",
+        "function:psychology/desire_engine.py:_formulate_demand_to_other",
+        "function:psychology/desire_engine.py:_track_compulsion_pattern",
+        "function:psychology/desire_engine.py:_identify_jouissance_type",
+        "import:desire_epsilon",
+        "import:shared_workspace",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychology.desire_engine — desejo como falta estrutural (Lacan). Orquestração runtime / Runtime orchestration: `DesireEngine` computa a falta estrutural entre um estado-alvo e o estado atual do worker, produzindo `desire.intensity` (0-1) e "
+    },
+    {
+      "id": "he:psychology/desire_epsilon.py",
+      "subpackage": "psychology",
+      "module": "psychology/desire_epsilon.py",
+      "members": [
+        "mod:psychology/desire_epsilon.py",
+        "function:psychology/desire_epsilon.py:ingest_observables",
+        "function:psychology/desire_epsilon.py:compute_epsilon_desire",
+        "class:psychology/desire_epsilon.py:DesireEpsilon",
+        "function:psychology/desire_epsilon.py:__init__",
+        "function:psychology/desire_epsilon.py:ingest",
+        "function:psychology/desire_epsilon.py:epsilon",
+        "concept:quadrupla_federativa",
+        "concept:memtrias_recalcado"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "memtrias_recalcado"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "psychology.desire_epsilon — ε_desire lacaniano (port do soberano, puro Python). Modulo puro-Python (numpy opcional) que replica o mecanismo de ``ingest_mesh_observables`` + ``calculate_epsilon_desire`` do DesireEngine soberano (``/content/o"
+    },
+    {
+      "id": "he:psychology/hawking_motivation.py",
+      "subpackage": "psychology",
+      "module": "psychology/hawking_motivation.py",
+      "members": [
+        "mod:psychology/hawking_motivation.py",
+        "function:psychology/hawking_motivation.py:_db_path",
+        "function:psychology/hawking_motivation.py:_con",
+        "function:psychology/hawking_motivation.py:_dt",
+        "class:psychology/hawking_motivation.py:KnowledgeItem",
+        "class:psychology/hawking_motivation.py:EvaporationEvent",
+        "class:psychology/hawking_motivation.py:HawkingMotivationEngine",
+        "function:psychology/hawking_motivation.py:__init__",
+        "function:psychology/hawking_motivation.py:_calculate_rate",
+        "function:psychology/hawking_motivation.py:_load",
+        "function:psychology/hawking_motivation.py:_save_item",
+        "function:psychology/hawking_motivation.py:_remove_item",
+        "function:psychology/hawking_motivation.py:add_knowledge",
+        "import:omni_coworker.store.evaporation",
+        "table:knowledge",
+        "table:evap_history",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [
+        "knowledge",
+        "evap_history"
+      ],
+      "routes": [],
+      "summary": "psychology.hawking_motivation — evaporação de conhecimento não usado → urgência. Orquestração runtime / Runtime orchestration: `HawkingMotivationEngine` registra KnowledgeItem, marca uso, adiciona correlações e evapora conhecimento não usad"
+    },
+    {
+      "id": "he:psychology/scars.py",
+      "subpackage": "psychology",
+      "module": "psychology/scars.py",
+      "members": [
+        "mod:psychology/scars.py",
+        "function:psychology/scars.py:_db_path",
+        "function:psychology/scars.py:_con",
+        "function:psychology/scars.py:_tokens",
+        "class:psychology/scars.py:TraumaIntegration",
+        "function:psychology/scars.py:get_scars",
+        "function:psychology/scars.py:create_scar",
+        "function:psychology/scars.py:all_scars",
+        "function:psychology/scars.py:consult_scars_before_decision",
+        "import:shared_workspace",
+        "table:scars",
+        "concept:mps_spectral",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "governance_witness"
+      ],
+      "tables": [
+        "scars"
+      ],
+      "routes": [],
+      "summary": "psychology.scars — cicatrizes como regras de defesa permanentes. Orquestração runtime / Runtime orchestration: `TraumaIntegration.create_scar(failure)` registra falhas como cicatrizes PERSISTENTES (sqlite `data/scars.sqlite` — nunca deletad"
+    },
+    {
+      "id": "he:safety/__init__.py",
+      "subpackage": "safety",
+      "module": "safety/__init__.py",
+      "members": [
+        "mod:safety/__init__.py",
+        "import:matrix",
+        "import:gate",
+        "import:jail",
+        "import:refusal_contract",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Safety plane: permission matrix, constitutional gate, jail adapter. English: Composes permission matrix + constitutional gate + security. pt-BR: Compõe matriz de permissões + portão constitucional + segurança."
+    },
+    {
+      "id": "he:safety/care.py",
+      "subpackage": "safety",
+      "module": "safety/care.py",
+      "members": [
+        "mod:safety/care.py",
+        "function:safety/care.py:_resources_for_uf",
+        "function:safety/care.py:_referral_text",
+        "function:safety/care.py:escalate",
+        "concept:quadrupla_federativa",
+        "concept:affect_care",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "affect_care",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Territorial escalation for operator mental-health / abuse contexts. English: Territorial escalation for operator mental-health / abuse contexts. pt-BR: Escalada territorial para contextos de saúde mental / abuso de operador."
+    },
+    {
+      "id": "he:safety/gate.py",
+      "subpackage": "safety",
+      "module": "safety/gate.py",
+      "members": [
+        "mod:safety/gate.py",
+        "function:safety/gate.py:get_gate",
+        "function:safety/gate.py:_apply_refusal_contract",
+        "function:safety/gate.py:evaluate_action",
+        "import:refusal_state",
+        "concept:quadrupla_federativa",
+        "concept:affect_care",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "affect_care",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Constitutional gate adapter. English: Reuses src.autopoietic.constitutional_gate.ConstitutionalGate. pt-BR: Reutiliza src.autopoietic.constitutional_gate.ConstitutionalGate."
+    },
+    {
+      "id": "he:safety/jail.py",
+      "subpackage": "safety",
+      "module": "safety/jail.py",
+      "members": [
+        "mod:safety/jail.py",
+        "function:safety/jail.py:is_safe",
+        "function:safety/jail.py:validate_path",
+        "function:safety/jail.py:is_command_safe",
+        "concept:affect_care"
+      ],
+      "concepts": [
+        "affect_care"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Jail adapter (workspace sandbox). English: Wraps security playbooks and jailbreak patterns. pt-BR: Encapsula playbooks de segurança e padrões de jailbreak."
+    },
+    {
+      "id": "he:safety/matrix.py",
+      "subpackage": "safety",
+      "module": "safety/matrix.py",
+      "members": [
+        "mod:safety/matrix.py",
+        "function:safety/matrix.py:get_matrix",
+        "function:safety/matrix.py:check_permission",
+        "function:safety/matrix.py:_record_matrix_verdict",
+        "import:refusal_state"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "Permission matrix adapter. English: Reuses src.orchestration.permission_matrix.PermissionMatrix. pt-BR: Reutiliza src.orchestration.permission_matrix.PermissionMatrix."
+    },
+    {
+      "id": "he:safety/refusal_contract.py",
+      "subpackage": "safety",
+      "module": "safety/refusal_contract.py",
+      "members": [
+        "mod:safety/refusal_contract.py",
+        "function:safety/refusal_contract.py:_normalize_tags",
+        "function:safety/refusal_contract.py:classify_refusal_context",
+        "function:safety/refusal_contract.py:build_refusal_contract_payload",
+        "concept:quadrupla_federativa",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "safety.refusal_contract — contrato de recusa soberano (port puro Python). Orquestração runtime / Runtime orchestration: classify_refusal_context(tags, psi, epsilon, ...) → dict com action allow_with_boundaries / cooldown_and_reduce_external"
+    },
+    {
+      "id": "he:safety/refusal_state.py",
+      "subpackage": "safety",
+      "module": "safety/refusal_state.py",
+      "members": [
+        "mod:safety/refusal_state.py",
+        "function:safety/refusal_state.py:_path",
+        "function:safety/refusal_state.py:_load",
+        "function:safety/refusal_state.py:_save",
+        "function:safety/refusal_state.py:record_verdict",
+        "function:safety/refusal_state.py:current_state",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "safety.refusal_state — instrumentação das transições de recusa (A5). Orquestração runtime / Runtime orchestration: `record_verdict(allowed, trigger)` mantém o refusal_state: quando um veredito de recusa chega, abre um episódio (refusal_ente"
+    },
+    {
+      "id": "he:safety/supervisor.py",
+      "subpackage": "safety",
+      "module": "safety/supervisor.py",
+      "members": [
+        "mod:safety/supervisor.py",
+        "function:safety/supervisor.py:create_supervisor_router",
+        "function:safety/supervisor.py:review",
+        "function:safety/supervisor.py:affect_conversation",
+        "function:safety/supervisor.py:health",
+        "import:agency.affect_tracer",
+        "route:/supervisor/review",
+        "route:/soul/affect/conversation",
+        "route:/health",
+        "concept:affect_care"
+      ],
+      "concepts": [
+        "affect_care"
+      ],
+      "tables": [],
+      "routes": [
+        "/supervisor/review",
+        "/soul/affect/conversation",
+        "/health"
+      ],
+      "summary": "Conversation supervisor. English: FastAPI router exposing /supervisor/review and /soul/affect/conversation. pt-BR: Router FastAPI expondo /supervisor/review e /soul/affect/conversation."
+    },
+    {
+      "id": "he:server/erika_torch_server.py",
+      "subpackage": "server",
+      "module": "server/erika_torch_server.py",
+      "members": [
+        "mod:server/erika_torch_server.py",
+        "class:server/erika_torch_server.py:ChatMessage",
+        "class:server/erika_torch_server.py:ChatCompletionReq",
+        "class:server/erika_torch_server.py:CompletionReq",
+        "function:server/erika_torch_server.py:_summarize_hidden",
+        "function:server/erika_torch_server.py:_summarize_attention",
+        "function:server/erika_torch_server.py:_emit_activation",
+        "function:server/erika_torch_server.py:_capture_cfg",
+        "function:server/erika_torch_server.py:_vec_dir",
+        "function:server/erika_torch_server.py:_step_dir",
+        "function:server/erika_torch_server.py:_emit_vectors",
+        "function:server/erika_torch_server.py:_emit_step_trajectory",
+        "function:server/erika_torch_server.py:load_model",
+        "route:/health",
+        "route:/erika/activations",
+        "route:/erika/affect",
+        "route:/erika/unload",
+        "route:/erika/reload",
+        "route:/v1/chat/completions",
+        "route:/v1/completions",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "mps_spectral",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [
+        "/health",
+        "/erika/activations",
+        "/erika/affect",
+        "/erika/unload",
+        "/erika/reload",
+        "/v1/chat/completions",
+        "/v1/completions"
+      ],
+      "summary": "Erika Torch Server — brain model via PyTorch/transformers with instrumentation. English: Real brain substrate for the coworker — OpenAI-compatible endpoints plus per-generation telemetry (hidden states + attention by layer) that feeds the a"
+    },
+    {
+      "id": "he:shared_workspace/__init__.py",
+      "subpackage": "shared_workspace",
+      "module": "shared_workspace/__init__.py",
+      "members": [
+        "mod:shared_workspace/__init__.py",
+        "import:bus",
+        "import:schema"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "shared_workspace — barramento de estado compartilhado do worker. English: In-process state bus where worker modules publish and read canonical states (soul, soma, agency, swap, kernel, feedback). Derived from the canonical shared_workspace "
+    },
+    {
+      "id": "he:shared_workspace/api.py",
+      "subpackage": "shared_workspace",
+      "module": "shared_workspace/api.py",
+      "members": [
+        "mod:shared_workspace/api.py",
+        "class:shared_workspace/api.py:PublishReq",
+        "function:shared_workspace/api.py:mesh_state",
+        "function:shared_workspace/api.py:mesh_topic",
+        "function:shared_workspace/api.py:mesh_publish",
+        "function:shared_workspace/api.py:mesh_metrics",
+        "route:/state",
+        "route:/topic/{name:path}",
+        "route:/publish",
+        "route:/metrics"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [
+        "/state",
+        "/topic/{name:path}",
+        "/publish",
+        "/metrics"
+      ],
+      "summary": "shared_workspace.api — router FastAPI `/mesh/*` do barramento. Orquestração runtime / Runtime orchestration: Expõe o barramento a consumidores fora do processo (daemons standalone como swap_scheduler/state_guard publicam via POST /mesh/publ"
+    },
+    {
+      "id": "he:shared_workspace/bus.py",
+      "subpackage": "shared_workspace",
+      "module": "shared_workspace/bus.py",
+      "members": [
+        "mod:shared_workspace/bus.py",
+        "function:shared_workspace/bus.py:publish",
+        "function:shared_workspace/bus.py:subscribe",
+        "function:shared_workspace/bus.py:latest",
+        "function:shared_workspace/bus.py:history",
+        "function:shared_workspace/bus.py:topics",
+        "function:shared_workspace/bus.py:snapshot",
+        "function:shared_workspace/bus.py:_reset",
+        "import:schema",
+        "import:store"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "shared_workspace.bus — pub/sub in-process com hot ring buffer. Orquestração runtime / Runtime orchestration: `publish()` valida, timestampa, empurra no deque do tópico (hot), chama subscribers por prefixo e persiste via store (write-through"
+    },
+    {
+      "id": "he:shared_workspace/schema.py",
+      "subpackage": "shared_workspace",
+      "module": "shared_workspace/schema.py",
+      "members": [
+        "mod:shared_workspace/schema.py",
+        "function:shared_workspace/schema.py:canonical",
+        "function:shared_workspace/schema.py:validate",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "mps_spectral",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "shared_workspace.schema — chaves canônicas e validação de payloads. Orquestração runtime / Runtime orchestration: `publish()` exige tópico dentro de CANONICAL_PREFIXES e payload JSON-serializável; validação é barata e fail-fast (ValueError)"
+    },
+    {
+      "id": "he:shared_workspace/store.py",
+      "subpackage": "shared_workspace",
+      "module": "shared_workspace/store.py",
+      "members": [
+        "mod:shared_workspace/store.py",
+        "function:shared_workspace/store.py:_db_path",
+        "function:shared_workspace/store.py:_con",
+        "function:shared_workspace/store.py:_provenance",
+        "function:shared_workspace/store.py:put",
+        "function:shared_workspace/store.py:_unpack_provenance",
+        "function:shared_workspace/store.py:history",
+        "function:shared_workspace/store.py:latest_per_topic",
+        "function:shared_workspace/store.py:prune",
+        "function:shared_workspace/store.py:_reset",
+        "import:memory.provenance",
+        "table:events",
+        "concept:memtrias_recalcado",
+        "concept:mps_spectral",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "memtrias_recalcado",
+        "mps_spectral",
+        "governance_witness"
+      ],
+      "tables": [
+        "events"
+      ],
+      "routes": [],
+      "summary": "shared_workspace.store — persistência quente (sqlite WAL) do barramento. Orquestração runtime / Runtime orchestration: Write-through por evento via `put()` (chamado pelo bus); WAL permite leitores concorrentes sem bloquear o escritor único."
+    },
+    {
+      "id": "he:soma/__init__.py",
+      "subpackage": "soma",
+      "module": "soma/__init__.py",
+      "members": [
+        "mod:soma/__init__.py",
+        "import:probe",
+        "import:somatic_store",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Soma: somatic probe and telemetry. English: Host telemetry (CPU/GPU/RAM/swap/PSI) + persisted probe store. pt-BR: Telemetria do host (CPU/GPU/RAM/swap/PSI) + store persistido de sondas."
+    },
+    {
+      "id": "he:soma/fluid_storage.py",
+      "subpackage": "soma",
+      "module": "soma/fluid_storage.py",
+      "members": [
+        "mod:soma/fluid_storage.py",
+        "class:soma/fluid_storage.py:SomaFluidStorage",
+        "function:soma/fluid_storage.py:__init__",
+        "function:soma/fluid_storage.py:_ensure_infrastructure",
+        "function:soma/fluid_storage.py:get_disk_health",
+        "function:soma/fluid_storage.py:balance_soma",
+        "function:soma/fluid_storage.py:_identify_heavy_organs",
+        "function:soma/fluid_storage.py:_transplant",
+        "function:soma/fluid_storage.py:_update_map",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "soma.fluid_storage — SomaFluidStorage port (virtualized space pools). Orquestração runtime / Runtime orchestration: Port ADAPTADO de `src/system/soma_fluid_storage.py` (sovereign, OW-STU-012: ADAPT). Implementa a \"Sutura de Volume\": um pool"
+    },
+    {
+      "id": "he:soma/probe.py",
+      "subpackage": "soma",
+      "module": "soma/probe.py",
+      "members": [
+        "mod:soma/probe.py",
+        "function:soma/probe.py:_gpu_probe",
+        "function:soma/probe.py:_virt_probe",
+        "function:soma/probe.py:_psi_probe",
+        "function:soma/probe.py:_disk_probe",
+        "function:soma/probe.py:_net_probe",
+        "function:soma/probe.py:_proc_probe",
+        "function:soma/probe.py:_load_custom_probes",
+        "function:soma/probe.py:_custom_probes",
+        "function:soma/probe.py:probe",
+        "function:soma/probe.py:soma_context_line",
+        "function:soma/probe.py:probe_recorded",
+        "function:soma/probe.py:probe_with_brain",
+        "import:somatic_store",
+        "import:brain.server",
+        "concept:quadrupla_federativa",
+        "concept:dual_brain_swap"
+      ],
+      "concepts": [
+        "quadrupla_federativa",
+        "dual_brain_swap"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Somatic probe: host telemetry. English: psutil + pynvml telemetry (CPU/GPU temp, RAM, swap, PSI) plus virtualization detection (container / hypervisor / cloud platform). Metrics only — no interpretation. pt-BR: Telemetria via psutil + pynvm"
+    },
+    {
+      "id": "he:soma/somatic_store.py",
+      "subpackage": "soma",
+      "module": "soma/somatic_store.py",
+      "members": [
+        "mod:soma/somatic_store.py",
+        "function:soma/somatic_store.py:_now",
+        "function:soma/somatic_store.py:_as_float",
+        "class:soma/somatic_store.py:SomaticStore",
+        "function:soma/somatic_store.py:__init__",
+        "function:soma/somatic_store.py:_init",
+        "function:soma/somatic_store.py:record",
+        "function:soma/somatic_store.py:recent",
+        "function:soma/somatic_store.py:summary",
+        "function:soma/somatic_store.py:_mean",
+        "table:probes",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "mps_spectral"
+      ],
+      "tables": [
+        "probes"
+      ],
+      "routes": [],
+      "summary": "Somatic store: persisted probe telemetry. English: SQLite WAL store for host telemetry probes (`probes(id, ts, cpu, ram_used_gb, ram_total_gb, swap_gb, load1, extra_json)`). Clean implementation — the canonical `src.infrastructure.somatic_m"
+    },
+    {
+      "id": "he:soul/__init__.py",
+      "subpackage": "soul",
+      "module": "soul/__init__.py",
+      "members": [
+        "mod:soul/__init__.py",
+        "import:api"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "Soul: API and static assets (Machine Public Soul). English: FastAPI routes and i18n static files. pt-BR: Rotas FastAPI e arquivos estáticos i18n."
+    },
+    {
+      "id": "he:soul/api.py",
+      "subpackage": "soul",
+      "module": "soul/api.py",
+      "members": [
+        "mod:soul/api.py",
+        "function:soul/api.py:_compute_state",
+        "function:soul/api.py:state",
+        "function:soul/api.py:dodeca",
+        "function:soul/api.py:stream",
+        "function:soul/api.py:root",
+        "function:soul/api.py:static_files",
+        "function:soul/api.py:gen",
+        "function:soul/api.py:gen_raw",
+        "import:dodeca",
+        "import:soma.probe",
+        "import:brain.affect",
+        "import:kernel_hooks.compute",
+        "route:/state",
+        "route:/dodeca",
+        "route:/stream",
+        "route:/",
+        "route:/static/{path:path}",
+        "concept:dodecatiad",
+        "concept:quadrupla_federativa",
+        "concept:mps_spectral"
+      ],
+      "concepts": [
+        "dodecatiad",
+        "quadrupla_federativa",
+        "mps_spectral"
+      ],
+      "tables": [],
+      "routes": [
+        "/state",
+        "/dodeca",
+        "/stream",
+        "/",
+        "/static/{path:path}"
+      ],
+      "summary": "Soul API endpoints. English: GET /soul/state and GET /soul/stream (SSE). pt-BR: GET /soul/state e GET /soul/stream (SSE)."
+    },
+    {
+      "id": "he:soul/dodeca.py",
+      "subpackage": "soul",
+      "module": "soul/dodeca.py",
+      "members": [
+        "mod:soul/dodeca.py",
+        "function:soul/dodeca.py:_clip01",
+        "function:soul/dodeca.py:_kernel_metrics",
+        "function:soul/dodeca.py:compute_dodeca",
+        "function:soul/dodeca.py:explain",
+        "function:soul/dodeca.py:put",
+        "import:kernel_hooks.compute",
+        "import:agency.teleology",
+        "concept:dodecatiad",
+        "concept:quadrupla_federativa"
+      ],
+      "concepts": [
+        "dodecatiad",
+        "quadrupla_federativa"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Dodecatiad house computation. English: Computes the S01–S15 house axes of the Dodecatíade from the live soul inputs (kernel vctr_six_params when the Rust kernel is present, fallback telemetry otherwise) and resolves the dominant face. Each "
+    },
+    {
+      "id": "he:store/__init__.py",
+      "subpackage": "store",
+      "module": "store/__init__.py",
+      "members": [
+        "mod:store/__init__.py",
+        "import:node_db"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "Store: node_db and persistence. English: SQLite WAL store with atomic writes. pt-BR: Armazenamento SQLite WAL com escritas atômicas."
+    },
+    {
+      "id": "he:store/audit_adapter.py",
+      "subpackage": "store",
+      "module": "store/audit_adapter.py",
+      "members": [
+        "mod:store/audit_adapter.py",
+        "function:store/audit_adapter.py:audit_append",
+        "function:store/audit_adapter.py:audit_verify",
+        "import:audit",
+        "import:agency.witness",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "audit_adapter — ponte para o ImmutableAuditSystem canônico. English: Appends audit events to the worker-owned canonical `ImmutableAuditSystem` (sha256 chain + fcntl lock, anchored at OMNI_STATE_DIR/audit). When the audit write itself fails,"
+    },
+    {
+      "id": "he:store/code_index.py",
+      "subpackage": "store",
+      "module": "store/code_index.py",
+      "members": [
+        "mod:store/code_index.py",
+        "function:store/code_index.py:sanitize_secret_text",
+        "function:store/code_index.py:_get_model",
+        "function:store/code_index.py:_chunk_file",
+        "function:store/code_index.py:build_index",
+        "function:store/code_index.py:_load",
+        "function:store/code_index.py:search",
+        "function:store/code_index.py:index_dir",
+        "function:store/code_index.py:build_symbolic_hypergraph",
+        "function:store/code_index.py:search_hypergraph",
+        "concept:dodecatiad",
+        "concept:quadrupla_federativa",
+        "concept:markov_blanket",
+        "concept:memtrias_recalcado",
+        "concept:affect_care",
+        "concept:mps_spectral",
+        "concept:dual_brain_swap",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "dodecatiad",
+        "quadrupla_federativa",
+        "markov_blanket",
+        "memtrias_recalcado",
+        "affect_care",
+        "mps_spectral",
+        "dual_brain_swap",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "Vectorized code index (all-MiniLM-L6-v2). English: Chunks the omni_coworker package into embeddable units (module, class, function), embeds with sentence-transformers all-MiniLM-L6-v2, persists to parquet + optional faiss index. This is the"
+    },
+    {
+      "id": "he:store/evaporation.py",
+      "subpackage": "store",
+      "module": "store/evaporation.py",
+      "members": [
+        "mod:store/evaporation.py",
+        "function:store/evaporation.py:_to_epoch",
+        "function:store/evaporation.py:evaporation_score"
+      ],
+      "concepts": [],
+      "tables": [],
+      "routes": [],
+      "summary": "evaporation — score de decaimento por não-uso para chunks do code index. Orquestração runtime / Runtime orchestration: Função pura usada pelo revisor para ponderar chunks do code index; sem estado, sem I/O. Arquitetura / Architecture: Porta"
+    },
+    {
+      "id": "he:store/node_db.py",
+      "subpackage": "store",
+      "module": "store/node_db.py",
+      "members": [
+        "mod:store/node_db.py",
+        "class:store/node_db.py:NodeDB",
+        "function:store/node_db.py:__init__",
+        "function:store/node_db.py:init",
+        "function:store/node_db.py:add_artifact",
+        "function:store/node_db.py:list_artifacts",
+        "function:store/node_db.py:add_mission",
+        "function:store/node_db.py:get_mission",
+        "function:store/node_db.py:list_missions",
+        "table:missions",
+        "table:artifacts"
+      ],
+      "concepts": [],
+      "tables": [
+        "missions",
+        "artifacts"
+      ],
+      "routes": [],
+      "summary": "Node DB (SQLite WAL). English: Atomic per-write connections; reuses src.storage. pt-BR: Conexões atômicas por escrita; reutiliza src.storage."
+    },
+    {
+      "id": "he:store/state_guard.py",
+      "subpackage": "store",
+      "module": "store/state_guard.py",
+      "members": [
+        "mod:store/state_guard.py",
+        "function:store/state_guard.py:_state_root",
+        "function:store/state_guard.py:_snapshot_dir",
+        "function:store/state_guard.py:_hash_tree",
+        "function:store/state_guard.py:_manifest_hash",
+        "function:store/state_guard.py:_latest_snapshot",
+        "function:store/state_guard.py:snapshot",
+        "function:store/state_guard.py:restore",
+        "function:store/state_guard.py:loop",
+        "import:agency.witness",
+        "concept:mps_spectral",
+        "concept:governance_witness"
+      ],
+      "concepts": [
+        "mps_spectral",
+        "governance_witness"
+      ],
+      "tables": [],
+      "routes": [],
+      "summary": "state_guard — snapshots com retenção para continuidade da VM. English: Snapshot/restore manager anchored at $OMNI_STATE_DIR (default ./data). `snapshot()` tars the state dir + witness chain, verifies the previous snapshot is intact, skips w"
+    }
+  ]
+}

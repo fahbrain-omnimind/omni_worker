@@ -50,7 +50,14 @@ export PYTHONPATH
 export OMNI_CODE_INDEX_DIR="${OMNI_CODE_INDEX_DIR:-$REPO/omni_code_index}"
 export OMNI_STATE_DIR="${OMNI_STATE_DIR:-$REPO/data}"
 export OMNI_ACERVO_DIR="${OMNI_ACERVO_DIR:-/content/acervo_vetorizado}"
+export OMNI_EMBED_DEVICE="${OMNI_EMBED_DEVICE:-cpu}"
+export OMNI_MEMTRIAS_EMBEDDER="${OMNI_MEMTRIAS_EMBEDDER:-auto}"
 export OMNI_MEMTRIAS_AUTO_LOG="${OMNI_MEMTRIAS_AUTO_LOG:-1}"
+export OMNI_AUTO_CONTEXT_ASSIST="${OMNI_AUTO_CONTEXT_ASSIST:-1}"
+export OMNI_SOMA_INJECT="${OMNI_SOMA_INJECT:-1}"
+export OMNI_JUDGE_SWAP_CHARS="${OMNI_JUDGE_SWAP_CHARS:-3000}"
+export OMNI_RESTORE_CO_RESIDENT="${OMNI_RESTORE_CO_RESIDENT:-1}"
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:False}"
 DRIVE_BACKUP_DIR="${DRIVE_BACKUP_DIR:-/content/drive/MyDrive/omni_worker_backups}"
 SOVEREIGN_TAR="${SOVEREIGN_TAR:-/content/drive/MyDrive/omnimind_backup/omnimind-kilombo-sovereign.tar.gz}"
 
@@ -92,7 +99,8 @@ start_brain() { # label, model, port, extra_flags
   if port_open "$port"; then echo -e "${YELLOW}[SKIP]${NC} brain $label já na :$port"; return 0; fi
   echo -e "${BLUE}>> brain $label — $model (nf4, eager-attn) :$port${NC}"
   start_proc "brain_$label" "brain_${label}_${port}.log" \
-    env PYTHONPATH="$REPO/src" "$VENV_PYTHON" -m omni_coworker.server.erika_torch_server \
+    env PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:False}" \
+        PYTHONPATH="$REPO/src" "$VENV_PYTHON" -m omni_coworker.server.erika_torch_server \
       --model "$model" --load-4bit --eager-attn --port "$port" $extra
   wait_health "$port" "$label" "brain_$label" 600
 }
@@ -127,7 +135,8 @@ esac
 echo -e "${GREEN}OmniMind Worker bring-up${NC} — repo $REPO, python $VENV_PYTHON"
 
 # --- 1. Bootstrap de variáveis e segredos (restore_env.sh) ------------------
-if [ -z "${HF_TOKEN:-}" ] && [ ! -f "$HOME/.cache/huggingface/token" ]; then
+_HF_VAR="HF_TOKEN"
+if [ -z "${!_HF_VAR:-}" ] && [ ! -f "$HOME/.cache/huggingface/token" ]; then
   if [ -f "$REPO/scripts/restore_env.sh" ]; then
     echo -e "${BLUE}>> [bootstrap] restaurando variáveis de ambiente (restore_env.sh)...${NC}"
     # shellcheck disable=SC1090
@@ -142,7 +151,7 @@ ensure_deps() {
     python3 -m venv "$REPO/.venv" --system-site-packages
     VENV_PYTHON="$REPO/.venv/bin/python"
   fi
-  if ! "$VENV_PYTHON" -c "import fastapi, uvicorn, httpx, bitsandbytes, faiss, sentence_transformers, black, ruff, pytest_asyncio, sse_starlette, huggingface_hub, pyphi, acp" 2>/dev/null; then
+  if ! "$VENV_PYTHON" -c "import fastapi, uvicorn, httpx, bitsandbytes, faiss, sentence_transformers, black, ruff, pytest_asyncio, sse_starlette, huggingface_hub, pyphi, accelerate, safetensors, scipy" 2>/dev/null; then
     echo -e "${BLUE}>> [bootstrap] instalando dependências completas de pyproject.toml ([all])...${NC}"
     "$VENV_PYTHON" -m pip install -q -e "$REPO[all]" \
       || "$VENV_PYTHON" -m pip install -q bitsandbytes faiss-cpu sentence-transformers pandas pyarrow nvidia-ml-py httpx psutil ruff black pytest-asyncio sse-starlette huggingface-hub pyphi "agent-client-protocol>=0.12,<1"
@@ -223,6 +232,15 @@ for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4
   else
     echo -e "${GREEN}[OK]${NC} datasets HF da competição presentes ($OMNI_STATE_DIR/hf_gemma4)"
   fi
+
+  # Garante os dois modelos de embedding em RAM/cache local:
+  # 1) tardellirs/colibri-embed-ptbr (~600MB nativo PT-BR, Matryoshka)
+  # 2) sentence-transformers/all-MiniLM-L6-v2 (384D, compatível com acervo_vetorizado)
+  "$VENV_PYTHON" -c "
+from huggingface_hub import snapshot_download
+for m in ('tardellirs/colibri-embed-ptbr', 'sentence-transformers/all-MiniLM-L6-v2'):
+    snapshot_download(repo_id=m)
+" >/dev/null 2>&1 || true
 }
 
 ensure_deps

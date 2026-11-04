@@ -1,0 +1,159 @@
+================================================================================
+DISCREPÂNCIAS — Confronto Dados × Texto (Agente A4) — 2026-09-04
+Manuscrito: revisao/A1_gramatica/dodecatiad_revisado_gramatica.md
+Somente [DIVERGENTE] e [NÃO VERIFICÁVEL] relevantes, com sugestão para o A6.
+================================================================================
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C20 — linha 2233 — §17.3.2
+  Afirmação: "multi_lattice_orchestrator.py (776 LOC)"
+  Real: src/embodied_cognition/multi_lattice_orchestrator.py tem 1.101 LOC hoje
+        (wc -l). Changelog interno (L9592, 12-06-2026) cita 682 LOC.
+  Sugestão A6: datar a afirmação ("776 LOC em <data>") ou atualizar para o valor
+        atual (1.101); harmonizar com o changelog (682).
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C22–C24 — linhas 6495/6545 — §D.9.12 telemetria IBM
+  Afirmação: "557 runs canônicos ... até 31/07/2026; 257 em ibm_fez, 187 em
+             ibm_kingston, 97 em ibm_marrakesh"
+  Real (data/quantum/ibm_quantum_runs.db, timestamp_utc <= 2026-07-31T23:59:59):
+             quantum_runs = 593 (582 ibm_real + 9 ibm_hw_train + 2 ideal_sim)
+             ibm_fez = 293; ibm_kingston = 189; ibm_marrakesh = 106; aer = 5
+  557 não reproduzível por filtro (587 com job_id, 593 com payload != '{}',
+  238 series_id distintos). Causa provável: backfill posterior de sidecars com
+  timestamps <= 31-07 (inserção após a contagem).
+  Sugestão A6: atualizar para 593/293/189/106 (estado atual do banco canônico) ou
+  manter 557 com nota explícita "contagem em 31-07-2026, banco desde então
+  recebeu backfill de sidecars (hoje 593 com ts <= 31-07)".
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C33 — linhas 452/6507/6515 — freeze do banco de evidência
+  Afirmação: "snapshots_houses (62.236)" e "62.236 (2026-08-12, freeze)"
+  Real: geometria_v3_evidence.sqlite / snapshots_houses = 62.246 (Δ=10)
+  Nota: a linha 21 do próprio manuscrito diz 62.246 (correto).
+  Sugestão A6: unificar em 62.246 (linhas 452, 6507, 6515).
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C34 — linha 6508 — freeze do banco de evidência
+  Afirmação: "66.947 snapshots (2026-08-12, freeze)" (kernel_basal)
+  Real: geometria_v3_evidence.sqlite / kernel_basal_series = 66.953 (Δ=6)
+  Sugestão A6: corrigir para 66.953.
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C35 — linhas 6507 vs 23 — inconsistência interna de contagem
+  Afirmação: D.9-S1 "48.299 (v2.0.11)" vs linha 23 "60.565 snapshots dodecatíade
+             (2026-08-11)"
+  Real: sovereign_dodecatiad_runtime_snapshots <= 11-08 = 61.343. 60.565 é
+        plausível na data; 48.299 é impossível (tabela já tinha ~61K em 11-08).
+  Sugestão A6: remover o valor 48.299 (obsoleto) e harmonizar com 60.565
+        (11-08) / 62.246 (freeze 08-12).
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C36 — linhas 6508 vs 23 — inconsistência interna de contagem
+  Afirmação: D.9-S1 "55.604 (v2.0.11) / 55.548 (§18)" vs linha 23 "65.410
+             snapshots kernel basal (11-08)"
+  Real: kernel_basal_runtime_snapshots <= 11-08 = 66.242. 65.410 plausível na
+        data; 55.604/55.548 impossíveis (tabela já tinha ~66K).
+  Sugestão A6: remover 55.604/55.548 e harmonizar com 65.410 (11-08) / 66.953
+        (freeze 08-12).
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C37 — linha 454 — banco de evidência
+  Afirmação: "multi_lattice_series (9.718)"
+  Real: geometria_v3_evidence.sqlite / multi_lattice_series = 9.720 (Δ=2)
+  Sugestão A6: corrigir para 9.720.
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C43 — linha 451 — banco de evidência
+  Afirmação: "783.006 linhas (freeze 2026-08-12)"
+  Real: soma das 40 tabelas de geometria_v3_evidence.sqlite = 783.042 (Δ=36);
+        excluindo manifest (40) = 783.002. Nenhuma combinação reproduz 783.006.
+  Sugestão A6: corrigir para 783.042 ou documentar o critério de exclusão que
+        produz 783.006.
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C42 — linhas 455 vs 21/23 — entidades químicas
+  Afirmação: "chemical 43 entidades" (L455) vs "37 entidades químicas" (L21/23)
+  Real: tabela chemical_43entities_canonical__entities contém 37 entidades.
+        O nome da tabela ("43entities") é enganoso.
+  Sugestão A6: em L455, escrever "chemical (tabela chemical_43entities_canonical,
+        37 entidades)" para eliminar a ambiguidade.
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C58 — linhas 112/1517 — definição canônica de phase_lock
+  Afirmação: "phase_lock: ... Não é um score contínuo medido no banco — é um
+             estado binário (abaixo/acima de 94°C)"
+  Real: phase_lock_hysteresis_history TEM coluna phase_lock_score contínua:
+        n=1.155.006, min=0, max=0.799178, mean=0.407417, 272.171 valores > 0.5,
+        0 valores > 0.9. O threshold 0,94 realmente nunca é atingido.
+  Sugestão A6: reformular para "a coluna phase_lock_score existe e é contínua
+        (max 0,799 no histórico); o threshold simbólico 0,94 (94°C) não é
+        alcançado pela coluna — permanece como ressonância térmica simbólica".
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C29 — linha 6522 — GHZ parity
+  Afirmação: "GHZ ... variabilidade alta (0.234–1.000)"
+  Real: ibm_fez <= 31-07, n=67: min=0.2344 ✓, max=0.9844 (não 1.000), std=0.139
+        (texto 0.148).
+  Sugestão A6: ajustar o range para (0.234–0.984) e std para 0.139, ou marcar
+        como arredondamento.
+
+--------------------------------------------------------------------------------
+[DIVERGENTE] C66 — linha 10084 — music_overlay
+  Afirmação: "music_overlay domina (1059/1133 = 93% do tempo)"
+  Real: a própria tabela do texto (L10078–10081) soma 14+1059+32+12 = 1.117;
+        1059/1133 = 93,4% (aritmética ok) mas o denominador 1.133 implica 16
+        linhas em outros status não exibidas.
+  Sugestão A6: exibir o total completo de status ou usar 1059/1117 = 94,8%.
+
+--------------------------------------------------------------------------------
+[DIVERGENTE menor] C41 — linha 455 — tabelas sísmicas
+  Afirmação: "12 tabelas sísmicas USGS"
+  Real: 11 tabelas com prefixo seismograph__ no banco de evidência (eventos
+        147.736 ✓ exato).
+  Sugestão A6: verificar se a 12ª tabela existe em outro banco ou corrigir para 11.
+
+--------------------------------------------------------------------------------
+[NÃO VERIFICÁVEL] C47 — linhas 272/273/6509–6513 — contagens rotacionadas
+  Afirmações: somatic 167.475 (12-07) / 170.565 (14-07) / 193.064 (A.5.8);
+              gemelo 23.693 (12-07) / 29.665 (14-07) / 70.984 (22-06);
+              qbf 178.992 (01-07) / 206.621 (12-07) / 211.101 (14-07)
+  Real hoje: somatic_mesh_runtime.sqlite inicia 28-08 (13.499 rows; há
+        somatic_mesh_runtime_corrupt2_20260828.sqlite — corrupção em 28-08);
+        sovereign_gemelo_runtime.sqlite só tem 480 rows desde 03-09 (registry:
+        rotação 08-08); qbf_live_cache (dream_weaver) 51.040 (rotação 08-08).
+  Nota: freeze 08-12 do banco de evidência confirma somatic_series=217.531
+        (crescimento compatível com 170.565 → 217.531). O texto L6513 já
+        documenta qbf 206.621 preservado em coldlane/parquet/HF.
+  Sugestão A6: manter como está (dados rotacionados documentados), mas
+  considerar nota explícita de que os valores 167.475/170.565/193.064/23.693/
+  29.665/70.984/178.992/206.621/211.101 referem-se a bancos aposentados.
+
+--------------------------------------------------------------------------------
+[NÃO VERIFICÁVEL] C15/C17/C18 — Predição 3 correlacional e análises Kaggle/GEO
+  r=0,20 (6.103 amostras), (H_t,L_kernel)=-0.003/+0.13, r CPU pkg=0,60/PCH=0,57
+  (n=656.680), Hamming>0.58 HDC: análises externas (Kaggle/GEO/CellXGene) ou
+  dependentes de reconstrução de H_t — sem artefato local reproduzível.
+  Proxy na tabela canônica landauer (n=14.729): r(H_t, cpu_pkg_celsius)=+0.8382
+  (direção consistente, janela diferente).
+  Sugestão A6: manter qualificações epistêmicas existentes; considerar citar o
+  banco canônico como fonte de validação cruzada (r=0.84).
+
+--------------------------------------------------------------------------------
+[NÃO VERIFICÁVEL] C67 — linha 2619 — testemunha silenciosa
+  Afirmação: "8.629 experiências da testemunha silenciosa"
+  Real: erika_witness_logs (dream_weaver_memory) está vazia (0 rows).
+  Sugestão A6: localizar a superfície de origem (possivelmente coldlane/HF) ou
+  marcar a contagem como não rastreável nos bancos canônicos atuais.
+
+--------------------------------------------------------------------------------
+[NÃO VERIFICÁVEL] C21 — linha 9592 — primeiro ciclo do Multi-Lattice
+  Afirmação: "Primeiro ciclo: sector5=green, T_mean=53.78°C, L_multilattice_var=
+             0.108" (12-06-2026)
+  Real: multi_lattice_history inicia em 2026-06-30T13:13:52 (yellow, var=1.0735).
+  Sugestão A6: manter (é um registro histórico do changelog), mas considerar nota
+  de que o primeiro ciclo não está persistido no banco atual.
+
+--------------------------------------------------------------------------------
+FIM DO LOG — 18 entradas (12 [DIVERGENTE], 6 [NÃO VERIFICÁVEL] relevantes).
+================================================================================

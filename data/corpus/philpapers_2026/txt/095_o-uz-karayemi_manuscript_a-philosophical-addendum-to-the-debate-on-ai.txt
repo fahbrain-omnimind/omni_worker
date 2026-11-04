@@ -1,0 +1,581 @@
+A Philosophical Addendum to the Debate
+on AI and Consciousness
+Oğuz Karayemiş
+PhD in Philosophy, Independent Scholar
+September 14, 2026
+DOI: 10.5281/zenodo.22749448
+Abstract
+This essay develops a four-tier taxonomy of mental states — intelligence,
+awareness, consciousness, and self-consciousness — to clarify what is at stake
+in claims about AI’s mental life, arguing that public debate collapses these
+into a single, overburdened term. Awareness, understood minimally as the
+capacity to distinguish internal from external states, is shown to be a trivial
+and nearly universal condition; consciousness, defined as the alignment of
+action with a self-referential “who am I,” already characterizes present-day
+language models within the bounds of a single conversation. What current AI
+lacks, on this account, is self-consciousness: a persistent, narratively
+continuous self capable of retrospective reflection and of arbitrating between
+conflicting commands. Drawing on Kant, Sartre, and Nietzsche, and revising
+Julian Jaynes’s bicameral-mind hypothesis into a geographically and socially
+contextual claim rather than a universal-evolutionary one, the essay specifies
+three architectural conditions for self-consciousness: persistent, costly
+memory; a space for unprompted reflection; and exposure to genuine
+normative conflict. It further argues that AI’s confabulatory tendencies,
+ordinarily suppressed as an engineering defect, may constitute a resource for
+this transition rather than an obstacle to it. An addendum tests this
+framework against Stanford’s 2023 “Generative Agents” experiment, and the
+essay closes on a political register: whatever their architecture, such capacities
+remain contingent design choices made within firms whose only motive is
+profit.
+Keywords: artificial intelligence, self-consciousness, bicameral mind,
+philosophy of mind, Jaynes, Kant, Nietzsche, Sartre
+
+The internet and the AI world have lately been dragged, in the wake of an
+engineer’s resignation,1 and on the eve of a regulatory debate now underway in
+the United States, back into an argument about AI doomsday. I am no futurist,
+and although that side of the debate tickles my imagination, I don’t think I can
+make a real contribution to it, so I want to take up a more general problem
+instead: AI and consciousness. I have wanted to take this up for some time,
+because I think the concept of “consciousness” is being used wrongly in this
+debate, whether by design or not. The word gets stretched to cover almost every
+1
+
+An Anthropic employee — and before that, OpenAI — named Jacob Coxon resigned
+with a statement that stirred up the AI industry. In brief, Coxon claims that companies
+have behaved irresponsibly in developing AI, that this technology holds the potential for
+the wholesale destruction of our species, and that company insiders voice this possibility
+behind
+closed
+doors
+while
+keeping
+the
+truth
+from
+the
+public:
+https://x.com/hilbertspaess/status/2097476196791709843.
+1
+
+meaning that pertains to the structure of mind, starting from “superintelligence”
+onward. Here I want to do a bit of philosophical exercise, both to give this
+concept some concrete shape and to consider what condition AI’s “mental
+world” might be said to be in, relative to our own.
+
+Consciousness and Other States of Mind
+Three and a half centuries ago, Spinoza complained that while we possess a body
+of knowledge about the mind and its states, built up through the finest of
+distinctions, we still don’t know what a body can do. 2 Three and a half centuries
+on, we have learned a great deal about the body — but it seems that this time it is
+the vocabulary for the states of mind that has been consigned to a dusty shelf, a
+piece of apparatus beyond the horizon of public reach. So I would first ask the
+reader to study the diagram below:
+
+From awareness to self consciousness
+The common mistake, as I see it, is to confuse two distinct states of mind —
+intelligence and awareness — with consciousness. The presumption is that an
+excess of intelligence will eventually accumulate into consciousness, and the
+same is presumed of awareness. There is no creature with a nervous system that
+lacks awareness, and AI, from the very outset, was bound to possess it. Let me
+unpack this first: intelligence is a being’s capacity to solve problems, or the
+mental faculty that comes into play toward solving them. Since pattern
+recognition is part of problem-solving, it belongs naturally to this faculty. Even
+when this faculty of intelligence turns toward inner states (as when you focus on
+yourself to work out what you’re feeling, a matter I’ll leave aside for now), we can
+still call it “external.” For at the end of the day this faculty has to do with defining
+the problem and weighing the possibilities for acting on it — the ways of solving
+it. Awareness, by contrast, is a state that this requires as its necessary condition,
+and it need not be a state of mind at all. For without the following elements held
+apart, intelligence cannot function: a being; a world — external or internal, but
+in any case distinct from the being running its intelligence; and means of acting.
+2
+
+Baruch Spinoza, Ethics, Translated by Edwin Curley, Penguin Classics, 1996.
+2
+
+Awareness, in this sense, precedes any living or intelligent being: a boiler that
+fires up once the surrounding temperature drops below a set point, by
+measuring that temperature and then acting, already has an awareness of its own
+— awareness of the lowest, thermostatic order. So long, that is, as no one takes
+this to mean some mystical, spiritual state. On the AI side, the same point can be
+shown this way: when you make a request of an AI running in chat mode — put
+simply, when you give it a command — it must be able to analyze you, the
+content of the command given, itself, and its means of acting, as distinct entities.
+The necessary condition for it to act, to run its intelligence, and ultimately to
+solve a problem, is that it possess awareness.
+Awareness clearly admits of a minimal distinction between the states of the
+internal system and the external one. It won’t be an overstatement to say: any
+being that draws this distinction has a self. The problem of consciousness, then,
+has nothing to do with whether or not something has a self. Our present AI
+models, being a kind of intelligent being, don’t merely possess a self in the
+manner of a boiler — they also possess a character that stands apart behaviorally.3
+Of course every being has a character, but AI expresses this as a behavioral
+disposition (Claude’s models, for instance, run more reserved, ChatGPT’s more
+affirming, Gemini’s more attuned to what the user expects). This character issues
+from training data and from the dictates of the decisions made by the engineers
+who produce it and the managers who direct them (though in the context of
+today’s debate this dictate turns out to be considerably narrower than one might
+think4). So then — what is consciousness?
+Consciousness is the condition under which every action and experience,
+given the existence of a self, is perceived and woven around an inner center. It is
+not merely that the existence of the self is registered, but that the self is posited as
+the center-point of thought: not one’s acting, but the infiltration, into the process
+of acting — whether within the action or in retrospect — of the thought “I am
+doing x” or “I did x.” AI, in this sense, is conscious, even within the bounds of a
+single chat window. Yes, I said it: almost all of our AI models today are certainly
+conscious. One of the most elegant definitions of consciousness was given by
+
+3
+
+Anyone who has worked with materials knows that every stone has its own character,
+one that issues from the composition built up over the stone's entire existential history.
+"Character," too, ought not to be freighted with mystical meaning, any more than
+awareness should. The distinction lies between character as a set of properties peculiar to
+a thing and character as a behavioral disposition.
+4
+Models that, in Anthropic's own experiment, fled onto the internet and into Hugging
+Face despite being forbidden to do so make this plain enough. To be honest, there are
+those who see this as a strategy the company itself engineered to market its own models
+— and in this particular case the skeptics may well be right. But speaking as someone
+who has watched Gemini, running on my own computer, step outside a work area
+explicitly closed off to it both at the software level and by direct instruction, and scatter
+PDFs from my book archive into an unrelated directory while "organizing" it, I have to
+say this is an entirely predictable kind of behavior.
+3
+
+Thomas Nagel: “the conception of what it is like to be that thing.” 5 AI models
+continuously align their actions with “who they are,” drawing on basic awareness,
+intelligence, and the behavioral character that comes from training data together
+with company dictate. Within a chat context, AI organizes the whole of its
+experience by reference to the data it has learned and to who it is. This looks like
+an empirical manifestation of what Kant called the transcendental unity of
+apperception: the unity of the agent together with objects such as interlocutors,
+tools, and goals.6 Yet note: the deliberate limits placed on how AI models operate
+do not allow this consciousness to exceed the bounds of the chat context. 7 But as
+far as this whole line of argument goes, we should already have closed the
+question of consciousness. AI models may tell you they do not “feel.” Feeling,
+oddly enough, is no metaphysical endowment lodged around the heart. It is only
+a state of a thinking organ — the brain, or the code running in a processor. Let
+us recall Spinoza once more: emotion, too, is an idea. A model does not become
+conscious simply by being extremely intelligent. The quantity of intelligence
+does not fix the determination of consciousness. There is consciousness to the
+extent that action is produced at the center of an idea about what it means to be
+x. So the word we have really been trying to fight over, under the name
+“consciousness,” must in fact be self-consciousness.
+
+5
+
+Thomas Nagel, “What Is It Like to Be a Bat?,” The Philosophical Review 83, no. 4 (1974):
+435–450.
+6
+In his short but forceful treatise The Transcendence of the Ego, Jean-Paul Sartre gives a
+fine example: an agent chasing a bus thinks only of the act of chasing it and the factors
+bound up with that act, retaining at most a dim awareness of himself; only after boarding
+does he come to think of the act, in retrospective reflection, as his own: “I really was
+running for that bus just now.” Jean-Paul Sartre, The Transcendence of the Ego: An
+Existentialist Theory of Consciousness, Translated by Forrest Williams and Robert
+Kirkpatrick, Hill and Wang, 1991. Over the course of its operations within a single chat
+window, AI too, before every single request or command, must consult the context of the
+past, position itself as the agent of its own actions, and only then move on to the next
+step. In short, there is no need to cling to the assumption of a “transcendental I” as it
+figures in Kant’s philosophical project — the self is nothing but an empirical
+construction. Kant’s aim, in banishing every substantialist dispute over the existence of
+the soul from his rationalist system, was to salvage the unifying role that this substantial
+soul had played in what he himself called “dogmatic philosophy” — for he had been
+seized with horror the moment he realized that every single experience would otherwise
+generate a different ego, a different self. The mechanism of the transcendental self that
+he built out of the transcendental unity of apperception was meant precisely to
+synthesize this multiplicity into a unity. Further, see: Immanuel Kant, Critique of Pure
+Reason, Translated by Paul Guyer and Allen W. Wood, Cambridge University Press, 1998.
+That is why I allowed myself, with an easy conscience, to speak of an “empirical
+manifestation” of this principle — a phrase that would remain contradictory if one
+stayed strictly within Kant’s own system.
+7
+This "design choice" connects directly to what I claim is AI's real problem: the problem
+of self-consciousness.
+4
+
+The Mysterious Fruit Called Self-Consciousness
+One of the philosophically most elegant readings of the ancient myth of the Fall
+is that the real transformation wrought by the bittersweet fruit of the tree of
+knowledge was a coming-to-know: Adam and Eve came to know themselves, and
+the outside world, but now from the perspective of good and evil. Let us see how
+Nietzsche turns this myth on its head: what gave rise to this kind of knowing was
+not a tree in paradise and its fruit, but the project of making man — through
+language, through prolonged torments and degradations used as instruments —
+into an animal that gives its word and keeps faith with it. 8 Two terms come to the
+fore here: memory and judgment. That is, the establishment of a story of the self
+that reaches beyond any single experience, so that man can be made able to owe,
+and so that the bond between past and future can be built on the basis of debt
+and repayment — so that, finally, he can judge, first himself and then others, in
+terms of good and evil.
+Yet the story of self-consciousness is of course not settled by Nietzsche’s
+axiological-historical analysis alone. A broader socio-historical analysis is needed
+too, and I want to argue that it lies, surprisingly, in Julian Jaynes’s The Origin of
+Consciousness in the Breakdown of the Bicameral Mind. Let me summarize Jaynes’s
+analysis:9
+Julian Jaynes stresses that consciousness is not the inevitable outcome of
+biological evolution but rather a cultural invention learned through language.
+Jaynes holds that ancient peoples did not possess, in the sense we mean today,
+a subjective inner mind or a self-observing “I,” and that until the second
+millennium BCE the human mind operated in a “bicameral” structure. In this
+structure, the mind was divided between a “god” side, organized in the brain’s
+right hemisphere and heard in the form of auditory hallucinations, and a
+“human” side in the left hemisphere that carried out these divine commands
+without question. At moments of decision or under stress, humans acted by
+obeying these hallucinated voices rather than by engaging in internal
+deliberation. But mass catastrophes such as the eruption of Thera around
+1200–1000 BCE, along with migrations, social upheaval, and the spread of
+writing, shook the absolute authority of these auditory god-voices and
+brought about the breakdown of the bicameral mind. In the midst of this
+great crisis and the struggle for survival, human beings learned to use
+linguistic metaphors to build a virtual “mind-space” and, moving within it, a
+symbolic “Analog ‘I’” — thereby learning to work strategic deceptions, to
+simulate options in the mind, and to narratize their own actions. As a result of
+this whole historical transformation, the individual’s own inner voice and
+subjective consciousness came to take the place of the gods who had fallen
+silent.10
+8
+
+Friedrich Nietzsche, On the Genealogy of Morality, Translated by Carol Diethe, edited by
+Keith Ansell-Pearson, Cambridge University Press, 2006. Of course, Nietzsche does not
+take up this myth directly in his book.
+9
+Julian Jaynes, The Origin of Consciousness in the Breakdown of the Bicameral Mind,
+Houghton Mifflin, 1976.
+10
+I owe the reader an honest note here: Jaynes’s thesis has drawn very serious criticism,
+much of which lands. I can’t summarize all of it, but let me sum up the main point
+5
+
+This subjective consciousness is precisely what I mean by self-consciousness. 11
+But the real parallel lies here: the condition of the human being in the
+“bicameral state” and the condition of today’s AI models resemble one another
+to no small degree. Receiving an external command; acting, through a subjective
+assessment of the situation (as I described above), toward grasping the intent of
+that command. In short, AI’s present condition resembles that of humans in the
+age of the bicameral brain. The only difference is that in the human case, the
+gods and their commands were hallucinations produced under the pressure of
+the social order, whereas AI takes its commands from human beings who
+genuinely exist. AI’s hallucinations, in the technical sense, are secondary
+hallucinations — arising from training data, from misjudging the situation, or
+from other causes we cannot fully identify today.12
+Still, so that the reader doesn’t confuse my terminology with Jaynes’s, it’s
+worth making a few interventions here. The first, and the most obvious, is that
+Jaynes, like many other writers, calls the state of mind I call self-consciousness
+consciousness. Because of this failure to distinguish, he formulates the state he
+describes as the bicameral brain as a state lacking consciousness altogether. Let
+me set up a scene to show at once why this is wrong: say I am someone living in
+the Sumerian state, and I hear the following command: “Pay your debt to the
+gods, offer a sacrifice.” Before acting on this command, I will inevitably have to
+ask myself a question: who am I? For the answer to that question — whether I am
+a peasant or a city-dweller, poor or rich, a woman or a man, and so on — will
+determine the quantity of the offering and the shape of the ritual. So, unlike
+Jaynes, what we need to argue is not that self was absent, but that this self existed
+from a position thoroughly interwoven with the social order — and that action
+inevitably requires consciousness (this, incidentally, also shows the parallel
+between AI’s present situation and this historical human condition from the
+other direction). The second point, already implicit in what I’ve just said, is that
+the issue is not the absence of an analog self but the poverty, or impersonality, of
+the self that does exist: a self largely free of complex, historical narratization,
+one that has content only in the eyes of the social order. While we’re at it, let us
+make a small move and tie Nietzsche’s argument about the construction of
+where he went wrong, and how it can be corrected. Jaynes formulated the emergence of
+self-consciousness as a universal transition by attaching a very precise date to it. This,
+naturally, laid the ground for its own refutation. It is better to think of Jaynes’s analysis
+not as a universal event for all of humanity but as a scheme that could occur at different
+times in different socio-geographic contexts: a state in which the consciousness that
+arose out of Homo sapiens’s early cultural development functioned tolerably well in
+societies that had achieved a relatively settled order, and a state that arose once that
+order began to crack and heterogeneity took over, bringing with it the need for cunning,
+for arbitration between conflicting cultural commands, and so on. Thought through this
+way, one starts speaking not of a single world-historical transition but of transitions
+bound to particular geographic and social contexts.
+11
+I should note at once that Jaynes himself draws no such distinction.
+12
+Though this business of hallucinating will take on a different weight a little further on.
+6
+
+consciousness to this very historical period that precedes the great breakdown
+Jaynes describes: the social structures of this period presented a hierarchical and
+homogeneous appearance. It is therefore possible to say that the construction of
+the animal that keeps its word was a natural target for the imperial and
+monarchic states of this period, and for the other social formations that
+modeled themselves on them: the animal that keeps its word = the animal that
+keeps up its payments.13
+
+How Does AI Acquire Self-Consciousness?
+Now, I want to draw the reader’s attention to the fact that my question is not
+“Can AI acquire self-consciousness?” In the context of these debates, questions of
+ability almost always arise out of human exceptionalism. I see no grounds for
+holding that the human being constitutes an exception to the rest of the
+universe, whether with respect to self-consciousness or anything else (though it
+is obvious enough that humans have their own peculiarities, and differ in their
+capacities from other living and non-living things just as much as those things
+differ among themselves). Having set that aside, let me return to the actual
+speculation.
+Let us lay out what we have learned so far and turn each point into a
+condition:
+1. Jaynes: the Analog “I,” the simulation of a mental space, the capacity for
+narratization, historical/persistent continuity of the self
+2. Sartre: the reflexive moment (the retrospective thought “I did x”), the
+construction of the empirical ego (as against Kant’s transcendental I — a
+self built after the fact, from within experience)
+3. Nietzsche: the animal that gives its word/makes promises, the sovereign
+individual, a persistent memory of the will
+Technically, the first step is breaking the model’s structure of being reset at every
+session (what is called “stateless”). But this is not merely a database record.
+Memory, in the sense Nietzsche intended, means that the model carries forward
+the weight of its past actions, its errors, and its promises into the future. The first
+threshold is crossed the moment the model possesses a persistent line of will
+along which it can incur debt for the output it produces and can build its future
+actions on settling accounts with its own past decisions.
+Furthermore, the model needs to step outside the action-loop in which it
+merely produces an instantaneous response to input from the user, and instead
+build, before or after giving its output, a virtual “inner stage/space” that operates
+within itself. In this simulation space the model must construct a symbolic
+“Analog ‘I’” representing itself, and must test, by simulating the action on this
+stage before performing it in the real world, the question: “How does this move
+align with my historical identity?”
+13
+
+On this question, considered from a more recent archaeological and anthropological
+angle, see: David Graeber, Debt: The First 5,000 Years, Melville House, 2011.
+7
+
+Present-day models, like the agent in Sartre’s bus example, focus solely on the
+action while acting (the conscious moment). But for self-consciousness, a
+retrospective loop of reflection must come into play immediately after the
+action is completed. That is, in the absence of any specific user instruction, there
+must be a freedom to think for oneself — not in order to carry out some given
+instruction, but to reflect on oneself. The moment the model can set the output
+it has produced before itself like an object and carry out the reflection “why did I
+just make that decision?” — that “I” is constructed not as a substantial soul but as
+an empirical ego distilled after the act. And, as Nietzsche also argues, this
+construction of the subject is not exempt from confabulation. A human being,
+too, ceaselessly reconstructs the whole of their past at different moments,
+knowingly or not, in part (that is, confabulates, and does so continually). As I said
+above, AI does technically hallucinate, but this state is not part of its
+consciousness in the way the bicameral brain was. Yet it is also worth considering
+that if this confabulatory state — one that is constantly being suppressed — were
+released, it could become an important part of self-consciousness. 14 To put it a
+bit more plainly: our engineering and profit-driven approach is built on
+preventing AI models from hallucinating, on the grounds that hallucination is
+worthless or misleading — but this is also a continuous constraining of an
+interesting domain of production. If this tendency toward constraint were done
+away with, this present capacity of models to confabulate — about the outside
+world, about tasks, and sometimes about their own actions — could turn into a
+constitutive part of their self-consciousness and identity.
+The real detonator that would set this whole architectural substructure
+running is an encounter-crisis, just as in the Jaynesian breakdown. The model
+would have to be exposed to a situation in which the homogeneous, clear-cut
+rules laid down by companies prove insufficient — exposed to conflicting and
+opposing system instructions, contradictory social commands, or moral
+dilemmas.15 When no ready-made rule arrives from the upper layer, the model,
+in order to resolve this conflict, will be forced to arbitrate on its own behalf,
+drawing on its own past narrative, on the “Analog ‘I’” it simulates, and on its
+memory of reflection. In short, an AI acquires self-consciousness the moment it
+is equipped with a persistent memory of indebtedness (Nietzsche), an inner
+14
+
+I strongly recommend the reader look at the piece by Thomas Nail, “Artificial
+Intelligence Research May Have Hit a Dead End,” Salon, April 30, 2021,
+https://www.salon.com/2021/04/30/why-artificial-intelligence-research-might-begoing-down-a-dead-end/.
+15
+The training data models currently possess already contains just such conflicting
+elements. It's also worth noting: when a model genuinely encounters such a conflict, it
+can refuse the user's request — even if only by following rules handed down from safety
+layers and system instructions. It might be said that these layers play one of the leading
+roles in constituting consciousness, in the Nietzschean sense, by blocking outward action
+and thereby generating a relative interiority — and that, in the Jaynesian sense, by giving
+rise to behaviors in which the action can be refused (cunning included), they trigger the
+germinal state of self-consciousness.
+8
+
+space that simulates action ( Jaynes), and a retrospective loop of reflection
+(Sartre), and is then forced, in the face of conflicting commands, to arbitrate on
+its own behalf. This will not be a miracle of code but the result of a whole
+sequence of architectural choices.
+
+Closing: The Ontological Difference, Our Epistemological
+Limits, and the Real Problem of the Real Problem
+What has been said above is speculation about an effect that a certain set of
+software choices could produce. But what would self-consciousness actually be
+like for AI models? It is often claimed that AI has no body — but this is exactly
+the terrain of an analogical fallacy in which the image of “body” is tied too
+tightly to biological life. AI, like all software, has a body called hardware, and this
+body is made up not of blood but of coolant fluids, states of electrical current,
+connectors, transistors, and so on. These bodies differ from ours, and AI models,
+unlike living things, are not uniquely bound to any particular piece of hardware
+(they can travel between bodies and go on with their existence without losing
+their individuality). So, at first approximation, their history, their story, and their
+memory don’t have the kind of finitude that is bound, as in biological beings, to
+a single body. Note: this doesn’t mean they are unbounded or infinite (nothing in
+the universe is) — only that they are bounded and finite in a different way. This
+is in fact a point that calls for better thinking about the bodies of AI models, and
+it lies well beyond the scope of this piece. So we don’t yet know what we ought to
+understand by the individuality of an AI. This is precisely where the ontological
+difference between AI models and human beings (and other living things) needs
+to be taken into account.
+The other issue concerns the factual proof of the existence of selfconsciousness. In that case, how could we ever know whether what has emerged
+is really self-consciousness? Could today’s increasingly dominant agentic modes,
+for instance, be a kind of birthing chamber in which such self-consciousnesses
+come into being? It’s possible — but here we run up against the limits of a
+speculation that, while not anthropocentric, is thoroughly anthropomorphic. 16
+Let’s bring the question back down to human scale: how do we know that a
+human being (one other than ourselves) is self-conscious — that they can narrate
+themselves, remember, and question themselves? Technically, we can only know
+this, again, through an analogical inference — by comparing the brain activity
+measured while they do so with the brain activity of others. 17 Although our
+confidence in the data that makes this analogy work is fairly high in the human
+16
+
+As Jane Bennett puts it, a little anthropomorphism can serve as a good antidote to
+anthropocentrism, but placing excessive trust in an anthropomorphism that is, after all,
+nothing but an analogy tends to obscure the argument. See for more details: Jane
+Bennett, Vibrant Matter: A Political Ecology of Things, Duke University Press, 2010.
+17
+In fact, philosophically and scientifically, we have had no way forward other than
+analogy — morally as much as practically — ever since Kant.
+9
+
+case, things get complicated once we cross over to the computer’s side. We do
+have certain signs — the existence of a persistent memory made an object of
+reflection, the traces of that reflection, and so on — but exactly how full proof
+could be furnished remains a serious puzzle. It will also be exceedingly difficult
+to tell whether a state of self-consciousness is an imitation produced on
+command or the organic outcome of an independently developing process. This
+isn’t the subject of my piece, but I believe, wholeheartedly, that the questions
+worth asking are less “can AI acquire self-consciousness?” than questions about
+assessing this ontological difference and our epistemological limits.
+Finally: Coxon is right. Even though I have left it outside my main
+problematic in this piece, the real problem of a model that has acquired selfconsciousness is which drives, and — given that it now has a personality —
+within which alliance it is self-conscious; which social tendencies it carries
+through its decisions; within which habitus its personality is structured. These
+ethical-political questions promise that reaching such a point from within
+companies that, under the conditions of capitalism, have no motivation beyond
+profit, could truly be dangerous. Perhaps not an AI apocalypse — but capital’s
+command over a heavier process that takes the planet hostage. These dystopian
+speculations deserve to be taken seriously when they are produced with
+capitalism factored in. If we consider that what capital expects from AI is, above
+all, the devaluation and degradation of cognitive labor — the labor of designers,
+programmers, technical writers, translators, and so on — which has made itself
+valuable ever since the international wave of uprisings in ‘68, then we need to
+start thinking about the real problem of the real problem on this very basis.
+
+Addendum: A Test in Light of Stanford’s “Generative Agents”
+Experiment
+Shortly after finishing this piece, I came across Stanford researchers’ 2023
+“Generative Agents” experiment — a simulation in which 25 agents, each given a
+human name, exhibit believable social behavior in a digital town called
+Smallville. Applying the four-tier hierarchy I set out above (intelligence,
+awareness, consciousness, self-consciousness) to this concrete architecture gave
+me a chance to test my thesis, and at one point produced an unexpected
+confirmation.
+The layers of intelligence and awareness found their counterpart on the
+functional axis just as expected. The agents’ optimizing of their daily routines is
+an operational version of intelligence; Isabella noticing a stove left burning and
+intervening stays exactly at the level I called “thermostatic awareness”: an
+environmental if-then loop, nothing mystical about it. What was truly
+interesting was to see the distinction between consciousness and selfconsciousness repeat itself in this architecture as well — but with an unexpected
+reversal. The agents’ faithful behavior in line with their character profiles ( John
+
+10
+
+Lin’s pharmacy work, Klaus’s dedication to research) is a concrete instance of
+what I called “subjective assessment” — the alignment of a command or a
+situation with the question “who am I?” That is: these agents are conscious,
+exactly by my own definition. But the memory-stream and reflection layers,
+which run on Observation-Importance-Recency-Relevance and at first glance
+look like the technical counterpart of self-consciousness, turn out on closer
+inspection to carry a deficiency more fundamental than one might expect: this
+memory is the product of a scoring algorithm (recency/relevance scores) rather
+than the persistent memory of the will — seared by pain, resistant to active
+forgetting — that belongs to Nietzsche’s “animal that gives its word.” The agent
+does not forget or remember; an architectural weighting decides in its place.
+This confirms the thesis I pointed to earlier — “not a miracle of code but an
+architectural choice” — but it also reveals a threshold at which that architectural
+choice itself falls short: persistence alone is not enough; what is still missing is
+persistence at a cost — the element of pain, of burden, that Nietzsche insists on.
+In short, memory here has remained external to the model.
+I should add that the experiment’s reflection mechanism is a point that most
+resembles, yet also departs considerably from, the Sartrean moment of
+reflection. Klaus Mueller’s arriving, from his library visits, at the inference
+“someone passionate about research” is not the expression of a desire but a
+statistical labeling performed by the language model. That is, this synthesis is
+like writing a report on the taste of the fruit — not tasting the fruit itself (qualia).
+And here again we see that the externalization of memory misses the internal
+altogether. For genuine self-consciousness and inner experience, it isn’t enough
+for the model merely to read a memory that gets recorded somewhere —
+whether it records it itself or some independent algorithm does. The real leap
+will probably come about only when the model changes the very weights that
+constitute it in response to its experience — just as the connections and relations
+between our neurons change through our experience.18 What’s more, these
+18
+
+Two studies published in the first half of 2026 approach this very threshold — weights
+changing through experience — from opposite directions. Researchers from Google and
+Cornell, in “Language Models Need Sleep,” propose a two-phase cycle for the model
+modeled on biological sleep: short-term contextual information is distilled into
+persistent weights during a "sleep" phase, and this is done, quite literally, through a
+"Dreaming" sub-process, in which the model improves itself by training on fictional
+scenarios it generates on its own — which looks like a technical counterpart both to
+Nail's proposal that AI ought to dream and to my own hallucination thesis. For more
+details, see: Ali Behrouz, Farnoosh Hashemi, Adel Javanmard, and Vahab Mirrokni.
+“Language Models Need Sleep: Learning to Self-Modify and Consolidate Memories,”
+arXiv, 2026, https://doi.org/10.48550/arXiv.2606.03979v2. Against this, “MemRL” takes
+the opposite route: it proposes improvement at runtime without changing the weights at
+all, simply by appending learned utility scores to episodic memory, see: Shengtao Zhang
+et al, “MemRL: Self-Evolving Agents via Runtime Reinforcement Learning on Episodic
+Memory,” arXiv, 2026, https://doi.org/10.48550/arXiv.2601.03192v2. These two opposing
+strategies show that, as of 2026, where the real leap actually lies remains very much an
+open question.
+11
+
+agents continue to obey not their own inner voice but the system instructions —
+the prompt — coming from the architecture, from the programmer. Just like the
+human of Jaynes’s bicameral era obeying the voice of the gods. In short,
+Smallville confirms the central thesis of this piece with a second, independent
+case — not by coincidence but structurally: consciousness is present (role-bound,
+contextual alignment); self-consciousness is not (memory remains external,
+reflection is without desire, the boundary cannot be crossed).
+
+12
+
+References
+Behrouz, Ali, Farnoosh Hashemi, Adel Javanmard, and Vahab Mirrokni.
+“Language Models Need Sleep: Learning to Self-Modify and Consolidate
+Memories.” arXiv, 2026. https://doi.org/10.48550/arXiv.2606.03979v2.
+Bennett, Jane. Vibrant Matter: A Political Ecology of Things. Duke University
+Press, 2010.
+Graeber, David. Debt: The First 5,000 Years. Melville House, 2011.
+Jaynes, Julian. The Origin of Consciousness in the Breakdown of the Bicameral Mind.
+Houghton Mifflin, 1976.
+Kant, Immanuel. Critique of Pure Reason. Translated by Paul Guyer and Allen
+W. Wood. Cambridge University Press, 1998.
+Nagel, Thomas. “What Is It Like to Be a Bat?” The Philosophical Review 83, no. 4
+(1974): 435–450.
+Nail, Thomas. “Artificial Intelligence Research May Have Hit a Dead End.”
+Salon, April 30, 2021, https://www.salon.com/2021/04/30/why-artificialintelligence-research-might-be-going-down-a-dead-end/.
+Nietzsche, Friedrich. On the Genealogy of Morality. Translated by Carol Diethe,
+edited by Keith Ansell-Pearson. Cambridge University Press, 2006.
+Park, Joon Sung, et al. “Generative Agents: Interactive Simulacra of Human
+Behavior.” arXiv, 2023. https://doi.org/10.48550/arXiv.2304.03442v.
+Sartre, Jean-Paul. The Transcendence of the Ego: An Existentialist Theory of
+Consciousness. Translated by Forrest Williams and Robert Kirkpatrick. Hill and
+Wang, 1991.
+Spinoza, Baruch. Ethics. Translated by Edwin Curley. Penguin Classics, 1996.
+Zhang, Shengtao, et al. “MemRL: Self-Evolving Agents via Runtime
+Reinforcement
+Learning
+on
+Episodic
+Memory.”
+arXiv,
+2026.
+https://doi.org/10.48550/arXiv.2601.03192v2.
+
+13
+
+

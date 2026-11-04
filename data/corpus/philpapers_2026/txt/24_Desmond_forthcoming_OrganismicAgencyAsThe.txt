@@ -1,0 +1,1823 @@
+Biological Theory
+https://doi.org/10.1007/s13752-026-00553-8
+
+ORIGINAL ARTICLE
+
+Organismic Agency as the Principle of Individual Selection
+Hugh Desmond1
+Received: 1 April 2025 / Accepted: 3 September 2026
+© The Author(s) 2026
+
+Abstract
+This article introduces organismic agency as the principle of individual selection. Individual selection involves the organism itself selecting a behavior or development according to individual preference metrics. It is the explanatory counterpart
+to natural selection, and both compete to explain phenomena of goal-directedness. This conceptualization allows agency’s
+underlying causal mechanism and explanatory function to be clarified. It also points to an operationalization strategy
+where agency is inferred when evidence suggests that natural selection cannot explain observations of organisms preferentially engaging in particular patterns of development or behavior.
+Keywords Agency · Goal-directedness · Mechanism · Natural selection · Organism
+
+Introduction
+In recent years, a novel research program has aimed at
+theorizing organisms as agents. While there are many
+approaches within this program, a common denominator is
+the view that organisms are not simply designed machines
+or “a bundle of adaptations” (Huxley 1942, p. 420) shaped
+by external forces such as natural selection, but direct
+themselves towards certain end states. Various modeling
+approaches analyze this in terms of the underlying organizational structures and processes (Moreno and Mossio 2015;
+Virenque and Mossio 2024) or in terms of how organisms
+interact with the environment (Walsh 2015; Fulda 2017).
+Empirically, the research program has also sought to use the
+agential theoretical perspective to generate specific predictive claims (Sultan et al. 2022).
+The program is not without its critics, however, who
+contest whether the concept of agency succeeds in generating novel successful explanations beyond what established
+modes of explanation already do (DiFrisco and Gawne
+2024). In essence, the critique is that agency is explanatorily
+superfluous: any organismal phenomenon that is potentially
+explainable as the outcome of the organism’s agency can
+
+Hugh Desmond
+hugh.desmond@wur.nl
+1
+
+Wageningen University & Research, Wageningen,
+Netherlands
+
+also be explained as a product of natural selection, or failing that, simply as a mechanistic process or as involving
+a human-like psychological capacity. Invoking a separate,
+nonpsychological concept of agency does not do any additional explanatory work.
+This dispute is, arguably, the latest installment of ongoing fundamental disagreement—going back a century and a
+half, and more (Huneman 2026)—about what makes organisms distinct, if anything, from other complex systems. One
+issue at stake, in particular, is the long-standing question
+whether teleological explanations of organismal behavior
+and development can be fully recast in terms of mechanistic
+modes of explanation—and, in general, in terms of (natural)
+selectionist explanations. This was a dividing issue between
+Darwin and Wallace (Wallace 1889), through the question
+whether some birds really selected their mates because of
+perceptions of “beauty”. Darwin believed they did; Wallace recast such instances of sexual selection in selectionist
+terms (see discussion in Prum 2017).
+Wallace’s stance has shaped some of the major research
+programs of 20th-century evolutionary biology, including
+the work on mate choice and sexual selection (following
+Grafen 1990a; b; see also Zahavi 1975) and on altruism and
+kin selection (following Hamilton 1963). These research
+programs both seek to explain apparently agential phenomena—organisms that seem to care about beauty in sexual
+mates, or organisms that seem to care about the good of
+non-offspring—as traits shaped by natural selection. The
+
+H. Desmond
+
+following quote by Mayr summarizes the adaptationist line
+of thinking well:
+An individual who—to use the language of the computer—has been “programmed” can act purposefully.
+… A bird that starts its migration, an insect that selects
+its host plant, an animal that avoids a predator, a male
+that displays to a female—they all act purposefully
+because they have been programmed to do so. …
+Natural selection does its best to favor the production
+of codes guaranteeing behavior that increases fitness.
+(Mayr 1961, pp. 1503–1504)
+Along these lines of thinking, attributing agency to organisms might merely seem to provide a convenient shorthand
+to refer to an underlying process of natural selection—or
+simply an anthropomorphic projection.
+By contrast, within the agency literature, this adaptationist approach to organisms and their behavior and development is often rejected outright. The reasoning is that natural
+selection is a derivative phenomenon, depending wholly on
+how organisms interact with their environment. The organism, with its goal-directed ecological interactions with the
+environment—seeking nutrition, shelter, avoiding toxins or
+predators, and so on—is the primitive theoretical concept,
+inextricably bound with its perceived environment (Walsh
+2015; Fábregas-Tejeda 2026) in creating its own conditions
+of self-maintenance (Montévil and Mossio 2015; Moreno
+and Mossio 2015). This leads to a very different conclusion:
+that agency reflects the fundamental nature of organisms.
+The purpose of this article is to chart a path forward by
+developing the agency concept as substantially as possible
+within a methodologically adaptationist framework. The
+working assumption is that the principle of natural selection
+provides the default explanation of organismal behavior and
+development.1 However, under some conditions, natural
+selection ought to be rejected as an explanation and under
+yet further conditions, agency ought to be accepted. Adaptationism is taken as the starting point in order to explore its
+limits, and to identify the empirical conditions under which
+agency can be considered explanatorily indispensable.
+
+1
+
+Thus, the term “adaptationism”, as used here, refers to a logic or
+a way of thinking about explaining biological phenomena through
+the principle of natural selection. It need not refer to an unfalsifiable
+hypothesis or rigid ideology (Gould and Lewontin 1979) and might
+be considered closest to what Godfrey-Smith called “methodological adaptationism” (Godfrey-Smith 2001), with the twist that we’re
+interested in cases where the methodology of searching for natural
+selection explanations fails. It is a convenient but imperfectly satisfying term, as natural selection need not be the only cause of adaptation.
+Even so, because of this article’s introduction of individual selection,
+“selectionism” would be a worse term to use.
+
+13
+
+The outlook of this article could be considered relatively
+close to Samir Okasha’s approach to agency (Okasha 2018,
+2023, 2024)—with a slight but important divergence. If
+Okasha targets the question “under what types of evidential
+conditions is ‘agency talk’ explanatorily defensible?”, the
+question in this article is: “under what types of evidential
+conditions is ‘agency talk’ explanatorily necessary?” Okasha explores answers such as the “unity of purpose” condition (Okasha 2018, p. 32): under such conditions, it is a
+defensible heuristic to talk about organisms as if they are
+agents. By contrast, by focusing on the conditions of explanatory necessity or indispensability, this article searches for
+the conditions under which it is defensible to conclude that
+organisms are agents.
+This briefly summarizes the approach taken. As to the
+actual content of the proposed idea—concerning what
+organismic agency is—the proposal is to take the concept
+of choice or decision-making as the prism through which to
+view the self-productive processes of organisms. Agency is
+primarily a process of deliberation or decision-making carried out at the level of the individual: agency is “the principle of individual selection”. In the way natural selection
+involves a selection of certain individuals over other individuals, agency involves the individual organism selecting
+one behavior over another, or one developmental pathway
+over another. And like natural selection, individual selection aims to explain just how organisms seem to manifest
+behaviors and traits that “fit” their natural environment in
+very precise ways that are “beneficial” or “profitable” to the
+organism (Darwin’s original phrasing: e.g., p. 64 and p. 128
+in Darwin [1859]2008), and that seem unintelligible if simply explained as chance occurrences.
+This conception of agency as individual selection constitutes a departure from perhaps the most common understanding of agency in the agency literature, namely as the
+capacity for goal-directedness. This capacity, on the account
+presented here, is derivative, not foundational: if an organism exhibits goal-directed behavior or development, this is
+to be considered “agential” only if it is the outcome of a process of individual selection. This, together with the working
+assumption of the explanatory priority of natural selection
+over agency, can be seen as a modeling choice.
+It is thus important to emphasize that the scope of the
+argument in this article is constructive and pragmatic.
+Agency is redefined as individual selection, and this allows
+an adaptationist framework to be extended. This concept of
+what agency is, and how it functions in explanations, constitutes a distinct theoretical framework that may be useful for
+those who may wish to attribute a genuine sense of agency
+to organisms, while remaining within a broadly adaptationist
+framework. However, as noted later, the conclusions of this
+framework overlap significantly with those of the ecological
+
+Organismic Agency as the Principle of Individual Selection
+
+and organizational modeling approaches. A comprehensive
+evaluation of the strengths and weaknesses, differences and
+overlaps, between individual selection and the ecological
+and organizational modeling approaches (Moreno and Mossio 2015; Walsh 2015), is beyond the scope of the article and
+must be left to future work.
+The article is structured as follows. The first part lays
+the groundwork by identifying what type of cause agency
+is in general (section “Agency as a Structuring Cause”) and
+how agency can function in general terms as an explanatory hypothesis (section “Agency as Explanatory Hypothesis”). The second part of the article develops the principle
+of individual selection by identifying its causal structure
+(section “Causal Structure of Individual Selection”), giving examples of preference metrics (section “Candidates for
+Individual Preference Metrics”), operationalizing it (section
+“Operationalizing Individual Selection”), and applying it
+to a case of bacterial chemotaxis (section “Case: Bacterial
+Chemotaxis”). As covering this ground requires condensed
+argumentation to the point of being stipulative, I would
+first like to give a rough sense of the core idea of the article
+through a stylized illustration.
+
+A Stylized Illustration of Individual Selection
+Imagine a series of the following observations. A gazelle
+grazes while a lion approaches. The lion comes within a
+certain distance; the gazelle looks up in the direction of the
+lion. However, it becomes apparent the lion is not approaching the gazelle but some other point, and eventually the
+gazelle continues feeding.
+There are several apparently functional behaviors here—
+e.g., monitoring a predator, feeding. If we were to categorize these observations, it would be hard to avoid some
+invocation of psychological agency: the gazelle “hesitated”,
+“assessed” the situation, and was “reassured” about the danger. However, why would this not be an anthropomorphic
+projection? What exactly is it about gazelle behavior that
+suggests that the concept of “agency” plays an explanatory
+role?
+Many aspects of the behavior would seem at least in
+part explainable through the principle of natural selection. As an offshoot of the genus Gazella, the gazelle has
+inherited a number of distinct cognitive modules from its
+mammalian and vertebrate ancestors, including interoceptive hunger signaling (Siemian et al. 2021; Stevenson et
+al. 2023), foraging decision-making mechanisms (Mobbs
+et al. 2018), and a fight-or-flight response (Sansom et al.
+2009; Herberholz and Marquart 2012). These modules have
+been shaped by natural selection to produce certain types
+of behavioral output (e.g., run away) given certain types of
+
+sensory input (e.g., growing size of certain types of shape
+that tend to correspond to predators). This apparent “hesitation” and “assessment” is not necessarily any genuine decision-making but can simply be accounted for as the balance
+between these modules: all were somewhat activated, but
+none sufficiently so to determine the overall behavior of the
+organism. Then, an environmental trigger tipped the organism towards one type of behavior rather than the other (i.e.,
+continue grazing).
+Thus, in principle, some combination of selectionist and
+mechanistic explanation could be sufficient to account for
+the observations, making the “agency” concept superfluous.
+The gazelle is undergoing lines of causal influence but not
+necessarily doing anything. It seems to be acting independently, but in reality it is carrying out “if–then” rules shaped
+by natural selection and triggered by environmental stimuli.
+The question that this article wishes to emphasize is that
+this is only one explanatory possibility, and whether it constitutes a full explanation depends on the actual observations. For instance, say that we observe that the gazelle flees
+when the lion approaches to within distance D1: why D1
+instead of a further distance D2 > D1? One could hypothesize
+that the “nervous” type of gazelle, which fled once predators
+approached to D2, was selected against, because it spent too
+many energetic resources on false dangers and missed out
+on feeding opportunities. However, this explanatory strategy entails that we must hypothesize yet another heritable
+adaptation—the “nervous type”. Whether such a hypothesis
+is applicable will depend on the evidence: is there evidence
+that D1 is a cutoff for all gazelles in the population? Does D1
+remain a cutoff when environmental context is varied, for
+instance if there are natural obstacles (river, rocks) between
+lion and gazelle, or if the lion is caged (in an experimental
+setting)? If we observe the gazelle deciding differently when
+protected by a river or by metal bars, or if it exhibits other
+evidence that it is making a decision tailored to the relevant
+factors in its specific, token environment, then we might
+consider that the gazelle is carrying out its own decision.
+In general, at least some decision-making can be modeled as heuristic decision-making (Gigerenzer 2000), and
+in such cases, one need not invoke agency. The individual
+is not making their “own” decision but rather following
+preset rules. Because such decision-making responds in
+a domain-specific and automatic way to certain types of
+environmental triggers, it is a prime candidate for explaining how decision-making can be shaped by causes external to the organism, such as selection or imprinting. The
+model of heuristic decision-making predicts that the organism exhibits rule-bound behavior, or what Hofstadter once
+called “sphexishness” (Hofstadter 1982, p. 22): maladaptive
+behavior when the organism is placed in a subtly different
+environment with the same triggers as the old environment.
+
+13
+
+H. Desmond
+
+Different heuristics or “personalities”, whether shaped by
+natural selection or by irreversible imprinting, can be distributed in a single population (Bergmüller and Taborsky
+2010), with, for instance, some more risk-averse and others
+more adventurous. Such personalities would be “sphexish”
+as well, where the risk-averse type may continue to be riskaverse even in environments where this is maladaptive.
+If the model of heuristic decision-making fails —for
+instance, the organism fails to exhibit the expected sphexish
+behavior—what then is the alternative? One can search for
+another rule governing the behavior or consider the possibility that the behavior is random. However, at some point
+we could consider the alternative that the gazelle itself is
+conducting its own decision-making, with its own rules and
+preferences. Natural selection may be part of the explanation why the gazelle has some cognitive capacity in the first
+place, and may explain why there are some decision rules
+that act as heuristics, but if there is evidence that a token
+gazelle reacted appropriately in a specific way to the specificities of its unique token environment, it may be insufficient to merely appeal to a heritable, fitness-enhancing trait,
+such as the fight-or-flight response or even to a heritable
+personality. In such cases, we may opt to characterize the
+situation as “the gazelle decided the lion was not a danger”—instead of, for instance, “the gazelle’s fight-or-flight
+response was deactivated”.
+This line of reasoning does not simply recapitulate the
+challenges long faced by cognitive ethology, namely the
+question of the conditions under which psychological agency
+can be invoked (Griffin 1978; Allen and Bekoff 1997). In
+the case of the gazelle, the failure of the model of heuristic decision-making implies that the gazelle is not simply a
+vehicle for pre-shaped cognitive modules, and rather, that
+its brain is processing information from its specific token
+environment. The relevant contrast is not between mechanism and the mental, but between rule-bound and contextsensitive behavior. Hence, this line of inquiry is applicable
+across organisms, including those without nervous systems.
+Natural selection may shape the organism’s heuristic decision-making, but what if the organism encounters an atypical environment where two or more heuristics seem equally
+applicable? Then either we must invoke a meta-heuristic
+that was externally caused (through selection, inheritance,
+or imprinting), hypothesize that the organism is simply acting randomly, or else admit the possibility that the organism
+itself is conducting its own decision-making that is finely
+attuned to its specific, token environment. There is a selection process, as a choice between responses, but at the level
+of the individual, not the population.
+To emphasize from the outset, the capacity for this
+individual selection might itself be a trait subject to natural selection. If we assume that natural environments are
+
+13
+
+too complex and heterogeneous to be navigated by population-level heuristics alone, individual selection could be
+hypothesized to be the adaptive “delegation” of fine-tuned
+decision-making to the organismal level. Instead of Mayr’s
+distinction between “proximate” and “ultimate” causation,
+a distinction that better captures what is at stake is that
+between “centralized” causation (type-level, heuristic decision-making) and “decentralized” causation (token-level,
+context-sensitive decision-making). The former produces
+a rule; the latter produces a tailored deliberation. Even if
+there was a “centralized” decision for individuals to develop
+a “decentralized” decision-making capacity, that does not
+mean that each individual decision can be explained by reference to the original centralized decision. Similarly, agency
+can evolve through natural selection without agential explanations being reducible to natural selection explanations.
+
+Agency as a Structuring Cause
+The preceding section aimed to give a global sense of the
+principle of individual selection, and how one might use
+it in investigating organismal phenomena. The rest of the
+article will work towards building up these intuitions more
+formally. The first step in this section is to clarify the meaning of the general term “agency” for the present context.
+Though motivations for the stipulative choices are briefly
+given, the goal of this section is not to make definitive
+claims about the nature of agency (as a general concept), but
+to prevent some avoidable confusions further down the line.
+In an original sense of the term, an agent is an entity
+which acts, and is to be contrasted with a “patient” which
+undergoes the causal influence of external causes (Schlosser
+2015). It is also possible to understand agency as primarily
+a mental capacity, such as the capacity for intentional representation, and to enquire to what extent that can be generalized to nonhumans—however, many of the same conceptual
+challenges arise (see discussion in Aaby 2024). This definition of agency is broad enough to capture the varying uses
+across domains and disciplines, from metaphysics (Oderberg 2024) and physics (Barzegar et al. 2025), to jurisprudence (via culpability: Dubber 2015), ethics, and politics
+(through the concepts of freedom and autonomy).
+Agency as self-causation. In the context of biology, the
+contrast between agency and patiency is often denoted by
+the term “activity” (versus passivity) or by various phrases
+involving “self-*” (self-organization, self-regulation, selfdirection, self-maintenance, and so on). In the following, I
+will use the phrase self-causation as the more general category: a system is an agent insofar as it is the cause of its
+own change of state.
+
+Organismic Agency as the Principle of Individual Selection
+
+Defining agency in this way serves to avoid some confusion: agency is not a synonym for causation as such, nor
+is it a synonym for individuality. However, it does so by
+introducing a seeming contradiction in terms: since a cause
+is distinct from its effect, no entity or process can be both
+cause and effect. Therefore, self-causation in itself cannot
+be interpreted in a literal sense of picking out a part of physical reality that forms a closed causal loop. This does not
+mean that it is nonsensical. Through idealization, scientific
+models “lie” about reality by default (Cartwright 1983)—
+indeed, idealization is their modus operandi for capturing
+the structural and explanatory properties of a target phenomenon. The challenge, then, is to explicate why it can
+be explanatory to model a system as both cause and effect.
+Defining agency as self-causation is a mere starting point
+that is in need of further elaboration.
+Agency as a structuring cause. Agency does not refer to
+a physical entity that can be seen, touched, or even localized
+in space. It is also not a physical cause in the sense that it
+does not transmit a distinctive physically localizable “mark”
+such as energy or matter (Salmon 1984). Rather, the relevant
+notion of causation is difference-making causation (cf. Hall
+2004): attributing agency (self-causation) to an organism
+means that the organism (as a whole) makes a causal difference for observed patterns of behavior and development.
+In particular, some organism-level property is a structuring cause for the observed behavior or development. Structuring causes, as the term suggests, are causes that shape
+the “structure” of events, and are contrasted with triggering
+causes, which set a sequence of events in motion, but do not
+account for why a certain sequence rather than another was
+set in motion.
+The classic illustration (Dretske 1988, 2004) of a structuring vs. triggering cause is the general dying in a car
+explosion because the terrorist planted a bomb that could be
+triggered by turning the ignition key. Would we judge that
+the general was “the” cause of his own death? He perhaps
+contributed to his death—had he not stepped into the car, he
+would not have died—but he was hardly “the” cause in the
+stronger sense of someone who is to be held responsible for
+the outcome. Rather, it is the terrorist who should be held
+causally responsible. While the terrorist did not determine
+the outcome, he did shape the structural conditions that
+strongly affected the probability of the outcome of dying.
+Applied to agency, there are two lessons to be drawn,
+one negative and one positive. The negative lesson is that
+attributing agency to an organism need not imply that one
+is attributing some type of voluntaristic, uncaused free will.
+Attributing agency to the gazelle does not turn on finding
+evidence that its behavior is uncaused by any outside environmental input. This would set the agency concept up to
+
+be unintelligible. It would also lead to confusion between
+agential behavior and random behavior.
+The positive lesson is that we can investigate agency
+attributions in the full assumption that any gazelle behavior
+was triggered by sensory inputs, setting in motion a physiological-neurological cascade playing out in a causally
+closed and deterministic universe. The question is whether
+there is evidence that the shape of this cascade, or the relative frequency of one cascade compared to another cascade,
+is structured by the whole organism. Agency needs to pick
+out some organism-level property that plays this structuring-causal role.
+
+Agency as Explanatory Hypothesis
+Agency is commonly defined as the capacity for goaldirectedness. In the concept of individual selection, by contrast, goal-directedness is not the definiens of agency but
+rather the explanandum. As explored later, the definiens is
+selection or decision-making, involving the actualization
+of preferences. However, because such selection cannot be
+observed but only inferred, agency is primarily approached
+as an explanatory hypothesis (or rather, a class of explanatory hypotheses) that is to be tested against the best available data.
+One implication of this choice is that the hypothesis of
+agency ought not be tested against any observed organismal
+behavior or development. Much behavior or development
+must be allowed to be simply “random”, however intellectually unsatisfying this may be. The fact that this particular
+oak tree I encounter on my morning walk has a large root
+growing at 21 degrees from north is not a fact that is caused
+by any biologically interesting property in either the organism or environment. It likely is the product of a confluence
+of unrelated circumstances that is unique to that tree.2 These
+are not the type of phenomena that an agency concept should
+seek to explain. However, what is “goal-directedness”?
+
+Apparent Goal-Directedness
+The word “goal” has been an uneasy one in post-Darwinian biology, as it is perceived (by some at least) to hearken
+back to ideas about predestination, or to not fit clearly with
+2
+
+It is interesting to note that some forms of non-randomness are
+baked into some standard definitions of “behavior”: “Behavior is
+the internally coordinated responses (actions or inactions) of whole
+living organisms (individuals or groups) to internal and/or external
+stimuli…” (Levitis et al. 2009, p. 108). Moreover, if I drop a worm to
+the ground, this is not a manifestation of “worm behavior”, because it
+is not internally coordinated, but simply an effect of an outside force
+(gravitation). This raises the question—not to be pursued here—
+whether agency is implicit in definitions of behavior.
+
+13
+
+H. Desmond
+
+standard views about causation. However, for purposes here,
+the basic cybernetic approach to goal-directedness can be
+adopted. Early cyberneticians were among the first to view
+the “goals” of a system in clear causal-mechanical terms, as
+the “final condition” of the system that sends signals to the
+system so that the system can converge on that final condition through negative feedback (Rosenblueth et al. 1943, pp.
+19–20). In other words, goals are attractor states. This basic
+way of thinking about goals is still the default in the agency
+literature today (Walsh 2015; Lee and McShea 2020; Tomasello 2022).
+However, this minimal definition of goal-directedness
+quickly leads to quandaries when authors start making a
+distinction between genuine and merely apparent goaldirectedness. For instance, Nagel once argued that phenomena such as the marble rolling to the center of a bowl, or the
+knee stretching upon being tapped, ought not to be judged as
+goal-directed, because they do not have the requisite property of “persistence” (Nagel 1977). By this he meant that
+if the system encountered an obstacle, it is “not equipped
+with any mechanism for making appropriate compensatory
+responses to those disturbances” (Nagel 1977, p. 270). This
+gave rise to a large discussion about what “genuine goaldirectedness” is, if anything (reviewed in Okasha 2023).
+In this article, this distinction between genuine and
+merely apparent goal-directedness will be bypassed (indeed,
+one could argue it simply recapitulates the problem of
+agency). Instead, we will operate with a working definition
+of goal-directedness where a “goal” is a behavioral or developmental state (or pattern of behavior/development) that the
+organism approaches much more frequently than other possible states within its lifetime, across variable background
+conditions, without this resulting from some mathematical,
+physical, or chemical constraint. In this sense, a goal can be
+said to be a “preferred” or “privileged” state.
+As an instance of a constraint, consider how fish exhibit
+“rheotaxis”: they align with the direction of the stream,
+facing upstream, and swim against the flow. However, this
+can be predicted by abstracting away from all properties of
+the fish and representing it as a vortex dipole (Porfiri et al.
+2022). Moreover, even dead fish exhibit rheotaxis: a counterintuitive phenomenon that is caused by specific properties
+of vortex dynamics (Beal et al. 2006). In other words, physical principles seem to do a lot of the work in explaining why
+fish preferentially exhibit rheotaxis. Similarly, if one were
+to observe that a population of moths packed into a corner
+gradually spreads across a room, this could be judged to be
+a physical phenomenon (diffusion) or even a mathematical
+phenomenon (convergence to the highest probability state
+through the law of large numbers). Such phenomena are,
+very minimally, excluded from the definition of apparent
+goal-directedness above.
+
+13
+
+The working definition of goal-directedness is intended
+to exclude phenomena that can be explained through physics, chemistry, or mathematics: if some form of apparent
+goal-directedness can be explained through a physical law,
+there is no need to invoke agency. Simultaneously, it is
+intended to be inclusive towards phenomena where natural
+selection and/or mechanistic explanations may be viewed
+as doing most of the work. A plant stem bending to the light
+is goal-directed, even if this seems to be well explainable in
+physical terms, through blue light activating receptor phototropins and triggering redistribution of the growth hormone
+auxin. This is not an explanation that simply results from
+physical constraints, for one can ask the question why plant
+stems possess such phototropins to begin with—a line of
+questioning that might lead to considering an adaptationist hypothesis. Similarly, some nonfunctional behaviors,
+where some function is activated outside its conditions of
+selection, may be considered goal-directed on the definition
+above. If a rat becomes addicted to morphine, this involves
+a nonfunctional activation of its dopamine system, but asking why it has a dopamine system to begin with may lead
+one to consider an adaptationist hypothesis.
+For now, it is fair to say that in many epistemic contexts—without epistemic access to what the underlying biochemical cascades are—many organismal phenomena are
+apparently goal-directed. Of course, such a judgment may
+be undermined by further considerations, but this is precisely
+the question: what explains apparent goal-directedness?
+
+Competing Explanations
+How is apparent goal-directedness to be explained? The
+principle of natural selection offers one possibility. And in
+this article’s proposal, agency offers an alternative, competing “ultimate explanation” (in E. Mayr’s sense) for observations of goal-directedness.
+Let me take an example from the human context that
+offers a relatively extreme illustration of this competition.
+In evolutionary psychology, adaptationist explanations are
+often sought for patterns of human behavior. If males with
+trait T tend to mate with females with trait T’, the default
+explanatory strategy pursued in evolutionary psychology is
+that this mate choice strategy benefits the fitness of T-type
+male humans (Buss 2019 provides many examples). However, is such an explanation by natural selection always
+a good explanation? Not necessarily, if we presume that
+humans are agents that can act upon reasons in a way that is
+not entirely controlled by fitness-enhancing cognitive modules selected in the Pleistocene. Say that John, a particular
+T-type male, happens to prefer Mary, a female lacking T’,
+because they share the same taste in humor or art or some
+idiosyncratic trait. An adaptationist explanation may seem
+
+Organismic Agency as the Principle of Individual Selection
+
+far-fetched and implausible here. In many respects, even if
+there are population-level patterns, the romantic choices of
+many token individuals simply cannot be fully explained
+through brute adaptationist logic, and we must appeal to the
+agency of individuals (Dupré and O’Neill 1998).
+This may seem to carve out an explanatory pluralism:
+population-level traits are explainable by natural selection,
+whereas individual-level properties are explainable through
+agency. And this is true to a significant extent. However,
+individual-level properties can also be explained through
+natural selection, and in this sense they can compete.
+Returning to the example, an individual may subjectively experience their decision as “their own”, for instance,
+because they have good reasons for it. However, this may
+be a subjective overestimation of their agency. Their decision may in fact simply and unambiguously be channeling
+gender-typical mate preferences. When there is evidence of
+individual preferences entirely conforming to expected mate
+preferences, an evolutionary psychologist may question
+whether that individual’s agency is playing any causal role.
+It is not making a difference to their behavior in the way that
+the individual believes it does. Dawkins’ perspective seems
+appropriate (Dawkins 1982): the individual plays the role of
+a vehicle for expressing a genetic trait—an unconscious and
+inherited cognitive bias—shaped over many generations. In
+this perspective, the subjective belief in one’s own agency
+appears as a mere post-hoc construction—a perspective
+long applied to human moral beliefs (Haidt 2001).
+Note the scope of the argument here: the point is not
+whether evolutionary psychology’s strategy of explaining
+human behavior is true or false. The lesson is that evolutionary psychology’s adaptationist logic deflates agency. If
+an adaptationist explanation is seen to be adequate for a specific explanandum, then agency does not play a causal role.
+It is in this sense that the explanatory competition between
+natural selection and agency is to be understood. When
+an explanation by natural selection successfully accounts
+for the observed phenomenon which was apparently goaldirected (e.g., a revealed preference), the initial impression
+of goal-directedness is undermined. It is not really “the
+organism itself” that is causally responsible for the apparently goal-directed behavior/development, but rather a part
+of the organism (the trait). What initially may have appeared
+as an agential behavior turns out to be the expression of an
+adaptive function, which is just shorthand for what that part
+of the organism was selected for (Neander 1991).
+The competition between natural selection and agency
+can be put formally as follows, even if it anticipates some
+elements that are introduced later in the article. Both target instances of apparent goal-directedness, which involve
+a particular outcome (organismal state or pattern of states)
+being probabilistically privileged in the organism’s life
+
+history. This asymmetry between possible outcomes calls
+for an explanation. Natural selection provides a possible
+explanation where the ranking between outcomes is defined
+through fitness: the privileged state is privileged because
+of fitness maximization. Agency is an alternative principle,
+grounding explanations where the ranking between outcomes is defined through other, individual-level metrics.
+What best explains the organismal preference—fitness, or
+some other metric such as beauty, play, or welfare? Whether
+the privileging is best categorized as involving fitness differences or differences in individual-level metrics depends on
+contextual empirical details. In this article’s approach, such
+questions cannot be decided a priori: agency is an explanatory hypothesis that must be accepted or rejected in competition with natural selection.
+This means that, on the framework offered here, one cannot directly ask whether an organism is an agent. Rather, the
+question to ask is whether a particular behavior (or pattern
+of behaviors) is best explained as expressing the organism’s
+agency, or not. Some organisms may display more agential behaviors than others. For some organisms, one could
+doubt whether they display any agential behavior. But all
+organisms, humans included, exhibit many behaviors that
+are non-agential, such as falling in gravitational fields.3
+Further explaining and specifying the nature of this
+explanatory competition is, in a sense, what will occupy the
+rest of the article. In the rest of the subsection, I would like
+to consider a series of objections that will help situate this
+approach4.
+First, these claims about explanatory competition seem
+to take sides on the long-standing philosophical debate on
+whether natural selection can explain the traits of token
+organisms. On the one side is the “negative view” of natural
+selection (Sober 1984) that holds that only trait distribution
+in populations can be explained; on the other is the view that
+natural selection does have some explanatory relevance for
+the trait composition of a token individual. Without reviving this debate, it can be helpful to position this article.
+The approach here assumes the negative view as a starting
+point (the primary explanatory target of evolution by natural
+selection is indeed to explain changing trait distributions in
+populations) but allows for the possibility that a token trait
+(of a token organism) may be unambiguously subsumed
+under a specific trait type. So, the implied position on natural selection does not take sides in this debate in the philosophical community. In principle, when the token trait is
+identical to the type trait, then natural selection can explain
+the traits of token organisms. As illustrated in the example
+3
+
+The fact that a biologist may be disinclined to call this a “behavior”
+is again an illustration of how the concept of behavior smuggles in an
+underlying presupposition of agency. See footnote 2.
+
+4
+
+Thanks to the anonymous referees for pushing me here.
+
+13
+
+H. Desmond
+
+above, agency need not play any causal role when this is the
+case. To give another example: if an individual human experiences disgust in reaction to the typical elicitors (rotting
+flesh, feces, etc.), and produces the typical “muscle action
+movement” (Rozin et al. 1994), on the account of individual
+selection presented here, many aspects of this reaction may
+be explainable through evolution by natural selection, given
+its involuntariness, its commonality across cultures, its
+appearance in small children, in the blind, and so on (Rozin
+et al. 1994). One may assume that there remains some individual variation in disgust reactions, and to the extent that is
+the case, one may consider either agency or randomness as
+an explanation. However, many aspects of the disgust reaction are explainable—and are explained by psychologists—
+as an inherited, selected trait.
+A second clarification is to situate the remarks in relation
+to the Lewontin conditions of natural selection (Lewontin
+1970). These are interpretable as necessary evidential conditions for inferring natural selection as an explanation of
+observed goal-directedness: (1) evidence that the observed
+goal-directedness in behavior or development is an expression of a heritable trait, (2) evidence that there was variance in this trait in ancestral populations, and (3) evidence
+that this trait conferred a fitness advantage to individuals in
+the ancestral populations. This means that failure of one of
+these conditions (if we assume for the sake of the argument
+that they are jointly sufficient) would be necessary for any
+inference to agency. We will return to this in the operationalization of agency.
+Third, some in the agency literature hold that agency and
+natural selection cannot compete because agency is in fact
+the more basic explanatory principle. The reasoning for that
+goes something along these lines: for natural selection to act
+on a population, there needs to be organisms which interact
+with the environment, but this interaction between organism and environment presupposes that we view organisms
+as agents (Walsh 2015; Moreno and Peretó 2026). However, the view presented here does not necessarily compete
+with those views. For instance, Walsh’s account of agency
+involves reconceptualizing the environment (as affordances)
+and the organism–environment relation. It is a very different starting point and leads to a wholly different vision on
+organisms and evolution—even an explanatory pluralism
+(Walsh and Rupik 2023).5 By contrast, in this article, the
+concept of environment is left untouched, but the concept of
+agency is reengineered (as individual selection rather than a
+capacity for goal-directedness). To what extent the concept
+of individual selection complements the organizational and
+ecological views on agency is a question for future work.
+
+Finally, the remarks on the competition between agency
+and natural selection would at first sight also seem to
+diverge from the position in DiFrisco and Gawne (2024),
+where agential explanations compete not just with natural selection explanations and psychological explanations,
+but also with explanations based on feedback mechanisms
+(see DiFrisco and Gawne 2024, Fig. 1). By contrast, in the
+approach here, feedback mechanisms and natural selection/
+agency are not direct competitors, because feedback mechanisms explain how there is convergence to some “goal” or
+“attractor”, but do not explain why there is convergence to
+some particular goal—and not another. However, in another
+passage DiFrisco and Gawne explicitly make this exact
+same point.6 Hence, I believe the genuine point of divergence lies in how agency is defined. DiFrisco and Gawne
+start from the common definition of agency as the capacity
+for goal-directedness, which this article has explicitly opted
+against. If goal-directedness is viewed as the explanandum
+of agency, not its definiens, as done in the approach here,
+then feedback mechanisms and natural selection/agency are
+complementary explanations, and the genuine competition
+lies between natural selection and agency.
+
+Causal Structure of Individual Selection
+To sum up so far: through a stylized illustration, the idea
+was introduced that agency involves an organism selecting a
+preferred behavior or development. Then we analyzed what
+type of causal and explanatory principle individual selection might be: a process where an organism-level property
+causes apparently preferred organismal states or patterns,
+and that can narrowly compete with natural selection.
+The challenge now is to clarify (1) what such an “organism-level property” could mean, (2) how precisely this is a
+(structuring) cause of behavior, and (3) how precisely this
+may be explanatorily indispensable. This section tackles the
+first two questions in general terms; the next section does so
+with more empirical detail by identifying concrete “organism-level properties”. Section “Operationalizing Individual
+Selection” and section “Case: Bacterial Chemotaxis” consider the question of explanatory indispensability by operationalizing individual selection.
+
+Decision-Making Through Symmetry-Breaking
+When the early cyberneticians looked to causally analyze
+intentionality (“purposiveness”), they turned to nonlinear
+6
+
+5
+
+There are also overlaps with his conclusions reached about agency,
+for instance that agency involves a choice between behavioral options
+within a repertoire. (Walsh 2015)
+
+13
+
+E.g., “How [proximate organismic mechanisms exhibiting goaldirectedness] work is explained mechanistically, and their adaptiveness—to the extent that they are adaptive—is explained by natural
+selection.” (DiFrisco and Gawne 2024, p. 5)
+
+Organismic Agency as the Principle of Individual Selection
+
+dynamics as a conceptual resource. The stylized illustration that Wiener used was a person successfully picking up
+a pencil (Wiener 2019, p. 12): they eventually succeed at the
+goal because they are continually getting sensory feedback
+from the environment (e.g., how close their fingers are to the
+pencil they want to grab) and they modulate their changes
+of state accordingly. This motivated the central working
+assumption of cybernetics: agency can be viewed as a “servomechanism” (control mechanism) where there is negative feedback between the system and an equilibrium state
+(Rosenblueth et al. 1943).
+In the present context, agency is to be causally analyzed
+through a different concept in nonlinear dynamics: symmetry breaking. In a sense, this involves an expansion of
+the classic cybernetic approach to allow for multiple stable
+equilibria, with the system in principle being attracted to
+any one of them, depending on the context. The analogy
+is not a person picking up a pencil but deciding whether to
+pick up a pencil or pick up a marker. Both will require servomechanisms to realize, but before the choice is made, the
+two options are “symmetrical” for the person. If the options
+are not symmetrical, a “choice” by the person is not necessary: it is obvious to the person what they should pick up.
+The person then acts to break the symmetry between the
+options.
+In slightly formal terms, “symmetries” refer to two different types of outcome that are equally probable given the
+initial state of the system plus the laws that describe the
+system’s evolution (Brading et al. 2021). In other words,
+outcomes are symmetrical when no outcome is privileged.
+Symmetry breaking then refers to a process by which one
+outcome comes to be realized instead of another, despite the
+initial state and laws being indifferent to the two outcomes.
+Phase transitions constitute the classic example of symmetry breaking (Fig. 1). For instance, in the phase transition
+from paramagnetism to ferromagnetism, the magnetic spins
+are no longer randomly distributed but have definite “preferential” orientation within domains. This is a (local) breaking of the symmetry in orientations, and without an external
+cause having “predecided” this process. By contrast, if the
+
+phase transition occurs within an external magnetic field,
+then all spins will align with the external magnetic field.
+Even in physics, symmetry breaking is more of a general
+explanatory template rather than a rigidly defined theory
+(Borrelli 2021). It can be used in a wide range of epistemic
+contexts, from early-universe cosmology to traffic flows.
+One way to think about it is that physicists use symmetry
+breaking as a reasoning template for explaining the appearance of novelty, whether novel forces (e.g., the appearance
+of electromagnetic forces from the electroweak force) or
+novel properties (e.g., laminar flow, ferromagnetism). It is
+in this more general sense that it can also be a useful concept
+in a biological context (Longo and Montévil 2019).
+To apply this to our stylized example: “symmetry” arises
+when the gazelle faces nontypical conditions relative to its
+history of natural selection. All inherited cognitive traits are
+equally activated by the conditions, such that they compete
+against each other to determine behavior. In the specific
+environment the gazelle faces, fleeing or continuing to feed
+seem equally preferable “from the perspective of natural
+selection”. Multiple possible behaviors seem equally adaptive. When the gazelle selects one course of behavior over
+another, this state of symmetry is broken.
+Symmetry can only be defined relative to a dynamics,
+so let us emphasize how symmetries arise with regard to
+natural selection and what their biological reality is. Natural
+selection shapes the evolution of organisms through traits
+that are adaptive to typical circumstances: the spatiotemporal distribution of various types of nutrition, predators,
+mates, etc. When faced with “typical” circumstances, the
+various types of organisms may be assigned a well-defined
+fitness value: how well or poorly an organism is expected
+to fare. However, in evolutionarily novel scenarios this is
+no longer the case. “Novel” scenarios can be defined as
+environments where there is a symmetry with respect to
+the dynamics of natural selection—in other words, there
+are multiple behavioral or developmental responses to the
+environment that have equal fitness. Equal fitness means an
+equal expected reproductive output, where the expectation
+function is defined by the historical selective environments.
+
+Fig. 1 A classic example of symmetry breaking: the transition from paramagnetism to ferromagnetism.
+
+13
+
+H. Desmond
+
+Symmetry breaking is a helpful concept to capture
+how agency could be causally constituted. In the case of
+the gazelle, the symmetry induces a competition among
+selected traits in determining the behavior of the whole
+organism (fleeing or feeding). In the case of bacterial chemotaxis (discussed later), the symmetry may induce a competition between different gene-regulatory mechanisms that
+produce different concentrations of proteins that pull the
+organism in different directions, producing “pausing behavior”. The symmetry is broken by an additional environmental input, which then sets in motion a physiological cascade
+that results in the behavioral/developmental output. This is a
+causal-mechanistic translation of the agential process.
+Note that symmetry breaking is necessary but not sufficient for individual selection. For instance, symmetry
+breaking in a magnet does not entail that the magnet is an
+agent choosing a certain orientation. Or to take an even
+more basic example: a rock balancing on a precipice but
+eventually tipping over towards one side rather than another
+is also undergoing symmetry breaking, but is not an agent.
+The rock might even be said to have two “goals” (falling
+to the left and falling to the right) that are in competition,
+and once the wind picks up, a “decision” is made. However,
+the rock is not an agent because external causes (the wind,
+the gravitational field, etc.) entirely account for the rock’s
+behavior. There is no distinction between type and token:
+the relevant behavior of this token rock is identical to any
+other token rock. There is no need to invoke “rock agency”.
+What “individual-level” property then allows for agency
+to be attributed? In general, an (emergent) explanatory
+notion being translatable to causal-mechanistic terms
+does not mean that that notion is reducible to those terms
+(O’Connor 2021); however, there still needs to be an identifiable higher-level property that accounts for why agency
+cannot be reduced to causal-mechanistic terms.
+
+Preference Metrics as Structuring Causes
+A preference metric is the principle, relative to particular
+dynamics, by which one outcome is probabilistically privileged over another outcome. Fitness can be interpreted as
+the preference metric inherent in natural selection. Individual selection presupposes other, individual-level metrics.
+To this end, consider the distinction between sorting and
+selection (Vrba and Gould 1986). Differences in reproductive rate are necessary but not sufficient for a process of population change to be deemed selection. If these differences
+in reproductive rate do not correspond to fitness differences,
+this is not selection, but just “sorting”. In sorting, no trait is
+privileged over another by the dynamics themselves.
+Can fitness be a universal preference metric, applicable
+to all behavior? The “phenotypic gambit” in behavioral
+
+13
+
+ecology involves the assumption that organismal preferences
+correspond to fitness-maximizing strategies that moreover
+have a simple genetic basis. Or in Grafen’s original terms,
+it is the assumption that “[t]he success of a [behavioral]
+strategy is the number of offspring left by an animal adopting it, or alternatively its inclusive fitness” (Grafen 1984,
+p. 63). For our purposes, the difference between individual
+fitness and inclusive fitness does not matter; what matters is
+that when behavioral ecologists speak of animal “decisionmaking” (Westneat and Fox 2010, p. 131) or “preferences”
+(Martin and Bateson 1993, pp. 69–73) this is intended as a
+shorthand for a more complicated process by which some
+fitness-enhancing cognitive module is being activated by
+environmental signals in the way it was selected to do.
+As discussed previously, there is at least one species
+where the phenotypic gambit—channeled through evolutionary psychology—is strongly resisted. And that is
+because it is assumed that fitness is not the only preference metric or “value-standard” (McShea 2023) that characterizes human behavior. Insofar as agency (as individual
+selection) is attributable to nonhuman organisms (and this
+empirical question is set aside for the moment), the organisms must be characterized by preference metrics that are
+distinct from fitness.
+To reformulate this idea more succinctly but abstractly:
+preference metrics structure the probability distribution
+of the possible outcomes within an organism’s life-history. This formulation helps clarify the deeper connection
+between individual selection and natural selection. Fitness
+is a preference metric that groups life-history outcomes
+by reproductive number and assigns a probability to each
+equivalence class (this is how it is conceptualized in Pence
+and Ramsey 2013). Individual preference metrics group lifehistory outcomes according to different equivalence classes
+(according to welfare, safety from predators, nourishment,
+self-preservation, or play), which may only partially correlate with fitness-based equivalence classes. The phenotypic
+gambit is the working assumption that fitness operates as
+an individual preference metric as well—the failure of the
+phenotypic gambit is a necessary condition for attributing
+independent individual preference metrics.
+Individual preference metrics explain why individual
+selection cannot be reduced to mere symmetry breaking. An
+individual preference metric can be thought of as a structuring cause that does not exert any physical causal influence,
+but that does make one behavioral/developmental pathway
+more probable than another. A peahen whose cognition
+gives weight to aesthetic features—symmetry, contrast, tail
+elaboration, display vigor—will exhibit a different pattern
+of mate-acceptance behavior than a peahen whose decision
+mechanisms track only indicators of underlying fitness,
+such as costly handicaps. The aesthetic preference metric
+
+Organismic Agency as the Principle of Individual Selection
+
+explains this difference in behavior and can be understood
+as a causal feature insofar as one adopts a difference-making concept of causality (Hall 2004). Or alternatively, a
+plant with a preference for physiological integrity will be
+triggered into different developmental responses (immune
+activation, growth arrest) when stressed by the introduction of soil bacteria than a plant with only a preference for
+maximizing fitness. In this way, preference metrics can be
+thought of as organizational properties of the organism, predisposing the organism to respond in certain ways rather
+than others to novel environments.7
+
+Candidates for Individual Preference Metrics
+To make the preceding discussion of individual preference
+metrics more concrete, in this section, I briefly touch on a
+number of candidates for individual preference metrics.
+Play. Playful behavior is sometimes defined negatively,
+as behavior without immediate utility or fitness benefits
+(Bateson 2014; Tahar 2023). In other words, it is difficult to
+account for observed play as fitness-maximizing behavior.
+However, what preference metric is then implicitly at stake?
+Different authors seem to invoke different candidates, from
+a “pleasurable emotional experience” (Held and Špinka
+2011) to “fun” (Bateson 2014). Bateson is quite explicit in
+this regard: “[the playful behavior’s] performance serves as
+a goal in itself. Play is ‘fun’” (Bateson 2014, p. 100).
+Play can be considered as an illustration of an individual preference metric insofar as the organisms themselves
+decide to exercise these capacities in very particular ways
+because they gain “enjoyment” from this exercise. Note that
+this does not imply that fitness has no explanatory role to
+play. Individual and natural selection compete, but only for
+narrowly defined explananda. An observed phenomenon of
+play will typically be complex and admit of multiple complementary explanations. For instance, there is evidence
+that increased play is correlated with greater behavioral
+and immunological resilience (in studies of bear cubs: see
+Bateson 2014 for references). Thus, an explanation by natural selection could suffice to account for why cubs at least
+sometimes engage in play. However, it does not necessarily
+account for the precise manners in which cubs play nor for
+observations that cubs engage in play more frequently than
+strictly necessary to increase resilience. Sporadic and stereotyped forms of play could be just as adaptive. From the
+perspective of natural selection, stereotyped play is symmetrical with the rich, inventive forms of play observed. Hence,
+7
+
+In this way, from an ontological perspective, the methodologicalepistemic approach advocated in this article is likely consistent with
+the organizational approach to agency (Moreno and Mossio 2015;
+Montévil and Mossio 2015; Virenque and Mossio 2024).
+
+it is plausible that individual selection is involved here, with
+the preference metric being “play”. The cubs engage in the
+observed behavior not simply because it is fitness maximizing, but because they prefer play as a separate metric.
+Beauty. Another example of an individual preference
+metric is beauty. Darwin, especially in The Descent of Man
+(1871a, b), rejected the explanation that all (male bird) display traits and behaviors could simply be explained as the
+outcome of a process of natural selection for the (sexual)
+selection of fitness signals. Even though, for instance, the
+intricate patterns of ocelli on long feathers of the Great
+Argus may have had some value as a fitness signal, according to Darwin they were too intricate to be fully explainable
+as fitness signals, and afforded “good evidence that the most
+refined beauty may serve as a charm for the female, and
+for no other purpose” (Darwin 1871a, p. 92). This interaction between fitness metrics and aesthetic metrics has been
+discussed in greater detail elsewhere (Desmond 2024), but
+in this context can simply be mentioned as an example of a
+preference metric distinct from fitness.
+Ecological goals. Both play and beauty would seem to
+only be attributable to organisms with certain cognitive
+architecture: the main examples of the sense of beauty and of
+playful behavior concern mammals and birds. Even though
+such attributions are controversial enough, it would seem
+absurd to look for such metrics in the behavior and development of prokaryotes, slime molds, or fungi. However, there
+are other individual preference metrics that would seem
+more broadly applicable across species. These concern what
+could be called “ecological goals”: predator avoidance,
+nourishment, avoidance of extreme temperatures, and so on.
+This class of preference metrics more closely coincides with
+fitness, so a little care is needed to disentangle the sense in
+which they can be considered agential.
+What is preferred by the organism may overlap to some
+extent with what is metaphorically “preferred” by natural
+selection. However, the overlap may not be complete. (If it
+were, this would be grounds for eliminating the individual
+preference metric per Ockham’s razor.) Individual selection
+thus can manifest itself as the organism being “choosier”
+or “more sensitive” than would be expected from natural
+selection alone. An organism may appear to prefer a particular type of shelter over another or pick up on novel sources
+of food that did not occur in historical selective environments. Natural selection may select traits (such as seeking shelter and foraging behavior) in evolutionarily typical
+environments, but there may be an additional process of
+individual selection if the individual also acts in its token
+environments to pursue the ecological goals that constitute
+the fitness components. Thus, the same preference metric
+can guide both the design of a heuristic decision-making
+rule and a tailored deliberative process.
+
+13
+
+H. Desmond
+
+Welfare. The term “welfare” is most often associated
+with a sentientist-utilitarian framework today, referring to
+the organism feeling more pleasure than pain (Birch 2024).
+However, there is another sense of welfare, “thriving”, that
+is classically understood as the organism exercising its
+capabilities, and as such is an overarching category that subsumes at least some of the other candidate metrics.
+The metric of welfare includes most preferences for pursuing various ecological goals, as many of these contribute
+to welfare (safety from predators, nutrition, shelter, etc.).
+However, the mere satisfaction of ecological goals is not
+sufficient for welfare. As the experience of captive animals
+suggests, artificial environments that fulfill metabolic needs
+but that are highly predictable do not promote animal welfare (Mason et al. 2007; Morgan and Tromborg 2007).
+Welfare also seems to include play: zookeepers often
+interpret animal play as evidence of good “welfare” for
+their animals. Conversely, a lack of animal play, which is
+operationalized as repetitive, stereotypical, or predictable
+behavior, is interpreted as evidence of poor welfare and
+even animal depression (Mason et al. 2007; Špinka and
+Wemelsfelder 2011).
+The notion of “stress” can help clarify some of these
+connections between agency, welfare, and predictability.
+According to one recent account, a stress reaction is elicited
+by evolutionarily atypical or unpredictable environments
+and involves increased energy expenditure by the organism
+in order to promote self-maintenance (Love and Wagner
+2022). Natural environments, with their presence of predators and highly variable weather, are often unpredictable,
+eliciting stress reactions. By contrast, the absence of “stressors” simply means that the organism’s environment consists
+of recurrent environmental regimes where any threats to
+homeostasis can be met with evolved adaptive responses
+(Love and Wagner 2023).
+In the context of this article, a stress reaction can be interpreted as an adaptation to unpredictable environments, activating the organism’s agency, requiring it to “decide” what
+precisely would be the most appropriate response to the
+novel challenge. What is the preference metric implicit in
+agential responses to stress? Love and Wagner speak of an
+“autopoietic stability” towards which stress responses are
+directed.8 It could also be suggested that the relevant preference metric is “welfare”, where the organism responds to
+stressors to promote its welfare. Given that an absence of
+stressors (i.e., in the controlled, predictable artificial environment) is detrimental to the welfare of some animals, this
+implies, somewhat counterintuitively, that threats to welfare can be necessary for welfare (as they elicit the exercise
+8
+
+In fact, autopoietic stability could be a candidate for the main preference metric of agency. See (Virenque and Mossio 2024) for an
+exploration of this possibility.
+
+13
+
+of agency). The complex interconnections between stress,
+agency, and welfare would be rich ground for a discussion
+that goes beyond the scope of this article: the lesson to be
+taken from this discussion is that welfare may be considered
+as a candidate preference metric that may shape much of
+animal and even organismic behavior in natural (unpredictable) environments.
+
+Operationalizing Individual Selection
+The operationalization of agency is a core challenge for
+defenders of the concept: what types of evidence allow for
+agency to be inferred, and conversely, what types of phenomena does agency distinctively explain? For completeness’ sake, it should be acknowledged that attributing even
+minimal goal-directedness requires some inference (e.g.,
+ruling out physical explanations). And any assessment of
+goal-directedness is fallible: if it turns out afterward that the
+trait (e.g., rheotaxis) that was thought to be goal-directed
+(whether the result of agency or natural selection) can be
+fully explained through physical, chemical, or even mathematical principles, then the prior assessment of goal-directedness would need to be revisited. However, in such a case,
+not only is agency superfluous, but also natural selection—
+a critique of adaptationist hypotheses that goes back to
+(Gould and Lewontin 1979). For that reason, we can put
+such cases aside.
+Given that assumption, making the inference to individual selection presupposes there must be grounds to rule
+out natural selection. This is this article’s working assumption of methodological adaptationism: if natural selection
+is perfectly adequate for the target explanandum, and there
+is no explanatory need to invoke individual selection, natural selection takes priority. Natural selection can be granted
+the status of null hypothesis concerning the types of goaldirectedness where agency might be explanatorily relevant.
+This status of methodological privilege has implicitly been
+rejected by many in the agency literature—and see also the
+discussion of alternative null hypotheses of sexual selection
+by Prum (2010)—but this article engages in a different intellectual exercise. Manifestations of goal-directedness can in
+principle be reclassified as adaptedness, as long as a plausible causal reasoning can be set up where the goal contributes to fitness (directly or indirectly).
+Within the framework of individual selection, the conditions for explanatory failure of natural selection can be
+interpreted as evidential conditions for inferring individual
+selection. The operationalization of individual selection
+will be based on the operationalization of natural selection
+(Endler 1986), and three evidential conditions in particular
+will be considered:
+
+Organismic Agency as the Principle of Individual Selection
+
+1. Evidence that the observed behaviors/development are
+fitness-enhancing but cannot be attributed to an underlying heritable trait as the conditions for past selection are
+absent;
+2. Evidence of a preference for behaviors/development
+that lower fitness but that enhance some other individual
+preference metric;
+3. Evidence of a preference for behaviors/development that
+are fitness neutral but enhance some other individual
+preference metric.
+
+Adaptation in Novel Environments
+The relevant concept of novelty is not so much phenotypic
+novelty (Wagner and Lynch 2010) as environmental novelty defined relative to the selective environment (Brandon
+1990). The selective environment is an abstract representation of the real physical environment, where environmental
+circumstances are classified according to the fitness differences they produce in a heterogeneous population (for
+more detail on novelty and the selective environment, see
+Desmond 2022). Conversely, a “novel environment” is one
+that is not subsumable as a well-defined “state” of the selective environment. It produces a selection pressure that is illdefined relative to the selective environment (as theoretical
+abstraction).
+Environmental novelty allows the first evidential condition to be formulated: if an organism produces an adaptive
+behavior when facing environmental circumstances that
+did not plausibly recur in the past sufficiently as to produce
+stable fitness differences, then this is grounds for rejecting
+the hypothesis of natural selection. The adaptive behavior is (per definition of adaptive) fitness-enhancing, but if
+there are good evidential grounds for judging the environmental circumstances to be novel, this provides grounds for
+concluding that there was no past selection that shaped a
+heritable trait. Thus, while natural selection could in principle explain the adaptive behavior, there may be evidence
+that natural selection does not in fact explain the adaptive
+behavior.
+This test is not entirely separate from the long-standing
+theme that one of the hallmarks of agency is the production
+of phenotypic novelty, creativity, or inventiveness (Kauffman 2000; Newman 2023; Tahar 2023)—a theme that goes
+back at least to Bergson (1911). However, the difference
+is that novelty is defined relative to the environment: the
+precise pattern of physical change of the organism may
+not be novel, but it may count as “novel” if it is produced
+adaptively in a novel environment. The bacteria swimming
+towards or away from a chemical concentration are selecting a behavior from a very limited repertoire, but if they
+do so adaptively in an environment that can be considered
+
+novel, this is grounds for rejecting natural selection and
+inferring individual selection.
+The difficult empirical challenge in this test is to define
+what precisely counts as “novel”. In general, any environment will bear some resemblance to past environments.
+Errors can arise when judging a given environment as
+novel, when in reality crucial cues may be shared with past
+environments.
+How then can novelty be established? Novelty is itself
+a hypothesis that must be inferred, and it is not a simple
+observational quantity. The operationalization of environmental novelty is, in general, a separate project that is of
+increasing research interest (Staples et al. 2025). A full
+discussion is therefore outside the scope of this article.
+However, one pragmatic strategy could be to base tests of
+novelty on tests for “environmental constancy” in operationalizations of natural selection. For instance, in longitudinal studies (method V in Endler 1986), the main type of
+evidence for inferring natural selection is long-term stability
+or long-term directional trends: these indicate some stable
+feature in the environment that the population is adapting
+to. To rule out the possibility of directional trends resulting
+from chance, Endler recommends combining such tests with
+further tests against the observed ecology of a population:
+cohort analysis and life-history analysis. These studies can
+identify recurrent environmental circumstances that covary
+with fitness differences, in turn allowing for an inference of
+natural selection. In this way a concept of “effective environmental constancy” is introduced: environments are not literally constant, as they are always changing and everywhere
+heterogeneous, but features can be sufficiently constant for
+natural selection to occur. Conversely, “novelty” would be
+a lack of environmental constancy: a break in a long-term
+directional trend, or a lack of recurrent environmental features that covary with fitness of individuals in a population.
+
+Fitness-Lowering Behaviors
+Fitness-lowering behaviors might be considered the strongest form of evidence, but one might expect any genuinely
+fitness-lowering behavior to be very rare in nonhuman contexts. Because agency itself is constituted by properties of
+organismal organization, which themselves may have some
+genetic basis, such a capacity for agency would not be transmitted if it consistently produced fitness-lowering behavior.
+In this way, one can expect individual selection to—by and
+large—operate in the “gaps” left by natural selection, and
+not to seek to causally counteract natural selection. Individual and natural selection are in explanatory competition, but
+not necessarily in causal competition.
+There are also additional hurdles for inferring individual selection from apparently fitness-lowering behavior.
+
+13
+
+H. Desmond
+
+To begin with, any impression that a behavior is fitnesslowering may simply be mistaken. The apparent preference
+for fitness-lowering behaviors can result from evolutionary mismatch and ecological traps (Schlaepfer et al. 2002)
+or from other mechanisms such as parasite manipulation
+(Hughes and Libersat 2019)—in other words, cases where
+the organism is not expressing its agency but is manipulated
+by exogenous factors.
+Moreover, when a behavior is accepted as genuinely fitness-lowering, the correct response may be to modify the
+fitness metric rather than jettison it. This was the strategy
+for explaining altruistic behaviors that were apparently fitness-lowering. The metric inclusive fitness was introduced
+to augment the adaptationist framework (Hamilton 1963,
+1964). Similarly, phenomena such as monogamous marriage—regarded as a puzzle because they reduce the reproductive success of high-status males—are accounted for
+through the metric of group competitive success (Henrich
+et al. 2012). In both cases, the fitness-lowering behavior is
+accounted for by modifying the fitness metric.
+Given these caveats, one ought not rule out a priori the
+possibility of fitness-lowering organismal behavior stably
+persisting across generations. Ornithologists such as Richard Prum argue that costly sexual displays in runaway Fisherian selection are evidence of aesthetic awareness in some
+birds (Prum 2012)—yet others have demanded “abundant
+proof” before considering such hypotheses (Grafen 1990b).9
+This article does not take a stand on this particular evidential
+question, but identifies the type of evidence as decisive for
+inferring agency: if evidence of a fitness-lowering behavior
+(that yet enhances some individual metric, such as beauty)
+were to present itself, this would pose a genuine challenge
+to adaptationist frameworks.
+
+Fitness-Neutral Behaviors
+The third criterion concerns a different type of breakdown
+in the fitness metric. If an organism seems to exhibit goaldirected behavior, but the behavior does not seem to additionally contribute to fitness compared to other possible
+behaviors, this may be interpreted as evidence for an individual preference metric. Within a strict comparison of individual selection versus natural selection, this relative failure
+of natural selection can be taken as evidence for inferring
+individual selection, according to some agential metric
+(enjoyment, beauty, etc.)
+One example comes from mate choice, where there seems
+to be evidence that some birds prefer certain display traits
+over others despite the competing traits conferring equal
+9
+
+As cited in “To believe in the Fisher-Lande process as an explanation of sexual selection without abundant proof is methodologically
+wicked,...” (Grafen 1990b, p. 487).
+
+13
+
+fitness on the holder (this is discussed at length in (Desmond 2024). In particular, there seems to be evidence that
+peahens prefer certain peacocks over others without any
+evidence that the former would confer a fitness advantage.
+Certain plumage configurations are preferred over alternatives that—to human observers—are equally long, complex,
+colorful, and so on. As reported in (Desmond 2024), there
+is a debate in this subfield on whether peahens are picking
+up on some other, currently unobserved signals that correlate with fitness components such as immunological resilience. However, there is no conclusive evidence of this. The
+alternative hypothesis is the hypothesis of individual selection: peahens, as Darwin himself claimed, have a “sense for
+beauty” (Darwin 1871b, p. 73) and select peacocks in light
+of that preference metric. Note that this does not imply that
+natural selection has no role to play. Natural selection may
+explain why peacocks with a train below a cutoff length or
+with a number of ocelli below some other cutoff may be universally rejected: peacocks below the cutoff may have clear
+disadvantages on underlying fitness components. However,
+selective dynamics may not fully predict why an individual
+peahen makes the decisions it does. An individual peahen
+may have a stable preference for a type of train that does not
+indicate higher fitness than some other non-preferred types
+of train.
+If the example of mate choice concerns the tension
+between fitness and beauty, other examples can illustrate
+the tension between fitness and welfare. Consider a stylized
+test case where a guppy is observed responding to the introduction of a predator by opting for a behavior of self-preservation that suppresses reproductive opportunities. This
+may not be a fitness-lowering behavior, but it may suggest
+a preference for a behavior that also prioritizes its own welfare. Or it may consistently evince preference for a certain
+type of shelter over another, even if both are equivalent for
+predator protection. If there is evidence of the guppy consistently opting for one course of action rather than another
+even if both are equivalent in fitness in the environments
+typically encountered in the guppy’s lineage, this is evidence for a preference that is independent of fitness. The
+stylized example with which we began—the gazelle evaluating whether to continue grazing or flee—was an example
+of this category.
+A hurdle for this evidential test consists in the introduction of the concept of animal personalities. Animal personalities are consistent individual differences in aggressiveness,
+risk-taking, stress responsiveness, and so on (Dingemanse
+and Réale 2005), and, as such, point to stable, fitness-neutral
+decision rules in individuals, since no single personality is
+selectively optimal (Nettle 2006). A natural selection model
+of personality posits that personality could be a group-level
+adaptation to reduce in-group conflict, in which individuals
+
+Organismic Agency as the Principle of Individual Selection
+
+converge on specific personalities through developmental
+adaptation to their social niche (Bergmüller and Taborsky
+2010). According to such a model, the consistent behaviors
+of any one animal personality do not necessarily indicate
+specific preference metrics of the individual organism, but
+simply the organism’s developmental history, which caused
+rigid decision rules and behavioral habits to have been
+developed.
+This leads to a conclusion that is equally applicable to
+the other evidential tests: evidence of fitness neutrality is, in
+itself, insufficient for inferring individual selection. These
+conditions need to be coupled with a positive source of evidence for an individual preference metric, such as welfare,
+or pleasure from play, or an aesthetic standard. This is what
+may be lacking in phenomena of animal personality: what
+preference metric do they express? An aggressive guppy
+may be exhibiting aggressive behavior because of imprinting in early life-history, or because it happened to inherit an
+aggressive personality. It may not be exhibiting the behavior
+to further its “welfare” or some individual-level metric.
+This brings us to the more conceptual dimension of the
+operationalization challenge: how to operationalize the
+preference metrics? One challenge to overcome is the risk
+of introducing anthropomorphic constructs. For instance,
+this risk is present in attributing a sense of beauty to birds
+(Desmond 2024): why call whatever the peahens are preferring “beauty”? This suggests it has something in common
+with human concepts of “beauty”—but is that implication
+justified? (And even restricted to the human context, the
+question of what beauty is is subject to perennial debate.)
+To counter this risk of anthropomorphism, any attribution of
+an individual preference metric would need to rule it out to
+some reasonable standard, by considering alternative metrics that carry less anthropomorphic risk—such as welfare,
+or autopoietic stability.
+Another challenge is the risk of overattribution. This risk
+arises especially with metrics such as welfare, since much of
+organismal behavior could potentially be attributed as contributing to welfare. Hence, any assignment of an individual
+preference metric would also need to clarify which types
+of behavior do not contribute to that metric but are perhaps
+artifacts of external processes (such as developmental history). This conceptual refinement is separate from the actual
+process of inference and will not be further considered here.
+
+Case: Bacterial Chemotaxis
+Many, though not all, of the examples so far in the article have involved animals with plausibly psychological
+capacities. I opted for these examples because they offered
+more straightforward illustrations of the tension between
+
+Table 1 Simplified preference structure of E. coli (Yamamoto et al.
+1990; Taylor et al. 1999; Ortega et al. 2017).
+Input
+Receptor
+Output
+Amino Acid
+Aspartate
+Tar
++
+Dipeptides
+Tap
++
+Serine
+Tsr
++
+Leucine
+Tsr
+Mineral
+Metal ions
+Tar
+Sugar
+Ribose
+Trg
++
+Galactose
+Trg
++
+Maltose
+Tar
++
+Oxygen
+Aer/Tsr
++/-
+
+individual and natural selection. However, the proposed
+framework is applicable in principle to any form of life. To
+test it, in this subsection, we will consider the evidence for
+whether one of the most basic forms of locomotion, chemotaxis in E. coli, can be considered agential.
+Despite E. coli being perhaps one of the most studied bacteria, the conclusion will be that it is ambiguous. A straightforward selectionist-mechanistic explanation is inaccurate.
+Bacterial chemotaxis is certainly not like a mechanism that
+takes certain sensory cues as inputs, produces motor outputs, and is adaptive in well-defined types of environments.
+However, whether it involves a type of decision-making that
+allows for the inference of agency is not easy to ascertain.
+Some background on the underlying science is necessary here. First, contrary to common representation, chemotaxis does not simply entail “swimming to the source of
+nutrients”. Bacteria are sometimes attracted to compounds
+that are not particularly nutritious, and not always strongly
+attracted to highly nutritious ones (Keegstra et al. 2022). The
+relation between the strength by which bacteria are attracted
+to a compound, and the positive effect that compound has on
+the bacteria’s growth rate, is—in general—very noisy (see
+Keegstra et al. 2022, Box 1). Hence, even if one can assume
+that a particular type of chemotaxis evolved through natural
+selection, one cannot simply assume that the evolutionary
+function of chemotaxis lies in maximizing exposure to compounds that benefit the growth rate. In fact, Keegstra et al.
+review how chemotaxis serves other ecological functions,
+including expansion into novel environments (Keegstra et
+al. 2022).
+Further, there is a discrete set of environmental cues
+that bacteria are sensitive to in “deciding” how to navigate
+the environment through chemotaxis. Distilling three studies (Yamamoto et al. 1990; Taylor et al. 1999; Ortega et
+al. 2017), Table 1 gives a non-exhaustive summary of the
+“preference structure” of E. coli with some more empirical
+precision. The table can be read as a mapping from sensory
+input (amino acids, sugars, etc.) to behavioral output (attraction/repulsion). The mapping is highly modular, in the sense
+that each sensory input is processed by its own dedicated
+
+13
+
+H. Desmond
+
+mechanism (i.e., a receptor). Of these mechanisms, Tar and
+Tsr are the most abundant in the E. coli membrane and are
+sensitive to two of the most important sensory inputs—
+aspartate and serine levels. The other chemoreceptors (Tap,
+Trg) are much less abundant in the periplasm but can modulate responses in collaborative networks of chemoreceptors.
+In natural environments, E. coli bacteria will be presented
+with multiple inputs simultaneously. It responds to a soup of
+types of amino acids, sugars, minerals, and so on. Thus, in
+any given natural environment, it will need to make a “decision” about what importance to give to all these different
+inputs. Our question is whether we can remove the inverted
+commas around the word “decision”: are bacteria engaging in genuine decision-making, or are they controlled by
+exogenous causes? Are they agents, or automata, following
+decision rules? The following is a non-exhaustive overview
+of evidence of bacterial decision-making.
+A recent study (Park and Aminzare 2022) considered a
+bacterial environment consisting of just two components—
+serine and aspartate—and proposed that bacteria operate
+with a simple decision rule: if Tar/Tsr is below some threshold value, the bacteria move up serine gradients, and otherwise they move up aspartate gradients. This, the authors
+report, agrees well with experimental observations where E.
+coli are exposed to only two stimuli (serine and aspartate).
+However, for our purposes this does not count as decisive
+evidence, as the question arises whether they have described
+a decision rule or rather a causal process whereby more
+intense activation of the aspartate-sensitive receptor leads to
+a response to aspartate gradients, and the same with serine
+(see also Kalinin et al. 2010). What appears to be decisionmaking thus may simply be a causal “tug-of-war” with a
+multidimensional environment tugging on the organism in
+the directions of different substance gradients. Sometimes
+the tugging does not yield a clear resolution—in which case
+the bacterium pauses and tumbles in place—but even if it
+does produce a resolution, the organism itself may simply
+be understood as undergoing competing environmental
+triggers.
+Some further conceptual refinement of what “novelty”
+means can help interpret the empirical literature. The environment of the bacteria is defined by a number of discrete
+variables, tracking types of amino acids, minerals, sugars,
+and so on. A response to novelty cannot mean that the bacterium responds to some new substance—as it has no receptor to even track the substance. Novelty can mean, at most,
+an environment consisting of different patterns or different
+combinations of sensory inputs than was typical during the
+selective history of its lineage. Thus, counter-indicating evidence would be evidence where a bacterium responds adaptively to a novel environment with decision rules tailored to
+
+13
+
+its novel token environment and that further an individual
+preference metric, perhaps autopoietic stability.
+In a classic study, E. coli was shown to use temporal
+comparisons of gradients to “decide” whether to swim up
+them or change direction. The comparison involves a fixed
+decision rule that weights the past second positively and the
+three seconds before that negatively (Segall et al. 1986).
+This is an adaptive strategy in response to spatial gradients by sensing temporal gradients. However, this decision
+rule does not necessarily involve any learning specific to
+its token environment. Moreover, the study does not reveal
+what the origin of this decision rule could be, and it offers no
+evidence that would rule out the hypothesis that the decision
+rule was selected for by natural selection.
+Another study demonstrated the role of environmental
+noise in modifying chemotactic behavior (Vladimirov and
+Sourjik 2009). However, here, too, it is doubtful whether
+the study constitutes evidence of bacteria learning about
+their specific token environment, or whether bacteria are
+simply proceeding with learning rules integrated with decision-making rules that would be adaptive in any typical
+environment (as in Segall et al. 1986). Similarly, there is
+evidence for the predictive ability of bacteria (Tagkopoulos
+et al. 2008).10 There are other sources of evidence that could
+be included, such as evidence that prior swarming behavior
+affects cellular iron levels, which act as a memory affecting future swarming behavior (Bhattacharyya et al. 2023).
+Again, in such studies, there is no evidence that undermines
+the natural selection hypothesis.
+In general, decision rules have been demonstrated to
+guide chemotactic behavior, from threshold triggers to bethedging (Salek et al. 2019). More recent studies suggest
+evidence of more complex decision-making. For instance,
+chemotactic decision-making depends on quorum sensing,
+which picks up on the signals of population density (Laganenka et al. 2025). Population density affects the ratios of
+Tar/Tsr receptors, which in turn affects decision rules (Kalinin et al. 2010). However, what matters is whether there is
+evidence of token individuals tailoring such decision-making to their specific environmental circumstances. Is there
+reason to believe the organism itself is carrying out the decision-making, or is it a vehicle for behavioral rules shaped by
+exogenous causes?
+In this regard, an ongoing and intriguing area of inquiry
+concerns the interaction between chemotaxis and the formation of biomolecular condensates, which can respond
+to environmental stress and reorganize the structure of
+signaling networks within bacteria (Sasazawa et al. 2024).
+Condensate formation alters cellular responses to temperature fluctuations, nutrient starvation, and the detection of
+10
+
+Learning and prediction are closely related: if an environmental
+pattern is learned, then it can be used for prediction.
+
+Organismic Agency as the Principle of Individual Selection
+
+cytoplasmic DNA (an indicator of microbial or viral infection) (Yoo et al. 2019). In this way, condensates provide a
+clear causal explanation of how chemotactic decision-making might be affected by autopoietic state variables and in a
+way that is tailored to the specific changes in environmental
+circumstances, because of the physical properties of condensates. This seems promising as a potential source of evidence of bacterial agency.
+The main lesson in this discussion of the evidence on
+chemotactic decision-making is not to extract a definitive
+assessment of bacterial agency, but rather to illustrate how
+the conditions for inferring agency may be applied in concrete contexts.
+Note that, in contrast to other analyses of chemotaxis
+(Barandiaran et al. 2009; Barandiaran and Egbert 2014;
+Moreno and Mossio 2015, pp. 99–101; Fulda 2017; Potter
+and Mitchell 2022), the complexity of the internal cytoplasmic structure is of secondary importance in the analytic
+approach proposed here. It is true that a host of proteins
+(CheA, CheW, CheY, CheR, CheZ) modulate how precisely
+the flagellar motor responds to the receptor inputs, and that
+this modulation occurs in a nonlinear way. However, in the
+model presented here, nonlinearity is a necessary condition
+for agency attribution (via symmetry-breaking) but insufficient. The cytoplasmic lattice built by Che proteins could,
+in principle, also be interpreted as instantiating what some
+have called the “computational cell”, where computation
+is assumed to proceed by fixed rules (Bray 2009). In the
+model of individual selection, establishing the underlying
+organizational structure is of secondary importance; what
+matters primarily are the observed patterns of behavior, and
+whether this provides evidence for organismic preferences
+and decision-making that is sensitive to the organism’s specific context.
+These conditions are relatively exacting, and a lot of the
+current evidence of “learning”, “memory”, or “prediction”
+I would judge to fall below the bar required for attributing agency. However, given that conducting an exhaustive
+review of the evidence is beyond the scope of a generalist article such as this one, and especially since emerging
+evidence regarding biomolecular condensates seems to
+demonstrate one causal mechanism through which agential
+decision-making could be instantiated (though how it precisely influences decision-making in the wild seems to be
+as of yet unclear), I would not want to make a strong judgment that chemotaxis is not an agential behavior. It certainly
+is much more complicated—integrating many independent
+signals from the environment, as well as intra-organismic
+sources of signaling—than its basic textbook representation
+suggests, and even if chemotaxis is one of the simplest and
+best-studied organismic processes, much is still unknown
+and it is still an area of intense ongoing research activity.
+
+Closing Discussion
+In a narrow sense, the proposal of this article can be seen as
+highlighting the notion of “choice” (through selection) as
+the key concept towards understanding agency. This overlaps with other accounts of agency (Fulda 2023), and the
+way choice is operationalized through adaptiveness in novel
+environments shows further overlaps with “inventiveness”
+(Tahar 2023) and through the concept of individual good
+shows overlaps with “intentionality” (Aaby 2024). Hence
+the highlighting of choice is not intended as a particularly
+original or distinctive contribution. In fact, one could venture that any psychological metaphor (learning, memory,
+representation, etc.) can be used to characterize agency: for
+any psychological property X (choice, inventiveness, intentionality, control, learning, utility maximization, and so on),
+the question is “under what conditions is it justified to attribute X to the organism”, and “can we consider apparent X
+to be genuine X”. Regardless of one’s leading psychological
+metaphor, the fundamental questions remain the same.
+The main contribution of this article is situated at a more
+abstract level and lies in elucidating a more overtly positivist approach to agency that does not venture far from
+methodologically adaptationist approaches to behavior and
+development. Agency is primarily posited as an explanatory
+hypothesis used to account for observed goal-directedness
+in behavior and development. Only once agency is deemed
+the best explanation of the observations can one consider
+drawing conclusions about the underlying metaphysics of
+organisms (Lipton 2004).
+Agency and natural selection are conceptual duals and
+compete as explanatory principles for specific explananda
+and behaviors. Natural selection describes a selective process “carried out by” the environment, whereas agency
+describes a selective process carried out by the organism.
+A biologist need not choose camps here: while they may
+compete for narrowly defined explananda, both principles
+may be invoked to fully explain observed behaviors or
+developmental trajectories. Agency as individual selection
+is—potentially—an additional tool in the biologist’s conceptual toolbox: one that may be especially useful to, for
+instance, explain adaptive behavior in novel environments
+or to explain revealed preferences for nonadaptive behavior
+(beauty, play, welfare).
+Acknowledgments Versions of this article were presented in Leuven,
+Louvain-la-Neuve, Paris (IHPSST), Murcia, Porto, Lund, Wageningen, and Minnesota. The author wishes to thank audiences at those
+events for their comments and questions. The author wishes in particular to thank interlocutors Thomas Reydon, Philippe Huneman, Bendik
+Aaby, and Mathilde Tahar-Malaussena for enriching discussions, as
+well as two anonymous referees for their careful review of the manuscript.
+
+13
+
+H. Desmond
+Funding The author gratefully acknowledges the financial support of
+the John Templeton Foundation (#62220). The opinions expressed in
+this article are those of the author and not those of the John Templeton
+Foundation.
+
+Declarations
+Competing interests The author declares to have no financial interests
+that would affect the reliability of this study.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format,
+as long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons licence, and indicate
+if changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless
+indicated otherwise in a credit line to the material. If material is not
+included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted
+use, you will need to obtain permission directly from the copyright
+holder. To view a copy of this licence, visit ​h​t​t​​p​:​/​/​​c​r​e​​a​t​i​​v​e​c​o​m​m​o​n​s​.​o​
+r​g​/​l​i​c​e​n​s​e​s​/​b​y​/​4​.​0​/​​​​.​​
+
+References
+Aaby BH (2024) Organismal agency as a (partly psychological) capacity. The riddle of organismal agency, 1st edn. Routledge, London,
+pp 240–254
+Allen C, Bekoff M (1997) Species of mind: the philosophy and biology
+of cognitive ethology. MIT Press, Cambridge, MA
+Barandiaran XE, Egbert MD (2014) Norm-establishing and norm-following in autonomous agency. Artif Life 20:5–28. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​
+/​1​0​.​1​1​6​2​/​A​R​T​L​_​a​_​0​0​0​9​4​​​​
+Barandiaran XE, Di Paolo E, Rohde M (2009) Defining agency: individuality, normativity, asymmetry, and spatio-temporality in
+action. Adapt Behav 17:367–386. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​1​7​7​/​1​0​5​9​7​
+1​2​3​0​9​3​4​3​8​1​9​​​​
+Barzegar A, Margoni E, Oriti D (2025) A minimalist account of agency
+in physics. Stud Hist Philos Sci 112:112–122. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​
+0​1​6​/​j​.​s​h​p​s​a​.​2​0​2​5​.​0​6​.​0​0​4​​​​
+Bateson P (2014) Play, playfulness, creativity and innovation. ABC
+2:99. https:/​/doi.or​g/10.12​966/a​bc.05.02.2014
+Beal DN, Hover FS, Triantafyllou MS et al (2006) Passive propulsion
+in vortex wakes. J Fluid Mech 549:385–402. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​
+0​1​7​/​S​0​0​2​2​1​1​2​0​0​5​0​0​7​9​2​5​​​​
+Bergmüller R, Taborsky M (2010) Animal personality due to social
+niche specialisation. Trends Ecol Evol 25:504–511. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​
+g​/​1​0​.​1​0​1​6​/​j​.​t​r​e​e​.​2​0​1​0​.​0​6​.​0​1​2​​​​
+Bergson H (1911) Creative evolution. Henry Holt and Company, New
+York
+Bhattacharyya S, Bhattarai N, Pfannenstiel DM et al (2023) A heritable
+iron memory enables decision-making in Escherichia coli. Proc
+Natl Acad Sci 120:e2309082120. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​7​3​/​p​n​a​s​.​2​
+3​0​9​0​8​2​1​2​0​​​​
+Birch J (2024) The edge of sentience: risk and precaution in humans,
+other animals, and AI, 1st edn. Oxford University Press, Oxford
+Borrelli A (2021) Between symmetry and asymmetry: spontaneous
+symmetry breaking as narrative knowing. Synthese 198:3919–
+3948. https:/​/doi.or​g/10.10​07/s1​1229-019-02320-8
+Brading K, Castellani E, Teh N (2021) Symmetry and symmetry breaking. In: Zalta EN (ed) The Stanford encyclopedia of philosophy,
+Fall 2021. Metaphysics Research Lab, Stanford University
+
+13
+
+Brandon RN (1990) Adaptation and environment. Princeton University Press, Princeton
+Bray D (2009) Wetware: a computer in every living cell. Yale University Press, New Haven; London
+Buss DM (2019) Evolutionary psychology: the new science of the
+mind, 6th Edition. Routledge, New York
+Cartwright N (1983) How the laws of physics lie. Clarendon, Oxford
+Darwin C (1871a) The descent of man, and selection in relation to sex.
+John Murray, London
+Darwin C (1871b) The descent of man, and selection in relation to sex.
+John Murray, London
+Darwin C ([1859]2008) On the origin of species. Oxford University
+Press, New York
+Dawkins R (1982) The extended phenotype: the long reach of the
+gene. Oxford University Press
+Desmond H (2022) Adapting to environmental heterogeneity: selection and radiation. Biol Theory 17:80–93. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​0​7​
+/​s​1​3​7​5​2​-​0​2​1​-​0​0​3​7​3​-​y​​​​
+Desmond H (2024) Sexual selection, aesthetic choice, and agency. In:
+Gayon E, Huneman P, Petit V, Veuille M (eds) 150 years of the
+descent of man. Routledge, New York, pp 81–109
+DiFrisco J, Gawne R (2024) Biological agency: a concept without a
+research program. J Evolutionary Biology voae153. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​
+g​/​1​0​.​1​0​9​3​/​j​e​b​/​v​o​a​e​1​5​3​​​​
+Dingemanse NJ, Réale D (2005) Natural selection and animal personality. Behaviour 142:1159–1184
+Dretske F (1988) Explaining behavior: reasons in a world of causes.
+MIT Press, Cambridge, MA
+Dretske F (2004) Psychological vs. biological explanations of behavior. Behav Philos 32:167–177
+Dubber MD (2015) An introduction to the model penal code, 2nd edn.
+Oxford University Press, Oxford, UK
+Dupré J, O’Neill J (1998) Against reductionist explanations of human
+behavior. Aristotelian Soc Supplementary Volume 72:153–171.
+https:/​/doi.or​g/10.11​11/14​67-8349.00040
+Endler JA (1986) Natural selection in the wild. Princeton University
+Press, Princeton, NJ
+Fábregas-Tejeda A (2026) The organism-environment pairing: a historical and philosophical reappraisal. MIT Press, Cambridge, MA
+Fulda FC (2017) Natural agency: the case of bacterial cognition. J Am
+Philosophical Association 3:69–90. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​7​/​a​p​a​.​2​
+0​1​7​.​5​​​​
+Fulda FC (2023) Agential autonomy and biological individuality. Evol
+Dev 25:353–370. https:/​/doi.or​g/10.11​11/ed​e.12450
+Gigerenzer G (2000) Adaptive thinking: rationality in the real world.
+Oxford University Press, Oxford
+Godfrey-Smith P (2001) Three kinds of adaptationism. In: Orzack SH,
+Sober E (eds) Adaptationism and optimality. Cambridge University Press, Cambridge, pp 335–357
+Gould SJ, Lewontin RC (1979) The spandrels of San Marco and the
+Panglossian paradigm: a critique of the adaptationist programme.
+Proc Royal Soc Lond Ser B Biol Sci 205:581–598. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​
+/​1​0​.​1​0​9​8​/​r​s​p​b​.​1​9​7​9​.​0​0​8​6​​​​
+Grafen A (1984) Natural selection, kin selection and group selection.
+In: Krebs JR, Davies NB (eds) Behavioural ecology. Blackwell,
+Oxford, UK, pp 62–84
+Grafen A (1990a) Biological signals as handicaps. J Theor Biol
+144:517–546. https:/​/doi.or​g/10.10​16/S0​022-5193(05)80088-8
+Grafen A (1990b) Sexual selection unhandicapped by the Fisher process. J Theor Biol 144:473–516. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​6​/​S​0​0​2​2​-​5​
+1​9​3​(​0​5​)​8​0​0​8​7​-​6​​​​
+Griffin DR (1978) Prospects for a cognitive ethology. Behav Brain Sci
+1:527–538. https:/​/doi.or​g/10.10​17/S0​140525X00076524
+Haidt J (2001) The emotional dog and its rational tail: a social intuitionist approach to moral judgment. Psychol Rev 108:814–834.
+https:/​/doi.or​g/http:​​https​://doi.​org/10.​1037/​0033-295X.108.4.814
+
+Organismic Agency as the Principle of Individual Selection
+Hall N (2004) Two concepts of causation. In: Hall N, Paul LA (eds)
+Causation and counterfactuals. MIT Press, Cambridge, MA, pp
+225–276
+Hamilton WD (1963) The evolution of altruistic behavior. Am Nat
+97:354–356
+Hamilton WD (1964) The genetical evolution of social behaviour. I. J Theor Biol 7:1–16. https:/​/doi.or​g/10.10​16/00​
+22-5193(64)90038-4
+Held SDE, Špinka M (2011) Animal play and animal welfare. Anim
+Behav 81:891–899. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​6​/​j​.​a​n​b​e​h​a​v​.​2​0​1​1​.​0​1​.​0​
+0​7​​​​
+Henrich J, Boyd R, Richerson PJ (2012) The puzzle of monogamous
+marriage. Phil Trans R Soc B 367:657–669. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​
+9​8​/​r​s​t​b​.​2​0​1​1​.​0​2​9​0​​​​
+Herberholz J, Marquart GD (2012) Decision making and behavioral
+choice during predator avoidance. Front Neurosci 6:125. ​h​t​t​​p​s​:​/​​/​d​
+o​​i​.​o​​r​g​/​1​0​.​3​3​8​9​/​f​n​i​n​s​.​2​0​1​2​.​0​0​1​2​5​​​​
+Hofstadter DR (1982) Metamagical themas. Sci Am 247:18–M18
+Hughes DP, Libersat F (2019) Parasite manipulation of host behavior.
+Curr Biol 29:R45–R47. https:/​/doi.or​g/10.10​16/j.​cub.2018.12.001
+Huneman P (2026) When metaphysics meets biology: Kantian
+approaches to the concept of organism. Routledge, New York
+Huxley J (1942) Evolution: the modern synthesis. Allen and Unwin,
+London
+Kalinin Y, Neumann S, Sourjik V, Wu M (2010) Responses of Escherichia coli bacteria to two opposing chemoattractant gradients
+depend on the chemoreceptor ratio. J Bacteriol 192:1796–1800.
+https:/​/doi.or​g/10.11​28/JB​.01507-09
+Kauffman SA (2000) Investigations. Oxford University Press, Oxford,
+UK
+Keegstra JM, Carrara F, Stocker R (2022) The ecological roles of bacterial chemotaxis. Nat Rev Microbiol 20:491–504. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​
+/​1​0​.​1​0​3​8​/​s​4​1​5​7​9​-​0​2​2​-​0​0​7​0​9​-​w​​​​
+Laganenka L, Schubert C, Sichert A et al (2025) Interplay between chemotaxis, quorum sensing, and metabolism regulates Escherichia
+coli-Salmonella Typhimurium interactions in vivo. PLoS Pathog
+21:e1013156. https:/​/doi.or​g/10.13​71/jo​urnal.ppat.1013156
+Lee JG, McShea DW (2020) Operationalizing goal directedness: an
+empirical route to advancing a philosophical discussion. Philos
+theory Pract biology 12:005. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​3​9​9​8​/​p​t​p​b​i​o​.​1​6​0​
+3​9​2​5​7​.​0​0​1​2​.​0​0​5​​​​
+Levitis DA, Lidicker WZ, Freund G (2009) Behavioural biologists do
+not agree on what constitutes behaviour. Anim Behav 78:103–
+110. https:/​/doi.or​g/10.10​16/j.​anbehav.2009.03.018
+Lewontin RC (1970) The units of selection. Annu Rev Ecol Syst
+1:1–19
+Lipton P (2004) Inference to the best explanation. Routledge, New
+York
+Longo G, Montévil M (2019) From physics to biology by extending
+criticality and symmetry breakings. Acta Europeana Systemica
+9:77–92. https:/​/doi.or​g/10.14​428/a​es.v9i1.56043
+Love AC, Wagner GP (2022) Co-option of stress mechanisms in the
+origin of evolutionary novelties. Evolution 76:394–413. ​h​t​t​​p​s​:​/​​/​d​
+o​​i​.​o​​r​g​/​1​0​.​1​1​1​1​/​e​v​o​.​1​4​4​2​1​​​​
+Love AC, Wagner GP (2023) Stress, harshness, and evolutionary history. Trends Ecol Evol 38:903–904. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​6​/​j​.​t​r​e​
+e​.​2​0​2​3​.​0​5​.​0​1​3​​​​
+Martin P, Bateson PPG (1993) Measuring behaviour: an introductory
+guide. Cambridge University Press, Cambridge, UK
+Mason G, Clubb R, Latham N, Vickery S (2007) Why and how should
+we use environmental enrichment to tackle stereotypic behaviour? Appl Anim Behav Sci 102:163–188. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​
+6​/​j​.​a​p​p​l​a​n​i​m​.​2​0​0​6​.​0​5​.​0​4​1​​​​
+Mayr E (1961) Cause and effect in biology. Science 134:1501–1506.
+https:/​/doi.or​g/10.11​26/sc​ience.134.3489.1501
+
+McShea DW (2023) Evolutionary success: standards of value. In: Desmond H, Ramsey G (eds) Human success: evolutionary origins
+and ethical implications. Oxford University Press, Oxford, pp
+17–39
+Mobbs D, Trimmer PC, Blumstein DT, Dayan P (2018) Foraging for
+foundations in decision neuroscience: insights from ethology. Nat
+Rev Neurosci 19:419–427. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​3​8​/​s​4​1​5​8​3​-​0​1​8​-​0​
+0​1​0​-​7​​​​
+Montévil M, Mossio M (2015) Biological organisation as closure of
+constraints. J Theor Biol 372:179–191. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​6​/​j​
+.​j​t​b​i​.​2​0​1​5​.​0​2​.​0​2​9​​​​
+Moreno A, Mossio M (2015) Biological autonomy. Springer, Dordrecht
+Moreno A, Peretó J (2026) An evolutionary story of agency: how life
+evolved to act on its own. Springer Nature Switzerland, Cham
+Morgan KN, Tromborg CT (2007) Sources of stress in captivity. Appl
+Anim Behav Sci 102:262–302. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​6​/​j​.​a​p​p​l​a​n​i​
+m​.​2​0​0​6​.​0​5​.​0​3​2​​​​
+Nagel E (1977) Goal-directed processes in biology. J Philos 74:261.
+https:/​/doi.or​g/10.23​07/20​25745
+Neander K (1991) Functions as selected effects: the conceptual analyst’s defense. Philos Sci 58:168–184
+Nettle D (2006) The evolution of personality variation in humans and
+other animals. Am Psychol 61:622–631. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​3​7​/​
+0​0​0​3​-​0​6​6​X​.​6​1​.​6​.​6​2​2​​​​
+Newman SA (2023) Inherency and agency in the origin and evolution
+of biological functions. Biol J Linn Soc 139:487–502. ​h​t​t​​p​s​:​/​​/​d​o​​i​
+.​o​​r​g​/​1​0​.​1​0​9​3​/​b​i​o​l​i​n​n​e​a​n​/​b​l​a​c​1​0​9​​​​
+O’Connor T (2021) Emergent properties. In: Zalta EN (ed) The Stanford encyclopedia of philosophy, Winter 2021. Metaphysics
+Research Lab, Stanford University
+Oderberg DS (2024) Action, passion, power. Noûs 59:567–584. ​h​t​t​​p​s​:​
+/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​1​1​1​/​n​o​u​s​.​1​2​5​2​3​​​​
+Okasha S (2018) Agents and goals in evolution. Oxford University
+Press, Oxford
+Okasha S (2024) The concept of agent in biology: motivations and
+meanings. Biol Theory 19:6–10. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​0​7​/​s​1​3​7​5​2​
+-​0​2​3​-​0​0​4​3​9​-​z​​​​
+Okasha S (2023) Goal attributions in biology: objective fact, anthropomorphic bias, or valuable heuristic? In: Corning PA, Kauffman
+SA, Noble D et al (eds) Evolution on purpose. The MIT Press,
+Cambridge, MA, pp 237–256
+Ortega Á, Zhulin IB, Krell T (2017) Sensory repertoire of bacterial
+chemoreceptors. Microbiol Mol Biol Rev 81:e00033–e00017.
+https:/​/doi.or​g/10.11​28/MM​BR.00033-17
+Park J, Aminzare Z (2022) A mathematical description of bacterial
+chemotaxis in response to two stimuli. Bull Math Biol 84:9.
+https:/​/doi.or​g/10.10​07/s1​1538-021-00965-6
+Pence CH, Ramsey G (2013) A new foundation for the propensity
+interpretation of fitness. Br J Philos Sci 64:851–881. ​h​t​t​​p​s​:​/​​/​d​o​​i​
+.​o​​r​g​/​1​0​.​1​0​9​3​/​b​j​p​s​/​a​x​s​0​3​7​​​​
+Porfiri M, Zhang P, Peterson SD (2022) Hydrodynamic model of fish
+orientation in a channel flow. eLife 11:e75225. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​
+.​7​5​5​4​/​e​L​i​f​e​.​7​5​2​2​5​​​​
+Potter HD, Mitchell KJ (2022) Naturalising agent causation. Entropy
+24:472. https:/​/doi.or​g/10.33​90/e2​4040472
+Prum RO (2010) The Lande–Kirkpatrick mechanism is the null model
+of evolution by intersexual selection: implications for meaning,
+honesty, and design in intersexual signals. Evolution 64:3085–
+3100. https:/​/doi.or​g/10.11​11/j.​1558-5646.2010.01054.x
+Prum RO (2012) Aesthetic evolution by mate choice: Darwin’s really
+dangerous idea. Philosophical Trans Royal Soc B: Biol Sci
+367:2253–2265. https:/​/doi.or​g/10.10​98/rs​tb.2011.0285
+Prum RO (2017) The evolution of beauty: how Darwin’s forgotten
+theory of mate choice shapes the animal world - and us. Knopf
+Doubleday Publishing Group, New York
+
+13
+
+H. Desmond
+Rosenblueth A, Wiener N, Bigelow J (1943) Behavior, purpose and
+teleology. Philos Sci 10:18–24
+Rozin P, Lowery L, Ebert R (1994) Varieties of disgust faces and the
+structure of disgust. J Personal Soc Psychol 66:870–881. ​h​t​t​​p​s​:​/​​/​d​
+o​​i​.​o​​r​g​/​1​0​.​1​0​3​7​/​0​0​2​2​-​3​5​1​4​.​6​6​.​5​.​8​7​0​​​​
+Salek MM, Carrara F, Fernandez V et al (2019) Bacterial chemotaxis
+in a microfluidic T-maze reveals strong phenotypic heterogeneity
+in chemotactic sensitivity. Nat Commun 10:1877. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​
+1​0​.​1​0​3​8​/​s​4​1​4​6​7​-​0​1​9​-​0​9​5​2​1​-​2​​​​
+Salmon WC (1984) Scientific explanation and the causal structure of
+the world. Princeton University Press, Princeton
+Sansom A, Lind J, Cresswell W (2009) Individual behavior and survival: the roles of predator avoidance, foraging success, and vigilance. Behav Ecol 20:1168–1174. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​9​3​/​b​e​h​e​c​
+o​/​a​r​p​1​1​0​​​​
+Sasazawa M, Tomares DT, Childers WS, Saurabh S (2024) Biomolecular condensates as stress sensors and modulators of bacterial
+signaling. PLoS Pathog 20:e1012413. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​3​7​1​/​j​o​u​
+r​n​a​l​.​p​p​a​t​.​1​0​1​2​4​1​3​​​​
+Schlaepfer MA, Runge MC, Sherman PW (2002) Ecological and evolutionary traps. Trends Ecol Evol 17:474–480. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​
+1​0​1​6​/​S​0​1​6​9​-​5​3​4​7​(​0​2​)​0​2​5​8​0​-​6​​​​
+Schlosser ME (2015) Agency. In: Zalta EN (ed) The Stanford encyclopedia of philosophy, Fall 2015. Metaphysics Research Lab,
+Stanford University
+Segall JE, Block SM, Berg HC (1986) Temporal comparisons in bacterial chemotaxis. Proc Natl Acad Sci U S A 83:8987–8991. ​h​t​t​​p​s​:​/​​
+/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​7​3​/​p​n​a​s​.​8​3​.​2​3​.​8​9​8​7​​​​
+Siemian JN, Arenivar MA, Sarsfield S, Aponte Y (2021) Hypothalamic
+control of interoceptive hunger. Curr Biol 31:3797–3809. ​h​t​t​​p​s​:​/​​/​
+d​o​​i​.​o​​r​g​/​1​0​.​1​0​1​6​/​j​.​c​u​b​.​2​0​2​1​.​0​6​.​0​4​8​​​​. .e5
+Sober E (1984) The nature of selection: evolutionary theory in philosophical focus. University of Chicago Press, Chicago
+Špinka M, Wemelsfelder F (2011) Environmental challenge and animal agency. Environmental challenge and animal agency. Animal
+welfare. CAB International, Wallingford, UK, pp 27–44
+Staples TL, Blois J, Cramer KL et al (2025) A conceptual framework
+for measuring ecological novelty. Glob Ecol Biogeogr 34:e70005.
+https:/​/doi.or​g/10.11​11/ge​b.70005
+Stevenson RJ, Bartlett J, Wright M et al (2023) The development of
+interoceptive hunger signals. Dev Psychobiol 65:e22374. ​h​t​t​​p​s​:​/​​/​
+d​o​​i​.​o​​r​g​/​1​0​.​1​0​0​2​/​d​e​v​.​2​2​3​7​4​​​​
+Sultan SE, Moczek AP, Walsh D (2022) Bridging the explanatory
+gaps: what can we learn from a biological agency perspective?
+BioEssays 44:2100185. https:/​/doi.or​g/10.10​02/bi​es.202100185
+
+13
+
+Tagkopoulos I, Liu Y-C, Tavazoie S (2008) predictive behavior within
+microbial genetic networks. Science 320:1313–1317. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​
+o​​r​g​/​1​0​.​1​1​2​6​/​s​c​i​e​n​c​e​.​1​1​5​4​4​5​6​​​​
+Tahar M (2023) Agency, inventiveness, and animal play: novel insights
+into the active role of organisms in evolution. Special Issue Levels Biol Agency Spontaneous Generations. 11(1)
+Taylor BL, Zhulin IB, Johnson MS (1999) Aerotaxis and other energysensing behavior in bacteria. Annu Rev Microbiol 53:103–128.
+https:/​/doi.or​g/10.11​46/an​nurev.micro.53.1.103
+Tomasello M (2022) The evolution of agency: behavioral organization
+from lizards to humans. MIT Press, Cambridge, MA
+Virenque L, Mossio M (2024) What is agency? A view from autonomy
+theory. Biol Theory 19:11–15. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​0​7​/​s​1​3​7​5​2​-​0​
+2​3​-​0​0​4​4​1​-​5​​​​
+Vladimirov N, Sourjik V (2009) Chemotaxis: how bacteria use memory. Biol Chem 390:1097–1104. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​5​1​5​/​B​C​.​2​0​0​
+9​.​1​3​0​​​​
+Vrba ES, Gould SJ (1986) The hierarchical expansion of sorting and
+selection: sorting and selection cannot be equated. Paleobiology
+12:217–228. https:/​/doi.or​g/10.10​17/S0​094837300013671
+Wagner GP, Lynch VJ (2010) Evolutionary novelties. Curr Biol
+20:R48–R52. https:/​/doi.or​g/10.10​16/j.​cub.2009.11.010
+Wallace AR (1889) Darwinism: an exposition of the theory of natural
+selection, with some of its applications. Macmillan, London
+Walsh D (2015) Organisms, agency, and evolution. Cambridge University Press, Cambridge
+Walsh D, Rupik G (2023) The agential perspective: countermapping
+the modern synthesis. Evol Dev. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​1​1​1​/​e​d​e​.​1​2​4​
+4​8​​​​
+Westneat D, Fox CW (2010) Evolutionary behavioral ecology. Oxford
+University Press, New York
+Wiener N (2019) Cybernetics: or, control and communication in the
+animal and the machine. The MIT Press, Cambridge, MA
+Yamamoto K, Macnab RM, Imae Y (1990) Repellent response functions
+of the Trg and Tap chemoreceptors of Escherichia coli. J Bacteriol
+172:383–388. https:/​/doi.or​g/10.11​28/jb​.172.1.383-388.1990
+Yoo H, Triandafillou C, Drummond DA (2019) Cellular sensing by
+phase separation: using the process, not just the products. J Biol
+Chem 294:7151–7159. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​7​4​/​j​b​c​.​T​M​1​1​8​.​0​0​1​1​9​
+1​​​​
+Zahavi A (1975) Mate selection—a selection for a handicap. J Theor
+Biol 53:205–214. https:​​​//d​oi.​or​g/10​.101​​6/0022-5193(75)90111-3
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+

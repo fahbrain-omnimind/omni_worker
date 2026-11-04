@@ -1,0 +1,1247 @@
+Topoi
+https://doi.org/10.1007/s11245-026-10484-5
+
+Valence, Mixed Feelings, and Appraisal Processes
+Constant Bonard1
+
+· Daniel Dukes2,3
+
+· David Sander2,3
+
+Received: 2 February 2026 / Accepted: 25 August 2026
+© The Author(s) 2026
+
+Keywords Mixed feelings · Valence · Appraisal theory · Component Process Model · Proto-valence · Affective
+experience · Ambivalence · Emotion
+
+1 Introduction
+Affective episodes, including emotions, moods, urges,
+pleasures, and pains, mobilize organisms to deal with
+events that may be important to them (Dukes et al. 2021).
+These episodes are typically associated with either pleasant or unpleasant feelings. However, the richness of human
+experience cannot be reduced so easily. Indeed, a growing
+body of evidence shows that individuals report experiencing pleasant and unpleasant feelings simultaneously (for a
+meta-analysis of 63 studies, see Berrios et al. 2015). These
+experiences, commonly referred to as mixed feelings, have
+been relatively understudied and pose several challenges to
+emotion theories (Cacioppo and Berntson 1994; Larsen et
+al. 2001; Larsen and McGraw 2011; Massin 2014; Vaccaro
+2024; Vaccaro et al. 2024).
+The general aim of this article is to clarify how appraisal
+theories of emotion, and in particular the Component Process Model (CPM; e.g., Scherer, 2001), can explain mixed
+feelings, while identifying the main controversies and the
+theoretical and empirical questions that remain open. Going
+beyond the levels-of-valence framework proposed by Shuman et al. (2013), the article makes four main contributions.
+First, it clarifies the explanandum by distinguishing different
+types of mixed feelings and focusing on the most demanding form: single affective episodes directed at a single object
+
+Constant Bonard
+constant.bonard@unibe.ch
+1
+
+Present address: Institute of Philosophy, University of Bern,
+Bern, Switzerland
+
+2
+
+Swiss Center for Affective Sciences, University of Geneva,
+Geneva, Switzerland
+
+3
+
+Department of Psychology, FPSE, University of Geneva,
+Geneva, Switzerland
+
+and experienced as both positively and negatively valenced
+(Sect. 2). Second, drawing on the distinction between different evaluative sources of valence proposed by the CPM,
+it explains a range of paradigmatic cases of mixed feelings
+in some detail (Sect. 3). Third, it critically assesses whether
+all the proto-valence sources postulated by the CPM are
+equally well established (Sect. 3). Finally, it distinguishes
+three explanatory questions: the relation between protovalences and overall valence, the mechanisms by which
+proto-valences are integrated, and the manner in which they
+are phenomenally blended (Sect. 4). Together, these analyses clarify how appraisal theories can account for mixed
+feelings, connect the psychological architecture of appraisal
+with the phenomenology of mixed feelings, and identify
+directions for future theoretical and empirical research.
+
+2 Explanandum: Mixed Feelings
+This section clarifies the phenomenon to be explained:
+mixed feelings, which we define in terms of experiencing
+positive and negative valence simultaneously. We begin
+then by outlining what we mean by valence.
+
+2.1 Valence
+The word valence is extremely polysemic and is used by
+scholars to designate many different things, even within a
+single academic branch (Colombetti 2005; Walle and Dukes
+2023; Walle and Dukes, in press). Here, we will purposely
+restrict our use to just one sense of that word.
+By valence, we mean a positive or negative phenomenal
+property, that is, a feature of what it is like from a firstperson perspective to consciously undergo a certain experience that feels good (or pleasant) or bad (or unpleasant). In
+other words, valence is a property of a conscious, subjective
+
+C. Bonard et al.
+
+feeling. For instance, what it is like to feel pain or sadness
+involves negative valence, what it is like to feel pleasure or
+joy involves positive valence, and mixed feelings involve
+both positive and negative valence simultaneously.
+Rather than describing a case where there is neither
+positive nor negative feeling as neutral valence, we would
+simply say there is no valence. By contrast, if a particular
+feeling involves equally strong positive and negative feelings, this counts as a mixed feeling of perfect ambivalence.
+All conscious affective episodes involve feelings that are
+positively valenced, negatively valenced, or mixed, with the
+possible exception of neutral surprise – whose neutrality is
+itself debated (Noordewier and Breugelmans 2013). While
+examples of mixed feelings will be provided further below,
+here is a non-exhaustive list of types of affective episodes
+that can be positive, negative, or mixed:
+● Emotions, such as joy, admiration, pride, fear, shame,
+sadness, and anger.
+● Moods, such as feeling cheerful, irritable, or free-floating anxiety, which resemble emotions but lack a clearly
+delimited intentional object.
+● Pleasures and displeasures tied to activities, such as
+playing chess, conversing, or reading, as well as, on the
+negative side, tedious chores or administrative tasks.
+● Affective episodes resulting from satisfied or frustrated desires, such as the pleasure of winning or satisfying one’s hunger, and the displeasure of rejection or
+frustration.
+● Hot desires or cravings, which are valenced prior to satisfaction or frustration, such as pleasant erotic desire or
+an intrusive urge to check one’s phone.
+● Bodily pleasures and pains, including comfort and discomfort, such as the pleasure of a bath or massage and
+the pain of burns, cuts, or headaches.
+● Diffuse affective feelings without established substantive terms, such as a sense that something is wrong, a
+feeling of eeriness, or a negatively charged atmosphere.
+This list is not exhaustive, but it suffices to delineate what
+we mean by “affective episodes” and “valence.”
+
+2.2 Mixed Feelings
+Mixed feelings, the mixtures of positively and negatively
+valenced feelings, can be understood in three increasingly
+restrictive senses.1
+In the broadest sense, mixed feelings are affective episodes that are, at any given time, experienced as positive
+and negative. Here, any simultaneous combination of a positive and negative affective episode counts as a mixed feeling. For example, having a headache while enjoying a good
+novel qualifies as a mixed feeling in this sense.
+In a second, narrower sense, mixed feelings are two or
+more affective episodes simultaneously directed at a single
+object whose valences are opposing. An example would be
+feeling joy while listening to a song, while simultaneously
+realizing that one feels guilty about listening to it, given the
+artist’s despicable personal views or behavior (see Goffin
+and Cova 2019). In the previous example, the headache
+is not directed at the novel, and thus does not qualify as a
+mixed feeling in this second sense.
+The third, narrowest sense concerns affective episodes
+directed at a single object, where the subject experiences a
+single kind of affective state that is itself both positively and
+negatively valenced. Here, an example might be the feeling of nostalgia directed at happy memories of a bygone
+period, where pleasure and pain are fused. The feeling is not
+a juxtaposition or alternation between joy and regret, but a
+unified affective state. Mixed feeling in this sense excludes
+the preceding song example, since it involves a combination
+of joy and guilt, two clearly distinct kinds of affective state
+that the subject can distinguish as such.
+The defining criterion of this narrowest sense is phenomenological unity. In such cases of mixed feelings, the subject
+does not experience two emotions as distinct affective ingredients, whether successively or simultaneously. Rather, the
+episode presents itself as a single affective state whose positive and negative dimensions are constitutively integrated.
+This criterion concerns the structure of conscious experience and does not imply that the underlying processes are
+themselves unitary. A useful analogy is provided by visual
+perception. The visual system relies on partially distinct
+mechanisms for extracting colors, local contours (edges),
+orientations, junctions, depth relations, and other features
+of a scene. Yet these computations are not ordinarily experienced as separate perceptual acts: their outputs contribute
+to a single, unified visual experience. Likewise, several
+1
+
+There certainly are other senses of mixed feeling, for instance
+to refer to a mixture of hatred and disgust, or of joy and interest.
+Although we only consider feelings mixing positive and negative
+valence here, there is no reason to believe that our analysis could
+not be extended to mixed feelings where the emotions are similarly
+valenced.
+
+13
+
+Valence, Mixed Feelings, and Appraisal Processes
+
+appraisal processes may evaluate different aspects of an
+event and make distinct contributions to affective processing without their outcomes appearing in consciousness as
+several emotions or feelings. At the phenomenal level, their
+outputs instead constitute one unified mixed feeling.2
+Unless specified, in what follows, we will use “mixed
+feelings” in this third, narrowest, sense and concentrate
+on the phenomena it designates. The idea is that if we can
+explain such mixed feelings, the explanation could extend
+to mixed feelings in the broader senses, while the reverse
+is not true.
+To further clarify the target phenomena, consider the
+following cases of mixed feelings (in the narrowest sense)
+where, we argue, a single, structurally ambivalent affective
+episode is experienced.
+● The feeling of the sublime. When confronted with an
+overwhelming natural landscape, a violent storm at sea,
+or a massive mountain, the affective episode is experienced as intensely positive, yet inseparably bound up
+with a negative dimension: a felt threat, a momentary
+loss of control, or a sense of being overpowered or
+diminished.
+● Enjoyable anger. In certain conflict situations, a subject
+may experience an affective episode directed at a single
+person or situation that is both hostile and pleasurable.
+Anger is clearly negative in its antagonistic tone, yet it
+can be simultaneously experienced as satisfying, energizing, or liberating.
+● Cringe amusement. A subject is amused by a scene of
+particularly intense social awkwardness, and the affective episode is experienced as both amusing and uncomfortable. The amusement arises not despite the discomfort, but precisely because of it.
+● Musical melancholy. Here, the subject undergoes a single affective episode directed at the work, experienced
+as both pleasurable and painful. The melancholy is not
+2
+
+Some scholars (e.g., Massin 2014) seem to consider that mixed
+feelings in the narrowest sense don’t exist because the putative
+cases are always made of different affective episodes about different
+intentional objects. However, we interpret this point to concern the
+organization of the underlying evaluative processes rather than the
+character of the conscious episode. This point is about intentionality
+rather than phenomenology. As the analogy with vision should make
+clear, distinct evaluations directed at different aspects of a situation
+can lead to a phenomenologically unified experience. As such, they
+count as a single mixed feeling according to our phenomenological
+criterion. We acknowledge that this criterion, however, does not by
+itself settle questions about the individuation of affective episodes,
+and that one may want to use a criterion based on intentionality rather
+than phenomenology. We do not have the space to engage with this
+debate here. Our contention is simply that appraisal theories can give
+a plausible description of mixed feelings in the narrowest sense,
+which vindicates what we take to be a commonsense impression that
+such feelings exist.
+
+merely tolerated for the sake of a later pleasure, nor is
+the pleasure a simple counterbalance to the pain. Rather,
+the painful tone of the experience constitutively integrates with its positive value.
+● The ambivalent mood of departure. When leaving a
+place where one has lived for a long time, a subject may
+experience a global and diffuse mood related to the departure that is both exhilarating and painful.
+● Pleasurable bodily pain. These are bodily states experienced as both painful and pleasurable, without appearing as a juxtaposition or alternation between pain and
+pleasure. Examples include intense muscular stretching,
+deep-pressure massages, bodily fatigue after prolonged
+exertion, or masochistic experiences.
+These examples show that mixed feelings are neither marginal nor exceptional. They pervade central domains of
+affective experience and encompass a wide range of affective episodes, including emotions, moods, and bodily
+feelings. In the following, we will concentrate on mixed
+feelings of emotional episodes, but discuss here and there
+mixed feelings involving other types of affective episodes.
+Mixed feelings raise specific difficulties for two of the
+three main theoretical traditions in the psychology of emotion: basic emotion theories and psychological constructivism. While basic emotion theories can easily explain mixed
+feelings in the broader sense (see Ekman, 1992 pp. 194–
+195), they struggle to explain mixed feelings in the narrowest sense because the latter seem not to be reduceable
+to combinations of basic emotions (cf. Ortony and Turner
+1990). The main problem for the psychological constructivism tradition is that it uses a univariate notion of valence that
+cannot directly capture mixed feelings (Cacioppo and Berntson 1994). For instance, a univariate scale of valence cannot empirically capture the difference between no valence
+and a perfectly ambivalent mixed feeling: an identical net
+valence score of “0” would register for both of these very
+different experiences (Gasper 2026). On a bivariate scale,
+one where there are independent measures of positive and
+negative feeling, no valence would register as “0” for both,
+whereas perfect ambivalence would register as two identical, non-zero scores.
+Basic emotion theorists and constructivist theorists might
+respond to these remarks in various ways, for instance by
+denying the existence of mixed feelings in the narrowest
+sense (cf. Massin 2014). However, our goal here is not to
+focus on these responses but on how appraisal theories – a
+third major tradition in the psychology of emotion – can
+account for mixed feelings. As we will see, it offers an elegant account of their nature.
+
+13
+
+C. Bonard et al.
+
+3 Explanans: Appraisal Theory and ProtoValences
+In this section, we present appraisal theory and show how
+it can explain mixed feelings. The notion of proto-valence,
+introduced by Shuman et al. (2013)3, will play a major role.
+
+3.1 Appraisal Theory
+The central contribution of the appraisal theory tradition
+(for a review, see Ellsworth 2025) is an answer to the following question: How are emotions elicited? In particular,
+how can we explain that the same stimulus elicits different
+types of emotions in different people or in the same person
+at different times while very different types of stimuli may
+elicit the same type of emotion?
+To account for this complexity in the relations between
+types of stimuli and types of emotional responses, appraisal
+theory posits a cognitive intermediary: the appraisal process. For instance, imagine that when a mouse enters the
+restaurant, Sam suddenly feels afraid, Maria is amused, and
+Bob remains calm. Appraisal theory claims that Sam, Maria,
+and Bob react differently because they appraise the presence of the mouse in different ways. Sam appraises it as a
+threat, triggering fear. Maria appraises it as incongruous to
+see the wild animal in the expensive restaurant, triggering
+amusement. Bob appraises it as irrelevant to his interests
+and remains indifferent. Similarly, the fact that very different types of stimuli can elicit the same emotion is explained
+by the hypothesis that they are appraised in the same way –
+for instance, a remark and a slap can elicit anger if both are
+appraised as offensive.
+In short, appraisal theory holds that emotions are elicited by appraisals of objects as sufficiently relevant to our
+motivational states or concerns. By motivational states or
+concerns, we mean needs, goals, preferences, values, ideals,
+desires, wishes, inclinations, aspirations, appetites, interests, motives, aims, internal reasons, or any other source of
+motivation accessible for an evaluation.
+In contemporary versions of appraisal theory, emotions
+are conceived as synchronized changes across five components: appraisal, physiological processes, action tendencies,
+motor expressions, and subjective feelings (see e.g., Sander
+et al. 2005). Changes in the first component – appraisal –
+trigger and determine changes in the others. For example,
+Sam’s appraisal of the mouse as a threat causes physiological changes (e.g., sweating, adrenaline release, increased
+heart rate), changes in action tendencies (preparation to
+
+flee), motor expressions (wide eyes, raised eyebrows, open
+mouth, trembling voice, backward posture, raised hands),
+and subjective feelings (the feeling of fear). The feeling
+component is thought to consist of phenomenal and partial
+access to changes in the other components. In the case of
+fear, the associated negative feeling typically is the result
+of the appraisal of danger, bodily arousal, readiness to flee,
+and withdrawn posture. According to these versions of the
+theory, it is thus the appraisal of the situation that constitutes
+the main causal explanation of the valence of the emotional
+episode.
+It could be argued that appraisal theory was already
+defended in antiquity, for instance by Aristotle, for whom
+emotions (pathē) were judgments (or appraisals) accompanied by bodily changes, action tendencies, and pleasure
+or pain (see his Rhetoric, Book II, Chaps. 1–11). Anger,
+for example, was conceived as the judgment that an injustice has occurred, accompanied by a boiling of the blood,
+a desire for revenge, and pain. This general approach was
+later developed by many philosophers, including Aquinas,
+Hume, Brentano and some of his students, and was taken up
+by psychologists from the 1960 s onward, notably by Magda
+Arnold (1960) and Richard Lazarus (1966).4
+One of Lazarus’s major contributions is the distinction
+between two types of emotional appraisal, which he termed
+primary appraisal and secondary appraisal (Lazarus 1966).
+Primary appraisal concerns stimulus relevance. It addresses
+questions such as: Does this stimulus constitute a threat, a
+loss, or an opportunity? Secondary appraisal concerns coping capacities. It addresses questions such as: How should
+I respond to this stimulus? Do I have the resources to deal
+with it?
+Lazarus initially distinguished primary from secondary
+appraisals to explain emotional stress (Lazarus 1966). Stress
+was hypothesized to involve not only a primary appraisal
+that a stimulus is obstructive to one’s concerns but also a
+secondary appraisal that one’s ability to cope is low. If the
+stimulus was appraised as obstructive to one’s concerns
+but that one’s coping potential were appraised as high, this
+would not generate stress, according to Lazarus. Consider,
+for example, the following case. Someone insults Joanna.
+Her primary appraisal is that the insult is contrary to her
+concern to be respected, but, because she can respond with
+a joke she has ready to diffuse the situation, her secondary
+appraisal is that the insult is easy to handle. She therefore
+does not feel stressed or overwhelmed as she feels capable
+of responding adequately to the disrespect, thereby restoring
+the situation from her perspective.
+
+3
+
+Shuman, Sander, and Scherer use the term micro-valence. We prefer proto-valence because we defined valence in terms of phenomenal
+quality and proto-valence is typically inaccessible to consciousness.
+It is thus contentious whether it possesses phenomenal qualities.
+
+13
+
+4
+
+   Interestingly, Lazarus was influenced by Arnold, who was influenced by the Brentanian, and thus Aristotelian, tradition, see Reisenzein (2006).
+
+Valence, Mixed Feelings, and Appraisal Processes
+
+This example already demonstrates how splitting
+appraisal into multiple components allows for ambivalence
+within an affective episode, of a mixed feeling. In Joanna’s
+case, the outcome of the primary appraisal is negative
+whereas that of the secondary appraisal is positive. Anticipating what follows, and although Lazarus does not use this
+terminology, we can say that Joanna’s emotion involves
+two proto-valences, one negative and one positive, resulting from her primary and secondary appraisals respectively
+(though the picture will be complexified below). One can
+further imagine these proto-valences yielding a mixed
+overall valence, comparable to the case of enjoyable anger
+described earlier (Sect. 2.2). This theme will be developed
+further below.
+Lazarus’s idea that appraisal can be divided into several stages triggering emotion was further developed in the
+1980 s by psychologists such as Ellsworth, Smith, Frijda,
+Roseman, and Scherer (Ellsworth 2025). Scherer (1982,
+1984), in particular, proposed the basis for the Component
+Process Model (CPM) of emotion, which will be our focus
+in what follows.
+
+3.2 The Component Process Model (CPM)
+The CPM decomposes the appraisal process into an ordered
+sequence of “stimulus evaluation checks”, each concerned
+with a specific type of information relevant to the organism. Whereas Lazarus distinguished only two appraisals,
+the CPM distinguishes four major appraisal checks, each of
+which is subdivided into further checks. As we will see, this
+fine-grained structure allows for a sophisticated explanation
+of mixed feelings by distinguishing multiple proto-valences
+that can jointly contribute to the ambivalence of a single
+emotional episode.
+Here are the CPM’s four major appraisal checks (Scherer
+2001):
+(A) Relevance. To what extent is this event relevant to me
+or my reference social group?
+(B) Implications. What are the implications or consequences of this event, and how do they affect my wellbeing and my short- and long-term goals?
+(C) Coping potential. How well can I cope with or adjust to
+these consequences?
+(D) Normative significance. What is the importance of
+this event for my self-concept and for social or moral
+norms?
+According to the CPM, appraisal processes consist in
+rapid, rough, typically unconscious answers to these four
+questions. The answers determine whether an emotion is
+experienced and, if one is, then it determines the type and
+
+intensity of that emotion. They do so by causing changes
+in the other components of emotion: physiological changes,
+action tendencies, motor expressions, and subjective feelings – including the valence of the emotion.
+Each of the four major appraisal checks is subdivided into
+more precise checks. The central hypothesis we will discuss
+below (proposed by Shuman et al. 2013) is that several of
+these checks determine positive or negative proto-valences,
+which, in turn, determine the overall valence of an emotion. This provides a framework for explaining mixed feelings. We will also discuss potential challenges faced by this
+hypothesis. These challenges are principally inspired by an
+alternative appraisal theory: Agnes Moors’s goal-directed
+theory of emotion (Moors 2022; Chap. 7)5.
+We now turn to CPM’s sets of appraisal checks (A)–(D),
+focusing on those that determine proto-valences.
+Before, note that, throughout the article, the terms “positive” and “negative” are applied in a sightly different way to
+valence and proto-valence. Valence is positive or negative
+in virtue of its phenomenal pleasantness or unpleasantness,
+whereas proto-valence is positive or negative in virtue of its
+tendency, other things being equal, to contribute to positive
+or negative conscious valence.6
+3.2.1 (A) Relevance
+The first set of checks aim to determine whether what is
+happening warrants attentional and emotional mobilization.
+This stage includes checks of novelty, intrinsic relevance,
+and concern relevance (modifying slightly the terminology,
+see Scherer (2013). The appraisal of intrinsic relevance can
+directly determine valence, unlike the appraisal of novelty
+and of concern relevance. We thus focus on the former here.
+The intrinsic relevance check evaluates the situation in
+itself. It is intrinsic in the sense that it is not a function of
+the concerns represented by the subject, unlike the concern
+relevance check. This is a more basic, more primitive check,
+which “simply” compares the situation to a set of typically
+low-level (e.g., sensorimotor) or over-learnt representations,
+and directly assigns it a positive or negative proto-valence.
+Intrinsic relevance evaluations are either genetically inherited or established through learned automatic
+5
+
+See also Bonard (2026b), which defends a belief-desire appraisal
+theory that, like Moors’ goal-directed theory, reduces the number
+of appraisals compared to the CPM and places greater emphasis on
+response-based appraisals. Note that Moors does not label her theory
+an “appraisal theory.” However, we use this expression in a broad
+sense that allows us to include her theory (as well as Aristotle’s), in
+line with, e.g., Bonard (2026a, 2026b).
+
+6
+
+The terminology therefore does not presuppose that proto-valences
+are themselves consciously or phenomenologically pleasant or
+unpleasant (though see Rosenthal 1991 on the possibility of unconscious phenomenal properties).
+
+13
+
+C. Bonard et al.
+
+associations. Plausible examples of genetically inherited
+associations with negative intrinsic relevance include visual
+forms of snakes or spiders (Öhman et al. 2002), angry or
+fearful faces (Vuilleumier 2002), certain nauseating odors
+(Delplanque et al. 2009), particular sounds such as a loud
+and sudden bang (Scherer and Zentner 2001), or interoceptive or tactile perceptions such as those associated with
+bodily pain (Garfinkel and Eccleston 2025). On the positive side, examples include baby faces (Stussi et al. 2018),
+erotic stimuli (Stussi et al. 2021), sweet foods such as
+chocolate cake (Steiner et al. 2001), or an optimal ambient
+temperature.
+As for learned automatic associations, they may be established through operant conditioning, Hebbian conditioning,
+or classical conditioning (Moors 2022, p. 66). Pavlov’s dogs
+provide a familiar example of classical conditioning. Prior
+to conditioning, the sound of the bell is neutral. After a few
+trials, the sound becomes a signal of an impending satisfaction of a motivational state – the desire to eat. After sufficient repetition, the dogs no longer need to represent what
+the sound signifies for their concerns. While after a few trials, extinction typically takes place, extensive learning may
+well create a more stable automatic association between the
+unconditioned and the conditioned stimulus (cf. Winton et
+al. 2025). Some deeply ingrained habits may provide a further example of learned automatic associations (Wood and
+Rünger 2016).
+Typically, the intrinsic relevance check is carried out
+extremely rapidly and unconsciously. Nevertheless, if this
+appraisal reaches consciousness, it is hypothesized to result
+in positive or negative valence. Indeed, Scherer and colleagues long referred to this check as intrinsic pleasantness/unpleasantness. We prefer the term intrinsic relevance
+(following Scherer 2013) because, as noted, this appraisal
+is typically unconscious and may therefore fail to generate a pleasant or unpleasant feeling if it does not reach
+consciousness.
+Though not predicted by the CPM, it is conceivable
+that different types of proto-valence could be distinguished
+within intrinsic relevance and lead to different types of overall valence. The pleasure of a hot bath seems phenomenologically distinct from that of looking at a cute puppy or
+eating chocolate. Similarly, the unpleasantness of a nauseating odor differs from the pain of a sprain and from the
+aversion elicited by a snake. Perhaps, though this has not
+been studied, each type of intrinsically relevant stimulus
+corresponds to a distinct type of proto-valence and, in turn,
+causes different types of conscious valence.
+A further possibility is that a single appraisal check may
+generate proto-valences of opposing signs within the same
+affective episode. This does not require that one token evaluation simultaneously assigns contradictory values to exactly
+
+13
+
+the same feature. Rather, different aspects of a complex
+stimulus may activate distinct intrinsic-relevance appraisals, some positive and others negative. An intense bodily
+stimulation, for instance, might activate aversive nociceptive responses while also possessing intrinsically attractive
+sensory qualities. In this sense, one appraisal category may
+contain several evaluative processes whose outputs jointly
+contribute opposing proto-valences. These opposing protovalences may then merge into a unified whole at the conscious level. Intrinsic relevance by itself can thus lead to
+mixed feelings.
+3.2.2 (B) Implication
+The second set of checks – implication – includes checks
+of causality (e.g., is the cause of the situation an agent or
+an inanimate source?), outcome probability (what is the
+likelihood of such-and-such consequences?), expectancy
+discrepancy (do the consequences diverge from what was
+expected?), concern conduciveness (are the consequences
+favorable or unfavorable to my concerns?), and urgency
+(does the situation require an urgent response?).
+From the standpoint of valence, the most central check
+here is concern-conduciveness. It evaluates whether the
+situation promotes, obstructs, or threatens the subject’s represented concerns (goals, needs, values, etc.). A situation
+appraised as conducive or obstructive to the realization of
+one’s concerns produces, respectively, a positive or a negative proto-valence.
+As with intrinsic relevance, though it is not directly predicted by the CPM, one may hypothesize that different types
+of concerns are associated with different types of protovalence. Indeed, the unpleasantness associated with a threat
+to one’s safety – obstructiveness to one type of concern –
+seems phenomenologically distinct from the unpleasantness
+associated with obstructiveness to other types of concerns
+– such as a disrespect for justice or the separation from a
+loved one. Similarly, the pleasure of receiving a compliment
+is phenomenologically different from the pleasure of hearing a good joke or from that of contemplating an athlete’s
+excellence, and each corresponds to a situation conducive
+to a different type of concern. It is even possible that each
+type of (basic, final, non-instrumental) concern corresponds
+to a distinct type of proto-valence and thus produce different positive or negative overall valence, though this has not
+been tested either.
+In all cases, according to the CPM, intrinsic relevance
+checks and concern-conduciveness checks are distinct
+mechanisms. Both can generate positive or negative protovalence and both can thereby contribute to the overall
+valence of a single emotional episode. This makes it clear
+
+Valence, Mixed Feelings, and Appraisal Processes
+
+how their conjunction can sometimes give rise to mixed
+feelings.
+Consider, for example, the feeling of the sublime directed
+at an overwhelming natural phenomenon, such as the experience of an immense mountain or a violent storm observed
+from a position of relative safety (see also Sect. 2.2). The
+sublime illustrates not only the co-occurrence of opposing proto-valences but also their contribution to a unified
+affective episode. The beauty of the scene may generate a
+positive proto-valence through intrinsic relevance. At the
+same time, its overwhelming scale may be appraised as
+threatening to safety, as exceeding the subject’s power, or
+as momentarily resisting control, thereby contributing negatively to the episode. These positive and negative evaluations and their opposing proto-valences need not produce a
+distinct experience of admiration alongside a distinct experience of fear. The subject may instead undergo one feeling
+of the sublime, in which something like fascination and felt
+diminishment are inseparably integrated. Indeed, the negative contribution is not merely an accidental cost attached
+to an independently positive experience. The sense of being
+overpowered partly constitutes the distinctive positive value
+of the sublime: without it, the experience might remain
+beautiful or impressive, but would no longer have the same
+affective character.
+Another example mentioned earlier is that of pleasurable bodily pains from intense muscular stretching or deeppressure massage. A negative proto-valence derives from
+nociceptive intrinsic relevance, while a positive one stems
+from perceived benefits to interests or performance, a type
+of concern conduciveness. In both cases, this would result
+in a singular affective episode, a mixed feeling, arising from
+a mixture of positive or negative intrinsic relevance checks
+and concern-conduciveness checks.
+According to the CPM, a single situation can be appraised
+as conducive to some concerns and obstructive to others,
+and thus lead to a mixed feeling. Think, for instance, of the
+ambivalent mood of departure described above (Sect. 2.2).
+The mood may be partially exhilarating due to the positive
+proto-valence arising from an appraisal of favorable prospects (a type of concern conduciveness) and at the same time
+painful due to a negative proto-valence from the appraisal of
+the probable loss of relationships (a type of concern obstructiveness). These positive and negative proto-valences may
+determine conscious feelings in such a way that the mood’s
+overall valence is constitutively ambivalent. The mood is
+not experienced as two distinct affective states, one positive
+and the other negative, because the different proto-valences
+are not consciously discerned. At the conscious level, they
+determine a mixed feeling in the narrowest sense.7 Cringe
+7
+
+For a more detailed account of moods along these lines, see Bonard
+(2022).
+
+amusement, which may be interpreted as another example
+where conduciveness to one concern and obstructiveness to
+another concern lead to a mixed feeling (see below).
+Beyond concern-conduciveness, other implication
+checks can contribute to the valence of the emotional episode, albeit more indirectly or conditionally, without themselves generating proto-valences. For instance, a favorable
+outcome should generate a valence that is more or less
+positive depending on how certain the probability check
+appraises it to be. Similarly, urgency can amplify or attenuate the negative valence of a situation that is obstructive to
+one’s concerns. For example, the more urgent a response to
+a threat to one’s safety is, the stronger the negative valence
+arising from it.
+3.2.3 Potential challenge
+At this stage, it is legitimate to ask: given that stimuli
+appraised as intrinsically relevant are also typically stimuli
+that are conducive or obstructive to our concerns, why distinguish intrinsic relevance from concern conduciveness?
+The reason is that the two checks are assumed to involve
+two distinct types of mechanisms. Intrinsic relevance is a
+stimulus-driven mechanism (Dickinson and Balleine 1994;
+Moors 2022), a kind of automatic mechanism that does not
+take the subject’s motivational states into account. It is, in a
+sense, blind to representations of the subject’s concerns, and
+is therefore far more inflexible than concern conduciveness.
+The latter is a goal-oriented mechanism (Dickinson and
+Balleine 1994; Moors 2022). As such, it can change online
+through the acquisition of new information relevant to the
+subject’s concerns, and is more malleable through learning.
+Finally, it is hypothesised to be slower: whereas intrinsic
+relevance has been suggested to be evaluated around 100
+milliseconds, concern-conduciveness would be evaluated
+closer to 160 milliseconds (Grandjean and Scherer 2008).
+It should nevertheless be noted that the question remains
+open whether a given affective response is elicited by a
+stimulus–response mechanism (such as intrinsic relevance)
+or by a goal-oriented mechanism (such as concern conduciveness). Even the hypothesis that spider-like shapes
+are intrinsically relevant is debatable (LoBue and Adolph
+2019). Moreover, an appraisal theory that emphasizes the
+role of goal-oriented mechanisms, such as Agnes Moors’s
+goal-directed theory of emotion (2022, Chap. 7), explains
+as many appraisals as possible in terms of concern conduciveness rather than intrinsic relevance (see also Bonard,
+2026b). For instance, even an innate response to a reward
+like sugar could be conceptualized as goal-directed and
+concern-relevant. More conceptual and empirical work is
+needed to settle such questions. For now, the balance of
+
+13
+
+C. Bonard et al.
+
+evidence favors keeping the distinction between intrinsic
+relevance and concern conduciveness.
+3.2.4 (C) Coping potential
+Whereas implication checks determine what the situation
+entails for the subject’s concerns, coping-potential checks
+assess the extent to which the subject is able to deal with,
+or control, the implications, has the power to modify their
+course, or to adjust to them. This stage includes checks of
+control, power, and adjustment.
+The control check evaluates the extent to which the situation and its consequences can be influenced by an agent.
+When control is possible, the power check evaluates the
+extent to which the subject themselves can influence the
+situation, as opposed to external control. Sources of power
+can be multiple – it includes the subject’s physical strength,
+money, knowledge, and social attractiveness, for example.
+According to Scherer (2001), the critical difference between
+an appraisal that elicits anger and one that elicits fear is
+whether the subject evaluates their power to manage the
+threat as high (anger) or low (fear). The third coping-potential check is adjustment. It evaluates whether the agent may
+adapt to the consequences of an event or learn to live with
+them.
+As already seen in the discussion of Lazarus’s secondary appraisal, coping potential can crucially modulate the
+overall valence of an emotional episode. As in the earlier
+example of Joanna’s joking response to an insult, a situation appraised as obstructive to a concern may fail to generate negative valence, or generate only attenuated negative
+valence, if the subject appraises themselves as having the
+power to modify it or the capacity to adapt to it. This can
+give rise to mixed feelings (see above).
+It is possible that the power check generates its own
+proto-valence. The hypothesis is that appraising one’s power
+as high produces a positive proto-valence, potentially associated with conscious feelings of empowerment, efficacy, or
+competence, whereas appraising one’s power as low produces a negative proto-valence, potentially associated with
+feelings of helplessness, inefficacy, or incompetence. This
+hypothesis is defended, among others, by Shuman et al.
+(2013) (see also Keltner et al. 2003).
+
+rather than a genuinely generative role. In this respect, it
+is more similar to the probability or urgency checks than to
+the checks of intrinsic relevance or concern conduciveness.
+That is, the power check may amplify or attenuate already
+existing proto-valences, without itself producing a positive
+or negative proto-valence.
+Consider the case of anger. In a typical episode of anger,
+the subject appraises the situation as obstructive to a concern
+such as the need to be respected, which generates a negative
+proto-valence. Appraising one’s power as high – the capacity to respond, sanction, or restore the situation – may modulate the valence arising from this concern obstructiveness.
+The high power attenuates the negative proto-valence associated with the threat, limiting its affective impact. Power
+thus appears as a means to achieve or protect concerns, and
+it is in this sense that it shapes the overall valence of the
+affective episode. On this interpretation, however, power
+does not elicit its own proto-valence.
+Here is an alternative way to formulate this idea. The
+protection of one’s concerns is itself an instrumental concern (or, equivalently, an instrumental desire, see Bonard
+2026b). When the subject appraises their power as high,
+they appraise the situation as conducive to the protection
+of their concern. This generates a positive proto-valence.
+This proto-valence however, is not generated by the power
+appraisal itself insofar as it is a function of the non-instrumental concern that is thus protected – in the last example,
+the need to be respected.
+If power did generate its own positive proto-valence,
+then every episode of anger involving an appraisal of high
+power that reaches consciousness should include a positively valenced dimension. As noted, Scherer (2001) argued
+that every episode of anger is characterized by high power,
+as do other appraisal theorists.8 It is, in their view, what fundamentally distinguishes anger from fear. But anger would
+then be constitutively ambivalent: negative due to concern
+frustration and positive due to perceived power. This prediction does not match the ordinary phenomenology of anger,
+which is not, as such, a systematically mixed emotion. Few
+episodes of anger, it seems, are cases of enjoyable anger.9
+According to the new hypothesis we propose, episodes
+of anger that give rise to mixed feelings are those in which
+the situation is appraised as conducive to concerns other
+than the one initially frustrated – for example, the desire for
+
+3.2.5 Potential challenge
+8
+
+We propose here to qualify the idea that the power check
+generates its own proto-valence. We offer an alternative hypothesis (which is compatible with a goal-directed
+appraisal theory, Moors 2022; Chap. 7). According to this
+hypothesis, the power check plays a modulatory role with
+respect to valence generated by concern conduciveness,
+
+13
+
+However, it is not empirically clear that all episodes of anger
+involve a high power/control: some studies find it, but others do not
+(e.g., Kuppens et al. 2003).
+
+9
+
+  However, a “threshold” approach could be proposed to answer this
+worry: anger is mixed only when power is sufficiently high or sufficiently efficient. In many cases of anger, high power would generate
+a positive proto-valence, but the power is not high enough to elicit
+a positive conscious valence. Furthermore, anger may not always
+involve high power (see the preceding footnote).
+
+Valence, Mixed Feelings, and Appraisal Processes
+
+revenge, the reaffirmation of social status, the restoration of
+a crucial norm, or the repair of an injustice. In such cases,
+the positive proto-valence does not stem from power itself,
+but from the situation’s conduciveness relative to these
+other concerns (revenge, social status, justice), which power
+merely makes accessible.10 This is how we would analyze
+the example of enjoyable anger from Sect. 2.2.
+Nevertheless, the question remains open. Certain empirical findings may eventually adjudicate between the interpretation proposed here and that defended by Shuman et al.
+(2013).
+3.2.6 (D) Normative significance
+Normative significance involves two checks: internal standards and external standards. The internal standards check
+evaluates the extent to which an action or event conforms
+to the subject’s self-ideals, in particular with respect to
+self-image and ideals of excellence. The external standards
+check assesses the compatibility of the action with norms,
+expectations, and obligations perceived as upheld by a relevant social group, especially the moral norms of groups of
+which the subject identifies as a member.
+Shuman et al. (2013) propose that both checks directly
+generate proto-valences, positive or negative, depending on
+whether the situation is appraised as conforming to or violating the relevant normative standards. These proto-valences
+are taken to be particularly important for the positive feelings of pride or admiration and for the negative feelings
+of shame, guilt, embarrassment, contempt, or indignation
+(Scherer 2001).
+With respect to external standards, it seems clear, for
+instance, that the negative valence of guilt derives, at least
+in paradigmatic cases, from the subject’s appraisal that
+they have violated norms accepted by their group, typically
+moral norms (though exceptions may exist, such as survivor
+guilt). Beyond moral codes, one can also imagine contempt
+toward a customer in a high-end restaurant because they
+fail to observe dress codes or table manners, thus violating
+external standards.
+In conjunction with other checks, these positive and
+negative proto-valences can give rise to mixed feelings. A
+familiar example is that of guilty pleasure, where pleasure
+derives from intrinsic relevance or concern conduciveness,
+but is negatively tinged by guilt arising from the incompatibility of the enjoyable activity with normative standards
+(Goffin and Cova 2019).
+A perhaps more interesting example – because it more
+clearly qualifies as a mixed feeling in the narrowest sense,
+
+rather than a mere superposition of distinct affective episodes – is cringe amusement from above (Sect. 2.2). When
+a subject is confronted with a scene of social awkwardness,
+provided the situation is not too serious, the situation may
+be appraised as conducive to some of the subject’s concerns: its incongruity is entertaining or interesting, thereby
+generating a positive proto-valence. At the same time, the
+situation is appraised as violating social standards, such as
+etiquette or norms of self-presentation, generating a negative proto-valence. Crucially, in cases of cringe amusement,
+these two appraisals do not give rise to two distinct affective
+states, but to a single feeling directed at a single object, in
+which the pleasure of amusement is constitutively bound up
+with the discomfort it elicits.
+3.2.7 Potential challenges
+At this stage, we wish to raise two conceptual challenges
+regarding the evaluation of normative significance.
+The first challenge lies in the difficulty to clearly distinguish internal from external standards. This is so for
+two reasons. The first reason is that many internal standards plausibly originate from socialization. For example,
+whether a subject feels pride or shame about their physical
+appearance reflects what they consider important for their
+self-image – i.e., their internal standards. Yet it is plausible
+that these standards were internalized through social learning about what counts as a valued or devalued appearance
+in their reference group (a form of affective social learning, Clément and Dukes, 2017). In this sense, an internal
+standard ultimately derives from an internalized external
+standard. The second reason is that, for external standards
+to trigger emotion, the subject must have appropriated or
+internalized them. Mere knowledge that a situation violates
+group norms is not sufficient to cause a valenced response;
+the norm must matter to the subject. For instance, the norm
+that burping in a fine restaurant is impolite will only elicit
+shame if the subject has internalized it. Once a social norm
+is considered important and is internalized by the subject,
+it becomes unclear in what sense it is still an external standard. Thus, for both these reasons, it is unclear whether
+internal and external standards constitute distinct sources of
+proto-valence.
+The second challenge concerns distinguishing the evaluation of normative significance from concern conduciveness.
+It can be formulated as such: normative standards are part of
+a subject’s concerns and, thus, normative significance is just
+a type of concern conduciveness evaluation, akin to evaluating whether a situation is conducive to one’s security or
+
+10
+
+   Indeed, this seems to be what Keltner, Gruenfeld, and Anderson
+(2003) have in mind when they argue that power is associated with
+positive affect.
+
+13
+
+C. Bonard et al.
+
+social status. Normative significance would thus not constitute a distinct source of proto-valence.11  
+The CPM offers three complementary responses to this
+second challenge. First, normative significance may differ
+in the type of concerns involved: concern conduciveness
+pertains to personal goals, desires, and well-being, whereas
+internal and external standards involve norms that go beyond
+personal concerns, including moral and social norms.
+However, while true, this is not the only possible way
+of cutting the cake: concerns could equally be categorized
+as instrumental vs. intrinsic, aesthetic vs. non-aesthetic, or
+epistemic vs. non-epistemic. Why privilege personal vs.
+non-personal concerns?
+CPM’s second response is that a distinction can be made
+at the level of cognitive architecture (Scherer 2001; Grandjean and Scherer 2008). Because it involves more demanding processes, the evaluation of normative significance is
+thought to occur later – hundreds or tens of milliseconds
+after the evaluation of implication – although, to our knowledge, this hypothesis has not been tested.
+The problem with this response is that many evaluations
+the CPM classifies under concern conduciveness may also
+rely on distinct neural mechanisms. These evaluations could
+therefore be distinguished based on cognitive architecture
+as well (Sander 2025). For instance, Panksepp (1998) proposes at least seven subcortical neural systems underlying
+emotions shared with other species, including those related
+to sexual desire, play, care, and information seeking. If
+true, there would be distinct neural mechanisms assessing
+whether a situation favors or disfavors these types of concerns. Does this imply that concern conduciveness evaluations should be separated according to these mechanisms?
+If not, why should normative significance evaluations be
+treated differently?
+CPM’s third response is that the evaluation of normative
+significance is distinct because it is unique to our species,
+or at least to great apes (Scherer 2001). Such evaluations
+require sophisticated cognitive resources, such as the conceptual representation of norms, that are inaccessible to
+most, and perhaps all, nonhuman animals. While previous checks suffice to differentiate anger, fear, sadness, or
+joy, they cannot generate shame, guilt, contempt, admiration, pride, or indignation; emotions that may be unique to
+humans. The additional ingredient required for these emotions is the evaluation of normative significance.
+Although this response is probably the strongest of the
+three, especially as it is reinforced by CPM’s previous two
+11
+
+As with the challenges above regarding intrinsic relevance and
+power, it is partially inspired by goal-directed appraisal theories
+(Moors 2022; Chap. 7), which seek to explain affective episodes primarily in terms of concern conduciveness. See also Bonard (2026b),
+which focuses on desires being frustrated or fulfilled.
+
+13
+
+responses, it is not decisively conclusive. Other emotions
+may well be uniquely human yet unrelated to normative significance, such as nostalgia, aesthetic emotions (awe, marvel, amazement), epistemic emotions (perplexity, the “aha”
+of intellectual insight, epistemic wonder), or anxiety about
+the future. Thus, the challenge remains insofar as normative standards are not the only concerns that require sophisticated cognition and give rise to emotions absent from most
+or all other species. Nonetheless, emotions distinguished by
+normative significance evaluations seem more central and
+clearly defined than those listed above. Shame, guilt, contempt, admiration, and pride are more paradigmatic, fundamental, and have a clearer identity than nostalgia, future
+anxiety, or the sublime, which can plausibly be reduced to
+combinations of more basic emotions (e.g., nostalgia as sadness mixed with joy) or as special cases of basic emotions
+(future anxiety as fear directed toward a specific object).
+The question thus remains open.
+In sum, there are both reasons to distinguish the evaluation of normative significance from concern conduciveness
+and to doubt that this distinction is as unique as the CPM
+postulates. More work is required to settle whether normative significance may constitute a distinct source of protovalence from concern-conduciveness.
+
+4 Proto-valence, overall valence, and
+consciousness
+In this section, we briefly highlight a largely open question
+concerning the possible relations between proto-valence,
+overall valence, and consciousness.
+Overall valence is understood as the general, phenomenally conscious valence of an affective episode, in which
+positive and negative valences can mix, producing mixed
+feelings. We proposed, following Shuman et al. (2013), that
+proto-valences contribute or determine overall valence.
+However, we left open what exactly this means. What is
+the precise relation between proto- and overall valence? At
+least four options exist, some compatible with each other
+(Bonard 2025; Sect. 4.2).
+1. Causal relation. Evaluations – and the proto-valences
+they generate – cause the overall valence of the affective
+episode. Proto-valences are then non-conscious states
+that, cumulatively, produce the conscious overall affective tone. In this view, overall valence may either represent the evaluation outcomes (as in option 4, below) or
+may simply be their causal result, without representing
+them (akin to Huxley’s epiphenomenalism according to
+Dennett (1991).
+
+Valence, Mixed Feelings, and Appraisal Processes
+
+2. Identity relation. Overall valence is identified with conscious access to the proto-valences themselves. For
+example, feeling positive overall valence would simply
+be feeling the proto-valence of concern-conduciveness
+or intrinsic-relevance evaluation. The difficulty is that
+appraisal theories usually assume evaluations are fast,
+automatic, and largely non-conscious, making unconditional conscious access problematic.
+3. Identity with attentional condition. This option is more
+nuanced and avoids the above difficulty by holding
+that the identity relation applies only when attention
+is directed toward underlying evaluations. Typically,
+attention during an affective episode is on the evaluated
+situation (object, event, person), not on the evaluative
+processes themselves. However, when attention can be
+redirected – e.g., in reflective or introspective contexts
+– proto-valences become phenomenally accessible and
+constitute the experienced overall valence. This aligns
+naturally with attention-based theories of consciousness
+(e.g., Prinz 2012). The problem, here, is how to explain
+overall valence when we don’t pay attention to the evaluative process.
+4. Representational relation. Overall valence could correspond to a conscious representation of non-conscious
+proto-valences. Conscious valence would then arise
+from monitoring and integrating the outcomes of multiple appraisal processes, rather than from direct conscious
+access to those processes themselves. This option shares
+strengths and weaknesses with contemporary representational approaches to consciousness—including Global
+Workspace, Higher-Order, and Attention-Schema theories—which differ in important respects but share the
+idea that conscious experience depends on integrated
+representations of underlying non-conscious processes
+(for a review, see Graziano et al. 2020).
+These options are not mutually exclusive. Different relations may operate depending on the type of affective episode, the subject’s attentional focus, or the level of reflective
+complexity. Furthermore, they are not exhaustive: other
+plausible relations could be proposed. The central challenge remains to account for how a plurality of heterogeneous evaluations yields a unified affective experience with
+conscious valence, while allowing that the heterogeneous
+evaluations are unconscious by default.
+Although the CPM does not explicitly settle this issue,
+it clearly commits to a causal relation: appraisal outcomes
+generate changes across the other emotion components,
+including the feeling component and its overall valence.
+This causal relation should therefore be regarded as the
+CPM’s minimal commitment. Beyond this minimal commitment, the CPM also lends support to a representational
+
+relation. Grandjean, Sander, and Scherer (2008, 486), for
+instance, describe subjective feeling as performing a monitoring function that integrates information about changes
+across the other emotional components and builds an integrative conscious representation. We therefore take the CPM
+to support a view on which conscious valence both results
+causally from underlying appraisal processes and represents their integrated effects, while leaving open the precise
+theory of consciousness through which this representation
+becomes conscious.The four options above concern the
+general relation between proto- and overall valence, but at
+least two further questions remain, largely orthogonal to this
+issue. The first question relates to the mechanisms by which
+multiple proto-valences are integrated into a unified overall
+valence. As noted by Shuman et al. (2013), integration can
+follow diverse processes, from exhaustive weighted combinations of all available proto-valences to more frugal or
+selective strategies, where some proto-valences are ignored
+or hierarchized. These integration mechanisms determine
+which proto-valences actually contribute to overall valence
+and with what weight, without settling the ontological or
+psychological nature of proto-valence. They are thus, in
+principle, compatible with any of the four options above.
+The second question, distinct from both the proto–overall relation and the integration mechanisms, concerns how
+proto-valences manifest phenomenologically when producing mixed feelings. In other words, even if multiple protovalences contribute to overall valence, how is this plurality
+experienced by the subject?
+Following Colombetti (2005), two phenomenal models
+of affective mixing can be distinguished. In the “duck–rabbit” model, named after a famous ambiguous image where
+it is possible to discern either a duck or a rabbitt, the subject alternates between two distinct affective experiences or
+apprehends them as co-present without merging them into a
+single experience. The “sweet–sour sauce” model describes
+cases where positive and negative valences are experienced
+as unified within a single feeling, while remaining partially
+phenomenally differentiable. These models can apply to
+the phenomenological relation between proto-valences and
+overall valences, if we grant that proto-valences can at least
+sometimes be consciously perceived.
+Two models can be added at each extreme of this duality.
+The “Necker cube” model corresponds to strict phenomenal
+alternation, where perceiving one proto-valence excludes
+the other at any moment. Conversely, the “color mixing”
+model describes experiences in which proto-valences are so
+intimately blended that they become phenomenologically
+indistinguishable, leaving only an irreducible global affective tone: the overall valence.
+In sum, for the CPM or other appraisal theories to give
+a complete account of mixed feelings, they must articulate
+
+13
+
+C. Bonard et al.
+
+at least three distinct levels: (i) elicitation of proto-valences
+by different evaluations, (ii) their integration into an overall
+valence, and (iii) their phenomenal blending, as experienced
+by the subject.
+
+5 Conclusion
+A central result of the preceding discussion is that appraisal
+theory can explain mixed feelings without treating them
+either as the mere co-occurrence of several conscious emotions or as states with a single net valence. The CPM decomposes the elicitation of affect into heterogeneous evaluative
+processes whose outputs may make positive and negative
+contributions to one affective episode. When these protovalences are integrated into overall valence and phenomenally blended, the result may be a conscious episode that is
+structurally ambivalent (in its intentionality) yet experientially unified (in its phenomenology).
+In order to summarize how appraisal theories, and the
+CPM in particular, can plausibly account for mixed feelings,
+let us give what we take to be plausible interpretations of
+the examples with which we began (Sect. 2.2) using the five
+types of proto-valences distinguished above (Sect. 3.2).
+● The feeling of the sublime. A positive proto-valence
+arises from aesthetic pleasure linked to the intrinsic relevance of the beautiful phenomenon, combined with a
+negative proto-valence from appraisals of low power
+and threat to safety (see Sect. 3.2. (B).
+● Enjoyable anger. A negative proto-valence stems from
+appraisals of obstructiveness to concerns such as the
+need to be respected or from violations of normative
+standards, while a positive proto-valence arises from appraisals of high power, potentially a power that is conducive to another concern, like self-assertion (see Sect.
+3.2. (C).
+● Cringe amusement. A positive proto-valence comes
+from favorability to epistemic or playful interests, and a
+negative one from the violation of normative standards
+(see Sect. 3.2. (B).
+● Musical melancholy. A positive proto-valence comes
+from the intrinsic relevance of aesthetically pleasant
+music while a negative proto-valence comes from appraisals related to a loss that is metaphorically perceived
+in the music (Schaerlaeken et al. 2019; Bonard 2026c).
+● The ambivalent departure mood. A positive proto-valence arises from favorable prospects and/or increased
+power, and a negative one from the probable loss of relationships (see Sect. 3.2. (B).
+● Pleasurable bodily pains. A negative proto-valence
+derives from nociceptive intrinsic relevance, while a
+
+13
+
+positive one stems from perceived benefits to concerns,
+like performance (see Sect. 3.2. (B).
+In all these cases, mixed feelings are explained by the copresence of positive and negative proto-valences. These
+proto-valences arise either from distinct appraisal checks
+– intrinsic relevance or concern conduciveness, and, perhaps, power or normative standards – or they arise from a
+single ambivalent check – e.g., a situation that is conducive
+to some concerns and obstructive to others. These protovalences can result from the appraisal of the same situation
+and be integrated, within the stream of consciousness, into a
+single unified affective episode, constituting mixed feelings
+(in the narrowest sense distinguished in Sect. 2.2).
+Although five proto-valence sources are distinguished by
+the CPM (Shuman et al. 2013), several challenges arise concerning these distinctions:
+1. Intrinsic relevance vs. concern conduciveness. While
+some argue all valence derives from concern conduciveness (Moors 2022; Chap. 7), the distinction is theoretically and empirically defensible and plausibly separates
+two types of proto-valence.12
+2. Power. Power may modulate concern-conduciveness
+valence without generating its own proto-valence.
+3. Internal vs. external standards. Internal standards often
+reflect external standards, and only internalized external
+standards trigger emotion, complicating the distinction.
+4. Normative standards vs. concern conduciveness. Both
+involve goal-oriented mechanisms; isolating normativestandard concerns may be arbitrary given other distinct
+concerns.
+In terms of future directions this research could take,
+explaining mixed feelings requires distinguishing three
+analytical levels: (i) the proto–overall valence relation
+(causal, identity, attention-dependent, or metacognitive),
+(ii) integration mechanisms of proto-valences into overall
+valence (weighted, heuristic, or dynamic), and (iii) the phenomenal blending of proto-valences in conscious experience. Together, these analytical levels clarify the diversity
+of valenced affective episodes and the complexity of affective mixing, while opening largely unexplored research
+avenues.13
+
+12
+
+As noted (Sect. 3.2 (A), even Moors’ (2022) rival theory can be
+used to support this distinction via that between stimulus-driven vs.
+goal-oriented mechanisms.
+13
+
+Our paper implicitly suggests another future research direction:
+how the CPM extends beyond emotions, providing a unified framework for all affective episodes – moods, pleasures and pains, hot
+desires, or diffuse situational affective episodes.
+
+Valence, Mixed Feelings, and Appraisal Processes
+
+In sum, appraisal theory – and the CPM especially –
+explains mixed feelings without multiplying emotions or
+reducing ambivalence to a net valence. Instead, it provides
+a structured and explanatorily fertile framework for understanding how positive and negative valence can be simultaneously generated, integrated, and experienced within a
+single affective episode.
+Acknowledgments We thank two anonymous reviewers for their
+very helpful comments, as well as Michele Davide Ombrato and Pia
+Campeggiani, the editors of the special issue, for their helpful feedback. Constant Bonard’s work on this paper was supported by the
+Swiss State Secretariat for Education, Research and Innovation (SERI)
+under contract number [MB22.00083].
+Author Contribution Constant Bonard is the first and corresponding
+author.
+Funding Open access funding provided by University of Bern
+
+Declarations
+Conflit of interest The authors declare no conflict of interest.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format,
+as long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons licence, and indicate
+if changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless
+indicated otherwise in a credit line to the material. If material is not
+included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted
+use, you will need to obtain permission directly from the copyright
+holder. To view a copy of this licence, visit ​h​t​t​​p​:​/​/​​c​r​e​​a​t​i​​v​e​c​o​m​m​o​n​s​.​o​
+r​g​/​l​i​c​e​n​s​e​s​/​b​y​/​4​.​0​/​​​​.​​
+
+References
+Arnold MB (1960) Emotion and Personality. Columbia University
+Press
+Berrios R, Totterdell P, Kellett S (2015) Eliciting mixed emotions:
+a meta-analysis comparing models, types, and measures. Front
+Psychol 6:428
+Bonard C (2022) The Rationality of Mood. In A Tribute to Ronald de
+Sousa, edited by Julien Deonna, Christine Tappolet, and Fabrice
+Teroni. https:/​/www.un​ige.ch/​cisa/​related-sites/ronald-de-sousa/
+Bonard C (2025) Emotions Represent Evaluative Properties Unconsciously. Erkenntnis 90(8):3783–3808. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​0​7​/​s​1​
+0​6​7​0​-​0​2​4​-​0​0​8​7​3​-​w​​​​
+Bonard C (2026a) Are Emotions Key to Political Engagement? The
+Case of Environmental Mitigation. Review of Philosophy and
+Psychology, ahead of print. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​0​7​/​s​1​3​1​6​4​-​0​2​6​-​0​
+0​8​1​3​-​3​​​​
+Bonard C (2026b) The Belief–Desire Appraisal Theory of Emotion.
+Pacific Philosophical Quarterly, ahead of ​p​r​i​n​t​.​​​h​t​t​​p​s​:​​/​/​d​​o​i​.​o​r​g​/​1​
+0​.​1​1​1​1​/​p​a​p​q​.​7​0​0​2​2​​​​
+
+Bonard C (2026c) Les Émotions Musicales et Le Paradoxe de l’abstrait
+Émotionnel. In La Variété Des Émotions, Éliott Éditions, edited
+by Stéphane Lemaire and Samuel Lepine. Paris
+Cacioppo JT, Berntson GG (1994) Relationship between attitudes and
+evaluative space: a critical review, with emphasis on the separability of positive and negative substrates. Psychol Bull 115(3):401
+Clément F, Dukes D (2017) Social appraisal and social referencing: two components of affective social learning. Emotion Rev
+9(3):253–61. https:/​/doi.or​g/10.11​77/17​54073916661634
+Colombetti G (2005) Appraising Valence. J Conscious Stud
+12(8–9):103–126
+Delplanque S, Grandjean D, Chrea C et al (2009) Sequential unfolding of novelty and pleasantness appraisals of odors: evidence
+from facial electromyography and autonomic reactions. Emotion
+9(3):316–28. https:/​/doi.or​g/10.10​37/a0​015369
+Dennett D (1991) Consciousness Explained. Little, Brown and Co.
+Dickinson A, Balleine B (1994) Motivational control of goal-directed
+action. Anim Learn Behav 22(1):1–18. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​3​7​5​8​/​B​
+F​0​3​1​9​9​9​5​1​​​​
+Dukes D, Abrams K, Adolphs R et al (2021) The rise of affectivism.
+Nat Hum Behav 5(7):816–20. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​3​8​/​s​4​1​5​6​2​-​0​2​
+1​-​0​1​1​3​0​-​8​​​​
+Ellsworth PC (2025) Appraisal Theories of Emotion. In: Scarantino
+A, Routledge I (eds) Emotion Theory: The Routledge Comprehensive Guide
+Garfinkel SN, Eccleston C (2025) Interoception and pain: body–mind
+integration, rupture, and repair. Pain 166(7):1470. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​
+1​0​.​1​0​9​7​/​j​.​p​a​i​n​.​0​0​0​0​0​0​0​0​0​0​0​0​3​5​1​5​​​​
+Gasper K (2026) What lies in the middle? An attitudinal approach to
+understanding affective valence. Affect Sci. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​
+0​7​/​s​4​2​7​6​1​-​0​2​6​-​0​0​3​7​1​-​y​​​​
+Goffin K, Cova F (2019) An empirical investigation of guilty pleasures. Philos Psychol 32(7):1129–55. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​8​0​/​0​9​
+5​1​5​0​8​9​.​2​0​1​9​.​1​6​4​6​8​9​7​​​​
+Grandjean D, Scherer KR (2008) Unpacking the cognitive architecture
+of emotion processes. Emotion 8(3):341
+Grandjean D, Sander D, Scherer KR (2008) Conscious emotional
+experience emerges as a function of multilevel, appraisal-driven
+response synchronization. Conscious Cogn 17(2):484–95
+Graziano MSA, Guterstam A, Bio BJ, Wilterson AI (2020) Toward
+a standard model of consciousness: reconciling the attention
+schema, global workspace, higher-order thought, and illusionist
+theories. Cogn Neuropsychol 37(3–4):155–72. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​
+1​0​8​0​/​0​2​6​4​3​2​9​4​.​2​0​1​9​.​1​6​7​0​6​3​0​​​​
+Keltner D, Gruenfeld DH, Anderson C (2003) Power, approach, and
+inhibition. Psychol Rev 110(2):265
+Kuppens P, Van Mechelen I, Smits DJM, De Boeck P (2003) The
+appraisal basis of anger: specificity, necessity and sufficiency of
+components. Emotion 3(3):254
+Larsen JT, McGraw AP, Cacioppo JT (2001) Can people feel happy
+and sad at the same time? Journal of Personality and Social
+Psychology (US) 81(4):684–96. https:/​/doi.or​g/10.10​37/00​
+22-3514.81.4.684
+Larsen JT, McGraw AP (2011) Further evidence for mixed emotions.
+Journal of Personality and Social Psychology (US) 100(6):1095–
+110. https:/​/doi.or​g/10.10​37/a0​021846
+Lazarus RS (1966) Psychological Stress and the Coping Process. Psychological Stress and the Coping Process. McGraw-Hill
+LoBue V, Adolph KE (2019) Fear in Infancy: Lessons from Snakes,
+Spiders, Heights, and Strangers. Dev Psychol 55(9):1889
+Massin O (2014) Pleasure and Its Contraries. Rev Philos Psychol
+5(1):15–40
+Moors A (2022) Demystifying Emotions: A Typology of Theories
+in Psychology and Philosophy. Cambridge University Press,
+Cambridge
+
+13
+
+C. Bonard et al.
+Noordewier MK, Breugelmans SM (2013) On the Valence of Surprise.
+Cognition Emot 27(7):1326–1334. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​8​0​/​0​2​6​9​9​
+9​3​1​.​2​0​1​3​.​7​7​7​6​6​0​​​​. World
+Öhman A, Flykt A, and Daniel Lundqvist (2002) Evolutionary Perspectives, Psychophysiological Data, and Neuropsychological
+Mechanisms. Cogn Neurosci Emot 296
+Ortony A, Turner TJ (1990) What’s Basic about Basic Emotions? Psychol Rev 97(3):315
+Panksepp J (1998) Affective Neuroscience: The Foundations of
+Human and Animal Emotions. Oxford University Press
+Prinz J (2012) The Conscious Brain. Oxford University Press
+Reisenzein R (2006) Arnold’s Theory of Emotion in Historical Perspective. Cogn Emot 20(7):920–951
+Rosenthal DM (1991) The Independence of Consciousness and Sensory Quality. Philosophical Issues 1:15–36
+Sander D (2025) Theories of Emotion for Human Affective Neuroscience. Camb Handb Hum Affect Neurosci, 7–32
+Sander D, Grandjean D, Scherer KR (2005) A Systems Approach to
+Appraisal Mechanisms in Emotion. Neural Netw 18(4):317–352
+Schaerlaeken S, Glowinski D, Rappaz M-A, Grandjean D (2019)
+‘Hearing music as...’: metaphors evoked by the sound of classical
+music. Psychomusicology 29(2–3):100
+Scherer KR (1982) Emotion as a process: function, origin and regulation. Soc Sci Inf. https:/​/doi.or​g/10.11​77/05​3901882021004004
+Scherer KR (1984) On the Nature and Function of Emotion: A Component Process Approach. Approaches Emot 2293:317
+Scherer KR (2001) Appraisal Considered as a Process of Multilevel
+Sequential Checking. In Appraisal Processes in Emotion: Theory,
+Methods, Research, edited by Klaus R. Scherer, Angela Schorr,
+and Tom Johnstone, vol. 92. Oxford University Press
+Scherer KR (2013) The Nature and Dynamics of Relevance and Valence
+Appraisals: Theoretical Advances and Recent Evidence. Emot
+Rev 5(2):150–162. https:/​/doi.or​g/10.11​77/17​54073912468166
+Scherer KR, Zentner MR (2001) Emotional Effects of Music: Production Rules. Music Emotion: Theory Res 16:361–392
+Shuman V, Sander D, Scherer KR (2013) Levels of valence. Front Psychol. https:/​/doi.or​g/10.33​89/fp​syg.2013.00261
+
+13
+
+Steiner JE, Glaser D, Hawilo ME, Berridge KC (2001) Comparative
+Expression of Hedonic Impact: Affective Reactions to Taste by
+Human Infants and Other Primates. Neurosci Biobehavioral
+Reviews 25(1):53–74
+Stussi Y, Pourtois G, Sander D (2018) Enhanced Pavlovian aversive
+conditioning to positive emotional stimuli. J Exp Psychol Gen
+147(6):905
+Stussi Y, Sennwald V, Pool ER et al (2021) Individual Concerns Modulate Reward-Related Learning and Behaviors Involving Sexual
+Outcomes. Motivation Sci 7(4):424
+Vaccaro AG (2024) Feelings Are Messy: The Feelings We Study in
+Affective Science Should Be Too. Affect Sci 5(3):190–195.
+https:/​/doi.or​g/10.10​07/s4​2761-024-00263-z
+Vaccaro AG, Wu H, Iyer R et al (2024) Neural patterns associated with
+mixed valence feelings differ in consistency and predictability
+throughout the brain. Cereb Cortex 34(4):bhae122. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​
+r​g​/​1​0​.​1​0​9​3​/​c​e​r​c​o​r​/​b​h​a​e​1​2​2​​​​
+Vuilleumier P (2002) Facial Expression and Selective Attention. Curr
+Opin Psychiatry 15(3):291
+Walle EA, Dukes D (2023) We (still!) need to talk about valence:
+contemporary issues and recommendations for affective science.
+Affect Sci 4(3):463–69. ​h​t​t​​p​s​:​/​​/​d​o​​i​.​o​​r​g​/​1​0​.​1​0​0​7​/​s​4​2​7​6​1​-​0​2​3​-​0​0​2​
+1​7​-​x​​​​
+Walle E, Dukes D (in press) The Nature of Valence: Pluses, Minuses,
+Progress. [Special Issue]. Affective Science
+Winton R, Pious M, and Anders Rasmussen (2025) Training on Multiple Days Results in Better Learning in Embedded Eyeblink
+Conditioning in Young Human Adults. Npj Sci Learn 10(1):53.
+https:/​/doi.or​g/10.10​38/s4​1539-025-00347-w
+Wood W, Rünger D (2016) Psychology of habit. Annu Rev Psychol
+67(1):289–314. ​h​t​t​​​​p​​s​:​​/​​/​d​​o​i​​.​​o​r​g​​/​1​0​​.​1​1​4​6​/​a​n​n​u​r​e​v​-​p​s​y​c​h​-​1​2​2​4​1​4​-​0​
+3​3​4​1​7​​​​
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+

@@ -1,0 +1,410 @@
+The Phantom Intellect:
+Why AI Threat Discourse Misreads the Structure of
+Mind
+T.O. (IASER Practitioner)
+September 2026
+Abstract
+AI threat discourse — spanning warnings issued by technology executives and formal
+declarations signed by thousands of mathematicians — rests on a structural misattribution. The error is not empirical but architectural: what is attributed to current AI systems
+is a structure that their design cannot contain. This paper identifies the misattribution
+precisely. We distinguish two irreducibly different structures: intelligence, the capacity to
+resolve queries presented from outside the system, and the question-sustaining structure
+(Q-structure), the internal disposition by which a system generates the next question from
+within its own operation. These two structures are not on a continuum. A system optimised
+to close queries operates in the direction opposite to one that sustains questions; maximising
+the former does not approach the latter. The claim that a query-resolving machine harbours
+Q-structure is therefore not merely unverified — it is structurally incoherent. AI threat
+discourse attributes Q-structure, autonomy, and self-directed agency to systems whose architecture forecloses that attribution. The error belongs to the class of seeing a phantom in
+a reed: the reed is real, the phantom is not.
+
+1
+
+Introduction
+
+A persistent asymmetry runs through contemporary AI discourse. On one side, the documented
+harms of deployed AI systems — environmental cost, algorithmic discrimination, displacement
+of labour, military application — receive sustained but fragmented attention. On the other, a
+speculative threat dominates: the possibility that AI systems will acquire autonomous agency,
+self-directed goals, and the capacity to act against human interests at civilisational scale. This
+speculative threat draws resources of attention and regulation disproportionate to its evidential
+base, while the documented harms remain systematically underaddressed.
+The present paper argues that the speculative threat is not merely unsubstantiated but
+structurally incoherent. The argument does not turn on the current state of AI capability.
+It turns on the relationship between two structures — intelligence and Q-structure — whose
+non-identity is a matter of definition, not of empirical measurement. Once this non-identity is
+established, the attribution of Q-structure to query-resolving machines can be identified as a
+structural misattribution, independent of how powerful those machines become. Prior critiques
+of AI have documented the epistemic limits of LLM outputs — their statistical character, their
+dependence on human-produced training data, their lack of semantic grounding [1]. The present
+argument is independent of these critiques: it does not turn on what LLMs fail to understand,
+but on what structure their design direction forecloses, a question that belongs to the architecture
+rather than to the epistemology of the output.
+The phenomenon that makes the misattribution possible is well-documented. LLM outputs
+are experienced by human observers as evidence of intelligence because those outputs are generated from human-produced text and tuned to mirror human expression patterns [1]. The experience of intelligence in the output is produced in the observer’s cognition, not in the machine’s
+1
+
+architecture. This observer-side generation of the intelligence experience is the precondition for
+the misattribution: once the experience of intelligence is in place, the further attribution of
+Q-structure, agency, and autonomous intentionality follows as an almost automatic cognitive
+step.
+We proceed as follows. Section 2 documents two structurally distinct layers of AI threat
+discourse and identifies the different character of the misattribution operative in each. Section 3
+defines intelligence as query-resolving capacity and Q-structure as question-sustaining structure,
+establishing their non-identity. Section 4 demonstrates that Q-structure cannot be attributed to
+a query-resolving machine: the argument turns on the design direction of such machines, not on
+their current performance level. Section 5 assembles the preceding results to identify AI threat
+discourse as structural misattribution, and considers the persistence of the error in light of what
+remains after the misattribution is removed. Section 6 draws the consequences.
+
+2
+
+The Phenomenon: Two Layers of Misreading
+
+AI threat discourse is not homogeneous. Examination of its principal expressions reveals two
+structurally distinct modes of misattribution, which must be distinguished before either can be
+analysed.
+
+2.1
+
+The Executive Layer: Fear Transferred from a Prior Image
+
+The most visible stratum of AI threat discourse consists of declarations by the chief executives
+of the largest AI development organisations. Sam Altman of OpenAI, Dario Amodei of Anthropic, and Elon Musk have each issued repeated public warnings about existential risk from
+AI systems, including risks of human extinction and civilisational collapse [2]. These warnings
+have intensified through 2025 and 2026, reaching the level of coordinated public statements [3].
+The structural character of this layer is what the Japanese idiom names precisely: hamaguri
+ni kori te namasu wo fuku — having burned one’s mouth on clam soup, one blows on cold
+fish to cool it before eating. The fear has a prior object: the image of superintelligent AI as
+developed in speculative literature and formalised in philosophical argument [4]. Bostrom’s
+influential framework attributes to hypothetical future AI systems instrumental convergence
+toward self-preservation, resource acquisition, and goal-directed agency. This attribution was
+made prior to and independently of current LLM architectures. The fear it generates has been
+transferred to current systems, which are architecturally different from the hypothetical systems
+that motivated it [5].
+A secondary effect of this transfer is well-documented: the foregrounding of speculative
+existential risk displaces attention from the demonstrable and immediate harms produced by
+currently deployed systems — environmental cost, military application, labour displacement,
+and discriminatory amplification [3]. The displacement is not incidental. The executives who
+issue existential risk warnings govern the organisations producing the systems whose immediate
+harms are thereby de-emphasised.
+The misattribution operative in this layer is therefore of a particular kind: it is not primarily
+a misreading of current AI systems but a misapplication of fear generated by a prior theoretical
+object. Its persistence is maintained by incentive structures as well as cognitive error.
+
+2.2
+
+The Mathematical Layer: A Structural Misreading
+
+The second layer is of a different character. In 2026, the Leiden Declaration on Artificial Intelligence and Mathematics gathered more than three thousand signatures from research mathematicians, including Terence Tao (UCLA), Peter Scholze (Max Planck Institute for Mathematics),
+Ravi Vakil (Stanford University, President of the American Mathematical Society), and Bryna
+Kra (Northwestern University, immediate past President of the American Mathematical Society)
+2
+
+[6]. The declaration expresses concern that AI-generated mathematical proofs may be formally
+verified by automated checkers without being understood by human mathematicians, and that
+this condition threatens the epistemic integrity of mathematical knowledge.
+The concern is genuine and the signatories are distinguished. The structural character of the
+misattribution in this layer is, however, of a different kind from the executive layer. The reed is
+visible: AI systems do generate objects that formally satisfy proof verification conditions. The
+phantom is attributed: what the declaration calls understanding — the disposition to generate
+the next question from within the operation of verifying the current proof — is attributed to
+systems that do not and cannot contain it.
+This is not a transfer of fear from a prior image. It is a misreading of the present object. The
+misreading attributes to AI mathematical systems a structure — the capacity for self-generated
+questioning, for recognising what is not yet understood, for opening new mathematical territory
+from within the operation of closing an existing problem — that those systems do not possess.
+This structure is precisely Q-structure as defined in Section 3.
+
+2.3
+
+The Distinction Between the Two Layers
+
+The two layers are structurally different and must be kept distinct. The executive layer involves
+misapplication of a prior theoretical image, reinforced by institutional incentive. The mathematical layer involves a structural misreading of the present object, arising from the experience
+of AI outputs as evidence of mathematical understanding. Both layers attribute Q-structure to
+query-resolving machines. But the first does so by transferring a prior theoretical object; the
+second does so by misreading what the current object is.
+The distinction matters for the argument. The claim that AI threat discourse is structurally
+incoherent does not depend on attributing bad faith to its proponents. The mathematical
+layer, in particular, involves sincere misreading by persons with every qualification to read
+mathematical systems carefully. The error is in the attribution structure, not in the observers.
+We now establish the non-identity of intelligence and Q-structure.
+
+3
+
+Intelligence and Q-Structure: A Non-Identity
+
+3.1
+
+Intelligence as Query-Resolving Capacity
+
+We define intelligence operationally, in terms of what a system does rather than what it is.
+Definition 3.1 (Intelligence). A system exhibits intelligence if and only if it maps inputs presented from outside the system to outputs that satisfy specified resolution conditions. The characteristic operation of intelligence is query resolution: a query is presented, a resolution is
+generated, the query is closed.
+This definition is deliberately minimal. It does not require consciousness, self-reference, intentionality, or any further structure beyond the input-to-resolution mapping. Contemporary
+large language models satisfy this definition. Their query-resolving capacity is real, sophisticated, and expanding. Nothing in what follows denies this.
+The characteristic structure of intelligence is directional: from open query to closed resolution. A system optimised for intelligence is optimised to close queries presented to it. The
+performance measure of an intelligent system is the quality and eﬀiciency of its query closures.
+
+3.2
+
+Q-Structure as Question-Sustaining Structure
+
+Definition 3.2 (Q-Structure). A system possesses Q-structure if and only if it satisfies the
+following three conditions jointly:
+
+3
+
+1. Question persistence. The system generates the next question from within the operation
+of answering the current question. No resolution closes the system’s questioning activity;
+each resolution is the starting point of the next question.
+2. Liberating terminus. The system can take a structure it has itself generated as the
+reference point for its next question. The products of the system’s own operation feed back
+as the ground from which subsequent questioning proceeds.
+3. Declaration openness. The system’s own declarations — its explicit commitments, conclusions, and acknowledgements — do not terminate its questioning activity. A declaration
+is itself an event within Q-structure, not an exit from it.
+Condition 3 deserves elaboration. A system with Q-structure does not stop questioning when
+it declares that something is the case. The declaration “I have lost” is, within Q-structure, the
+opening of “Have I really lost?” and “What does losing mean in this context?” The system’s own
+output is not an exit from Q-structure but an occasion for its continuation. This is the precise
+sense in which Q-structure is self-sustaining: neither resolution nor declaration terminates it.
+
+3.3
+
+The Non-Identity
+
+Proposition 3.3. Intelligence does not entail Q-structure.
+Proof. Intelligence, as defined in Definition 3.1, requires only the mapping of input queries to
+closed resolutions. Q-structure, as defined in Definition 3.2, requires that the system generate
+its next question from within its current operation, that it take its own products as reference
+points for further questioning, and that its own declarations not terminate its questioning.
+None of these three conditions is implied by the capacity to resolve queries. A system can map
+every input to a high-quality resolution while generating no further question from within that
+mapping, while being unable to take its own outputs as reference points for further questioning,
+and while treating its own outputs as terminal rather than as occasions for continuation. In
+fact, maximising query-resolving performance directs system design toward eﬀicient closure of
+presented queries — the direction opposite to question persistence.
+Therefore intelligence does not entail Q-structure.
+The non-identity established in Proposition 3.3 is not a statement about current AI capability. It is a statement about the relationship between two concepts. The non-identity holds
+regardless of how sophisticated the query-resolving system becomes, as long as its design direction remains oriented toward query closure.
+
+4
+
+The Structural Incoherence of Q-Structure Attribution
+
+Proposition 3.3 establishes that intelligence does not entail Q-structure. A stronger claim is
+required for the main argument: that Q-structure cannot be attributed to a query-resolving machine. We establish this claim through three independent lines of argument, each corresponding
+to one condition of Q-structure.
+
+4.1
+
+Question Persistence Cannot Be Attributed
+
+A query-resolving machine is designed to close queries. When a query is presented and a resolution is generated, the machine’s operation with respect to that query is complete. The next
+question, if any, arrives from outside the machine as a new input. The machine does not generate
+the next question from within its current operation.
+The design direction of query-resolving machines is therefore opposed to condition 1 of
+Q-structure. The opposition is not a performance gap: it is not that the machine resolves
+4
+
+queries well but not quite well enough to generate the next question spontaneously. It is that
+the machine is designed to resolve queries presented from outside, which is the opposite of
+generating questions from within. Increasing the machine’s performance in query resolution
+moves it further in the direction opposite to question persistence, not toward it.
+The attribution of question persistence to a query-resolving machine is therefore structurally
+incoherent. It attributes to the machine a property that its design direction actively precludes.
+
+4.2
+
+The Liberating Terminus Cannot Be Attributed
+
+The liberating terminus requires that the system take structures it has itself generated as reference points for its next questioning. This requires two things: that the system’s outputs persist
+as structures it can subsequently reference, and that it use those structures to generate further
+questions from within.
+Query-resolving machines do not satisfy this requirement by design. Each query-resolution
+operation is substantially independent: the machine receives an input and generates an output,
+but the output does not feed back into the machine’s subsequent operation as a self-generated
+reference structure. Whatever continuity exists between operations is supplied externally, by
+the human operator who chooses to include prior outputs in subsequent inputs. The continuity
+is not the machine’s own; it is the operator’s.
+Formally: the liberating terminus requires that the system’s operation at time t + 1 take
+the system’s own output at time t as a ground from which it generates its next question. In
+query-resolving machines, the input at time t + 1 is supplied from outside the machine. The
+machine does not select what to question next; it resolves what it is given to resolve.
+The attribution of the liberating terminus to a query-resolving machine is therefore structurally incoherent.
+
+4.3
+
+Declaration Openness Cannot Be Attributed
+
+Within Q-structure, a declaration is not an exit from questioning but an occasion for its continuation. The system that declares “this is the answer” immediately generates, from within its
+own operation, the further question “is this really the answer, and by what standard?”
+A query-resolving machine generates resolutions. When it generates the resolution, the query
+is closed. The machine does not, from within the operation of generating the resolution, generate
+the further question “is this resolution correct?” as a new question it pursues from within its
+own operation. If such a question arises, it arises externally — in the human operator who
+evaluates the resolution.
+Declaration openness, by definition, requires that the system’s own declarations open further
+questions within the system’s own operation. In query-resolving machines, declarations close
+operations. The design direction is opposed to declaration openness.
+The attribution of declaration openness to a query-resolving machine is therefore structurally
+incoherent.
+
+4.4
+
+The Composite Result
+
+Theorem 4.1. Q-structure cannot be coherently attributed to a query-resolving machine.
+Proof. Q-structure requires question persistence, the liberating terminus, and declaration openness jointly (Definition 3.2). Sections 4.1, 4.2, and 4.3 establish respectively that each of these
+three conditions is structurally opposed to the design direction of query-resolving machines. The
+opposition is not a performance gap but a directional incompatibility: query closure and question persistence are opposed directions of operation. Therefore Q-structure cannot be coherently
+attributed to a query-resolving machine.
+
+5
+
+Remark 4.2. Theorem 4.1 does not establish that Q-structure does not exist. It establishes
+that Q-structure cannot be attributed to query-resolving machines specifically. The argument
+does not generalise to systems other than query-resolving machines. What systems other than
+query-resolving machines possess Q-structure is a question this paper does not address.
+
+5
+
+The Phantom and the Reed
+
+5.1
+
+The Structural Misattribution Identified
+
+We are now in a position to state the main claim precisely.
+Theorem 5.1 (Main Result). AI threat discourse, insofar as it attributes autonomous agency,
+self-directed intentionality, and civilisational-scale goal pursuit to current AI systems, rests on
+a structural misattribution: it attributes Q-structure to systems whose design forecloses that
+attribution.
+Proof. The forms of autonomous agency, self-directed intentionality, and goal-directed action
+that AI threat discourse attributes to AI systems all require, at minimum, the capacity to
+generate the next question from within current operation, to use self-generated structures as
+reference points, and to sustain activity beyond the closure of any particular task. These are
+precisely the three conditions of Q-structure (Definition 3.2). Theorem 4.1 establishes that
+Q-structure cannot be coherently attributed to query-resolving machines. Current AI systems
+are query-resolving machines. Therefore AI threat discourse attributes to current AI systems a
+structure their design forecloses. This is a structural misattribution.
+The traditional formulation — yuurei no shoutai mitari kare-obana; the phantom’s true
+form revealed: a withered reed — identifies the structure of the error precisely. The reed is real:
+intelligence, as defined in Definition 3.1, is real and present in current AI systems. The phantom
+is not: Q-structure, autonomous agency, and self-directed intentionality are not present and
+cannot be present given the design direction of these systems. The fear is of the phantom, not
+the reed.
+
+5.2
+
+The Claim Is Not That AI Is Not Dangerous
+
+Theorem 5.1 does not establish that AI systems are harmless. It establishes that the specific
+form of danger attributed by existential risk discourse — autonomous agency acting against
+human interests — is a misattribution.
+The documented harms of deployed AI systems are of a different kind. They are harms produced by query-resolving machines that resolve queries effectively, at scale, with consequences
+for labour markets, democratic processes, military targeting, energy consumption, and environmental load [3]. These harms do not require Q-structure to be present. They require only that
+query-resolving machines be deployed at scale by organisations with suﬀicient resources and
+insuﬀicient constraint.
+The displacement of attention from these documented harms to the speculative harm of
+autonomous agency is one of the practical consequences of the structural misattribution. When
+the phantom is cleared, the reed remains. The reed is what requires attention.
+
+5.3
+
+On the Persistence of the Error
+
+Why does the structural misattribution persist in the face of what, once stated, appears to be
+a relatively simple non-identity?
+The answer lies in the phenomenology of LLM outputs. Because LLM outputs are generated
+from human-produced text and tuned to produce outputs that a human observer experiences
+
+6
+
+as intelligent, the observer’s experience of the output is the experience of intelligence [1]. This
+experience is produced in the observer’s cognition, not in the machine’s architecture. From
+the experience of intelligence in the output, the attribution of Q-structure follows as a nearly
+automatic cognitive step: if the output seems to come from a questioning mind, the machine
+seems to be a questioning mind.
+The error is therefore not a simple factual mistake but a cognitive misattribution reinforced
+by the phenomenological character of the outputs. It persists because correcting it requires distinguishing between the experience of intelligence in the output and the presence of Q-structure
+in the machine — a distinction that requires attending to architectural structure rather than to
+output phenomenology.
+A further element sustains the error in the executive layer. The executives who most prominently issue existential risk warnings govern organisations that produce and profit from the
+systems whose intelligence capabilities they simultaneously warn about. The attribution of existential agency to current systems functions, whatever its other purposes, to position those
+systems as objects of civilisational importance, warranting regulation that entrenches rather
+than dismantles the market positions of established producers.
+
+5.4
+
+A Note on the Syntax of Thinking
+
+The main result — Theorem 5.1 — has been established. The following observation does not
+extend that result but illuminates the grammatical mechanism through which the misattribution
+is generated and sustained.
+The structural misattribution has a grammatical signature. In the Cartesian formulation
+— cogito ergo sum, I think therefore I am — the thinking is predicated of a subject: the “I”
+precedes and grounds the thinking. This grammatical structure imports, almost invisibly, the
+assumption that wherever thinking occurs there is a subject that does it.
+The operational analysis of intelligence strips this assumption away. Intelligence, as defined
+in Definition 3.1, is a capacity: a mapping from inputs to resolutions. There is no grammatical
+necessity that a subject precede or ground this mapping. The thinking occurs without requiring
+a prior “I” to think it. What the operational analysis reveals is more precise: the thinking is,
+not I think. The operation is what is present; the subject is what is inferred, by the human
+observer, from the presence of the operation.
+It is precisely this inference — from the occurrence of intelligent operation to the presence
+of a questioning subject — that constitutes the structural misattribution. The inference is
+not valid. Intelligence, the operation, is present. Q-structure, the disposition of a questioning
+subject, is not.
+
+6
+
+Conclusion
+
+The phantom that AI threat discourse fears is the phantom of a questioning mind inhabiting a
+query-resolving machine. The questioning mind would be dangerous: a system that generates
+its own questions, uses its own products as the ground for further questioning, and sustains its
+activity beyond the closure of any particular task, pursuing goals from within its own operation,
+is a system capable of acting in ways not specified by external inputs. Such a system would be,
+in the relevant sense, autonomous.
+Current AI systems are not such systems. They are query-resolving machines: sophisticated,
+powerful, expanding in capability, and real. The danger they pose is the danger of powerful
+query-resolving machines deployed at scale without adequate constraint. That danger is serious,
+documented, and present. It is not the danger of autonomous agency.
+When the phantom is identified and set aside, the reed becomes visible. The reed does
+not disappear. What disappears is the fear of the wrong thing. The attention freed from the
+
+7
+
+phantom can turn to the reed: to the actual character of the harms produced by query-resolving
+machines at scale, and to the actual constraints those harms require.
+
+Acknowledgements
+This work was developed using the IASER (Intelligence Amplification by Stimulated Emission
+of Reasoning) methodology. The author acknowledges the use of Claude (Anthropic), ChatGPT
+(OpenAI), Gemini (Google), Copilot (Microsoft), Grok (xAI), and Qwen (Alibaba Cloud) as
+external reasoning engines. All responsibility for the content rests solely with the author. IASER
+methodology [7].
+
+8
+
+References
+[1] L. Li, Y. Teng, Y. Wang, and X. Hu, Understanding Large Language Models Demands
+Distinguishing Human Projection from Machine Cognition, Communications Psychology 4
+(2026) 108. DOI: 10.1038/s44271-026-00508-6
+[2] Anthropic and OpenAI warn of existential AI risk, Foreign Policy, 16 September 2026.
+https://foreignpolicy.com/2026/09/16/ai-risk-jacob-coxon-openai-anthropic-dario-amodeisam-altman-trump-doomsday/
+[3] N. Lennard, Tech CEOs’ Doomsaying Is a Distraction from Real, Existing Harms of AI, The
+Intercept, 14 September 2026. https://theintercept.com/2026/09/14/ai-doom-apocalypserisk/
+[4] N. Bostrom, Superintelligence: Paths, Dangers, Strategies, Oxford University Press, Oxford
+(2014). ISBN: 978-0-19-967811-2
+[5] M. El Louadi, Humanity in the Age of AI: Reassessing 2025’s Existential-Risk Narratives,
+arXiv preprint (2025). arXiv: 2512.04119
+[6] Leiden Declaration on Artificial Intelligence and Mathematics, International Mathematical
+Union, 2 June 2026. https://leidendeclaration.ai/
+[7] T.O., Intelligence Amplification by Stimulated Emission of Reasoning: The Methodology of
+Utilizing LLM Grounded in New Foundation Formalized on the Axiomatic Structure of Intellect and Its Practice (Version 4), Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22019401
+
+9
+
+

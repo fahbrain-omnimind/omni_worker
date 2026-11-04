@@ -186,14 +186,54 @@ class AgentOrchestrator:
             _rec = (latest_modulation() or {}).get("recommendation")
         except Exception:
             _rec = None
-        j2_role = "analyst" if _rec == "analyst" else "executor"
+        result_str = str(result_text)
+        judge_excerpt = result_str[:8000]
+        swap_chars = int(os.getenv("OMNI_JUDGE_SWAP_CHARS", "3000"))
+        need_turn_swap = len(result_str) >= swap_chars
+
+        def _prepare_judge_role(target_role: str, evict_peer: bool = False) -> None:
+            if not need_turn_swap:
+                return
+            try:
+                from ..brain.server import get_brain_client
+                peer = "executor" if target_role == "analyst" else "analyst"
+                tc = get_brain_client(target_role)
+                pc = get_brain_client(peer)
+                if tc is None:
+                    return
+                th = tc.get("/health", timeout=2.0)
+                if th.status_code != 200:
+                    return
+                th_data = th.json()
+                is_loaded = th_data.get("model_loaded", True)
+                # Only evict peer proactively when target is unloaded or host VRAM is tight (<2.5GB free)
+                vram_tight = False
+                try:
+                    from ..soma.probe import probe
+                    g = (probe().get("gpu") or {}).get("gpus") or [{}]
+                    free_gb = float(g[0].get("vram_total_gb", 23.0)) - float(g[0].get("vram_used_gb", 0.0))
+                    vram_tight = free_gb < 2.5
+                except Exception:
+                    pass
+                if (not is_loaded or vram_tight) and evict_peer and pc is not None:
+                    try:
+                        pc.post("/erika/unload")
+                    except Exception:
+                        pass
+                if not is_loaded:
+                    tc.post("/erika/reload")
+            except Exception:
+                pass
+
+        j2_role = "analyst" if (_rec == "analyst" and not need_turn_swap) else "executor"
+        _prepare_judge_role(j2_role, evict_peer=(j2_role != "analyst"))
         j2 = brain_chat_json(
             [
                 {"role": "system", "content": (
                     _judge_persona
                     + "\n\nYou are a second-opinion implementation judge. Reply ONLY "
                     'with JSON: {"approved": bool, "comments": str}.')},
-                {"role": "user", "content": f"Judge this deliverable:\n{str(result_text)[:10000]}"},
+                {"role": "user", "content": f"Judge this deliverable:\n{judge_excerpt}"},
             ],
             role=j2_role, max_tokens=200,
         )
@@ -205,7 +245,8 @@ class AgentOrchestrator:
             "llm": bool(j2), "blind": not j2,
         })
 
-        # Judge 3 — concurring (analyst synthesizes)
+        # Judge 3 — concurring (analyst synthesizes; swaps in if large deliverable)
+        _prepare_judge_role("analyst", evict_peer=(j2_role != "analyst"))
         verdicts = [j["approved"] for j in judges]
         j3 = brain_chat_json(
             [
@@ -214,10 +255,12 @@ class AgentOrchestrator:
                     + "\n\nYou are a concurring judge. Given prior verdicts "
                     f"{verdicts}, reply ONLY with JSON: "
                     '{"approved": bool, "comments": str}.')},
-                {"role": "user", "content": f"Deliverable:\n{str(result_text)[:10000]}"},
+                {"role": "user", "content": f"Deliverable:\n{judge_excerpt}"},
             ],
             role="analyst", max_tokens=200,
         )
+        if need_turn_swap and j2_role != "analyst" and os.getenv("OMNI_RESTORE_CO_RESIDENT", "1") == "1":
+            _prepare_judge_role("executor", evict_peer=False)
         judges.append({
             "judge": 3, "type": "concurring",
             "approved": bool(j3.get("approved")) if j3 else False,

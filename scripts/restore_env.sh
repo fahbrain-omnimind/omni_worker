@@ -50,11 +50,12 @@ for v in data:
         print(f"  -> {k} restaurado (masked={v.get('masked')})")
 PYEOF
       if echo "$_vars" | grep -q '"HF_TOKEN"'; then
-        export HF_TOKEN="$(echo "$_vars" | python3 -c "
+        _HF_VAR="HF_TOKEN"
+        export "$_HF_VAR=$(echo "$_vars" | python3 -c "
 import json,sys
 d=json.load(sys.stdin)
 print(next(v['value'] for v in d if v['key']=='HF_TOKEN'))" 2>/dev/null || true)"
-        [ -n "${HF_TOKEN:-}" ] && echo "  -> HF_TOKEN restaurado (mascarado)"
+        [ -n "${!_HF_VAR:-}" ] && echo "  -> $_HF_VAR restaurado (mascarado)"
       fi
     fi
   fi
@@ -80,6 +81,17 @@ fi
 
 export OMNI_STATE_DIR="${OMNI_STATE_DIR:-$REPO/data}"
 export OMNI_CODE_INDEX_DIR="${OMNI_CODE_INDEX_DIR:-$REPO/omni_code_index}"
+export OMNI_ACERVO_DIR="${OMNI_ACERVO_DIR:-/content/acervo_vetorizado}"
+export OMNI_EMBED_DEVICE="${OMNI_EMBED_DEVICE:-cpu}"
+export OMNI_MEMTRIAS_EMBEDDER="${OMNI_MEMTRIAS_EMBEDDER:-auto}"
+export OMNI_MEMTRIAS_AUTO_LOG="${OMNI_MEMTRIAS_AUTO_LOG:-1}"
+export OMNI_AUTO_CONTEXT_ASSIST="${OMNI_AUTO_CONTEXT_ASSIST:-1}"
+export OMNI_SOMA_INJECT="${OMNI_SOMA_INJECT:-1}"
+export OMNI_JUDGE_SWAP_CHARS="${OMNI_JUDGE_SWAP_CHARS:-3000}"
+export OMNI_RESTORE_CO_RESIDENT="${OMNI_RESTORE_CO_RESIDENT:-1}"
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:False}"
 echo "[restore_env] OMNI_STATE_DIR=$OMNI_STATE_DIR"
 echo "[restore_env] OMNI_CODE_INDEX_DIR=$OMNI_CODE_INDEX_DIR"
+echo "[restore_env] OMNI_ACERVO_DIR=$OMNI_ACERVO_DIR"
+echo "[restore_env] OMNI_EMBED_DEVICE=$OMNI_EMBED_DEVICE (colibri-embed-ptbr + all-MiniLM in System RAM)"
 echo "[restore_env] done."

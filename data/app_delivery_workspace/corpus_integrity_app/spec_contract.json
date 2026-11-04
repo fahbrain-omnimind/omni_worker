@@ -1,0 +1,55 @@
+{
+  "app_name": "corpus_integrity_app",
+  "version": "1.0.0",
+  "architecture_pattern": "Modular Monolithic / CLI Tool",
+  "language": "Python 3.11+",
+  "modules": [
+    {
+      "module": "scanner.py",
+      "description": "Core forensic analysis engine for bibliographic and manuscript integrity over PhilPapers 2026 and A6 livro_vfinal.",
+      "functions": [
+        {
+          "name": "compute_md5",
+          "signature": "compute_md5(path: str) -> str",
+          "description": "Generates MD5 hex hash for file integrity verification."
+        },
+        {
+          "name": "detect_duplicates",
+          "signature": "detect_duplicates(paths: List[str]) -> List[Tuple[str, str, str]]",
+          "description": "Identifies duplicate file pairs based on MD5 content hashes, returning (path1, path2, md5)."
+        },
+        {
+          "name": "verify_manifest_entry",
+          "signature": "verify_manifest_entry(path: str, expected_author: str, expected_title: str) -> Dict[str, bool]",
+          "description": "Reads the header of a text file and checks whether expected_author and expected_title match, flagging anomalies."
+        },
+        {
+          "name": "count_epistemic_tags",
+          "signature": "count_epistemic_tags(text: str) -> Dict[str, int]",
+          "description": "Counts epistemic tags ([DADO], [DERIVADO], [INTERPRETAÇÃO], [LIMITE], [PRX], [CAP], [TXT], [CLS], [EXP]) in text."
+        },
+        {
+          "name": "tabular_tail_ratio",
+          "signature": "tabular_tail_ratio(text: str) -> float",
+          "description": "Computes the fraction of numeric/tabular lines in a document to detect massive numeric appendices."
+        }
+      ]
+    },
+    {
+      "module": "cli.py",
+      "description": "SQLite persistence and CLI entrypoint for corpus audit runs.",
+      "functions": [
+        {
+          "name": "save_audit_sqlite",
+          "signature": "save_audit_sqlite(db_file: str, records: List[Dict[str, Any]]) -> int",
+          "description": "Persists audit_records (file, anomaly, md5, dado_count) into SQLite."
+        },
+        {
+          "name": "run_corpus_scan",
+          "signature": "run_corpus_scan(phil_dir: str, a6_book: str, db_file: str) -> Dict[str, Any]",
+          "description": "Scans all PhilPapers txt files and A6 livro_vfinal.md and persists results."
+        }
+      ]
+    }
+  ]
+}

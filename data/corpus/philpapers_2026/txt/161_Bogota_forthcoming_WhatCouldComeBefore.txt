@@ -1,0 +1,935 @@
+Phenomenology and the Cognitive Sciences (2026) 25:955–975
+https://doi.org/10.1007/s11097-024-09973-y
+
+What could come before time? Intertwining affectivity and
+temporality at the basis of intentionality
+Juan Diego Bogotá1,2
+Accepted: 18 February 2024 / Published online: 26 February 2024
+© Crown 2024
+
+Abstract
+The enactive approach to cognition and the phenomenological tradition have in
+common a wide conception of ‘intentionality’. Within these frameworks, intentionality is understood as a general openness to the world. For classical phenomenologists, the most basic subjective structure that allows for such openness is timeconsciousness. Some enactivists, while inspired by the phenomenological tradition,
+have nevertheless argued that affectivity is more basic, being that which gives rise
+to the temporal flow of consciousness. In this paper, I assess the relationship between temporality and affectivity from both a phenomenological and an enactive
+perspective. I argue that, as opposed to the classical phenomenological view (which
+favours temporality), and to the enactive view (which favours affectivity), we must
+take affectivity and temporality as co-emergent. Jointly, affectivity and temporality
+constitute the basic structures of intentionality. Additionally, using examples from
+phenomenological psychopathology, I conclude that all intentionality is defined by
+an anticipatory and affective structure that gives rise to general feelings related to
+our bodily possibilities in the world.
+Keywords Affectivity · Emotion · Enactivism · Operative intentionality ·
+Phenomenology · Time-consciousness
+
+Juan Diego Bogotá
+jb1244@exeter.ac.uk
+1
+
+Department of Social and Political Sciences, Philosophy, and Anthropology, Exeter,
+University of Exeter, Devon, UK
+
+2
+
+Grupo de investigación en Filosofía y Cognición, Departamento de Filosofía, Universidad
+Nacional de Colombia, Bogotá, Colombia
+
+13
+
+956
+
+J. D. Bogotá
+
+1 Introduction
+One of the main converging points between phenomenology and enactivism is the
+emphasis put on intentionality. Unlike other philosophical and scientific traditions
+that conceive of intentionality to be the feature of mental states of being about an
+object, phenomenologists and enactivists interpret intentionality more broadly, defining it as an openness to the world (Thompson, 2007; Zahavi, 2019). Phenomenologists aim to uncover the subjective structures that constitute this general openness,
+as well as specific intentional acts (e.g., imagination, empathy, etc.). Enactivists, in
+contrast, employ his broad notion of intentionality to link life and cognition, arguing
+that even basic life forms exhibit such openness (Weber & Varela, 2002; Thompson,
+2007).
+If cognition is fundamentally marked by such openness, the task of disclosing the
+structures that make possible that openness in the first place must be a central concern
+for the enactivist. If a set of structures is shown to be sufficient for the intentionality that characterises human experience, then the enactivist should expect to find
+that either the same structures or roots thereof are to be found in minimal cases of
+cognition.
+Classical phenomenologists have often considered temporality as the fundamental feature of human experience. When they refer to the temporality of experience,
+they have in mind the flow and structure of time as it is experienced rather than the
+objective duration of an experience. This experienced temporal flow is ubiquitous
+to consciousness. All that we perceive, imagine, remember, etc., is given within an
+incessant experiential flow. Thus, the ubiquitous presence of this subjective temporality (also labelled time-consciousness) has a privileged position. As Edmund Husserl puts it, “[i]n the ABCs of the constitution [i.e., disclosure] of all objectivity given
+to consciousness and of subjectivity as existing for itself, [time-consciousness] is the
+‘A’” (2001a, p. 170). From this perspective, time-consciousness provides the fundamental ground on which other subjective phenomena that constitute our experience
+of objectivity rely.
+The phenomenology of time-consciousness has also figured in some enactive literature (see, e.g., Varela, 1999; Varela & Depraz, 2005; Thompson, 2007; Gallagher,
+2017). These enactive approaches link temporality to affectivity. In fact, Francisco
+Varela and Natalie Depraz go as far as claiming that “affect is at the very core of
+temporality, and is even, perhaps, its antecedent” (2005, p. 62; see also Thompson,
+2007, pp. 375–376). From this perspective, temporality arises from, and is shaped,
+by affectivity.
+Are affective phenomena not given in time, then? If affectivity ‘precedes’ temporality, as Varela and Depraz suggest, then not only it would be impossible to have a
+neutral (i.e., unaffected) experience, but also the most fundamental form of affectivity
+would be atemporal or pre-temporal.
+The aim of this paper is to assess the relationship between temporality and affectivity from both a phenomenological and enactive perspective. I argue that, as opposed
+to the classical phenomenological view (represented by Husserl, who takes temporality to be the basic structure) and to the enactive view (that takes affectivity to be the
+basic structure), we must take affectivity and temporality as co-emergent. By ‘co-
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+957
+
+emergent’ I mean that both structures shape and presuppose one another, implying
+that we cannot take either of them to be more basic than the other. Jointly, I argue,
+temporality and affectivity constitute the basis of intentionality.
+I first provide an overview of Husserl’s views on time-consciousness and affection, as well as how enactivists have elaborated on Husserl’s analyses drawing from
+empirical research to argue for the primacy of affectivity. Their view, I suggest, produces a paradox. Namely, that affectivity precedes temporality while itself unfolding
+in time, as if affectivity presupposed what it is meant to precede. I argue that this paradox arises because, in their aim to circulate between phenomenology and empirical
+science, they risk conflating the experiential level with the empirical one, sometimes
+implicitly giving precedence to the latter. I then show that, at the phenomenological
+level, temporality and affectivity can be regarded not only as co-emergent but also as
+the most basic structures of intentionality. In a few words, intentionality is affective
+intentionality (a notion I borrow from Jan Slaby).
+
+2 Phenomenologists and enactivists on temporality and affectivity
+Within the phenomenological tradition, chief among the invariant subjective structures that constitute our general openness to the world is the intrinsic temporal structure of consciousness (see, e.g., Husserl, 1991; Merleau-Ponty, 1945/2012, pp. 432ff).
+All that is given in consciousness is experienced within an incessant temporal flow. In
+what follows, I present some of Husserl’s (1991; Husserl, 2001a, b) analyses of timeconsciousness and its relationship with affection. I focus on Husserl because when
+enactivists discuss temporality and affectivity, they often take his views on these
+phenomena as their basis. I then present the reasons why some enactivists inspired by
+Varela’s work suggest that affectivity precedes temporality.
+2.1 Husserl on time-consciousness and affection
+All experience is characterised by an incessant temporal flow. For Husserl, this
+experiential flow is a result of the structure of time-consciousness. To use Husserl’s
+(1991) own example, consider the experience of listening to a melody. To perceive
+the melody as a unified whole, in the transition from one tone to the next one, I must
+still be aware of the first one. But to avoid hearing them simultaneously, the first one
+must be experienced as ‘just-past’ and the second one as ‘now’. The intending of the
+just-past is called retention, whereas the intending of the now-phase is called primal
+impression.
+If the melody ended abruptly, I would be surprised by it. This response only makes
+sense if I were tacitly anticipating that the melody would continue. This tacit anticipation is called protention. In protention we do not anticipate something specific (e.g.,
+this tone), but rather a somewhat indeterminate set of possibilities (e.g., a tone) that
+are pre-figured by our previous experiences (see Husserl, 2001a, p. 42; cf. Lohmar,
+2002). Fuchs (2022) has described the experiential horizon that is disclosed by protention as a ‘cone of probabilities’ (see Fig. 1).
+
+13
+
+958
+
+J. D. Bogotá
+
+Fig. 1 The continuous dynamics of the living present. Represented as a dotted line, the now-phase
+marks the interface between the protentional horizon (represented as a cone of probabilities at the
+right, inspired by Fuchs, 2022), and the retentional horizon (represented as a line that is fading away
+at the left). The bolder the shade of black, the more probable (in the case of protention) or more vivid
+(in the case of retention) the content. The arrow at the bottom represents how time is experienced as
+sinking into the past
+
+All that is anticipated flows into the now-phase, unifying protention and primal
+impression, via protentional fulfilment (Husserl, 2001b, Nr. 2 §§ 2–3). Fulfilment
+implies confirmation. Usually, the impressional present confirms what was anticipated, fulfilling protention. Sometimes, however, our anticipations are disappointed.
+Husserl nevertheless notes that “disappointment essentially presupposes partial fulfillment” (2001a, p. 64). For instance, while my anticipation of a tone that was about
+to occur may have been disappointed, the fact that the flow of experience is not fully
+disrupted by the abrupt end of the melody suggests that such an abrupt end was nevertheless somewhat consistent with the broader protentional horizon (i.e., the cone of
+probabilities, see Fig. 1).
+What is given in primal impression immediately makes way to something new,
+while sinking into the retentional past (and eventually into the realm of forgetfulness). This sinking, labelled retentional modification, links primal impression and
+retention. Husserl characterises this process as one in which what was originally
+given in primordial impression is continuously modified in such a way that it continuously carries more of “the heritage of the past” (Husserl, 1991, p. 31; see also
+Husserl, 2001a, p. 114).
+Protentional fulfilment and retentional modification constitute a continuous flow
+that streams from the future to the past that nevertheless maintains its unity. Husserl
+(2001a) calls this streaming unity ‘the living present’. This stream is the temporal
+flow of consciousness that underlies all experience—a flow that Husserl sometimes
+describes as ‘absolute’.
+Note that within the structure of the living present, primal impression ought to be
+understood in relation to protention and retention. As Husserl (2001b, pp. 39–40)
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+959
+
+eventually notes, moving away from his earlier analyses of time-consciousness, primal impression (or, as he calls it in the context of those new analyses, primal presentation) is better understood as the limit between protention and retention (see also
+Kortooms, 2002, pp. 164–167; 188–199). From this perspective, even though it is in
+primal impression that something is immediately given, the experiential meaning of
+what is thus given is defined by either being a fulfilment or a partial fulfilment of a
+preceding protention, and by its immediate receding into the protentional past. The
+impressional present is then, by definition, constitutively dependent upon protention
+and retention.
+It must also be noted that, strictly speaking, one must distinguish between the
+constitutive and what is constituted (Husserl, 1991, §§ 34–35; Rodemeyer, 2006, p.
+30). Given that it constitutes temporality, the absolute flow of time-consciousness is
+not strictly temporal, but rather atemporal (Zahavi, 2003, pp. 87–88) or pre-temporal
+(Rodemeyer, 2006, p. 35); it is the originary form of temporality. Given that all experience presupposes time, Husserl claims the operations of time-consciousness are “a
+universal, formal framework, in a synthetically constituted form in which all other
+possible syntheses must participate” (Husserl, 2001a, pp. 170–171; see also Husserl,
+1973, pp. 72–73).
+Regardless of its foundational nature, the structure of the living present is only a
+formal framework. As Husserl recognizes, “[m]ere form is admittedly an abstraction, and thus from the very beginning the analysis of the intentionality of timeconsciousness and its accomplishment is an analysis that works on [the level of]
+abstractions” (2001a, p. 173; see also Husserl, 1973, p. 73). What concretizes the
+constitutive achievements of time-consciousness is the presence of affective content.
+I now turn to present the constitutive role of affection.
+For Husserl (2001a, p. 196), affection consists in a felt ‘pull’ or tendency that
+motivates the subject to attend to what affects her. Affection corresponds to the most
+basic form of intentionality (ibid., p. 198) and gives rise to the minimal form of egoic
+activity (Husserl, 1973, § 17). The fact that something affects me does not imply that
+I will attend to it. Affection involves the basic disposition to do so. The submission
+to affection is the most basic form of activity since the subject orients herself toward
+the object, paving the way for attentional intention (ibid.).
+For Husserl, affective tendencies are formed where there is contrast and, hence,
+salience. Consider the difference between looking at the Japanese flag and one of
+Jackson Pollock’s artworks. When looking at the former, the red circle is more salient
+than the rest of the flag. This salience results from the high contrast between the red
+circle and its white background. Conversely, in Pollock’s artworks, there is nothing
+as salient as the red circle in the Japanese flag. The contrast between the different
+strokes of paint is not as stark as the one between the red and the white in the flag.
+Four points are worth noting here. First, all affection occurs in relation to a background from which salience arises. Second, this salience need not result from sensory
+contrast. The contrast that constitutes affection may also occur in the sphere of feeling (Gefühl). Consider a melody that gains prominence because of “an especially
+mellifluous sound, a phrase that especially arouses sensible pleasure or even displeasure” (Husserl, 2001a, p. 203). Third, affection comes in degrees. Some things solicit
+our attention more than others. We may thus speak of degrees of affective force.
+
+13
+
+960
+
+J. D. Bogotá
+
+Fourth, what eventually catches our attention depends on different factors including,
+as Anthony Steinbock claims, our “prereflective preferential directedness” (2004, p.
+5). Depending on my current interests and preferences, and without me needing to
+reflect on them, what I am doing right now shapes the affective horizon that surrounds me. It is because I am writing a paper on phenomenology that my copy of
+Experience and Judgment is more salient than the curtains of my office.
+The importance of affection for the analysis of the basic structures of consciousness lies in the fact that the world is first properly given in experience through affection. For something to be experienced, it must affect me. It is at this basic experiential
+level that we may talk about affectivity. Following Colombetti (2014), I understand
+‘affectivity’ as a lack of indifference. In affection, things become prominent for us,
+and thus, we are not indifferent to them. Indifference would only occur if something
+did not affect us at all (cf. Husserl, 2006, p. 330).1
+Regardless of its importance, for Husserl (2001a, pp. 204ff), affection is temporally structured. It occurs in the impressional present (i.e., the now-phase), forms an
+orientation toward the future (i.e., a solicitation to attend to something in the future),
+and sometimes spreads into the past via retention (i.e., if something becomes salient
+now, its past phases become prominent as well). To illustrate the temporality of affection, consider the previously mentioned example of a melody that gains prominence
+(Husserl, 2001a, p. 203). While I have a chat with my friend in a café, the background
+music may remain almost imperceptible until a dissonant sound comes in. The dissonant phrase is given in primal impression. It is not only this particular phrase what
+becomes salient, but the melody as a whole, including the phrases that have already
+gone by. Thus, affection propagates into the past, or more technically, down the retentional chain of the living present. Concerning the future, precisely because affection
+is constituted partly as a disposition or tendency to pay attention to what becomes
+salient, the prominence of the melody is partly experienced as involving protentions
+not only related to how the melody may unfold, but also to my potential shift of attention. Thus, affection is temporally structured within the living present. This temporal
+structure suggests that, even if constitution requires both temporality and affection,
+the latter is shaped by the former. Put this way, temporality retains its primacy. Some
+enactivists, however, have taken the role of affectivity more seriously, considering it
+the root or source of temporality, thus reversing the relationship drawn by Husserl.
+
+1
+
+There are several notions that are linked to one another, but that are nevertheless somewhat different.
+Namely, affectivity, affection, affect, and emotion. I follow Colombetti’s definition of affectivity as lack
+of indifference and Husserl’s characterisation of affection as a pre-reflective form of experience in which
+something becomes prominent, forming an attentional pull. Put this way, affectivity implies affection,
+and vice versa. Instead of affectivity or affection, Varela and Depraz (2005) tend to talk about ‘affect’,
+whereas Thompson (2007) tends to use the term ‘emotion’. They do not provide a definition of ‘affect’ or
+‘emotion’, but they all seem to be referring to the whole spectrum of affectivity, from the basic affection
+that Husserl analyses to complex affective states such as emotions (as distinct from the singular emotion), moods, and, in Thompson’s (2007, p. 381) case, even personality. To avoid associations with the
+so-called affect theory in the social sciences (which has also to do with political reflections on power and
+society, see Schaefer, 2019), on the one hand, and emotions as a particular kind of affective phenomenon,
+I prefer to talk generally about affectivity in Colombetti’s sense, and particularly about affection in Husserl’s sense.
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+961
+
+2.2 Enactivists on the primacy of affectivity
+Varela’s (1999) analysis of time-consciousness paves the way for the thematization
+of affectivity as the antecedent of temporality. There, Varela moves away from the
+Husserlian analysis in two regards. First, he notes that temporally structured perception always involves embodied activity. Second, he complements the phenomenological analyses of temporality with empirical research on the neural underpinnings
+of such embodied activity, thus effectively developing a neurophenomenology of
+time-consciousness.2
+To illustrate the relationship between embodied activity and temporality, Varela
+asks us to consider multistable visual perception. For instance, in the famous rabbitduck illusion, what we see shifts from one moment to the next because of often
+unnoticed actions (e.g., blinking, saccades). Such actions motivate how the percept
+changes in time. From this example, Varela concludes that embodied activity “gives
+temporality its roots in living itself” (1999, p. 272).
+As Varela notes, embodied activity is underpinned by neural dynamics that are
+characterised by an ‘integration-relaxation’ process in which distributed neural
+assemblies activate, stabilize, and eventually deactivate within 100 milliseconds to
+several seconds. Varela (1999, p. 277) hypothesizes that this integration-relaxation
+process is what gives rise to the living present (both its structure and its flow). This
+is so because, on the one hand, the neural assemblies at play here are the ones that
+underlie the bodily activity that, for Varela, is the root of temporality. On the other
+hand, the dynamics of the integration-relaxation process mirror those of the structure
+of the living present. Each new moment (and even instantiation) of the process presupposes the previous one, as if it retained the past. More importantly for my current
+interests, however, each moment is marked by an affective character that, at the experiential level, is linked to protention (Varela, 1999, pp. 295–302).
+One of Varela’s main insights is that protention differs from retention by being
+marked by an affective tone: “As I write now, I have a dispositional attitude that
+engages me in a [sic.] anticipation of writing and shaping my thoughts into sentences.
+As I write this word now, the disposition is colored by an emotional discharge, a
+moderate resentment for not finding the proper expression” (Varela, 1999, p. 300;
+see also Thompson, 2007; Gallagher, 2017). The affective tone of protention can be
+neurophenomenologically captured in terms of emotion and action tendency.
+Varela (1999, p. 289) points out that his thoughts on the relationship between
+protention and affectivity are just a sketch for future work, partly undertaken in his
+paper co-authored with Depraz on affect and time (Varela & Depraz, 2005). In what
+follows, I borrow from later enactive research on affectivity to complement Varela’s
+insights.
+Borrowing from Walter Freeman’s (2000) and Marc Lewis’s (2005) dynamical
+models of emotion, both Thompson (2007) and Colombetti (2014) argue that emo2
+
+A critical overview of neurophenomenology goes beyond the scope of this paper. For now, it is enough
+to state that neurophenomenology is an enactive method for the non-reductive study of consciousness
+which is characterised by a circulation between phenomenological and empirical evidence via reciprocal
+constrains (Varela, 1996).
+
+13
+
+962
+
+J. D. Bogotá
+
+tion is a large-scale self-organising process that integrates several neural sub-processes that underlie attention, evaluation, bodily arousal, and action tendencies. At a
+personal level, these integrated processes are experienced as an ‘emotional interpretation’ of the event that first triggered the processes (for discussion, see Colombetti
+& Thompson, 2005). The rise of this appraisal occurs within a broader neurophysiological landscape in which action, perception, and emotion are integrated. In a nutshell, following Freeman (2000), neural processes can be understood as comprising
+a set of causal loops that underpin action, perception, and proprioception, and that
+are centred around the limbic system, which is the brain area associated with emotion. What we perceive is always experienced through emotion, which itself involves
+tendencies to act in different ways. Some of the causal loops involved, while passing
+through the limbic system, integrate both the motor systems’ preparation to act and
+the sensory systems’ preparation to receive the consequences of action. These preparations constitute ‘expectancy’ states that, for Thompson (2007, p. 369), correspond
+to protention. Therefore, from a neurophenomenological perspective, protention is an
+emotionally constituted action tendency, implying that protention is affective.
+For Varela and Depraz (2005, pp. 68–69), affectivity is defined by a ‘micro-temporality’ that rapidly integrates (1) the precipitation of an event or trigger; (2) the emergence of salience; (3) a valenced feeling-tone; (4) motor changes, and; (5) autonomic
+physiological changes. This integration is manifested as a “basic disposition”. It is
+based on this micro-temporality that they conclude that “affect precedes temporality”
+because “affect implicates as its very nature the tendency, a ‘pulsion’ and a motion
+that, as such, can only deploy itself in time and thus as time” (2005, p. 69). From
+Thompson’s (2007, pp. 375–378) perspective, the micro-temporality that Varela and
+Depraz talk about is the deployment of affection (in the Husserlian sense). The basic
+disposition Varela and Depraz talk about is the disposition that characterises both
+affection (see Sect. 2.1) and protention.
+For Varela and Depraz (2005, p. 70), such a disposition fluctuates between different polarities (e.g., like-dislike, pleasure-displeasure, etc.) that constitute affective
+valence. Given that the emergence of protention is marked by valence, for them,
+protention presupposes the affective fluctuations of the body. Those fluctuations can
+be interpreted as the sub-personal dynamics presented above in relation to Lewis’s
+and Freeman’s models. It is because protention presupposes the rise of emotion that
+Varela and Depraz give affectivity primacy over temporality. Thompson echoes their
+conclusion by claiming that the neurodynamics of “emotion plays a major role in the
+generation of the [temporal] flow of consciousness” (2007, p. 375).
+There is, however, something problematic about Varela and Depraz’s conclusion.
+How can affectivity give rise to time if it can only be deployed in time (i.e., in the
+micro-temporality they describe)? One of Varela and Depraz’s worries concerning
+the possible primacy of temporality over affectivity is that such a claim would entail
+the idea of “a necessary and primary neutrality of experience” (2005, p. 63), which is
+an idea that they reject. But, by the same token, would not the claim of the primacy
+of affectivity entail an affective experience that is not temporally structured? If that is
+the case, then affectivity could not be deployed in time as they claim.
+Moreover, Husserl’s main reason for introducing the absolute flow as a pre-temporal time-constituting ground was to avoid an infinite regress that results if one grounds
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+963
+
+the constitution of time on a temporal process (Rodemeyer, 2006). In contrast, enactivists ground temporality on affectivity, which itself is conceptualised as a temporal
+process. If time is originally constituted via time-consciousness, then anything that is
+given as temporal presupposes time-consciousness. Given that affectivity is taken to
+arise via the micro-temporality analysed by Varela and Depraz, it would then follow
+that it presupposes the achievements of time-consciousness. But if temporality arises
+from affectivity, then the temporality that is presupposed by the micro-temporality of
+affectivity would presuppose a further affective layer, and so on.
+Somewhat surprisingly, Varela provides a hint of how to find a way out of this
+problem: “We are seeking to move beyond the apparent paradox between an original
+impression in time that would be colored by affection, or conversely, the primacy of
+affection that would underlie temporality. We seek a nondual synthesis” (1999, pp.
+297–298). Such a non-dual synthesis not achieved. What we got through his paper
+with Depraz is a view that gives affectivity a primacy over temporality. In what follows, I follow Varela’s call for a non-dual view.
+
+3 Affecting temporality and temporalizing affectivity
+As discussed, enactivists state the primacy of affectivity by analysing the microtemporality of affection that, from a neurophenomenological perspective, gives rise
+to protention. There are two issues, however. First, their analysis seems to already
+presuppose the constitutive achievements of time-consciousness. Affection can only
+be experienced as deployed in time (even if at a micro-temporal scale), which suggests that the temporal syntheses should already be in place. Second, it could be
+objected that even if protention is constituted affectively as enactivists suggest, that
+fact does not imply that affectivity precedes temporality. At best, it shows how the
+temporal flow of consciousness may be coloured affectively. But what explains the
+fact that there is such a temporal flow in the first place are the syntheses of timeconsciousness. Without them, there would be no flow to shape affectively. I now turn
+to provide a way out of these issues.
+3.1 Time times two
+The main reason why the enactive approach to temporality and affectivity discussed
+in Sect. 2.2 leads to the problematic conclusion that, while preceding temporality,
+affectivity is deployed in time is that, given the empirical and phenomenological
+frameworks enactivists work within, there are two senses of temporality at play.
+On the one hand, there is what we may call objective time. This is the time that
+clocks measure and that is presupposed by empirical research. On the other hand,
+there is subjective temporality. This second sense of time is time as it is experienced.
+The Husserlian analysis, by bracketing objective time and focusing on subjective
+temporality (see Husserl, 1991, § 1), aims at disclosing what makes the subjective
+experience of time possible in the first place. It is a transcendental investigation
+into the constitutive structures of consciousness. Concerning subjective temporality,
+
+13
+
+964
+
+J. D. Bogotá
+
+the structure of time-consciousness (i.e., that of the living present) is pre-temporal
+because it constitutes subjective temporality itself.3
+The transcendental perspective of phenomenology assumes a primacy of consciousness. All that we know, we know through experiential givenness. This is not to
+say that all knowledge is epistemically justified by linking it to sensory experience,
+as an empiricist would argue. Phenomenologists focus on the meaning of the world,
+which is always subjective meaning. Empirical science is done by conscious subjects
+who make subjective sense of their findings. Transcendental phenomenology is the
+enquiry into the fundamental structures of that process of subjective sense-making
+and, therefore, it is argued that the findings of phenomenology ground empirical
+research onto its original subjective foundations (Husserl, 1970; Merleau-Ponty,
+1945/2012). Even the objective time of physicists presupposes the original subjective constitution of temporality. Therefore, strictly speaking, it is a mistake to assume
+that objective time and time-consciousness coincide or that they are at the same level,
+so to speak.
+The neurophenomenological approach to time-consciousness developed by Varela
+and used as a basis by him, Depraz, and Thompson risks conflating the constitutive and the constituted. Consider the micro-temporality of affection. It is suggested
+that the components that take place in this micro-temporal process are the subject
+of phenomenological analysis. Varela and Depraz frame their introduction of this
+micro-temporality by discussing the phenomenological method of the reduction (i.e.,
+the bracketing of empirical assumptions, and the thematization of the intentional correlation between consciousness and world), suggesting that they are working at the
+phenomenological level. This claim is supported by their reference to phenomenologically evident components (e.g., the trigger of an affective reaction or the feeling tone). Some of the components they mention, however, are sub-personal. For
+instance, they not only consider the possibility of the emergence of salience being
+unconscious, but also talk about sub-personal phenomena like changes in skin conductance (Varela & Depraz, 2005, p. 68). Thompson (2007, p. 376) adds to these
+components changes in the endocrine and immune systems. The micro-temporality
+of affection is, therefore, ambiguously thematized as involving both personal (i.e.,
+experiential) and sub-personal phenomena, making it unclear whether the micro-temporality is subjective or objective. Additionally, the crux of the enactive argument lies
+in the analysis of the neurodynamics of emotion, which are all sub-personal.
+From this perspective, the primacy of affectivity over temporality is somewhat
+misleading. It is claimed (Varela & Depraz, 2005, p. 62) that, as opposed to the traditional phenomenological view which gives primacy to temporality, upon closer
+examination affectivity holds primacy since it gives rise to temporality. This way
+of framing the claim suggests that affectivity is a structure of consciousness that is
+more basic than temporality. However, within the neurophenomenological frame3
+
+It must be noted that, although the Husserlian analysis focuses on subjective temporality, its ultimate
+aim is to account for how objective time is constituted within subjectivity. In line with his transcendental ambitions, Husserl’s idea is that time only acquires an objective meaning through lived experience
+(most notably, intersubjective experience; see Rodemeyer, 2006). In any case, the structure of timeconsciousness has a foundational role in this project. Our experience of time, even when it is objectified,
+presupposes the syntheses of time-consciousness.
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+965
+
+work, affectivity does not seem to be taken, at least from the outset, as a subjective
+structure of consciousness but rather as an empirical phenomenon. In fact, at least in
+Varela’s, Depraz’s, and Thompson’s accounts, the focus is not on how affectivity is
+experienced, but rather on what it is sub-personally, giving precedence to the neuroscientific over the phenomenological. It is because of this reason that affectivity
+appears to precede temporality. This precedence is nevertheless in objective time and
+not in phenomenological terms.
+An enactivist may respond by noting that enactivism is defined by a form of dialectical thinking that, by emphasising the co-determination of phenomena that may
+appear as polar opposites, fixed dichotomies are rejected (see Di Paolo et al., 2018,
+pp. 107–111). Here, the two seemingly opposites at play are the personal and subpersonal levels. From an enactive perspective, it may be suggested, affectivity and
+temporality ought to be understood within the dialectical relationship between those
+two levels. I fully sympathise with the non-dual thinking that characterises the enactive approach. I believe, however, that taking the personal and sub-personal levels to
+be co-constitutive or deeply related to one another does not imply that we can freely
+combine them when addressing a phenomenon. Doing so risks conflating them. Just
+as organism and environment are co-determined without implying that we cannot
+distinguish them, the personal and sub-personal levels ought not to be conflated.4
+I now turn to show that, when keeping oneself within the phenomenological
+domain, affectivity and temporality are disclosed as co-emerging at the most basic
+level of subjectivity, despite some of the claims within both classical phenomenology
+and the enactive literature.
+3.2 Intentionality and the anticipation of embodied possibilities
+An aspect of the phenomenology of temporality and affectivity that is sometimes
+implicitly insinuated in the enactive literature, but that to the best of my knowledge
+has never been fully stated or endorsed, is that intentionality is fundamentally futureoriented. By exploring how affection, embodiment, and protention converge on this
+fact, it becomes clear that temporality and affectivity co-emerge at the most basic
+level of subjective constitution.
+Consider the following example. As I walk by the side of the river Exe, I can see
+the water flowing from the northwest to the southeast. I see ducks, geese, and swans
+swimming near the border, as they usually do, waiting for people to feed them. If
+I look up, I see the usual mid-March English cloudy sky, as well as flying seagulls
+waiting to steal people’s food. With a shift in my attention, I can focus on the feeling
+of my clothes touching my skin. This whole perceptual scene, as with any other perceptual experience, has different degrees of luminosity within a broader backgroundforeground structure.5 As I focus on a swan, it is as if it shined with more luminosity
+than everything else in my perceptual field. One can also use the usual metaphor of
+attention being like a spotlight. The rest of the perceptual scene is still given, but
+4
+
+I am thankful with Enara García, who pointed out to me the importance of dialectical thinking within
+the enactive approach and how it may help framing the relationship between affectivity and temporality.
+
+5
+
+I borrow the metaphor of ‘degrees of luminosity’ from Zahavi (1999) and from Colombetti (2014).
+
+13
+
+966
+
+J. D. Bogotá
+
+with lesser degrees of luminosity. The rest of the birds are somewhat more luminous
+(prominent) than the cloudy sky, which is itself more luminous than the feeling of
+my clothes in my skin. The less luminous something is, the more at the background
+of my experience it is. The background is nevertheless never completely absent
+from my perceptual awareness, it is simply experienced tacitly, pre-thematically, or
+pre-reflectively.
+Husserl captures these degrees of luminosity when discussing the transition from
+affection to attention. This transition is described as “a transformation of the entire
+intentional background-experience [Hintergrunderlebnis] into one of the foreground:
+the ego turns toward the object” (Husserl, 1973, p. 77). Whereas the foreground is the
+object of attention, the background constitutes the intentional horizon of experience.
+This horizon is experienced as a set of affective tendencies that, depending on factors
+such as my current interests, have different degrees of affective force. I can shift my
+attention from the swan to a duck partly because, in this particular case, the latter was
+already there implicitly in my experience affecting me, i.e., soliciting my attention.
+Put this way, affection not only precedes thematic attention, but functions as its precondition. Thus, Husserl (2001a, p. 198) characterises affection as the awakening of
+intentionality. In other words, being affected by the world constitutes the basic form
+of intentionality.
+Intentionality is traditionally conceptualised as the key feature of mental and conscious states of being about something (i.e., an intentional object). In perception,
+to be intentionally directed toward an object is to attend to it. With his analysis of
+affection and the intentional horizon of experience, however, Husserl shows that the
+object-directed conception of intentionality presupposes a general affective openness toward the world in which things within it solicit our attention. One may thus
+distinguish between an ‘object intentionality’, formed in the spontaneous act of attention-turning, and an ‘operative intentionality’ that functions underneath our active
+attentional focus, making it possible (Merleau-Ponty,1945/2012, p. lxxxii).
+A defining characteristic of this operative intentionality is that it is fundamentally embodied (Merleau-Ponty 1945/2012). Notice, for instance, how when Husserl
+describes the transition from affection to attention, the terms he uses suggest embodiment: the ego turns toward the object. This turning-turning toward is characterised
+by bodily activity. As Husserl clarifies, the possibility of shifting one’s attention from
+what is the current focus of experience to something else in the inner horizon of the
+object is fundamentally practical: “Every perception that presents the object to me in
+this [attentional] orientation leaves open the practical transition to other appearances
+of the same object […]. The possibilities of transition are practical possibilities […].
+There is thus a freedom to run through the appearances in such a way that I move my
+eyes, my head, alter the posture of my body, go around the object, direct my regard
+to it, and so on” (Husserl, 1973, pp. 83–84). It is thus implied that the transition from
+affection to attention is an active, bodily transition. This is part of the reason why, for
+Husserl (1973, p. 85), such transition marks the first and most basic form of activity.
+It is an “I do”, as he calls it. But any “I do” presupposes a prior “I can” that is put into
+practice when attentively turning toward something (cf. Sheets-Johnstone, 2011, pp.
+116f). The “I do” and “I can” are not explicit propositional beliefs one reflects on.
+Rather, they refer to part of how we are pre-reflectively bodily self-aware.
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+967
+
+Before going ahead with the discussion of the “I can” and its relation to operative
+intentionality, affectivity and, eventually, temporality, it is important to give a brief
+explanation of what pre-reflective bodily self-awareness is. In our engagements with
+the world, we are usually not thematically focused on ourselves and our body. For
+instance, as I write these words, the focus of my attention (i.e., my intentional object)
+is my laptop, or more precisely, the process of putting my thoughts into words in this
+virtual document. While I do so, however, I am also aware of the movements of my
+fingers while I type, the feeling of the texture of the keys in my fingertips, my posture,
+and even a slight discomfort in my back. These bodily aspects I am aware of are not
+the thematic focus of my experience. To put them into focus, I must explicitly reflect
+on them. They often remain, however, at the pre-reflective level. Importantly, the
+usual awareness we have of our own body is not that of a material object in the same
+way in which bicycles, fridges, and walking boots are material objects. Rather, we
+are usually aware of our own bodies as that through which we experience the world
+or, to put it more strongly, as the subject of experience. This sense of embodiment
+as the subject, rather than an object, of experience is what phenomenologists call
+the lived body (Leib; see Husserl, 1989; Merleau-Ponty, 1945/2012), which is to be
+distinguished from the objective body (Körper) which is the body experienced as a
+material object in the world (when, e.g., we measure our legs when buying trousers
+online, making sure to buy the correct size). At the pre-reflective level of experience,
+the body is experienced as a lived body that, nevertheless, is not completely invisible, but rather felt with different degrees of self-luminosity (Colombetti, 2014). For
+instance, the slight discomfort in my back, even though it remains out of my thematic
+focus, is more luminous than the feeling of my glasses touching the back of my ears.
+Importantly, the living body is not only the locus of what I am feeling right now,
+but also the “seat of free movement” (Husserl, 1989, § 38). As opposed to any other
+object, I can normally move my body at will, and usually I do so. The “I do” and “I
+can” are fundamentally experienced at the level of the lived body.
+In affection, there are two tendencies at play. On the one hand, there is a tendency
+that goes from the object to the subject that can be described as a pull or solicitation.
+On the other hand, there is a tendency that goes from the subject to the object that can
+be described as a disposition to attend to the object. That disposition is an “I can”, e.g.,
+“I can turn my head and look at that”. Put this way, the affective field that is disclosed
+in operative intentionality is a field of practical possibilities in which pre-reflective
+bodily self-awareness and pre-reflective awareness of the world meet (recall that,
+given that affection precedes attention, it is strictly pre-reflective). This is the reason
+why Merleau-Ponty claims that “[c]onsciousness is originarily not an ‘I think that,’
+but rather an ‘I can’” (1945/2012, p. 139). Our openness to this affective field can be
+characterised as a general tendency to be affected by objects (and other subjects). We
+can also conceptualise the affective field as a ‘field of relevant affordances’, as some
+ecological psychologists describe the environment of a given animal (see Rietveld
+& Kiverstein, 2014). Following James Gibson’s (1977/2017) original definition of
+the term, affordances are the action possibilities offered to an animal by the environment. Erik Rietveld and Julian Kiverstein make use of this notion to capture how the
+environment shows up to an animal as a field of affordances, some of which have a
+particular demand character that is relative to the animal’s changing concerns. Such
+
+13
+
+968
+
+J. D. Bogotá
+
+demanding affordances, labelled solicitations, are particularly salient because of their
+current relevance. For example, a glass of water may not only afford, but also solicit
+‘drinkability’ when one is thirsty (Rietveld & Kiverstein, 2014, p. 341). From a phenomenological perspective, the field of relevant affordances corresponds to the affective field and its correlation with the system of “I can” of the subject. Put this way, all
+perceived affordances are to a greater or lesser extent solicitations (all have affective
+power; see Caravà & Scorolli, 2020).
+This conception of intentionality as originally an “I can” can be linked with
+Merleau-Ponty’s notion of ‘the intentional arc’: “[T]he life of consciousness […]
+is underpinned by an ‘intentional arc’ that projects around us our past, our future,
+our human milieu, our physical situation, our ideological situation, and our moral
+situation, or rather, that ensures that we are situated within all of these relationships.
+This intentional arc creates the unity of the senses, the unity of the senses with intelligence, and the unity of sensitivity and motricity” (1945/2012, p. 137). What links
+the affecting object and the affected embodied subject in a unified experiential whole
+is an intentional arc that consists in a ‘projection’ that is, at its core, temporal. This
+fact is clear in the phenomenology of affordance perception (Bogotá & Artese, 2022).
+On the one hand, there is the solicitation that goes from the object to the subject.
+On the other hand, there is the projection from the subject to the object of potential
+active engagements that can only be undertaken in the future, and therefore, must be
+understood in protentional terms. From a Husserlian perspective, a crucial feature
+of affection and operative intentionality is that it forms an orientation toward the
+future: “[A]ffection has a unitary tendency toward the future […], intentionality is
+predominantly oriented toward the future” (Husserl, 2001a, p. 204; see also Husserl,
+2001a, pp. 129–130). Recall the temporal structure of affection (Sect. 2.1): affection occurs in the impressional present and forms a tendency toward the protentional
+future. What Husserl’s quote shows is that the protentional tendency is constitutive
+of affection. Without it, there would be no affection whatsoever. To be affected is to
+be pulled toward the fulfilment of an anticipation, namely, that of attending to what
+affects. Thus, the “I can” that defines intentionality is an “I can in the future” or an
+anticipated “I do”. Speaking at an abstract level, I may feel the pull in the impressional present, but it is a pull that tends toward the future. If there were no protention,
+there would be no affection, and therefore, no intentionality.6 Moreover, given that
+the impressional present constitutively depends on protention (see Sect. 2.1; Husserl, 2001b, pp. 39–40), affection must be tied to the protentional future. To put it
+in another way, the horizon that is opened by protention (i.e., the protentional cone)
+also opens a meaningful world with which we can bodily interact. It is this interplay
+between affection and protention that constitutes the intentional arc that underpins
+subjectivity. Crucially, neither is more basic than the other. Affection, on the one
+hand, is shaped by temporality because it is future-oriented. Protention, on the other
+hand, is shaped by affection because if nothing were affecting me, there would be
+nothing from which anticipations are formed. The future possibilities that are open
+now require something affecting me that provides such possibilities. Without affec6
+
+For similar ideas that nevertheless do not consider affection and operative intentionality, see Gallagher
+(2017, pp. 96–97) and Kiverstein (2017, pp. 104–105).
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+969
+
+tion, there would be no protention; and without protention, there would be no affection. Therefore, affectivity and temporality are co-emergent.7
+3.3 Feeling as style of anticipation
+From the perspective elaborated thus far, all intentionality is what Slaby calls affective intentionality (Slaby, 2008), a term he uses to introduce the kind of intentionality
+that is characteristic of affective states and, more specifically, emotions. In his analysis, even though he does not consider the temporal dimension of affective intentionality, Slaby stresses its bodily nature, suggesting that it involves a form of pre-reflective
+bodily self-awareness that is correlated with a world-directed intentionality in which
+a given object or event appears to be emotionally significant. For instance, in fear,
+the object of one’s emotion appears as threatening, whereas one is pre-reflectively
+aware of bodily feelings such as trembling and a rise of one’s heart rate, as well as
+the tendency to, say, run away.
+When I say that all intentionality is affective intentionality, I am broadening the
+scope of Slaby’s analysis by focusing on affection and temporality (i.e., operative
+intentionality) rather than the object intentionality that Slaby has in mind when focusing on emotional experience. At the level of emotional object intentionality, bodily
+feelings constitute the emotional significance of the current intentional object. To
+conclude this section, I now turn to show how, at the level of operative intentionality,
+there is a broader conception of feeling that, while cutting across the subject-object
+dichotomy found at the heart of object intentionality, constitutes the world as having an affective significance. To do so, I must go from the fact that we anticipate the
+world to how we do so.
+The first thing to note is that protention is not a neutral anticipation. Husserl (1973,
+§ 21; 2001a, §§ 5–13) discusses how different modes of anticipation give rise to
+“modalizations” of how we experience the world. Recall that protention is characterised as an openness toward an indeterminate set of future possibilities. These possibilities may be regarded as the content of protention. They are what one anticipates.
+The protentional content must be distinguished from how it is anticipated. Possibilities may appear as more or less certain at some points, or they may be shrouded in
+doubt. When walking down a set of stairs, for instance, I pre-reflectively anticipate
+the distance of each step with a general sense of certainty. I pre-reflectively ‘know’
+that there will be a next step. This certainty can, of course, be disappointed. Husserl
+(ibid., pp. 91–93) provides the example of looking at a figure that first appears to be
+a person, but then one notices that it might be a mannequin. The perceptual sense of
+the object becomes shrouded in doubt. This doubt is formed at the level of protention.
+Conflicting anticipations are at play here, some of which would disclose the figure as
+a person, and others as a mannequin. There are doubtful anticipations of, as Husserl
+calls them, ‘problematic possibilities’. Or perhaps one feels inclined to take the figure
+to be a person, which means that the possibilities linked with the sense ‘person’ are
+7
+
+Note that co-emergence does not imply identity. Affection and protention remain distinct because,
+among other differences, affection has intuitive content that protention lacks. I thank an anonymous
+reviewer for pressing me on this point.
+
+13
+
+970
+
+J. D. Bogotá
+
+more enticing than those linked with the sense ‘mannequin’. Anticipation is, therefore, always modalized within different degrees of certainty and doubt, constituting
+(at the level of operative intentionality) how the world appears at any given moment.8
+These modalizations must also be understood in terms of practical possibilities.
+For instance, while lying in my bed, I am pre-reflectively certain that the floor is
+underneath my bed, which is to say that I pre-reflectively anticipate that, if I were
+to try to stand up, my feet would encounter the floor. This certainty corresponds to a
+general feeling of security that is always there without me needing to make it explicit.
+In cases of doubt, it is unclear what one can do. In Husserl’s example, the same object
+affords inconsistent actions. I cannot engage with a person in the same ways in which
+I can engage with a mannequin. The mannequin, for instance, would probably not
+squeeze my hand if I tried to shake one of its hands. Thus, when looking at the figure
+that may or may not be a person, there might be a general feeling of unease. One may
+also follow Husserl (1973, §§ 8 26) when he discusses how, given our ongoing interactions with the world (which inform our protentional horizon), worldly experience
+is imbued with a general feeling of familiarity. These general feelings, which ought
+to be distinguished from object-oriented emotions9 and bodily feelings like the rise
+of the heart-rate or cold feet, are in-between our embodied subjectivity and the world.
+They are not felt in the body, but they are intrinsically related to our bodily possibilities (i.e., the system of “I can”). Concerning affection, these feelings are intrinsically
+related to how the world affects us. Whereas worldly objects may appear as enticing
+when imbued with a general feeling of security, such allure is decreased when there
+is a general feeling of unease.
+Thus, we may distinguish with Ratcliffe (2017), between the contents, the modes,
+and the affective styles of anticipation. What we anticipate (i.e., the content of protention), is anticipated with different degrees of pre-reflective and pre-predicative
+certainty, giving rise to modes of anticipation (e.g., doubt). How the world appears
+in operative intentionality is further shaped by the affective style of our anticipations,
+which corresponds to general feelings that, while linked to our bodily possibilities
+
+8
+
+There is some ambiguity in Husserl’s treatment of these modalizations and their relationship with protention. As noted by an anonymous reviewer, in at least one of his works, Husserl (1973) distinguishes
+between “passivity” and “receptivity”, and discusses modalization in relation to the latter. Passivity refers
+to synthetic processes in which the ego does not participate at all. The syntheses of time-consciousness
+are a good example of such passive syntheses, and thus protention would be found at this passive level.
+Receptivity, in contrast, is the lowest form of egoic activity that occurs when the ego submits to an
+affective tendency. From this perspective, modalization can be interpreted as related to higher forms of
+anticipation that may be distinguished from protention. However, in that same work, Husserl discusses
+some forms of modalization as modifying “protentional anticipations” (1973, p. 91), suggesting that
+modalization does indeed occur at the level of protention. Elsewhere, he characterises modalization as
+“modal modifications of […] passive intentions of expectation” (Husserl, 2001a, p. 92, emphasis added).
+It is thus possible to interpret modalization as a phenomenon that occurs at the level of protentional
+anticipation.
+
+9
+
+Affective states like emotions, despite being a significant part of our human lives, are complex intentional states that often involve specific intentional objects that are intended via appraisals. Such complex
+affective episodes presuppose the general openness constituted by affection and temporality at the operative level.
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+971
+
+and how the world affects us, cannot be reduced to bodily feelings like the ones felt
+in emotion.10
+The affective style of protention at the operative level can be illustrated by referring to trauma as a symptom of PTSD. Regardless of its primacy in the structure of
+operative intentionality, protention is shaped by our past experiences. I protend that
+the hidden profile of the swan is probably some shade of white because in the past
+I have mostly seen white swans. Some people, however, experience something so
+shattering that their whole affective style of anticipation is modified. As Ratcliffe et
+al. (2014) put it, we habitually engage with the world and with others with a general
+feeling of trust. I do not usually anticipate that the world or that others want to harm
+me. This habitual anticipation may be, however, shattered by experiences of torture,
+which often involve the use of homely items to inflict pain on the victim. This traumatic event may change the habitual style of anticipation of the victim in such a way
+that possibilities that earlier would have been enticing, are now mostly gone, giving
+rise to a sense of foreshortened future. The possibilities that remain may be anticipated with a general feeling of distrust. For a victim of trauma, because of their past
+experiences, practical possibilities that tend toward isolation may be more enticing.
+The enticement of such practical possibilities and the general distrust toward other
+people and the world are not two separate phenomena. To affectively anticipate the
+future with a feeling of distrust is to tend toward practical possibilities of isolation
+from others.
+The case of trauma reveals that, at the operative level, we may not speak about
+complex affective states such as fear or elation toward something. We may, however,
+identify certain feelings that are related to the world as a general horizon of possibility and impossibility. Depending on how this horizon is opened, one may feel in
+different ways regarding the world, its objects, and other people. Husserl sometimes
+discusses the feeling of familiarity we have with the world. This feeling is constituted
+via a relatively stable sense of certainty that cannot be isolated from protention and
+the system of “I can”. One may also talk about a general feeling of security when
+living in a safe place. But as phenomenological psychopathology (see below) and
+critical phenomenology (see, e.g., Young, 1980; Weiss, 2017) have shown, cases of
+mental illness or social oppression may limit the system of “I can” of a person, closing the horizon of possibilities opened at the operational level, in very salient ways.
+This closure may be experienced as a general feeling of alienation, among many
+others. Such feelings are pre-reflectively felt in relation to the affective field of future
+possibilities that constitutes our openness to the world. These existential feelings,
+as Ratcliffe (2005) calls them, are characteristic of how the world is disclosed to us
+affectively, bodily, and temporally, and constitute the affective intentionality found at
+the operative level.
+This connection between the affective style of anticipation, the practical possibilities that pre-reflectively appear as more or less enticing, and feeling is also clear in
+some depressive disorders. In major depressive episodes, the depressed person expe10
+
+In this regard, I distance myself from Ratcliffe. Some of the examples of affective styles of anticipation
+are the hopeful or fearful anticipation of an event. As I see it, those affective phenomena are emotions, and
+therefore are constituted at a higher level than the one I am interested in.
+
+13
+
+972
+
+J. D. Bogotá
+
+riences their future as lacking openness and possibilities, which in turn may give rise
+to suicidal ideation (Wyllie, 2005). In extreme cases, things in the world appear as
+lacking saliency or allure, which goes hand-in-hand with a lack of motivation to act,
+a general feeling of passivity, and a feeling of hopelessness.11 In depression, the general embodied structure of affection and anticipation (with its modes, contents, and
+forms of anticipation) is deeply disturbed: “I never know any moment what is going
+to happen. It’s the most terrible outlook I’ve ever had to look to. It’s all perpetual. I’ve
+got to suffer perpetually” (Lewis, cit. in Oyebode, 2023, p. 77).
+This brief excursion into phenomenological psychopathology illustrates the deep
+connection between affectivity and temporality.12 It also underscores the potential
+omission of feeling within Husserl’s perspective.13 (but see Husserl, 2006, Nrs.
+69–75). In my view, operative intentionality, due to its link with protention, its affective style, and affection, is inherently suffused with feeling. Feeling itself finds its
+ultimate grounding in the bodily ways through which we anticipate the world. Furthermore, these affective styles of anticipation are shaped by our past experiences,
+thus completing the temporal structure that characterises not only the living present
+but also the intentional arc.
+
+4 Conclusion
+In this paper, I have discussed the fundamental level of intentionality from a phenomenological perspective, namely, operative intentionality. As opposed to object
+intentionality, which refers to the feature of mental and experiential states to be about
+an object, operative intentionality refers to the general openness we have toward the
+world. Within the phenomenological tradition, it is claimed that at the basis of this
+operative level we find the structure of time-consciousness. Enactivists, however,
+have suggested that affection precedes and gives rise to temporality. I have argued
+that, because of their double framework (i.e., phenomenological and empirical),
+enactivists attribute a primacy to affectivity based on ambiguities concerning their
+use of temporality.
+Here, I have followed Varela’s original insight of the possibility of elaborating a
+non-dual approach to temporality and affectivity. My approach, however, is devel11
+
+The decrease of saliency, motivation, and general feeling of agency comes in different degrees depending on several factors, implying different general moods (or ‘existential feelings’). See Ratcliffe (2015).
+12
+
+See also Enara García’s (2023) enactive approach to affectivity in mental disorders, which considers the
+temporal domain of experience, as well as Luna Dolezal’s (2022) work on chronic shame and the horizonal
+structure of experience.
+13
+See, however, Husserl’s (2006, C16) late analyses of affection and feeling. There, he thematizes feeling
+(and more specifically, pleasure and displeasure) as that through which something affects us: “Feelings
+are, after all, that which, or that as which, […] sensual objects motivate (affect) the active ego, ‘attract’ or
+‘repel’ it” (Husserl, 2006, p. 318, my translation). From this perspective, affection is seen as a “pre-mode
+of action” (Husserl, 2006, p. 350, my translation) insofar as it can motivate bodily movement (attraction
+and withdrawal) through feeling (pleasure and displeasure). These ideas are, without a doubt, close to the
+argument I have developed in this section. A complete elaboration of how Husserl’s considerations in these
+late analyses may shed further light onto the co-emergence between temporality and affectivity is beyond
+the scope of this paper.
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+973
+
+oped on phenomenological grounds. Delving into both the phenomenology of timeconsciousness and affection, I have argued that they are co-emergent at the level of
+operative intentionality, meaning that intentionality is always affective intentionality.
+At this level, the world is disclosed as an affective field that contains different solicitations that are correlated with the pre-reflective self-awareness we have of our own
+bodily possibilities, i.e., the system of “I can”. These possibilities are future-oriented,
+meaning that they presuppose the protentional aspect of time-consciousness. Such
+an aspect, however, presupposes the felt pull that is given in affection. Therefore,
+affection and temporality depend on one another without that meaning that they are
+identical to one another.
+To conclude this paper, I have also discussed how this openness to the world is
+characterised by general feelings that arise from the set of possibilities that may or
+may not be opened within experience.
+Acknowledgements I am grateful to thank Giovanna Colombetti, Sam Wilkinson, Enara García, Lucía
+Guerrero, and two anonymous reviewers for their invaluable comments on earlier versions of this paper.
+I also thank the audience at the second South West Phenomenology workshop that took place in Bristol,
+UK in July 2023 for their comments and questions on presentations based on these ideas. This research
+was supported by the Ministerio de Ciencia, Tecnología e Innovación (Minciencias) of Colombia (grant
+885 of 2020).
+
+Declarations
+Conflict of interests The author declares that there is no conflict of interest in the subject matter or materials discussed in this manuscript.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License,
+which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long
+as you give appropriate credit to the original author(s) and the source, provide a link to the Creative
+Commons licence, and indicate if changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line
+to the material. If material is not included in the article’s Creative Commons licence and your intended use
+is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission
+directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/
+licenses/by/4.0/.
+
+References
+Bogotá, J. D., & Artese, G. F. (2022). A Husserlian Approach to Affectivity and Temporality in Affordance
+Perception. In Z. Djebbara (Ed.), Affordances in Everyday Life. A Multidisciplinary Collection of
+Essays (pp. 181–190). Springer. https://doi.org/10.1007/978-3-031-08629-8_17.
+Caravà, M., & Scorolli, C. (2020). When affective relation weighs more than the mug handle: Investigating
+affective affordances. Frontiers in Psychology, 11, 1928. https://doi.org/10.3389/fpsyg.2020.01928.
+Colombetti, G. (2014). The feeling body. Affective Science meets the enactive mind. MIT Press.
+Colombetti, G., & Thompson, E. (2005). Enacting emotional interpretations with feeling. Behavioral and
+Brain Sciences, 28(2), 200–201. https://doi.org/10.1017/S0140525X05280044.
+Di Paolo, E. A., Cuffari, E. C., & De Jaegher, H. (2018). Linguistic bodies. The continuity between Life
+and Language. MIT Press.
+Dolezal, L. (2022). The Horizons of chronic shame. Human Studies, 45(4), 739–759. https://doi.
+org/10.1007/s10746-022-09645-3.
+
+13
+
+974
+
+J. D. Bogotá
+
+Freeman, W. J. (2000). Emotion is essential to all intentional behaviors. In M. D. Lewis, & I. Granic (Eds.),
+Emotion, Development, and Self-Organization: Dynamic systems approaches to Emotional Development (pp. 209–235). Cambridge University Press.
+Fuchs, T. (2022). The not-Yet-Conscious. Protentional consciousness and the emergence of the New. Phenomenology and the Cognitive Sciences. https://doi.org/10.1007/s11097-022-09869-9.
+Gallagher, S. (2017). The past, Present and Future of Time-Consciousness: From Husserl to Varela and
+Beyond. Constructivist Foundations, 13(1), 91–97.
+García, E. (2023). Affectivity in Mental disorders: An Enactive-Simondonian Approach. Phenomenology
+and the Cognitive Sciences. https://doi.org/10.1007/s11097-023-09929-8.
+Gibson, J. J. (1977/2017). The theory of Affordances. In R. Shaw, & J. Bransford (Eds.), Perceiving, acting
+and knowing (pp. 67–82). Routledge.
+Husserl, E. (1970). The Crisis of the European Sciences and Transcendental Phenomenology. An introduction to Phenomenological Philosophy. Northwestern University.
+Husserl, E. (1973). Experience and judgement. Investigations in a genealogy of Logic. Routledge and
+Kegan Paul.
+Husserl, E. (1989). Ideas pertaining to a pure phenomenology and to a Phenomenological Philosophy.
+Second Book: Studies in the Phenomenology of Constitution. Kluwer Academic.
+Husserl, E. (1991). On the phenomenology of the consciousness of Internal Time (1893–1917). Springer.
+Husserl, E. (2001a). Analyses concerning Passive and active synthesis. Lectures on Transcendental Logic.
+Springer.
+Husserl, E. (2001b). Die Bernauer Manuskripte über das Zeitbewußtsein (1917/18). Springer.
+Husserl, E. (2006). Späte Texte über Zeitkonstitution (1929–1934). Die C-Manuskripte. Springer.
+Kiverstein, J. (2017). Life is intrinsically temporal. Constructivist Foundations, 13(1), 103–105.
+Kortooms, T. (2002). Phenomenology of Time. Edmund Husserl’s analysis of time-consciousness. Springer.
+Lewis, M. (2005). Bridging emotion theory and neurobiology through dynamic systems modeling. Behavioral and Brain Sciences, 28(2), 169–194. https://doi.org/10.1017/s0140525x0500004x.
+Lohmar, D. (2002). What does Protention ‘Protend’? Remarks on Husserl’s analyses of Protention in the
+Bernau manuscripts on time-consciousness. Philosophy Today, 46(Supplement), 154–167. https://
+doi.org/10.5840/philtoday200246Supplement18.
+Merleau-Ponty, M. (1945/2012). Phenomenology of Perception. Routledge.
+Oyebode, F. (2023). Sim’s Symptoms in the Mind. Textbook of Descriptive Psychopathology (Seventh Edition) Elsevier.
+Ratcliffe, M. (2005). The feeling of being. Journal of Consciousness Studies, 12(8–10), 45–63.
+Ratcliffe, M. (2015). Experiences of Depression. A study in Phenomenology. Oxford University Press.
+Ratcliffe, M. (2017). Real hallucinations. Psychiatric Illness, Intentionality, and the Interpersonal World.
+MIT Press.
+Ratcliffe, M., Ruddell, M., & Smith, B. (2014). What is a sense of Foreshortened Future? A Phenomenological Study of Trauma, Trust, and Time. Frontiers in Psychology, 5, 1–11. https://doi.org/10.3389/
+fpsyg.2014.01026.
+Rietveld, E., & Kiverstein, J. (2014). A Rich Landscape of Affordances. Ecological Psychology, 26(4),
+325–352. https://doi.org/10.1080/10407413.2014.958035.
+Rodemeyer, L. (2006). Intersubjective temporality. It’s about Time. Springer.
+Schaefer, D. O. (2019). The evolution of Affect Theory. Cambridge University Press.
+Sheets-Johnstone, M. (2011). The Primacy of Movement. Expanded Second Edition. John Benjamins Publishing Company.
+Slaby, J. (2008). Affective intentionality and the feeling body. Phenomenology and the Cognitive Sciences,
+7(4), 429–444. https://doi.org/10.1007/s11097-007-9083-x.
+Steinbock, A. J. (2004). Affection and attention: On the phenomenology of becoming Aware. Continental
+Philosophy Review, 37(1), 21–43. https://doi.org/10.1023/B:MAWO.0000049298.44397.be.
+Thompson, E. (2007). Mind in life. Biology, phenomenology, and the sciences of mind. Belknap Press.
+Varela, F. J. (1996). Neurophenomenology. A Methodological Remedy for the hard problem. Journal of
+Consciousness Studies, 3(4), 330–349.
+Varela, F. J. (1999). The Specious Present: A neurophenomenology of time consciousness. In J. Petitot,
+F. J. Varela, B. Pachoud, & J. M. Roy (Eds.), Naturalizing phenomenology: Issues in contemporary
+phenomenology and Cognitive Science (pp. 266–314). Stanford University Press.
+Varela, F. J., & Depraz, N. (2005). At the source of Time. Valence and the Constitutional Dynamics of
+Affect. Journal of Consciousness Studies, 12(8–10), 61–81.
+
+13
+
+What could come before time? Intertwining affectivity and temporality…
+
+975
+
+Weber, A., & Varela, F. J. (2002). Life after Kant: Natural purposes and the autopoietic foundations of
+Biological individuality. Phenomenology and the Cognitive Sciences, 1(2), 97–125. https://doi.org/1
+0.1023/A:1020368120174.
+Weiss, G. (2017). The perils and pleasures of the I can body. Symposium, 21(2), 63–80. https://doi.
+org/10.5840/symposium201721220.
+Wyllie, M. (2005). Lived Time and Psychopathology. Philosophy Psychiatry and Psychology, 12(3), 173–
+185. https://doi.org/10.1353/ppp.2006.0017.
+Young, I. M. (1980). Throwing like a girl: A phenomenology of feminine body comportment motility and
+spatiality. Human Studies, 3(1), 137–156. https://doi.org/10.1007/BF02331805.
+Zahavi, D. (1999). Self-awareness and alterity: A Phenomenological Investigation. Northwestern
+University.
+Zahavi, D. (2003). Husserl’s phenomenology. Stanford University Press.
+Zahavi, D. (2019). Phenomenology. The basics. Routledge.
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps
+and institutional affiliations.
+
+13
+
+

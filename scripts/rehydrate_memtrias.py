@@ -37,9 +37,9 @@ from omni_coworker.memory.memtrias_ai import MemtriasAI, minilm_embedder
 def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str, int]:
     state_dir = state_dir or Path(os.getenv("OMNI_STATE_DIR", str(REPO / "data")))
     acervo_dir = Path(os.getenv("OMNI_ACERVO_DIR", "/content/acervo_vetorizado"))
+    os.environ.setdefault("OMNI_EMBED_DEVICE", "cpu")
     mem = MemtriasAI(
         state_dir=state_dir,
-        embedder=minilm_embedder,
         acervo_dir=acervo_dir if acervo_dir.exists() else None,
     )
 
@@ -92,10 +92,72 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
             existing_refs.add(ref)
             counts["machine"] += 1
 
-    # 2. Namespace `document`: PhilPapers 2026 real txt files + Acervo Vetorizado catalog
-    phil_dir = Path(
-        "/content/omnimind-kilombo-sovereign/revisao/bibliografia_philpapers_20261005/txt"
-    )
+    # 1b. Namespace `machine`: Symbolic body (codebase hypergraph + repo snapshot, sanitized)
+    try:
+        import subprocess
+        from omni_coworker.store.code_index import (
+            build_symbolic_hypergraph,
+            sanitize_secret_text,
+        )
+
+        hg = build_symbolic_hypergraph(
+            REPO / "src/omni_coworker", state_dir / "symbolic_hypergraph.json"
+        )
+        for he in hg.get("hyperedges", []):
+            mod_rel = he.get("module", "")
+            ref = f"symbolic_body:module:{mod_rel}"
+            if ref in existing_refs:
+                continue
+            clean_txt, _ = sanitize_secret_text(
+                f"[SymbolicHyperedge {mod_rel}] subpackage={he.get('subpackage')} "
+                f"concepts={he.get('concepts')} tables={he.get('tables')} "
+                f"routes={he.get('routes')} members={he.get('members')[:8]} — {he.get('summary')}"
+            )
+            mem.remember(
+                "machine",
+                clean_txt,
+                tags=["symbolic_body", "hypergraph", str(he.get("subpackage", "core"))],
+                instance="omni_worker",
+                doc_ref=ref,
+            )
+            existing_refs.add(ref)
+            counts["machine"] += 1
+
+        head_sha = (
+            subprocess.run(
+                ["git", "rev-parse", "--short", "HEAD"],
+                cwd=str(REPO),
+                capture_output=True,
+                text=True,
+                check=False,
+            ).stdout.strip()
+            or "unknown"
+        )
+        snap_ref = f"repo_snapshot:{head_sha}"
+        if snap_ref not in existing_refs:
+            snap_txt, _ = sanitize_secret_text(
+                f"[Repo Snapshot {head_sha}] symbolic_hypergraph nodes={hg.get('node_count')} "
+                f"hyperedges={hg.get('hyperedge_count')} concepts={hg.get('concepts')} "
+                f"tables={hg.get('tables')} routes={hg.get('routes')}"
+            )
+            mem.remember(
+                "machine",
+                snap_txt,
+                tags=["repo_snapshot", "symbolic_body", head_sha],
+                instance="omni_worker",
+                doc_ref=snap_ref,
+            )
+            existing_refs.add(snap_ref)
+            counts["machine"] += 1
+    except Exception as e:
+        print(f"[rehydrate] warn symbolic_hypergraph: {e}", file=sys.stderr)
+
+    # 2. Namespace `document`: Local PhilPapers 2026 + A6 prior model reviews + Acervo Vetorizado
+    phil_dir = REPO / "data/corpus/philpapers_2026/txt"
+    if not phil_dir.exists():
+        phil_dir = Path(
+            "/content/omnimind-kilombo-sovereign/revisao/bibliografia_philpapers_20261005/txt"
+        )
     if phil_dir.exists():
         for tf in sorted(phil_dir.glob("*.txt")):
             ref = f"philpapers_2026/{tf.name}"
@@ -109,7 +171,27 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
             mem.remember(
                 "document",
                 f"[PhilPapers 2026: {tf.name}] {snippet}",
-                tags=["philpapers", "corpus_soberano", "obra"],
+                tags=["philpapers", "corpus_local", "obra"],
+                doc_ref=ref,
+            )
+            existing_refs.add(ref)
+            counts["document"] += 1
+
+    rev_dir = REPO / "data/corpus/a6_book/revisoes_anteriores"
+    if rev_dir.exists():
+        for rmd in sorted(rev_dir.rglob("*.md")):
+            ref = f"a6_revisoes/{rmd.relative_to(rev_dir)}"
+            if ref in existing_refs:
+                continue
+            try:
+                head = rmd.read_text(encoding="utf-8", errors="replace")[:700]
+            except Exception:
+                continue
+            snippet = " ".join(head.split())[:500]
+            mem.remember(
+                "document",
+                f"[A6 Revisão Anterior: {rmd.name}] {snippet}",
+                tags=["a6_book", "revisao_anterior", rmd.stem],
                 doc_ref=ref,
             )
             existing_refs.add(ref)

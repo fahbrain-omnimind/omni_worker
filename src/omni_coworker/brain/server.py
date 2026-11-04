@@ -50,7 +50,7 @@ def create_brain_router():
                     resp = await client.post(f"{base}/erika/unload")
                     return {"role": role, **resp.json()}
             except Exception as e:
-                return {"role": role, "status": "error", "reason": str(e)}
+                return {"role": role, "status": "error", "reason": type(e).__name__}
 
         @router.post("/reload")
         async def reload_model(role: str = "executor"):
@@ -61,7 +61,7 @@ def create_brain_router():
                     resp = await client.post(f"{base}/erika/reload")
                     return {"role": role, **resp.json()}
             except Exception as e:
-                return {"role": role, "status": "error", "reason": str(e)}
+                return {"role": role, "status": "error", "reason": type(e).__name__}
 
         @router.get("/health")
         async def health():
@@ -156,12 +156,32 @@ def create_brain_router():
                         }] + msgs
                     except Exception:
                         pass
-                # memtrias: retorno do recalcado (recall) + inscrição (log)
+                # memtrias: retorno do recalcado (recall) + inscrição (log) + corpo simbólico/acervo
                 auto_log = os.getenv("OMNI_MEMTRIAS_AUTO_LOG", "0") in ("1", "true", "yes")
+                auto_assist = os.getenv("OMNI_AUTO_CONTEXT_ASSIST", "0") in ("1", "true", "yes")
                 mem_recall = bool(payload.pop("memory_recall", False))
                 mem_log = bool(payload.pop("memory_log", auto_log))
                 mem_chat = str(payload.pop("chat_id", "") or "")
                 acervo_recall = bool(payload.pop("acervo_recall", False))
+                symbolic_recall = bool(payload.pop("symbolic_recall", False))
+                user_turn = " ".join(
+                    m.get("content", "")
+                    for m in (payload.get("messages") or [])
+                    if m.get("role") == "user"
+                )
+                if auto_assist and user_turn:
+                    low_turn = user_turn.lower()
+                    if any(
+                        kw in low_turn
+                        for kw in (
+                            "erro", "falha", "bug", "stall", "timeout", "oom", "dificuldade",
+                            "dodecatíade", "dodecatiad", "quádrupla", "freud", "lacan", "bion",
+                            "markov blanket", "pyphi", "mps", "ipr", "memtrias", "arquitetura",
+                        )
+                    ):
+                        mem_recall = True
+                        acervo_recall = True
+                        symbolic_recall = True
                 mem = None
                 if mem_recall or mem_log or acervo_recall:
                     try:
@@ -170,16 +190,25 @@ def create_brain_router():
                         mem = get_memtrias()
                     except Exception:
                         mem = None
-                user_turn = " ".join(
-                    m.get("content", "")
-                    for m in (payload.get("messages") or [])
-                    if m.get("role") == "user"
-                )
+                if symbolic_recall and user_turn:
+                    try:
+                        from ..store.code_index import search_hypergraph
+
+                        he_hits = search_hypergraph(user_turn, k=3)
+                        if he_hits:
+                            he_note = "[symbolic_hypergraph] " + " | ".join(
+                                f"{h.get('module')}(concepts={h.get('concepts')},tables={h.get('tables')})"
+                                for h in he_hits
+                            )
+                            msgs = list(payload.get("messages") or [])
+                            payload["messages"] = [{"role": "system", "content": he_note}] + msgs
+                    except Exception:
+                        pass
                 if mem is not None and mem_recall and user_turn:
                     try:
                         hits = mem.recall(
                             user_turn,
-                            namespaces=["user", "interaction", "chat", "machine"],
+                            namespaces=["user", "interaction", "chat", "machine", "document"],
                             chat_id=mem_chat or None, top_k=3)
                         if hits:
                             note = "[memtrias] " + " | ".join(

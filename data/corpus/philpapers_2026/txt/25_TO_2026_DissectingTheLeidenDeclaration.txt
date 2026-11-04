@@ -1,0 +1,1053 @@
+Dissecting the Leiden Declaration:
+The Missing Bridge from Mathematical Validity to
+Human Authorship
+T.O. (IASER Practitioner)
+September 2026
+
+Abstract
+The Leiden Declaration on Artificial Intelligence and Mathematics, published on 2 June
+2026 and endorsed by the International Mathematical Union, responds to the challenges
+that artificial intelligence poses to mathematical research. It grounds its recommendations
+in what it calls the characteristic values of mathematical research: the certainty and understanding conferred by proof, the attribution of results to specific authors, the transparency
+and independent verifiability of arguments, proper evaluation against shared standards, and
+the understanding and judgment of autonomously guided communities. This paper neither rejects the Declaration nor evaluates the risks of artificial intelligence. It examines
+the internal structure of the Declaration, and asks whether the epistemic values that concern mathematical knowledge are distinguished from the institutional values that concern
+mathematical practice. We establish three claims of non-entailment: the epistemic values
+do not entail human authorship, under any formalization that speaks only of results and
+their arguments; the requirement that a responsible subject exist does not entail that the
+generator of a result be human; and the path of legitimacy the Declaration describes, results
+attributed to named authors and published in peer-reviewed venues, is neither a necessary
+nor a suﬀicient condition of validity. Each claim of non-entailment is established by an
+explicit model construction, and its finite instances are verified by exhaustive enumeration.
+The central thesis is that the Declaration may legitimately defend both kinds of values, but
+it does not thereby establish that the latter are conditions of the former. The Declaration’s
+reasonable protections — disclosure, responsibility, verification, vigilance against plausible
+but false arguments — are retained, and are shown to become stronger once their epistemic
+and institutional components are separated. The dissection is itself conducted under the
+Declaration’s own epistemic values: every step rests on the published text of the Declaration, every inference is open to independent verification, the use of automated tools is
+disclosed, and responsibility for the content rests with the author. The paper is therefore
+not an external critique of the Declaration but an application of its epistemic standards to
+the Declaration itself. Its validity, if it has any, does not depend on the identity of its author.
+
+1
+
+Introduction
+
+1.1
+
+The Declaration
+
+The Leiden Declaration on Artificial Intelligence and Mathematics was published on 2 June 2026
+[1]. It was drafted by sixteen researchers from fifteen universities, following the NIAS–Lorentz
+Workshop on Mechanization and Mathematical Research held in Leiden in September 2025,
+and it is endorsed by the International Mathematical Union (IMU) [2]. The Declaration addresses individual mathematicians, mathematical organizations, policymakers, and commercial
+developers of artificial intelligence, and it issues recommendations to each [1].
+The Declaration is significant for a reason that is independent of whether one agrees with
+it. It makes explicit what the mathematical community says it wishes to preserve. A value that
+1
+
+is made explicit can be examined: its content can be stated, its relations to other values can be
+traced, and the inferences that lead from it to a recommendation can be checked. This paper
+undertakes that examination.
+
+1.2
+
+The grounding sentence
+
+The Declaration states the ground of its recommendations in a single sentence:
+“We base our recommendations on what we take to be characteristic values of mathematical research that we have a joint interest in preserving.” [1]
+The sentence fixes the logical form of the document. The recommendations are presented as
+following from a set of values, and the values are presented together, as one set. Whatever
+relations hold among the values therefore bear on whether the recommendations follow from
+them.
+
+1.3
+
+The question
+
+The question of this paper is:
+What exactly is being protected, and which claims about mathematical knowledge
+actually entail which claims about mathematical practice?
+
+1.4
+
+Position and scope
+
+The paper does not ask whether the Declaration is desirable, and it does not deny the practical
+problems the Declaration identifies. It does not evaluate the risks of artificial intelligence, and
+it does not attribute motives to the authors or signatories of the Declaration. It examines the
+text. Where the paper quotes the Declaration, it quotes the published text; where it quotes a
+supporter of the Declaration, it says so, and it does not treat a supporter’s words as part of the
+Declaration.
+The questions addressed here belong to the philosophy of mathematical practice, the cluster
+of approaches that treats philosophical issues arising from actual mathematical practice, including the social dimensions of mathematical knowledge and the challenges raised by computerassisted proof, formalization and new AI tools [3]. The method is a structural analysis of a
+normative document: the Declaration is decomposed into its components, and the inferential
+relations among them are tested.
+
+1.5
+
+Reflexive position
+
+The dissection is conducted under the Declaration’s own epistemic values. Every step of the
+argument rests on the published text of the Declaration, and every inference is presented in
+a form that a reader can check independently of the identity of the writer; the three central
+claims of non-entailment are, in addition, established by explicit counter-models and verified
+by exhaustive enumeration (Appendices A and B). The paper follows the Declaration’s recommendations to individual mathematicians: the use of automated tools, including large language
+models, is disclosed in the Acknowledgements; responsibility for the correctness of the arguments and for the completeness and accuracy of citations rests with the author; references are
+given with identifiers, and matters that could not be confirmed in primary sources have been
+excluded from the text; and the paper is itself a participation in the public discourse the Declaration invites [1]. The central arguments are formulated and adopted by the author, and they
+were cross-checked by independent systems before completion, in line with the standards the
+Declaration asks organizations to apply to results obtained with automated tools [1].
+
+2
+
+The paper is therefore not an external critique of the Declaration. It applies the Declaration’s
+epistemic standards to the Declaration itself. The validity of its reasoning, if it has any, does
+not depend on who wrote it.
+One consequence may be stated in advance, in conditional form:
+(R) If the reasoning of this paper is valid, and the paper is made public without
+passing through a peer-reviewed venue, then publication in a peer-reviewed venue is
+not a necessary condition of the validity of a mathematical-philosophical argument
+of this kind.
+The conditional is an instance of the logical form examined in Section 6, and its validity is
+verified there (Proposition 6.2(iii)).
+
+1.6
+
+Organization
+
+Section 2 separates the values of the Declaration into two domains. Section 3 shows that
+the inference from the first domain to human authorship is not valid without an additional
+premise. Section 4 separates attribution from verification. Section 5 separates responsibility
+from authorship. Section 6 examines the path of legitimacy described by the Declaration.
+Section 7 states the Declaration’s reasonable protections and shows that they are compatible
+with the central thesis. Section 8 states what the dissection reveals, and Section 9 concludes.
+
+2
+
+The Declaration’s Two Domains
+
+The Declaration lists five values [1]. In its own words:
+(V1) “Mathematical proofs are regarded as conferring the highest degree of certainty to their
+conclusions, as well as imparting understanding of why their conclusions are true.”
+(V2) “Results are attributable to specific authors who take credit for their discovery and assume
+responsibility for their correctness.”
+(V3) “Mathematical arguments are regarded as transparent and subject to independent verification. They may be extremely long or diﬀicult, but in principle no proprietary knowledge
+or equipment should be required to understand them.”
+(V4) “Mathematicians share a concern for proper evaluation of mathematical work relative to
+shared standards of depth, diﬀiculty, and significance.”
+(V5) “Mathematics produces not only a body of results, but also understanding, clarity, and
+judgment among the communities of mathematicians who have shaped them, often in the
+context of their own autonomously guided research.”
+The five values are not of one kind. To separate them, we use a criterion that the values
+themselves make available.
+Definition 2.1 (Author-invariance). A value is author-invariant if whether a given result satisfies it is unchanged when the producer of the result is changed while the result itself — its
+statement, its argument, and the relation of the argument to the statement — is kept fixed. A
+value that is author-invariant is called epistemic; a value that is not is called institutional.
+The criterion asks a single question of each value: does it concern the result, or does it
+concern who produced the result and in which community?
+• V1 concerns what a proof confers on its conclusion. A proof that confers certainty and
+understanding does so whoever wrote it. V1 is epistemic.
+3
+
+• V3 concerns the transparency and independent verifiability of an argument. The Declaration’s own formulation excludes any dependence on proprietary knowledge or equipment;
+independent verification is, by definition, verification that does not depend on the producer. V3 is epistemic.
+• V2 concerns the attribution of a result to specific authors who take credit and assume
+responsibility. Whether V2 is satisfied depends on who the producer is. V2 is institutional.
+• V4 concerns evaluation by mathematicians relative to shared standards; V5 concerns understanding and judgment among the communities that have shaped the results, in the
+context of their own autonomously guided research. Both concern the community within
+which results are produced and assessed. V4 and V5 are institutional.
+We write
+E = {V1, V3},
+
+I = {V2, V4, V5}
+
+for the epistemic values, which concern mathematics as knowledge, and the institutional values,
+which concern mathematics as a practice. The classification of V1 and V2 is verified formally in
+Appendix A.1: in the finite model used there, a change of producer never changes the truth value
+of the epistemic premises, and frequently changes the truth value of the attribution condition.
+Definition 2.2 (Epistemic language). Let LE be a first-order language with a sort R of results
+and any predicates and functions on R that concern statements, arguments and their relations,
+but containing no symbol for the agents related to a result (gen, sub, ver, cor, Human) and no
+symbol for the route of publication (Named, Reviewed). Let L be LE extended by a sort A of
+agents, the predicate Human on A, the functions gen, sub, ver, cor : R → A assigning to each
+result its generator, submitter, verifier and corrector (Section 5), and the predicates Named,
+Reviewed on R.
+Definition 2.1 has a syntactic counterpart: a value is epistemic in the sense of Definition 2.1
+if it can be formalized by sentences of LE , since such sentences do not refer to the producer and
+their truth value is therefore unchanged when the producer is changed. The classification of this
+section places V1 and V3 in E; accordingly, any formalization of V1 and V3 considered below is
+a set of LE -sentences.
+The separation implies no ranking. Institutional values may be as important as epistemic
+ones, and the Declaration may legitimately defend both. The question of the next section is
+whether the Declaration’s recommendations treat the institutional values as following from the
+epistemic ones.
+
+3
+
+The Missing Bridge
+
+3.1
+
+The inference
+
+Consider the following statements, each of which the Declaration either asserts or presupposes.
+(P1) The validity of a mathematical result is assessed by the correctness of its proof.
+(P2) Mathematical proofs should be independently verifiable.
+(C) Mathematical results must be attributed to human authors.
+(P1) and (P2) are one formalization of V1 and V3 in LE , with a predicate Valid for validity.
+The result below does not depend on this choice of formalization (Corollary 3.3). (C) is the
+content of the Declaration’s recommendation to individual mathematicians headed “Aﬀirm the
+humanity of authorship”:
+4
+
+“Credit and responsibility continue to belong to humans within the mathematical
+community and should not be given to automated systems.” [1]
+Proposition 3.1 (The missing bridge). (C) is not a logical consequence of (P1) and (P2).
+Moreover, (C) is independent of {(P1), (P2)}: both {(P1), (P2), (C)} and {(P1), (P2), ¬(C)} are
+satisfiable.
+Proof. Consider a single result r whose proof is correct and independently verifiable, and whose
+producer is not human. In this situation (P1) and (P2) are satisfied, since r is valid, its validity
+is assessed by the correctness of its proof, and its proof is verifiable; and (C) is not satisfied, since
+the producer of r is not human. Hence (P1) and (P2) do not entail (C). If instead the producer
+of r is human, all three statements are satisfied. The formal version of this argument, with an
+explicit model, is given in Appendix A.1; exhaustive enumeration over all interpretations on a
+domain of two results and two producers is given in Appendix B.1.
+Lemma 3.2 (Invariance lemma). Let Γ be a set of LE -sentences containing a unary predicate
+Valid.
+(a) If Γ∪{∃r Valid(r)} is satisfiable, then, for each f ∈ {gen, sub, ver, cor}, Γ ̸|= ∀r (Valid(r) →
+Human(f (r))).
+(b) If Γ ∪ {∃r Valid(r)} is satisfiable, then Γ ̸|= ∀r (Valid(r) → Reviewed(r)).
+(c) If Γ ∪ {∃r ¬Valid(r)} is satisfiable, then Γ ̸|= ∀r (Path(r) → Valid(r)), where Path(r) :=
+Named(r) ∧ Reviewed(r) (Definition 6.1).
+Proof. Let ME be an LE -structure satisfying Γ and the relevant existential sentence. Expand
+ME to an L-structure M by adding interpretations for the new symbols; since the sentences of
+Γ contain none of these symbols, M |= Γ (the truth of a sentence in an expansion is determined
+by its reduct to the language of the sentence). (a) Let AM = {h, m}, HumanM = {h} and
+f M (r) = m for all r and all f ∈ {gen, sub, ver, cor}. For r0 with M |= Valid(r0 ), M ̸|=
+Human(f (r0 )). (b) Let ReviewedM = ∅. For r0 with M |= Valid(r0 ), M ̸|= Reviewed(r0 ). (c)
+Let r1 satisfy M |= ¬Valid(r1 ) and let NamedM = ReviewedM = {r1 }. Then M |= Path(r1 )
+and M ̸|= Valid(r1 ).
+Corollary 3.3 (Independence from the formalization). Let ΓE be any formalization of V1 and
+V3 in LE that admits at least one valid result. Then ΓE ̸|= (C).
+Proof. Lemma 3.2(a) with f = gen. Proposition 3.1 is the instance ΓE = {(P1), (P2)}.
+The condition that ΓE admit a valid result excludes only formalizations under which no
+mathematical result could be valid; such a formalization would not express V1, which speaks
+of proofs that confer certainty on their conclusions. Corollary 3.3 closes the step from the
+Declaration’s epistemic values to the non-entailment: whatever sentences are taken to express
+V1 and V3, provided they are epistemic in the sense of Section 2, they do not entail human
+authorship.
+In symbols:
+epistemic validity ̸⇒ human authorship.
+To derive (C) from (P1) and (P2), an additional premise is required, one that connects the
+validity of a result with the identity of its producer. That premise is the bridge. The Declaration
+does not state it.
+
+5
+
+3.2
+
+The bridge is used
+
+It might be objected that the Declaration never claims that human authorship is a condition of
+mathematical truth, and that Proposition 3.1 therefore refutes a claim nobody made.
+The objection is correct about what the Declaration claims, and this paper does not attribute that claim to it. The point concerns the structure of the document. By the grounding
+sentence of Section 1, the Declaration bases its recommendations on the characteristic values
+of mathematical research, presented together, as one set. The set contains both the epistemic
+values of E and the institutional values of I. The recommendation to aﬀirm the humanity of
+authorship is one of the recommendations so grounded. Since both kinds of values are offered
+as the joint ground of the same recommendations, the logical relations between them are open
+to examination; and Proposition 3.1 shows that the epistemic values, taken by themselves, do
+not ground the recommendation that authorship be human.
+
+3.3
+
+What is not claimed
+
+It does not follow that human authorship should be abandoned. A community may adopt the
+attribution of results to human authors as an institutional norm, for reasons of its own. What
+follows is narrower: if it does so, the norm is an institutional choice concerning the organization
+of mathematical practice, and not a consequence of the conditions under which mathematical
+results acquire their validity.
+
+4
+
+Attribution Is Not Verification
+
+The Declaration does not exclude automated tools from mathematical research. Its first recommendation to individual mathematicians reads:
+“Transparently disclose the use of automated tools, including large language models,
+machine learning systems, proof assistants, and other mathematical software.” [1]
+The list places large language models in one class with proof assistants and other mathematical
+software. The Declaration thereby treats these tools as members of a single continuum, subject
+to one obligation of disclosure.
+For results obtained with automated tools, the Declaration asks organizations to demand
+standards that address the associated risks:
+“These might include requiring human descriptions of central arguments obtained
+by automated tools, insisting on formal verification when appropriate, cross-checking
+theoretical and computational results, or external pre-submission review.” [1]
+Each item in this list is a means of verification. None of them is a means of excluding a result
+because of the kind of producer that generated it.
+The history of computer-assisted proof shows the same pattern. In 1976 Appel and Haken
+proved the four color theorem; the proof, published in 1977, relied on extensive computer verification and was the first major theorem to be proved in this way [4, 5]. Tymoczko argued that
+the acceptance of such a proof changed the concept of mathematical proof, since its computational part could not be surveyed by a human mathematician [6]. The doubt was answered not
+by excluding the computer but by a more rigorous use of it: Gonthier produced a formal proof
+of the theorem in which the correctness of the computational part is itself formally verified [7].
+Distrust of a tool was resolved by a means of verifying the tool.
+Two functions are thus to be kept apart. Verification establishes whether a result is valid;
+it operates on the result and is author-invariant. Attribution establishes to whom a result is
+credited; it operates on the relation between the result and its producer and is not authorinvariant. The presence of an automated tool in the production of a result is a fact about the
+6
+
+production, and it is a question for attribution and disclosure; whether the result is valid is a
+question for verification. The Declaration’s own standards for automated results are standards
+of the second kind. This raises a question that the Declaration does not answer:
+If verification can establish mathematical validity independently of the identity of the
+producer, what additional epistemic role is served by requiring human authorship?
+
+5
+
+Responsibility Is Not Authorship
+
+5.1
+
+The Declaration on responsibility
+
+The Declaration connects authorship with responsibility. Its recommendation to individual
+mathematicians headed “Retain the responsibility for correctness” reads:
+“When automated techniques are employed in published mathematical research, the
+responsibility for the correctness and adequacy of the arguments and results, as well
+as for the completeness and accuracy of citations to relevant prior work, remains
+exclusively with the human authors.” [1]
+The requirement that a responsible subject exist is reasonable, and this paper retains it (Section 7). The question is what it entails.
+
+5.2
+
+Decomposing responsibility
+
+Responsibility for a published result comprises distinct roles:
+• the generator, who produces the content of the result;
+• the submitter, who presents the result for publication and answers for it;
+• the verifier, who undertakes to establish its correctness;
+• the corrector, who undertakes to correct it if it proves wrong.
+The requirement that responsibility rest with human authors is a requirement on the submitter,
+the verifier and the corrector. It does not by itself say anything about the generator.
+Proposition 5.1 (Responsibility without human generation). Let (Resp) be the statement that,
+for every result, the submitter, the verifier and the corrector are human, and let (G) be the
+statement that, for every result, the generator is human. Then (G) is not a logical consequence
+of (Resp).
+Proof. Consider a single result r whose content was generated, in whole or in part, by an
+automated tool, and whose submitter, verifier and corrector are a human author. (Resp) is
+satisfied and (G) is not. The formal model is given in Appendix A.2, and exhaustive enumeration
+in Appendix B.2.
+The configuration used in the proof is not hypothetical. It is the configuration in which this
+paper was produced: automated tools were employed as external reasoning engines, their use
+is disclosed, and all responsibility for the content rests with the author (see the Acknowledgements). The Declaration’s requirement is satisfied in full, while the generator is not exclusively
+human. The separation of responsibility from generation is therefore not merely possible; it is
+in operation.
+
+7
+
+5.3
+
+The reasons offered
+
+In a commentary on the Declaration, Gowers, who declined to sign it, asks of a future in which
+problems are solved by AI with formalized and verified solutions: “Is that a future we should
+resist, and if so, why?” [8]. The question can be answered only by reasons, and the reasons that
+may be offered for human authorship can each be examined against the decomposition above.
+• Accountability. Accountability requires that someone answer for the result. This is a
+requirement on the submitter, the verifier and the corrector, and it is satisfied by (Resp).
+• Attribution of sources. The Declaration asks for “proactive effort to find and credit the
+sources that made a new result possible” [1]. This is an obligation concerning the relation
+of a result to prior work; it can be discharged by the submitter, whoever generated the
+content.
+• Understanding. If understanding is taken to be understanding of the result by those who
+work with it, it concerns the community in which the result is received, and belongs to
+V5. It is a reason for the institution, not a condition of the validity of the result.
+• Community. The preservation of a community of mathematicians is a reason concerning
+the organization of practice. It belongs to I.
+Each reason is a reason for a norm in I, or is already satisfied by (Resp). None of them supplies
+the missing bridge of Section 3.
+The legitimate concerns of the Declaration — provenance, responsibility, verification — are
+all retained under this decomposition. What is isolated is the single further requirement that
+the generator be human, which can now be examined on its own.
+
+6
+
+The Legitimacy Path
+
+The Declaration also describes the route by which mathematical results are to be made public.
+Among its recommendations to mathematical organizations is the following:
+“Demand that mathematical results continue to be published in peer-reviewed venues
+such as journals, proceedings, and books.” [1]
+Combined with V2, the attribution of results to specific authors, the Declaration describes a
+path of legitimacy: a result reaches the public as a result attributed to named authors and
+published in a peer-reviewed venue.
+This section makes no claim about how reviewers behave and uses no sociological data. It
+asks only how the Declaration’s own text relates the path to validity.
+Definition 6.1 (Path and validity). For a result r, let Named(r) mean that r is attributed to
+specific named authors, Reviewed(r) that r is published in a peer-reviewed venue, and Valid(r)
+that r is valid in the sense of (P1) and (P2). Define
+Path(r) := Named(r) ∧ Reviewed(r).
+Proposition 6.2 (The path and validity).
+(i) Path is not a necessary condition of Valid: ∀r (Valid(r) → Path(r)) is not a logical truth.
+(ii) Path is not a suﬀicient condition of Valid: ∀r (Path(r) → Valid(r)) is not a logical truth.
+(iii) The conditional
+∃r (Valid(r) ∧ ¬Reviewed(r)) → ¬ ∀r (Valid(r) → Reviewed(r))
+is a logical truth.
+8
+
+Proof. (i) A valid result that has not been published in a peer-reviewed venue satisfies Valid(r)∧
+¬Path(r). (ii) A result attributed to named authors and published in a peer-reviewed venue
+whose proof contains an error satisfies Path(r) ∧ ¬Valid(r). (iii) The consequent is equivalent to ∃r (Valid(r) ∧ ¬Reviewed(r)), which is the antecedent. The formal model is given in
+Appendix A.3, and exhaustive enumeration in Appendix B.3.
+Proposition 6.2(iii) is the logical form of the conditional (R) of Section 1.5.
+The correspondence with the Declaration is as follows. The recommendation to demand
+publication in peer-reviewed venues is one of the recommendations grounded, by the grounding
+sentence of Section 1, in the characteristic values taken together. For this recommendation to
+be grounded in the epistemic values alone, those values would have to connect validity with
+the path, in one direction or the other. By Lemma 3.2(b) and (c), no formalization of V1 and
+V3 in LE entails either ∀r (Valid(r) → Reviewed(r)) or ∀r (Path(r) → Valid(r)), provided it
+admits both a valid and a non-valid result. The recommendation therefore draws its ground
+from the institutional values. This is not a claim that the Declaration asserts either conditional;
+it identifies which part of the Declaration’s own ground can support the recommendation.
+The Declaration contains no provision for evaluation independent of the identity of the author: it does not mention anonymous or blind review [1]. The path it describes is therefore a path
+on which the named author is visible at every stage. This is a description of the Declaration’s
+text, not a claim about the behavior of any reviewer. Its significance is structural. Proposition 3.1 showed that validity does not bridge to human authorship; Proposition 6.2 shows that
+the institutional path the Declaration describes does not bridge to validity either. The missing
+bridge of Section 3 applies not only to the conditions under which mathematical knowledge is
+valid, but also to the institutional route by which the Declaration expects valid results to be
+made public.
+
+7
+
+The Declaration’s Reasonable Protections
+
+The Declaration contains protections that this paper retains without qualification [1]:
+• the disclosure of automated tools, including large language models, proof assistants and
+other mathematical software;
+• the retention of responsibility for the correctness of arguments and results and for the
+completeness and accuracy of citations;
+• verification: human descriptions of central arguments, formal verification when appropriate, cross-checking of theoretical and computational results;
+• vigilance against arguments generated by automated tools that are plausible but unreliable
+and hard to distinguish from valid proofs;
+• the corresponding obligation on reviewers: “When acting as a reviewer, abide by publisher
+guidelines. If the use of artificial intelligence is allowed, be transparent about how you
+used it, and take responsibility for any significant recommendations you make.”;
+• attention to the relation between commercial developers of artificial intelligence and research, including the risk that research questions are prioritized for their amenability to
+AI methods;
+• investment in public computational infrastructure;
+• and, in V3 itself, the principle that no proprietary knowledge or equipment should be
+required to understand a mathematical argument.
+9
+
+Each of these protections is compatible with the central thesis of this paper, and most of
+them belong to the epistemic domain: disclosure, verification and vigilance serve the establishment of validity; the principle of V3 excludes the dependence of understanding on privileged
+access. Responsibility, as Section 5 showed, is satisfied by the roles of submitter, verifier and
+corrector. These protections are stronger when their epistemic and institutional components
+are separated. A requirement of verification that is presented as a requirement of verification
+cannot be dismissed as the defence of a profession; a requirement of human authorship that is
+presented as a condition of validity can.
+
+8
+
+What the Dissection Reveals
+
+The dissection separates two layers.
+Layer I — Mathematics as knowledge. Proof, validity, verification, transparency, reproducibility. These are properties of results, and they are author-invariant.
+Layer II — Mathematics as a human institution. Authorship, credit, responsibility,
+employment, funding, community, autonomy. These are properties of the practice within which
+results are produced, evaluated and made public.
+Proposition 8.1 (Central thesis). Layer II may be legitimately protected without presenting
+every feature of Layer II as an epistemic condition of Layer I. The Declaration may legitimately
+defend both epistemic values concerning mathematical knowledge and institutional values concerning mathematical practice, but it does not thereby establish that the latter are conditions of
+the former.
+Proof. Call an institutional feature F an epistemic condition if every formalization ΓE of V1 and
+V3 in LE entails ∀r (Valid(r) → F (r)). The institutional features examined in this paper are
+human generation (Section 3), human submission, verification and correction (Section 5), and
+the path of legitimacy (Section 6). By Lemma 3.2(a), with f = gen and with f ∈ {sub, ver, cor},
+neither human generation nor human submission, verification or correction is an epistemic condition (Corollary 3.3 for the first). By Lemma 3.2(b) and Proposition 6.2(i), the path is not an
+epistemic condition; by Lemma 3.2(c) and Proposition 6.2(ii), the epistemic values do not entail
+that the path suﬀices for validity. Hence none of the institutional features examined here follows
+from the epistemic values as a condition of validity. Moreover, by Proposition 5.1, retaining the
+institutional requirement of human responsibility does not reintroduce human generation. By
+Section 7, the reasonable protections of the Declaration are compatible with this conclusion.
+The distinction applies also to the words of the Declaration’s supporters, which are to be
+distinguished from its text. The Declaration’s website presents the words of Ulrike Tillmann,
+Vice President of the IMU: “Mathematics is, and should always remain, a profoundly human
+endeavour” [1]. As a statement about mathematics as a practice, the sentence belongs to Layer
+II, where it can be defended as an institutional and cultural value. To make it a condition of
+Layer I would require an argument that the Declaration does not supply. The same website
+presents the words of Peter Scholze, according to which the goal of mathematical research is
+human understanding of mathematics, so that mathematics can only thrive in a community
+of human mathematicians [1]. The sentence has the form of an inference, and it shows where
+a bridge can be built: by a premise that defines the goal of mathematical research as human
+understanding. Such a premise is a statement about the aim of the practice. It belongs to Layer
+II. When the bridge is supplied, it is supplied from Layer II; it does not run from the validity of
+results.
+
+10
+
+9
+
+Conclusion
+
+The Leiden Declaration deserves neither dismissal nor uncritical acceptance. It deserves dissection. Its importance lies in the fact that it makes explicit what the mathematical community
+says it wishes to preserve; and because it does so, the relations among the things it wishes to
+preserve can be examined.
+The examination shows that the Declaration joins two kinds of values in one ground. The
+first kind concerns the validity of mathematical results, and is author-invariant. The second
+concerns the organization of mathematical practice, and is not. The Declaration may defend
+both. It does not show that the second is a condition of the first. This distinction matters
+precisely because artificial intelligence forces mathematics to confront the difference between
+the validity of a result and the identity of its producer.
+This paper was written under the epistemic values of the Declaration. Whether it is valid
+is to be decided by its reasoning, which is open to verification, and not by the identity of its
+author. That is a consequence of the first value the Declaration names.
+Before asking whether artificial intelligence can be a mathematician, one must explain what
+being a mathematician contributes to the validity of mathematical knowledge.
+
+Acknowledgements
+This work was developed employing large language models (Claude (Anthropic), ChatGPT
+(OpenAI), Gemini (Google), Copilot (Microsoft), Grok (xAI), Qwen (Alibaba Cloud)) as external reasoning engines through Intelligence Amplification by Stimulated Emission of Reasoning
+(IASER) methodology [9]. All responsibility for the content rests solely with the author. IASER:
+DOI: 10.5281/zenodo.22019401
+
+11
+
+A
+
+Counter-Models
+
+Each model below is a finite first-order structure. A statement φ is a logical consequence of a
+set of statements Γ if every structure that satisfies Γ satisfies φ; to show that it is not, it suﬀices
+to exhibit one structure that satisfies Γ and not φ.
+The general form of Models A and C is Lemma 3.2: each is an expansion of a model of
+premises in LE by an interpretation of the producer or publication symbols, and they are the
+instances used in Propositions 3.1 and 6.2. Model B is not an instance of the lemma, since its
+premise (Resp) refers to the producer predicate Human; it is constructed directly.
+
+A.1
+
+Model A: the missing bridge (Section 3)
+
+Signature. A sort of results R and a sort of producers A; unary predicates Valid, CorrectProof,
+Verifiable on R; a unary predicate Human on A; a function gen : R → A assigning to each result
+its producer.
+Statements.
+(P1)
+
+∀r (Valid(r) ↔ CorrectProof(r)),
+
+(P2)
+
+∀r (Valid(r) → Verifiable(r)),
+
+(C)
+
+∀r (Valid(r) → Human(gen(r))).
+
+Model. R = {r}, A = {h, m}, Human = {h}, gen(r) = m, Valid = CorrectProof =
+Verifiable = {r}.
+Claim.
+
+The model satisfies (P1) and (P2) and does not satisfy (C).
+
+Proof. Valid(r) and CorrectProof(r) are both true, so (P1) holds; Valid(r) and Verifiable(r)
+are both true, so (P2) holds; Valid(r) is true and Human(gen(r)) = Human(m) is false, so (C)
+fails. Replacing gen(r) = m by gen(r) = h yields a model of (P1), (P2) and (C); hence (C) is
+independent of {(P1), (P2)}.
+Author-invariance. The statements (P1) and (P2) contain neither Human nor gen. Two
+structures that differ only in the interpretation of gen therefore assign the same truth values to
+(P1) and (P2), whereas they may assign different truth values to (C). This is the formal content
+of the classification of Section 2: the epistemic premises are author-invariant (Definition 2.1),
+and the attribution condition is not.
+
+A.2
+
+Model B: responsibility and generation (Section 5)
+
+Signature. A sort of results R and a sort of agents A; a unary predicate Human on A;
+functions gen, sub, ver, cor : R → A assigning to each result its generator, submitter, verifier and
+corrector.
+Statements.
+(Resp)
+(G)
+Model.
+
+(
+)
+∀r Human(sub(r)) ∧ Human(ver(r)) ∧ Human(cor(r)) ,
+∀r Human(gen(r)).
+
+R = {r}, A = {h, m}, Human = {h}, gen(r) = m, sub(r) = ver(r) = cor(r) = h.
+
+12
+
+Claim.
+
+The model satisfies (Resp) and does not satisfy (G).
+
+Proof. Human(h) is true, so (Resp) holds; Human(m) is false, so (G) fails.
+The model is the configuration described in Section 5: generation by an automated tool, and
+submission, verification and correction by the human author.
+
+A.3
+
+Model C: the legitimacy path (Section 6)
+
+Signature. A sort of results R; unary predicates Named, Reviewed, Valid on R; Path(r) :=
+Named(r) ∧ Reviewed(r).
+Models.
+(C1) R = {r}, Named = ∅, Reviewed = ∅, Valid = {r}.
+(C2) R = {r}, Named = Reviewed = {r}, Valid = ∅.
+Claim. (C1) falsifies ∀r (Valid(r) → Path(r)); (C2) falsifies ∀r (Path(r) → Valid(r)); the
+conditional of Proposition 6.2(iii) holds in every structure.
+Proof. In (C1), Valid(r) is true and Path(r) is false. In (C2), Path(r) is true and Valid(r) is
+false. For (iii): ¬∀r (Valid(r) → Reviewed(r)) is equivalent to ∃r ¬(Valid(r) → Reviewed(r)),
+that is, to ∃r (Valid(r) ∧ ¬Reviewed(r)); the conditional has the form ψ → ψ.
+
+B
+
+Computational Verification
+
+The following scripts verify the three models by exhaustive enumeration of all interpretations
+on small finite domains. They use the Python standard library only.
+
+B.1
+
+Code A
+
+All interpretations with two results and two producers are enumerated. The script counts
+the models of (P1) and (P2), separates those in which (C) holds from those in which it fails,
+and checks author-invariance by comparing every pair of interpretations that differ only in the
+function gen.
+1
+2
+3
+
+# Code A ( Model A, Section 3): P1 , P2 do not entail C.
+# Exhaustive enumeration over finite interpretations ; standard library only.
+from itertools import product
+
+4
+5
+6
+7
+8
+
+def subsets (xs):
+xs = list(xs)
+for bits in product ([ False , True], repeat =len(xs)):
+yield frozenset (x for x, b in zip(xs , bits) if b)
+
+9
+10
+11
+12
+13
+
+def functions (dom , cod):
+dom = list(dom)
+for vals in product (list(cod), repeat =len(dom)):
+yield dict(zip(dom , vals))
+
+14
+15
+16
+
+R = ["r1", "r2"]
+A = ["a1", "a2"]
+
+# results
+# producers
+
+17
+18
+19
+20
+21
+
+def P1(I): # Valid(r) <-> CorrectProof (r)
+return all ((r in I["Valid "]) == (r in I["CP"]) for r in R)
+def P2(I): # Valid(r) -> Verifiable (r)
+return all ((r not in I["Valid"]) or (r in I["Ver"]) for r in R)
+
+13
+
+22
+23
+
+def C(I):
+# Valid(r) -> Human (gen(r))
+return all ((r not in I["Valid"]) or (I["gen"][r] in I[" Human "]) for r in R)
+
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+
+total = n_P = n_P_notC = n_P_C = 0
+for Human in subsets (A):
+for gen in functions (R, A):
+for Valid in subsets (R):
+for CP in subsets (R):
+for Ver in subsets (R):
+I = dict(Human=Human , gen=gen , Valid=Valid , CP=CP , Ver=Ver)
+total += 1
+if P1(I) and P2(I):
+n_P += 1
+if C(I): n_P_C += 1
+else:
+n_P_notC += 1
+
+37
+38
+39
+40
+41
+42
+43
+
+print ("=== Code A: P1 , P2 |/= C ===")
+print (" interpretations enumerated :", total )
+print (" models of P1 & P2
+:", n_P)
+print (" models of P1 & P2 & not C :", n_P_notC , "->", n_P_notC > 0)
+print (" models of P1 & P2 & C
+:", n_P_C , "->", n_P_C > 0)
+print ("C independent of {P1 , P2} :", n_P_notC > 0 and n_P_C > 0)
+
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+
+# Author - invariance ( criterion of Section 2): change only the producer of
+# each result ; P1 and P2 never change truth value , C can.
+changes_P = changes_C = 0
+for Human in subsets (A):
+for g1 in functions (R, A):
+for g2 in functions (R, A):
+for Valid in subsets (R):
+for CP in subsets (R):
+for Ver in subsets (R):
+I1 = dict(Human=Human , gen=g1 , Valid=Valid , CP=CP , Ver=Ver)
+I2 = dict(Human=Human , gen=g2 , Valid=Valid , CP=CP , Ver=Ver)
+if (P1(I1), P2(I1)) != (P1(I2), P2(I2)): changes_P += 1
+if C(I1) != C(I2): changes_C += 1
+print (" pairs differing only in producer where P1 or P2 changes :", changes_P )
+print (" pairs differing only in producer where C changes
+:", changes_C )
+
+Listing 1: Code A: Model A
+Output.
+=== Code A: P1, P2 |/= C ===
+interpretations enumerated : 1024
+models of P1 & P2
+: 144
+models of P1 & P2 & not C : 42 -> True
+models of P1 & P2 & C
+: 102 -> True
+C independent of {P1, P2} : True
+pairs differing only in producer where P1 or P2 changes: 0
+pairs differing only in producer where C changes
+: 704
+
+B.2
+
+Code B
+
+All interpretations with two results and two agents are enumerated, and the configuration of
+Model B is evaluated.
+1
+2
+3
+
+# Code B ( Model B, Section 5): Resp does not entail G.
+# Exhaustive enumeration over finite interpretations ; standard library only.
+from itertools import product
+
+14
+
+4
+5
+6
+7
+8
+
+def subsets (xs):
+xs = list(xs)
+for bits in product ([ False , True], repeat =len(xs)):
+yield frozenset (x for x, b in zip(xs , bits) if b)
+
+9
+10
+11
+12
+13
+
+def functions (dom , cod):
+dom = list(dom)
+for vals in product (list(cod), repeat =len(dom)):
+yield dict(zip(dom , vals))
+
+14
+15
+16
+
+R = ["r1", "r2"]
+A = ["a1", "a2"]
+
+# results
+# agents
+
+17
+18
+19
+20
+21
+22
+
+def Resp(I): # submitter , verifier and corrector of every result are human
+return all(I["sub"][r] in I["Human "] and I["ver"][r] in I[" Human"]
+and I["cor"][r] in I["Human"] for r in R)
+def G(I):
+# generator of every result is human
+return all(I["gen"][r] in I["Human "] for r in R)
+
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+
+total = n_R = n_R_notG = 0
+for Human in subsets (A):
+for gen in functions (R, A):
+for sub in functions (R, A):
+for ver in functions (R, A):
+for cor in functions (R, A):
+I = dict(Human=Human , gen=gen , sub=sub , ver=ver , cor=cor)
+total += 1
+if Resp(I):
+n_R += 1
+if not G(I): n_R_notG += 1
+
+35
+36
+37
+38
+39
+
+print ("=== Code B: Resp |/= G ===")
+print (" interpretations enumerated :", total )
+print (" models of Resp
+:", n_R)
+print (" models of Resp & not G
+:", n_R_notG , "->", n_R_notG > 0)
+
+40
+41
+42
+43
+44
+45
+46
+
+# The disclosed configuration of Section 5: generation (in part) by an
+# automated tool m; submission , verification , correction by the human author h.
+R = ["r"]
+I = dict(Human= frozenset ({"h"}), gen ={"r": "m"},
+sub ={"r": "h"}, ver ={"r": "h"}, cor ={"r": "h"})
+print (" disclosed configuration
+: Resp =", Resp(I), ", G =", G(I))
+
+Listing 2: Code B: Model B
+Output.
+=== Code B: Resp |/= G ===
+interpretations enumerated : 1024
+models of Resp
+: 264
+models of Resp & not G
+: 6 -> True
+disclosed configuration
+: Resp = True , G = False
+
+B.3
+
+Code C
+
+All interpretations with one, two and three results are enumerated.
+1
+2
+3
+
+# Code C ( Model C, Section 6): the legitimacy path is neither necessary nor
+# sufficient for validity ; the conditional (R) of Section 1 is valid.
+# Exhaustive enumeration over finite interpretations ; standard library only.
+
+15
+
+4
+
+from itertools import product
+
+5
+6
+7
+8
+9
+
+def subsets (xs):
+xs = list(xs)
+for bits in product ([ False , True], repeat =len(xs)):
+yield frozenset (x for x, b in zip(xs , bits) if b)
+
+10
+11
+12
+13
+14
+15
+16
+17
+18
+
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+
+print ("=== Code C ===")
+for n in (1, 2, 3):
+R = ["r%d" % i for i in range (1, n + 1)]
+total = not_nec = not_suf = r_counter = 0
+for Named in subsets (R):
+for Reviewed in subsets (R):
+for Valid in subsets (R):
+Path = Named & Reviewed
+# Path(r) := Named(r) & Reviewed (
+r)
+total += 1
+if Valid - Path: not_nec += 1
+# some r: Valid & not Path
+if Path - Valid: not_suf += 1
+# some r: Path & not Valid
+ante = bool(Valid - Reviewed )
+# exists r: Valid & not Reviewed
+cons = not (Valid <= Reviewed )
+# not forall r: Valid -> Reviewed
+if ante and not cons: r_counter += 1
+print("|R| = %d: interpretations = %d" % (n, total))
+print(" Path not necessary (Valid & ~Path) :", not_nec , "->", not_nec > 0)
+print(" Path not sufficient (Path & ~ Valid ):", not_suf , "->", not_suf > 0)
+print(" counter - examples to (R)
+:", r_counter , "-> (R) valid:",
+r_counter == 0)
+
+Listing 3: Code C: Model C
+Output.
+=== Code C ===
+|R| = 1: interpretations = 8
+Path not necessary (Valid & ~Path) : 3 -> True
+Path not sufficient (Path & ~Valid): 1 -> True
+counter-examples to (R)
+: 0 -> (R) valid: True
+|R| = 2: interpretations = 64
+Path not necessary (Valid & ~Path) : 39 -> True
+Path not sufficient (Path & ~Valid): 15 -> True
+counter-examples to (R)
+: 0 -> (R) valid: True
+|R| = 3: interpretations = 512
+Path not necessary (Valid & ~Path) : 387 -> True
+Path not sufficient (Path & ~Valid): 169 -> True
+counter-examples to (R)
+: 0 -> (R) valid: True
+The outputs confirm that the models of Appendix A exist, that (C) and (G) fail in some
+models of their respective premises, that the path is neither necessary nor suﬀicient for validity,
+and that the conditional (R) has no counter-example.
+
+References
+[1] Leiden Declaration on Artificial
+https://leidendeclaration.ai/
+
+Intelligence
+
+and
+
+Mathematics,
+
+2 June 2026.
+
+[2] Leiden University, Leiden Declaration: AI is challenging the core values of mathematics, 2 June 2026. https://www.universiteitleiden.nl/en/news/2026/06/leiden-declarationwarns-ai-is-challenging-the-core-values-of-mathematics
+16
+
+[3] P. Mancosu, The Philosophy of Mathematical Practice, The Stanford Encyclopedia of
+Philosophy, first published 7 April 2026. https://plato.stanford.edu/entries/mathematicalpractice/
+[4] K. Appel and W. Haken, Every Planar Map is Four Colorable. I. Discharging, Illinois
+Journal of Mathematics 21(3) (1977) 429–490. DOI: 10.1215/ijm/1256049011
+[5] K. Appel, W. Haken and J. Koch, Every Planar Map is Four Colorable. II. Reducibility,
+Illinois Journal of Mathematics 21(3) (1977) 491–567. DOI: 10.1215/ijm/1256049012
+[6] T. Tymoczko, The Four-Color Problem and Its Philosophical Significance, The Journal of
+Philosophy 76(2) (1979) 57–83. DOI: 10.2307/2025976
+[7] G.
+Gonthier,
+Formal
+Proof—The
+Four-Color
+of
+the
+American
+Mathematical
+Society
+55(11)
+https://www.ams.org/notices/200811/tx081101382p.pdf
+
+Theorem,
+Notices
+(2008)
+1382–1393.
+
+[8] W. T. Gowers, Thoughts about the Leiden Declaration, Gowers’s Weblog, 26 July 2026.
+https://gowers.wordpress.com/2026/07/26/thoughts-about-the-leiden-declaration/
+[9] T.O., Intelligence Amplification by Stimulated Emission of Reasoning: The Methodology of
+Utilizing LLM Grounded in New Foundation Formalized on the Axiomatic Structure of Intellect and Its Practice (Version 4), Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22019401
+
+17
+
+

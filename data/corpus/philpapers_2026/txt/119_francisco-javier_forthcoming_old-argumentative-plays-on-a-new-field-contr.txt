@@ -1,0 +1,1196 @@
+AI & SOCIETY
+https://doi.org/10.1007/s00146-026-03377-z
+
+OPEN FORUM
+
+Old argumentative plays on a new field? Contributions from sport
+ethics to the ethical analysis of artificial intelligence
+Francisco Javier López Frías1
+Received: 17 June 2026 / Accepted: 23 August 2026
+© The Author(s) 2026
+
+Abstract
+In the ethics of artificial intelligence, a recurring anxiety concerns the deskilling argument: the worry that delegating distinctively human tasks to AI erodes valuable capacities and there by diminishes meaning. This article argues that philosophy
+of sport offers underutilized but illuminating resources for analyzing this concern. Drawing ondebates over biomedical
+enhancement in sport ethics, I identify four argumentative strategies—centered on the values of agency, effort, natural
+talent, and narrativity—that sport philosophers have developed to evaluate themoral costs of skill-displacing technology.
+These “old plays,” I contend, can be productively transplanted onto the “new field” of AI ethics, where analogous debates
+about skill erosion, meritocracy, difficulty, and human identityremain contested. Sports, understood as games of physical
+skill, constitute a privileged analytical setting: their emphasis on process over outcome makes the exercise of skill especially
+visible and prominent. By recovering insights from thinkers such as Bernard Suits, Scott Kretchmar, John Gleaves, Michael
+Sandel, and Alasdair MacIntyre,this article advances two aims: to vindicate the philosophical contribution of sport ethics as a
+discipline, and to enrich normative reflection on AI’s deskilling potential with arguments already tested in analogous debates.
+Keywords Ethics of artificial intelligence · Philosophy of sport · Achievement · Difficulty · Performance enhancement
+
+1 Introduction
+In the debate surrounding the ethics of artificial intelligence
+(AI), ethical concerns about the impact of this technology
+are often examined by analogy. AI advocates claim that
+these new tools are analogous to earlier technological developments that, despite raising similar ethical anxieties, have
+ultimately been accepted by society and become central to
+people’s lives. Hence, this argumentative line concludes that
+AI should also be accepted.1 AI critics, in contrast, use analogical thinking to identify commonalities between AI and
+prohibited or heavily regulated technologies, such as nuclear
+power (Hofman et al. 2023). In this article, I expand on this
+1
+Plato lamented the invention of writing for its harmful effects on
+the capacity for memorization (Ferdman 2025). Similar claims were
+made regarding the introduction of calculators and the ability to compute mentally, as well as online search systems, such as Google, and
+the ability to locate and process relevant information (O’Brien 2025;
+Robbins and Blundell 2025).
+
+* Francisco Javier López Frías
+javi.lopezfrias@usu.edu
+1
+
+Kinesiology and Health Science, Utah State University,
+Logan, USA
+
+analogical approach by exploring a continuity between current technologies and AI: their deskilling effects.
+Drawing on Ferdman (2025), I define deskilling as the
+loss of valuable, distinctively human abilities as a consequence of the implementation of a new technology in society or, more specifically, within particular social practices.
+Hence, to analyze the continuity mentioned above, I focus
+on one social practice where deskilling concerns constantly
+arise: sport. Specifically, deskilling concerns have had a long
+and strong presence in the ethical debate on the biomedical enhancement2 of athletic performance (e.g., Reid 2017).
+2
+
+As one anonymous reviewer noted, I could more broadly focus on
+technology in sport. An earlier version of this manuscript did adopt
+that framing. Peer feedback, along with my own reconsideration of
+my position, convinced me that a narrower focus on biomedical
+enhancement would better serve my analogical approach. “Technology” is too broad a term: engaging it properly would require examining the nature of technology in sport, categorizing its types, and
+identifying which types most closely resemble AI use. Biomedical
+enhancement shares an extremely relevant feature with today’s controversial uses of AI: both are hidden. Some performance-enhancing
+technologies, such as prosthetic limbs, are visible and easily assessable by third parties; biomedical enhancements are not, since they
+blend with the body itself. AI use raises the same worry, which, as
+I will show, runs through every controversial case examined in this
+manuscript.
+Vol.:(0123456789)
+
+AI & SOCIETY
+
+Thus, the theoretical insights in that academic discussion
+are fruitful to scholars in AI ethics. My central contribution involves recovering chief sport ethical intuitions (i.e.,
+their “old argumentative plays”) to shed light on the deskilling debate in AI ethics (i.e., a “new field”). In particular, I
+pursue two aims: (1) to vindicate the value of reflections
+produced within sport ethics and (2) to employ them to contribute to thought about the ethical dimensions of AI (at least
+with respect to its deskilling potential).
+I proceed as follows: I first explore the deskilling debate
+in AI ethics to then draw parallels with the same debate
+in sport ethics, which is at the core of discussions on the
+moral permissibility of biomedical enhancement, that is, the
+use of pharmacological substances or medical procedures
+to boost athletic capacities. By examining the latter body of
+literature, I identify argumentative strategies in sport ethics
+that can shed light on efforts to address the implementation
+of AI in broader society. All these strategies share one
+element in common: they build on valuable human traits
+associated with skillful performance (i.e., agency, effort,
+natural talent, and narrativity) that contribute to developing
+meaningful sporting practices.
+
+1.1 The deskilling debate in AI ethics
+In an examination of meaningfulness in an AI-driven
+world, “where AI systems partially or fully take over
+tasks that humans previously executed using their natural
+intelligence”, Rüther (2025, p. 1404) explicates that a
+common argumentative line holds that outsourcing human
+tasks to machines creates a gap between people’s interest
+in performing meaningful tasks and their actual ability to
+realize that interest, if not fully, at least partially. In essence,
+the argument has the following structure:
+1. Certain activities confer meaning;
+2. When outsourced to machines, those meaningful
+activities become unavailable to humans;
+3. Such a lack of availability leads to a loss of meaning.
+Different versions of the “meaning gap” view allude to
+diverse, valuable features that help explain the origins of
+such meaning. The deskilling approach3 places the onus on
+human skills, understood as embodied abilities to achieve
+an end specific to a human domain with maximum certainty
+and minimal time and energy expenditure.4 For example,
+taxi drivers rely on memorization skills to navigate a city
+3
+
+For insightful examinations of the origins and nature of this theory,
+see Rafner et al. (2021) and Vallor (2015).
+4
+This definition combines elements of Sigmund Loland’s (2002)
+and Ferdman’s (2025) distinctions between skill and talent. Moreover, throughout this text, the concepts of “skill” and “capacity” will be
+treated as synonymous.
+
+and take customers to their destinations with minimal time
+and energy. A translator relies on their ability to switch
+between different languages to facilitate communication with
+maximum certainty and minimal expenditure. Outsourcing
+tasks that involve the exercise of these skills to AI deprives
+humans of the meaning such activity produces. For instance,
+with the invention of GPS systems, taxi drivers’ skillful
+navigation skills became obsolete. Similarly, translation
+tools such as Google Translate and DeepL have significantly
+reduced the need for translators’ expertise.
+Critics of the deskilling approach, as formulated so far,
+note that it lacks normative force: failing to exercise certain human skills, or even eliminating opportunities to do
+so, hardly constitutes a moral wrong. Many people lack the
+skills to grow or hunt their own food because they rely on
+others and technology to meet their nutritional needs. Yet,
+no one opposes the development of farming and food-processing technologies on deskilling grounds (Aylsworth and
+Castro 2024, p. 7). Moreover, societies promote skill erosion
+by emphasizing certain basic capacities (e.g., critical thinking) and encouraging individuals to overspecialize in their
+preferred tasks and skills. Likewise, if machines can perform
+a mindless, tedious task that used to be done by humans
+(e.g., controlling traffic during regular vehicle circulation),
+replacing low-skilled activities with mechanical means is a
+no-brainer. What occurs here is a process of reskilling, in
+which the reduced use of certain capacities is compensated
+for by increased use of other skills or by the functioning
+of the system in which individuals operate (Rafner et al.
+2021). Hence, eliminating opportunities to exercise certain
+skills for some, or even most, people is morally innocuous.
+In other cases, eliminating such opportunities can be highly
+beneficial, as in upskilling processes, where individuals rely
+on technology to develop broader, higher-level skills. Consider a space engineer using complex computational software to complete calculations to understand the trajectory
+and interactions of a series of celestial objects. Therefore,
+what needs to be made more explicit is why skills, or at least
+certain skills, possess normative value, making their erosion
+or removal morally condemnable.
+Efforts to justify the value of skills are numerous and,
+typically, draw from Aristotelian and/or Kantian conceptual resources. From an Aristotelian perspective, the most
+relevant notion is “human flourishing”, that is, a human
+condition involving “the competent exercise of our human
+capacities to produce intrinsically valuable outcomes”
+(Sung and Ferdman 2025, p. 4). As value theorist Bradford
+(2015) explicates, to achieve the central aim of the activities in which they participate, humans rely on capacities
+whose competent exercise is usually inherently valuable.
+For instance, in team sports, athletes must exercise capacities in skilled movement, strategic thinking, and cooperation
+
+AI & SOCIETY
+
+to accomplish the goal of the activity.5 However, only the
+cultivation of those capacities identified as most typical of
+the species (e.g., rationality) leads to human flourishing.
+Hence, Sung and Ferdman (2025) identify three sources of
+“unflourishing”:
+(1) unflourishing that results from the competent
+exercise of a capacity that nevertheless produces a
+negative output; (2) unflourishing that results from the
+insufficient exercise of the capacity, thereby producing
+a negative output; and (3) unflourishing that results
+from the impoverishment of a capacity. (p. 4)
+Reliance on AI most closely connects to (2) and (3).
+Delegating human tasks to AI-powered technologies creates
+situations in which individuals have few opportunities to
+exercise their capacities, and, as a result, their reliance on
+these technologies diminishes their capacities. Take the
+GPS example mentioned above. By constantly relying on
+such technology to navigate, individuals have little need to
+use their own navigation skills, perhaps only in situations
+where GPS lacks information or stops working. In these
+cases, moreover, because of their lack of prior exercise and
+refinement, those capacities remain underdeveloped and
+weak.
+Aylsworth and Castro (2024) appeal to Kant’s notion
+of self-respect for one’s humanity, one’s capacity to selfgovern. For the philosopher from Königsberg, individuals
+have a duty to respect humanity, which, in the case of their
+own humanity, involves resisting their own oppression, for
+instance, by cultivating their humanity. From this standpoint,
+deskilling is morally problematic when it affects the subset
+of capacities essential to people’s exercise of their autonomy.
+Delegating tasks that involve abilities such as weighing
+reasons, thinking through complex problems, critically
+assessing information, and pondering multiple life options
+is morally controversial because it would imply violating the
+duty to cultivate one’s humanity:
+There are many skills that we could outsource to a
+machine without compromising our autonomy. We
+can let them correct our spelling, find the best route
+to work, and remind us of our appointments. None of
+these abilities have immediate implications for your
+humanity. But imagine what it would be like to hand
+over your ability to critically assess your values, to
+forfeit the capacity to reflect on your conception of the
+good life and revise it. Such a forfeiture would amount
+to giving up authorship of your life story. (Aylsworth
+and Castro 2024, p. 17)
+
+5
+
+For an analysis of the different teleological elements of sport, see
+López Frías (2026).
+
+In a similar vein, Krook (2025) argues that AI’s biggest
+threat to humanity is to produce situations where individuals
+no longer need to rely on decision-making, critical thinking,
+or creativity skills, those most typically human: “The biggest
+threat to humanity is therefore not that machines will become
+more like humans, but that humans will become more like
+machines, as more passive and mechanical entities” (p.
+6011).
+Combining Aristotelian and Kantian elements, the
+capabilities approach also offers insights similar to those of
+the two traditions (Ratti and Graves 2025). A capability is
+a substantial freedom—that is, a range of feasible options
+available to a person for achieving a concrete outcome in
+the specific context in which they operate. For instance,
+individuals in Global North and Global South societies have
+different capabilities to be nourished or to engage in play. In
+Nussbaum’s (2013) formulation—the most widely accepted
+and discussed—the capabilities approach identifies a set of
+basic capabilities whose realization, at least to a certain
+threshold, is required for humans to be worthy of dignity.
+Among these capabilities are bodily health, practical reason,
+affiliation, play, and control over one’s environment.
+Given its potential to significantly affect people’s actions,
+contexts, and interactions, AI tools can have a profound
+impact on individuals’ substantial freedoms: “AI tools shape
+our own capabilities, and by doing so, shape our substantial
+freedoms, and hence they are ‘ethical’ even when they do not
+do anything ‘moral’ or ‘immoral’—just by operating, they
+profoundly shape the ethical dimension of our existence”
+(Ratti and Graves 2025, p. 6). For instance, large language
+models’ (LLMs) capacity to produce written essays for
+students erodes these individuals’ ability to exercise
+critical thinking (Lee et al. 2025). This skill is central to
+the practical reason capability, which involves being able
+to form a conception of the good and to engage in critical
+reflection on the extent to which one’s life realizes it.
+The deskilling processes resulting from AI implementation are not without precedent. Examining them through the
+lens of the biomedical enhancement debate in sport ethics
+offers a helpful, arguably simpler, social practice-centered
+framework for identifying precisely what makes the implementation of such a technology ethically problematic. From
+this perspective, technology’s negative impact on central
+capacities is morally wrong when it erodes both a valuable
+human trait and the purpose of a meaningful, cooperative
+human activity.
+
+2 The deskilling debate in sport ethics
+Sport serves as a privileged window onto broader ethical and
+social questions (López Frías 2025). After all, despite having
+their own (relatively autonomous) configuration, sporting
+
+AI & SOCIETY
+
+activities are heirs to their time, with larger ethical and social
+issues constantly permeating them.6 An advantage of looking
+at sport for clarity on those issues is that it offers a simpler,
+clearer structure.7 Also, modifying some of its elements
+to observe the effects of those alterations is more feasible
+than in broader social spheres.8 As such, examining an
+ethical or social debate in sport can be extremely helpful in
+tackling the same or a closely related issue on a larger scale.
+Among these debates is the use of biomedical performanceenhancing substances or methods in sport, which sheds light
+on deskilling processes resulting from the implementation of
+AI, a (performance-enhancing) technology widely relied on
+to complete everyday tasks. Despite the differences between
+AI implementation and biomedical enhancement in sport,
+both phenomena involve replacing (and/or supplementing)
+skilled performance with technological means.
+Sports are games of physical skill (Meier 1988; Suits
+1988). Games encourage participants to focus on the process
+of achieving a goal. For instance, in soccer, the goal is
+not simply to put a ball in a net, but rather to do so while
+abiding by the rules of the sport: using any part of the body
+other than the arms, cooperating with teammates, facing an
+opposing team, etc. The inextricable link between prescribed
+means (i.e., skills) and goals, according to Suits (2005),
+is a unique trait of games. Achieving the goal in a game
+is conditional on using the right means. Hence, means are
+more important than goals. What matters the most is the
+process by which one achieves the goal of the game (López
+Frías 2026). This emphasis on processes starkly contrasts
+with the focus on goals or results common across most
+other human activities, which have a more instrumental or,
+in Suits’ terms, technical character.
+In technical activities, goals take priority over the
+means, which are selected primarily for their efficiency. For
+instance, in carpentry or science, what matters is to achieve
+a goal: building a house or discovering the truth. Consequently, humans must use the most efficient means possible.
+Today’s carpenters seeking to build a house would be called
+fools if they used less efficient means (e.g., a hand drill)
+over more efficient ones (e.g., a power drill). The point of
+their activity is to build the house, not to do it in a heavily
+regulated manner. In games, this logic is inverted. If cyclists
+use more efficient means (e.g., a motorbike or a car) to complete a race, they cease to participate in the sport. The means
+6
+
+See, for instance, Allen Guttmann’s (1978) analyses of the differences between ancient and modern sports.
+7
+This assertion is deceiving, however. Philosophers such as Bernard
+Suits (1982) and Thi Nguyen (2021) have warned against conceptualizing social activities as gamified versions of themselves. Relatedly,
+the assertion hardly implies that sports are simple; they are extremely
+complex phenomena that require interpretation from myriad angles.
+8
+See Graham McFee’s (2004) reflections on sport as a moral laboratory.
+
+are inextricably linked to the goal, enabling participants to
+develop and exercise very concrete skills.
+The centrality of skill exercise in games makes these activities a privileged setting for examining deskilling effects on
+two grounds: constitutive and normative. From a constitutive
+perspective, because games are defined by the requirement
+that goals be achieved through prescribed means (i.e., certain
+skills), they are uniquely vulnerable to a specific form of technological disruption: the bypassing of those means. When a
+biomedical enhancement substitutes for the skilled process
+that a game prescribes, it hollows out the activity from within.
+Moreover, from a normative standpoint, in games, one can
+appreciate both the instrumental and—especially—the intrinsic aspects of skills, the latter of which is typically overlooked
+in most other social activities in favor of their instrumental
+features. Games are better suited than other activities to promote autotelic engagement—that is, engagement pursued
+without instrumental goals—in part because their main goals
+are, in themselves, trivial: putting a ball into a net or through
+a hoop is inconsequential per se. Human societies have, of
+course, added myriad layers of meaning to certain games, to
+the point where a ball going into a net can become the most
+consequential moment of one's life (as when a player scores
+the winning goal in a soccer World Cup). Yet, in principle,
+games can be practiced without instrumental goals in mind,
+something rare for most activities. Take education: despite
+being intrinsically rewarding, learning is so thoroughly saturated with instrumentality—earning high grades, obtaining
+numerous credentials, becoming a good career prospect—that
+pursuing it for its own sake has become structurally difficult
+and even actively discouraged.
+Numerous scholars have engaged with normative debates
+about how enhancing human capacities, which can result in
+deskilling, can undermine valuable aspects of social activities, including the cultivation of skills, and even become a
+threat to society or human nature. AI is one such technology,
+and sport is one such activity. Notwithstanding this, sport
+seems less affected by the implementation of AI, as complex sporting actions cannot yet be delegated to machines—
+though robots have recently achieved feats such as racing
+past human competitors at the Beijing half-marathon or beating elite table tennis players (Gregory 2026; Sample 2026).9
+9
+
+These machines operated in highly controlled environments that
+cannot be replicated in many other, more complex sports (e.g., basketball, soccer). Technologies with this potential, such as AI-powered
+humanoid robot athletes or cyborg athletes, seem more at home in
+science fiction stories and are still far in the future, should they ever
+be developed. Even if the latter were the case, the sporting activities
+they would partake in would hardly be considered human sports, but
+rather robot sports (López Frías and Luis Pérez Triviño 2016). Hence,
+AI’s performance-enhancing benefits remain indirect and uncertain in
+today’s sports (for an examination of these effects, see Carrio 2025;
+Reed 2022; Zukiewicz 2025). This is why this paper avoids addressing the ethical issues of using AI in sports.
+
+AI & SOCIETY
+
+Biomedical enhancement, rather than AI, offers a clearer
+picture of the corrosive effects of deskilling in sport. Sport
+ethicists provide a wide range of conceptual tools (such as
+thought experiments and arguments) that help think through
+the normative implications of biomedical enhancement
+becoming the main, if not the only, source of human (athletic) performance. For these luminaries, deskilling effects
+are morally controversial when they undermine the development of valuable human traits associated to the achievement
+of the meaningful purposes of sport, a position that strongly
+aligns with arguments against AI use, especially Rüther’s
+analysis of the meaning gap.
+I will outline the abovementioned conceptual tools by
+following Bonte et al. (2014) three “intrinsic objections
+to doping in sport”: (1) “proper processes”, (2) “proper
+outcomes”, and (3) “proper origins” (p. 3). These
+three argumentative strategies propose that the use of
+performance-enhancing substances or methods eliminates
+a meaningful human aspect of sport connected to skill
+exercise: (1) processes intentionally directed by athletes’
+own agency allow for meaningful comparisons, (2) effortful
+strivings produce valuable outcomes in the form of a sense
+of achievement, and (3) performance resulting from the
+exercise of innately given capacities leads to meritorious
+recognition. To these three strategies, I will add a fourth: (4)
+“proper identity formation”, which hinges on the narrative
+potential of sport in helping people shape their own, original
+identities.10
+
+2.1 Agency and meaningful comparisons
+Gleaves (2011) proposes to “imagine a time when a scientist
+will develop a way for athletes to pharmacologically boost
+performance without undue health risks” (p. 272). The
+development of this harm-free, performance-enhancing
+drug would remove all health-related concerns associated
+with using such substances to boost athletic performance,
+which Gleaves considers contingent, and center anti-doping
+fears on the inherent purpose and value of sport. Drawing
+on Suits’ views on games and sport, as well as Kretchmar’s
+distinction between tests and contests, Gleaves highlights
+the peculiar nature of sport: it specifically presents difficult
+problems that humans must attempt to solve through the
+exercise of very concrete skills.
+One reason sports place such strong onus on skills is epistemological. As Kretchmar (2018) explains, sports can be
+understood as tests that gauge one’s ability to accomplish
+difficult tasks. They reveal to athletes what they can and
+cannot do regarding the exercise of certain physical skills,
+
+10
+Although I regard this as the most promising of the four, space
+constraints require that I argue for it elsewhere.
+
+such as speed, strength, and spatial thinking. In addition to
+being events for self-understanding, sports can also serve a
+comparative function when engaged in as contests. Sporting
+contests allow athletes to determine how well they are doing
+relative to other performers. Fraleigh (1975) posits that a key
+purpose of sport is that it “provides non-equivocal knowledge as to the relative status [or abilities] of individuals and
+of human kind in the world of force, space and time” (p. 80).
+Similarly, for Loland (2002), “the goal of sport competitions
+is to measure, compare and rank two or more competitors
+according to athletic performance” (p. 10). In sum, sporting
+tests and contests are valuable as epistemological events that
+allow participants to comprehend how good they are (either
+individually or comparatively) at exercising a very specific
+set of abilities.
+For sport competitions to achieve their epistemological
+purpose, comparisons must be meaningful; they must pit
+performances against one another on relevant, measurable,
+and comparable traits. Put more plainly, they must compare
+apples with apples and oranges with oranges. To allow for
+meaningful evaluation, sports have historically sought to create conditions that isolate and measure one variable within
+the complexity of athletic performance: skill. Meaningful
+comparisons, then, are grounded in athletic performances
+that result primarily from skill (improved through training,
+self-correction, competition, etc.). To this end, equipment or
+playing conditions are standardized to ensure they equally
+impact all participants and that the outcome of a contest
+results mainly, if not exclusively, from the competitors’ exercise of skill rather than from external factors (Loland 2002).
+Likewise, contestants are classified into categories of similar
+body type so that no single physical attribute overpowers the
+rest and the relevant skills play a role (Loland 2021; Parry
+and Martínková, 2021). Such comparisons are meaningful
+because they isolate a single relevant, measurable variable,
+i.e., “naked” skilled athletic performance directed by the athletes’ own agency, while holding everything else constant.
+From the outlined epistemological vantage point, biomedical enhancement is morally controversial when it undermines the knowledge-based purpose of sport by corrupting
+measurements, comparisons, and rankings. This is the stance
+of the United States President’s Council on Bioethics. When
+evaluating how biomedical enhancement can threaten sport,
+this group explains that performance enhancement can blur
+the lines between performance outputs attributable to the
+athletes’ agency and those attributable to the performanceenhancing substance or method they use. Individuals who
+do not rely on artificial aids improve their performance
+through “the self-conscious and self-directed activity that
+lies at the heart of better training”, that is, through their
+“own doings” or “self-conscious activity and exertion” (The
+President’s Council on Bioethics 2003, p. 126). In this case,
+performance enhancement benefits are clearly attributable
+
+AI & SOCIETY
+
+to the athletes’ agential capacities. In contrast, when athletes
+rely on biomedical enhancement that enhances their capacities, they improve “as if by ‘magic,’ without the [abovementioned] self-conscious or self-directed activity” (The
+President’s Council on Bioethics 2003, p. 126). Artificially
+enhanced athletes are, at least partially, alienated from their
+own actions. Their skills “result from having [their] bodies
+‘worked on’ by others or altered directly” (The President’s
+Council on Bioethics 2003, p. 127). Hence, when measuring their performance, it is unclear to what extent their own
+agency is being assessed.11
+Biomedical enhancement is problematic when it
+erodes athlete agency and, in doing so, makes the inherent
+epistemological purpose of sporting activities unachievable.
+Other skill-based practices share the same epistemological
+goal. Education, for instance, can be seen as an activity
+intended to individually assess and comparatively develop
+one’s cognitive capacities. Students who use large language
+models to write their essays produce work that is hardly
+genuinely theirs, that does not result from their cognitive
+capacities, undermining the purpose of the educative
+practice in which they are participating. If a student does
+not author an essay intended to assess their capacities, the
+assessment becomes impossible, and both the task itself and
+the educative practice lose their epistemic value.
+
+2.2 Effortful striving and achievement
+Suits has his own sport-related thought experiment, arguably
+the most famous among sport philosophers. He invites his
+readers to imagine a utopian society (called “Utopia”) in
+which all instrumental action has been eliminated by the
+invention of highly efficient, mind-controlled machines,
+through brain implants, that provide individuals with
+11
+An insightful comment from one of the journal’s anonymous
+reviewers prompted me to reflect on the reach of this argument
+regarding competitions that allow a broader range of biomedical performance-enhancing means, such as the Enhanced Games. The challenge these competitions pose is that giving athletes access to a wider
+range of biomedical enhancement options would require changing
+the comparison variable, potentially leading to comparisons of variables that are hardly comparable, for instance, performances resulting from athletes using radically different performance-enhancing
+means. If, however, universal access and similar effectiveness can be
+ensured across all competitors, performances might remain comparable and the epistemological purpose of sport preserved (on the difficulties of achieving these conditions, see (Cox and Piatkowski 2024;
+Holm 2007). Still, this situation would remain problematic for those
+who claim that sport should be about natural performances. On their
+view, such competitions would hardly compare human performances,
+but something else entirely: sport scientists’ proficiency in designing
+effective biomedical enhancements, very much like the proficiency
+that Formula One rewards in its car designers and engineers (Ekdahl
+and Krieger 2024; Hoberman 2026).
+
+everything they need and want. In this world, Suits (2005)
+writes: “Game playing makes it possible to retain enough
+effort in Utopia to make life worth living … For in games we
+must have obstacles which we can strive to overcome just so
+that we can possess the activity as a whole, namely, playing
+the game” (p. 154, added emphasis).
+Only games, defined as voluntary attempts to overcome
+unnecessary obstacles, give individuals an opportunity “to
+achieve something” when they have nothing to do because
+all their instrumental needs and wants are instantaneously
+met (Suits 2005, p. 157, added emphasis). A person who
+wants a house can simply think of it, and the superefficient
+machines in Utopia will build it instantaneously. By contrast,
+Suits refers to John Striver, a Utopian who does not merely
+want a house; he wants the kind of house he can build
+himself by exercising his house-building skills. Striver
+prefers his self-made house because “it would be the kind
+whose construction would give him the greatest satisfaction,
+and we may suggest that such satisfaction would require that
+building the house would provide enough of a challenge to
+make the task interesting while not being so difficult that
+John would utterly botch the job” (Suits 2005 p. 156, added
+emphasis). Suits (2005) equals Striver’s effort to build one’s
+house to a golfer’s attempt to put balls into holes: “it is clear
+that John is no more interested in simply having a house than
+the golfer is in having ball-filled holes. It is the bringing
+about of these results which is important to John and to
+the golfer rather than the results themselves” (p. 157, added
+emphasis).
+According to Suits, the value of games lies in the process
+by which individuals try to realize a specific, challenging
+state of affairs. However, what makes this process valuable
+within his framework remains contested—in fact, in the
+direct citations above, I have italicized several sources
+of value (e.g., effort, difficulty, satisfaction). A plausible
+interpretation focuses on the notion of difficult achievement.
+For Kretchmar (2006), Suits’ main lesson is that “we
+[humans] have been built and rebuilt to solve problems.
+Thus, we chew on difficulties, we consume tests—and we
+need to be regularly nourished. When we gaze out onto the
+world we automatically look for problems and, when we
+find them, immediately search for points of attack so that
+we might solve them” (p. 73). Hence, games are sites that
+provide intrinsically valuable, difficult problems for humans
+to resolve through skillful performance. Bradford (2015) and
+Hurka (2014, 2020) have also championed this interpretive
+line.
+In his introduction to Suits’ masterpiece, The
+Grasshopper: Games, Life and Utopia, Hurka locates the
+value of gameplay in “achievement”, which he defines
+in terms of difficulty as “accomplishing something in
+your chosen field”, with the accomplishment involving
+the process of resolving a complex, challenging problem
+
+AI & SOCIETY
+
+through skill and ingenuity (Hurka 2014, p. 14). For
+Hurka (2020), achievement is an objective or perfectionist
+good whose value is independent of people’s attitudes or
+subjective states (e.g., deriving satisfaction). This value
+results from individuals exercising their own powers or
+skills to “instantiate … a more abstract value of rational,
+or reason-guided, connection to reality” (Hurka 2020, p.
+591). That is to say, achievements are valuable because they
+produce, through skillful action, an overlap between the
+mind (i.e., an intended goal) and the world (i.e., a specific
+state of affairs). Games, in turn, are meaningful as sites for
+creating the necessary conditions for such achievements.
+Bradford also explains the objective value of achievement
+in perfectionist terms.12
+Though neither Hurka nor Bradford considers the impact
+of biomedical enhancement on athletic achievement, the
+implications of their views on this topic are straightforward.
+Performance-enhancing substances and methods that boost
+athletes’ capacities can create a misalignment between
+athletes’ skills and the challenges of their sports. If the
+obstacles become less challenging, athletes need to exert
+less effort to overcome them, rendering athletic achievement
+less valuable. Alternatively, the degree to which mind and
+world must overlap decreases, reducing the value of sporting
+accomplishment.
+Reid (2020), appealing to the spirit of Olympic sport,
+formulates a perfectionist-based argument against biomedical enhancement. In Olympism, sport is an activity at the
+service of human development; specifically, sport is “a philosophy of life, exalting and combining in a balanced whole
+the qualities of body, will and mind. Blending sport with
+culture and education, Olympism seeks to create a way of
+life based on the joy of effort” (International Olympic Committee 2026, p. 8). If the joy of effort must drive the type of
+human development achieved through sport, athletic performance must result from the athletes’ own efforts. If not, the
+kind of human development that sport promotes is negated.
+Just as athletic achievement can be diminished when performance-enhancing substances and methods allow athletes
+12
+For her, achievement is valuable because it involves the “excellent exercise of the perfectionist capacities” (Bradford 2015, p. 121),
+which she defines as those “characteristic of human nature” and
+“worth developing” (Bradford 2015, p. 116). Specifically, the two
+capacities she most closely connects to achievement comprise exercising the will and rationality. For example, climbing Mount Everest
+is a valuable accomplishment primarily because it involves exercising willpower (e.g., overcoming adversity, coping with pain, practicing courage) and rationality (e.g., choosing the best route, knowing
+when to rest). What makes the state of standing at Earth’s highest
+peak is the process through which one arrives there. If such a goal
+were reachable by elevator or helicopter, it would scarcely constitute
+a valuable achievement—and the activity involving the ascent, which
+hardly deserves to be called mountain-climbing anymore, would
+hardly be a site for meaningful accomplishments.
+
+to exercise fewer skills or to a lesser degree, AI-powered
+technologies that enhance human capacities in other areas
+of life will erode the acquired capacities that lead to valuable
+achievements in those practices—as well as the role these
+practices play in serving as sites for meaningful accomplishments. When an agent outsources writing to a language
+model, the possibility of achievement is negated: the agent
+neither causes the overlap between mind and world nor exercises the human capacities that Hurka and Bradford identify
+as valuable—and writing itself, as a practice, ceases to be a
+site for accomplishments as meaningful as finding the right
+word, structuring an argument, or inserting a witty comment.
+
+2.3 Natural talent and meritorious recognition
+Sandel encourages his readers to imagine a robotic, bionic
+baseball player who benefits from brain implants that perfect
+the angle and timing of their swing, ensuring that every visit
+to the strike zone results in a home run. Remarkably, Sandel
+opens his analysis by dismissing the “agency” approach
+examined above. In his view, “[t]he problem is not the drift
+to mechanism but the drive to mastery” (Sandel 2007, p. 27).
+Put more plainly, for Sandel, the main ethical concern is the
+erosion of people’s appreciation of their own limitations, not
+the erosion of technology’s effects on agency.
+To illustrate his critique of the drive to mastery, Sandel
+proposes a scenario involving two highly successful and
+admired athletes. One has earned such recognition through
+hard work, grit, and determination; the other owes their
+fame primarily to natural gifts displayed with grace and
+apparent effortlessness. Typically, people find the latter
+more admirable than the former. In Sandel’s (2007) words:
+“No one believes that a mediocre basketball player who
+works and trains even harder than Michael Jordan deserves
+greater acclaim or a bigger contract” (p. 29). Sandel then
+invites readers to consider how recognition would change if
+both athletes were found to depend heavily on performance
+enhancement. In this new scenario, the allegedly naturally
+gifted athlete would be more widely despised than the hardworking one because the “display of natural talents and gifts
+that are no doing of the athlete who possesses them” is more
+central to sporting competitions than the exertion of effort
+(Sandel 2007, p. 28). However, he laments that societies
+have typically exaggerated the value of striving and effort,
+depreciating the importance of giftedness.
+The hubristic overexpansion of human powers
+has produced a greater appreciation of effort and a
+corresponding devaluation of giftedness. This overexpansion
+has grown from the ideas that humans are “self-made” and
+that their talents and achievements are wholly their own.
+Biomedical enhancement in sport is a consequence of this
+anthropological conception. Athletes often go as far as
+possible to modify their inborn capacities to turn themselves
+
+AI & SOCIETY
+
+into champions, refusing to accept their inborn limitations.
+In fact, Sandel points out that, in some athletic circles,
+failing to embody such behavior is seen as a flaw: “[w]
+hen performance-enhancing drugs become commonplace,
+unenhanced ballplayers … are criticized for ‘playing
+naked’” (Sandel 2007, pp. 88–89). Moreover, athletes whose
+success comes from their biomedically powered efforts to
+turn themselves into winners would displace the naturally
+talented performers that sports are supposed to celebrate.
+Hence, the wrong kind of competitor would be celebrated,
+further perpetuating the drive to mastery. Individuals who
+delegate tasks to AI to accomplish certain goals better than
+others, failing to accept their own limitations and draw
+on their inborn capacities, demonstrate the same drive to
+mastery that Sandel denounces. This hubristic behavior,
+in Sandel’s (2007) view, is morally problematic because
+it hinders “key features of our moral landscape—humility,
+responsibility, and solidarity” (p. 86).
+When individuals perceive themselves as solely
+responsible for their talents and achievements, they often
+develop the conviction that their success is fully their own
+and entirely deserved. This “triumphalist” attitude toward
+life leaves no room for “tragedy, mystery, and humility”
+(Sandel 2020, p. 43). Those who adopt this perspective
+come to believe that everything that happens to people is
+their responsibility, not the result of external factors such
+as natural giftedness or luck. Their victories and defeats are
+wholly the result of their choices and their mastery over life
+(or lack thereof for those on the most unfavorable side).
+In addition to coming at the expense of humility, the
+overresponsibilization of individuals also undermines
+solidarity and mutual obligation. In societies that heavily
+prize individual freedom and achievement, perceiving one’s
+success or failure solely as one’s own making undermines
+the sense of solidarity and mutual obligations toward others.
+Sandel illustrates this point through support and contribution
+to insurance. Since people are unaware of whether they will
+be healthy or sick, they pool their risk by buying insurance
+that can support them if they fall on the unfortunate side
+and contract an illness. “The result is”, Sandel (2007)
+points out, “mutuality by inadvertence” (Sandel 2007, p.
+90). However, this “solidary” attitude is only sustainable
+insofar as individuals lack control over their own risks. If
+individuals become more convinced that they do control
+such factors, their pursuit of mutualistic practices decreases,
+in favor of a focus on their own efforts.
+In Sandel’s (2020) view, the idea of the overly responsible, self-made person is central to today’s liberal societies
+because they have uncritically embraced meritocracy. Driven
+by the pursuit of freedom and equality, most societies have
+openly embraced meritocracy as their preferred method for
+allocating positions and resources. However, meritocracy
+
+favors the ethic of mastery.13 Sport, which for some is the
+social practice that best embodies the meritocratic ideal
+(Dixon 2021; Fouché 2017, p. 11), epitomizes the ethic of
+mastery:
+The meritocratic emphasis on effort and hard work
+seeks to vindicate the idea that, under the right
+conditions, we are responsible for our success and thus
+capable of freedom. It also seeks to vindicate the faith
+that, if the competition is truly fair, success will align
+with virtue; those who work hard and play by the rules
+will earn the rewards they deserve. We want to believe
+that success, in sports and in life, is something we
+earn, not something we inherit. (Sandel 2020, p. 125)
+While appealing, for Sandel, meritocracy rests on faulty
+assumptions. Individuals can hardly claim that their success
+(or failure) is entirely their own doing. Sandel (2020, pp.
+123–124) illustrates this with sport: LeBron James’ or Usain
+Bolt’s dominance in their respective athletic pursuits can
+certainly be attributed only to their efforts; it must also be
+explained by factors for which they are scarcely responsible,
+such as being born with natural talents unlike those of other
+participants. Nor can James’s and Bolt’s advantageous social
+positions be viewed as self-made. They attracted people’s
+attention and social recognition because they operated within
+societies that highly valued their achievements. Had they
+been born into a society that took little interest in athletics
+or invested little in sporting activities at which they did not
+excel, they would hardly enjoy their advantageous social
+positions. Acknowledging the role these contingent factors
+(i.e., inborn talent and social preferences) play in their own
+success would prevent individuals from embracing the
+ethic of mastery, in favor of an ethic of giftedness, avoiding
+the negative effects the tyranny of merit has on humanity,
+responsibility, and solidarity.
+All meritocratic activities can produce the problems
+identified above. Without the recognition of the giftedness
+of life, communities become unable to rightfully appraise
+and value the talents of their constituents and engage in
+practices of solidarity that more broadly distribute the
+results of people’s gifts. Sport, understood as a talent-based
+practice, teaches societies to accept “the fate of human goods
+embodied in important social practices … the celebration
+of natural talents and gifts in athletic and artistic endeavors;
+humility in the face of privilege, and a willingness to share
+13
+
+Sandel (2020) explains that, throughout the history of Western
+society, one can see “an uneven contest between an ethic of fortune
+and a more muscular ethic of mastery. The ethic of fortune appreciates the dimensions of life that exceed human understanding and
+control. It sees that the cosmos does not necessarily match merit with
+reward. It leaves room for mystery, tragedy, and humility… The ethic
+of mastery, by contrast, puts ‘human choice at the center of the spiritual order.’” (p. 43).
+
+AI & SOCIETY
+
+the fruits of good fortune through institutions of social
+solidarity” (Sandel 2007, p. 96).14 Viewing themselves
+more humbly as “guardians” or “repositories” of talents
+that happen to reside in them, instead of owners or authors
+fully responsible for their existence, individuals realize
+that they have no special claim on “the fruits of their
+exercise [becoming more prone] to regard the distribution
+of natural talents as a common asset and to share in the
+benefits of this distribution” (Sandel 2008, p. 70). However,
+the performance-enhancing promise of biomedical
+enhancement and the pressure toward turning oneself
+into a champion push against the possibility of viewing
+sport as Sandel suggests. The same claims apply to social
+practices in which individuals’ performance relies on AI.
+The technology’s potential to enhance performance, and
+perhaps most importantly, to disguise limitations, threatens
+the acknowledgment of giftedness. If a writer’s talent or
+a student’s thinking can be improved or even replaced by
+LLMs, then the (deskilled) practices of writing and studying
+foster a sense of (fake) mastery, cementing the belief that
+their (AI-mediated) achievements and resulting fruits are
+self-made and, therefore, deserved.15 Rather than teaching
+individuals to accept their limitations and mutually work to
+compensate for them, AI use further promotes the search
+for individual accomplishment, even if partially (or fully)
+deskilled and manufactured.
+
+2.4 Narrativity and sport as a meaningful form
+of life
+A fourth argumentative strategy centers on the narrative
+potential of meaningful social activities such as sports.
+This approach appeals to the contributive value of skilled
+sporting performance to a central human enterprise: the
+collaborative shaping of a shared identity. An activity or
+feature acquires contributive value in virtue of becoming
+a part of an entity or whole that has some sort of value.
+Fraleigh (1983) provides the following example: “a soccer
+ball being kicked into a goal does not have value by itself,
+but has value as part of a whole called soccer game and
+has that value because it contributes to the game” (p. 59).
+14
+Sandel acknowledges that celebrating accomplishments that result
+primarily from inborn capacities is at odds with today’s capitalist
+societies, especially the United States, where success is supposed
+to be earned on meritocratic grounds, through one’s hard work, not
+inherited from external circumstances beyond one’s control. However, this is only the case because individuals have fallen prey to the
+tyrannies resulting from the misguided assessment of merit prevalent
+in neoliberal, capitalistic societies (Sandel 2020).
+15
+This argument can also lead to Brett Karlan’s (2023) worry that
+the incorporation of AI can exacerbate justice and equity problems
+by giving those with more resources competitive advantages over less
+privileged individuals in comparative areas where AI aid can be helpful.
+
+Skillful athletic performance has contributive value when
+its exercise makes the practitioner legible—to themselves
+and to others—as a genuine participant in a specific form
+of life: as a cyclist, a writer, a surgeon, or an athlete. The
+deskilling threat, on this account, concerns the role skillful
+performance plays in conditions of identity formation and
+communal intelligibility.
+In his reflections on the test-contest distinction,
+Kretchmar contends that the meaning of both sporting
+tests and contests is predicated on the existence of practice
+communities. For him, although the presence of the other
+is clearer in contests (which cannot exist without someone
+else opposing a performer), “testing is not solipsistic at all”
+(Kretchmar 2018, p. 232). The intelligibility of a sporting
+test depends on the existence of testing communities, that is,
+on the existence of a sport that is overseen and/or promoted
+by specific institutions (e.g., sport governing bodies,
+leagues) and engaged in by other individuals who produce
+collective understandings on how to play the sport, what
+it means to excel, and why it all matters. For example, a
+tennis player who achieves a personal best serve speed does
+so against the backdrop of a practice community that has
+collectively established what counts as an impressive serve,
+developed the technical vocabulary to describe and transmit
+the skill, and instituted the activities (e.g., a tennis match
+or competition) within which that achievement acquires its
+meaning.
+Individuals are attracted to specific tests because they
+encounter them in these communities, and by engaging
+in them, they begin to care about their individual testing
+actions and results (Kretchmar 2000). As such, they begin
+to shape their identities around common practices and
+shared meanings, such as consulting certain websites and
+online spaces linked to their testing community and buying
+paraphernalia that people in that testing community wear,
+and frequenting the same spaces (e.g., golf courses, biking
+trails, and indoor sporting venues) (Kretchmar 2018). In fact,
+many end up identifying themselves as soccer fans, golfers,
+bikers, and football enthusiasts.
+Building on these ruminations on the meaning of sport
+and incorporating insights from MacIntyre’s notion of
+social practice, Gleaves (2011) claims that the greatest
+moral problem with performance enhancement is that it
+“may change the ‘life of the athlete’” (p. 277), preventing
+them from becoming or being a genuine member of their
+sporting social practice. For MacIntyre (2007), social
+practices have a series of internal goods that can only be
+achieved by adhering to the standards of excellence and
+obeying rules established by the practice community and
+its corresponding institutions. “To enter into a practice is to
+accept the authority of those standards and the inadequacy
+of my own performance as judged by them. It is to subject
+my own attitudes, choices, preferences and tastes to the
+
+AI & SOCIETY
+
+standards which currently and partially define the practice”
+(MacIntyre 2007, p. 190). To achieve the internal goods of
+competitive cycling—the mastery of climbing technique,
+the strategic reading of a peloton, the cultivated capacity
+to endure suffering—one must submit to the standards that
+define the practice: accepting the judgment of coaches and
+experienced riders, riding within the rules of sanctioned
+competition (such as anti-doping rules), and subordinating
+personal preferences to the disciplines of training.
+Given that today’s sports are governed by anti-doping
+values and standards that regard (most) biomedical
+enhancements as wrong, athletes who resort to such means
+would fail to qualify as genuine participants and would
+be unable to achieve the internal goods of their sport. As
+such, they cannot truly identify themselves as members
+of their testing communities, that is, as golfers, bikers, or
+table tennis players. Grendreau (2015) posits that those
+who enhance their performance biomedically are at fault for
+lying to themselves and, most importantly, to their practice
+communities and societies about who they are, becoming
+undeserving of membership in them or of representing (e.g.,
+being featured in) their social practices. For Grendreau,
+narratives are necessary for individuals to make sense
+of themselves as individuals and members of collective
+enterprises. When a person deviates from the shared
+narratives of their community, they threaten the widely held
+expectations that define how they recognize one another:
+As with many social roles, being a sports figure involves
+having certain components of one’s narrative “readymade”. While athletes may tell their own stories, those
+stories are interpreted and understood through the lens
+of what it means to be an athlete. Included may be a
+variety of virtues including hard work, being a “team
+player”, and the general idea of “sportsmanship”. And,
+independent of whether it is the case for all or even
+most athletes, what we typically understand as “being
+an athlete” involves achievement solely through one’s
+own labor. (Gendreau 2015, p. 524)
+Today’s sporting communities are dominated by anti-doping expectations. Biomedical enhancement, on this narrativity account, is worrisome because it can become a form of
+narrative hindrance: it disqualifies enhanced athletes from
+the story their community tells about what it means to excel.
+Relying heavily on pharmacological substances or medical
+interventions delegates to technology work that athletes must
+accomplish through their own practice. This delegation misrepresents athletes as practitioners they have not become:
+they acquire a skill-constituted identity they have not in fact
+cultivated. In doing so, they disrupt the shared intelligibility through which practice communities recognize their
+members and transmit their standards of excellence. In a
+similar vein, students who submit language-model-generated
+
+essays and programmers who deploy AI-written code raise
+the same problem: they perform the outputs of a skill-constituted practice without exercising the skill, and in doing
+so, they erode both their own membership in the relevant
+community and the community’s capacity to identify who
+genuinely belongs to it.
+
+3 Conclusion
+In this article, I have shown that the deskilling debate in
+AI ethics has precedents in the sport philosophical debate
+concerning the use of biomedical performance-enhancing
+means. I have examined four such precedents, each anchored
+in a distinct source of human value that contributes to the
+development of meaningful social practices, such as sports.
+The argument from agency holds that the meaningful
+exercise of skill requires that performance be genuinely
+attributable to the individual. If deskilling processes, such
+as using biomedical enhancement or AI-powered tools, sever
+the causal link between agency and results, they erode the
+epistemological purpose inherent to sport—and activities
+with similar testing and contesting attributes. The argument
+from achievement insists that competent, difficult effort is the
+key normative element in rendering sporting achievement
+valuable. If deskilling eliminates such effort, sporting
+accomplishments lose value and sport ceases to be a site for
+meaningful challenges. The argument from natural talent
+holds that biomedical enhancement displaces appreciation
+for people’s inborn limitations and talents in sport, resulting
+in a social practice that contributes to the erosion of humility,
+responsibility, and especially solidarity by promoting the
+ethic of mastery. The narrativity argument locates the wrong
+of deskilling in the disruption of the shared meanings and
+communal identities through which individuals constitute
+themselves as practitioners of a form of life, undermining the
+meaning-making potential of sport. In outlining these four
+argumentative strategies in sport ethics, which I consider
+relevant to AI ethics, I have avoided aligning myself with
+any of them to identify a path forward.16 My aim has been
+16
+
+Each of these arguments presents justificatory shortcomings. The
+first argument depends on a contested account of what it means for an
+action to be genuinely one’s own, a matter that admits of degrees and
+resists a clean threshold. The second argument must defend the claim
+that effort or difficulty is intrinsically and objectively valuable. However, this is a perfectionist commitment that many challenge (Dunkle
+2025; Hendrickx 2024). Concerning the third argument, Sandel’s
+argument rests on contested assumptions about the value of giftedness and on conjectural implications of embodying the ethics of mastery. The narrativity argument rests on the controversial assumption
+that practice communities have stable standards of excellence against
+which deskilling can be evaluated. Yet, such standards are historically
+contested and evolving; performance-enhancing means once resisted,
+from coaching assistance to chemical supplements, were eventually
+accepted (Morgan 2009).
+
+AI & SOCIETY
+
+more modest: to offer AI ethicists a set of argumentative
+strategies well-worn in sport ethics (“old plays”) that may
+prove fresher—and perhaps more generative—in their own
+(“new”) field.
+Acknowledgements I am indebted to the insightful comments from
+the journal’s reviewer and to the participants at several academic venues where I presented this work for their valuable feedback on earlier
+iterations of the manuscript. One such venue was the 1st International
+Congress on the Philosophy of Physical Activity, Sport, and Play,
+which I attended thanks to funding from the research project “Ética
+cordial y democracia inclusiva en una sociedad tecnologizada”, reference PID2022-139000OB-C21, funded by the Ministerio de Ciencia,
+Innovación y Universidades, the Agencia Estatal de Investigación, and
+the Fondo Europeo de Desarrollo Regional, MCIU/AEI/https://d​ oi.o​ rg/​
+10.​13039/​50110​00110​33/​FEDER, EU.
+Author contributions I conducted the research that formed the basis
+for this manuscript and wrote the full manuscript.
+Data availability No datasets were generated or analysed during the
+current study.
+
+Declarations
+Conflict of interest The authors declare no competing interests
+AI use All the content in this article is original. None of it has been
+created using LLMs. This technology has only been used for minor
+linguistic suggestions, mainly rephrasing or word choice.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long
+as you give appropriate credit to the original author(s) and the source,
+provide a link to the Creative Commons licence, and indicate if changes
+were made. The images or other third party material in this article are
+included in the article’s Creative Commons licence, unless indicated
+otherwise in a credit line to the material. If material is not included in
+the article’s Creative Commons licence and your intended use is not
+permitted by statutory regulation or exceeds the permitted use, you will
+need to obtain permission directly from the copyright holder. To view a
+copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+
+References
+Aylsworth T, Castro C (2024) Should I use ChatGPT to write my
+papers? Philos Technol 37(4):117. https://​d oi.​o rg/​1 0.​1 007/​
+s13347-​024-​00809-w
+Bonte P, Sterckx S, Pennings G (2014) May the blessed man win: a
+critique of the categorical preference for natural talent over doping
+as proper origins of athletic ability. J Med Philos 39(4):368–386.
+https://​doi.​org/​10.​1093/​jmp/​jhu024
+Bradford G (2015) Achievement. Oxford University Press, Oxford
+Carrio A (2025) Artificial intelligence and neuroenhancement in sport,
+1st ed. Routledge, London. https://​doi.​org/​10.​4324/​97810​03520​
+290
+Cox LTJ, Piatkowski T (2024) Enhancing autonomy through the
+‘enhanced games.’ Perform Enhanc Health. https://​doi.​org/​10.​
+1016/j.​peh.​2024.​100296
+Dixon N (2021) Sport, meritocracy, and praise. J Philos Sport
+48(2):275–292. https://​doi.​org/​10.​1080/​00948​705.​2021.​19325​17
+
+Dunkle ID (2025) Difficulty, effort, and ability. Synthese 206(5):255.
+https://​doi.​org/​10.​1007/​s11229-​025-​05356-1
+Ekdahl D, Krieger J (2024) The Enhanced Games: a timely injection
+for the International Olympic Committee. Front Sports Act Living
+6:1490651. https://​doi.​org/​10.​3389/​fspor.​2024.​14906​51
+Ferdman A (2025) AI deskilling is a structural problem. AI Soc. https://​
+doi.​org/​10.​1007/​s00146-​025-​02686-z
+Fouché R (2017) Game changer: the technoscientific revolution in
+sports. Johns Hopkins University Press, Baltimore
+Fraleigh WP (1975) Sport-purpose. J Philos Sport 2(1):74–82. https://​
+doi.​org/​10.​1080/​00948​705.​1975.​10654​099
+Fraleigh WP (1983) An examination of relationships of inherent, intrinsic, instrumental, and contributive values of the good sports contest. J Philos Sport 10(1):52–60. https://​doi.​org/​10.​1080/​00948​
+705.​1983.​97144​00
+Gendreau MS (2015) Who? Moral condemnation, PEDs, and violating the constraints of public narrative. Ethic Theory Moral Pract
+18(3):515–528. https://​doi.​org/​10.​1007/​s10677-​014-​9536-6
+Gleaves J (2011) No harm, no foul? Justifying bans on safe performance-enhancing drugs. Sport Ethics Philos 4(3):269–283
+Gregory A (2026) Humanoid robots show rapid advances as they race
+past humans in Beijing half marathon. The Guardian. https://w
+​ ww.​
+thegu​ardian.​com/​sport/​2026/​apr/​19/​human​oid-​robots-​race-​beiji​
+ng-​half-​marat​hon. Accessed on 22 Aug 2026.
+Guttmann A (1978) From ritual to record: the nature of modern sports.
+Columbia University Press, New York
+Hendrickx M (2024) Analysis of difficulty. PsyArXiv. https://​doi.​org/​
+10.​31234/​osf.​io/​9v8pf
+Hoberman J (2026) The Enhanced Games: a techno-fantasy that will
+fail. Perform Enhanc Health 14(1):100380. https://​doi.​org/​10.​
+1016/j.​peh.​2025.​100380
+Hofman J, Goldstein DG, Rothschild DM (2023) Steroids, sneakers,
+coach: the spectrum of human-AI relationships. SSRN Electron
+J. https://​doi.​org/​10.​2139/​ssrn.​45781​80
+Holm S (2007) Doping under medical control-conceptually possible
+but impossible in the world of professional sports? Sport Ethics
+Philos 1(2):135–145. /z-wcorg/. Retrieved from /z-wcorg/
+Hurka T (2014) Introduction. In: Suits B (ed) The grasshopper: games,
+life and utopia. Broadview Press, Toronto, pp 7–20
+Hurka T (2020) The parallel goods of knowledge and achievement.
+Erkenntnis (Dordr) 85(3):589–608. https://​d oi.​o rg/​1 0.​1 007/​
+s10670-​020-​00245-0
+International Olympic Committee (2026) Olympic charter. https://​
+www.​olymp​ics.​com/​ioc/​olymp​ic-​chart​er. Accessed on 28 Aug
+2026.
+Karlan B (2023) Human achievement and artificial intelligence. Ethics Inf Technol 25(3):40. https://​doi.​org/​10.​1007/​
+s10676-​023-​09713-x
+Kretchmar RS (2000) Movement subcultures: sites for meaning. J Phys
+Educ Recreat Dance 71(5):19–25. https://​doi.​org/​10.​1080/​07303​
+084.​2000.​10605​140
+Kretchmar RS (2006) The intelligibility of suits’s utopia: the view from
+anthropological philosophy. J Philos Sport 33(1):67–77. https://​
+doi.​org/​10.​1080/​00948​705.​2006.​97146​91
+Kretchmar RS (2018) The nature and value of sporting tests and contests. N Y Law School Law Rev 63:219
+Krook J (2025) When autonomy breaks: the hidden existential
+risk of AI. AI Soc 40(8):6011–6024. https://​doi.​org/​10.​1007/​
+s00146-​025-​02397-5
+Lee HP (Hank), Sarkar A, Tankelevitch L, Drosos I, Rintel S, Banks R,
+Wilson N (2025) The impact of generative AI on critical thinking:
+self-reported reductions in cognitive effort and confidence effects
+from a survey of knowledge workers. In: Proceedings of the 2025
+CHI conference on human factors in computing systems. ACM,
+Yokohama, pp 1–22. https://​doi.​org/​10.​1145/​37065​98.​37137​78
+
+AI & SOCIETY
+Loland S (2002) Fair play in sport: a moral norm system. Routledge,
+London
+Loland S (2021) Classification in sport: a question of fairness. Eur J
+Sport Sci 21(11):1477–1484. https://​doi.​org/​10.​1080/​17461​391.​
+2021.​19238​16
+López Frías FJ (2025) Games as windows and remedies to modern
+society: a qualified defense of agonistic encounters. Prax Filos
+61:e20214699. https://​doi.​org/​10.​25100/​pfilo​sofica.​v0i61.​14699
+López Frías FJ (2026) What goals? Which point? Whose purpose? A
+critical engagement with sport internalism. Philosophies 11(1):16.
+https://​doi.​org/​10.​3390/​philo​sophi​es110​10016
+López Frías FJ, Luis Pérez Triviño J (2016) Will robots ever play
+sports? Sport Ethics Philos 10(1):67–82. https://​doi.​org/​10.​1080/​
+17511​321.​2016.​11663​93
+MacIntyre AC (2007) After virtue: a study in moral theory, 3rd ed.
+University of Notre Dame Press, Notre Dame
+McFee G (2004) Sport, rules, and values: philosophical investigations
+into the nature of sport. Routledge, London
+Meier KV (1988) Triad trickery: playing with sport and games. J Philos
+Sport 15(1):11–30
+Morgan WJ (2009) Athletic perfection, performance-enhancing
+drugs, and the treatment-enhancement distinction. J Philos Sport
+36(2):162–181. https://​doi.​org/​10.​1080/​00948​705.​2009.​97147​55
+Nguyen CT (2021) How Twitter gamifies communication. In: Lackey
+J (ed) Applied epistemology, 1st ed. Oxford University Press,
+Oxford, pp 410–436. https://​doi.​org/​10.​1093/​oso/​97801​98833​
+659.​001.​0001
+Nussbaum MC (2013) Creating capabilities: the human development
+approach. Belknap Press of Harvard University Press, Cambridge
+O’Brien GD (2025) All play and no work? AI and existential unemployment. J Ethics 29(4):747–771. https://​d oi.​o rg/​1 0.​1 007/​
+s10892-​025-​09522-y
+Parry J, Martínková I (2021) The logic of categorisation in sport. Eur
+J Sport Sci 21(11):1485–1491. https://d​ oi.o​ rg/1​ 0.1​ 080/1​ 74613​ 91.​
+2021.​19437​15
+Rafner J, Dellermann D, Hjorth A, Verasztó D, Kampf C, Mackay W,
+Sherson J (2021) Deskilling, upskilling, and reskilling: a case for
+hybrid intelligence. Morals Mach 1(2):24–39. https://​doi.​org/​10.​
+5771/​2747-​5174-​2021-2-​24
+Ratti E, Graves M (2025) A capability approach to AI ethics. Am
+Philos Q 62(1):1–16. https://​doi.​org/​10.​5406/​21521​123.​62.1.​01
+Reed K (2022) Analytics destroying baseball’s entertainment value.
+https://​troym​edia.​com/​busin​ess/​analy​tics-​is-​destr​oying-​any-​enter​
+tainm​ent-​value-​in-​baseb​all/
+Reid HL (2017) Why Olympia matters for modern sport. J Philos Sport
+44(2):159–173. https://​doi.​org/​10.​1080/​00948​705.​2017.​13273​23
+
+Reid HL (2020) Athlete agency and the spirit of Olympic sport. J
+Olymp Stud 1(1):22–36. https://​doi.​org/​10.​5406/​jofol​ympst​ud.1.​
+1.​0022
+Robbins S, Blundell I (2025) Losing our voice? Generative AI and the
+degradation of human expression. Minds Mach 36(1):2. https://​
+doi.​org/​10.​1007/​s11023-​025-​09757-6
+Rüther M (2025) The meaningfulness gap in AI ethics: a guide on how
+to think through a complex challenge. AI Soc 40(3):1403–1415.
+https://​doi.​org/​10.​1007/​s00146-​024-​01993-1
+Sample I (2026) AI-powered robot beats elite table tennis players. The
+Guardian. https://​www.​thegu​ardian.​com/​scien​ce/​2026/​apr/​22/​ai-​
+powere​ d-r​ obot-b​ eats-e​ lite-t​ able-t​ ennis-p​ layer​ s-m
+​ ilest​ one-r​ oboti​ cs.
+Accessed on 4 Sep 2026.
+Sandel MJ (2007) The case against perfection: ethics in the age of
+genetic engineering. Belknap Press of Harvard University Press,
+Cambridge
+Sandel MJ (2008) Liberalism and the limits of justice, 2 ed. Cambridge
+University Press, Cambridge
+Sandel MJ (2020) The tyranny of merit: what’s become of the common
+good? Penguin Books, London
+Suits B (1982) Sticky wickedness: games and morality. Dialog (Can
+Philos Rev) 21(4):755–759. https://​doi.​org/​10.​1017/​S0012​21730​
+00238​91
+Suits B (1988) Tricky triad: games, play, and sport. J Philos Sport
+15(1):1–9. https://​doi.​org/​10.​1080/​00948​705.​1988.​97144​57
+Suits B (2005) The grasshopper: games, life and utopia, 2 ed. Broadview Press, Toronto
+Sung LU, Ferdman A (2025) Empathetic large language models, the
+social capacities and human flourishing. Inquiry. https://​doi.​org/​
+10.​1080/​00201​74X.​2025.​25184​48
+The President’s Council on Bioethics (2003) Beyond therapy: biotechnology and the pursuit of happiness. Washington, D.C. https://​
+repos​itory.​libra​ry.​georg​etown.​edu/​handle/​10822/​559341
+Vallor S (2015) Moral deskilling and upskilling in a new machine age:
+reflections on the ambiguous future of character. Philos Technol
+28(1):107–124. https://​doi.​org/​10.​1007/​s13347-​014-​0156-9
+Zukiewicz P (2025) Analytics ruined the NBA. Here’s how they can
+save it. https://​medium.​com/@​zukie​wicz.​piotr/​analy​tics-​r uined-​
+the-​nba-​heres-​how-​they-​can-​save-​it-​7f247​98d56​d9. Accessed on
+24 Aug 2026.
+Publisher's Note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.
+
+

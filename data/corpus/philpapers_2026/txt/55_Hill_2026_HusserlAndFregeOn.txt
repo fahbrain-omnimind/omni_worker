@@ -1,0 +1,1150 @@
+PRINCIPIA 30(2): 387–414 (2026)
+
+doi: 10.5007/1808-1711.2026.e113893
+
+Published by NEL — Epistemology and Logic Research Group, Federal University of Santa Catarina (UFSC), Brazil.
+
+HUSSERL AND FREGE ON IMAGINARY NUMBERS
+AND THE D EEP N ATURE OF T HINGS
+CLAIRE ORTIZ HILL
+Independent scholar, FRANCE
+https://orcid.org/0000-0001-5195-6182
+
+Abstract. This paper examines the fundamentally different responses of Edmund Husserl
+and Gottlob Frege to the epistemological problem posed by imaginary entities in mathematics, including negative, irrational, complex, and transfinite numbers. It argues that their
+divergent approaches to the justification of symbolic procedures involving apparently nondenoting or impossible objects played a decisive role in shaping the subsequent trajectories
+of Continental and Analytic philosophy. The study reconstructs Husserl’s intellectual struggle
+with the foundations of arithmetic and shows how questions concerning imaginary numbers
+led him to develop a broader theory of symbolic thinking, formal systems, and manifolds.
+Husserl’s solution is presented as an attempt to explain how deductive reasoning can legitimately employ “imaginary” elements while still yielding valid results within complete axiomatic domains. In contrast, Frege’s insistence that mathematical expressions must denote
+genuine objects is examined in relation to his logicist program and his reliance on extensions
+of concepts. The paper contends that Frege’s treatment of logical objects and extensions contributed to the difficulties that culminated in Russell’s paradox and the collapse of his foundational project. By comparing these two responses to the problem of imaginaries, the article
+highlights their significance for the philosophy of mathematics, the theory of meaning, and
+the search for secure foundations of arithmetic. It concludes that Husserl’s analysis of symbolic procedures and formal structures offers a more promising framework for understanding
+the epistemological status of mathematical entities and the deeper logical structure of reality.
+Keywords: imaginary numbers • foundations of mathematics • Edmund Husserl • Gottlob
+Frege
+RECEIVED : 01/11/2024
+
+ACCEPTED : 17/02/2025
+
+The efforts of mathematicians turned philosophers to find secure foundations for
+arithmetic during the last years of the 19th century and the first years of the last
+century ended up determining the uncompromisingly different courses that Analytic
+philosophy and continental philosophy subsequently pursued. In particular, it is not
+too much to say that, the very different ways in which Edmund Husserl and Gottlob
+Frege responded to perplexing questions about the ways in which mathematicians use
+“imaginaries” — a broad heading stretched to include negative, irrational, complex
+numbers and transfinite numbers, fractions, negative square roots, imaginary classes
+© 2026 The author(s). Open access under the terms of the Creative Commons Attribution-NonCommercial 4.0 International License.
+
+388
+
+Claire Ortiz Hill
+
+and domains, the null class, infinite sets, the actual infinite. . . — played a key role in
+determining the future of their own work and so that of their successors. Here I wish
+to defend that claim.
+
+The Problem
+Present-day mathematician-philosopher Jairo da Silva has characterized imaginaries as: “representations without object that nonetheless pass for denoting something
+and, in spite of apparent absurdity, prove to be generally useful and harmless in
+mathematics.” (da Silva 2010, p.61)
+One hundred years earlier Alfred North Whitehead devoted two chapters of his
+Introduction to Mathematics to imaginary numbers. There he explained that they had
+arisen from the consideration of equations such as: x 2 + 1 = 3, x 2 + 3 = 1 and
+2
+x 2⎷+ a = b. The first
+⎷ equation becomes x = 2 and has two solutions: either x =
++ 2, or x equals − 2. However, this gives rise to problems, because the equation
+x 2 + 3 = 1 yields x 2 = −2, but there is no positive number or negative number
+which when multiplied by itself will yield a negative square. So, if the symbols mean
+ordinary negative or positive numbers, there is no solution to x 2 = −2, which is
+actually nonsense (Whitehead 1911, p.68). However, he continued, it was gradually
+perceived:
+how very convenient it would be if an interpretation could be assigned to
+these nonsensical symbols. Formal reasoning with these symbols was gone
+through, merely assuming that they obeyed the ordinary algebraic laws of
+transformation; and it was seen that a whole world of interesting results
+could be attained, if only these symbols might legitimately be used. Many
+mathematicians were not then very clear as to the logic of their procedure,
+and an idea gained ground that, in some mysterious way, symbols which
+mean nothing can by appropriate manipulation yield valid proofs of propositions. Nothing can be more mistaken. A symbol which has not been properly
+defined is not a symbol at all. It is merely a blot of ink on paper which has
+an easily recognized shape. (Whitehead 1911, p.70)
+
+In 1906, Robert Musil, then preparing his doctorate under Carl Stumpf, Husserl’s
+interlocutor about imaginaries, published The Confusions of Young Törless, in which
+the fictional teenager Törless described feeling “tormented about mathematics” (Musil
+1906, p.95) in this way:
+But isn’t there something strange about this whole business? . . . a calculus that starts out with perfectly solid numbers that can represent metres
+or weights or something else concrete and are at least real numbers. And
+you finish up with exactly the same kind of numbers. But these two are connected by something that doesn’t exist at all. Isn’t that like a bridge that only
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+389
+
+has piers at the beginning and end and yet you can cross it as safely as if
+the whole of it was there? There’s something about such a calculation that
+makes me feel giddy; as if part of the road went God knows where. But the
+really uncanny thing is the power there is in such a calculation that holds
+you tight so that you end up in the right place again. . . . I’ve never doubted
+that mathematics is right – after all, the fact that it works tells us that –
+it’s just that I have found it odd that at times it goes against reason; and
+it’s possible, of course, that’s only the way it seems. . . . I do find the whole
+thing strange. I find the idea of irrational, imaginary things. . . disturbing.
+When I think about it, I feel stunned, as if I’d been hit on the head. . . . Everything used to be so clearly organized inside my head, but now I feel that my
+thoughts are like clouds, and when I come to specific places it’s like a gap between them through which you’re looking into an unending, indeterminate
+expanse. (p.82, pp.92-93)
+
+So, the problem that haunted those seeking sound foundations for arithmetic in
+Husserl’s and Frege’s day was that of finding a way to justify that successful, but baffling, use of combinations of signs apparently referring to nonsensical, non-existent,
+impossible, pseudo objects. And, as dramatic as Törless’ struggle to understand imaginaries was, it was no less so than was Husserl’s.
+
+Husserl and Frege Exchange Theories about Imaginaries
+In Frege’s case, the use of signs or combinations of signs without denotation was
+at the heart of his dispute with formalists who, he believed, only manipulated signs
+without any regard for what they might stand for. In “On Formal Theories of Arithmetic” of 1885, he described what he considered to be the motives behind the seemingly nonsensical formalist claim that empty signs are the proper objects of arithmetical investigations. He explained that, even in pre-scientific times, positive whole
+numbers and fractional numbers were recognized owing to the needs of daily life.
+Irrational and negative numbers were also somewhat reluctantly accepted, and complex numbers were finally introduced even more reluctantly. Such higher numbers,
+he pointed out, have proved to be especially important for the derivations of many
+theorems.
+For example, many theorems in arithmetic are proved with the help of
+⎷
+−1, where it does not itself occur in the theorems and those proofs would collapse
+were there no number whose square is −1. Thus, a pressing arose to derive what
+was purely arithmetical by purely arithmetical, namely logical, means. (Frege 1885,
+pp.116-17)
+In 1891, Husserl sent Frege copies of his review of Ernst Schröder’s Vorlesungen
+über die Algebra der Logik (Husserl 1891d), his article entitled “The Deductive Calculus and Content Logic (Inhaltslogik)” (Husserl 1891a) and his recently published
+PRINCIPIA 30(2): 387–414 (2026)
+
+390
+
+Claire Ortiz Hill
+
+book Philosophy of Arithmetic (Husserl 1891c). In the review, a long, unsparing, exposé of the varied sorrows of the extensional logic, Husserl remarked that Schröder
+had provided “striking testimony of the algorithmic usefulness of even ambiguous
+and senseless expressions from the inverse domain.” He also waxed optimistic about
+his own prospects of being able to justify appeals to them. In arithmetic, he wrote:
+⎷
+One calculates with
+⎷ senseless signs such as −1, and for example formulates the equation −14 = 1, although such equations are without sense in
+relation to arithmetical concepts. It thus does not seem to me to have been
+at all demonstrated that our calculus cannot also, like the arithmetical, gain
+considerable utility through the introduction of such signs, proceeding out
+of inverse operations — however it may stand with their conceptual foundation. Certainly on both sides — the arithmetical as well as in the logical
+calculus — there is required in each case proof of the admissibility of methods which operate with signs that, in Cauchy’s much decried phrase, “are
+without sense when taken literally.” I hope to supply this proof in another
+place, and rigorously to prove my own view, which runs directly contrary to
+the usual views, on these questions. (Husserl 1891d, p.89)
+
+In connection with that expression of optimism, it is noteworthy that da Silva
+has observed that in Husserl’s discussion of the null class in Schröder’s calculus of
+classes in his review, he outlined a solution to the problem of imaginary entities not
+unlike the mature theory he would expound in his “Double Lecture: On the Transition
+through the Impossible (‘Imaginary’) and the Completeness of an Axiom System,”
+given in 1901 before the Göttingen Mathematical Society (da Silva 2000a, p.0115 n.
+1; da Silva 2010, pp.70-71; Husserl 1901). In the review, he in fact drew attention
+to a particular difficulty which “infects the concept of the null” and is closely tied
+to a point “upon which all extensional logicians since Boole have run ground.” He
+explained:
+If the distinction between real and imaginary classes (and to the latter the
+class 0 certainly is to belong) were a sound one, then there would be no
+way to escape the most tangible of absurdities, to which the formulae 0 € a
+and a € 1. . . lead. . . . The extensional logicians have brought this difficulty
+upon themselves. They have overlooked the fact that in a formal theory of
+deduction only purely hypothetical inferring comes into question, and that,
+consequently, all of the categorical judgments which show up in such a theory
+are only apparently categorical. Accordingly, in the extensional logic which
+constructs an algorithm for the formal theory of deduction, the corresponding subsumption judgments, of the form “the class a is subsumed under class
+b,” also are merely hypothetical. The existence of the subject class is not asserted; but the meaning is, rather, that if there is an extension belonging
+to the concept a, then one belongs to the concept b as well, and one under
+which the former extension is subsumed. Hence it is idle to speak of real and
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+391
+
+imaginary classes in reference to our domain. In precisely the same sense in
+which the classes gold, metal, etc., enter into the pure theory of inference,
+the classes of round squares, non-existent entities, and so on, also do. We
+can, for example, quite well state that the class of round squares belongs in
+the class of non-existent entities. (Husserl 1891d, p.83)
+
+In that review, Husserl also commented that Schröder’s attempt to show that
+bringing all possible objects of thought into a class gives rise to contradictions that:
+in the case where we simultaneously have, besides certain classes, also classes
+of those classes, the calculus may not be blindly applied. In the sense of the
+calculus of sets as such, any set ceases to have the status of a set as soon
+as it is considered as an element of another set; and this latter in turn has
+the status of a set only in relation to its primary and authentic elements,
+but not in relation to whatever elements of those elements there may be.
+If one does not keep this in mind, then actual errors in inference can arise.
+(Husserl 1891d, pp.84-85; Zermelo 1902, p.442; Rang & Thomas 1981; Hill
+1998-2000, pp.147-48)
+
+Husserl also attacked extensional logic in “The Deductive Calculus and Content
+Logic.” In any case, he did not cease to lay bare what he once called “the follies
+of extensional logic” (Husserl 1903, p.199). He would in fact express grave doubts
+about extensional logic (ex. Husserl 1994, p.443) throughout his career. In his late
+work Formal and Transcendental Logic he called it risky and doubtful, saying that
+its fundamental lack of clarity had brought with it many a contradiction (Widersinn)
+and all manner of artifices to make it harmless in mathematical theorization. (Husserl
+1929, §§23b, 26c)
+As for Philosophy of Arithmetic, Husserl had devoted several pages (Husserl 1891c,
+pp.123-28) of it to exposing the faults of what he called Frege’s peculiar attempt
+(merkwürdigen Versuch) to analyze and define the concept of number in The Foundations of Arithmetic (Frege 1884). In pages that he never retracted, Husserl concluded
+that he could not see how Frege’s method represented any enrichment of logic, that
+its results were such that one could only wonder how anyone could even temporarily
+consider them true, that what his method in fact allowed one to define was not the
+contents of the concepts, but their extensions. He acknowledged that all Frege’s definitions become correct propositions if instead of the concepts to be defined one substitutes their extensions, but they also then become completely obvious and worthless
+(Husserl 1891c, p.128). (Husserl ultimately retracted only three pages of those criticisms, not eight, as the first English edition of the Logical Investigations indicated).
+(Husserl 1900-01, p.179 n.; Hill 1991, p.43, p.180 n. 3)
+After studying the writings that Husserl had
+⎷ sent to him, Frege replied on May
+24, 1891. A comment about Schröder’s use of −1 made in his letter suggests that he
+PRINCIPIA 30(2): 387–414 (2026)
+
+392
+
+Claire Ortiz Hill
+
+was not very worried about justifying imaginary numbers.
+⎷ He wrote: “If we clutch our
+foreheads in astonishment at the first appearance of −1 and ask what this means,
+that is only a sign that the first introduction of the root sign contained a gap and⎷was
+therefore faulty. It should have been such that there could be no doubt about −1,
+after the minus sign and ‘1’ had also been explained correctly.” (Frege 1891a, p.62)
+On July 18, 1891, Husserl wrote to Frege that he had only a rough idea of how
+Frege would justify the imaginary in arithmetic, since on page 8 (of Husserl’s copy
+consultable at the Husserl Archives in Leuven) of his “On Formal Theories of Arithmetic” Frege had rejected the path that he himself had found after much searching.
+He added that he was thinking of working on his relevant drafts and might succeed
+in summarizing the essentials of his own theory that summer (Husserl 1891b, p.65).
+On that page, Frege characterized the objectionable theory in this way:
+‘We. . . merely stipulate rules in accordance with which one can move from
+given equations to new ones. . . . Unless an equation contains only positive
+numbers, it no more has a sense than the position of chess pieces express
+[sic] a truth. Now in virtue of these rules it may happen that an equation
+of positive whole numbers actually finally does occur. And if the rules are of
+such a kind that if one has started with true equations they can never lead
+to false conclusions, then two cases are possible: either the final equation is
+senseless, or it has a content about which we can pass judgement. This last
+will always be the case if it contains only positive whole numbers; and then
+it must be true, for it cannot be false.’ (Frege 1885, pp.118-19)
+
+That theory was mistaken, he argued, because it was only a matter of arranging
+the rules so that nothing false ever resulted. One might maintain that if the rules contained no contradictions among themselves and did not contradict the laws of positive
+whole numbers, then no matter how often they were applied, no contradiction could
+ever enter in. Hence, if the final equation was to have any meaning at all, it would
+also have to be non-contradictory and therefore true. However, he protested, noncontradictoriness is not sufficient, because a proposition can be non-contradictory,
+but not be true. Even if no contradiction is found after a series of inferences, one
+cannot be sure that a contradiction will not appear at a later stage. He reasoned
+further:
+A proof of non-contradictoriness, then, cannot be given by saying that these
+rules have been proved as laws for the positive whole numbers and therefore must be without contradiction; for after all, they might conflict with
+the peculiar properties of the higher numbers, e.g. that of yielding −1 when
+squared. And in fact, not all rules can be retained in the case of complex
+higher numbers in a three-dimensional domain. At least the theorem that a
+product can be zero only if one of the factors is zero — a theorem fundamental to algebra — must be dropped. It is therefore evident that in virtue
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+393
+
+of the peculiar nature of the complex higher numbers, there may arise a
+contradiction where so far as the positive whole numbers are concerned, no
+contradiction obtains.
+Therefore so far as this formal theory is concerned, the confidence that no
+contradiction is contained in the computation-rules stipulated for ordinary
+complex numbers no doubt rests on the fact that so far, none has been found.
+(Frege 1885, p.119)
+
+At the end of his article Frege maintained:
+½, for example, must be considered an object, albeit one that is neither sensibly perceptible nor spatial. Despite this non-spatiality and non-reality, 21 is
+not a concept in the sense that objects can fall under it. One cannot say ‘tis is
+a 12 ’ or ‘some 21 ’. . . expressions like ‘all 21 ’ or ‘some 12 ’ are equally inadmissible. Rather 12 is treated as a single determinate object, as is evident from the
+expression ‘the number 12 ’, and from the fact that it stands on one side of the
+equality sign. It would here be going too far to indicate how I conceive of the
+solution of this difficulty. Let me merely say this that the case of fractions,
+negative numbers, etc. is not essentially different from that of positive whole
+numbers, and that there a reduction of all propositions or equations to those
+that deal with positive whole numbers merely pushes the difficulty back one
+further and does not solve it. (Frege 1885, pp.120-21)
+
+In his letter. Husserl did not say why he did not think that Frege’s logic could justify the imaginary in arithmetic. However, on his copy of the article, he underlined
+the passage which reads: “The situation radically changes when one takes these figures to be signs of contents; in that case, the equation states that both signs have the
+same content. But if no content is present, the equation has no sense.” In the margin
+next to this passage he wrote NB. (Frege 1885, p.118)
+
+Frege’s Struggle to Apprehend Logical Objects
+Frege could not in fact allow combinations of signs that do not denote an object into
+his system because he had designed it in such a way that it could not handle them (Hill
+2003, 2004, 2010b). The numbers studied by arithmetic, he argued in Foundations
+are always independent, self-subsistent objects (Frege 1884, §55-61) which must be
+conceived substantivally (§106). In an expression such as ‘the number 4,’ the definite
+article ‘the’ classifies 4 as an object, and in arithmetic this self-subsistence comes out
+at every turn, as for example in the identity 4 + 4 = 8. The fact that 4 appears also in
+attributive constructions in everyday discourse “can always be got around,” because
+expressions which do not seem to name independent objects in the language of everyday life can be rewritten so that they do. As an example, he proposed converting
+PRINCIPIA 30(2): 387–414 (2026)
+
+394
+
+Claire Ortiz Hill
+
+‘Jupiter has four moons’ into ‘the number of Jupiter’s moons is the number four, or
+4,’ where ‘is’ has the sense of ‘is identical with’ or ‘is the same as.’ We therefore have
+an identity stating that the expression ‘the number of Jupiter’s moons’ signifies the
+same object as the word ‘four.’ (§57)
+However, he realized that the theories he was developing could lead to evidently
+false or nonsensical conclusions or be sterile and unproductive (§§67-68). At one
+point he acknowledged that by means of his definitions one could never “decide
+whether any concept has the number Julius Caesar belonging to it, or whether that
+conqueror of Gaul is a number or not” (§56); at another point, he acknowledged that
+by using his methods one could not determine whether England was or was not the
+same as the direction of the Earth’s axis (§66). So, after showing that he could not
+obtain any satisfactory concept of number by using the methods he was prescribing,
+he gingerly introduced extensions into Foundations (Frege 1884, §§68-69 & n.) and
+then devoted several sections of the book to completing his new definition and trying
+to demonstrate its worth (§§70-86). Yet, in one of the book’s concluding sections he
+acknowledged: “This way of getting over the difficulty cannot be expected to meet
+with universal approval, and many will prefer other methods of removing the doubt
+in question. I attach no decisive importance even to bringing in the extensions of
+concepts at all.” (Frege 1884, §107)
+Almost all of the concluding part of Foundations is devoted to criticizing formalist
+theories of “other numbers,” specifically, negative numbers, complex numbers, fractions, negative square roots, Cantor’s infinite numbers. There he argued that very
+1000
+large numbers like 10001000
+were not empty symbols, but objects with a perfectly definite sense and knowable properties (§104) and suggested that a general
+idea of how to prove this could be gathered from the method he had used to define nought in §74, one in §77, infinite numbers in §84 and to outline the proof that
+a number directly follows after every finite number in the series of natural numbers
+(§§82-83). On the other hand, he argued that (2 -3) was without any content, empty,
+“merely ink or print or paper, as which it possesses physical properties but not that
+of making 2 when increased by 3”. Therefore, it was not really a symbol at all, and
+it would be a mistake in logic to use it as one. Even in the case of c > b, he stressed,
+it is the content, not the symbol, which is important. (§95)
+He described the error he believed was infecting the formalist theory of fractions,
+negative, complex numbers and Cantor’s infinite numbers in this way:
+It is made a postulate that the familiar rules of calculation shall still hold,
+where possible, for the newly-introduced numbers, and from this their general properties and relations are deduced. If no contradiction is anywhere
+encountered, the introduction of the new numbers is held to be justified, as
+though, it were impossible for a contradiction still to be lurking somewhere
+nevertheless, and as though freedom from contradiction amounted straight
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+395
+
+away to existence. (§96 & n. 1)
+
+He identified the cause of the error thus: “That this mistake is so easily made
+is due, of course, to the failure to distinguish clearly between concepts and objects.
+Nothing prevents us from using the concept ‘square root of −1’; but we are not entitled to put the definite article in front of it without more ado and take the expression
+‘the square root of −1’ as having a sense.” (§97)
+However, no more than in “On Formal Theories of Arithmetic” did he seem to be
+worried in Foundations about how his theories could answer the questions posed by
+“new numbers.” He just expressed confidence that the same procedure that he was
+prescribing for positive whole numbers would also give “fractions, complex numbers
+and the rest. . . to us as extensions of concepts” (§104). “Once suppose this everywhere accomplished,” he assured readers in the last sentence of the book, “and numbers of every kind, whether negative, fractional, irrational or complex, are revealed
+as no more mysterious than the positive whole numbers, which in turn are no more
+real or more actual or more palpable than they.” (§109)
+In “On Sense and Reference” of 1892, he recognized that “languages have the
+fault of containing expressions which fail to designate an object (although their grammatical form seems to qualify them for that purpose),” and even in “the symbolic language of mathematical analysis. . . combinations of symbols can occur that seem to
+mean something but (at least so far) do not mean anything. . . .” However, he insisted:
+A logically perfect language (Begriffsschrift) should satisfy the conditions,
+that every expression grammatically well constructed as a proper name out
+of signs already introduced shall in fact designate an object, and that no new
+sign shall be introduced as a proper name without being secured a meaning.
+The logic books contain warnings against logical mistakes arising from the
+ambiguity of expressions. I regard as no less pertinent a warning against
+apparent proper names without any meaning. The history of mathematics
+supplies errors which have arisen in this way. . . . It is therefore by no means
+unimportant to eliminate the source of these mistakes. . . once and for all.
+(Frege 1892b, pp.168-69)
+
+The next year, he published Basic Laws of Arithmetic I to “substantiate in actual
+practice” the view of number developed in Foundations (Frege 1893, p.5). There, he
+affirmed that he was defining number itself as the extension of a concept and so he
+just could not “get on without” extensions, which had become “extremely important
+in principle” and represented “a vital advance, thanks to which we gain far greater
+flexibility” (p.6). To authorize logicians to pass from a concept to its extension he laid
+down Law V, while acknowledging that as far as he could see, it was the only place
+where a dispute could arise. It was there that the decision would have to be made
+(pp.3-4). The book’s third sentence informs that “negative, fractional, irrational and
+complex numbers have still been left out of account.. . . ” (p.1)
+PRINCIPIA 30(2): 387–414 (2026)
+
+396
+
+Claire Ortiz Hill
+
+Then, in 1894, he came out fighting for extensions in his highly critical review of
+Husserl’s Philosophy of Arithmetic, which he characterized as “an attempt to justify
+a naïve conception of number in a scientific way.” Naïve, he said, was “any view
+on which a statement of number is not a statement about a concept or about the
+extension of a concept, for, when one first reflects on number, one is led by a certain
+necessity to such a conception” (Frege 1894, p.197). If Husserl “had used the word
+‘extension of a concept’ in the same sense as I,” he asserted, “we should hardly differ
+in opinion about the sense of a number statement.” (pp.201-02)
+Writing of whole numbers in 1895, Frege affirmed that numbers are “very curious
+objects, uniting in themselves the apparently contrary qualities of being objective and
+of being unreal. But it emerges from a more serious consideration that there is no
+contradiction here. Negative numbers, fractions, etc. are of the same nature” (Frege
+1895, p.230). In posthumous “Comments on Sense and Meaning” dated 1892-95,
+he argued that when it was a question of the truth of something, one has to throw
+aside proper names that fail to designate or name an object, although they may have
+a sense (Frege 1892-95, p.122). In “science and wherever we are concerned about
+truth. . . we also attach a meaning to proper names and concept-words; and if through
+some oversight, say, we fail to do this, then we are making a mistake that can easily
+vitiate our thinking. The meaning of a proper name is the object it designates or
+names” (p.118). He claimed to have shown in Foundations and “On Formal Theories
+of Arithmetic,” “that for certain proofs it is far from being a matter of indifference
+whether a combination of signs — e.g. −1 — has a meaning or not, that, on the
+contrary, the whole cogency of the proof stands or falls with this. The meaning is
+thus shown at every point to be the essential thing for science . . . the extensionalist
+logicians come closer to the truth in so far as they are presenting — in the extension
+— a meaning as the essential thing.” (p.123)
+In fact, by binding the nature and fate of “numbers of every kind” to that of the
+positive whole numbers, Frege guaranteed that when his theories about the latter
+failed, his theories about the former would also. And that is what happened (Simons
+1987, p.360, pp.381-82; Dummett 1995, p.404). The stage had been set in Foundations, and the crucial inconsistency was just waiting to be found, the way Columbus
+discovered America, once he finalized and formalized his theories in a way that one
+could see well upon what the whole construction rested.
+In any case, when Bertrand Russell wrote to him about the contradiction of the
+class of all classes that are not members of themselves in 1902, Frege immediately
+replied:
+Your discovery has surprised me beyond words and, I should almost like
+to say, left me thunderstruck, because it has rocked the ground on which I
+meant to build arithmetic. It seems accordingly that. . . my law V. . . is false,
+and that my explanations. . . do not suffice to secure a meaning for my comPRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+397
+
+binations of signs in all cases. . . . It is all the more serious as the collapse of
+my law V seems to undermine not only the foundations of my arithmetic, but
+the only possible foundations of arithmetic as such. (Frege 1980, pp.131-32)
+
+A month later, he confessed to Russell: “I myself was long reluctant to recognize. . .
+classes; but I saw no other possibility of placing arithmetic on a logical foundation.
+But the question is, How do we apprehend logical objects? And I have found no
+other answer to it than this, We apprehend them as extensions of concepts. . . . I have
+always been aware that there are difficulties connected with this, and your discovery
+of the contradiction has added to them; but what other way is there?” (Frege 1980,
+pp.140-41)
+“The prime problem of arithmetic,” Frege concluded his 1903 appendix to Basic
+Laws II, “may be taken to be the problem: How do we apprehend logical objects,
+in particular numbers? What justifies us in recognizing numbers as objects?” (Frege
+1960, p.244). Of Law V, he wrote:
+I have never disguised from myself its lack of the self-evidence that belongs
+to the other axioms. . . I should have gladly dispensed with this foundation if I
+had known of any substitute for it. And even now I do not see how arithmetic
+can be scientifically established; how numbers can be apprehended as logical
+objects. . . unless we are permitted — at least conditionally — to pass from
+a concept to its extension.
+Solatium [sic] miseris socios habuisse malorum . . . everybody who in his proofs
+has made use of extensions of concepts, classes, sets, is in the same position
+as I. (Frege 1960, p.234)
+
+Frege never believed that the “unprovable law” he had assumed about extensions
+recovered from the shock it sustained from the contradiction (Frege 1979, p.182).
+Some years later he confessed in a note to an article by Philip Jourdain:
+Only with difficulty did I resolve to introduce classes (or extents of concepts),
+because the matter did not appear to me quite secure — and rightly so, as
+it turned out. The laws of numbers are to be developed in a purely logical
+manner. But numbers are objects. . . . Our first aim, then, was to obtain objects out of concepts, namely, extents of concepts or classes. By this I was
+constrained to overcome my resistance and to admit the passage from concepts to their extents. . . . I made a more extended use of classes than was
+necessary, because by that many simplifications could be reached. I confess
+that, by acting thus, I fell into the error of letting go too easily my initial
+doubts. . . . (Frege 1980, p.191 n. 69)
+
+In 1925, at the very end of his life, he wrote that experience had shown him
+that the expression ‘extension of a concept’ leads into “a thicket of contradictions”
+and how easily using extensions “can get one into a morass.” He acknowledged that
+PRINCIPIA 30(2): 387–414 (2026)
+
+398
+
+Claire Ortiz Hill
+
+he had found talk of extensions very convenient and had not paid attention to the
+“slight doubts” he had had, so that after the completion of Basic Laws his “whole
+edifice collapsed around” him. (Frege 1980, p.55)
+
+Husserl’s Intellectual Crisis
+In contrast, imaginary numbers played an integral role in inducing the long, painful
+intellectual crisis that hit Husserl, a mathematician by training (Hill 2002a), as he
+was trying to lay secure foundations for arithmetic during the late 1880s and early
+1890s. By his own account, the bewilderment that invaded him then, which he would
+describe in the most dramatic terms, made him to change course. It marked the crucial turning point in his thinking, unhinged him from empirical psychology and set
+him on the path toward transcendental phenomenology.
+In his 1913 draft for a new preface to his groundbreaking Logical Investigations
+(Husserl 1900-01), he wrote of how his breakthrough to phenomenology had come
+after years of effort to elucidate the epistemological achievements of arithmetic and
+pure analytical mathematics in general, above all their purely symbolic procedures,
+in which the actual, originally comprehensible meaning appeared broken and made
+nonsensical by appeals to transition through the “imaginary.” From 1886-1895, he
+related, his studies had been confined to the fields of formal logic and formal mathematics. Questions about imaginaries had turned his thoughts toward signification
+and what is purely linguistic about thinking and knowing and from then on entailed
+general investigations concerning a universal clarification of the meaning, the proper
+delimitation, the distinctive achievement of formal logic. He told of how, during the
+decade of lonely, arduous work that had gone into making the Logical Investigations,
+he had seen all around him only inchoate, ambiguously described problems and profoundly unclear theories. He felt profoundly unsatisfied. His doubts troubled, even
+tortured him. Cast intellectually adrift, weary of all the confusion and afraid of sinking in a sea of unending criticism, he had dared for the sake of philosophical selfpreservation to venture out on his own in search of answers. (Husserl 1913b, pp.1617, pp.33-35)
+He bared his soul in personal notes dated 1906-08, where he wrote of how, during
+many years of confused struggling and ardent searching for clarity while he struggled
+to understand the logic of mathematical thought and of the mathematical calculus
+in particular, he had been powerfully gripped by the deepest problems, tormented
+by unclarity and the unbelievably strange worlds of the purely logical and actual
+consciousness. He vowed not to abandon those fields of investigation that had been
+his life’s work for so long, not to waste a life of impassioned struggle, of the most
+extreme labors. He even said that he intended to triumph or die. (Husserl 1906-08,
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+399
+
+pp.490-93, pp.497-98, p.500)
+That struggle took place from 1886-1900, during his years at the University of
+Halle, where he labored as a Privatdozent, a sort of unemployed professor. Impressed
+by the work of his former teacher Karl Weierstrass to arithmetize analysis, he had set
+out to provide a more detailed analysis of the concepts of arithmetic and a deeper
+foundation for its theorems by analyzing the concept of number. The results of those
+efforts were published in On the Concept of Number (Husserl 1887), in the first volume of his Philosophy of Arithmetic (Husserl 1891c) and numerous articles and reviews, for instance those later anthologized in Early Writings in the Philosophy of Logic
+and Mathematics (Husserl 1994) and Studien zur Arithmetik und Geometrie. (Husserl
+1983)
+In Halle, he was befriended by his colleague, the originator of set theory Georg
+Cantor (Gerlach and Sepp 1994; Hill 1997, 1999a). So, the particular nature of his
+intellectual crisis becomes clearer when we realize that at that very time, Cantor
+was busy exploring, mapping and defending the uncharted, rich and strange world
+of transfinite sets, engaging in what Ivor Grattan-Guinness called “rather strange
+work on theory of numbers” (Grattan-Guinness 1971, p.369), creating what Joseph
+Dauben has called “dinosaurs of his mental creation, fantastic creatures whose design
+was interesting, overwhelming, but impractical to the demands of mathematicians in
+general” (Dauben 1979, pp.158-59). Cantor’s new numbers and countless infinities
+were counter-intuitive and paradoxical enough to arouse an acute awareness of the
+epistemological and logical questions the use of such new numbers might raise.
+Husserl was also on hand as Cantor began discovering the antinomies of set theory (Dauben 1979, pp.240-70), which played such a role in rocking his contemporaries’ assumptions. After all, it was in studying Cantor’s 1891 proof by diagonal
+argument that there is no greatest cardinal number that Russell came upon the contradiction about the class of all classes that are not members of themselves (Russell
+1903, §§100, p.344, p.500; Russell 1959, pp.58-61; Grattan-Guinness 1978, 1980;
+Hill 1991, p.1), the reactions to which David Hilbert, Husserl’s future colleague and
+friend at the University of Göttingen, described as “dramatic” and “violent” and as
+having had “a downright catastrophic effect in the world of mathematics,” leading
+Dedekind and Frege to abandon their theories and “quit the field” (Hilbert 1925,
+p.375). So Husserl might be considered a victim avant la lettre of the crisis in foundations that broke out once Russell began publicizing the contradiction usually associated with his name. Then Husserl was appointed to Göttingen in 1901, where
+he engaged in exchanges with mathematicians who knew the set-theoretical paradoxes before Russell did (Hill 2002b; Peckhaus & Kahle 2000/2001). Examination
+of Husserl’s copy of Russell’s Principles of Mathematics, consultable in the Husserl
+Archives in Leuven, shows that the only two sentences that Husserl underlined in the
+book concerned “the source of the contradiction.” (Russell 1903, §104)
+PRINCIPIA 30(2): 387–414 (2026)
+
+400
+
+Claire Ortiz Hill
+
+Be that as it may, Husserl began On the Concept of Number writing of the need to
+examine the logic of the concepts and methods that mathematicians were introducing
+and using and for a logical clarification, precise analysis and rigorous deduction of all
+of mathematics from the least number of self-evident principles. There Weierstrass’
+former student and assistant wrote:
+Today there is a general belief that a rigorous and thoroughgoing development of higher analysis. . . would have to emanate from elementary arithmetic alone, in which analysis is grounded. But this elementary arithmetic
+has. . . its sole foundation in. . . that never-ending series of concepts which
+mathematicians call “positive whole numbers.” All of the more complicated
+and artificial forms which are likewise called numbers — the fractional and
+irrational, the negative and complex numbers — have their origin and basis
+in the elementary number concepts and the relations uniting them. (Husserl
+1887, p.310)
+
+Change, however, was on the horizon. His posthumous “On the Logic of Signs
+(Semiotic)” of 1890/91 opens with the question: “How is it that one can speak of
+‘concepts’ which one, nevertheless, does not authentically (eigentlich) possess, and
+how is it not absurd that the most certain of all the sciences, arithmetic, is to be
+based upon such concepts?” (Husserl 1890/91b, p.20). “With what right,” he asked
+later on, “do we operate. . . with symbols instead of the true concepts? . . . We proceed
+without any justification. . . .” (p.37). He pointed out that:
+General arithmetic, with its negative, irrational and imaginary (“impossible”) numbers, was invented and applied for centuries before it was understood. Concerning the signification of these numbers the most contradictory
+and incredible theories have been held; but that has not hindered their use.
+One could quite certainly convince oneself of the correctness of any sentence
+deduced by means of them through an easy verification. And, after innumerable experiences of this sort, one naturally comes to trust in the unrestricted
+applicability of these modes of procedure, expanding and refining them more
+and more — all without the slightest insight into the logic of the matter. . . .
+(p.48)
+
+Alluding to “the endless controversies over negative and imaginary numbers, over
+the infinitely small and the infinitely large, over the paradoxes of divergent series,
+and so on,” he lamented the mental energy “wasted on this route, more governed by
+chance than logic.” How much quicker and more secure the progress of arithmetic
+would have been “if already upon the development of its methods there had been
+clarity concerning their logical character” (p.49). He complained that “as matters
+stand today, the thickest clouds of confusion mislead and hinder both in the formal
+disciplines and in philosophy and the special sciences.” One might, he wrote,
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+401
+
+search logical works in vain for light on what really makes such mechanical
+operations, with mere written characters or word signs, capable of vastly
+expanding our actual knowledge concerning the number concepts — making
+possible for us accomplishments which were inconceivable to the greatest
+thinkers of antiquity. And on the other side again we find as the characteristic
+sign of unclarity among the mathematicians, strange theories which they. . .
+have taken to be the philosophy of their discipline, and which often enough
+have led them — and the most original minds more than all — into sterile
+detours. (p.50)
+
+He predicted that deeper insight into the essence of signs and sign techniques
+would empower logic to devise symbolic procedures, establish rules for devising them
+such as had not yet occurred to the human mind and make the relationship of the
+logic of signs to symbolic operations in the praxis of life and science analogous. (p.51)
+Indications of changes to come are already found in Husserl’s introduction to
+Philosophy of Arithmetic, where his tergiversation regarding Weierstrass’ teaching on
+the primacy of the cardinal number is conspicuously apparent. He wrote:
+Beyond the types of numbers in practical life there is yet a long succession
+of others that are peculiar to arithmetical science. This science speaks of
+positive and negative, rational and irrational, real [reellen] and imaginary
+numbers, or quaternions, alternating and Ideal numbers, etc. But however
+diverse the arithmetical expressions of all these numbers may be, they always incorporate the signs for whole numbers, 1, 2, 3. . . as constituents; and
+thus within arithmetic too the whole numbers seem to play the role of basic
+numbers in a certain manner, provided that the inference from the dependency of the signs to that of the concepts is not totally fallacious. In fact many
+— and among them highly significant mathematicians such as Weierstrass —
+are even convinced that the whole numbers form the authentic and unique
+fundamental concepts of arithmetic. . . . In order to have some provisional
+standpoint to work from, we. . . will begin with an analysis of the concept of
+whole number. . . . This is in no way to anticipate any definitive resolution of
+the issue. It may even be that the progress of our developments in Volume
+II will prove the opinion thus presupposed to be untenable. (Husserl 1891c,
+pp.12-13)
+
+In the book’s foreword dated April 1891, he wrote that its second volume was for
+the most ready and should be consigned to print by the next year (Husserl 1891c,
+p.8). He informed that the first part of that never-to-be-published work was,
+to contain the logical investigation of the arithmetical algorithm — still viewed as an arithmetic of cardinal numbers — and the justification of utilizing in
+calculations the quasi numbers originating out of the inverse operations: the
+negative, imaginary, fractional and irrational numbers. Critical reflections
+on the algorithm repeatedly occasion a closer examination of the question
+PRINCIPIA 30(2): 387–414 (2026)
+
+402
+
+Claire Ortiz Hill
+whether it is the domain of cardinal numbers, or some other conceptual domain, that general arithmetic in the primary and original sense governs. . . .
+It turns out that identically the same algorithm, the same arithmetica universalis, governs a series of conceptual domains that have to be carefully distinguished, and that by no means does a single type of concepts — whether that
+of the cardinal or ordinal number, or any other — mediate the application
+of it in every case. (Husserl 1891c, p.7)
+
+In his personal notes of 1906-08, he recalled the bewilderment that had invaded
+him as he was writing the Philosophy of Arithmetic, of having felt conscience-stricken
+as he published the first volume (Husserl 1906-08, p.490). Difficulties surrounding
+imaginary numbers were a major factor in his decision to abandon work on the second volume. In a long letter written in the early 1890s to Carl Stumpf, to whom he
+would dedicate the Logical Investigations, Husserl confessed that the opinion that had
+guided him in writing On the Concept of Number that the concept of cardinal number
+forms the foundation of general arithmetic had soon proved to be false; that through
+no manner of tricks (Kunststücke) could one derive negative, rational, irrational and
+the various sorts of complex numbers, the ordinal concepts, concepts of magnitude
+etc. from the concept of cardinal number, and those concepts themselves were not
+logical particularizations of the cardinal concept. (Husserl 1890/91a, p.13)
+He said he realized that it appeared absurd to think that anything should be
+accomplished with signs not designating anything, lacking any interpretable sense.
+What use, he asked, can meaningless signs and relationships of signs be to us? If the
+system of signs of arithmetic,
+deals with discrete magnitudes, then “fractions,” “irrational numbers,” imaginary numbers and, in the case of the cardinal numbers, for example, the
+negative numbers also lose all sense. In relation to continuous quantities. . .
+fractions and irrational numbers are meaningful signs; but the imaginary
+and negative numbers are not. And so on. Nevertheless, in the “theory of
+number” (dealing exclusively with whole numbers) the integral and differential calculus, and possibly its irrationals, are applied — with success! Thus
+everywhere. Each theorem obtained is an actual identity, if one calculates it
+out. How is this possible? (p.15)
+
+Originally having viewed signs only in connection with designated
+⎷
+⎷concepts, he
+explained to Stumpf, he had had to think of numbers such as 2 and −1 as representing “impossible” concepts. However, trying to achieve a clear understanding as
+to how operating with contradictory concepts could lead to correct theorems had led
+him to conclude that this was not a question of the “impossibility” or “possibility” of
+concepts, because through the calculation itself and its rules as defined for such fictive
+numbers, the impossible fell away, and a genuine equation remained. One could calculate again using the same signs, but referring to valid concepts, and the result was
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+403
+
+again correct. Even if one incorrectly imagined that what was contradictory existed,
+or held the most absurd theories about the content of the corresponding concepts of
+number, the calculation remained correct if it followed the rules. So, he concluded,
+this must be a result of the signs and their rules (pp.15-16). He said he knew of
+“no logic that would even do justice to the very possibility of a genuine calculational
+technique.” (p.17)
+In “Psychological Studies in the Elements of Logic,” published in 1894, he wrote
+of being left with a host of burning questions about logic, reasoning and symbolization. Scientific knowledge, he reasoned, “is totally based upon the possibility of our
+being able to abandon ourselves completely to thought that is merely symbolic or is
+otherwise most removed from intuition, or of our being able purposively to prefer
+such thinking, with certain precautions, over thought more fully adequated to intuition. But how, then,” he asked, “is rational insight possible in science? And how with
+such a style of thought does one even come to mere empirically correct results?” He
+saw himself as being “close to the most obscure parts of the theory of knowledge,” as
+facing “great unsolved puzzles” about the very possibility of knowledge in general.
+(Husserl 1894, p.167)
+In 1913, he recalled that his doubts had finally extended to all concepts of objectivities whatsoever. The unclarities continually sustained through connections with
+broadened philosophico-arithmetical investigations extended to the broadest field of
+modern analysis and theory of manifolds, as well as to mathematical logic and all
+of logic in general. After much toiling, the tremendous importance of “merely symbolic thinking” for consciousness was, so to speak, extrinsically logically theoretically
+understandable in mathematics, but how symbolic thinking was possible, how objective, mathematical and logical relations were constituted in subjectivity and how
+self-evidence was to be understood, how the mathematical given mentally could be
+intrinsically valid still puzzled him. (Husserl 1913b, pp.34-35)
+In his foreword to Logical Investigations, he explained how the work had grown
+out of his efforts to solve pressing problems which had over and over hindered, and
+finally interrupted, his many years of work to clarify pure mathematics philosophically. It was his research into formal arithmetic and the theory of manifolds — a
+branch of knowledge and method reaching beyond all peculiarities of special forms
+of numbers and extensions — that had caused particular difficulties. Of the series
+of problems which had forced themselves upon him, it was the obvious possibility
+of generalizations or variations of formal arithmetic, whereby it could lead out beyond the quantitative domain without essentially altering its theoretical nature and
+computational methodology that had necessarily led to the realization that quantitativeness does not at all belong to the most general essence of what is mathematical or
+formal and to the mathematical method of calculation grounding in it. It was when
+he found in “mathematizing logic” a mathematics actually without quantity, yet unPRINCIPIA 30(2): 387–414 (2026)
+
+404
+
+Claire Ortiz Hill
+
+contestably of mathematical form and method, that the important problems took
+shape for him about the general essence of the mathematical in general, about the
+natural connections or the possible boundaries between the systems of quantitative
+and non-quantitative mathematics, and especially, for example, about the relationship between what is formal in arithmetic and logic (Husserl 1900-01, pp.41-42).
+At the beginning of the book’s first chapter, he wrote of the extent to which old and
+still unresolved controversies about the justification of the method of imaginaries
+had shown that mathematics really falls short of being the ideal of all science in general it is often taken to be. Although the sciences had nonetheless become great and
+led to undreamt of mastery over nature they were unsatisfactory theoretically, he
+judged. They were not crystal clear theories in which the function of all their concepts and propositions were fully intelligible, all presuppositions precisely analyzed
+and therefore beyond any theoretical doubt. The very mathematicians who manipulate marvelous mathematical methods with incomparable mastery and expand them
+into new ones often prove completely incapable of accounting adequately for the logical soundness of those methods and the limits of their proper application (Husserl
+1900-01, pp.58-59).
+
+Husserl’s Key to the Only Possible Solution to the Problem of
+Imaginaries
+In his Prolegomena to a Pure Logic, the first volume of his Logical Investigations,
+Husserl presented his theory of complete manifolds, or possible forms of theories,
+as the highest level of formal logic and the key to the only possible solution to what
+he called the thitherto unclarified problem as to how in the realm of numbers, impossible, non-existent (wesenlose) concepts could be methodically dealt with as real
+ones (Husserl 1900-01, §§69-70). In 1901, he spoke at length to the Göttingen Mathematical Society about solving problems about imaginaries in his posthumous “Double
+Lecture: On the Transition through the Impossible (‘Imaginary’) and the Completeness of an Axiom System” (Husserl 1901; Schuhmann & Schuhmann 2001). In Ideas
+I, he wrote that his chief purpose in developing his theory of manifolds had been to
+find a theoretical solution to the problem of imaginary quantities (Husserl 1913a,
+§§71-72 & n.). His theories about manifolds and imaginaries were integrated in his
+late work Formal and Transcendental Logic, where he affirmed that the concept of
+definite manifold had originally served to clarify for him the logical meaning of the
+computational transition through the “imaginary.” (Husserl 1929, §§23, 28, 31, 40,
+51)
+The Göttingen talks and notes define the issues in much the same way discussed
+above and afford ample insight into how Husserl reasoned his way to the discovery
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+405
+
+of what he thought of as the only possible answer to his questions about imaginaries.
+However, they and the expositions of his thoughts on the matter published during
+his lifetime have already received a fair amount of attention (ex. Hill 1995; Majer
+1997; da Silva 2000a, 2000b, 2008, 2010; Hartimo 2007, 2017, 2018; Schuhmann &
+Schuhmann 2001; Gauthier 2004; Okada 2013; Aranda 2020). In comparison, little
+has been published about the particularly clear treatment of the subject in his lecture
+courses now published in English as Introduction to Logic and Theory of Knowledge
+(Husserl 1906/07) and Logic and General Theory of Science (Husserl 1917/18). So
+I now propose to look at Husserl’s solution to the problems surrounding imaginary
+numbers as found in those two relatively unstudied works. In the first of them he
+explained:
+The lack of methodological clarity. . . shows in the much debated controversy over the meaning of imaginary numbers. If one keeps to mathematical
+theorizing, one will not doubt the soundness of the method of imaginary
+numbers. However, the particulars provided about the actual meaning and
+ultimate grounds of justification of such an apparently au fond meaningless
+operation vary and are in no respect completely fully adequate. . . . In any
+case, people have certainly been able to operate with the irrational integers
+for centuries, at least within broad limits, without being able to determine
+their meaning.
+That is of course a very odd situation. . . . As long as we do not have the most
+rigorous discrimination of the basic concepts in question and ultimate clarity
+for each <as concerns its> meaning, and in return, as long as we do not have
+ultimate clarity about the meaning and significance of mathematics, we do
+not know what mathematics accomplishes and in what sense claims for it
+can ultimately be made. (Husserl 1906/07, §31b)
+
+In §19, he discoursed at length about manifolds. Mathematics in the usual sense,
+he taught, is tied to number and numerically specifiable quantities. However, in recent times, it has gradually begun to free itself of that restriction, which was in no
+way required by the nature of the matter. It is not the objects that are essential in
+mathematics, he stressed in direct opposition to Frege, but its method, which flows
+naturally into a purely symbolic, calculational technique that is by no means in any
+way bound to number and quantity.
+This calculational technique’s greatest success, he explained, is in the purely logical realm. It has led to the realization that the form of the mathematical system can
+be freed from its matter, which has in turn led to the development of a new discipline
+and methodology constituting a new, higher-level mathematics of the most universal
+kind, a supramathematics, namely, the theory of manifolds, the science of possible
+forms of theories and theoretical disciplines in general. This Mannigfaltigkeitslehre
+is a technique for engaging in pure a priori analyses through an austere scheme of
+PRINCIPIA 30(2): 387–414 (2026)
+
+406
+
+Claire Ortiz Hill
+
+axiomatization, a matter of theorizing about possible fields of knowledge conceived
+of in a general, undetermined way and simply determined by the fact that the objects
+stand in certain relations, themselves subject to certain fundamental laws of such and
+such determined form.
+Constructed out of purely logical material, the theory of manifolds is a field of
+free creative mathematical investigation determined only by forms, conceived with
+full universality. Once form is freed from content, once one is no longer restricted to
+operating in terms of a particular field of knowledge, once it is realized that deductions, sequences of deductions, continue to be meaningful and to remain valid when
+one assigns another meaning to the symbols, then one is free to reason completely
+on the level of pure forms where the systems can vary in different ways. One can find
+ways to construct an infinite number of forms of possible disciplines. Nothing more
+needs to be presupposed than that the objects figuring in them are such that a certain
+connective supplies new objects and does so in such a way that the form determined
+is assuredly valid for them.
+When we go from arithmetic to the theory of manifolds, which no longer has to
+do with numbers, but only with arbitrary objects having the same formal pattern, we
+move up to a completely abstract, universal arithmetic and theory of quantity; we
+study all formations of quantities and forms of functional relations of quantities in
+general possible theoretically, completely in abstracto, whether or not they will ever
+be realized in nature. Only a form is defined. It exists insofar as it is correctly defined,
+insofar as the axiom forms are ordered in such a way as to contain no formal contradictions, no violation of analytic principles. One speaks of numbers in the formal
+sense, but not of cardinal numbers, quantitative numbers or anything of the kind, just
+anything for which formal axioms of the arithmetical prototype hold. Dropping the
+cardinal number meaning of the letters in the ordinary theory of cardinal numbers
+and substituting the thought of objects in general for which axioms of arithmetical
+forms a + b = b + a, a · b = b · a, etc. are to hold, we no longer have arithmetic,
+but a purely logical class prototype of theory forms to which, besides innumerably
+many possible domains, that of cardinal numbers is subject. We may then speak of
+numbers in the formal sense, but they are not cardinal numbers. They are objects
+indeterminately, universally defined by axiom forms as they are especially actually
+found for cardinal numbers. For cardinal numbers, a b = ba holds, but in constructing a manifold, one may just as well stipulate that a b ̸= ba, for example, a b = −ba,
+and so for the other basic principles.
+Chapter 11 of Logic and General Theory of Science is devoted to his theory of manifolds. Husserl observed there that in the arithmetic of cardinal numbers, the axioms
+are so restrictive as to make subtraction of the kind 3 − 4 nonsensical, while in the
+arithmetic of ordinal numbers all subtraction has a good meaning whether the minuend is greater or smaller than the subtrahend. Likewise, genuine fractions, irrational
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+407
+
+⎷
+numbers, a quantity −1, etc. have no meaning in the series of cardinal numbers
+and the arithmetic of cardinal numbers. Yet all that does have a meaning when one
+forms magnitudes referring to a multidimensional continuous domain of quantities
+on a line (Husserl 1917/18, §56). He then explained that once one had knowledge
+of the essence of theory-forms, the problem of justifying puzzling operations with
+imaginaries was to be formulated thus:
+Two valid discipline-forms may stand in such a relation <to one another>
+that the axiom system of one is a formal restriction of that of the other. All
+deductive consequences of the narrower axiom system are then obviously
+contained in the deductive consequences of the broader one. Now, however,
+all theorems deducible in the broader system must (1) break down into one
+exclusively containing concepts of the narrower one, which <for their part>
+are valid in terms of the narrower axioms, therefore not imaginary, (2) into
+theorems containing such imaginaries. Therefore, if we compare, for example, the arithmetic of cardinal numbers and the arithmetic of ordinal numbers — and correspondingly compare their discipline-forms, then we have,
+on the one hand, formulas, and in general theorems, which contain the negative that is imaginary in the sense of the narrower axioms of the arithmetic
+of cardinal numbers, and on the other hand, theorems that do not contain
+what is imaginary, therefore no difference a − b, where a < b.
+
+Choosing “to connect on to a traditional way of talking,” Husserl then explained,
+we call the non-imaginary the real (das Reale) and therefore have to speak of theorems having real meaning in every respect. Such theorems are then obtainable in the
+broader system, either by using imaginary axioms — in which case the proof is imaginary, passes through the imaginary throughout, but the imaginaries self-destruct in
+the process and finally drop out of the concluding proposition—, or the proof process
+is only real (reell) to begin with and always. So, the question is under what circumstances can we be completely sure that the theorem derived is valid independently
+of the proof process. It is obvious that a proof of cardinal number propositions using
+negative numbers will be completely reliable when we know a priori that corresponding to every such proof must be a proof that draws on purely real (real)-valid means,
+therefore, solely on the meaningful axioms for cardinal numbers. (Husserl 1917/18,
+§56)
+He concluded that transition through the imaginary was permissible in every complete domain of deduction, namely, when every proposition arbitrarily composed only
+of axiomatic concepts, thus, having grammatical meaning in the domain, was either
+true or false on the basis of the axiom system of that domain. In other words, the
+truth or falsehood of every grammatically producible proposition exclusively speaking the language of the domain is decided from the outset by the axioms as either
+necessarily following from them and therefore true, or contradicting them, therefore
+false. (Husserl 1917/18, §56)
+PRINCIPIA 30(2): 387–414 (2026)
+
+408
+
+Claire Ortiz Hill
+
+This theory of manifolds, he taught is “a supreme consummation of analytics.”
+With it, one proceeds purely formally, since not a single concept is used that is not
+derived from the analytic sphere. Its practical significance is inexhaustible. The more
+perfectly we master it, the more perfectly we are able to pursue deductive work in
+the concrete spheres, where the requirement not to use any imaginary concepts as
+a rule constrains and hinders us in deductively theorizing work. However, he enthused, what is “marvelous” is that “the transition into the clear infinities (but also
+law-governed infinities) of pure forms and variations of forms frees us from such
+conditions and at the same time explains to us why passing through the imaginary,
+what is meaningless, must lead, not to meaningless, but <to> true results.” (Husserl
+1917/18, §57)
+
+Conclusions
+So, unlike Frege, Husserl was shaken by the threat that “imaginary” numbers posed
+to his early efforts to develop secure foundations for arithmetic. He faced it, stopped
+in his tracks and changed course in the early 1890s. Then, after years of painful
+searching for clarity, he began writing and lecturing about the key to the only possible
+solution to those problems and working on the theories about the structure of the
+world of the purely logical that he needed to undergird his nascent phenomenology
+(Hill 2013, 2018, 2019), which was to put flesh on the purely logical skeleton he was
+exposing and give it a brain and heart.
+In his double lecture on imaginary numbers, Husserl warned that the development of the sciences had time and time again shown that unclarity in questions of
+principle ultimately wreaks dire consequences and that if certain levels of progress
+have been reached, further progress is fettered by errors originating from unclear
+methodological ideas (Husserl 1901, p.411). Such consequences were suffered by
+Frege, who stifled the doubts about matters of principle that he admitted to having
+had as he labored to place arithmetic on secure foundations. In Basic Laws I, he shut
+his eyes to problems he had signaled in Foundations. He committed himself to using
+the extensions he felt obliged to espouse because he saw no other way of avoiding
+the absurd inferences or sterility of the theory of number he was systematizing. By
+assuming his avowedly “unprovable” Law V, he violated the very logical principles
+he had just declared inviolable in “Function and Concept” (Frege 1891b) and “On
+Concept and Object” (Frege 1892a), principles that he, not to mention Husserl and
+Russell, deemed to be of the highest importance and “founded deep in the nature of
+things.” (Hill 2003, 2010b)
+He finally concluded that it was indeed the extensions that he had used to fix
+his problems about apprehending objects that had undermined his foundations for
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+409
+
+arithmetic and caused his edifice to crumble. His ambiguity in questions of principle
+and the errors originating from his inconsistent methodological ideas proved to be
+the source of many a contradiction requiring all manner of artifices on Russell’s part
+to make extensions harmless in reasoning, as Husserl lucidly cautioned such unclarity
+and ideas would. However, it is completely absurd to think that the collapse of an
+ill-conceived law could undermine the only possible foundations of arithmetic, as
+Frege suggested (Frege 1980, 131-32), or that “without a single object to represent an
+extension, Mathematics crumbles” as Russell maintained in Principles of Mathematics.
+(Russell 1903, §489)
+In any case, the way that Frege’s logic took hold in English-speaking countries effectively dissimulated important lessons that his and Russell’s encounter with contradiction-producing extensions have for the extensional logic that has been defended
+with such passion by militant Analytic philosophers headed by Willard van Orman
+Quine, a sort of used car salesman. Grave problems surfaced in various guises which
+analytic philosophers went on trying to doctor without attacking their causes, or even
+really identifying them (Hill 1991, 1999b). So, Frege’s successors went on to suffer
+the consequences of his choices and ostensible insouciance, though they are far from
+seeing it that way. For example, in “On Fundamental Differences between Dependent
+and Independent Meanings” (Hill 2010), I studied how the manner in which Frege
+placed the need to lay hold of self-subsistent, independent, objects at the heart of his
+logical project caused a string of closely interrelated problems that he and Russell
+had to face, the signal one being the famous contradiction. In “Reference and Paradox” (Hill 2004), I drew together evidence connecting Frege’s unsatisfied need to
+secure referents in the way his system requires to paradoxes, puzzles, riddles, antinomies, contradictions, fallacies, confusions, absurdity that inevitably result when
+logical form is not respected. I specifically looked the arguments that compelled Russell to adopt a description theory of names and an eliminative theory of descriptions,
+and the resurfacing of issues surrounding identity, substitutivity, paradoxes, descriptions, existential generalization and rigid reference that have done so much to heat
+up many philosophical discussions since his time. Indeed close and thorough investigation of the matter indicates that it has been precisely the kind of errors about
+logical form grounded in the deep nature of things, which Husserl, Frege and Russell all spotted, that have been generating such problems. So it is reasonable to ask
+whether the nature of those problems does not indicate that something deeper and
+logically prior to Law V was at work that caused its failure, something which raises
+questions about (to borrow Quine’s words) the true and ultimate structure of reality
+(Quine 1960, p.221), a topic of prime importance for the understanding of major
+issues in twentieth century western philosophy.
+Indeed, while Quine fought to contain logical reasoning within the confines of
+strong extensional calculi, a few philosophers, for example Ruth Barcan Marcus and
+PRINCIPIA 30(2): 387–414 (2026)
+
+410
+
+Claire Ortiz Hill
+
+Jaakko Hintikka, adopted a bolder attitude and ventured into the proscribed territory
+beyond the narrow boundaries being imposed on philosophical reasoning. They put
+a spotlight on problems connected with extensionality in a way that proved to be
+particularly effective in viewing the inner workings of Analytic philosophy’s brave
+new logic and in pulling deep issues underlying its puzzles, riddles, contradictions,
+paradoxes to the surface. So, more and more reasons for not shoving reasoning into
+an extensional mold mounted.
+Nonetheless, Frege’s contradiction-generating, structure-breaking ideas about extensionality have yet to be extirpated from what has come to be known as “classical”
+logic. So it is that, in Frege: Philosophy of Mathematics, Michael Dummett, a sort
+of modern-day Frankenstein who brought Frege’s logic to life in the late 20th century, was able to call Frege “the best philosopher of mathematics” (Dummett 1991,
+p.xiii) and even proclaim that, for “all his mistakes and omissions, he was the greatest philosopher of mathematics yet to have written” (p.321). Yet, in the same book,
+he opined that the reason why Frege’s work in the philosophy of mathematics had
+been “dismissed as a total failure” is probably that it “does not prompt any further
+line of investigation in mathematical logic” and “does not even appear to promise
+a hopeful basis for a sustainable general philosophy of mathematics.” He even proposed that Frege’s “great blunder in falling into the contradiction” may suggest “that
+he cannot have much to teach us” (p.xii). He also rather rashly maintained that “no
+one would now regard as anything but ludicrous the explanations of the concept of
+number that eminent mathematical contemporaries of Frege were satisfied to give,
+but he criticised so trenchantly.” (p.12)
+Husserl was definitely one of those of Frege’s contemporaries whose explanations of the concept of number he criticized trenchantly, not to mention basely and
+baselessly (Hill 1991, 1994). However, interest in Husserl’s philosophy of mathematics is gaining ground. And I bet that it will be his philosophy of mathematics and
+his concomitant investigations into the true and ultimate structure of reality which
+will stand the test of time. I invite doubters to familiarize themselves with it and to
+demonstrate what is ludicrous about it.
+
+References
+Aranda, V. 2020. Completeness, categoricity and imaginary numbers: the debate on Husserl.
+Bull. Sect. Logic 49(2): 109–25.
+da Silva, J. 2013[2000a]. Husserl’s Two Notions of Completeness: Husserl and Hilbert on
+Completeness and Imaginary Elements in Mathematics. Synthese 125: 417–38. Anthologized in Hill and da Silva 2013, pp.115-36.
+da Silva, J. 2013[2000b]. The Many Senses of Completeness. Manuscrito 23(2): 41–60. Anthologized in Hill and da Silva 2013, pp.137-50.
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+411
+
+da Silva, J. 2013. Mathematics and the Crisis of Science. Diálogos 91: 37–58. Anthologized
+in Hill and da Silva 2013, pp.345-67.
+da Silva, J. 2013. Beyond Leibniz, Husserl’s Vindication of Symbolic Mathematics. In: M.
+Hartimo (ed.), Phenomenology and Mathematics, pp.123–145. Dordrecht: Springer. Anthologized in Hill and da Silva 2013, p.61-80.
+da Silva, J. 2016. Husserl and Hilbert on Completeness, Still. Synthese 193: 1925–1947.
+Dauben, J. 1979. Georg Cantor, His Mathematics and Philosophy of the Infinite. Princeton:
+Princeton University Press.
+Demopoulos, W. (ed.). 1995. Frege’s Philosophy of Mathematics. Cambridge, MA: Harvard
+University Press.
+Dummett, M. 1991. Frege: Philosophy of Mathematics. Cambridge, MA: Harvard University
+Press.
+Dummett, M. 1995. Frege’s Theory of Real Numbers. In: W. Demopoulos (ed.), Frege’s Philosophy of Mathematics, pp.386-404. Cambridge, MA: Harvard University Press.
+Frege, G. 1986. The Foundations of Arithmetic. Blackwell: Oxford.
+Frege, G. 1984. On Formal Theories of Arithmetic. In: Collected Papers on Mathematics, Logic
+and Philosophy, pp.112–121. Oxford: Blackwell.
+Frege, G. 1980[1891a]. Frege to Husserl 24.5.1891. In: Philosophical and Mathematical Correspondence, pp.61-64. Oxford: Blackwell.
+Frege, G. 1984[1891b]. Function and Concept. In: Collected Papers on Mathematics, Logic and
+Philosophy, pp.137–156. Oxford: Blackwell.
+Frege, G. 1984[1892a]. On Concept and Object. In: Collected Papers on Mathematics, Logic
+and Philosophy, pp.182–194. Oxford: Blackwell.
+Frege, G. 1984[1892b]. On Sense and Reference. In: Collected Papers on Mathematics, Logic
+and Philosophy, pp.157–177. Oxford: Blackwell.
+Frege, G. 1979[1892-95]. [Comments on Sense and Meaning]. In: Posthumous Writings,
+pp.1–25. Oxford: Blackwell.
+Frege, G. 1964. The Basic Laws of Arithmetic, Exposition of the System. Berkeley CA: University
+of California Press.
+Frege, G. 1984. Review of Dr. E. Husserls Philosophy of Arithmetic”. In: Collected Papers on
+Mathematics, Logic and Philosophy, pp.195–209. Oxford: Blackwell.
+Frege, G. 1984. Whole Numbers. In: Collected Papers on Mathematics, Logic and Philosophy,
+pp.229–233. Oxford: Blackwell.
+Frege, G. 1960. Translations from the Philosophical Writings. 3rd Ed. Oxford: Blackwell.
+Frege, G. 1979. Posthumous Writings. Oxford: Blackwell.
+Frege, G. 1980. Philosophical and Mathematical Correspondence. Oxford: Blackwell.
+Frege, G. 1984. Collected Papers on Mathematics, Logic and Philosophy. Oxford: Blackwell.
+Gauthier, Y. 2004. Husserl and the Theory of Multiplicities, Mannigfaltikeitslehre. In: R. Feist
+(ed.), Husserl and the sciences, pp.121–127. Ottawa: University of Ottawa Press.
+Gerlach, H.; Sepp, H. (eds.). 1994. Husserl in Halle. Bern: Lang.
+Grattan-Guinness, I. 1971. Towards a Biography of Georg Cantor. Annals of Science 27(4):
+345–391.
+Grattan-Guinness, I. 1978. How Russell Discovered His Paradox. Historia Mathematica 5:
+127–137.
+
+PRINCIPIA 30(2): 387–414 (2026)
+
+412
+
+Claire Ortiz Hill
+
+Grattan-Guinness, I. 1980. Georg Cantor’s Influence on Bertrand Russell. History and Philosophy of Logic 1: 61–93.
+Hartimo, M. 2007. Towards Completeness: Husserl on Theories of Manifolds. Synthese 156
+(21): 281–310.
+Hartimo, M. 2017. Husserl and Hilbert. In S. Centrone; J. da Silva (eds.), Essays on Husserl’s
+Logic and Philosophy of Mathematics, pp.245–263. Berlin: Springer.
+Hartimo, M. 2018. Husserl on Completeness, Definitely. Synthese 195: 1509–1527.
+Hilbert, D. 1967. On the Infinite. In: J. van Heijenoort (ed.), From Frege to Gödel, a Sourcebook
+in Mathematical Logic, 1879-1931, pp.367-392. Cambridge, MA: Harvard University Press.
+Hill, C. O. 1991. Word and Object in Husserl, Frege and Russell, Roots of Twentieth Philosophy.
+Athens, OH: Ohio University Press.
+Hill, C. O. 1994. Frege Attacks Husserl and Cantor. The Monist 77(3): 347–357.
+Hill, C. O. 2000. Husserl and Hilbert on Completeness. In: J. Hintikka (ed.), From Frege
+to Dedekind, pp.143–163. Dordrecht: Kluwer. Anthologized in Hill and Rosado Haddock
+2000, pp.179–198.
+Hill, C. O. 2000. Did Georg Cantor Influence Edmund Husserl?. Synthese 113(October): 145–
+170. Anthologized in Hill and Rosado Haddock 2000, pp.137-60.
+Hill, C. O. 1998-2000. Review of Dallas Willard’s Translation of Edmund Husserl’s Early Writings in the Philosophy of Logic and Mathematics. Modern Logic 8(1-2): 142–153.
+Hill, C. O. 2000 [1999a]. Abstraction and Idealization in Georg Cantor and Edmund Husserl.
+In: F. Coniglione et al. (eds.), Abstraction and Idealization. Historical and Systematic Studies, pp.217–244. Amsterdam: Rodopi. Anthologized in Hill and Rosado Haddock 2000,
+pp.109–135.
+Hill, C. O. 1999b. Circling Gottlob Frege, Review of Frege Importance and Legacy, M. Schirn
+(ed.). Diálogos 73: 203–213.
+Hill, C. O. 2002a. On Husserl’s Mathematical Apprenticeship and Philosophy of Mathematics.
+In: A.T. Tymieniecka (ed.), Phenomenology World Wide, pp.76–92. Dordrecht: Kluwer.
+Hill, C. O. 2002b. Tackling Three of Frege’s Problems: Edmund Husserl on Sets and Manifolds.
+Axiomathes 13: 79–104.
+Hill, C. O. 2003. Incomplete Symbols, Dependent Meanings, and Paradox. In: D.O. Dahlstrom
+(ed.), Husserl’s Logical Investigations, pp.69–93. Dordrecht: Kluwer.
+Hill, C. O. 2013. Reference and Paradox. Synthese 138(2): 207–232. Anthologized in Hill and
+da Silva 2013, pp.171–194.
+Hill, C. O. 2013. On Fundamental Differences Between Dependent and Independent Meanings. Axiomathes, An International Journal in Ontology and Cognitive Systems 20: 313–32.
+Anthologized in Hill and da Silva 2013, pp. 219-240.
+Hill, C. O. 2013. The Strange Worlds of Actual Consciousness and the Purely Logical. New
+Yearbook for Phenomenology and Phenomenological Philosophy 13: 62–83.
+Hill, C. O. 2018. Limning the True and Ultimate Structure of Reality. In: P. Hackett (ed.),
+Mereologies, Ontologies, and Facets: The Categorial Structure of Reality, pp.37–64. Lanham,
+MD: Lexington Books.
+Hill, C. O. 2019. Husserl’s Purely Logical Chastity Belt. In: C. Weiss (ed.), Constructive Semantics, Meaning in Between Phenomenology and Constructivism, pp.135–146. Cham: Springer.
+Hill, C. O.; Rosado Haddock, G. E. 2000. Husserl or Frege? Meaning, Objectivity, and Mathematics. Chicago: Open Court.
+PRINCIPIA 30(2): 387–414 (2026)
+
+Husserl and Frege on imaginary numbers
+
+413
+
+Hill, C. O.; da Silva, J. J. 2013. The Road Not Taken, On Husserl’s Philosophy of Logic and
+Mathematics. London: College Publications.
+Husserl, E. 2003. On the Concept of Number: Psychological Analyses. In: Philosophy of Arithmetic, Psychological and Logical Investigations with Supplementary Texts from 1887-1901,
+pp.305–357. Dordrecht: Kluwer.
+Husserl, E. 1983/1994 [1890-91a]. Letter from Edmund Husserl to Carl Stumpf. In: Studien
+zur Arithmetik und Geometrie, pp.244–249. The Hague: M. Nijhoff, 1983. English translation in: Early Writings in the Philosophy of Logic and Mathematics, pp.12–19. Dordrecht:
+Kluwer, 1994.
+Husserl, E. 1994 [1890-91b]. On the Logic of Signs (Semiotic). In: Early Writings in the Philosophy of Logic and Mathematics, pp.20–51. Dordrecht: Kluwer.
+Husserl, E. 1994 [1891a]. The Deductive Calculus and Content Logic. In: Early Writings in
+the Philosophy of Logic and Mathematics, pp.92–114. Dordrecht: Kluwer.
+Husserl, E. 1980 [1891b]. Husserl to Frege 18.7.1891. In: G. Frege, Philosophical and Mathematical Correspondence, pp.64–66. Oxford: Blackwell.
+Husserl, E. 2003 [1891c]. Philosophy of Arithmetic, Psychological and Logical Investigations.
+In: Philosophy of Arithmetic, Psychological and Logical Investigations with Supplementary
+Texts from 1887-1901, pp.1–301. Dordrecht: Kluwer.
+Husserl, E. 1994 [1891d]. Review of Ernst Schröder’s Vorlesungen über die Algebra der Logik.
+In: Early Writings in the Philosophy of Logic and Mathematics, pp.51–91. Dordrecht: Kluwer.
+Husserl, E. 1994. Psychological Studies in the Elements of Logic. In: Early Writings in the
+Philosophy of Logic and Mathematics, pp.139–170. Dordrecht: Kluwer.
+Husserl, E. 1970 [1900-01]. Logical Investigations. New York: Humanities Press.
+Husserl, E. 2003. Double Lecture: On the Transition through the Impossible (‘Imaginary’)
+and the Completeness of an Axiom System. In: Philosophy of Arithmetic, Psychological and
+Logical Investigations with Supplementary Texts from 1887-1901, pp.409–473. Dordrecht:
+Kluwer.
+Husserl, E. 1994. Review of Melchior Palágyi’s Der Streit der Psychologisten und Formalisten in
+der modernen Logik. In: Early Writings in the Philosophy of Logic and Mathematics, pp.197–
+206. Dordrecht: Kluwer.
+Husserl, E. 2008 [1906/07]. Introduction to Logic and Theory of Knowledge, Lectures 1906/07.
+Dordrecht: Springer.
+Husserl, E. 1994 [1906-08]. Personal Notes. In: Early Writings in the Philosophy of Logic and
+Mathematics, pp.490–500. Dordrecht: Kluwer.
+Husserl, E. 1962 [1913a]. Ideas, General Introduction to Pure Phenomenology.
+Majer, U. 1997. Husserl and Hilbert on Completeness, A Neglected Chapter in Early Twentieth
+Century Foundations of Mathematics. Synthese 110: 37–56.
+Musil, R. 2014. The Confusions of Young Törless. Oxford: Oxford University Press.
+Okada, M. 2013. Husserl and Hilbert on Completeness and Husserl’s Term Rewrite-based Theory of Multiplicity. Invited talk in: F. van Raamsdonk (ed.), 24th International Conference
+on Rewriting Techniques and Applications (RTA’13). Eindhoven.
+Peckhaus, V.; Kahle, R. 2000-2001. Hilbert’s Paradox. Report No. 38, 2000/2001. Institut
+Mittag-Leffler, The Royal Swedish Academy of Sciences. https://www.mittag-leffler.se/
+preprints/files/IML-0001-38.pdf.%20Accessed%2017%20March%202015. Accessed 17
+March 2015
+PRINCIPIA 30(2): 387–414 (2026)
+
+414
+
+Claire Ortiz Hill
+
+Quine, W. V. O. 1960. Word and Object. Cambridge, MA: The M.I.T. Press.
+Rang, B.; Thomas, W. 1981. Zermelo’s Discovery of Russell’s Paradox. Historia Mathematica
+8: 16–22.
+Russell, B. 1903. Principles of Mathematics. London: Norton.
+Russell, B. 1959. My Philosophical Development. London: Unwin.
+Schuhmann, E.; Schuhmann, K. 2001. Husserls Manuskripte zu seinem Göttinger Doppelvortrag von 1901. Husserl Studies 17: 87–123.
+Simons, P. 1995. Frege’s Theory of Real Numbers. In: W. Demopoulos (ed.), Frege’s Philosophy
+of Mathematics, pp.358–385. Cambridge, MA: Harvard University Press.
+Whitehead, A. N. 1911. An Introduction to Mathematics. London: Williams & Norgate.
+Zermelo, E. 1994. Memorandum of a Verbal Communication from Zermelo to Husserl. In:
+Early Writings in the Philosophy of Logic and Mathematics, p.442. Dordrecht: Kluwer.
+
+PRINCIPIA 30(2): 387–414 (2026)
+
+

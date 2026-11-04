@@ -1,0 +1,897 @@
+From Intentional Experience to Embodied
+Being-in-the-World
+Husserl, Heidegger, and Merleau-Ponty on Mind and World
+
+Touraj BaniRostam
+Assistant Professor
+Master of Computer Science in Applied Artificial Intelligence Program
+University of Niagara Falls Canada, Niagara Falls, Ontario, Canada
+touraj.banirostam@unfc.ca
+Preprint- Version 1
+DOI: https://doi.org/10.5281/zenodo.21994758
+Part of the Rethinking Mind research project: A Historical and Conceptual Journey from Ancient Philosophy
+to Artificial Intelligence.
+
+Abstract
+Phenomenology transformed the study of mind by challenging the assumption that cognition should be explained
+through an isolated subject confronting an external world. This paper reconstructs the movement from Edmund
+Husserl through Martin Heidegger to Maurice Merleau-Ponty as conceptual transformations in the relations among
+experience, body, and world. Using comparative conceptual reconstruction, it examines how Husserl’s intentionality
+disclosed the directedness of consciousness and the intentional correlation; how Heidegger’s analysis of being-in-theworld situated understanding within practical involvement; and how Merleau-Ponty’s concept of the lived body
+grounded perception and agency in embodied engagement. The paper argues that these developments expanded
+the unit of analysis for understanding mind: from intentional consciousness, through practical world-involvement, to
+the embodied subject–world relation. This trajectory was not a simple linear progression, since Heidegger and
+Merleau-Ponty transformed possibilities already present in Husserl’s analyses of intentionality, embodiment, and the
+lifeworld. The paper considers the significance of this transformation for embodied and situated cognition, 4E
+approaches, and artificial intelligence. Phenomenology challenges accounts that identify intelligence exclusively with
+internal information processing, without proving that computation is insufficient or that embodiment necessarily
+produces experience. It thereby relocates the problem of mind within the structured relations among experience,
+practical activity, embodiment, and world.
+Keywords: Phenomenology; intentionality; being-in-the-world; lived body; embodied cognition; situated cognition;
+4E cognition; artificial intelligence.
+
+1. Introduction
+The history of theories of mind is not merely a succession of competing answers to an unchanged
+question. Major philosophical transformations have repeatedly altered what counts as the phenomenon
+to be explained, where inquiry should begin, and which relations an adequate account of cognition must
+include. Ancient accounts associated with Plato and Aristotle situated cognition within broader
+metaphysical and biological conceptions of the soul and the living organism (BaniRostam, 2026a). Modern
+philosophy subsequently reorganized the problem around the knowing subject, the sources and limits of
+experience, and the conditions under which knowledge of a world is possible (BaniRostam, 2026b). By the
+beginning of the twentieth century, however, this framework faced a further challenge: could mind be
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+adequately understood by beginning with a subject conceived as epistemically separate from the world it
+seeks to know?
+Phenomenology emerged partly in response to this problem. Rather than beginning with causal
+explanations of mental processes or metaphysical assumptions about the external world, Edmund Husserl
+proposed a systematic examination of experience as it is given to consciousness. His concept of
+intentionality expressed the central insight that consciousness is always consciousness of something:
+perceiving, remembering, imagining, and judging are directed toward objects, situations, or possibilities.
+Experience therefore cannot be adequately described as a collection of self-contained mental contents. It
+exhibits an intentional correlation between modes of experiencing and objects as experienced, through
+which a world becomes manifest to a subject (Husserl, 1982; Zahavi, 2003).
+Martin Heidegger transformed this phenomenological starting point by questioning whether intentional
+consciousness should retain explanatory priority. Human existence, on his account, is not initially that of
+a detached observer confronting independently constituted objects. It is characterized by being-in-theworld: practical involvement within an already meaningful context. Entities are commonly encountered
+not first as neutral objects possessing determinate properties, but as useful, obstructive, familiar, or
+relevant within ongoing activities. Understanding is therefore grounded in situated practical engagement
+before it becomes explicit reflection or theoretical representation (Heidegger, 1962).
+Maurice Merleau-Ponty made embodiment central to this transformation. The body, in his account, is
+neither merely a physical object governed by the mind nor an instrument employed by an independently
+constituted subject. It is the lived medium through which perception, action, and spatial orientation
+become possible. Bodily capacities, habits, and motor intentionality shape how the world appears and
+which forms of engagement become available. The relation between mind and world must consequently
+be examined through an embodied subject who perceives and acts within a structured field of significance
+(Merleau-Ponty, 2012).
+This paper reconstructs the movement from Husserl through Heidegger to Merleau-Ponty as a series of
+related conceptual transformations rather than a linear succession in which each thinker simply replaces
+his predecessor. Heidegger and Merleau-Ponty criticize important features of Husserl’s transcendental
+project, but they also develop possibilities present within his analyses of intentionality, embodiment,
+intersubjectivity, and the lifeworld. The relationship among their positions is therefore one of both
+continuity and redistribution of explanatory priority.
+The paper’s central argument is that these transformations expanded the unit of analysis required for
+understanding mind. Husserl redirected inquiry toward the intentional correlation between
+consciousness and its objects. Heidegger situated understanding within practical involvement in a
+meaningful world. Merleau-Ponty located perception and agency within the lived body’s engagement
+with that world. Across these transformations, mind becomes increasingly difficult to isolate from the
+structured relations among experience, practical activity, embodiment, and world.
+The paper employs comparative conceptual reconstruction. Its purpose is neither to offer a
+comprehensive history of phenomenology nor to resolve the extensive interpretive disputes surrounding
+these philosophers. Instead, it examines how each framework reorganizes the explanatory relations
+among subject, experience, body, action, and world. This method also guards against treating
+phenomenology as though it were already a version of contemporary cognitive science.
+Phenomenological descriptions and scientific explanations operate at different levels, even when they
+address overlapping phenomena.
+Nevertheless, the transformation reconstructed here remains relevant to embodied and situated
+cognition, 4E approaches, robotics, and artificial intelligence. Phenomenology challenges accounts that
+2
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+identify intelligence exclusively with internal information processing by drawing attention to intentional
+meaning, bodily capacities, practical engagement, and environmental context. Contemporary work on
+embodied cognition has likewise emphasized that cognitive processes cannot always be understood
+independently of bodily organization and action (Gallagher, 2005). These connections do not demonstrate
+that computation is insufficient, that every intelligent system requires a humanlike body, or that
+embodiment necessarily produces phenomenal experience. Each of those stronger conclusions requires
+additional argument.
+The following section traces the transition from the modern knowing subject to the phenomenological
+investigation of experience. The paper then examines Husserl’s intentionality, Heidegger’s being-in-theworld, and Merleau-Ponty’s account of the lived body. A comparative synthesis identifies the resulting
+expansion in the unit of analysis before the final sections consider its implications and limitations for
+cognitive science and artificial intelligence.
+
+2. From the Modern Subject to Phenomenological Experience
+Modern philosophy made the subject central to explanations of knowledge and experience. Descartes
+treated the thinking subject as the foundation of certainty and thereby intensified the problem of how
+thought could secure knowledge of a world beyond its own ideas. Empiricists relocated the analysis of
+cognition within experience, but their approaches generated further difficulties concerning external
+reality, causal necessity, and the unity of the self. Kant responded by arguing that experience requires
+both sensible receptivity and the organizing activity of concepts and categories. Hegel subsequently
+situated self-consciousness within processes of recognition, social relations, and historical development.
+Across these transformations, the explanatory role of mind expanded, but the modern problem remained
+substantially organized around the relation between a knowing subject and a world to be known
+(Descartes, 1996; Hegel, 1977; Kant, 1998; BaniRostam, 2026b).
+This framework produced a persistent tension. If inquiry begins with a subject whose access to the world
+is mediated by ideas, impressions, or representations, how can knowledge reach beyond those mediating
+contents? Attempts to secure the relation between subject and world could appear to presuppose the
+very separation they were intended to overcome. This concern applies most directly to Cartesian and
+empiricist formulations and should not be imposed without qualification upon Kant or Hegel. Kant
+transformed the problem by investigating the conditions under which objects can be experienced at all,
+while Hegel challenged the abstraction of an isolated subject by locating self-consciousness within
+historically developing relations. Nevertheless, the relation between subjectivity and objectivity remained
+a defining problem inherited by phenomenology.
+By the late nineteenth century, this problem had acquired another form. The development of scientific
+psychology encouraged the study of thought as a natural process governed by empirical regularities. More
+importantly for Husserl, several philosophical accounts treated logical laws and meanings as explainable
+through contingent psychological facts. This position, which he criticized as psychologism, threatened to
+reduce logical validity to descriptions of how human beings happen to think. If logical principles were
+products of psychological processes, their necessity and normative authority would become difficult to
+explain. Husserl’s critique of psychologism therefore defended the irreducibility of logical meaning and
+validity while preparing his turn toward a systematic analysis of consciousness (Husserl, 2001; Moran,
+2000).
+Phenomenology emerged from the effort to investigate experience without reducing it either to the
+contents of an enclosed mental substance or to an object wholly explainable through natural science.
+Husserl’s call to return “to the things themselves” directed inquiry toward how objects, meanings, and
+worlds are given in experience before their appearance is subsumed under causal or metaphysical
+
+3
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+theories. To make these structures available for analysis, the phenomenological epoché suspends the
+ordinary acceptance of the world characteristic of the natural attitude. The related phenomenological
+reduction redirects attention from objects simply taken as existing toward the modes through which they
+appear and acquire experiential meaning and validity (Husserl, 1982; Zahavi, 2003).
+This suspension should not be interpreted as a denial of reality or an attempt to prove that the world
+exists only within an individual mind. Its purpose is methodological: to examine how something is
+experienced as an enduring object, a remembered event, an imagined possibility, or a valid judgment.
+Perception, memory, imagination, judgment, and emotion disclose their objects in different ways, yet
+each displays intentional directedness. Experience consequently becomes a structured field of inquiry
+rather than merely evidence available to an already constituted subject or raw material subsequently
+organized by cognitive faculties.
+The decisive shift was therefore methodological and conceptual. Subject and object could no longer be
+treated as two wholly independent entities that phenomenological analysis must subsequently reconnect.
+Their correlation is exhibited within experience itself. The question is no longer only how an internal
+subject forms an accurate representation of an external object, but how different modes of experience
+disclose objects with particular identities, meanings, and horizons.
+This transition did not eliminate subjectivity or resolve every difficulty inherited from modern philosophy.
+Husserl continued to assign transcendental subjectivity a foundational role, and this commitment became
+a major point of dispute for later phenomenologists. Nevertheless, his approach altered the explanatory
+starting point. The primary question became how a world is manifested through organized structures of
+experience. Heidegger and Merleau-Ponty would transform this opening by redistributing explanatory
+priority toward practical involvement, embodiment, and situated existence. Before examining those
+developments, however, Husserl’s account of intentionality and experiential structure requires closer
+analysis.
+
+3. Husserl: Intentionality and Experience
+Husserl’s phenomenology begins from the conviction that theories of mind, knowledge, and reality
+require a careful examination of experience. Scientific explanations ordinarily presuppose subjects,
+objects, causal relations, and a natural world. Husserl sought to investigate the experiential structures
+through which these assumptions first acquire meaning and validity. His project was therefore neither a
+rejection of science nor a retreat into private introspection. It examined the conditions under which
+anything can appear, be identified, and count as an object of experience or knowledge (Moran, 2000;
+Zahavi, 2003).
+
+3.1 Intentionality and Directedness
+The central concept in this project is intentionality. Husserl adopted the term from Franz Brentano but
+transformed it within a more systematic analysis of consciousness. Consciousness is not an enclosed
+substance containing self-sufficient mental contents; it is characteristically directed toward something.
+Perceiving is perceiving something, remembering is remembering something, and imagining is imagining
+something, even when the intended object does not exist. Intentionality names this structural
+directedness, not a deliberate plan or conscious intention in the ordinary sense.
+This insight changes the starting point for analysing mind. If consciousness is inherently consciousness of
+something, phenomenological analysis cannot begin by treating subject and object as wholly independent
+entities that must subsequently be connected. Their relation is already exhibited within experience. This
+does not imply that consciousness creates its objects or that objects are reducible to mental contents. It
+means that phenomenology investigates the correlation between modes of experiencing and objects as
+
+4
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+experienced. A physical object, remembered event, mathematical relation, and imagined character are
+given in different ways, although each can be intentionally apprehended (Husserl, 1982).
+Husserl analyses this correlation through the distinction between noesis and noema. Noesis designates
+the intentional act or mode of consciousness, such as perceiving, judging, doubting, or imagining. Noema
+designates the object precisely as intended, together with the sense under which it is presented.
+Interpretations of the noema remain contested, but it should not be treated uncritically as an internal
+picture standing between consciousness and the object. The distinction instead clarifies how the same
+object can be intended through different acts and modes of presentation. A tree may be perceived,
+remembered, imagined, doubted, or discussed while retaining an identifiable unity across these
+experiences (Drummond, 1990; Zahavi, 2003).
+
+3.2 Perspective, Absence, and Synthesis
+Perceptual experience demonstrates why intentionality involves more than the passive reception of
+sensory data. A physical object is never given exhaustively in a single perception. When a table is viewed
+from one position, only some of its aspects are directly visible. Nevertheless, it is experienced as a whole
+object possessing hidden sides that could become visible through further movement. What is presently
+given is therefore surrounded by a horizon of anticipated but currently absent appearances.
+The unity of the perceived object depends upon synthesis across changing perspectives. As the perceiver
+moves, different profiles appear, yet they are experienced as appearances of the same object. This
+identity is not ordinarily produced through an explicit inference. It is constituted within the temporal flow
+of experience, which connects what has just occurred with what is presently given and what is about to
+occur. Husserl describes this structure through retention, primal impression, and protention. Retention
+holds the just-past within present experience, while protention opens experience toward the immediately
+anticipated future. These are structural moments of temporal consciousness rather than separate acts of
+recollection and prediction (Husserl, 1991).
+Temporal synthesis gives experience continuity, while perspectival synthesis allows objects to appear as
+enduring identities across changing presentations. Consciousness therefore has an organizing role without
+arbitrarily constructing reality. Objects constrain the ways in which they can appear, but their experiential
+identity is disclosed through structured acts of synthesis. Experience is neither a passive record of external
+inputs nor an unconstrained fabrication by an inner subject. It is an organized correlation in which objects
+are given through perspectival, horizonal, and temporal structures.
+
+3.3 The Epoché, Reduction, and Constitution
+Husserl introduced the epoché and phenomenological reduction to make these structures available for
+analysis. In the natural attitude, the world and its objects are ordinarily accepted as existing independently
+of the act through which they are experienced. The epoché brackets this general commitment without
+denying it. It suspends the ordinary positing of the world so that attention can be redirected toward the
+structures of appearing.
+The reduction names the corresponding turn toward the transcendental field in which objects, meanings,
+and validity are constituted. Although the epoché and reduction are closely related, they are not strictly
+identical: the first suspends the natural attitude, while the second redirects inquiry toward the
+experiential conditions under which a world becomes intelligible. The question shifts from whether a
+perceived object exists independently to how it appears as enduring, spatial, identifiable, and potentially
+accessible to others (Husserl, 1982; Moran, 2000).
+“Constitution” in this context does not mean that an individual mind invents reality. It concerns the
+processes through which objects acquire experiential unity, identity, sense, and validity. This analysis also
+5
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+distinguishes transcendental phenomenology from empirical psychology. Psychology studies mental
+events as occurrences within the natural world; phenomenology asks how that world—including the
+domain investigated by psychology—becomes manifest and valid for experiencing subjects.
+Husserl’s transcendental turn remains controversial because it appears to assign constituting subjectivity
+a foundational role. Critics have consequently interpreted his project as retaining a refined version of the
+isolated modern subject. That reading identifies a genuine tension but becomes misleading when it
+reduces Husserlian phenomenology to internalism. Intentionality is relational from the outset, and
+Husserl’s analyses increasingly incorporate embodiment, intersubjectivity, and the lifeworld. The status
+of transcendental subjectivity must therefore be understood alongside these dimensions rather than as
+an independently existing interior sphere (Drummond, 1990; Zahavi, 2003).
+
+3.4 Embodiment, Intersubjectivity, and the Lifeworld
+Husserl distinguishes the lived body (Leib) from the body considered as a physical object (Körper). The
+lived body is not encountered solely from an external perspective. It functions as the centre of orientation
+and the bearer of perceptual and practical capacities. Distinctions such as near and far, left and right,
+reachable and unreachable acquire experiential meaning relative to bodily position and possible
+movement. Kinaesthetic activity also alters the profiles through which objects appear, connecting
+perception with bodily agency (Husserl, 1989).
+Experience is likewise not exclusively private. Other subjects are encountered as embodied centres of
+experience, and the objectivity of the world depends partly upon its possible availability from perspectives
+other than one’s own. Intersubjectivity helps explain how an entity can be experienced not merely as an
+object for me but as belonging to a shared world. Husserl’s treatment of intersubjectivity is complex and
+contested, but it prevents objectivity from being reduced to the achievements of an isolated individual
+consciousness (Zahavi, 2003).
+The later concept of the lifeworld situates scientific and theoretical inquiry within the pretheoretical world
+of everyday experience, practices, meanings, and relations. Scientific descriptions presuppose this world
+even when they abstract from its lived character. Science does not construct the lifeworld from nothing;
+it produces idealized and mathematically articulated descriptions from within a field of experience that is
+already meaningful (Husserl, 1970).
+Husserl thus transformed the problem of mind by replacing the image of self-contained mental contents
+with an intentional correlation involving acts, objects, senses, horizons, and temporal syntheses. His
+analyses of embodiment, intersubjectivity, and the lifeworld further complicate any interpretation of
+phenomenology as a philosophy of isolated consciousness. Nevertheless, tension remains between the
+foundational role assigned to transcendental subjectivity and the worldly conditions of experience.
+Heidegger would redistribute explanatory priority by treating practical being-in-the-world, rather than
+intentional consciousness considered in abstraction, as the more fundamental starting point for
+phenomenological analysis.
+
+4. Heidegger: Being-in-the-World and Practical Involvement
+Heidegger adopted phenomenology while redirecting its central question. Husserl investigated the
+intentional structures through which objects and worlds are given to consciousness. Heidegger sought a
+more fundamental analysis of the mode of being presupposed by such intentional relations. Before a
+subject reflects upon objects, forms judgments, or represents a world theoretically, it is already involved
+in meaningful situations. Phenomenological inquiry should therefore begin not with consciousness
+considered as a field of intentional acts, but with the being for whom its own existence and the question
+of Being are at issue. Heidegger calls this being Dasein (Carman, 2003; Heidegger, 1962).
+
+6
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+4.1 Being-in-the-World
+The fundamental structure of Dasein is being-in-the-world. This expression does not describe the spatial
+location of an inner mind within an external environment. Nor does it combine three independently
+constituted elements—a subject, a relation, and a world. Being-in-the-world is a unitary phenomenon:
+Dasein always already exists within contexts of activity, significance, social relations, and practical
+possibilities. Subject and world are therefore not initially separated and subsequently connected through
+perception or representation (Dreyfus, 1991; Heidegger, 1962).
+Heidegger’s use of “world” must be distinguished from the idea of a collection of physical objects. A world
+is a structured field of significance within which entities, activities, and other people matter in particular
+ways. A classroom, workshop, or kitchen is not ordinarily encountered as a neutral arrangement of objects
+possessing measurable properties. It is understood through purposes, expectations, skills, and established
+practices. Desks are for working, tools are for performing tasks, and pathways lead toward destinations.
+These relations of significance are not merely subjective interpretations imposed upon otherwise
+meaningless entities. They belong to the practical contexts within which entities are initially intelligible.
+Being-in-the-world is also being-with others. Even when no other person is physically present, equipment,
+language, norms, and practices bear the marks of a shared social world. Dasein’s understanding is
+therefore never wholly private or self-generated. It operates within historically inherited ways of acting
+and interpreting.
+This analysis challenges the Cartesian image of a self-contained subject that must infer or reconstruct an
+external world from internal contents. For Heidegger, the demand to prove the world’s existence arises
+only after the more fundamental structure of involvement has been conceptually obscured. Dasein does
+not begin within an internal mental domain. It finds itself already engaged with entities and others in a
+shared world (Carman, 2003).
+
+4.2 Equipment and Practical Intelligibility
+Heidegger develops this argument through his analysis of equipment. In ordinary activity, a tool is not
+usually encountered as an isolated object bearing a list of properties. It is understood through its role
+within an interconnected practical context. A hammer refers to nails, wood, construction, shelter,
+acquired skills, and social purposes. Its significance depends upon this broader network of relations, which
+Heidegger describes as a referential totality.
+When equipment functions smoothly, it is encountered as ready-to-hand. Attention is directed primarily
+toward the task rather than toward the tool as an independently observed object. A skilled carpenter does
+not normally analyse a hammer’s weight, shape, and material before every movement. The tool recedes
+into use as part of competent activity. This practical familiarity is not necessarily explicit or propositional;
+it is expressed through context-sensitive engagement (Dreyfus, 1991).
+Disturbance makes this structure more visible. When a tool breaks, is missing, or obstructs an activity, it
+becomes conspicuous, obtrusive, or obstinate. These are disturbed modes of readiness-to-hand through
+which the equipmental context itself becomes noticeable. A broken hammer does not therefore become
+immediately and simply present-at-hand. Rather, breakdown interrupts practical absorption and can
+make possible a more detached examination of the tool as an object with determinate properties.
+Presence-at-hand is thus a distinct mode of disclosure, not merely another name for malfunctioning
+equipment (Heidegger, 1962).
+The distinction between readiness-to-hand and presence-at-hand does not imply that theoretical
+observation is impossible or unimportant. It establishes that detached observation is not the universal
+foundation of intelligibility. Explicit representation and propositional knowledge do not exhaust intelligent
+7
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+engagement because theoretical reflection presupposes a practical world in which entities have already
+become significant.
+
+4.3 Understanding, Situatedness, and Care
+For Heidegger, understanding is not primarily the possession of factual information. It is the projection of
+possibilities: the capacity to encounter oneself, others, and entities in terms of what can be done or
+become. A door is understood through possibilities such as entering or leaving, a tool through possible
+use, and one’s life through projects that may be pursued. Interpretation articulates this prior practical
+understanding but does not create significance from nothing.
+Understanding is inseparable from situatedness, or what Heidegger calls Befindlichkeit. Dasein always
+finds itself within conditions it did not wholly choose, including a historical period, language, social
+practices, relationships, and material circumstances. Heidegger describes this factical condition as
+thrownness. Human agency is therefore neither unlimited nor detached from context. Possibilities are
+projected from within an inherited situation.
+Moods are modes of this situated disclosure, not merely internal feelings added to a neutral
+representation. Fear, anxiety, boredom, and other affective orientations disclose how the world matters
+and how Dasein finds itself within it. Fear, for example, reveals something as threatening within a context
+of concern. Affect, practical orientation, and understanding are therefore structurally interconnected
+rather than independent components subsequently combined.
+Heidegger unifies these dimensions through care. Care is not an occasional emotional attitude or an
+expression of concern for a particular object. It names the structural unity of Dasein’s existence: projecting
+possibilities, finding itself already situated, and becoming absorbed in present involvements. This
+structure is temporal. Dasein is oriented toward possibilities while inheriting a past and engaging with
+what is present. Understanding is consequently practical, affectively situated, and temporally organized
+(Carman, 2003; Heidegger, 1962).
+
+4.4 From Intentional Consciousness to Worldly Involvement
+Heidegger’s transformation of phenomenology redistributes its explanatory priority. Husserl’s intentional
+correlation had already undermined the conception of consciousness as a sealed container. Heidegger
+shifts attention from particular acts through which objects are given toward the prior structure of practical
+being-in-the-world. The relevant unit of analysis cannot therefore be represented adequately as an
+isolated subject intentionally directed toward an object. It includes situated existence, practical activities,
+equipmental relations, shared norms, affective orientations, and the meaningful world within which
+entities can appear as relevant.
+This analysis should not be treated as a scientific theory of embodied cognition or as an empirical
+refutation of computational models. Being and Time investigates the ontological structures of Dasein
+rather than proposing a testable cognitive architecture. Its later appropriation within cognitive science
+therefore requires additional argument. Nevertheless, its critique of detached subject–object models
+influenced accounts emphasizing situated action, practical coping, and the limits of context-independent
+representation.
+Although embodiment is implicit in Heidegger’s discussions of spatiality, practical activity, and affective
+situatedness, Being and Time does not provide a sustained phenomenology of the lived body comparable
+to Merleau-Ponty’s. Merleau-Ponty develops this underanalysed dimension by making bodily orientation,
+motor capacity, habit, and perception central to the disclosure of a meaningful world. The next
+transformation therefore moves from practical situatedness toward a more explicit analysis of embodied
+perception and action.
+8
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+5. Merleau-Ponty: The Lived Body and Perception
+Merleau-Ponty developed phenomenology by making the lived body central to the analysis of perception.
+Husserl had examined embodiment within the intentional structure of experience, while Heidegger had
+situated understanding within practical being-in-the-world. Merleau-Ponty developed these insights by
+investigating how bodily capacities organize perceptual and practical engagement. His claim is not merely
+that mental processes depend causally upon a physical body. The body, as lived and active, is the subject’s
+primary mode of inhabiting and gaining access to a meaningful world (Carman, 2008; Merleau-Ponty,
+2012).
+
+5.1 The Body as Subject
+Traditional dualist accounts commonly treat the body as an object possessed or controlled by the mind.
+On this model, bodily movements execute decisions formed within an internal mental domain, while
+perception supplies that domain with information about an external environment. Merleau-Ponty
+challenges this division. The body is not experienced solely as one physical object among others; it is also
+lived as the centre of orientation, action, and possibility.
+This distinction develops Husserl’s contrast between the lived body and the body considered as a physical
+object. One’s own body is not normally discovered through detached observation. It is tacitly operative in
+reaching, walking, speaking, and directing attention. The perceiver does not first calculate the position of
+each limb before acting. Bodily coordination ordinarily occurs through a practical awareness that cannot
+be reduced to an explicit representation of anatomical relations (Merleau-Ponty, 2012).
+The lived body is therefore neither a purely mental entity nor merely a physical mechanism. It is the
+embodied subject’s mode of being in the world. This formulation does not introduce a third substance
+between mind and matter. It questions whether the division between an internal mind and an externally
+observable body adequately captures lived agency. From the first-person perspective, action is not
+ordinarily experienced as a mind issuing commands to an instrument. The subject acts bodily within a field
+of practical possibilities.
+
+5.2 Body Schema, Motor Intentionality, and Habit
+Merleau-Ponty employs the concept of the body schema to describe the integrated organization of
+posture, movement, and spatial orientation. A body schema is not a detailed mental image of the body.
+It is a dynamic organization of sensorimotor capacities through which the body responds to actual and
+possible tasks. It enables practical orientation without requiring continuous reflective awareness of the
+position of each bodily part. This distinction between body schema and conscious body image later
+became important within phenomenologically informed cognitive science (Gallagher, 2005).
+Perceptual space is consequently structured by bodily possibility. An object is near not only because it
+occupies a measurable location but because it is reachable. A staircase appears as climbable, a doorway
+as passable, and a tool as usable relative to an agent’s bodily capacities. Space, as lived, is therefore not
+initially a neutral geometric container. It is organized around possible movement, orientation, and action.
+Motor intentionality names the body’s directedness toward such possibilities. Intentionality is not
+restricted to reflective consciousness or explicit judgment. Bodily action can be directed toward a goal
+without requiring a fully articulated plan or a representation of every movement. A skilled typist does not
+ordinarily locate each key before every keystroke, just as an experienced driver does not calculate each
+minor adjustment as an isolated decision. Skill is expressed through a bodily grasp of the situation.
+Habit demonstrates how this bodily understanding develops. Learning a movement does not consist solely
+in storing a rule for subsequent retrieval. Through practice, the body acquires a new capacity for
+
+9
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+responding to situations. A walking stick, musical instrument, or vehicle may become incorporated into
+the agent’s practical field, altering the range of what can be perceived and done. Habit therefore
+reorganizes the body’s relation to its world rather than merely adding information to an internal store
+(Carman, 2008; Merleau-Ponty, 2012).
+
+5.3 Perception as Embodied Engagement
+Merleau-Ponty rejects both empiricist and intellectualist accounts of perception. Perception is not
+assembled mechanically from discrete sensations, but neither is perceptual meaning imposed upon
+sensory material by a detached intellect. It is structured from the outset. Figures appear against
+backgrounds, objects are encountered perspectivally, and each appearance refers beyond itself toward
+aspects that are currently absent. In this respect, Merleau-Ponty develops Husserl’s analyses of horizons
+and perspectival givenness while emphasizing their dependence upon bodily position, movement, and
+practical orientation.
+Perception is thus an active openness to the world. The perceiving body explores, anticipates, and adjusts.
+Moving around an object reveals new profiles, while changes in posture reorganize the perceptual field.
+The experienced unity of an object is disclosed through this continuing bodily engagement rather than
+reconstructed exclusively from detached sensory data.
+The relation is reciprocal. Bodily capacities open possibilities for action, while situations solicit and
+constrain bodily responses. A handle solicits grasping, an obstacle calls for avoidance, and an unstable
+surface modifies movement. Merleau-Ponty did not employ the later technical vocabularies of
+affordances, sensorimotor contingencies, or enactivism. His analyses nevertheless supplied important
+conceptual resources for subsequent approaches that understand perception through active organism–
+environment relations. This connection should be described as influence or philosophical affinity, not as
+identity between phenomenology and later scientific theories.
+
+5.4 Ambiguity and the Subject–World Relation
+Ambiguity is fundamental to Merleau-Ponty’s account of embodiment. The embodied subject is both
+perceiving and perceptible, active and vulnerable, situated and capable of transforming its situation. The
+body belongs to the world while simultaneously providing the orientation through which a world becomes
+accessible. Subject and world are therefore distinguishable but not intelligible in complete isolation from
+one another.
+This ambiguity prevents Merleau-Ponty’s account from collapsing into either idealism or reductive
+materialism. The world is not fabricated by an individual consciousness, yet experience is not adequately
+described as a mechanical effect produced by external objects upon a passive organism. Perceptual
+meaning arises within the relation between bodily capacities and worldly structures. It is relational
+without being arbitrary.
+Embodiment also connects perception to social and cultural existence. Bodily habits develop within
+shared practices, and gestures acquire significance within interpersonal contexts. Speech is not merely
+the external expression of thoughts already completed within an internal domain. It can be an embodied
+act through which meaning is articulated and communicated. The lived body therefore situates cognition
+within biological capacities while opening it to social, historical, and linguistic formation (Merleau-Ponty,
+2012).
+
+5.5 From Worldly Involvement to Embodied Perception
+Merleau-Ponty makes the lived body indispensable to the phenomenological relation between subject
+and world. His contribution is not simply to add the body to Heidegger’s account of practical involvement.
+
+10
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+It is to show how worldly involvement is perceptually and practically enacted through bodily orientation,
+habit, and motor intentionality. The unit of analysis consequently includes not only an experiencing
+subject and intended object, but the dynamic relation among bodily capacities, perceptual organization,
+action, and world.
+This account does not establish that every form of cognition requires a human biological body, nor does
+it determine whether artificial embodiment could support understanding or experience. It does, however,
+challenge theories that treat the body as an incidental input–output mechanism attached to an otherwise
+self-sufficient cognitive system. If bodily capacities partly organize what can be perceived and done, then
+embodiment may be constitutive of particular forms of cognition rather than merely causally supportive.
+The following comparative synthesis examines how Husserl, Heidegger, and Merleau-Ponty collectively
+redistribute explanatory priority from intentional consciousness toward practical involvement and the
+embodied subject–world relation, while preserving the important differences among their philosophical
+projects.
+
+6. The Expansion of the Unit of Analysis: Experience, Body, and World
+The movement from Husserl through Heidegger to Merleau-Ponty can be reconstructed as an expansion
+in the unit of analysis used to investigate mind. “Unit of analysis” is not a term employed by these
+philosophers themselves; it is the comparative concept used in this paper to identify what each position
+treats as the minimally adequate field for explaining experience and understanding. Expansion does not
+mean that each thinker simply added another variable to an unchanged theory, nor does it imply that a
+later and more complete position replaced an earlier and inferior one. Each philosopher reformulated
+where inquiry should begin, how subject and world are related, and which background conditions must
+be included within the phenomenon to be explained.
+The modern framework had commonly organized the problem around a knowing subject confronting a
+world of objects. Its principal questions concerned how external things were represented, how beliefs
+could be justified, and how knowledge could reach beyond the subject’s own mental states (BaniRostam,
+2026b). Phenomenology reorganized this framework by examining the relations through which subjects,
+objects, bodies, and worlds become experientially intelligible. The resulting transformation occurs across
+three connected dimensions: the locus of intelligibility, the form of the subject–world relation, and the
+background conditions required for experience.
+
+6.1 Husserl: The Intentional Correlation
+Husserl relocates the analysis from an isolated mental state to the intentional correlation between
+consciousness and its objects. Perceiving, remembering, imagining, and judging are not merely events
+occurring inside an individual. They are distinct modes of directedness through which objects are disclosed
+in correspondingly different ways. The relevant unit therefore includes the intentional act, the object as
+intended, its mode of presentation, its horizon of absent possibilities, and the temporal syntheses through
+which its identity is maintained.
+This correlation already exceeds a container model of mind. Experience is structured through presence
+and absence, identity and variation, anticipation and fulfilment. An object appears through changing
+profiles while being experienced as the same object. Its unity is inseparable from the temporally extended
+structure of consciousness, although it is not thereby reduced to a mental construction (Drummond, 1990;
+Zahavi, 2003).
+Husserl’s analyses of the lived body, intersubjectivity, and the lifeworld broaden this field further. The
+subject is bodily oriented, encounters others as embodied centres of experience, and participates in a
+
+11
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+shared pretheoretical world. Nevertheless, transcendental subjectivity retains a foundational role. Husserl
+thus expands the analysis beyond isolated mental contents while continuing to organize it around the
+structures through which experience is constituted.
+
+6.2 Heidegger: Practical Involvement Within a World
+Heidegger redistributes explanatory priority from intentional acts to being-in-the-world. Understanding
+does not begin with detached observation but within practical involvement. Entities are initially
+encountered through their significance within activities, projects, and shared practices. A tool is
+intelligible through its use and its place within an equipmental totality before it becomes an object with
+explicitly identified properties.
+The relevant field now includes Dasein’s possibilities, practical activities, equipmental relations, inherited
+norms, affective orientations, being-with others, and the meaningful world within which entities can
+appear. Context is not supplementary information added after an object has been recognized. It partly
+determines how the entity is encountered within a practice. A hammer is intelligible as a hammer through
+relations among materials, skills, purposes, construction practices, and other equipment (Carman, 2003;
+Dreyfus, 1991).
+This transformation also alters the explanatory status of representation. Heidegger does not deny that
+human beings form representations or engage in theoretical reasoning. He treats these as derivative
+modes that presuppose a more basic practical familiarity. The explanatory burden therefore expands from
+accounting for how a subject represents an object to explaining how meaningful situations, practical
+competence, and context-sensitive responsiveness are possible.
+
+6.3 Merleau-Ponty: The Embodied Subject–World Relation
+Merleau-Ponty makes bodily organization indispensable to worldly involvement. The lived body is not
+merely another component added to a larger cognitive system; it is the subject’s mode of perceptual and
+practical access to a world. Perceptual space is organized relative to bodily orientation and capacity:
+entities appear as reachable, avoidable, passable, or usable. Habit and motor intentionality disclose forms
+of practical understanding that do not require continuous explicit calculation.
+The unit of analysis consequently includes the dynamic relation among bodily capacities, perceptual
+organization, acquired habits, possible actions, and worldly structures. Perception cannot be assigned
+exclusively to internal processing or external stimulation because it unfolds through bodily engagement.
+The body explores and anticipates, while situations constrain and solicit response. Perceptual significance
+belongs to this relation rather than exclusively to either pole (Carman, 2008; Gallagher, 2005; MerleauPonty, 2012).
+The comparative transformation can be summarized as follows:
+Framework
+
+Explanatory starting
+point
+
+Husserl
+
+Intentional experience Intentional correlation
+
+Act, intended object, horizon, and temporal
+synthesis
+
+Heidegger
+
+Being-in-the-world
+
+Practical involvement
+
+Dasein, activity, equipment, possibility, norms,
+and world
+
+MerleauPonty
+
+Lived embodiment
+
+Perception–action
+engagement
+
+Body, habit, perceptual field, action, and
+world
+
+Primary relation
+
+Expanded unit of analysis
+
+12
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+6.4 Expansion Without Simple Succession
+The table identifies differences in explanatory priority; it does not divide the three positions into selfcontained stages. Husserl’s analyses of kinaesthetic experience, embodiment, intersubjectivity, and the
+lifeworld already exceed the picture of isolated consciousness. Heidegger’s world is phenomenologically
+disclosed rather than described as an independently specified physical environment. Merleau-Ponty
+draws upon both intentionality and being-in-the-world while making bodily perception more explicit. The
+sequence is therefore best understood as a redistribution and widening of explanatory priority, not the
+accumulation of three independent theories.
+Their differences must also be preserved. Husserl investigates how objects and meanings are constituted
+within intentional experience. Heidegger examines the ontological structure of Dasein. Merleau-Ponty
+analyses perception through the lived body. Combining them into a unified doctrine would erase
+differences in their aims, methods, and philosophical commitments. Their common importance lies
+instead in challenging explanations that isolate mind from the conditions under which a world becomes
+meaningful.
+
+6.5 Explanatory Consequences
+This expansion changes what an account of cognition must explain. Representation is incomplete if it
+leaves unexamined the intentional structure through which something is represented as something.
+Internal processing is insufficient when abstracted from the practical contexts that give entities relevance.
+A purely physical description of the body likewise omits lived orientation, acquired capacities, and
+perceptual significance.
+This claim does not entail that cognition extends into every causally relevant environmental feature, that
+internal mechanisms are unimportant, or that phenomenology has refuted computational explanation.
+Its conclusion is more limited: experience and understanding cannot be adequately characterized without
+reference to structured relations among subject, body, activity, and world. Whether those relations can
+be implemented computationally, whether artificial embodiment can realize them, and whether they are
+sufficient for phenomenal experience remain open questions. The following section examines how this
+expanded framework informs, but does not settle, contemporary debates in cognitive science and
+artificial intelligence.
+
+7. Implications for Cognitive Science and Artificial Intelligence
+The phenomenological movement from intentional consciousness to embodied being-in-the-world has
+influenced attempts to reconsider the boundaries and foundations of cognition. Classical computational
+approaches often explained cognition through internal representations and rule-governed operations
+upon them (Fodor, 1975). On this model, perception supplies information about an external environment,
+cognition transforms that information, and action follows as an output. This description captures an
+influential family of approaches rather than cognitive science as a whole. Phenomenology does not
+demonstrate that representations or computations never occur; it questions whether they provide a
+complete explanation of meaning, experience, and intelligent activity.
+
+7.1 The Challenge to Representationalism
+Husserl’s analysis of intentionality suggests that cognition cannot be characterized adequately by referring
+only to internally specified states. A representation is a representation of something and presents its
+object under a particular sense or mode of givenness. An information-processing account may explain
+how a state is encoded, transformed, or retrieved while leaving open how it acquires meaning for an
+experiencing subject.
+
+13
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+Computational models can nevertheless illuminate functional aspects of perception. For example,
+Mohammadi and BaniRostam (2015) proposed a three-layer perceptual meta-model comprising sensory,
+logical, and meaning-related processes. Such decomposition can clarify how perceptual information is
+selected and organized. From a phenomenological perspective, however, a functional model of perceptual
+processing does not by itself explain lived perceptual presence or how something becomes experientially
+meaningful. The two approaches address related but non-identical explanatory questions.
+Heidegger presents a different challenge to representational sufficiency. Practical competence does not
+ordinarily begin with a detached description of a situation followed by rule selection. Skilled agents
+respond within contexts already structured by activities, equipment, norms, and possibilities. Drawing
+upon Heidegger and Merleau-Ponty, Dreyfus argued that human expertise depends upon embodied and
+context-sensitive involvement that cannot be captured fully through formal rules and explicit
+representations (Dreyfus, 1972, 1992).
+Dreyfus identified genuine weaknesses in early symbolic AI, particularly its treatment of background
+knowledge and flexible coping. His critique should not, however, be treated as a timeless proof that
+artificial systems cannot display sophisticated behaviour. Machine-learning systems acquire complex
+statistical regularities without relying exclusively upon manually specified symbolic rules. Their
+achievements weaken some early formulations of Dreyfus’s critique while leaving questions of meaning,
+embodiment, contextual understanding, and experience unresolved.
+
+7.2 Embodied, Situated, and 4E Cognition
+Embodied approaches argue, in different ways, that cognition is shaped or partly constituted by bodily
+form, sensory capacities, motor abilities, and patterns of interaction. Situated cognition emphasizes that
+intelligent activity unfolds within physical, social, and cultural contexts. These positions challenge the
+treatment of the body and environment as merely peripheral sources of input and output.
+The broader family of 4E approaches describes cognition as embodied, embedded, enactive, and
+extended. These labels identify distinct claims rather than a unified theory (Newen et al., 2018).
+Enactivism emphasizes cognition as emerging through the active engagement of an organism with its
+environment (Varela et al., 1991). Extended approaches argue that, under appropriate conditions,
+external resources may become constituents of cognitive processes rather than merely causal aids to an
+internally bounded mind (Clark & Chalmers, 1998). Phenomenology influenced several of these
+developments, but it does not entail all of their empirical or metaphysical commitments.
+Your earlier systems-oriented research provides a relevant computational comparison. BaniRostam
+(2012) modelled biological complex adaptive systems through adaptation, learning, evolution, and agent–
+environment interaction. MMBSM similarly represented biological and social systems through relations
+among structure, process, adaptation, awareness, and distributed organization (BaniRostam & Fesharaki,
+2012). These models recognize that adaptive behaviour cannot be understood solely by isolating an
+internal decision mechanism from the system in which it operates.
+Their relevance must nevertheless be stated precisely. Computational models of adaptation and
+distributed organization explain functional relationships within simulated systems. They do not establish
+that those systems possess a lived body, intentional experience, or phenomenal consciousness. This
+distinction preserves the contribution of systems modelling while preventing functional adaptation from
+being equated with phenomenological embodiment.
+
+7.3 Situated and Embodied Artificial Agents
+Robotics makes these questions concrete. An artificial agent operating through sensors and actuators
+must coordinate perception and action under changing conditions. Behaviour-based robotics
+14
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+demonstrated that adaptive activity can emerge through layered interactions with an environment
+without requiring a complete centralized representation of the world (Brooks, 1991). Such architectures
+exhibit affinities with situated coping and perception–action engagement, although they should not be
+described as direct implementations of Heidegger or Merleau-Ponty.
+Earlier work by BaniRostam and Fesharaki (2011) used biological agents to simulate aspects of immunesystem behaviour, including learning, communication, adaptation, inheritance, and decentralized
+interaction. This work illustrates functional situatedness: agent behaviour changes through relations with
+other agents and environmental conditions. It also demonstrates how biological organization can inspire
+computational architectures without implying that the resulting agents reproduce the experiential life of
+biological organisms.
+Physical embodiment alone is therefore insufficient to establish lived embodiment. A robot can possess
+sensors, actuators, and a physical location while lacking bodily selfhood, affective concern, vulnerability,
+or phenomenal experience. Similarly, a language model can display contextual sensitivity and generate
+descriptions of experience without thereby demonstrating that it inhabits a meaningful world.
+At least three explanatory levels should be distinguished:
+Functional situatedness: A system receives information from an environment and adjusts its behaviour
+accordingly.
+Embodied coupling: The system’s capacities are shaped by its physical organization and continuing
+perception–action relations.
+Phenomenal experience: There is something it is like for the system to encounter and act within its world.
+These levels are not presented as a necessary developmental sequence. Success at one level does not
+establish the next. A navigation system may be functionally situated without possessing rich embodied
+cognition, and a robot may learn through sensorimotor interaction without having phenomenal
+experience. Conversely, the absence of current evidence for artificial experience does not prove that such
+experience is impossible in principle.
+
+7.4 What Phenomenology Can and Cannot Establish
+Phenomenology contributes by clarifying what may be omitted when intelligence is identified exclusively
+with abstract computation or observable performance. Husserl draws attention to intentional meaning
+and experiential structure; Heidegger to practical involvement and contextual significance; and MerleauPonty to the organization of perception and action through the lived body. Together, they challenge
+explanations that examine internal operations independently of an agent’s mode of worldly engagement.
+Their analyses do not prove that computation is incompatible with intentionality, that cognition cannot
+be realized in non-biological systems, or that every form of intelligence requires a humanlike body. Nor
+do they provide an operational test for artificial experience. Phenomenological descriptions of human
+existence cannot simply be converted into engineering specifications.
+The most defensible implication is methodological. AI research should distinguish information processing
+from understanding, environmental interaction from lived embodiment, and behavioural simulation from
+phenomenal experience. These distinctions do not diminish computational achievements. They prevent
+different explanatory problems from being collapsed into a single measure of performance.
+Phenomenology thus broadens the investigation of intelligence by requiring attention to cognitive
+organization, bodily capacity, practical activity, environmental structure, and possible experience.
+
+15
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+8. Conclusion
+Phenomenology transformed the problem of mind by challenging the assumption that cognition should
+be explained through an isolated subject confronting an independently constituted world. Husserl,
+Heidegger, and Merleau-Ponty did not formulate a unified theory, nor did they participate in a linear
+progression in which each thinker simply replaced his predecessor. They pursued distinct philosophical
+projects while redistributing explanatory priority across experience, practical involvement, embodiment,
+and world.
+Husserl made intentional experience central to phenomenological inquiry. Consciousness is directed
+toward something, and objects are disclosed through modes of presentation, horizons, and temporal
+syntheses. His analyses of the lived body, intersubjectivity, and the lifeworld further complicate any
+interpretation of phenomenology as an investigation of isolated consciousness. Heidegger shifted
+explanatory priority toward being-in-the-world, arguing that detached observation and explicit
+representation presuppose practical involvement within meaningful contexts. Merleau-Ponty made
+bodily orientation, motor intentionality, and habit integral to the perceptual and practical disclosure of a
+world.
+The paper has reconstructed these transformations as an expansion in the unit of analysis required for
+understanding mind: from the intentional correlation, through practical worldly involvement, to the
+embodied subject–world relation. This formulation does not combine the three positions into a single
+doctrine. It identifies a shared challenge to explanations that abstract cognition from the experiential and
+worldly conditions under which objects become meaningful and action becomes intelligible.
+This expansion does not eliminate internal mechanisms, representations, or computational processes
+from cognitive explanation. It establishes a more limited conclusion: such processes may be insufficient
+when considered independently of intentional structure, bodily capacity, practical activity, and
+meaningful context. Phenomenology therefore changes the explanatory burden without determining in
+advance which scientific mechanisms can satisfy it.
+This conclusion remains relevant to cognitive science and artificial intelligence. Embodied, situated,
+enactive, and extended approaches similarly question whether cognition can be located exclusively within
+an individual information-processing system. Robotics and adaptive-agent modelling demonstrate the
+functional importance of perception–action coupling, learning, and environmental interaction.
+Nevertheless, functional situatedness, embodied coupling, and phenomenal experience remain distinct
+explanatory achievements. A system’s successful adaptation to an environment does not by itself
+establish that it possesses a lived body or experiences that environment.
+Phenomenology consequently neither proves that artificial understanding or experience is impossible nor
+provides a complete scientific theory of cognition. It offers conceptual distinctions and descriptive
+analyses that expose what may be omitted when intelligence is identified solely with computation or
+observable performance. An adequate theory of mind must therefore consider not only information
+processing within a system but also the relations through which a subject experiences, inhabits, and acts
+within a world. The problem of mind is thereby relocated from an isolated interior domain to the
+organized relations among experience, body, activity, and world.
+
+Declarations
+Funding
+This research received no external funding.
+
+16
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+Data Availability
+No datasets were generated or analyzed in this study. This article is a theoretical and conceptual work.
+Competing Interests
+The author declares no competing interests.
+Declaration of Generative AI and AI-Assisted Technologies
+During the preparation of this manuscript, the author used generative AI and AI-assisted tools for
+language editing, structural refinement, and improving clarity and coherence. The author subsequently
+reviewed, revised, and verified the manuscript, including its arguments and references, and takes full
+responsibility for its content.
+
+References
+BaniRostam, T. (2012). A new approach for biological complex adaptive system modeling and simulation [Preprint].
+SSRN. https://doi.org/10.2139/ssrn.5161961
+BaniRostam, T. (2026a). From the knowing subject to the constitution of experience [Preprint]. Zenodo.
+https://doi.org/10.5281/zenodo.21709887
+BaniRostam, T. (2026b). From the question of mind to the living organism: Plato, Aristotle, and the origins of cognitive
+thought [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.21416653
+BaniRostam, T., & Fesharaki, M. N. (2011). Immune system simulation with biological agent based on Capra cognitive
+framework. In 2011 UKSim 13th International Conference on Computer Modelling and Simulation (pp. 122–127).
+IEEE. https://doi.org/10.1109/UKSIM.2011.32
+BaniRostam, T., & Fesharaki, M. N. (2012). MMBSM: A meta model for biological system modeling. International
+Journal of Computer Science Issues, 9(5), 140–145.
+Brooks, R. A. (1991). Intelligence without representation. Artificial Intelligence, 47(1–3), 139–159.
+https://doi.org/10.1016/0004-3702(91)90053-M
+Carman, T. (2003). Heidegger’s analytic: Interpretation, discourse, and authenticity in Being and Time. Cambridge
+University Press. https://doi.org/10.1017/CBO9780511498060
+Carman, T. (2008). Merleau-Ponty. Routledge. https://doi.org/10.4324/9780203461853
+Clark, A., & Chalmers, D. (1998). The extended mind. Analysis, 58(1), 7–19. https://doi.org/10.1093/analys/58.1.7
+Descartes, R. (1996). Meditations on first philosophy: With selections from the objections and replies (J. Cottingham,
+Trans.; 2nd ed.). Cambridge University Press.
+Dreyfus, H. L. (1972). What computers can’t do: A critique of artificial reason. Harper & Row.
+Dreyfus, H. L. (1991). Being-in-the-world: A commentary on Heidegger’s Being and Time, Division I. MIT Press.
+Dreyfus, H. L. (1992). What computers still can’t do: A critique of artificial reason. MIT Press.
+Drummond, J. J. (1990). Husserlian intentionality and non-foundational realism: Noema and object. Kluwer Academic
+Publishers. https://doi.org/10.1007/978-94-009-1974-7
+Fodor, J. A. (1975). The language of thought. Harvard University Press.
+Gallagher,
+S.
+(2005).
+How
+the
+body
+https://doi.org/10.1093/0199271941.001.0001
+
+shapes
+
+the
+
+mind.
+
+Oxford
+
+Hegel, G. W. F. (1977). Phenomenology of spirit (A. V. Miller, Trans.). Oxford University Press.
+Heidegger, M. (1962). Being and time (J. Macquarrie & E. Robinson, Trans.). Harper & Row.
+
+17
+
+University
+
+Press.
+
+FROM THE KNOWING SUBJECT TO THE CONSTITUTION OF EXPERIENCE
+
+Husserl, E. (1970). The crisis of European sciences and transcendental phenomenology: An introduction to
+phenomenological philosophy (D. Carr, Trans.). Northwestern University Press.
+Husserl, E. (1982). Ideas pertaining to a pure phenomenology and to a phenomenological philosophy: First book:
+General introduction to a pure phenomenology (F. Kersten, Trans.). Martinus Nijhoff.
+Husserl, E. (1989). Ideas pertaining to a pure phenomenology and to a phenomenological philosophy: Second book:
+Studies in the phenomenology of constitution (R. Rojcewicz & A. Schuwer, Trans.). Kluwer Academic Publishers.
+https://doi.org/10.1007/978-94-009-2233-4
+Husserl, E. (1991). On the phenomenology of the consciousness of internal time (1893–1917) (J. B. Brough, Trans.).
+Kluwer Academic Publishers.
+Husserl, E. (2001). Logical investigations (J. N. Findlay, Trans.; D. Moran, Ed.; Vols. 1–2). Routledge.
+Kant, I. (1998). Critique of pure reason (P. Guyer & A. W. Wood, Trans. & Eds.). Cambridge University Press.
+Merleau-Ponty, M. (2012). Phenomenology of perception (D. A. Landes, Trans.). Routledge.
+Mohammadi, S., & BaniRostam, T. (2015). A perceptual meta-model based on the ontology of mental models.
+International Journal of Humanities & Social Studies, 3(11), 122–128.
+Moran, D. (2000). Introduction to phenomenology. Routledge.
+Newen, A., De Bruin, L., & Gallagher, S. (Eds.). (2018). The Oxford handbook of 4E cognition. Oxford University Press.
+https://doi.org/10.1093/oxfordhb/9780198735410.001.0001
+Varela, F. J., Thompson, E., & Rosch, E. (1991). The embodied mind: Cognitive science and human experience. MIT
+Press.
+Zahavi, D. (2003). Husserl’s phenomenology. Stanford University Press.
+
+18
+
+

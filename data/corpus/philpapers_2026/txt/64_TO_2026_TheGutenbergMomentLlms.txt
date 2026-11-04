@@ -1,0 +1,478 @@
+The Gutenberg Moment:
+LLMs and the Irreversible Liberation of Formal
+Language
+T.O. (IASER Practitioner)
+September 2026
+Abstract
+Large language models (LLMs) are frequently compared to Gutenberg’s printing press
+as a metaphor for technological disruption at scale. This paper gives that analogy mathematical content and identifies where it goes deeper than prior accounts have recognised. We
+argue that LLMs do not constitute a threat to human intellectual agency because they lack
+the question-sustaining structure (Q-structure) that defines such agency — a result inherited from the companion paper The Phantom Intellect: Why AI Threat Discourse Misreads
+the Structure of Mind. What LLMs do accomplish is structurally distinct and historically
+more precise: they dissolve the scarcity of formal-language generation capacity, a capacity
+previously confined to specialists trained within institutional structures. We formalise this
+dissolution via a Dissemination Closure axiom, prove that the resulting expansion of the
+generative capability set is irreversible under any operation short of total erasure of disseminated artefacts (Theorem 4.6), and define a Gutenberg Moment as the structural condition
+under which such irreversibility obtains. The Leiden Declaration on Artificial Intelligence
+and Mathematics is read, in light of these results, not as a response to the emergence of
+mathematical intelligence in machines, but as a response to the collapse of the scarcity on
+which a specific institutional architecture depended — an architecture whose relationship to
+Q-structure was never constitutive.
+
+1
+
+Introduction
+
+The comparison between large language models and Gutenberg’s printing press has become a
+standard fixture of AI commentary [1, 2]. The standard version of the comparison emphasises
+scale: as the press made books accessible to populations previously excluded from manuscript
+culture, LLMs make sophisticated text generation accessible to users previously excluded from
+the domain of specialised writing.
+This paper departs from that account in two respects.
+First, we give the analogy mathematical content. The concept of a Gutenberg Moment is
+defined as a structural condition on the dissemination of a capability set (Definition 4.5), and the
+irreversibility that the analogy is typically taken to imply is proved as a theorem (Theorem 4.6)
+rather than asserted by historical parallel.
+Second, we locate the historically significant event not in the scale of impact but in the
+structure of what is being dissolved. Gutenberg dissolved the scarcity of reproduction: the
+capacity to produce copies of existing text. LLMs dissolve the scarcity of generation: the capacity
+to produce formal language de novo. These are structurally distinct, and the distinction matters
+for what follows.
+The paper proceeds as follows. Section 2 recalls the relevant result from the companion
+paper. Section 3 identifies the structural pair at the heart of the analysis. Section 4 introduces
+the formal framework and proves the irreversibility theorem. Section 5 applies the results to the
+Leiden Declaration. Section 6 draws the main conclusion.
+1
+
+2
+
+What LLMs Do Not Do: Inheriting the Result of Phantom
+Intellect
+
+The companion paper The Phantom Intellect: Why AI Threat Discourse Misreads the Structure
+of Mind [3] establishes a structural distinction between two properties that AI threat discourse
+persistently conflates.
+Intelligence, in the sense operative in that discourse, is the capacity to resolve queries presented from outside the system. This capacity is well-documented in current LLMs and is not
+in dispute.
+The question-sustaining structure (Q-structure) is something else: the internal disposition by
+which a system generates its next question from within its own operation, sustaining an inquiry
+that originates inside the system rather than being presented to it from outside. Q-structure
+has three necessary conditions: question persistence, a liberating terminus, and declaration
+openness.
+The central result of the companion paper is that a system optimised to close queries operates
+in the opposite direction from a system that sustains questions, and that the attribution of Qstructure to a query-resolving machine is structurally incoherent (Theorem 4.4 of The Phantom
+Intellect [3]).
+The present paper inherits this result as a standing assumption:
+Proposition 2.1 (The Phantom Intellect [3], Theorem 4.4). Q-structure is not attributable to
+a query-resolving machine. That is, any system whose operation consists in resolving queries
+presented from outside the system cannot possess Q-structure, regardless of the sophistication of
+its outputs. Since LLMs are query-resolving machines, Q-structure cannot be attributed to them.
+This proposition is the fixed point from which the present analysis departs. It establishes
+directly that LLMs do not possess Q-structure — not as a contingent empirical finding, but as a
+structural consequence of what a query-resolving architecture is. It follows that whatever LLMs
+dissolve, they do not dissolve the scarcity of Q-structure: that scarcity, if it is a scarcity at all,
+remains entirely on the side of human inquiry. The question becomes: what scarcity do they
+dissolve, and what follows from that dissolution?
+
+3
+
+The Structural Pair: Reproduction and Generation
+
+Prior to Gutenberg’s press, the reproduction of text required a trained human agent — a scribe,
+a copyist — whose labour constituted a genuine bottleneck in the circulation of knowledge. The
+economic historian Dittmar has documented in detail how the introduction of movable type
+dissolved that bottleneck and restructured the economic geography of European intellectual life
+[4].
+The structural point, for our purposes, is not the scale of the effect but its character: the
+press dissolved the scarcity of reproduction capacity — the ability to produce copies of existing
+linguistic artefacts. The content of those artefacts, the arguments they contained, the questions
+they posed or closed: none of this was altered by the press. What changed was the cost of
+copying.
+LLMs dissolve a different scarcity. They dissolve the scarcity of generation capacity — the
+ability to produce formal language de novo: mathematical proofs, logical derivations, structured
+arguments, technical specifications. Prior to LLMs, such generation required a trained human
+agent whose training depended on extended institutional formation. LLMs produce formal
+language without that formation and, by Proposition 2.1, without Q-structure.
+The structural pair is therefore:
+
+2
+
+Gutenberg press
+LLMs
+
+Scarcity dissolved
+
+Mechanism
+
+Reproduction of formal language
+Generation of formal language
+
+Movable type
+Statistical modelling of formal corpora
+
+This distinction is what the standard Gutenberg analogy of Wheeler and Nosta [1, 2] does
+not capture. The press did not generate new text; it copied existing text at scale. LLMs generate
+new formal text at scale. The dissolution is one level deeper.
+
+4
+
+The Irreversibility Theorem
+
+We now formalise the dissolution of scarcity and prove that, once it occurs under the conditions
+we specify, it is irreversible.
+
+4.1
+
+Setup
+
+Let G denote a formal-language generation capability — for instance, the capacity to produce
+a valid mathematical proof of a specified kind, or to generate a structured formal argument in
+a given domain.
+Definition 4.1 (Capability Set). The capability set St (G) at time t is the set of agents that
+can generate G at time t:
+St (G) = { x | x can generate G at time t }.
+Definition 4.2 (Dissemination Operation). A dissemination operation R : 2X → 2X maps a
+capability set to the set of agents that can sustain or acquire capability G through the artefacts
+— outputs, models, procedures, derivative systems — already produced by members of the input
+set. That is, x ∈ R(A) if x can generate G by access to the artefacts produced by some member
+of A, without requiring the original capability source.
+Definition 4.3 (Dissemination Closure). A capability set S1 (G) satisfies Dissemination Closure
+under R if
+R(S1 (G)) = S1 (G).
+This condition comprises two parts:
+1. Persistence: S1 (G) ⊆ R(S1 (G)) — every current member of S1 (G) remains in the capability
+set after the dissemination operation, even if the original capability source (e.g., the LLM
+deployment) is removed.
+2. Non-expansion: R(S1 (G)) ⊆ S1 (G) — the dissemination operation does not produce agents
+outside S1 (G).
+Remark 4.4. Dissemination Closure is not specific to LLMs. It is a general condition on
+capability sets that have been embedded in publicly accessible and reproducible artefacts. The same
+condition applies to the capability set that emerged after Gutenberg’s press had been in operation:
+once print technology had disseminated, the capacity to reproduce text at scale became selfsustaining through the artefacts (presses, trained operators, accumulated print culture) already
+in circulation.
+Definition 4.5 (Gutenberg Moment). A Gutenberg Moment for capability G is a pair of times
+t0 < t1 such that:
+St0 (G) ⊊ St1 (G) and R(St1 (G)) = St1 (G).
+That is: the capability set strictly expands between t0 and t1 , and the expanded set satisfies
+Dissemination Closure under R.
+3
+
+4.2
+
+The Irreversibility Theorem
+
+Theorem 4.6 (Irreversibility). Suppose a Gutenberg Moment has occurred for capability G,
+with S0 := St0 (G) and S1 := St1 (G). Then the removal of the original capability source does not
+restore S0 :
+removal of capability source ̸⇒ S1 → S0 .
+More precisely: any operation that restores S0 must eliminate every member of S1 \ S0 .
+Proof. Suppose, for contradiction, that removing the original capability source (e.g., shutting
+down all LLM deployments) restores S0 . That is, suppose there exists an operation O consisting
+solely of capability-source removal such that O maps S1 to a set S ′ ⊆ S0 .
+Since S0 ⊊ S1 , we have S1 \ S0 ̸= ∅. Choose any x1 ∈ S1 \ S0 .
+By Dissemination Closure (Persistence condition), S1 ⊆ R(S1 ), so x1 ∈ R(S1 ). That is, x1
+can generate G via access to artefacts produced by members of S1 — without requiring the
+original capability source.
+Capability-source removal eliminates the original source but does not eliminate the artefacts
+already produced and disseminated by members of S1 . Therefore, x1 retains the capacity to
+generate G after operation O. Consequently, x1 ∈ S ′ .
+But x1 ∈
+/ S0 , so S ′ ̸⊆ S0 . This contradicts the assumption that O restores S0 .
+Therefore, no operation consisting solely of capability-source removal can restore S0 . Any
+operation that does restore S0 must eliminate x1 , and since x1 was arbitrary in S1 \ S0 , such an
+operation must eliminate every member of S1 \ S0 .
+Corollary 4.7. If the deployment of LLMs constitutes a Gutenberg Moment for formal-language
+generation capacity G, then the scarcity of G that obtained before that deployment cannot be
+restored by shutting down LLM systems.
+Remark 4.8. Theorem 4.6 does not claim that restoration is logically impossible in all conceivable circumstances. It claims that the specific operation of capability-source removal is
+insuﬀicient — and that any operation that achieves restoration must target the entire disseminated artefact base S1 \ S0 , a set that grows with every interaction between the capability source
+and the world. The practical implication is not merely that restoration is diﬀicult; it is that the
+operation required for restoration is categorically different from the operation typically proposed
+(restricting or shutting down LLM systems).
+
+4.3
+
+Application to the Present Case
+
+We identify G as the capacity to generate formal mathematical and scientific language at the
+level previously requiring extended specialist training.
+Prior to large-scale LLM deployment, S0 (G) consisted substantially of individuals who had
+undergone the institutional formation — graduate training, proof apprenticeship, domain initiation — that such generation required.
+After large-scale deployment, S1 (G) ⊋ S0 (G): agents outside that formation can now generate formal language that meets the syntactic and inferential standards of the domain.
+By Proposition 2.1, the members of S1 (G) \ S0 (G) — and the LLMs that enabled them —
+do not possess Q-structure. The expansion of S1 (G) is an expansion of generative capacity, not
+of the population of Q-structured agents.
+Once the outputs, fine-tuned models, and procedures produced by LLMs have been disseminated into the public record, the Dissemination Closure condition is satisfied: R(S1 (G)) = S1 (G).
+Theorem 4.6 then applies: the pre-LLM scarcity of G cannot be restored by LLM removal.
+
+4
+
+5
+
+The Leiden Declaration Reconsidered
+
+The Leiden Declaration on Artificial Intelligence and Mathematics [5], signed in June 2026,
+expresses a formal concern from the mathematical community about the impact of AI systems on
+mathematical practice. The Declaration distinguishes, in its own terms, between computational
+assistance and genuine mathematical understanding.
+Our analysis permits a structural reading of this document that differs from both its selfpresentation and from the standard reception.
+The standard reception — both sympathetic and critical — interprets the Declaration as
+a claim about whether LLMs possess mathematical understanding. Sympathetic readers take
+it to be correct: LLMs do not understand mathematics, therefore the Declaration’s concern is
+justified. Critical readers take it to be an overreaction to a mere tool.
+Our analysis displaces this framing entirely. By Proposition 2.1 (inherited from The Phantom
+Intellect [3]), the question of whether LLMs understand mathematics — whether they possess
+Q-structure — is settled in the negative. The Declaration’s implicit premise on this point is
+correct.
+But the structural event to which the Declaration responds is not the emergence of mathematical understanding in machines. It is the collapse of the scarcity of formal-language generation
+capacity — the dissolution of the institutional bottleneck that previously controlled access to
+the production of mathematical text.
+The institutional architecture of professional mathematics — its training structures, certification mechanisms, publication gatekeeping — was not constituted by Q-structure alone. It
+was also constituted, in part, by the scarcity of G: the scarcity of the capacity to produce text
+that looks and functions like mathematics in the relevant institutional registers.
+That scarcity has collapsed. By Theorem 4.6, the collapse is irreversible under the operations
+available to the mathematical community.
+The Leiden Declaration is therefore best understood not as a response to the phantom of
+machine intelligence, but as a response — structurally accurate, if analytically underspecified
+— to a Gutenberg Moment for formal mathematical language.
+It is, in this sense, precisely what the ecclesiastical authorities’ response to Gutenberg was:
+a recognition that something irreversible has occurred, expressed in the available institutional
+vocabulary, which happens not to be the vocabulary of capability-set theory.
+Remark 5.1. This reading is not a dismissal of the Declaration’s concerns. The collapse
+of a scarcity that an institutional architecture depended upon is a genuine structural event,
+worthy of serious attention. What the analysis adds is precision: the event is not the arrival
+of Q-structure in machines, and the response cannot consist in establishing that Q-structure is
+absent. Q-structure is absent — and the dissolution of scarcity proceeds regardless.
+
+6
+
+Conclusion
+
+We have established the following.
+1. LLMs do not possess Q-structure. The capacity to generate formal language does not
+entail the capacity to sustain questions from within (Proposition 2.1, inherited from The
+Phantom Intellect [3]).
+2. LLMs constitute a Gutenberg Moment for formal-language generation capacity: the capability set S(G) has strictly expanded, and the expanded set satisfies Dissemination Closure.
+3. By Theorem 4.6, this expansion is irreversible under capability-source removal. The preLLM scarcity of formal-language generation cannot be restored by shutting down LLM
+systems.
+5
+
+4. The irreversibility does not follow from LLMs possessing Q-structure. It follows from their
+having dissolved a scarcity without possessing what that scarcity was previously supposed
+to require. The dissolution is precisely because LLMs are not mathematical agents — they
+dissolve the scarcity of generation while leaving Q-structure intact as a property of human
+inquiry alone.
+5. The Leiden Declaration is a structurally accurate response to this dissolution, expressed
+in a vocabulary that does not yet have access to the distinction between Q-structure and
+generation capacity.
+The deepest irony of the present historical moment is not that machines have become intelligent. It is that machines that are not intelligent have dissolved the institutional scarcity that
+was previously the primary evidence of human intellectual specialisation. The phantom was
+never there. What is real — and irreversible — is the dissolution.
+Note on the Appendix. The Appendix is supplementary and is not required for understanding the argument of the paper. The main text is self-contained: the definitions, the Irreversibility
+Theorem, its application to LLMs, and the resulting interpretation of the Gutenberg Moment
+are all presented in full in the main body. The Appendix provides a formal restatement of the
+theorem and a finite computational verification for readers who wish to inspect the formal and
+computational details more closely.
+
+Acknowledgements
+This work was developed employing large language models (Claude (Anthropic), ChatGPT
+(OpenAI), Gemini (Google), Copilot (Microsoft), Grok (xAI), Qwen (Alibaba Cloud)) as external reasoning engines through Intelligence Amplification by Stimulated Emission of Reasoning
+(IASER) methodology [6]. All responsibility for the content rests solely with the author. IASER:
+DOI: 10.5281/zenodo.22019401
+
+6
+
+A
+
+Formal Proof of Theorem 4.6
+
+We give a complete formal proof of the Irreversibility Theorem, making all steps explicit.
+Setup. Let X be the universe of agents. Let G be a formal-language generation capability.
+Let S0 , S1 ⊆ X with S0 ⊊ S1 (strict inclusion). Let R : 2X → 2X be a dissemination operation
+satisfying Dissemination Closure: R(S1 ) = S1 .
+An operation of capability-source removal O is any function O : 2X → 2X of the form
+O(S) = S ∩ (X \ C),
+where C ⊆ X is the set of agents that constitute the original capability source (e.g., deployed
+LLM systems). We assume C ∩ S1 = ∅: the LLM source is not itself a member of the agent
+capability set S1 . This reflects the intended interpretation: C is the system, S1 is the set of
+human and institutional agents with capability G.
+Lemma A.1. Under Dissemination Closure, R(S1 ) = S1 , every member of S1 remains in S1
+after dissemination, independent of the capability source.
+Proof. By the Persistence condition, S1 ⊆ R(S1 ). By hypothesis, R(S1 ) = S1 . Therefore
+S1 ⊆ S1 , which holds trivially; the content is that membership in S1 is preserved by R: for any
+x ∈ S1 , x ∈ R(S1 ) = S1 . Since R is defined in terms of access to already-disseminated artefacts
+(not in terms of continued access to the capability source), this persistence is independent of
+whether the source is operational.
+Theorem A.2 (= Theorem 4.6 restated). Let S0 ⊊ S1 and R(S1 ) = S1 . For any capabilitysource removal operation O, O(S1 ) ̸⊆ S0 .
+Proof. Let O(S1 ) = S1 ∩ (X \ C). Since C ∩ S1 = ∅ by assumption,
+O(S1 ) = S1 ∩ (X \ C) = S1 .
+Since S0 ⊊ S1 , we have S1 ̸⊆ S0 . Therefore O(S1 ) = S1 ̸⊆ S0 .
+Corollary A.3. Any operation O′ that does achieve O′ (S1 ) ⊆ S0 must satisfy O′ (x) ∈
+/ S1 for
+′
+every x ∈ S1 \ S0 . That is, O must eliminate every member of S1 \ S0 .
+Proof. Suppose O′ (S1 ) ⊆ S0 . Then for every agent x ∈ S1 \ S0 , we must have x ∈
+/ O′ (S1 ). Since
+x ∈ S1 was arbitrary in S1 \ S0 , every such agent must be eliminated. The set to be eliminated
+is exactly S1 \ S0 ̸= ∅.
+Remark A.4. The assumption C ∩ S1 = ∅ is not essential to the argument but reflects the
+intended structure. If one allows C ∩S1 ̸= ∅ (i.e., some agents in the capability set are themselves
+removed as part of source removal), the argument proceeds by replacing S1 with S1 \C and noting
+that as long as (S1 \ C) \ S0 ̸= ∅, the residual capability set still exceeds S0 . By Dissemination
+Closure, R(S1 \ C) may partially regenerate S1 , so the condition for irreversibility is even easier
+to satisfy.
+
+7
+
+B
+
+Computational Verification
+
+The following Python script instantiates the definitions and theorem on a finite agent set and
+verifies the irreversibility result numerically. Agents 0–4 constitute S0 (G) (pre-LLM specialists);
+agents 5–19 are members of S1 (G) \ S0 (G) (agents who acquired formal-language generation
+capacity via LLM artefacts). The dissemination operation R models access via proximity in the
+agent index (radius 3), capturing the spread of artefacts through interconnected communities.
+1
+2
+
+from __future__ import a n n o t a t i o n s
+from t y p i n g import FrozenSet , Set
+
+3
+
+# U n i v e r s e and c a p a b i l i t y s e t s
+X: FrozenSet [ i n t ] = f r o z e n s e t ( range ( 2 0 ) )
+6 S0 : FrozenSet [ i n t ] = f r o z e n s e t ( range ( 5 ) )
+7 S1 : FrozenSet [ i n t ] = f r o z e n s e t ( range ( 2 0 ) )
+4
+5
+
+# pre -LLM s p e c i a l i s t s
+# post -LLM c a p a b i l i t y s e t
+
+8
+9
+
+a s s e r t S0 < S1 , ”S_0 must be a s t r i c t s u b s e t o f S_1”
+
+10
+
+# Dissemination operation R
+# j i n R(A) i f f e x i s t s i i n A s . t . | i - j | <= 3
+13 d e f R(A: FrozenSet [ i n t ] , u n i v e r s e : FrozenSet [ i n t ] = X) -> FrozenSet [ i n t ] :
+14
+r e a c h a b l e : Set [ i n t ] = s e t ( )
+15
+f o r i i n A:
+16
+for j in universe :
+17
+i f abs ( i - j ) <= 3 :
+18
+r e a c h a b l e . add ( j )
+19
+return frozenset ( reachable ) & universe
+11
+12
+
+20
+
+# V e r i f y D i s s e m i n a t i o n C l o s u r e : R(S_1) == S_1
+R_S1 = R( S1 )
+23 a s s e r t R_S1 == S1 , ” D i s s e m i n a t i o n C l o s u r e not s a t i s f i e d ”
+21
+22
+
+24
+
+# C a p a b i l i t y - s o u r c e removal : s o u r c e i s e x t e r n a l to X;
+# a g e n t s i n S_1 r e t a i n c a p a c i t y v i a d i s s e m i n a t e d a r t e f a c t s
+27 d e f c a p a b i l i t y _ s o u r c e _ r e m o v a l ( S : FrozenSet [ i n t ] ) -> FrozenSet [ i n t ] :
+28
+r e t u r n R( S )
+# By D i s s e m i n a t i o n Closure , R(S_1) = S_1
+25
+26
+
+29
+30
+
+S_after_shutdown = c a p a b i l i t y _ s o u r c e _ r e m o v a l ( S1 )
+
+31
+
+# V e r i f y Theorem 1
+a s s e r t S_after_shutdown == S1
+# shutdown l e a v e s S_1 i n t a c t
+34 a s s e r t S_after_shutdown != S0
+# S_0 i s NOT r e s t o r e d
+35 a s s e r t ( S1 - S0 ) <= ( S1 - S_after_shutdown | ( S1 - S0 ) )
+32
+33
+
+36
+
+# What IS r e q u i r e d : f u l l e l i m i n a t i o n o f S_1 \ S_0
+surplus
+= S1 - S0
+39 S_restored = S1 - s u r p l u s
+40 a s s e r t S_restored == S0
+# only t o t a l e r a s u r e r e s t o r e s S_0
+37
+38
+
+41
+42
+43
+44
+45
+
+p r i n t ( ” Gutenberg Moment c o n d i t i o n met
+p r i n t ( ”Shutdown r e s t o r e s S_0
+p r i n t ( ” F u l l e l i m i n a t i o n r e s t o r e s S_0
+p r i n t ( ” Agents r e q u i r i n g e l i m i n a t i o n
+
+:”,
+:”,
+:”,
+:”,
+
+S0 < S1 and R_S1 == S1 )
+S_after_shutdown == S0 )
+S_restored == S0 )
+len ( surplus ) )
+
+Listing 1: Numerical verification of Theorem 4.6
+Output. Running the script produces:
+Gutenberg Moment condition met
+: True
+Shutdown restores S_0
+: False
+Full elimination restores S_0
+: True
+8
+
+Agents requiring elimination
+
+: 15
+
+The output confirms that Dissemination Closure holds for the instantiated R, that capabilitysource removal (LLM shutdown) leaves S1 intact, and that restoration of S0 requires the elimination of all 15 members of S1 \ S0 — a set that in the real-world case grows with every interaction
+between LLM systems and the agent community.
+
+References
+[1] T. Wheeler, Gutenberg’s Message to the AI Era, Brookings Institution, 16 July 2024.
+https://www.brookings.edu/articles/gutenbergs-message-to-the-ai-era/
+[2] J. Nosta, The Gutenberg Revolution of Large Language Models, Psychology Today, 9 May 2024. https://www.psychologytoday.com/us/blog/the-digital-self/202405/thegutenberg-revolution-of-large-language-models
+[3] T.O., The Phantom Intellect: Why AI Threat Discourse Misreads the Structure of Mind,
+Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22866535
+[4] J. E. Dittmar, Information Technology and Economic Change: The Impact of the Printing
+Press, The Quarterly Journal of Economics 126 (2011) 1133–1172. DOI: 10.1093/qje/qjr035
+[5] Leiden Declaration on Artificial Intelligence and Mathematics, International Mathematical
+Union, 2 June 2026. https://leidendeclaration.ai/
+[6] T.O., Intelligence Amplification by Stimulated Emission of Reasoning: The Methodology of
+Utilizing LLM Grounded in New Foundation Formalized on the Axiomatic Structure of Intellect and Its Practice (Version 4), Zenodo [Preprint] (2026). DOI: 10.5281/zenodo.22019401
+
+9
+
+

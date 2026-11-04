@@ -108,8 +108,9 @@ def _allmini_fallback(raw_data: Any, emotional_charge: float) -> str:
     global _allmini_engine, _allmini_ready
     try:
         if not _allmini_ready:
+            import os
             from sentence_transformers import SentenceTransformer
-            _allmini_engine = SentenceTransformer("all-MiniLM-L6-v2")
+            _allmini_engine = SentenceTransformer("all-MiniLM-L6-v2", device=os.getenv("OMNI_EMBED_DEVICE", "cpu"))
             _allmini_ready = _allmini_engine is not None
         if _allmini_ready and _allmini_engine is not None:
             texts = [text] + _ALPHA_ARCHETYPES

@@ -1,0 +1,1840 @@
+Log. Univers. 20 (2026), 401–445
+c 2026 The Author(s)
+
+1661-8297/26/030401-45, published online September 24, 2026
+https://doi.org/10.1007/s11787-026-00428-3
+
+Logica Universalis
+
+What is (an Organic) Analogy?
+Borromean Complementarities: Homology & Archetype,
+Chance & (De)Convexiﬁcation, and Analogy & Prototype
+
+Julio Michael Stern
+
+Abstract. This article investigates “What is analogy?” from the perspective of the Socratic-Platonic question – τ ι στ ι, ti esti, “what is this?”
+With this goal in mind, we develop the Borromean Complementarities
+metaphor, represented by three interlinked threads, each of these made
+of intertwined strands of conﬂating concepts, for example, Homology &
+Archetype, Analogy & Prototype, and Chance & (De)Convexiﬁcation.
+The context of application of these concepts includes biological theories
+of evolution, the means and methods used for studying divergence and
+convergence processes leading to “life forms most beautiful”, and their
+organization in a tree of life. Moreover, we suggest innovative deﬁnitions
+for the concepts of Analogy and Prototype, and motivate their use for
+acquiring pertinent quantitative information leading to statistical methods of analysis that in turn can be helpful for reaching clear conclusions
+while avoiding logical traps and pitfalls. Furthermore, we explain how the
+concepts of Analogy and Prototype can support functional or teleological interpretations. Finally, we consider the philosophical consequences
+of these discussions concerning the use and meaning of language, and
+indicate some topics for further research.
+Mathematics Subject Classiﬁcation. 03A10, 62A01.
+Keywords. Complementarity, Probability & inference, Discrete & convex
+sets, Homology, Archetype & structure, Analogy, Prototype & function,
+Tree of life.
+
+402
+
+J. M. Stern
+
+Log. Univers.
+
+It is evident that the attitudes termed mechanistic and ﬁnalistic do
+not present contradictory views on biological problems, but rather
+stress the mutually exhaustive observational conditions equally
+indispensable in our search for an ever richer description of life.
+Niels Bohr (1957, p.100)
+... also in other regions of human knowledge we meet apparent
+contradictions which might seem to be avoidable only from the point
+of view of complementarity.
+Niels Bohr (1937, p.88)
+Convexity is the essential property that warrants the emergence of
+eigen-solutions or equilibrium points and, by deﬁnition, convexity requires continuity. Moreover, in this scope of investigation,
+randomization can be geometrically interpreted as a “convexiﬁcation / discretization operator”.
+This article, Sec.1.
+
+1. Borromean Complementarities: Homology & Archetype,
+Chance & (De)Convexiﬁcation, and Analogy & Prototype
+This article investigates the question “What is analogy?”, in the SocraticPlatonic tradition of asking – τ ι στ ι, ti esti, or “what is this?”, see [14] and
+[135, p.4-5]. The context of our investigation concerns scientiﬁc theories of
+stochastic evolution. These theories were ﬁrst developed in Biology, but their
+range of application has expanded to areas like linguistics, ethology, psychology, sociology, technology, and the evolution of natural and artiﬁcial systems
+of several sorts.
+Analogy is a similarity relation based on functional features, and it is
+concerned with similarity of purpose. Analogy explains how a system, or a
+component thereof, is used for a given end or is able to achieve a given goal.
+Moreover, analogy can be useful in comparative studies showing how the evolutionary history of distinct systems converges to the same “functional solution”,
+a.k.a. Prototype. In the context of scientiﬁc theories of stochastic evolution,
+analogy is contrasted (or confused) with homology. Homology is a similarity
+relation based on structural features, and it is concerned with the organization
+form of the constituent components of a system, or the interconnection pattern of its building blocks. Moreover, homology can be useful in comparative
+studies showing how the evolutionary history of distinct systems diverges from
+the same original or “ancestral form”, a.k.a. Archetype.
+The following two quotations, by Charles Darwin (1809-1882) and Richard
+Owen (1804-1892), point to several perceived paradoxes in stochastic evolution
+and the purposeful adaptation of living systems.
+First, the paradoxical role played by probability in its theoretical conception. On the one hand, randomness is seen as a source of noise or error; on the
+other hand, stochastic processes drive the evolution of well-adapted solutions.
+On the one hand, probability describes naturally unpredictable future events;
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+403
+
+On the other hand, statistical analysis is used to trace and conﬁrm the paths
+already taken by nature in the development of life forms most beautiful.
+Second, the paradoxical aspects of functional adaptability vs. structural
+stability. On the one hand, we wonder at innovative features and designs perfected and optimized to best help a particular species to survive; On the other
+hand, we attest the inertia of persistent patterns or (ideal) archetypal forms
+that are inherited or shared by diverse genera of living creatures.
+The view that each variation has been providentially arranged
+seems to me to make natural selection entirely superﬂuous,
+and indeed takes the whole case of appearance of new species
+out of the range of science. [FV] It seems to me that variations in the wild and domestic conditions are due to unknown causes and are without purpose and insofar accidental; and that [LS] they become purposeful only when
+they are selected by man for his pleasure, or by what we call
+natural selection in the struggle for life under changing conditions. I do not wish to say that God did not foresee everything
+which would ensue; but here comes very nearly the same sort
+of wretched embroglio as between free-will and preordained necessity.
+Charles Darwin’s letter to Ch. Lyell (1861), apud [83, p.xx]
+Those physiologists who admit no other principle to have governed the construction of living beings than the exclusive and
+absolute adaptation of every part to its function,... conceiving, quite gratuitously in my opinion, the idea of conformity
+of type to be opposed to the idea of design... The teleologist.. finds the adaptation of the organ to its function square with his notions of the perfection of a
+machine constructed for such an end... The fallacy
+perhaps lies in judging of created organs by the analogy of
+made machines; but it is certain that in the instances where
+that analogy fails to explain the structure of an organ, such
+structure does not exist ‘in vain’ if its truer comprehension
+lead rational and responsible beings to a better conception of
+their own origin and Creator... For the Divine mind which
+planned the Archetype also foreknew all its modiﬁcations.
+Richard Owen (1849, p.84-86), apud [26, p.9-10]
+This article examines how good methods of logic, probability and statistical inference can avoid such confusions or accommodate perceived paradoxes
+of evolution in a coherent theoretical framework. With this goal in mind, we
+develop the Borromean Complementarities metaphor, represented by three interlinked threads, each of these made of intertwined strands of conﬂating concepts. These three threads are visually represented by rings in a Borromean
+knot, while conﬂating concepts in each thread are represented by white and
+
+404
+
+J. M. Stern
+
+Log. Univers.
+
+Table 1. Intertwined strands of conﬂating concepts in the
+three threads of Borromean complementarities knot; Fig. 1
+
+(R) Homology & Archetype. Structure & Divergence; Combinatorial coincidences & Unlikely outcome arrangements; Grammar & Communication; etc.
+(G) Chance occurrence & (De)Convexiﬁcation operation. Discrete &
+Continuous random variables; Discretization & Convexiﬁcation operations; Fortuitous variation & Probabilistic survival in evolution
+theories; Fortuitous branching & Probabilistic pruning in stochastic
+optimization; Evaluation and testing of statistical hypotheses; Multiple Abstract Belief Calculi used in statistical modeling, etc.
+(B) Analogy & Prototype. Function & Convergence; Fine-tuning conditions & the Zero Probability Paradox ; Symbolic meaning & Understanding; etc.
+
+colored strands in each ring, see Fig. 1.lt,rt, and [65,66]. In the sequel, we
+color-code these rings by the basic colors: Red, Green and Blue (RGB).
+This visual representation integrates dipolar and tripolar structures of
+conﬂation. The formal properties of such structures can be analyzed using
+mathematical tools from algebraic lattice theory or logical theory of opposition; see [12,13,27,160,165,166] and references therein. Such formal analyses
+are synergic with the discussions in this article, which focus mainly on epistemological and philosophical consequences and applications to evolution theory.
+Each thread in the Borromean Complementarities metaphor is represented in the title of this section by a leading pair of conﬂating conceptual
+strands, see Table 1. This conﬁguration doubly interlocks the aforementioned
+concepts by ﬁrst intertwining single strands in one of the threads, and then
+interlinking the three threads in the Borromean knot. This complex conﬁguration is a mixed blessing: On the one hand, it allows intricate and subtle
+conceptual interactions that give modern evolution theories the structural complexity and the explanatory power needed to successfully dwell in some of the
+deepest mysteries of life and language. On the other hand, constant attention
+and careful scrutiny are required when using the same concepts, in order to
+avoid logical fallacies, inferential traps, and reasoning pitfalls resulting from
+careless or mistaken use of such deeply entangled concepts. Fortunately, careful
+consideration of these situations can help us to avoid such mistakes, as analyzed in the sequel, especially in Sect. 5. With this goal in mind, this article
+advances new ideas on how to use the concepts under scrutiny and, in Sect. 4,
+presents innovative deﬁnitions for the key concepts of analogy and prototype.
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+405
+
+Figure 1. (t) Borromean rings. (c) Mathieu Lauweriks’
+(1895) The spirit of times, showing diadic & triadic entanglements. (b) Random discretization / convexiﬁcation operators
+acting by (bl) breaking a continuous symmetry - the spinning
+top, or by (br) building a continuous symmetry by asymptotic
+convergence - F. Galton’s Quincunx machine
+
+1.1. Probability as a Discretization or Convexiﬁcation Operator
+A distinctive and revolutionary aspect of Darwin’s theory concerns the stochastic nature of biological evolution processes. Accordingly, this subsection
+considers some aspects of probabilistic systems that will be useful in following
+discussions.
+Type conversion and type casting are operations that transform an argument or expression from one type to another, often avoiding a type mismatch
+fallacy. For example, in computer programming, the round, ﬂoor or ceil operators are standard alternatives used when “assigning” a ﬂoating-point value to
+a variable of integer type. In general, such conversions are not arbitrary operations, for they correspond to real changes in the nature of the objects being
+represented, or to reinterpretations of the variables representing the properties of these objects. Random events, Stochastic processes, and other situations
+ruled by Probability theory are ubiquitous in modern scientiﬁc models. In some
+of these situations, a system described by continuous variables generates a discrete random variable, or a system described by discrete variables generates a
+continuous random variable, as discussed in the following examples:
+(A) First, let us consider a prismatic spinning top, see Fig. 1.lb; This is
+a random number generator or randomization device used for gambling. The
+top’s rotation movement is characterized by continuous symmetries, namely,
+the radial symmetries of its inertia ellipsoid, see [111, ch.13] and [149]. Once
+
+406
+
+J. M. Stern
+
+Log. Univers.
+
+spinning, the kinetic energy of the top slowly dissipates, until the movement’s
+symmetries are suddenly broken when the top “falls upon” or “collapses into”
+one of its sides, hence generating a discrete state that, in turn, is associated
+with a Multivariate random variable whose possible values are engraved at the
+prismatic faces.
+(B) Next, let us consider a classic example in Game Theory.
+In the Odds & Evens game (OEg), a.k.a. Matching-Pennies game, each
+of the players, Odd and Even, has to act by showing, simultaneously, a single bit, 0 or 1. If both bits agree, Odd wins, otherwise, Even wins. Hence,
+the set of possible actions for Odd and Even is given by the Discrete set
+D = {(0, 0), (0, 1), (1, 0), (1, 1)}. This is also the set of Pure or Deterministic
+Strategies in this game, that is, the ways players can choose how to act. Set
+D can be represented geometrically as the corners of the unit square in IR2 .
+Mixed or Randomized Strategies expand the ways players can choose how to
+act by allowing each player to choose probabilities of possible action. In the
+OEg, each player deﬁnes his strategy by a (continuous) parameter in the unit
+interval, λ ∈ [0, 1], and then selects action 1 with probability λ, or action 0
+with probability (1 − λ). This (involuntary and independent) random selection
+can be accomplished by using a randomization device, like ﬂipping pennies,
+hence the alternative name of this game. Mixed strategies for Odd and Even
+can be represented by a point in the unit square, [λO , λE ] ∈ C = [0, 1]2 ⊆ IR2 .
+Notice that taking parameters at the extreme points of the continuous set C,
+i.e. [λO , λE ] ∈ D = {0, 1}2 recovers the deterministic strategies.
+An equilibrium-point of a game, a.k.a. ﬁxed-point, invariant-solution or
+eigen-solution, is a set of strategies that leaves each player at a local optimum, that is, each player, having full knowledge of the other player’s strategy,
+can gain nothing by unilaterally changing his own. The OEg allowing only
+Deterministic strategies does not have any equilibrium point. In this situation, the OEg poses a dilemma - διλημμα - a problem oﬀering two possibilities, none of which is acceptable. Caught in this logical ambush, the players
+would be trapped, forever ﬂip-ﬂopping between the discrete options available.
+The OEg allowing Mixed strategies has a unique equilibrium point, namely,
+[λO , λE ] = [0.5, 0.5]. Expanding the discrete space of deterministic strategies to
+the continuous space of mixed or randomized strategies allows the emergence
+of an equilibrium-point, hence oﬀering a (eigen) solution to the unsolvable
+dilemma posed by the discrete case.
+Geometrically, the operation of taking the Convex Hull transforms the
+aforementioned discrete space into the continuous space of strategies, while the
+operation of taking the Extreme Points goes the other way around. A Convex
+Combination of two points in an Euclidean space, x and y, can be interpreted
+either as a point z in the line segment joining them, or as a mixture or weighted
+average of these two points, namely, z = (1−λ)x+λy , λ ∈ [0, 1]. A Convex Set
+contains any convex combinations of its points. The Convex Hull of a set is the
+smallest convex set containing it. The Extreme Points of a set are those that
+cannot be obtained as convex combinations of other points in the set. Convexity is the essential property that warrants the emergence of eigen-solutions or
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+407
+
+equilibrium points and, by deﬁnition, convexity requires continuity. Moreover,
+in this scope of investigation, randomization can be geometrically interpreted
+as a “convexiﬁcation / discretization operator”. Nevertheless, notice that after
+a game has been played, the players’ actions have been fully determined, and
+the continuum of future possibilities, once replete with probabilistic mixtures,
+has “collapsed into” the single discrete actions already taken.
+(C) Finally, let us consider Francis Galton’s Quincunx machine, see
+Fig. 1.rb. This machine uses a symmetrical arrangement of a large number
+of binary random events in order to generate (an approximation characterized
+by asymptotic convergence to) a continuous Gaussian (a.k.a. Normal) distribution. The Gaussian has some remarkable properties characterizing it as a
+stable-distribution; a.k.a. eigen- , equilibrium- or invariant- / -form , -function
+or -solution in the space of probability distributions. First, this distribution
+has a functional form that is invariant by a speciﬁc coupling operation, in this
+case, a linear combination. That is, if X and Y are Gaussian random variables,
+then Z = αX + βY is also a Gaussian random variable. Second, the same coupling operation can be used to aggregate a large number of random variables
+into a random variable that converges (in distribution) to this stable form. In
+this case, under appropriate regularity conditions, the (weighted sum) average
+of a large number of independent and identically distributed random variables
+converges to a Gaussian random variable. This cornerstone result of statistical
+theory is known as the Central Limit Theorem. Similar properties characterize
+the Bernoulli, Cauchy, Exponential, Gamma, Gumbel, Pareto, Poisson, and
+Weibull distributions; distributions derived therefrom; and others of the most
+often used in Statistics. The other way around, one can argue that the characteristic properties of an eigen-solution explain why these distributions are so
+important to statistical theory, and also why they are so well-adapted to the
+practice of statistical modeling, that is, why these solutions keep “showing-up”
+in real applications; see [155, sec.5.5] and [55,98,130,156,188]. For an alternative characterization of (the functional form of) probability distributions,
+based on their (discrete or continuous) symmetry and invariance properties,
+see [156] and references within.
+The interpretations developed in the study of these simple examples will
+be used in the following sections to gain valuable insights into the evolution
+of complex systems. These examples highlight the rich interplay, but also the
+distinct nature and the diﬀerent roles played by discrete and continuous (random) variables and, consequently, the need to avoid type mismatch fallacies.
+For (honors) high school level introductions to Probability, Information, and
+Game Theory, see [3,84,110,128,170,173–175,179,187]. For basic introductions to Probability and Statistics at the level of college mathematics, see
+[45,77–79,114,140]. For readable introductions to convex analysis pertinent
+to this context, see [106,113,189]; [120] is the fundamental work of modern
+Game Theory; [115,155] give further interpretations for the role of randomization. For the historical development of calculus and the key concepts of
+convergence and continuity, see [7,10,21,25,47,101].
+
+408
+
+J. M. Stern
+
+Log. Univers.
+
+2. Chance Coincidence, Random Rami, Probabilistic Pruning
+In this section, we examine three pairs of complementary concepts involving
+probability or improbability arguments, and the roles they play in the context
+of scientiﬁc theories of biological evolution; they are:
+• “By Chance” explanations & Improbable coincidences in Biology;
+• Fortuitous variations (FV) & Likely survival (LS) of well-ﬁtted individuals;
+• Random ramiﬁcation (RR) & Probabilistic pruning (PP) in the tree of
+life.
+The historical development of these concepts covers three millennia of human
+history, going from Aristotle (384-322 BC), to Charles Darwin (1809-1882)
+and Alfred Wallace’s (1823-1913) classical theory of biological evolution, and
+from there to contemporary or extended versions of the theory of evolution
+used in biology, ethology, linguistics, computer science, etc. In this and the
+following sections we will present some key ideas in these developmental paths,
+organizing and focusing the presentation according to the speciﬁc objectives
+of this article.
+2.1. “By Chance” Explanations & Improbable Coincidences in Biology
+The role of chance, haphazardness, and similar concepts has been a point
+of controversy since the earliest writings in philosophy. Let us consider the
+following passages (condensed) by Aristotle (384-322 BCE):
+Λγτ αι δ και η τ υχη και τ o αυτ oματ oν τ ων αιτ ιων...
+But chance [τ υχη, tykhe; fortune, luck, haphazardness]
+and spontaneity [αυτ oματ oν, automaton; self-acting, having
+no other reason] are reckoned among causes [αιτ ιων, aition;
+reasons, explanations]... Some people even question whether
+they are real or not. They say that nothing happens by chance,
+but that everything... has some deﬁnite cause and it is always
+possible... to ﬁnd something which is the cause; but not chance,
+for if chance were real, it would seem strange indeed.
+Aristotle, Physics (II, 4, 195-196)
+To γαρ μη τ υχoντ ως αλλ νκα τ ινoς ν τ oις τ ης ϕυσoς
+ργoις στ ι και μαλστ α: oυ δ  νκα συστ ακν η γγoν
+τ λoυς, τ ην τ oυ καλoυ ζoραν ιληϕν.
+Absence of chance [τ υχoντ ως, tykhontos; randomness, haphazardness] and conduciveness of everything for a purpose [νκα
+τ ινoς, eneka tinos; for the sake of something] are to be found
+in nature’s works in the highest degree, and the end [τ λoυς,
+telus; completion, perfection] for which those works are put
+together and produced is a form of the beautiful [καλoυ, kalu;
+good, virtuous].
+Aristotle, Parts of Animals (I, 5, 645)
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+409
+
+These passages from Aristotle may suggest that chance has no proper
+place in explaining physical phenomena, while it may have some role to play
+in Biology. Nonetheless, a great breakthrough of modern Physics is the incorporation of probability and statistics in the construction of theories leading to
+the formulation of exact laws that in turn render high precision models for science and technology. One of the most important of such theories is Statistical
+Mechanics, including the kinetic theory of gases, statistical thermodynamics,
+and the probabilistic interpretation of entropy, starting with the pioneering
+works of Daniel Bernoulli (1700-1782) and John Herapath (1790-1868), [11,73].
+For historical perspectives, see [24,54,108,147]; for gentle introductory texts,
+see [3,85,86,118,151,175]. Nevertheless, despite its importance in Physics, the
+mathematical prerequisites of Statistical Mechanics limited its inﬂuence in the
+public mind. In contrast, Charles Darwin’s (1859) Theory of Evolution, also
+relying on probabilistic reasoning and a focal point of this article, had a tremendous repercussion throughout science, philosophy, and the general public, see
+[43,44].
+These passages from Aristotle also reveal a tension between two concepts:
+On the one hand, τ υχη, tykhe, chance, indicating something that happens haphazardly, by coincidence; a concept closely related to the idea of αυτ oματ oν,
+automaton, something that happens by itself, with no external cause or any
+other reason. On the other hand, τ λoυς, telus, indicating a purpose, an end
+to be completed, a perfection to be accomplished. On the one hand, chance
+seems to be excluded from the admissible or legitimate explanations. On the
+other hand, the surprise and wonder in (the apparently unlikely) ﬁnding of a
+product fully put together, a task entirely ﬁnished, or a work already completed, seems to be, in an appropriate context, a valid reason to attest and
+praise the virtue of its existence. As we will see in the following sections, the
+insights derived from this tension are of capital importance in modern theories
+of evolution, where they can be supported by quantitative arguments based
+on probability theory.
+2.2. Fortuitous Variations & Likely Survival of Well-Fitted Individuals;
+and Random Ramiﬁcation & Probabilistic Pruning in the Tree of Life
+In this subsection, we examine two distinct and complementary roles played
+by probability in modern theories of biological evolution, roles that have been
+clearly distinguished by Curtis Johnson in his book Darwin’s Dice [83], where
+he identiﬁes these two dice by the names: (FV) Fortuitous Variation, and
+(LS) Likely Survival. Moreover, we contrast the complementary roles played
+by these dice at microscopic vs. macroscopic scales, concerning the survival
+of single individuals vs. the survival of collective species. The speciﬁc roles
+of these two dice are expressed in Charles Darwin’s letter to Charles Lyell of
+August 1, 1861, apud [83], whose core paragraph is the ﬁrst opening quotation
+of this paper.
+In biology, sex links single individuals and their species by providing a
+mechanism for coding, preserving, transmitting, sharing, and mixing information concerning their characteristic capabilities and ways of life. For simpler life
+
+410
+
+J. M. Stern
+
+Log. Univers.
+
+forms, horizontal sexual exchange allows the communication of single genes–
+units of information coding relevant characteristics. For complex life forms,
+sexual reproduction demands vertical genetic recombination at each reproductive cycle. Furthermore, at least in sexual reproduction, organism similarity at
+the level of biological species strongly limits the population in which genetic recombination is possible. Additional constraints, like bounded environments or
+isolated geographic areas, create conditions allowing for speciation—the evolutionary process in which species further evolve, drift apart, and eventually
+diﬀerentiate. See [81], and references therein, for relevant reinterpretations of
+these concepts in the context of biological and computational semantics, and
+related developments in genetic programming algorithms.
+A Tree of Life is, from a logical perspective, a directed acyclic graph
+mapping the distinctive branching process resulting from biological speciation,
+see Fig. 2. The branching points in the tree represent two or more species
+diverging, in their phylogenetic path of evolution, from a single ancestor, or
+better said, from a single ancestral species. Pruning points in the tree, or
+(past) branch termination points, represent the extinction of a species, an
+event that may be caused by gradual or sudden changes in the environment,
+new predation or competition from better adapted species, or other adversities.
+Since, as explained in the previous paragraph, the phylogenetic history of a
+species is interlinked with the ontogenetic development and reproduction of
+its individuals, we mimic the aforementioned nomenclature of Darwin’s Dice
+for the stochastic branching process forming the Tree of Life using the names:
+(RR) Random Ramiﬁcation and (PP) Probabilistic Pruning.
+Finally, it is interesting to contrast the historical role of mathematical
+probability and statistics in the aforementioned theories. On the one hand,
+quantitative probabilistic reasoning had an important role in Statistical Mechanics since its onset, see [54,147]. On the other hand, the methods of mathematical analysis were incorporated in the Theory of Evolution at a much later
+time. One contributing factor for this delay is the equally late discovery of
+the mechanisms of genetic coding by Watson and Crick in 1953, [183]. Gregor
+Mendel (1822–1884) did extensive experiments with controlled hybridization
+of pea plants and developed a probability model for the underlying stochastic
+process, see [112]. Unfortunately, his work was almost forgotten until rediscovered by Hugo de Vries in the early 20th century; see [162, sec.4.2], [38,62], for
+historical comments. Furthermore, DNA sequencing techniques only became
+available in the 1970 s and, therefore, statistical models for random mutations,
+background noise timing along tree branches, measures of genetic proximity,
+etc. were only developed even later in time. Nevertheless, biologists have been
+using much older probability arguments for reconstructing the tree of life, and
+this is the topic of the next section.
+
+3. Structural Characterization of Diverging Similarities
+Let us consider the vertical coordinate, t, in Fig. 2.r or 3.l. The horizontal line
+at height t = τ represents a given instant in time; in Fig. 3.r this is the nested
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+Figure 2. Family or life trees depicting proximity, transformation, or evolution relations, by Augustin Augier (1809),
+Jean-Baptiste Lamarck (1815), and Charles Darwin, (1837);
+Modern version with occasional horizontal genetic transfers
+
+411
+
+412
+
+J. M. Stern
+
+Log. Univers.
+
+Figure 3. Trees of life branching through time / geological
+eras, by Edward Hitchcock (1840) & William Patten (1923)
+oval line that starts at t = τ in the horizontal time coordinate. The region
+below this line, at 0 ≤ t ≤ τ , represents the past, and the tree fragment inside
+it represents the evolution of life as it has actually happened before t = τ .
+An empty region above this line, at t > τ , represents the future, replete with
+potential new innovations or possible evolutionary paths that are, however,
+contingent on random events yet to be realized.
+The situation depicted in these Tree of Life diagrams is well described by
+the analogy in the following quotation from William Bragg, see [22]. Adapting
+Bragg’s analogy to the situation at hand, the “sieve passing through time”
+represents the horizontal line at t = τ . Moreover, in this analogy, one could
+replace “in front of it” by “above it”, referring to the region t > τ . Furthermore,
+the expression “coagulates into” plays a role similar to “falls on” or “collapses
+into” in our former analysis of the spin top. Finally, the continuous (wavy,
+ﬂuid, undetermined) vs. discrete (particular, ﬁxed, determined) contrast in
+this analogy resembles a similar contrast in our analysis of the Odds & Evens
+game, an aspect to be further explored in the sequel.
+The moment ‘now’ is like a sieve passing steadily through
+time. In front of it is a probability future, a [continuous] ‘wavy’
+future if you like, in which we can predict only how likely
+some result is to happen. As time streams through our sieve,
+it coagulates this wavy future into a [discrete] particle past,
+where the precise history of events is recorded.
+William Lawrence Bragg (1968)
+Living creatures can only be observed in the present; meanwhile, paleontology studies life forms from the past using information obtained mainly
+from fossils. The order of geological strata provides good clues about the relative chronology of fossil ﬁndings, for example: late / early times correspond
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+413
+
+to upper / lower deposit layers. There are reliable technologies for absolute
+timing of fossils, like radiometric dating based on proportional abundance of
+radioactive isotopes, but these were only developed late in the 20th century.
+This is why, in Figs. 2.r, 3.l,r, coordinate t refers to geological eras and not
+to standard time, as indicated in their vertical (horizontal) axes’ labels, see
+[134] for further examples. Moreover, historically, paleontology and geological
+stratigraphy were developed in parallel with mutual and beneﬁcial inﬂuence,
+as attested by the biologically inspired names of many geological eras.
+3.1. Richard Owen, Homology, and Archetype
+Fossil records, together with relative spatial and temporal arrangements provided by geography and geology, were of fundamental importance in the construction and analysis of the ﬁrst trees of life in the context of evolution theory.
+However, in this task, biologists needed additional help for further organizing
+and positioning these records in a tree diagram that was itself simultaneously
+under construction. This help came in the form of rational and systematic
+methods for establishing and evaluating similarity relations between fossils, as
+studied in this subsection.
+The (internal) skeleton has the hardest parts (bones) in the body of vertebrates, and these get fossilized, i.e. preserved by being incorporated into rock,
+much more easily than softer parts, like muscle or internal organs. Similarly,
+the exoskeleton has the hardest parts in the body of arthropods, and these are
+also more easily and abundantly preserved in fossil records. Figure 4.tc shows
+bones in forelimbs of some mammals and vein ﬁelds in wings of some insects,
+like they (usually incompletely) appear in fossils. Animals within these groups
+(of mammals and insects) share many similarities and, therefore, should (or
+are expected to) be closely connected in the tree of life. Fossils readily provide
+information concerning anatomical characteristics deﬁned by the structure of
+organisms and their parts (and parts of their parts), and these are the basis
+for deﬁning the similarity relations studied in the sequel.
+In the Pick-up Sticks game, see Fig. 4.b, a given throw is characterized
+by the way the fallen pieces are interconnected, that is, by how and where the
+sticks join or come in contact with each other. Likewise, Richard Owen (18041892) gave the following deﬁnitions (abbreviated) for the concepts of Homology
+and Archetype and, in consequence, a notion of identity (or sameness) between
+parts of animals. Subsequently, these key concepts proved to be essential in
+the study of biological evolution and in the construction of realistic Tree of
+Life diagrams, see [121–126].
+Homologue: The same organ in diﬀerent animals under every
+variety of form and function. R. Owen (1843, p.379), apud [19]
+These relationships (that is, homologies) are mainly, if
+not wholly, determined by the relative position and connection of the parts, and may exist independently of form, proportion, substance, function, and similarity of development.
+R. Owen (1848, p.6), apud [19]
+
+414
+
+J. M. Stern
+
+Log. Univers.
+
+Figure 4. (t) Leche (1909): Homologous forelimb skeletons
+and functions: 124 Bat wing, ﬂying; 125 Whale ﬂipper, swimming; 126 Mole arm, digging; 127 Human arm, object manipulation. (c) Krzeminski (2003): phylogenetic relations between Triassic Mecoptera and Diptera. Veins ﬁelds: yellow,
+subcostal; green, radial; red, medial; black, cubital; blue, anal.
+(b) A throw in the Pick-up Sticks game showing how the fallen
+pieces interconnect
+
+Archetype (Gr. αρχη, origin, τ υπoς, type): The original of
+that which is represented in a picture or statue. In the language of Plato, it means the world as it existed before creation
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+415
+
+Figure 5. A. Remane (1952): Schemata for structural evolution and transformation demonstrating inclusion, exclusion,
+splitting or fusion of interconnected elements
+in the mind of God.
+Archetype in Anatomy: Is that ideal original or fundamental
+pattern on which a natural group of animals or system of organs has been constructed, and to modiﬁcations of which the
+various forms of such animals or organs may be referred. The
+archetypal ﬁgure has been most clearly recognised in the study
+of the modiﬁcations of the skeleton of the vertebrate animals.
+R. Owen in Brande (1866, p.146), apud [141]
+The last sentence in Owen’s deﬁnition of archetype in anatomy refers
+to its use, together with homology relations, to place animal species in the
+tree of life or, more extensively, to build a tree of life diagram capable of
+correctly organizing all these relations between species. From the start, Owen
+used homological similarity relation as a tool for organizing organisms in tree
+of life diagrams, as in Fig. 2.l,cl. One should be aware that Owen gave the
+aforementioned deﬁnitions of homology and archetype and started using them
+accordingly before 1859–when Darwin and Wallace published their theories of
+evolution. Nevertheless, after some reﬁtting and adjusting, biologists were able
+to repurpose these conceptual tools for the beneﬁt of evolution theory, see [26].
+Figure 5 displays Adolf Remane’s (1952) abstract representations of homology, related concepts, and how they can be used to establish correspondences between parts of structured systems: (5.tl) Proportional triangles in
+
+416
+
+J. M. Stern
+
+Log. Univers.
+
+Table 2. Deﬁnition, criteria and use of homology and archetype
+(H1)(structural) Archetype: Schematic plan, or Topological map characterizing the structure of a complex system (organism, organs, or parts
+thereof) by its construction template from simple components, or by
+the organization layout of its constituent elements, or by the interconnection pattern of its basic parts.
+(H2)Homologous: Distinct organisms, organs, or parts thereof described
+by the same or similar structural archetypes.
+(H3)Homologous systems may have diﬀerent shapes, sizes, functions, constructions, geneses, material implementations, etc.
+(H4)Homology may be used to establish an Identity (hence allowing the
+use of the same name) between corresponding parts in diﬀerent systems.
+(H5)In the context of biological evolution, homology may be a useful tool
+for investigating and tracing phylogenetic paths of development gradually diverging from a common ancestral species (at the root of a
+sub-tree).
+
+Euclidean geometry with same (homo) names (logos) for corresponding vertices and edges. (5.br) Continuous nonlinear transformation of a rectangular
+coordinate grid, used for mapping corresponding anatomical features of ﬁsh.
+(5.tr) Homologous polygons with vertex correspondences established by topological relations, that is, by structural patterns of components’ interconnection.
+(5.cl) “Nearly” or quasi homologous polygonal structures, where one extra vertex or edge has been either included or excluded. (5.bl) Intermediary steps in
+a gradual transformation of such a polygon, showing how splitting or merging
+of edges or vertices may occur. Homology, based on topological relations, is a
+fundamental tool used in biology to identify corresponding parts of structured
+systems and those, in turn, may be used to generate approximate coordinate
+transformation maps. Moreover, putative maps of this kind may, in turn, be a
+useful auxiliary technique in further or more detailed studies relating similar
+(homologous or quasi-homologous) systems and their gradual transformation
+in time.
+The deﬁnitions of homology and archetype in Table 2 have been updated
+and adapted with the speciﬁc goals of this article in mind. In the following
+sections, these deﬁnitions will be instrumental in preventing reasoning mistakes
+and logical fallacies often incurred when using these concepts.
+3.2. Improbable Combinatorial Coincidences in Discrete Structures
+Incipient ‘Arguments of Improbability’ by Richard Owen were never developed
+into quantitative reasoning, but indicate veiled ideas already present. Owen’s
+insight contains, in incipient form, ideas developed later in the form of quantitative arguments. Similar improbability arguments (to verify homology by
+qualitative Gestalt perception or crude combinatorial estimation) are used in
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+417
+
+Konrad Zacharias Lorenz’ (1974) “Analogy as a Source of Knowledge” Nobel
+prize celebration paper, see following quotations.
+[These structures] ...are too numerous and regular in their
+shape to allow for a moment the supposition of their being
+accidental...
+Richard Owen (1832, p.28)
+The improbability of coincidental similarity is proportional to
+the number of independent traits of similarity, and is, for n
+K. Lorenz (1974, p.230)
+such characters, equal to 1/2n−1 .
+The probability of two forms of life evolving, by sheer coincidence, a certain number of identical characteristics, can be
+calculated. It is equal to 1/2n−1 , n being the number of similar
+or identical characteristics.
+K. Lorenz (1981, p.88)
+The natural computer of our Gestalt perception can take in and evaluate a
+much greater number of data than our rational computation can. Many truths
+become falsiﬁed and many obvious facts become invisible if one restricts his
+methods to quantiﬁcation alone. Quantiﬁcation, however, has the last word in
+veriﬁcation, and all that our perception tells us becomes “science” only when
+we succeed in conﬁrming it by rational veriﬁcation .
+K. Lorenz (1981, p.95)
+Lorenz’ calculation suggests an underlying model where the presence of
+any biological feature is represented by an equiprobable Boolean variable. For
+the Pick-Up Sticks game, a model of this kind could consider a topological characterization of a throw given by its connectivity pattern, in turn represented
+by a Boolean (0/1) matrix B where, for i, j ∈ {1, . . . n}, i = j, B(i, j) = 1
+if and only if sticks i and j are connected (touch) in a given (partial) order
+(say, proximal-distal to a center). B has d = (n2 − n) oﬀ-diagonal elements
+and, therefore, at most c ≤ 2d distinct possible conﬁgurations. Assuming a
+uniform distribution in this conﬁguration space, the probability of any outcome is therefore p = 1/c. The models in this paragraph are naive, simplistic,
+and unrealistic, but they illustrate the discrete nature of the combinatorial
+mathematics underpinning models of this kind.
+Far more realistic, complex, and sophisticated models are used for inferring, tracing and evaluating the plausibility of phylogenetic relations, including
+attested or unattested (hidden, latent) intermediate states. These models are
+used in many ﬁelds of application, including biology and (historical) linguistics. Such applications may include random mutation, transmission error or
+recombination mechanisms that can, in turn, be used to build clock models
+that can be used to estimate the (time) length of branches in an evolution tree.
+The following references develop related models for applications like genetic
+programming, lineage tracing, and historical linguistics, [52,81,94,169]
+
+418
+
+J. M. Stern
+
+Log. Univers.
+
+Figure 6. Neal & Rand (1936) comparative anatomy diagrams showing cuttleﬁsh and vertebrate eye sections
+
+4. Functional Characterization of Converging Similarities
+Figure 6 introduces the main case study of this section, displaying schematic
+diagrams for eyes in cuttleﬁsh (in class Cephalopoda, phylum Mollusca) and
+humans (in class Mammalia, subphylum Vertebrata, phylum Chordata). Brief
+comparisons between the two diagrams reveal several overall morphological
+similarities, corresponding to common names used to identify basic components of these eyes like, for example, ocular globe, lens, ciliary muscles, iris,
+pupil, cornea, retina, optic nerve, etc. Notwithstanding such overall morphological similarities, the underlying construction templates for these two eyes,
+and the parts thereof, are quite diﬀerent. Therefore, the similarity relations in
+this case study cannot be appropriately handled using the concepts of Homology and Archetype developed in the previous section; making this clear is the
+ﬁrst task of this section.
+Consider the mission of ﬁnding out the structural characteristics of a
+complex building without having access to the corresponding architecture and
+engineering projects, construction plans, and other relevant documents. It is
+much easier to correctly conjecture the underlying structures following the
+building’s construction step by step, rather than only looking at the ﬁnal
+product as it stands. Figure 7.l illustrates the ontogeny of each eye, that is,
+the unfolding of its structure during the life of an individual, from the early
+stages of an embryo to a fully formed adult. As depicted, the tissues forming
+the basic parts in each eye have distinct origins, allowing diverse interconnection patterns and construction templates, that are used to implement diﬀerent
+working components, even if the ﬁnal organs have similar functional characteristics or the same overall purpose (eyes to see). The following examples
+illustrate such diﬀerences, see [59,60,67,72,164] and references therein.
+As a ﬁrst diﬀerence, one can observe that, in vertebrate eyes, the lens
+sits at a ﬁxed position, while its shape can be controlled by muscles that
+squeeze it more or less if contracted or relaxed. In contrast, one can observe
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+419
+
+Figure 7. (l) W. Harris (1997) Comparative ontogeny diagrams for eye developments. (r) Photographic camera optics
+
+Figure 8. (l) Analogous pectoral ﬁns; (c) Nautilus’ pinhole
+eye; (r) Camera obscura, object A, pinhole, and image B
+that, in cephalopod eyes, the lens has a ﬁxed shape, while its position can
+be controlled by muscles that move it closer or farther away from the retina
+at the back of the eye – a design much easier to implement from a material
+science perspective! Not surprisingly, the earliest optical instruments invented
+and built by humans, like cameras obscuras and telescopes, used a ﬁxed-shape
+and variable-position lens design. These machines have ﬁxed shape lenses made
+of rigid glass, that can be moved back and forth along the instrument’s main
+symmetry axis.
+As a second diﬀerence, one can observe that retinas in vertebrate eyes
+are built back-to-front, that is, before reaching the photo-receptors at the farside of the retina, incoming light must go through tissue layers responsible
+
+420
+
+J. M. Stern
+
+Log. Univers.
+
+Table 3. Deﬁnition, criteria and use of analogy and prototype
+(A1) (functional) Prototype: A Humanly invented machine, method or
+device, Proof-of-concept artifact, or Law-governed model, demonstrating key functional aspects of a system conceived or built to achieve a
+certain aim or to serve a speciﬁc purpose.
+(A1’) Fine-Tuning Condition: A Prototype’s conﬁguration or set-up
+that is precisely adjusted or well-calibrated to optimize the system’s
+operation or performance.
+(A2) Analogous: Distinct organisms, organs, or parts thereof explained by the same or similar functional prototypes.
+(A3) Analogous systems may have diﬀerent structures, shapes, sizes,
+constructions, geneses or material implementations, ...
+(A4) Analogy may be used to establish an Identity (hence allowing
+the use of the same name) between corresponding parts in diﬀerent
+systems.
+(A5) In the context of theories of biological evolution, analogy may be
+a useful tool for investigating and tracing distinct phylogenetic paths
+of development converging to similar solutions.
+
+for support functions like blood supply, nerve connections and mechanical
+integrity. In contrast, retinas in cephalopod eyes are built with the right-wayout, that is, having the supporting layers at the rear side of the retina where
+they do not obstruct the path of incoming light–a much better design from an
+engineering perspective! Not surprisingly, the earliest photographic cameras
+invented and built by humans used the right-way-out design, see Figs. 7.rb
+and 8.rb. These machines have, at the back of a camera obscura, a glass plate
+that is coated, at the inner side, with a photo-sensitive emulsion. At a given
+moment, the plate is exposed to the light of an image that is then captured
+in latent form at the sensitive emulsion so that it can, later on, be revealed
+(developed and ﬁxed) by chemical post-processing.
+In conclusion, notwithstanding the existence of several overall morphological similarities between the two eyes in the case study at hand, from the
+comparative analyses in this section and the concepts already deﬁned in Sect.
+3, we understand that these similarities can neither be explained by shared
+original archetypes nor be properly characterized using homology relations.
+We now proceed to the second task of this section, namely, to deﬁne the
+concepts of Analogy and Prototype that, in turn, lead to similarity relations
+appropriate for the case study at hand. Such concepts are based on functional
+characteristics of the organs being examined, that is, their purpose and the
+way they work, see Table 3. The deﬁnitions in Tables 2 and 3 hope to be
+faithful to Owen’s original ideas, although they deviate signiﬁcantly from definitions found in classical textbooks, for they have been modiﬁed and adapted
+to serve speciﬁc goals of this article. Richard Owen deﬁned Analogy as a concept parallel to that of Homology, that is–as Homology refers to structure and
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+421
+
+“conformity of type”, Analogy refers to function and “teleological design”; see
+following quotations. In a similar way, we deﬁne Prototype as a concept parallel to that of Archetype, as suggested by the parallel structures of Tables 2
+and 3.Our deﬁnition of Prototype is also inspired by the work of Owen, see
+following quotations, although, to my knowledge, he never used this name and
+only used this notion en passant as a contrast to his concept of Archetype.
+Analogue: A part or organ in one animal which has the same
+function as another part or organ in a diﬀerent animal. R. Owen
+(1843, p.374)
+.. the teleologist .. ﬁnds the adaptation of the organ to its function square with his notions of the perfection of a machine
+constructed for such an end. R. Owen (1849, p.84) apud [26]
+4.1. Fine Tuning Condition in Continuous Prototypes
+Figures 8.r,c depict a camera obscura as an explanation of the working principle
+of the Nautilus eye, as explained by R. Owen in the next quotation, see [121].
+In a camera obscura, the size of the pinhole at the front poses a dilemma:
+the smaller the pinhole, the closer the entry point of any light ray is to its
+center, and the more sharply in focus the image formed at the back becomes.
+However, a smaller pinhole also reduces the quantity of light entering the camera, resulting in a dimmer image. Vertebrate and cephalopod eyes solve this
+dilemma by replacing the pinhole by an optical lens that, in eﬀect, enlarges
+the oriﬁce’s aperture while keeping the image in focus. The article [164] offers a self-contained explanation of lens geometry, presented in the context
+of the epistemological framework of Objective Cognitive Constructivism. For
+intuitive presentations of geometrical optics at honors high-school level, see
+[59,60,67,164] and references therein.
+In the Nautilus the eyes [present] the simplest condition of an
+organ of vision, consisting only of a darkened globular cavity
+or camera obscura, into which light was admitted by a single
+oriﬁce, and a nerve expanded at the opposite side to receive
+the impression.
+Owen (1836, p.551)
+An essential characteristic of a convex lens is its focal length, f , which
+is determined by the curvature of its surfaces. In situations pertinent to this
+article, a smaller radius of curvature implies a shorter focal length. Finally, the
+condition for obtaining a sharp image is dictated by the lens equation, which
+relates the focal length, f , to the distances from the lens to the object, x, and
+to the image x , as shown in Fig. 7.tr. When in focus, the system’s magniﬁcation factor is m = x/x . The aforementioned vertebrate and cephalopod eyes
+achieve the in-focus condition dictated by the lens equation by adjusting the
+lens’ focal distance, f , and the image-to-lens distance, x , respectively.
+1
+1
+1
+= +  ⇒ f=
+f
+x x
+
+
+
+1
+1
++
+x x
+
+
+
+−1
+, x=
+
+1
+1
+− 
+f
+x
+
+−1
+.
+
+422
+
+J. M. Stern
+
+Log. Univers.
+
+Figure 9. Honeycomb optimal geometry
+In the case under study, the photographic camera is used as a (functional) prototype, that is, as a humanly invented device or law-governed model
+demonstrating key functional aspects of a system conceived or built to achieve
+a certain aim or to serve a speciﬁc purpose. Moreover, the Lens equation establishes a ﬁne-tuning condition, that is, a prototype’s conﬁguration or set-up
+that is precisely adjusted or well-calibrated to optimize the system’s operation
+or performance, see Table 3.
+Figure 9 introduces the second case study of this section, displaying
+schematic diagrams for the geometry of honeycombs built by honeybees – Apis
+mellifera. Let us consider the beneﬁt-to-cost ratio of a honeycomb’s cell, evaluated by its volume over area ratio, i.e., its storage capacity over the amount
+of wax used for its construction. In order to maximize this ratio, the lozenges
+at the tip of a cell must obey ﬁxed proportions
+√between their small diam√
+eter, large diameter, and side, namely, 1 : 2 : 3. Empirical observations
+attest to the precision of this ﬁne tuning condition in the bees’ construction works. These proportions can be readily computed using vector geometry
+and diﬀerential calculus at the level of honors high-school mathematics, see
+[9, prob.9.7.3,p.273-276].1 For further comments and historical references see
+[64,107,109,136,139,177], [176, p.327-334], and [186, p.448-454]. The authors
+of these articles, some dating from the 16th century, analyze how bees build
+their honeycombs according to an optimal design and wonder about its philosophical consequences, including the capacity of these insects for teleological
+planning and intentional action, the nature of their psyche or soul, the origin
+of the underlying structural archetypes and functional prototypes (not with
+this terminology) and related topics.
+From a Systems Theory perspective, deﬁning appropriate constraints and
+an objective function, optimal control, or variational principle that accurately
+1 Although written for a diﬀerent audience, namely, ﬁrst year college students in biological
+sciences, this book overlaps almost perfectly with my high-school curriculum, and also with
+the mathematics requirements of the admission exam at that time, 1977, at USP–the University of São Paulo, see also [53]. The end of high-school was celebrated by our teachers, at
+Colégio Bandeirantes, with special classes showing interesting things we could do with what
+we have learned. Solving the honeycomb cell problem was one of these classes, which also
+discussed the use of teleological arguments. I was deeply impressed by this mathematical
+solution, and also by its possible consequences for causal thinking.
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+423
+
+describe a system’s behavior fully enables intentional interpretations or teleological causal explanations when discussing how or why the system works
+the way it does (or, metaphorically, “wants to do”). This systemic perspective
+does not require an identiﬁable agent (distinct from the integral system) acting
+as the controller, wanting to achieve an objective, or driving an optimization
+process. For a discussion of these topics, including the possibility of reformulating systemic laws from eﬃcient to ﬁnal cause format, see [156,164] and references therein. Accordingly, an appropriate functional Prototype, preferably
+reinforced by precise Fine Tuning conditions, fully enables the use of similarity
+relations of Analogy – as formally deﬁned at Table 3.
+4.2. Convergent Evolution to a Functional Solution
+Vertebrate and cephalopods are far away from each other in the Tree of Life, see
+Fig. 3, situated on branches separated since a distant past when their ancestral
+forms had extremely simple eyes (if any). Moreover, arguments in this section
+demonstrate that the vertebrates’ and cephalopods’ well-developed eyes at
+present times (as well as their constituent components) are based on diﬀerent
+structural archetypes. Hence, these eyes’ respective designs evolved independently, in the sense that there was no direct exchange of information concerning
+their design along their separate phylogenetic histories. Notwithstanding their
+separate evolutionary histories, based on diﬀerent structural archetypes, these
+eyes have converged to the same functional prototype (or similar variations
+thereof), that is, they are analogous to (i.e., work like) a man-made machine,
+namely, a photographic camera equipped with a single lens that is shaped or
+positioned in order to achieve optimal focus conditions.
+This situation raises the question: Why did the aforementioned eyes converge to the same functional prototype? A plausible answer is: Because the
+laws of optics are invariant and universal, optical equipment must work in
+accordance with these same laws, no matter when or where it is, as suggested
+by the next quotation from R. Owen. Finally, it should be easy to understand
+that, like homology in the case of divergence, see Table 2, analogy may be a
+useful conceptual tool for investigating distinct phylogenetic paths converging
+to similar Prototypes, see Table 3.
+The laws of light, as of gravitation, being the same in Jupiter
+as here, the eyes of such creatures as may disport in the soft
+reﬂected beams of its moons will probably be organized on the
+same dioptric principles as those of the animals of a like grade
+of organization on this earth.
+R. Owen (1849, 83-84) apud [6]
+
+5. Avoiding Logical and Inferential Fallacies Concerning
+Evolution, Homology, Analogy, Archetype and Prototype
+Richard Owen (1804–1892) rendered his deﬁnitions of homology and analogy
+in the 1840 s, within the theoretical framework of pre-evolutionary biology, for
+pertinent historical remarks, see [19,20,71,129,138,141,142]. In 1859, Charles
+
+424
+
+J. M. Stern
+
+Log. Univers.
+
+Table 4. Logical fallacies associated with stochastic evolution
+Aﬃrming the consequent fallacy. a.k.a. the converse error, in the
+form: (A → B) , B ∴ A. That is: A implies B, B, therefore A.
+Aﬃrming the disjunct fallacy. a.k.a. the mutual exclusion error, in
+the form: (A ∨ B) , A ∴ ¬B. That is: A or B, A, therefore not B.
+Type mismatch fallacy. a.k.a. the wrong type of argument error. Such
+an error occurs when an agent, function, or operation uses an argument of inappropriate type. For example, in computer programming,
+such an error can be generated by assigning a continuous value to
+a discrete variable, or by deﬁning a discrete variable to represent a
+continuous quantity in the pertinent application context.
+
+Darwin and Alfred Russel Wallace published their versions of the theory of
+biological evolution. After some refurbishing, homology and analogy became
+key conceptual tools for tracing divergence and convergence in evolutionary
+processes, and are widely used in the ﬁeld of biology and far beyond. Karl
+von Frisch (1886–1982) and Konrad Zacharias Lorenz (1903–1989) shared a
+Nobel Prize in 1973, for their discoveries concerning ethology and animal language, see [102]. In their work, homology and analogy are fundamental tools
+of investigation, see [56–58,68–70,99,100,102–104], and following discussions.
+More recently, these concepts found further applications in molecular biology,
+linguistics, genetic programming and other sciences, where homology and analogy became true sources of knowledge in the study of stochastic evolutionary
+processes.
+Nevertheless, in spite of (or because of) the ever-expanding applications of
+these conceptual tools, their use has been plagued by pernicious and persistent
+reasoning fallacies. Some of these fallacies, listed in Table 4, are logical in
+nature, while others involve misconceptions in probability and statistics, or
+are generated by misunderstandings on how stochastic evolution works. This
+section pays special attention to such fallacies, including ways to avoid them
+in the hope of contributing to the improvement of inference practices in the
+ﬁelds of interest.
+5.1. Swapping Assumed Conditions and Inferred Consequences; or Assuming
+Similarity Relations to be Mutually Exclusive
+This is our guiding line for this subsection: Keep the deﬁnitions of key concepts
+clear and simple, precise and straight to the point, and use these concepts accordingly. In particular, avoid creating spurious associations, like a priori binding together concepts that can be deﬁned independently or naturally separated.
+Such spurious associations between concepts unduly restricts their scope of application, fragments their space of possible logical relations, and constraints
+their range in the formulation of admissible hypothesis. Therefore, the imposition of such spurious associations generates all sorts of artiﬁcial complexities,
+unexpected consequences, and unwanted side eﬀects, see [156,157,165–168] for
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+425
+
+related comments. Moreover, any a posteriori conclusion or synthetic empirical statement derived in such an adulterated theoretical framework may easily
+incur vicious circularity and, therefore, is under suspicion of being either tautological or invalid.
+Disregarding our guiding line easily engenders logical errors of the ﬁrst
+two kinds listed in Table 4. The following quotations give historical examples
+of (in)correct, (in)congruent or (in)consistent (according to our guiding line)
+deﬁnitions or uses of homology, and equally relevant reactions found in the
+literature. The ﬁrst two quotations, by Ch. Darwin, exemplify the good use of
+homology (as deﬁned by Owen, see Sect. 3.1 and Table 2) in the context of
+evolution theory.
+The homological construction of the whole frame in the members of the same class is intelligible, if we admit their descent from a common progenitor, together with their subsequent adaptation to diversiﬁed conditions. (On any other view
+the similarity of pattern between the hand of a man or monkey, the foot of a horse, the ﬂipper of a seal, the wing of a bat,
+etc, is utterly inexplicable.)
+Ch. Darwin (1871,v.I, p.31)
+By unity of type [common archetype] is meant that fundamental agreement in structure, which we see in organic beings of
+the same class, and which is quite independent of their habits
+of life. On my theory, unity of type is explained by unity of
+descent.
+Darwin (1859, p.206), apud [23]
+In accordance with Darwin’s ideas, homology is often used to investigate,
+trace, and corroborate (statistical hypotheses concerning) common ancestry
+in evolutionary processes. Erroneously swapping the role of antecedent and
+consequent in logical or probabilistic implications (converse error in Table 4),
+some authors include common ancestry in the deﬁnition of homology. The next
+examples illustrate this kind of fallacy: The ﬁrst, by E. Lankester (1870) [91],
+ironically expressing his support to Darwin’s theory; The second, by K. Lorenz
+(1974) [102], celebrating his Nobel Prize at Science. The following quotations,
+by [142], [82], give correct diagnostics for this kind of fallacy.
+Structures which are genetically related, in so far as they have
+a single representative in a common ancestor, may be called
+homogenous. [homologous] E. Lankester (1870, p.36), apud [23]
+A homology can be deﬁned as any resemblance between two
+species that can be explained by their common descent from
+an ancestor possessing the character in which they are similar
+to each other.
+K. Lorenz (1974, p.230)
+In due time, Darwinian evolutionary appropriation of the notion was so complete that homology not only became evidence
+of evolution, but came to be deﬁned as a function of ancestry
+N. Rupke (2009), apud [23]
+
+426
+
+J. M. Stern
+
+Log. Univers.
+
+Recently many writers have objected to this kind of deﬁnition
+of homology on the grounds that it is viciously circular, and
+the objection seems to be well-founded. By these deﬁnitions,
+in order to show that part x in one organism is homologous
+with part y in another organism, it must be shown that they
+are derived from a part z in a common ancestor. But homology itself is invoked in identifying parts x and y with part z.
+Jardine (1967, p.125)
+In some situations, homology and analogy oﬀer valid alternative or complementary explanations for issues of interest. Nevertheless some authors erroneously assume homology and analogy to be mutually exclusive, see second
+item in Table 4. The next example is extracted from the inﬂuential work of
+Adolf Remane (1898–1976). The following quotations by R. Owen, A. Boyden,
+and A. Panchen give correct diagnostics for this kind of fallacy.
+Methodological criteria of analogy: For our purposes, we will
+proceed according to the general understanding that the following two indicators of analogy hold: (1) Its relation to function
+and way of life, (2) Its contrast to homology in the sense of
+either-or.
+A. Remane (1971, p.83)
+But homologous parts may be, and often are, also analogous
+parts in a fuller sense, viz. as performing the same functions;
+thus the ﬁn or pectoral limb of a Porpoise is homologous with
+that of a Fish, it is inasmuch as composed of the same or answerable parts, and they are analogues of each other, inasmuch
+as they have the same relation of subserviency to swimming.
+R. Owen, (1848, p.7), apud [19] & [129]
+Owen distinguished two kinds of resemblance in the corresponding organs or parts of the bodies of diﬀerent animals:
+(1) essential structural agreements relating particularly to relative position and connections; (2) similarities in the function
+or use to the organism. – These are really diﬀerent qualities and they have no necessary dependency upon each other.
+A. Boyden (1943, p.231)
+There is an important and common misapprehension about the
+terms homologue and analogue. Ill-taught schoolchildren and
+students (and others who should know better) treat them as
+antonyms and thus mutually exclusive. Owen was quite clear
+in saying that this was not the case.
+Panchen (1994, p.44)
+5.2. Discrete vs. Continuous Type Mismatch
+Each thread in the Borromean Complementarities metaphor introduced in
+Sect. 1, visually represented in Fig. 1 and concisely interpreted in Table 1, is
+reinterpreted in this section according to Table 5. Good mathematical models
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+427
+
+Table 5. Borromean knot of three interlinked threads, each
+made of intertwined discrete vs. continuous math. variables
+
+(R) Homology & Archetype. These concepts refer to similarities in
+structure, primarily described by coincidences between discrete interconnection diagrams. Secondarily, homology arguments may include
+continuous maps of relative positions for the involved connections,
+given by their distances and angles, used for diachronic or synchronic
+comparative analyses; see Sect. 3.
+(G) Probability & Statistics. Models used in probability and statistics are based on (scalar, vector, matrix, functional, etc.) random
+variables that are, essentially, either discrete or continuous. Moreover,
+the mathematical methods used to develop probability theory in discrete vs. continuous spaces (like combinatorial calculus and discrete
+set theory vs. diﬀerential and integral calculus and set topology), and
+corresponding techniques required in each case (like counting discrete
+events in the numerator and denominator for a betting quotient vs.
+evaluating the truth-value for a precise or zero-volume hypothesis),
+have essentially distinct characteristics.
+(B) Analogy & Prototype. These concepts refer to similarities in
+function or purpose, primarily described by continuous mathematical
+models. Such models often include ﬁne tuning conditions or other
+precise hypotheses used to characterize teleology in systems theory.
+Secondarily, analogy arguments may use structural correspondences,
+even if superﬁcial, between discrete components of a system under
+study compared to another system whose function is already wellestablished and understood; see Sect. 4.
+
+based on probability and statistics are much needed and routinely used by scientists ﬁnding their way in this conceptual maze. However, careless reasoning
+in this complex entanglement of concepts easily entails type mismatch fallacies,
+and they are ubiquitous in the scientiﬁc literature. The concept of Analogy,
+and its interpretation and use in evolution theory, is particularly prone to this
+kind of error, as examined in the sequel.
+As carefully examined in this and previous articles, and summarized in
+Table 5, the concept of analogy is a similarity relation concerning function and
+purpose. Moreover, such teleological notions can be abstracted and expressed
+in the form of exact laws, precise behavioral rules, or equational formulas used
+in science. Furthermore, such exact mathematical statements are naturally
+represented in statistical models by sharp hypotheses that, in turn, are formulated around continuous random variables; for further details see [156,159,161–
+164,167,168] and references therein. Nevertheless, analogous systems may also
+exhibit secondary similarities (or superﬁcial resemblances) concerning their
+
+428
+
+J. M. Stern
+
+Log. Univers.
+
+structure that are, therefore, characterized by homology relations. Moreover,
+these structural similarities can be abstracted and expressed in the form of coincidences in combinatorial models. Furthermore, such coincidence statements
+are naturally represented by statistical hypotheses formulated around discrete
+random variables; for further details see [52,71,92–94,132,169] and references
+therein.
+In the next quotation, Lorenz (1974, p.230) counts structural correspondences, characteristic of homology, as the most relevant evidence for functional
+similarity, which is characteristic of analogy. This kind of categorical misunderstanding leads to an impoverished and disempowered notion of analogy that
+is, therefore, perceived as a superﬁcial resemblance or as a weak similarity
+relation, as stated in [75, p.341]. The following quotation, from [19, p.230],
+reinforces the need to clearly distinguish prototype from archetype, analogy
+from homology, function from structure, continuous from discrete variables,
+etc. Under such conditions, that is, correctly understood and supported by
+appropriate means and methods, analogy is a powerful concept and a reliable
+tool that is capable of revealing deep systemic similarities and able to establish sound theoretical connections based on comparative function analysis. The
+ﬁnal quotation, from Encyclopaedia Britannica (01/04/2026), repeatedly exempliﬁes reasoning mistakes and conceptual misunderstandings studied in this
+section, showing how pervasive they are in the literature.
+...the concept of adaptation... forms the basis of the reasoning
+which the evolutionist applies to the phenomenon of analogy.... Whenever we ﬁnd, in two forms of life that are unrelated to each other, a similarity of form or of behavior patterns
+which relates to more than a few minor details, we assume it
+to be caused by parallel adaptation to the same life-preserving
+function. The improbability of coincidental similarity is proportional to the number of independent traits of similarity, and is, for n such characters, equal to 2n−1 .... However,
+no such thing as a false analogy exists: An analogy can be
+more or less detailed and hence more or less informative.
+Lorenz (1974, p.230)
+Analogy: Superﬁcial similarity that arises through functional
+convergence.
+Hillis (1994,p.341)
+Here is probably the germ of Owen’s genius, to realize that
+structural and functional resemblances are diﬀerent qualities,
+diﬀerent kinds of agreement, and should be clearly recognized
+as such. This brings us to Owen’s use of analogy, and the
+interrelation of the terms homology and analogy to each other.
+Boyden (1943, p.230)
+Analogy, in biology, similarity of function and superﬁcial
+resemblance of structures that have diﬀerent origins.
+Homology, in biology, similarity of the structure, physiology,
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+429
+
+or development of diﬀerent species of organisms based upon
+their descent from a common evolutionary ancestor. Homology is contrasted with analogy, which is a functional similarity
+of structure based not upon common evolutionary origins but
+upon mere similarity of use.
+Encyclopaedia Britannica (01/04/2026)
+
+6. Further Research
+The following two subsections examine several paradoxes derived from misconceptions about the nature of evolution. These misconceptions, often compounded with logical fallacies, engender all sorts of erroneous conclusions
+including, as extreme cases, impossibility arguments against evolution theory. Moreover, careful examination of these paradoxes and related questions
+prompts interesting topics for further research.
+6.1. Nothing Ever Begins When You Think It Does
+Lillian Hellman’s (1969) celebrated aphorism, apud [148], refers to biology’s
+habit of (re)deploying a well-developed organ (Oργανoν, instrument, tool)
+into a new role, or (re)adapting a former working solution into a new function.
+Figure 4.t shows how the same basic 5-digit skeletal structure was readjusted
+in forelimbs used for ﬂying, swimming, digging, and object manipulation. All
+these examples can be traced back to the forelimb of primitive ﬁshes adapted
+for walking in mud or close to water. Other examples of redeployment are
+far less obvious, for example: (a) Lungs, developed in ﬁsh as a swim bladder,
+a gas-sac used for buoyancy regulation, and later repurposed for breathing
+air; (b) Feathers, developed for thermal insulation and regulation, and later
+repurposed for gliding and ﬂying. The next quotation from Charles Darwin’s
+Origin of Species, 6th ed., ch.VII, Miscellaneous Objections to the Theory of
+Evolution, apud [148], addresses this topic.
+All Mr. [George] Mivart’s objections will be, or have been,
+considered in the present volume. The one new point which
+appears to have struck many readers is, ‘That natural selection is incompetent to account for the incipient stages of useful structures.’ This subject is intimately connected with that
+of the gradation of the characters, often accompanied by a
+change of function, for instance, the conversion of a swimbladder into lungs...
+Ch. Darwin (1872, p.177)
+• Old Archetypes, New Prototypes, and Organic Retuning (future research)
+When an organ is repurposed for a new function, it can maintain many
+structural properties; in fact, this is how its evolutionary history can be traced.
+However, the description and explanation of how the organ accomplishes its
+new function requires, by deﬁnition, the postulation of a new prototype. In
+
+430
+
+J. M. Stern
+
+Log. Univers.
+
+Figure 10. Lobster-eye with a square-cell-grid reﬂective lens
+some cases, a sequence of increasingly complex and more sophisticated prototypes may be better suited to follow the readaptation process of an organ
+to its new function. This is a topic to be addressed in further research, focusing on the possible methodological contributions brought by the concept of
+prototype, as deﬁned in this article.
+A closely related topic for further research concerns the re-tuning process
+of an organ to its function, as deﬁned by its new (assumed) prototype. Recent
+redeployment to a new function suggests an adaptation process in progress
+that is, therefore, far from optimal tuning and hence far from equilibrium conditions characteristic of convergence to a stable form. This non-equilibrium
+condition also suggests fast rates of change in its recent evolutionary history
+and, consequently, large variation of functional parameters in the population.
+In contrast, long employment in the same function suggests an already successful adaptation process that, therefore, is close to optimal tuning or close
+to equilibrium conditions characteristic of convergence to a stable form. This
+equilibrium condition also suggests slow rates of change in its recent evolutionary history and, consequently, small variation of functional parameters in
+the population. We believe that the concept of prototype and its accompanying ﬁne-tuning conditions, as deﬁned in this article, can be instrumental
+for objective, quantitative, and statistical assessments of the aforementioned
+convergence characteristics.
+6.2. There are More Ways to the Wood than One, and He Which Knows
+Many Ways May Go the Nearest
+Joseph Swetnam’s (1617) celebrated aphorism proclaims the advantage of having alternative ways to ﬁght in combat, see [171]. In this paper, it refers to
+biology’s talent for inventing diﬀerent tools to do a task, or building alternative organs (instruments) to fulﬁll a need. Just because a given functional
+prototype is precisely deﬁned, it does not mean that it is the only possible way
+to solve a problem. For example, biologists were able to identify many independent reinventions of “eyes to see”, converging not to one, but to a handful
+of viable (i.e. biologically implementable) but diﬀerent functional prototypes,
+see [90].
+Figure 10 depicts diagrammatic schemata explaining the basic optics of a
+Lobster eye (order Decapoda, phylum Arthropoda). In the lobster eye we can
+recognize a few familiar structural components—most obviously, a “lens” and a
+retina. Nevertheless, the vertebrate and cephalopod eyes previously examined
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+431
+
+are equipped with a refractive lens used to project the captured image onto a
+concave retina. In contrast, in the lobster eye, instead of the refractive lens,
+there is a collimator, a spherical grid made of square reﬂexive cells, that is used
+as a focusing device for projecting the captured image onto a convex spherical
+retina half the size of this “reﬂective lens”.
+The lobster eye has fascinating histories concerning its phylogenetic evolution, its ontogenetic embryology, its anatomical description, and the (very
+late, in the 1970 s) discovery of the prototype explaining how it actually works,
+see [1,48,51,63,90,144,181]. Afterwards, this prototype was used to invent new
+technological devices in the ﬁeld of x-ray optics, where no adequate materials
+are available for making a refractive lens, and even the best mirrors can only
+reﬂect light at very shallow (almost tangent) angles. This is an important example of Biomimetics–the art and science of reutilizing biological prototypes
+for creating or improving human technology, see [127,176,180].
+• Analogies Across Distinct Prototypes (future research)
+Although the prototypes explaining the optics of eyes based on refractive and reﬂective lenses are quite diﬀerent, both have some goals in common,
+namely, to focus the captured image into an appropriate (concave / convex)
+retina, allowing subsequent data acquisition and information processing, with
+the ﬁnal purpose of giving a creature the capacity to see its environment. Moreover, the same quality parameters, like magniﬁcation, resolution, contrast, ﬁeld
+depth, light sensitivity, etc., can be used to objectively evaluate and compare
+the performance of these eyes. The possibility of using well-established benchmarks to objectively relate the performance of diﬀerent prototypes and their
+variant implementations has important consequences: First, it allows comparative analyses contrasting how and why each prototype is able to achieve its
+goals; Second, it allows the evaluation of how well each prototype eﬀectively
+models the biological organ it is supposed to explain; Finally, this hierarchical setting allows the extension of analogical relations across diﬀerent organs
+under scrutiny, even in the case where these organs are of diﬀerent (proto-)
+types. The systematic development of such hierarchical analogies across different prototypes is a topic we intend to explore in future articles.
+6.3. Archetypal Symbolic Language of the Honeybees (future research)
+Karl von Frisch (1886–1982), Martin Lindauer (1918–2008), and John Haldane (1892–1964) pioneered the modern study of the honeybees’ waggle-dance
+language. Bees use as dance ﬂoor the ﬂat surface of honeycombs hanging vertically inside their hive. The basic form (dance-move) of this language consists
+of a waggling run along a straight line, which is then embedded in an 8-shaped
+circuit, see Fig. 11.l. The frequency and duration of waggling is interpreted by
+the bees as a ﬂight distance, while the running line angle relative to the upward direction is interpreted as a ﬂight direction angle relative to the sun. The
+language includes variations of the basic form that are used according to strict
+
+432
+
+J. M. Stern
+
+Log. Univers.
+
+Figure 11. Symbolic (meaningful, reliable, precise, stable,
+composable) couplings: (l) Waggle-dance moves and their interpretation; (c) Matching tokens for trade; (r) A. Wegener
+(1912) depiction of puzzle-like ﬁtting continental plates
+rules concerning morphology (form), grammar (composition), and semantics
+(interpretation).
+Although relatively simple, this language is surprisingly ﬂexible and is
+used in diﬀerent contexts to accomplish a variety of tasks. For example, bees
+use it for the control and coordination of ﬂight missions to collect resources
+such as pollen or nectar. Moreover, bees make important collective decisions,
+like where to relocate the hive when necessary, by a voting process based on
+this language. The bees’ interpretation of this language correctly and precisely
+integrates ﬂight directions with information from multiple sensors (visual, vibration, olfactory, inertial, etc.) and several correction or modulation factors
+(diurnal movement of the sun’s position in the sky, wind intensity and direction, terrain topography, etc). In this way, this language is an instrument
+(oργανoν) ﬁnely tuned to its function. Moreover, this language enables the
+sharing of precise, reliable and meaningful information and, in this sense, it is
+considered symbolic—from συν-βαλλω, syn-ballo, I put together (well-ﬁtting
+pieces or parts of a whole). Figure 11c,r display symbolic tokens made of parts
+of a ripped dollar bill or broken pieces of a super-continent, see [184].
+The bees’ language has a ﬁxed structure, or archetype, that is genetically
+transmitted and inherited, together with similarly pre-programmed behavioral
+patterns, giving each individual bee the inborn capacity for its appropriate use.
+Therefore, even the retuning of a single parameter, like adjusting the metersto-waggle (baseline) scale, can only be accomplished by genetic evolution over
+time spans of generations. Moreover, the bees do their work, and communicate
+(using their language) the information they need to share in order to do it,
+without ever thinking about it (much less reﬂexively “talking” about why, how
+or what they are doing).
+In contrast, we humans try to understand all that by building models, i.e.
+archetypes and prototypes, that are based on theoretical assumptions and must
+be corroborated by empirical observations. While engaged in these studies, we
+may use our own language(s) to share our conclusions (with other humans).
+Moreover, in so doing, we may agree to adopt certain semantic shifts, introduce
+new words, or even adopt new rules for how to articulate (in language) these
+words (and the concepts they represent). Nevertheless, some deep features of
+human language seem to follow invariant forms — like underlying structures of
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+433
+
+its generative grammar, or basic representation patterns for space-time, color,
+etc; see [155,165] and references therein.
+In light of these contrasting characteristics, the relatively simple archetypal symbolic language of the honeybees should provide a good case study for
+research on applying the concepts developed in this article to theory and philosophy of language. For related discussions, see [8,33–35,40,46,87,116,172]
+and references therein. This case study should also provide a stepping-stone
+for further applications of these ideas to philosophy of language and scientiﬁc
+ontologies.
+6.4. Homology or Analogy as a Source of Knowledge, Rational
+Metaphysics, and Ontology of Universals (Future Research)
+Can we properly identify or use the same word to refer to two particular objects? Even if they have diﬀerent characteristics? For example, can we properly
+speak of (1) a man and an eagle as being ‘vertebrates’ ? or (2) a human and
+an octopus as having ‘eyes’ ? In previous sections we have, implicitly, answered
+these questions in the aﬃrmative and also provided objective criteria for validating (or not) these identiﬁcations. Figure 12l,r render historical illustrations
+of hierarchical abstractions of this kind used in philosophy; Fig. 12l from [36],
+and Fig. 12r from [117]. However, our answers required making important distinctions and deﬁning strict conditions for establishing such an identiﬁcation
+(Fig. 12). For example, the ﬁrst identiﬁcation concerns a homology referring to
+a common archetype, while the second identiﬁcation concerns an analogy referring to a common prototype. Moreover, we established how these similarity
+relations can, under adequate circumstances, be properly combined. Furthermore, we discussed how speciﬁc statistical signiﬁcance measures or logical truth
+values can be used to objectively evaluate these similarities, and how speciﬁc
+statistical tests of hypotheses can be used to validate (or not) these identiﬁcations.
+Universal is a term used in philosophy to designate wide-ranging words,
+abstract categories, concepts or predicates, general relations or laws, essential
+ideas, etc. The issue under scrutiny, namely, the validity of using universals
+that generalize or abstract essential characteristics of particular objects, is a
+traditional problem in philosophy, debated from classical Greece and India to
+the present days. For a variety of concepts and arguments on this topic or
+applications related to our context, see [2,28–32,37,39,41,74,80,97,105,143,
+145,146,152,153,178,182]. The terms Nominalism and Realism designate polar positions or opposite views concerning the use of universals. In the speciﬁc
+context of this article, and having in mind the scope of our present discussions,
+we summarize these views as follows:
+• Nominalism holds that universals cannot express anything real, whether or
+not something real in fact exists. Instead, universals can only express subjective
+impressions, linguistic conventions, arbitrary meanings, established habits, etc.
+
+434
+
+J. M. Stern
+
+Log. Univers.
+
+Figure 12. Tree of life, Tree of porphyry, Scala naturae,
+Scala intellectus, Ladder of being, with distinction or class
+predicates ranging down: from general, essential, abstract,
+or necessary; to speciﬁc, optional, concrete, or accidental;
+may also represent hierarchies of (coming into) existence;
+(l) from Contreras (1742), (r) from Mutran (1755)
+
+• Realism holds that universals can (even if tangentially, indirectly, or approximately) refer to reality in a meaningful and objective way. Moreover, universals
+can help us in our best (even if imperfect) eﬀorts to eﬀectively point to relevant
+objects in a ﬁeld of scientiﬁc study, express what they are, and how they (inter)relate (i.e., build good Scientiﬁc Ontologies), eﬃciently explain how they
+work or behave (i.e., develop good Scientiﬁc Theories), and even acquire some
+understanding of why they are the way they do (i.e., successfully venture into
+rational Metaphysics).
+The next quotation, from S. Chatterjee, presents, in a modern language
+amenable to our discussion, positions inﬂuenced by classical Indian philosophy
+that ﬁt particularly well with our general conclusions. Moreover, the epistemological framework of Objective Cognitive Constructivism provides a strong
+support for a (carefully qualiﬁed) realist interpretation of scientiﬁc ontologies,
+provided we agree with the validity of the arguments for postulating objective
+universals stated in the following quotation by Ch. Chatterjee. For compatible
+perspectives on objective universals, or Sāmānya, in the Vaiśes.ika system of
+Indian philosophy, see [30, ch.VI,sec.II,4] and [146, ch.11,sec.6].
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+435
+
+The Nature of Universals: It would appear from the foregoing
+discussion that the nature of universals presents one of those
+knotty problems of philosophy to which no simple answer can
+be given.... Generally speaking, we may distinguish four different meanings of the universal. The universal may mean (1)
+the identity of essence or substance, (2) the identity of characters or qualities and relations, (3) the identity of form or
+structure, and (4) the identity of function in objects which are
+diﬀerent but belong to the same class. Of course, we do not
+imply that these diﬀerent meanings of the universal are exclusive and that where the one is, the others cannot be. On the
+other hand, we admit that the universal underlying a class of
+objects may be understood in one or more of these senses.
+Satischandra Chatterjee (1964, pp.287-288)
+The arguments for postulating objective universals: The realists postulate the objective existence of universals mainly for
+three reasons: (i) The universals provide an objective basis
+for the classiﬁcation of natural objects, (ii) The universals
+constitute the ontological foundation which makes conceptual
+cognition possible, (iii) The objective universals justify the signiﬁcant use of general words.
+Chhanda Chatterjee (2013, p.35)
+In future research, we intend to apply the concepts of Homology, Analogy,
+Archetype and Prototype, as developed in this article and within the epistemological framework of Objective Cognitive Constructivism to explore the use of
+universals in science and also in more general contexts, see [18,49,50,81,154–
+166].
+
+7. Concluding Remarks and Acknowledgments
+This article develops parallel and comparable but separate and speciﬁc deﬁnitions for the concepts of Archetype and Prototype, that are considered in
+tandem with the derived concepts of Homology and Analogy. These novel
+deﬁnitions lead to implementable methods of analysis (statistical inference
+and hypothesis testing) that, in turn, facilitate their correct and productive
+application in science. Moreover, these deﬁnitions and methods preserve the
+possibility of oﬀering simultaneous and complementary explanations, allowing for useful interactions between these concepts, as alluded in the opening
+quotations of this article by Niels Bohr, see [15–17].
+Furthermore, the proposed deﬁnitions help avoid confounding the structural and functional properties of instruments (whether biological organs or
+technological artifacts) and their evolution—mistakes that, in turn, are linked
+to confounding discrete and continuous mathematical variables (whether deterministic or random). In this context, a correct and clear understanding of
+the distinct roles played by structure vs. function and discrete vs. continuous
+
+436
+
+J. M. Stern
+
+Log. Univers.
+
+mathematical variables oﬀers helpful guidelines for choosing coherent probability models and consistent statistical methods in applications of interest.
+Finally, this article brieﬂy considers possible consequences of these conceptual
+innovations and methodological developments in the areas of philosophy of
+language and science, and suggests several topics for further research.
+Figures: Position locators: t = top, b = bottom, l = left, c = center, r =
+right. Images I generated using LaTeX and TikZ or pb-diagram: 1.rt, thanks
+to Clea F. Rees. Images in Public Domain or under Creative Commons license
+(commercial use allowed): 1.lb, from museumrotterdam.nl, item-66324; 1.rb;
+4.b; 8.l,r; 11.r. Images in public domain, more than 70 years past after dates of
+publication and author’s death: 1.c, from [95]; 2.tl, from [4]; 2.tr, from [89]; 2.bl,
+from [42]; 3.l, from [76]; 3.r, from [131]; 4.t, from [96]; 6, from [119]; 7.rt, from
+[185]; 7.rb, from [5]; 8.c, from [61]; 9.l,cl from [176]; 9.cr, from [186]; 9.r, from
+[133]; 12.l, from [36]; 12.r, from [117]. Images used with the kind permission of
+the authors, editors, or copyright holders: 1.lt, from [65,66]; 2.br, from [150];
+4.c, from [88]; 5, from [137]; 7.l, from [72]; 10.l, from [63]; 10.cl,cr, from [1];
+10.r, from [48]; 11.l, from [8].
+
+Acknowledgements
+I am grateful for comments received from participants of (a) 8th World Congress on the Square of Opposition, San José, Costa Rica, 9-13/9/2024; (b) 14th
+Principia Intl. Symposium, Florianópolis, 28-31/07/2025; (c) 3rd RatioLog Logic Rationality and Probability, CLE-UNICAMP, 05-09/05/2025; (d) XXI
+EBL - Brazilian Logic Conference, Serra Negra, 12-16/05/25; (e) 1st Brazilian
+Congress of Philosophy of Science, IME-USP, 13-18/07/2026; (f) “What Is It?
+That’s the Question!” Congress, Rio de Janeiro, 27-31/07/2026. I am thankful for suggestions received from Maria Cristina Mariante Guarnieri and the
+study group on Jungian psychology at Labô – Fundação São Paulo, at PUCSP; and for comments from students in the discipline MAP-4000 - Statistical
+Induction, Ontology and Metaphysics, at IME-USP Summer Programs.
+Funding The Article Processing Charge (APC) for the publication of this research was funded by the Coordenação de Aperfeiçoamento de Pessoal de Nı́vel
+Superior - Brasil (CAPES) (ROR identiﬁer: 00x0ma614). The author received
+funds from IME-USP – Institute of Mathematics and Statistics of the University of São Paulo; FAPESP – State of São Paulo Research Foundation (grant
+CEPID CeMEAI 2013-07375-0); and CNPq – Brazilian National Council of
+Technological and Scientiﬁc Development (grant PQ 303290/2021-8).
+Open Access. This article is licensed under a Creative Commons Attribution 4.0
+International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the
+original author(s) and the source, provide a link to the Creative Commons licence,
+and indicate if changes were made. The images or other third party material in
+this article are included in the article’s Creative Commons licence, unless indicated
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+437
+
+otherwise in a credit line to the material. If material is not included in the article’s
+Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from
+the copyright holder. To view a copy of this licence, visit http://creativecommons.
+org/licenses/by/4.0/.
+
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional aﬃliations.
+
+References
+[1] Angel, J.R.P.: Lobster eyes as X-ray telescopes. Astrophys. J. 233, 364–373
+(1979)
+[2] Armstrong, D.M.: A Theory of Universals: Universals and Scientiﬁc Realism,
+vols. 1 & 2. Cambridge Univ. Press, (1978)
+[3] Attneave, F.: Applications of Information Theory to Psychology: A Summary
+of Basic Concepts, Methods, and Results. Holt, Rinehart and Winston, NY
+(1959)
+[4] Augier, A.: Essai d’une nouvelle Classiﬁcation des Végétaux. Bruyset Ainé,
+Lyons (1809)
+[5] Avery, E.M.: School Physics. Sheldon, NY (1895)
+[6] Balari, S., Lorenzo, G.: From Wallace’s problem to Owen’s solution. Biolinguistics 8, 108–119 (2014)
+[7] Baron, M.: Origins of Inﬁnitesimal Calculus. Pergamon Press, London (1969)
+[8] Barron, A.B., Plath, J.A.: The evolution of honey bee dance communication:
+a mechanistic perspective. J. Exp. Biol. 220(23), 4339–4346 (2017)
+[9] Batschelet, E.: Introduction to Mathematics for Life Scientists. Springer, Berlin
+(1975)
+[10] Bell, J.L.: The Continuous, the Discrete and the Inﬁnitesimal in Philosophy
+and Mathematics. Springer, Cham (2019)
+[11] Bernoulli, D.: Hydrodynamica, sive de Viribus et Motibus Fluidorum Commentarii. Sectio Decima: De aﬀectionibus atque motibus ﬂuidorum elasticorum,
+praecipue autem aeris. (pp.200–204) J.R.Dulseckeri, Basel, (1738). Translated
+in: Brush (2003, ch.3,pp.57–65) and Magie (1935, pp.247–250)
+[12] Béziau, J.Y.: The power of the hexagon. Log. Univers. 6(1), 1–43 (2012)
+[13] Béziau, J.Y.: There is no cube of opposition. In: Béziau, J.Y., Basti, G. (eds.)
+The Square of Oppositions: A Cornerstone of Thought. pp.179–193. Birkhäuser
+(2017)
+[14] Béziau, J.Y., Bone, F.L: What is money? Log. Univers. 19, 237–272 (2025)
+[15] Bohr, N.H.D.: Causality and complementarity. Philos. Sci. 4, 3, 289–298,
+(1937). Essay reprinted in Bohr et al. (1987, IV, pp.83-91)
+[16] Bohr, N.H.D.: Physical Science and the Problem of Life, (1957). Essay reprinted
+in Bohr et al. (1987, II, pp.94–101)
+[17] Bohr, N.H.D., Faye, J., Folse, H.J.: The Philosophical Writings of Niels Bohr.
+Ox Bow Press, Woodbridge,: Volumes: I- Atomic Theory and the Description
+of Nature; II- Essays 1932–1957 on Atomic Physics and Human Knowledge; III-
+
+438
+
+J. M. Stern
+
+Log. Univers.
+
+Essays 1958–1962 on Atomic Physics and Human Knowledge. Supplementary
+Papers, IV- Causality and Complementarity (1987)
+[18] Borges, W.S., Stern, J.M.: The rules of logic composition for the Bayesian
+epistemic e-values. Log. J. IGPL 15(5–6), 401–420 (2007)
+[19] Boyden, A.: Homology & analogy: a century after the deﬁnitions of homologue
+and analogue of Richard Owen. Q. Rev. Biol. 18(3), 228–241 (1943)
+[20] Boyden, A.: Homology and analogy. A critical review of the meanings and
+implications of these concepts in biology. Am. Midland Nat. 37(3), 648–669,
+(1947)
+[21] Boyer, C.B.: The History of Calculus and Its Conceptual Development. Dover,
+NY (1949)
+[22] Bragg, W.L.: What makes a scientist? Trans. of the IVth Fund. Res. Symp.
+Oxford, 1–11 (1968). https://doi.org/10.15376/frc.1969.1.1
+[23] Brower, A.V.Z., Pinna, M.C.C.: Homology and errors. Cladistics 28, 529–538
+(2012)
+[24] Brush, S.G., Hall, N.S.: Kinetic Theory of Gases: An Anthology of Classic
+Papers with Historical Commentary. Imperial College Press, London (2003)
+[25] Burk, F.: A garden of integrals, mathematical association of America (2007)
+[26] Cain, A.J.: The Perfection of Animals. Biological Journal of the Linnean Society, 36, 3–29: Originally published. In: Carthy, J.D., Duddington, C.L. (eds.)
+Viewpoints in Biology, 3, 36–63, (1964). Butterworths, London (1989)
+[27] Carnielli, W.A., Coniglio, M.E.: Paraconsistent Logic: Consistency, Contradiction and Negation, vol. 40. Epistemology & Unity of Science. Springer, Logic
+(2016)
+[28] Carré, M.H.: Realists and Nominalists. Oxford Univ, Press (1946)
+[29] Chajes, J.H.: The Kabbalistic Tree. Pennsylvania Univ, Press (2022)
+[30] Chatterjee, S., Datta, D.: An introduction to Indian philosophy. Univ. of Calcutta, (1960)
+[31] Chatterjee, S.: The problems of philosophy, 2nd. Univ. of Calcutta, (1964)
+[32] Chatterjee, Ch., Chatterjee, A.: The problem of universals: a re-examination.
+IOSR-JHSS 7(6), 35–41 (2013)
+[33] Chittka, L., Rossi, N.: Social cognition in insects. Trends Cogn. Sci. 26(7),
+578–592 (2022)
+[34] Chittka, L.: The Mind of a Bee. Princeton Univ, Press (2022)
+[35] Chittka, L., Rossi, N.: Bees learn to dance: experience yields precision in the
+waggle dance. Science 379(6636), 985–986 (2023)
+[36] Contreras, E.O.: Integer Cursus Philosophiae Juxta Mentem Subtilis Doctoris.
+Manuscript F.A.4275, plate p. 114, Árbol Porﬁrio. Biblioteca Pública de Ciudad
+Real, Isabel Pérez Valera’, Castilla La Mancha (1742)
+[37] Copleston, F.: A History of Philosophy, vol. 2. Medieval Philosophy Doubleday,
+NY (1993)
+[38] Corcos, A.F., Monaghan, F.V.: Mendel’s work and its rediscovery: a new perspective. Crit. Rev. Plant Sci. 9(3), 197–212 (1990)
+[39] Cordovero, M.J.: Sefer Tomer Deborah, Venice, (1589). Translated by L.Jacobs,
+as: The Palm Tree of Deborah, Hermon Press, NY, (1960)
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+439
+
+[40] Crist, E.: Can an insect speak? The case of the honeybee dance language. Soc.
+Stud. Sci. 34(1), 7–43 (2004)
+[41] Cross, R., Paasch, J.T.: The Routledge Companion to Medieval Philosophy.
+Taylor & Francis, (2021)
+[42] Darwin, Ch.: Transmutation of Species, First notebook, (1837)
+[43] Darwin, Ch.: On Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life. John Murray, London; 1st
+ed. (1859); 6th ed. (1872)
+[44] Darwin, Ch.: The Descent of Man and Selection in Relation to Sex, vol. 1. John
+Murray, London (1871)
+[45] DeGroot, M.H., Schervish, M.J.: Probability and Statistics, 4th edn. AddisonWesley, Boston (2012)
+[46] Dong, S., Lin, T., Nieh, J., Tan, K.: Social signal learning of the waggle dance
+in honey bees. Science 379(6636), 1015–1018 (2023)
+[47] Edwards, Ch.H.: The Historical Development of Calculus, Springer (1979)
+[48] ESA–European Space Agency. Lobster-Eye Optics of Einstein Probe, (2023).
+Figure credits: Chinese Academy of Sciences. www.esa.int/ESA Multimedia
+[49] Esteves, L.G., Izbicki, R., Stern, J.M., Stern, R.B.: The logical consistency of
+simultaneous agnostic hypothesis tests. Entropy 18(256), 1–22 (2016)
+[50] Esteves, L.G., Izbicki, R., Stern, J.M., Stern, R.B.: Pragmatic hypotheses in
+the evolution of science. Entropy 21(9), 883 (2019)
+[51] Exner, S: Die Physiologie der facettirten Augen von Krebsen und Insekten.
+Deuticke, Leipzig,: Translated as: The Physiology of the Compound Eyes of
+Insects and Crustaceans, foreword by Karl von Frisch, p. 1989. Springer-Verlag,
+Berlin (1891)
+[52] Felsenstein, J.: Inferring Phylogenies. Oxford Univ, Press (2004)
+[53] Finetti, B.: Matematica Logico-Intuitiva. Edizioni Cremonese, Roma (1957)
+[54] Flamm, D.: History and
+arXiv:physics/9803005v1
+
+outlook
+
+of
+
+statistical
+
+physics,
+
+(1997).
+
+[55] Frasca, M., Farina, A.: Tartaglia-pascal triangle and brownian motion in NonEuclidean geometries: application to heat and Black-Scholes equations. SIViP
+8, 1149–1157 (2014)
+[56] Frisch, K.: The Dancing Bees: An Account of the Life and Senses of the Honey
+Bee. Springer-Verlag, Vienna, (1954). Transl. from: Aus dem Leben der Bienen,
+1953
+[57] Frisch, K.: Bees: Their Vision, Chemical Senses, and Language - with a new
+foreword by Donald R. Griﬃn. Cornell Univ, Press (1972)
+[58] Frisch, K.: The Dance Language and Orientation of Bees–with a new foreword by Thomas D. Seeley. Harvard Univ. Press, (1993). Translated from:
+Tanzsprache und Orientierung der Bienen, 1965
+[59] Fröhlich, W.: Anleitung zum Gebrauch des Kosmos-Baukasten, Optik: 280 Versuche aus der Lehre vom Licht. Kosmos, Stuttgart (1923)
+[60] Fuller, H.Q., Fuller, R.M., Fuller, R.G.: Physics: Including Human Applications.
+Harper and Row, NY (1978)
+[61] Galloway, T.W.: Textbook of Zoology. P. Blakiston, Philadelphia (1915)
+
+440
+
+J. M. Stern
+
+Log. Univers.
+
+[62] Gayon, J.: From mendel to epigenetics: history of genetics. C.R. Biol. 339(7–8),
+225–230 (2016)
+[63] Gorenstein, P.: Focusing X-ray optics for astronomy. X-Ray Opt. Instrum. 2010,
+1–19 (2010)
+[64] Grabiner, J.V.: “It’s all for the best”: optimization in the history of science. J.
+Humanist. Math. 11(1), 54–80 (2021)
+[65] Gunn, Ch., Sullivan, J.M.: Tight Conﬁguration of the Borromean Rings with
+Pyritohedral Symmetry. Bridges Proceedings, pp. 63–70, Leeuwarden (2008)
+[66] Gunn, C., Sullivan, J.M.: The Borromean Rings: A Video about the New IMU
+Logo. IMU - International Mathematical Union, Berlin (2006)
+[67] Haber-Schaim, U., Cross, J.B., Dodge, J.E., Walter, J.A.: PSSC Physics, Physical Science Study Committee, 4th edn. Lexington, D.C.Heath (1976)
+[68] Haldane, J.B.S.: Animal ritual and human language. Diogenes 1, 61–73 (1953)
+[69] Haldane, J.B.S., Spurway, H.: A statistical analysis of communication in Apis
+mellifera and comparison with communication in other animals. Insectes Soc.
+1, 247–283 (1954)
+[70] Haldane, J.B.S.: Aristotle’s account of bees’ “dances”. J. Hell. Stud. 75, 24–25
+(1955)
+[71] Hall, B.K.: Homology: The Hierarchical Basis of Comparative Biology. Academic Press, San Diego (1994)
+[72] Harris, W.A.: Pax-6: where to be conserved is not conservative. Proc. Natl.
+Acad. Sci. U.S.A. 94, 2098–2100 (1997)
+[73] Herapath, J., Woolf, H. (eds.): Mathematical Physics and Selected Papers. Johnson Reprint, NY, (1821, 1847, 1972). Including the article: A Mathematical
+Inquiry into the Causes, Laws, and principal Phenomena of Heat, Gases, Gravitation, etc., in Annals of Philosophy, of 1821; and the book: Mathematical
+Physics, of 1847
+[74] Haas, F.A.J.: Did plotinus and porphyry disagree on aristotle’s categories?
+Phronesis 46(4), 492–526 (2001)
+[75] Hillis, D.M.: Homology and molecular biology. ch.10 in Hall (1994)
+[76] Hitchcock, E.: Elementary Geology. J.S.& C. Adams, Amherst (1840)
+[77] Hoel, P.P., Port, S.C., Stone, C.J.: Introduction to Probability Theory.
+Houghton Miﬄin, Boston (1971)
+[78] Hoel, P.P., Port, S.C., Stone, C.J.: Introduction to Statistical Theory. Houghton
+Miﬄin, Boston (1971)
+[79] Hoel, P.P., Port, S.C., Stone, C.J.: Introduction to Stochastic Processes.
+Houghton Miﬄin, Boston (1972)
+[80] Hofstadter, D.R.: Analogy as the Core of Cognition. In: Gentner, D., Holyoak,
+K.J., Kokinov, B.N. (eds.) The Analogical Mind: Perspectives from Cognitive
+Science. Ch.15, pp. 499-538, MIT Press, (2001)
+[81] Inhasz, R., Stern, J.M.: Emergent semiotics in genetic programming and the
+self-adaptive semantic crossover. Stud. Comput. Intell. 314, 381–392 (2010)
+[82] Jardine, N.: The concept of homology in biology. Br. J. Philos. Sci. 18(2), 125–
+139 (1967)
+[83] Johnson, C.: Darwin’s Dice: The Idea of Chance in the Thought of Charles
+Darwin. Oxford Univ, Press (2014)
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+441
+
+[84] Kemeny, J.G., Snell, J.L., Thompson, G.L.: Introduction to Finite Mathematics, 3rd, Prentice-Hall, Englewood Cliﬀs (1974)
+[85] Khinchin, A.Y.: Mathematical Foundations of Statistical Mechanics. Dover,
+NY (1949)
+[86] Khinchin, A.Y.: Mathematical Foundations of Information Theory. Dover, NY
+(1953)
+[87] Kohl, P.L., Thulasi, N., Rutschmann, B.: Adaptive evolution of honeybee dance
+dialects. Proc. Biol. Sci. 287(1922), 20200190 (2020)
+[88] Krzeminski, W., Krzeminska, E.: Triassic diptera: descriptions, revisions and
+phylogenetic relations. Acta Zool. Cracoviensia 46, 153–184 (2003)
+[89] Lamarck, J.B.: Histoire Naturelle des Animaux. Verdière, Paris (1815)
+[90] Land, M.F., Nilsson, D.E.: Animal Eyes. Oxford Univ, Press (2012)
+[91] Lankester, E.: On the use of the term homology in modern zoology. The Annals
+and Magazine of Natural History, Zoology, Botany, and Geology 6(4), 34–43
+(1870)
+[92] Lauretto, M.S., Stern, J.M.: Testing signiﬁcance in Bayesian classiﬁers. Front.
+Artif. Intell. Appl. 132, 34–41 (2005)
+[93] Lauretto, M.S., Pereira, C.A.B., Stern, J.M.: The full Bayesian signiﬁcance test
+for mixture models: results in gene expression clustering. Genet. Mol. Res. 7(3),
+883–897 (2008)
+[94] Lauretto, M.S., Nakano, F., Faria, S.R., Pereira, C.A.B., Stern, J.M.: A
+straightforward multiallelic signiﬁcance test for the Hardy-Weinberg equilibrium law. Genet. Mol. Biol. 32(3), 619–625 (2009)
+[95] Lauweriks, M.J.L.: De geest des tijds, (The spirit of times), Amsterdam, (1895).
+via Rijksmuseum, object number RP-P-1935-1170
+[96] Leche, W.: Människan hennes uppkomst och utveckling, (1909). (Ljus förlag)
+[97] Lima, M.: The Book of Trees: Visualizing Branches of Knowledge. Princeton
+Architectural Press, NY (2014)
+[98] Limpert, E., Stahel, W.A., Abbt, M.: Log-normal distributions across the sciences. Bioscience 51(5), 341–352 (2001)
+[99] Lindauer, M.: Communication Among Social Bees. Harvard Univ, Press (1971)
+[100] Lindauer, M., Menzel, R., Mercer, A.: Neurobiology and Behavior of Honeybees. Springer-Verlag, Berlin (1987)
+[101] Lintz, R.G.: História da Matemática. Coleção CLE, v.45 & v.46, (1999)
+[102] Lorenz, K.Z.: Analogy as a source of knowledge. Science 185(4147), 229–234
+(1974)
+[103] Lorenz, K.Z.: Behind the Mirror: A Search for a Natural History of Human Knowledge. Harvest-HBJ,: Translated from: Die Rückseite des Spiegels–
+Versuch einer Naturgeschichte menschlichen Erkennens, p. 1973. Piper,
+München (1978)
+[104] Lorenz, K.Z.: The Foundations of Ethology. Springer-Science, NY,: Translated
+from: Vergleichende Verhaltensforschung: Grundlagen der Ethologie, p. 1978.
+Springer-Verlag, Vienna (1981)
+[105] Lovejoy, A.O.: The Great Chain of Being: A Study of the History of an Idea.
+Harvard Univ, Press (1964)
+
+442
+
+J. M. Stern
+
+Log. Univers.
+
+[106] Luenberger, D.G.: Linear and Nonlinear Programming. Addison-Wesley, Reading (1984)
+[107] Maclaurin, C.: Of the bases of the cells wherein the bees deposite their honey.
+Philosophical Transactions of the Royal Society, vol. 42, pp. 565–572. (1743)
+[108] Magie, W.F.: Source Book in Physics, McGraw-Hill (1935)
+[109] Maraldi, G.F.: Observations sur les Abeilles. Mem. Acad. R. Sci. 297–335 (1712)
+[110] Marcus, M.: A Survey of Finite Mathematics. Houghton Miﬄin, Boston (1969)
+[111] Marion, J.B.: Classical Mechanics of Particles and Systems. Academic Press,
+NY (1965)
+[112] Mendel, G.J.: Versuche über Pﬂanzenhybriden. Verhandlungen des naturforschenden Vereines in Brünn, IV, 3–47,: Translated as: experiments in plant
+hybridization. J. R. Hortic. Soc. 26, 1–32 (1865)
+[113] Minoux, M., Vajda, S.: Mathematical Programming, John Wiley (1986)
+[114] Mood, A.M., Graybill, F.A., Boes, D.C.: Introduction to the Theory of Statistics. McGraw Hill, NY (1974)
+[115] Morgenstern, O.: Game theory. In: Dictionary of the History of Ideas, vol.2,
+pp.264–275 (2008)
+[116] Munz, T.: The bee battles: Karl von Frisch, Adrian Wenner and the honey bee
+dance language controversy. J. Hist. Biol. 38, 535–570 (2005)
+[117] Mutran, Y.: al-Sahifah al-’Abqariyah fi al-Usul al-Mantiqiyah, (1755). Illustrated manuscript of the Lebanese Maronite Order in Kaslik, 1814; document
+OLM-01372, folios 17v-18r, at Hill Museum and Manuscript Library
+[118] Nash, L.K.: Elements of Statistical Thermodynamics. Addison-Wesley, Boston
+(1972)
+[119] Neal, H.V., Rand, H.W.: Comparative Anatomy. P. Blakiston, Philadelphia
+(1936)
+[120] Neumann, J., Morgenstern, O.: Theory of Games and Economic Behavior, 3ed,
+John Wiley (1953)
+[121] Owen, R.: Memoir on the Pearly Nautilus (Nautilus pompilius, Linn): With
+Illustrations of Its External form and Internal Structure. R. Taylor, London
+(1832)
+[122] Owen, R.: Cephalopoda; pp.517-561 in R.B.Todd: The Cyclopaedia of Anatomy
+and Physiology. Sherwood, Gilbert and Piper, London, (1836)
+[123] Owen, R.: Lectures on the Comparative Anatomy and Physiology of the Invertebrate Animals. Longmans, London (1843)
+[124] Owen, R.: On the Archetype and Homologies of the Vertebrate Skeleton. J.
+Voorst, London (1848)
+[125] Owen, R.: On the Nature of Limbs. J.Voorst, London, (1849). Reprinted by
+Univ. of Chicago Press, 2007
+[126] Owen, R.: On the Anatomy of Vertebrates. Longmans, London (1866)
+[127] Passino, K.M.: Biomimicry for Optimization, Control, and Automation,
+Springer (2004)
+[128] Packel, E.: The Mathematics of Games and Gambling. Mathematical Association of America (1984)
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+443
+
+[129] Panchen, A.L.: Richard owen and the concept of homology. In: Hall, B.K.,
+(ed.), Homology: The Hierarchical Basis of Comparative Biology. ch.1, pp.21–
+62 Elsevier, (1994)
+[130] Patel, J.K., Kapadia, G.H., Owen, D.B.: Handbook of Statistical Distributions.
+Marcel Dekker, Basel (1976)
+[131] Patten, W.: Evolution of Plant and Animal Life. Dartmouth Press (1923)
+[132] Pereira, C.A.B., Stern, J.M.S.: Special characterizations of standard discrete
+models. RevStat Stat. J. 6, 199–230, (2008)
+[133] Phillips, E.F.: Beekeeping: A Discussion of the Life of the Honeybee and of the
+Production of Honey. MacMillan, NY (1915)
+[134] Pietsch, T.W.: Trees of Life: A Visual History of Evolution. Johns Hopkins
+Univ, Press (2012)
+[135] Politis, V.: The Structure of Enquiry in Plato’s Early Dialogues. Cambridge
+Univ, Press (2015)
+[136] Réaumur, R.A.F.: Memoires pour Servir a L’histoire des Insectes, v.5.
+L’Imprimerie Royale, Paris, (1740)
+[137] Remane, A.: Die Grundlagen des Natürlichen Systems, der Vergleichenden Anatomie und der Phylogenetik. Leipzig: Akademische Verlagsgesellschaft
+Geest & Portig, (1952). reprinted in 1971 by Königstein-Taunus
+[138] Rieppel, O.: Willi Hennig on transformation series: metaphysics and epistemology. Taxon 55(2), 377–385 (2006)
+[139] Roling, B.: Die Geometrie der Bienenwabe: Albertus Magnus, Karl von Baer
+und die Debatte über das Vorstellungsvermögen und die Seele der Insekten
+zwischen Mittelalter und Neuzeit. Recherches de Théologie et Philosophie
+Médiévales 80(2), 363–466 (2013)
+[140] Rozanov, Y.A.: Probability Theory: A Concise Course. Dover, NY (1977)
+[141] Rupke, N.A.: Richard owen’s vertebrate archetype. Isis 84(2), 231–251 (1993)
+[142] Rupke, N.A.: Richard Owen: Biology Without Darwin, A Revised Edition.
+Univ. of Chicago Press (2009)
+[143] Saatsi, J.: The Routledge Handbook of Scientiﬁc Realism. Taylor & Francis,
+(2017)
+[144] Schmidt, W.K.H.: A proposed X-ray focusing device with wide ﬁeld of view for
+use in X-ray astronomy. Nucl. Inst. Methods 127(2), 285–292 (1975)
+[145] Schatz-Uﬀenheimer, R.: Cordovero and Luria between realism and nominalism.
+Jerus. Stud. Jew. Thought 1, 122–136 (2016)
+[146] Sharma, Ch.: Indian Philosophy: A Critical Survey. Barnes & Noble, London
+(1962)
+[147] Sheynin, O.B.: On the history of the statistical method in physics. Arch. Hist.
+Exact Sci. 33, 351–382 (1985)
+[148] Shubin, N.: Some Assembly Required: Decoding Four Billion Years of Life, from
+Ancient Fossils to DNA. Simon and Schuster (2020)
+[149] Small, M., Tse, C.K.: Predicting the outcome of roulette. Chaos 22(033150),
+1–9 (2012)
+[150] Smets, B.F., Barkay, T.: Horizontal gene transfer: perspectives at a crossroads
+of scientiﬁc disciplines. Rev. Microbiol. 3(9), 675–8 (2005)
+[151] Smith, N.O.: Elementary Statistical Thermodynamics. Plenum, NY (1982)
+
+444
+
+J. M. Stern
+
+Log. Univers.
+
+[152] Soltis, D.E., Soltis, P.S.: The Great Tree of Life. Academic Press, (2018)
+[153] Spade, P.V.: Five Texts on the Mediaeval Problem of Universals. Ockham.
+Hackett, Indianapolis, Porphyry, Boethius, Abelard, Duns Scotus (1994)
+[154] Stern, J.M.: Paraconsistent sensitivity analysis for Bayesian signiﬁcance tests.
+Lecture Notes Artiﬁcial Intelligence 3171, 134–143 (2004)
+[155] Stern, J.M.: Cognitive constructivism and the epistemic signiﬁcance of sharp
+statistical hypotheses in natural sciences. Tutorial for MaxEnt Int. Workshop,
+(2008)
+[156] Stern, J.M.: Symmetry, invariance and ontology in physics and statistics. Symmetry 3(3), 611–635 (2011)
+[157] Stern, J.M.: Constructive veriﬁcation, empirical induction, and fallibilist deduction: a threefold contrast. Information 2(4), 635–650 (2011)
+[158] Stern, J.M.: Jacob’s ladder and scientiﬁc ontologies. Cybern. Hum. Knowing
+21(3), 9–43 (2014)
+[159] Stern, J.M.: Continuous versions of Haack’s puzzles: equilibria, eigen-states and
+ontologies. Log. J. IGPL 25(4), 604–631 (2017)
+[160] Stern, J.M., Izbicki, R., Esteves, L.G., Stern, R.B.: Logically consistent hypothesis testing and the hexagon of oppositions. Log. J. IGPL 25(5), 741–757
+(2017)
+[161] Stern, J.M.: Verstehen (causal/ interpretative understanding), Erklären (lawgoverned description/ prediction), and empirical legal studies. JITE J. Institutional Theor. Econo. / Z. für die Gesamte Staatswiss. 174(1), 105–114 (2018)
+[162] Stern, J.M.: Karl Pearson and the logic of science: renouncing causal understanding (the bride) and inverted spinozism. South Am. J. Log. 4(1), 219–252
+(2018)
+[163] Stern, J.M.: Jacob’s ladder: logics of magic, metaphor and metaphysics. Sophia
+59, 365–385 (2020)
+[164] Stern, J.M.: A sharper image: the quest of science and recursive production of
+objective realities. Principia: Int. J. Epistemol. 24(2), 255–297 (2020)
+[165] Stern, J.M.: Color-coded epistemic modes in a Jungian hexagon of opposition.
+In: Beziau, J.Y., Vandoulakis, I. (eds.) The Exoteric Square of Opposition,
+Birkhäuser, pp.105-135 Cham, (2022)
+[166] Stern, J.M.: Dynamic oppositional symmetries for color, jungian and kantian
+categories. Log. Univers. 18, 235–282 (2024)
+[167] Stern, J.M.: e-value: Epistemic Value of Statistical Hypotheses. In: Miodrag
+Lovric (2025, pp.863-867, en.188). International Encyclopedia of Statistical Science, 2nd. ed. Springer, (2025)
+[168] Stern, J.M., Pereira, C.A.B., Lauretto, M.S., Esteves, L.G., Izbicki, R., Stern,
+R.B., Diniz, M.A., Borges, W.S.: The e-value and the Full Bayesian Signiﬁcance
+Test: Logical Properties and Philosophical Consequences. In: Walter Carnielli
+on Reasoning, Paraconsistency, and Probability. Springer’s Outstanding Contributions to Logic, vol.32, pp. 487–524, ch.19, Springer, (2026)
+[169] Stern, R.B.: A Statistical Contribution to Historical Linguistics, Carnegie Mellon University (2015). (Ph.D. thesis)
+[170] Straﬃn, P.: Game Theory and Strategy. Mathematical Association of America
+(1993)
+
+Vol. 20 (2026)
+
+What is (an Organic) Analogy?
+
+445
+
+[171] Swetnam, J.: The Schoole of the Noble and Worthy Science of Defence. Nicholas
+Okes, London, (1617)
+[172] Tautz, J.: Communication Between Honeybees: More than Just a Dance in the
+Dark. Springer, (2022)
+[173] Tarasov, L.V.: Calculus: Basic Concepts for High Schools. MIR, Moscow (1982)
+[174] Tarasov, L.V.: This Amazingly Symmetrical World. MIR, Moscow (1982)
+[175] Tarasov, L.V.: The World is Built on Probability. MIR, Moscow (1984)
+[176] Thompson, A.W.: On Growth and Form, (1942). Reprint by Dover, NY (1992)
+[177] Tóth, L.F.: What the bees know and what they do not know. Bull. Am. Math.
+Soc. 70, 468–481 (1964)
+[178] Veatch, H.: Realism and Nominalism Revisited Marquette Univ. Press, (1954)
+[179] Venttsel, E.S.: Elements of Game Theory. MIR, Moscow (1980)
+[180] Vogel, S.: Cats’ Paws and Catapults: Mechanical Worlds of Nature and People,
+Norton (2000)
+[181] Vogt, K.: Ray path and reﬂection mechanisms in crayﬁsh eyes. Z. für Naturforschung C 32, 466–468 (1977)
+[182] Waal, C.: The history of philosophy conceived as a struggle between nominalism
+and realism. Semiotica 179, 295–313 (2010)
+[183] Watson, J.D., Crick, F.: Molecular structure of nucleic acids: a structure for
+deoxyribose nucleic acid. Nature 171(4356), 737–738 (1953)
+[184] Wegener, A.: The Origin of Continents and Oceans. Dover, NY, (1966). Transl.
+from: Die Entstehung der Kontinente und Ozeane, 1929
+[185] Winslow, C.E.A.: Elements of Applied Microscopy. A Text-Book for Beginners.
+John Wiley, NY (1905)
+[186] Wood, J.G.: Homes without Hands. Harper & Brothers, NY (1866)
+[187] Yaglom, I.: Extraordinary Algebra. MIR, Moscow (1968)
+[188] Yanushkevichius, R.: Stability Characterizations of some Probability Distributions. Lambert, Saarbrücken (2014)
+[189] Zangwill, W.I., Garcia, C.B.: Pathways to Solutions. Fixed Points and Equilibria. Prentice Hall, Englewood Cliﬀ (1981)
+Julio Michael Stern
+IME-USP - Institute of Mathematics and Statistics of the University of São Paulo
+Rua do Matão 1010, Cidade Universitária
+São Paulo 05508-090
+Brazil
+e-mail: jstern@ime.usp.br
+URL: www.ime.usp.br/∼jmstern/
+Received: January 16, 2026.
+Accepted: August 7, 2026.
+
+

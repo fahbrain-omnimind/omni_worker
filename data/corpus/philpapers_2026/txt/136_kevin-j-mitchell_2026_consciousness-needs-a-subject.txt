@@ -1,0 +1,161 @@
+Consciousness needs a subject
+Kevin J. Mitchell1 and Carolyn Dicey Jennings2
+1Institutes of Genetics and Neuroscience, Trinity College Dublin, Dublin 2, Ireland
+2Philosophy Department, University of California Merced, U.S.A.
+
+kevin.mitchell@tcd.ie
+cjennings3@ucmerced.edu
+https://www.kjmitchell.com
+https://faculty.ucmerced.edu/cjennings3/
+
+Abstract
+To be conscious is to be an experiencing subject. This can be defined not in terms
+of computational functions or particular biological substrates, but rather in
+terms of relations: between subject and world, between parts of the subject, and
+through time. These kinds of relations – comprising a conscious mode of being –
+may well be implementable in artificial systems.
+(A commentary on: Seth AK. Conscious artificial intelligence and biological
+naturalism. Behavioral and Brain Sciences. Published online 2025:1-42.
+doi:10.1017/S0140525X25000032)
+
+Main text
+The target article by Seth argues against certain forms of computational
+functionalism, and makes a strong case that current approaches to artificial
+intelligence will not be able to create conscious systems. Seth advocates
+biological naturalism instead, emphasising the importance of embedded,
+embodied agency and arguing that consciousness may arise from our nature as
+living beings with physical bodies. In this we are in agreement. Yet, a critical
+piece of Seth’s argument is missing, without which his conclusions are seriously
+weakened: the nature and role of the conscious subject.
+Seth’s arguments depend on the self—he says conscious experience occurs
+for “self-sustaining organisms” that maintain a “dynamic self/other boundary”—
+1
+
+but what he means by “self” is unclear. It does not appear to be a mere organism,
+since he rejects biological universalism. It appears conceptually distinct from a
+mere body, since he says we experience the self “through, and because of” the
+body. The closest description seems to be “living, flesh and blood ‘beast
+machines.’” A problem with this description is it treats the self as object, rather
+than subject, but the critical form of self with respect to consciousness is surely
+the subject (Prinz, 2011).
+A subject is a living being with interests (e.g., Kawade, 2009; Jennings, 2020;
+Mitchell, 2023). A subject in this sense cannot be simply tacked on to Seth’s
+current view. Motivations and interests are not predictions, and subjects are not
+Markov blankets; we don’t currently have a way to map one on to the other. Seth
+says that “real artificial consciousness might endow a system with its own
+interests”, but it seems to us that subjects with interests are conceptually (and
+evolutionarily) prior to consciousness. Similarly, he says “conscious contents are
+given by the brain’s best guesses,” but does not say to whom they are given.
+Without an account of the self as subject it is unclear what features of our
+biological system are essential for consciousness, and whether those features
+require organic material.
+Subjects like us are “enminded,” and not just embodied. Our conscious
+experiences are grounded in our own ongoing mentality – in what it’s like to be
+us, psychologically. This encompasses all of our memories, attitudes,
+dispositions, habits, policies, projects, and interests that make us who we are.
+When we experience something consciously, we are experiencing being ourselves
+having that experience (Zahavi, 2008). While we can treat ourselves as objects by
+taking an objective stance, subjectivity is fundamentally about an irreducible
+first-person stance, and this is what is central to consciousness (Ganeri, 2012).
+In our view, phenomenal subjectivity rests not on specific computational
+functions or particular biological processes or substrates, but rather on relations.
+These include relations between (i) subject and world, (ii) levels of information
+processing within the subject, and (iii) “temporal parts” of the subject (past and
+future selves).
+Unlike most current AI systems, a conscious agent must be able to both perceive
+the world around it and act on it. Without this interactive relation, all that exists
+is passive and abstract information processing (Dewey, 1896). By contrast, in
+living organisms, perception is highly selective and entails actively making sense
+of what is out in the world, in a way that allows the organism to figure out what
+it should do about it (Mitchell, 2023). Indeed, there is good evidence that
+conscious perception is necessarily structured through the activity of attention
+(e.g. Jennings, 2015).
+2
+
+These capacities are underpinned by neural and cognitive architectures that can
+also be defined in terms of internal functional relations. With respect to
+consciousness, these involve a functional control hierarchy, with higher levels
+operating over representations of (beliefs about) objects in the world, internal
+states, motivations, moods, goals, and other elements of cognition. These kinds of
+relations can be described (and formalised, e.g., in the tradition of cybernetics) in
+abstract terms, without relying on either specific computational
+implementations or bespoke biological substrates.
+The question then is what kinds of relations will go beyond cybernetic functions
+and give rise to or entail subjective experience? The answer, of course, is not
+known, but we can still ask what form we expect it to take. Some candidate
+elements of subjectivity include the organism being able to distinguish itself
+from the world (Jennings, 2020), being able to track its own internal states
+(Nikolova et al., 2022), having valenced internal signals that guide action
+(Godfrey-Smith, 2020; Cleeremans & Tallon-Baudry, 2022), being able to track
+the consequences of its actions (Jékely et al., 2021), making predictions about
+itself and the world (as Seth notes), and having a “phenomenal self-model”
+(Metzinger, 2004). Conscious subjects should have internal representations that
+stand in exploitable relation to things in the world (Shea, 2018), but also some
+sort of reflexivity that imbues these representations with “mineness”.
+Often overlooked in these discussions, however, is that living organisms have
+temporal extension. We live in and through time, and cannot be reduced, as
+selves, to a single temporal moment (Husserl 1964; Mitchell, 2023). All living
+organisms are beings that (literally) incorporate traces of their past experience
+to better propagate themselves into the future (Potter & Mitchell, 2025). In more
+complex organisms selfhood is defined by continuity through time of both the
+physical and the psychological—of us, as persons. We bring our personal history
+to bear in our interactions with the world. We are actively seeking, filtering,
+predicting, and interpreting sensory information in inherently subjective, goaloriented ways.
+Thus, rather than drawing comparisons and contrasts between biological and
+artificial systems, we can see them both as particular instantiations of a more
+abstract set of relational principles. We can zoom out and view consciousness as
+a “mode of being” (Ginsburg & Jablonka, 2020); specifically, of being a subject
+and a self. There seems little reason in principle to think that the relations
+underpinning subjectivity and selfhood could not be operationalized and
+implemented in many different ways in many different substrates, including
+artificial entities. Given the right mode of being in the world, it might very well
+be like something to be such a system.
+3
+
+Financial statement: This work did not involve or rely on any funding.
+Competing interests: The authors declare no competing interests.
+
+References:
+Cleeremans, A., & Tallon-Baudry, C. (2022). Consciousness matters: phenomenal
+experience has functional value. Neuroscience of consciousness, 2022(1), niac007.
+Damasio, A., & Damasio, H. (2023). Feelings are the source of consciousness.
+Neural Computation, 35(3), 277-286.
+Dewey, J. (1896). The reflex arc concept in psychology. Psychological review, 3(4),
+357.
+Ganeri, J. (2012). The self: Naturalism, consciousness, and the first-person stance.
+Oxford University Press.
+Ginsburg, S., & Jablonka, E. (2020). Consciousness as a mode of being. Journal of
+Consciousness Studies, 27(9-10), 148–162.
+Godfrey-Smith, P. (2020). Gradualism and the evolution of experience.
+Philosophical topics, 48(1), 201-220.
+Husserl, E. (1964). The phenomenology of internal time-consciousness. James S.
+Churchill (Trans.). Indiana University Press.
+Jékely, G., Godfrey-Smith, P., & Keijzer, F. (2021). Reafference and the origin of
+the self in early nervous system evolution. Philosophical Transactions of the Royal
+Society B, 376(1821), 20190764.
+Jennings, C. D. (2015). Attention and perceptual organization. Philosophical
+Studies, 172(5), 1265-1278.
+Jennings, C. (2020). The Attending Mind. Cambridge University Press.
+Kawade, Y. (2009). On the nature of the subjectivity of living things. Biosemiotics,
+2(2), 205-220.
+Metzinger, T. (2004) The Subjectivity of Subjective Experience: A
+4
+
+Representationalist Analysis of the First-Person Perspective. Networks 3-4: 3364.
+Mitchell, K.J. (2023). Free Agents – How Evolution Gave Us Free Will. Princeton
+University Press.
+Nikolova, N., Waade, P. T., Friston, K. J., & Allen, M. (2022). What might
+interoceptive inference reveal about consciousness?. Review of Philosophy and
+Psychology, 13(4), 879-906.
+Potter, H. D., & Mitchell, K. J. (2025). Beyond Mechanism—Extending Our
+Concepts of Causation in Neuroscience. European Journal of Neuroscience, 61(5),
+e70064.
+Prinz, J. (2011). Wittgenstein and the Neuroscience of the Self. American
+Philosophical Quarterly, 48(2), 147-160.
+Shea, N. (2018). Representation in cognitive science. Oxford University Press.
+Zahavi, D. (2008). Subjectivity and selfhood: Investigating the first-person
+perspective. MIT press.
+
+5
+
+

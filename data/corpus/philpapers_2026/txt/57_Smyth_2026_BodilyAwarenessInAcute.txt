@@ -1,0 +1,1000 @@
+Phenomenology and the Cognitive Sciences
+https://doi.org/10.1007/s11097-026-10218-3
+
+Bodily awareness in acute fatigue: the corporealization of
+the minimal performative body
+Daniel Reid Smyth1
+Accepted: 16 September 2026
+© The Author(s) 2026
+
+Abstract
+Knowing when one feels fatigued, and not just tired or expending effort, matters.
+When fatigue is correctly detected, physician-patient misunderstandings can be
+avoided (Long et al., 2022), occupational safety concerns can be addressed (Van
+der Linden, 2011), and injury as well as loss of well-being can be reduced in athletic contexts (Saw et al., 2016). Although existing empirical definitions of acute
+fatigue include feeling the need to rest and a mismatch between expended effort
+and actual performance (Behrens et al., 2023; Skau et al., 2021), the present article
+offers an applied phenomenology to enrich such operational definitions. It does so
+by building on Katherine Morris’s study (2019) and suggests that acute fatigue involves a disruptive layering of multiple modalities of bodily awareness. The present
+work introduces these modalities (the transparent, performative, lived, and material
+bodies) before outlining their interaction during what Thomas Fuchs calls corporealization (2002; 2005b). Corporealization during acute fatigue is then analysed as a
+twofold disruption, whereby what I call the minimal performative body both feels
+its movement as wrong and encounters the material body. Appealing to this aspect
+of acute fatigue’s phenomenology, I argue, helps to differentiate it from experiences
+of tiredness, on the one hand, and chronic fatigue and exhaustion, on the other.
+Keywords Fatigue · Performative body · Corporealization · Existential feeling ·
+Applied phenomenology
+
+Daniel Reid Smyth
+smythd22@univie.ac.at
+1
+
+Fakultät für Philosophie und Bildungswissenschaft, Universität Wien, Vienna, Austria
+
+D. R. Smyth
+
+1 Introduction
+Research on the semantics of fatigue indicates that language users consider it a
+distinct concept (Long et al., 2022; Pigeon et al., 2003). Most recently, Long et al.
+(2022) applied a semantic differential technique to four sleep-related terms: tiredness,
+sleepiness, drowsiness, and fatigue. Using a Likert-scaled questionnaire, they plotted
+responses along “a multidimensional semantic space” according to the independent
+dimensions of evaluation, potency, and activity. The evaluative dimension designates
+how positively or negatively appraised a given sensation is. Potency refers to its
+impact (e.g., how heavy, strong, sudden), and activity refers, for example, to how
+involuntary or voluntary the sensation feels (Long et al., 2022, p. 1236). Fatigue was
+found to have a significantly higher negative appraisal than the other three terms, and
+to a lesser extent, a higher degree of potency and activity. They consequently hypothesized that the higher negative connotations of fatigue may be due to its association with “undesirable health states” (p. 1239). Further studies on subjective reports
+amongst marathon runners confirm that tiredness is often positively appraised and
+can indicate a productive training session, whereas acute fatigue involves processes
+of degradation — both in terms of impoverished concentration (e.g., running into
+things) and “faltering form and posture” (Olson et al., 2018, p. 2004).
+Numerous inventories are in place to clinically measure perceived fatigue. To
+date, over 250 such instruments have been documented (Boolani et al., 2019). However, the majority treat fatigue and energy as a unified bipolar mood: fatigue is a lack
+of energy and the latter, an absence of fatigue. The few instruments that track differences in fatigue and energy levels (such as the Profile of Moods Scale) contradict
+this assumption and suggest fatigue has no complementary opposite state to which
+it can transition, such as vigour (Boolani et al., 2019). This unipolar character of
+fatigue largely follows from clinical cases of subjects experiencing fatigue yet feeling energetic, with separate dopamine and serotonin mechanisms thought to explain
+this difference (Boolani et al., 2019).1 Of the small subset of current tools that measure fatigue as a unipolar state, a descriptive definition is often absent. The rating of
+fatigue scale, for instance, measures the magnitude of perceived fatigue but does not
+define it (Micklewright et al., 2017).
+Unified operational definitions of perceived fatigue are consequently the exception, but a promising proposal can be found in Skau et al. (2021; see also Behrens
+et al., 2023). There, the diverse taxonomy of fatigue (including motoric, cognitive,
+state, trait, chronic, and pathological) is addressed through a single set of definitions.2 Under this unified framework the authors first reject defining fatigue as tiredness, weariness or exhaustion, as these other terms are observed as distinct sensations
+(Aaronson et al., 1999; Skau et al., 2021). The authors further argue that defining
+1
+
+“Studies that have measured changes in both energy and fatigue have shown that certain interventions
+impact energy only, while others impact fatigue only” (Boolani et al., 2019, p. 2).
+
+2
+
+Where Skau et al. define state fatigue by its momentary duration (2021, p. 7), I refer to acute fatigue as
+fatigue that is both state-based and induced by an ongoing or recently completed task. The first restriction
+sets aside trait-based varieties, including pathological fatigue (2021, p. 7). The second ties acute fatigue
+to task performance and excludes passive forms. On the active–passive distinction, including concerns
+that passive fatigue is often misdescribed boredom and sleepiness, see Mangin and Pageaux (2025).
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+fatigue relative to other sensations leads to either circularity (e.g., fatigue is tiredness
+and vice versa) or vagueness (e.g., fatigue is weariness and weariness is a conceptual
+primitive) (Skau et al., 2021, p. 6). After reviewing the literature, the authors propose
+that fatigue is more accurately defined as “the sensation of (i) feeling the need for rest
+or (ii) mismatch between effort expended and actual performance” (p. 7).3
+To accommodate the many kinds of fatigue, they generalize their definition: “Sensation of X fatigue is the sensation of (i) feeling the need for X rest, or (ii) mismatch
+between X effort expended and actual X performance”, where X can be any domain
+such as “cognitive/mental/physical/emotional” (Skau et al., 2021, p. 7). In other
+words, the need for rest from a given kind of task (e.g., cognitive) and the mismatch
+between effort and performance in that given task, are what specifies the kind of
+fatigue. Finally, the authors classify differences in state (acute), trait (enduring), and
+prolonged trait (chronic) fatigue. They do so through observable changes in the duration of the phenomenon, as well as changes to the “overall disposition and intensity”
+of fatigability, the effect of which can be measured when comparing changes in performance-loss at different times (p. 5). For example, if performance-loss is greater at
+T2 compared to T1, then fatigability is said to increase. If fatigability remains elevated
+for a longer duration (which they leave open to each field to determine) then it contributes to chronic fatigue (p. 7). These objective changes in fatigability, combined
+with the prolonged duration of the above sensations, define longer-lasting varieties
+of fatigue. Finally, pathological fatigue is characterized as an increase in trait fatigue
+after the onset of a given disease, disorder or trauma (p. 7).
+Rather than restating this operational definition, the present study adds a firstpersonal correlate to better elucidate what a sensed mismatch between effort and performance feels like in lived experience. It also refines Skau et al.’s account by arguing
+that, at least in acute fatigue, this sensed effort-performance mismatch and the need
+for rest are co-constitutive rather than either being independently sufficient. Furthermore, it addresses what empirical work identifies but leaves unexplained, namely
+why fatigue’s affective character skews negative and existential relative to tiredness
+and sleepiness (Long et al., 2022).
+To deliver on these aims, Section 2 introduces Katherine Morris’s “Toward a
+Phenomenology of Fatigue”, which holds that tiredness, acute fatigue, and chronic
+fatigue differ in kind rather than degree (2019, pp. 141, 148). Section 3 argues that
+her rest-sleep contrast misses how tiredness differs from sleepiness and how the urge
+to rest is not unique to acute fatigue. Section 4 then explores counterexamples to
+her claim that fatigue tends to foreground the body while tiredness backgrounds it.
+Extending Morris’s approach, Section 5 introduces additional pre-reflective modalities of bodily awareness, including the transparent, performative, lived, and material
+bodies, as well as the noetic and noematic bodily feelings that constitute them. Drawing on Fuchs’s notion of corporealization and Young’s account of skilful action, Section 6 presents this study’s core proposal: that acute fatigue is the corporealization of
+what I call the minimal performative body. Section 7 extends this account to chronic
+fatigue and exhaustion, and Section 8 concludes.
+3
+
+See also Ream and Richardson (1996) for an earlier definition that links fatigue to a disruption of an
+individual’s “ability to function to their normal capacity” (p. 527).
+
+13
+
+D. R. Smyth
+
+2 Morris’s account of tiredness, fatigue, and chronic fatigue
+Although recent interest in the phenomenology of fatigue is growing (Ciocan, 2025;
+Rathe, 2025; Uljée, 2026; Zeiler et al., 2026), my starting point remains Katherine
+Morris, who proposes the thesis that I will also defend: namely, that tiredness, fatigue
+and chronic fatigue all experientially differ by kind rather than degree (Morris, 2019,
+pp. 141, 148). Morris begins her study with a Sartrean rendering of how everyday
+“objects of the world” indicate tiredness through their manner of appearance (2019, p.
+138). As she quotes from Being and Nothingness, tiredness is apparent, for instance,
+through the “‘difficulty [with which] the words are detached from the undifferentiated ground which they constitute; they may tremble, quiver; their meaning may be
+detached only with effort’” (Morris, 2019, p. 138; Sartre, 1986, p. 332).4 Similarly,
+the road home appears further, longer, harder and the things that usually entice us
+while awake no longer do so when tired. Morris describes this experience of difficulty and indifference as a slackening of “the intentional threads that bind [us] to the
+world” (Morris, 2019, p. 138). For her, the loosening of our intentional grasp on the
+world is not unique to tiredness. Fatigue, but also boredom and many other affective
+experiences, can involve a sense of loosened attachment to the world.
+However, one distinguishing aspect of tiredness is that it involves “a kind of
+background awareness” of the body (Morris, 2019, p. 138). For example, we tacitly
+notice how our “eyelids becom[e] heavy and drooping” while the words on the page
+quiver (Morris, 2019, p. 138). In terms of its temporality, Morris also finds that tiredness has “a lived diurnality, which we might represent as more like ‘early/late’” (pp.
+138–139). While earliness and lateness may differ across cultures (e.g., siestas), she
+claims that tiredness is most often situated within a “passage of time from morning
+to evening” (p. 139). Tiredness, that is, appears when we notice the day is getting late
+(or when it is too early). Lastly, for Morris, tiredness has a bodily resonance, through
+which others can make us tired (e.g., yawning), but their energetic contrast can also
+jolt us out of our own lassitude (p. 139).
+By contrast, Morris finds that the fatigued body is primarily foregrounded. As she
+writes, “one may, in fatigue, quite explicitly feel one’s body as a burden to be hauled
+up the stairs” or else feel an explicit “sensation of effort” (p. 139). The fatigued body
+therefore appears as an object of intentional awareness, which gets further localized
+and objectified through bodily aches “in a way that tiredness usually [does not]” (p.
+140). Fatigue’s action tendency is also distinctive as a bodily project to rest rather
+than sleep. Morris further acknowledges fatigue’s peculiar temporality. It “accumulates over a period of time” and “dissipates according to its own temporality” (Morris,
+2019, p. 140). In its social dimension, Morris suggests fatigue may be less susceptible
+to improvement through being around energetic others (Morris, 2019, p. 140).
+One initial appeal of Morris’s study is how it implies a neat, intermediate placement of fatigue between tiredness and pain. Like tiredness, fatigue can be characterized as a loosening of our engagement with the world. But unlike tiredness, it stands
+out through its foregrounded painful aches and the explicit awareness of the body’s
+4
+
+Morris cites Barnes’s translation of Being and Nothingness (Sartre, 1986). When not quoting Morris, I
+cite the updated Richmond translation (Sartre, 2022).
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+heft. Where tiredness is cyclical and follows the earliness and lateness of the day,
+fatigue’s foregrounded appearance often requires further explanation (p. 140), just
+as we might ask what is wrong after hearing a cry of pain. On such a view, fatigue is
+also straightforwardly distinguished from pain. Pain, too, calls for explanation (of its
+cause), shares an event-like temporality, and is often foregrounded insofar as it hurts.
+But pain is an extremely intense bond with the world, directing us forcefully toward
+its anticipated source, whereas fatigue remains a slackening of that bond and a tendency toward rest. Although we will encounter challenges with Morris’s distinction
+between tiredness and fatigue, its elegance and prima facie persuasiveness deserve
+emphasis.
+Having described tiredness and acute fatigue as different kinds of experience,
+Morris moves to chronic fatigue. She highlights how those suffering from chronic
+fatigue describe their condition metaphorically as inhabiting “a different planet” and
+as losing trust in one’s own body (pp. 141–142). The body in chronic fatigue is even
+“‘personified as an aversive agent’”, whereas in other cases it is presented as numb
+or as a paralysed mass of flesh (p. 142). As for its temporality, chronic fatigue presents as “‘nearly always being present’” (Morris, 2019, p. 142). For many sufferers,
+the temporality of chronic fatigue is marked by an unbridgeable cleft between the
+life that was possible before the onset of their condition and the kind of life possible
+after its onset (p. 143). This leads to a sense of isolation and lack of belonging when
+being amongst others (Morris, 2019, p. 143). Morris closes her study by contrasting
+the lived experiences of chronic fatigue with the stigmatizing cultural assumptions of
+official discourse on the condition (pp. 144–148).
+
+3 The bodily projects to sleep and rest
+I now want to explore some key challenges for Morris’s account, while continuing
+to draw on the empirical definitions above. The first concerns the difference between
+the projects to sleep and rest. Morris distinguishes fatigue and tiredness on account of
+their different action urges or, as she calls them, bodily projects. Tiredness involves
+a “felt need to sleep”, whereas fatigue tends toward rest (p. 137). Some might object
+that sleep is simply a form of rest and so the distinction lacks precision, but this concern can be alleviated. Phenomenologically, the urge to sleep appears as a felt bodily
+expansion that tends toward unconsciousness (Schmitz, 2011, p. 15) and as the loss
+of distance between oneself and things (as “out there”) to the point of indistinction
+(Merleau-Ponty, 2010, p. 144). By contrast, the urge to rest is simply the impulse to
+not undertake a given activity or else to stop one that is already underway. Understood as such, Morris’s introduction of bodily projects promises to reliably separate
+fatigue from tiredness. Her approach is all the more compelling given that the project
+to rest aligns with empirical definitions of acute fatigue as the sensation of feeling
+the need to rest (Behrens et al., 2023, p. 11; Skau et al., 2021; Van der Linden, 2011).
+The challenges for Morris’s account lie elsewhere. For one, feeling tired does not
+mean feeling sleepy. Although Morris is aware that tiredness has multiple meanings
+and that “we should not assume that [these different meanings] are entirely independent”, she nonetheless focuses her analysis on tiredness, understood as a readiness for
+
+13
+
+D. R. Smyth
+
+sleep (2019, p. 137). While I agree with Morris that there are multiple senses of tiredness, my main concern is that we can ordinarily feel tired without feeling sleepy. This
+can be inferred from how concept users distinguish tiredness, fatigue, and sleepiness.
+Long et al., for example, confirm prior studies (Pigeon et al., 2003) by recording
+increases in the negative appraisal of tiredness compared with sleepiness. Tiredness
+consistently ranked as an “intermediate” term between sleepiness and fatigue, with
+researchers hypothesizing that tiredness could be deployed as a “more generic term
+… when an individual is either too tired to be more discriminating or is experiencing
+both sleepiness and fatigue” (Long et al., 2022, p. 1240). Bracketing these hypotheses, sleepiness and tiredness are observed as generally distinct both “in their phenomenology” (i.e., qualitative differences in first-person accounts) as well as in their
+“quantified connotative meaning” (Long et al., 2022, p. 1240; Hossain et al., 2005).5
+Further phenomenological examples corroborate the conclusion that tiredness differs from sleepiness. Consider the experience of reading after dinner. Imagine you
+have been reading for some time; it is getting late, dark out, and the traffic noise has
+dulled. As you continue to read, tiredness appears just as Morris describes it. Your
+tiredness is apparent through the difficulty with which the words are grasped on the
+page and your attention starts to slip (2019, p. 138). In the background you may feel
+your heavy eyelids and a softening grip on the book, and while rereading the same
+passage multiple times, the urge to stop reading begins to appear. Yet despite feeling
+tired you feel no expansive tendency toward unconsciousness, nor a loosening reference to the observable world (Merleau-Ponty, 2010, p. 141). Perhaps it is still hours
+before your usual bedtime. Perhaps you are overstimulated from too much caffeine or
+screentime. Regardless, there is no accompanying need to sleep. Nor are there further
+signs of fatigue. You are not aching or in pain. The heft of the body is not explicitly
+felt. You desire no further explanation for why you feel this way (it is simply late).
+In such cases it seems that tiredness, like acute fatigue, involves only an urge to rest.
+Besides the phenomenological separation between tiredness and sleepiness,
+another challenge for Morris’s account is that the project to rest blurs with other
+action urges, such as the impulse to stop, which some philosophers attribute to feelings of effort (Bermúdez & Massin, 2023). If that is the case, the bodily project to
+rest cannot help us distinguish the phenomenology of fatigue from effort. To get at
+this second challenge, consider Juan Pablo Bermúdez’s work on the feeling of effort
+(2025). Bermúdez’s conclusion is relevant insofar as effort is said to be “the experience of resisting an impulse, which in turn represents an action as costly and to-bestopped” (Bermúdez, 2025, p. 100). During experiences of effort, we feel urged to
+terminate — and take respite from — demanding actions. Yet if rest is understood
+as action-terminating, then fatigue and effort would share the same bodily project.
+This does not mean Morris is wrong to attribute the urge to stop to fatigue. Besides
+support from Skau et al., Dimitri Van der Linden (2011) likewise defines the perception of acute mental fatigue entirely through “an urge to stop exerting further effort
+5
+
+Long et al.’s study was conducted in Australia with English speakers. We need not assume that such
+semantic differences necessarily carry across all linguistic and cultural borders, although German-speaking research also points to a separate definition of the three terms (Müdigkeit, Fatigue, Erschöpfung) on
+account of their non-overlapping symptoms and separate intervention requirements (Matti et al., 2022).
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+on the task” (2011, p. 151).6 The point is that just as non-sleepy tiredness and fatigue
+share action-urges, it is plausible that fatigue and effort do as well.7 The felt need
+to rest may still be central to empirical definitions and it may be an important part
+of fatigue’s phenomenology.8 But it cannot independently determine when one is
+acutely fatigued. Appealing to the urgency of the impulse to stop also cannot settle
+the matter, since any sufficiently intense effort would render that impulse urgent without one thereby being fatigued. In a maximal effort sprint, for example, I might be
+overwhelmed by the urge to slow down or quit, even if I am aware that I am running
+much faster than expected and that the pain will dissipate as soon as I finish.
+
+4 The foreground-background distinction
+Besides the bodily project distinction, Morris suggests another key difference
+between tiredness and acute fatigue. Acute fatigue is said to foreground the body in
+a way that contrasts with the backgrounded body in tiredness (2019, p. 139).9 Bodily
+heft and aches, for example, are experienced more prominently in acute fatigue. Morris does not specify the exact way in which this bodily foregrounding appears. She
+only notes that one may “quite explicitly feel” the fatigued body, while the tired
+body appears through “a kind of background awareness” (2019, pp. 138–139). However, I take there to be two main readings of this foreground-background distinction,
+and I will argue that on either of them foregrounding alone cannot be what defines
+acute fatigue. After considering each reading, I will then attempt to build on Morris’s
+insight that bodily awareness undergoes important modifications in acute fatigue.
+Turning to the foreground-background distinction, we might first take Morris to
+follow the Sartrean division between non-thetic and thetic awareness, which roughly
+approximates to pre-reflective and reflective experience. In Being and Nothingness,
+Sartre illustrates the difference between non-thetic and thetic forms of consciousness
+by describing the situation of counting cigarettes on a table (Sartre, 2022, p. 11).
+Immersed in counting, we intend the number of cigarettes as the object of experience. But as we intend this number, there remains a background consciousness of
+oneself doing the counting. For Sartre, the body is primarily experienced in this tacit,
+non-thetic form of awareness (p. 410). It is a condition of access that is transparently
+6
+
+Van der Linden further specifies that this urge to stop “can be overruled” and depends on many circumstances, such as “the consequences of performing less well (e.g., accidents) or the rewards of upholding
+performance (e.g., in an important chess competition)” (2011, p. 151).
+
+7
+
+It is worth noting that there are other philosophical definitions of effort, which do not conceptually
+depend on the felt impulse to stop, such as comparator- and force-based accounts (Bermúdez & Massin, 2023). Even if such accounts are correct, my claim is that an overwhelming urge to stop may still
+accompany intense effortful action, thereby limiting the distinctiveness of the urge to rest in cases of
+acute fatigue.
+
+8
+
+I analyse the close relationship between rest and acute fatigue elsewhere (Smyth 2026b). My argument
+here is only that the urge to rest does not help us understand when we are fatigued rather than tired.
+
+9
+
+Recall that Morris allows for tiredness to also include the sense in which someone might be tired of
+something. This is a different phenomenon than sleepiness, and it comes closer to boredom or annoyance.
+The latter emotions do include intentional objects. When she describes tiredness as a non-intentional
+background feeling, I take her to be referring to tiredness as a feeling of sleepiness.
+
+13
+
+D. R. Smyth
+
+“everywhere upon the world” and it is that through which the world can appear at all
+(p. 428).
+To say that tiredness appears in the background is therefore to say the tired body
+appears in its usual mode, as the pre-reflective situation we presuppose while intentionally relating to something else. In thetic awareness, consciousness reflectively
+intends the body in a way that parallels how it is for others (e.g., when looking down
+at one’s hands). Yet Sartre insists that we can be reflectively aware of the body without objectifying it as a mere thing among things. This leads him to introduce the
+concept of “the psychological body” (p. 451). Although Morris does not mention it,
+Sartre claims that with the psychological body localized aches and other interoceptive phenomena appear as distinct affective objects (p. 451). The ache we notice in
+reflection, for example, is transcendent but with minimal distance: “It is not yet in
+any way known, because the reflection that seeks to grasp the painful consciousness
+is not yet cognitive” (p. 451). Instead, we intend such aches as specifically localized
+(e.g., a headache) and yet they adhere closely to non-thetic awareness, as what is
+merely “disclosed through [our] pain” (p. 450). Whereas standard bodily transparency involves the body as that through which the world appears (e.g., the sliding
+words and increasingly distant hilltop), one’s aching body is an intimately posited
+affective object that provides just enough reflective distance to suffer (rather than
+thematically grasp) our fatigue.
+This way of reading Morris’s distinction is tempting for numerous reasons. For
+one, it bypasses a strong requirement of reflective positing in which the fatigued
+body would appear as something that I stop and ponder over. The psychological
+body arguably recovers a more minimal reflectiveness that can unfold amidst ongoing actions rather than taking the form of contemplation. For another, the modal
+distinction between transparent and psychological bodies is pragmatic. In practice,
+we can separate the affective objects of our attention (e.g., aching legs) from what
+we experience pre-reflectively (e.g., the nearly invisible body holding the cigarettes
+we count). If tiredness and fatigue were to accurately track this modal distinction, it
+would be reasonable to expect most people to spot the difference between them, at
+least under normal epistemic conditions.
+However, there is another way to read the foreground-background distinction
+that avoids reflection entirely. In Giovanna Colombetti’s view, a bodily feeling can
+occupy the foreground, not because it is an intentional object, but because it presents
+the lived body with high degrees of luminosity (2011, p. 305). As she writes,
+the foreground is not attended as an object — it is not observed or reified in
+any way. In foreground bodily feelings, my body is clearly subjectively lived.
+It comes to the front of awareness, it can even be overwhelming in its physical
+presence, but it does so in a non-mediated and non-reflective way. (p. 304)
+Backgrounded bodily feelings are likewise pre-reflective but “somehow ‘less present’ to oneself” than foregrounded ones (p. 305). Colombetti consequently maintains
+that the two only differ by the relative degree to which backgrounded bodily feelings are “more recessive” and foregrounded bodily feelings, more self-presenting
+(p. 305). Perhaps even more than Sartre, Colombetti’s account enables us to speak of
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+acute fatigue as bodily foregrounded without conceding that it is necessarily reflective or about my heavy and aching body.
+Whichever interpretation we favour, the main challenge is that both readings fail
+to track certain subvarieties of tiredness and fatigue, as the following two counterexamples illustrate.
+First, there is the case of being awoken by a loud noise. After awakening to the
+sound, you may find yourself quickly noticing how late it is and how tired your body
+feels, at which point the body becomes foregrounded. Perhaps such foregrounding is
+only a non-mediated self-intimation of your crusty, squinting eyelids and the diffuse
+urge to not leave bed. Perhaps these bodily feelings even become unpleasant affective objects that you mildly suffer with full reflective awareness. Yet you suffer them,
+because while you desire to sleep, the bodily urge to do so is absent. If we agree that
+we are still speaking of tiredness, then I think we must concede that it, too, can foreground the body in both a pre-reflective and reflective sense.
+Moving in the opposite direction is a second case, whereby fatigue involves primarily backgrounded bodily feelings. Imagine you are lifting a very heavy object.
+It takes all your effort to overcome the resistance of the heavy object, and shortly
+afterward ordinary activities start to feel more effortful than usual. Importantly, this
+felt difficulty is diffuse and lacking any reflective object or localization. It is not that
+new aches in your arms or legs are “popping out”, as when “a cramp in the foot suddenly grab[s] your attention” (Colombetti & Ratcliffe, 2012, p. 146). Instead, there
+is a background feeling of emptiness and lag, which exercise physiologists typically
+explain as central nervous system fatigue (Gandevia, 2001; Tornero-Aguilera et al.,
+2022). Although the ensuing actions become more effortful than expected, this need
+not make you lose trust in the body or feel as though you are inhabiting another
+world, as in chronic fatigue. Endurance athletes are said to experience such central
+nervous system fatigue intermittently, temporarily, and unproblematically after long
+events or stressful competition calendars (Tornero-Aguilera et al., 2022, p. 2). Acute
+fatigue, then, can also appear through backgrounded bodily feeling that recessively
+colours “the affective quality of [the] situation” (Colombetti, 2011, p. 302). Simply
+experiencing the body as foregrounded cannot be what tells us when we are fatigued
+in such cases.
+
+5 Other forms of bodily awareness
+Let us take stock of what Morris’s account offers. Although it suggests a parsimonious placing of acute fatigue between tiredness and pain, fatigue’s distinctive phenomenology remains difficult to parse. The bodily project to rest aligns well with
+empirical accounts of fatigue (Behrens et al., 2023; Skau et al., 2021) but overlaps
+with experiences of tiredness and effort. The distinction between the backgrounded
+and foregrounded body also comes apart through counterexamples. In this section, I
+will build on Morris’s insight that changes in bodily awareness are core to fatigue’s
+phenomenology. Doing so, however, requires new categories to pick out certain
+modalities of pre-reflective experience that were missed in the previous analysis.
+Here, I turn to two additional resources. The first is Colombetti and Ratcliffe’s (2012)
+
+13
+
+D. R. Smyth
+
+nuanced taxonomy of bodily feeling, which they apply to experiences of depersonalization, but which proves highly relevant to the present discussion. The second is
+Legrand’s (2007) conception of the performative body, which includes both a feeling
+of right movement (Legrand & Ravn, 2009, p. 400) and a pre-reflective experience
+of the body as subject-agent (Legrand, 2007, p. 506). Together, these two resources
+supply the axes of the present taxonomy: the first demarcates the kinds of constitutive bodily feeling at play, and the second clarifies the overall modality of the body
+thereby experienced. Through their combination they yield four forms of bodily
+feeling that the rest of this section builds toward. These are: (1) transparent noetic
+feeling, (2) performative noetic feeling, (3) lived noematic feeling, and (4) material
+noematic feeling. With this taxonomy, we can then specify which forms of bodily
+awareness tiredness and acute fatigue each involve.
+Turning to the first, note that when we experience tiredness through quivering
+words and steep hills, bodily transparency involves more than an absence of awareness. Instead, noetic feelings are what provide a specific kind of “aware[ness] of our
+body as that through which we experience the world, namely as a feeling, seeing, and
+touching body” (Colombetti & Ratcliffe, 2012, p. 147). Cases of tiredness in which
+we experience the world through heavy eyes and quivering words on the page are primarily shaped through noetic bodily feelings. Yet despite lacking intentionality, these
+feelings contribute to the body’s enduring presence through an affective colouring of
+experience (Colombetti, 2011, p. 297).
+Colombetti and Ratcliffe address how the lived body (Leib) can also include intentional feelings, which they call “noematic” (2012). In touching one’s own hand, for
+example, the touched hand can be intended as a living organ that feels “pleasant,
+annoying, tickling, surprisingly sudden, painful, etcetera” (Colombetti & Ratcliffe,
+2012, p. 146). In this way, the transparent body that is constituted through noetic feeling becomes intentional through the noematic feeling while remaining a lived body
+(Leib) (2012, p. 146; see also Colombetti, 2014, p. 115). Moreover, such noematic
+feelings “need not be at the centre of our attention” (Colombetti & Ratcliffe, 2012, p.
+146). Although noematic feelings can intend the lived body (Leib) in a similar way
+to Sartre’s psychological body, turning to Colombetti and Ratcliffe’s account helps
+us avoid equating intentionality with reflective positing. For this reason, I will now
+speak only of noematic bodily feeling, as doing so leaves open the degree of attentiveness and foregrounding that accompany the intended kinaesthetic sensations.
+Besides the transparent body, there is also the performative body. Legrand first
+introduces the concept of the performative body (building on Gallagher, 2005, p.
+74) to account for how expert dancers experience the body “pre-reflectively as a
+subject-agent” (2007, p. 506). In the case of skilled dancing, she notes that both the
+transparent and performative bodies are co-present. While the world is experienced
+in a bodily way (qua transparent body), the body is experienced pre-reflectively in a
+non-reifying manner (qua performative body) (2007, p. 507). Neither the transparent
+nor the performative body is here understood as an “intentional object of consciousness” (2007, p. 504; see also Colombetti, 2014, p. 118). The performative body is
+thus constituted by certain kinds of noetic feeling that integrate the experiences of the
+world with experiences of one’s body (Legrand, 2007, p. 510). To describe this difference in noetic feeling between the transparent and performative bodies, consider
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+what Legrand and Ravn call “sensing from inside” (Legrand & Ravn, 2009, p. 400).
+Through this form of awareness, the interviewed ballet dancers “emphasize that their
+steps and movement patterns are guided both and at the same time by their visual
+appearance and an internal sense monitoring whether the movement ‘feels right’” (p.
+400). The authors go on to say that the expression of feeling right was one that “all
+four ballet dancers use on several occasions”, along with continual reference to their
+body placement and alignment as “‘natural’” (p. 400).10
+In Legrand and Ravn’s study, it is primarily the positive pole of movements feeling right or natural (rather than wrong or unnatural) that is reported (p. 400). Because
+such feelings are normative in character, I suggest adding a negative pole to performative noetic feeling. For a movement to feel right, there are implicit conditions of
+success and thus conditions of violation (i.e., non-success). Together, such conditions
+constitute what I will refer to as a movement’s correctness conditions. Correctness
+here carries no commitment to propositional content or direction of fit. The conditions concern how a movement should unfold, whether the standard stems from
+one’s own volition, habituated skill, or social norms. That a movement has violation
+conditions does not by itself show that it can feel off, unnatural, or wrong. However,
+evidence suggesting that violation conditions can be experienced through bodily feeling is found in cases of performance choking. Experiences of faulty movements (e.g.,
+a mistimed golf swing), for instance, are said to include “sensations of imbalance,
+tension, or loss of rhythm” (Toner et al., 2016, p. 304).11
+Although performative noetic feelings are more prevalent in the case of expert
+movers, Legrand allows for some level of performative awareness amongst “normal non-body expert people” (Legrand, 2007, pp. 505–6). To emphasize the greater
+prevalence of this kind of backgrounded performative noetic feeling in daily life, I
+will depart from prior accounts and conceptualize action as broadly skilful whenever
+its correctness conditions feature in the experience of its performance. Non-skilful
+actions, such as casually strolling or picking up groceries, can be done habitually and
+without any sensitivity to foot or grocery item placement. Provided you get some
+fresh air and don’t squish the bananas, these everyday actions are done well enough.
+But when the pavement ices over on the walk or grocery packing becomes a tightly
+regulated art form, those same actions become skilful. Foot placement now ranges
+from feeling sturdy to awkward, and grocery bagging, from orderly to chaotic. Without being “a particularly sharp pre-reflective experience”, the tacitly sensed rightness
+or wrongness of skilful action points to a more minimal form of performative awareness (Legrand, 2007, p. 505).
+10
+
+Anna Petronella Foultier (2023) argues that the performative body can in fact be reflective. She reserves
+the experience of bodily reflection for the kind of performative awareness that occurs when movements
+are “a reenactment and transformation of habitual structures” and are accompanied by an “open and even
+expanded consciousness” during intentionally guided movement (2023, p. 817). I am sympathetic to Foultier’s approach and my contrast is between the pre-intentional nature of performative awareness and intentional reflection as it is conventionally understood.
+11
+
+Even though these negative sensations are often causally linked to the subsequent performance breakdown in choking, recent work contests whether all such sensations necessarily impair execution (Toner
+et al., 2016, pp. 304–6). On the non-disruptiveness of conspicuous bodily feeling see also: Colombetti,
+2014, p. 130.
+
+13
+
+D. R. Smyth
+
+My claim is that acute fatigue, based as it is on a sensed effort-performance mismatch, entails both skilful action and, with it, (at least) minimal performative awareness. To be fatigued and not just tired on a stroll, I must be conscious of the way in
+which I am strolling sub-optimally relative to the movements’ correctness conditions (e.g., ease of movement, speed, ability to walk and talk), thereby making it at
+least minimally skilful. Non-skilful actions consequently remain possible, and during
+them one may well grow tired. What this implies is that I can feel tired during and
+after successful effortful action but not fatigued (for which I would need to sense an
+effort-performance mismatch). Additionally, it rules out that non-skilful actions could
+be experienced as fatiguing, since without experienced correctness conditions there
+is nothing against which movement could register as wrong. The same holds for more
+cognitive actions like typing out reports at the office, where both sentence formation
+and keystrokes are vaguely felt as landing rightly or misfiring. In these more ordinary
+skilful actions, the degrees of performative awareness can vary widely. But it is this
+movement-oriented sensing of the body in skilful action that makes the evaluative
+phenomenology of acute fatigue possible.12
+To signal that I am speaking of this more broadly construed form of performative
+awareness, I will refer to the minimal performative body. Where the performative
+body of expert dancers is notably conspicuous and foregrounded, the minimal performative body retains a normative sensitivity to skilled agentic movement without
+this characteristic vividness.
+Besides transparent and performative noetic feeling and lived noematic feeling,
+there is also material noematic feeling.13 When measuring one’s own waistline, for
+example, noematic feeling implicates what Legrand calls the opaque body, and what
+is otherwise referred to as the material body (Körper).14 The waist is perceptually
+inspected and probed as other bodies are (e.g., as flabby, firm, etc.). Such material
+noematic feelings are what sufferers of chronic fatigue experience when they speak
+of the body as a paralysed mass (Morris, 2019, p. 142).
+Using this synthetic taxonomy of bodily awareness, I now want to discuss where
+tiredness and fatigue sit within this fourfold division.15 Tiredness primarily involves
+12
+
+Precedent for extending performative bodily awareness to everyday contexts can also be found in Mog
+Stapleton’s discussion of the performative body as constitutive of chronic pain experiences (Stapleton,
+2022, p. 157).
+13
+
+Although the term performative body stems from Legrand (2007), Legrand and Ravn (2009) characterize skilful, self-aware movement as “a form of experience of the body which respects the fact that the body
+is not a mere thing” (Legrand & Ravn, 2009, p. 390). Because these skilful experiences differ sharply from
+transparent bodily awareness I take their 2009 work to provide qualitative evidence of what the performative body is like for certain expert dancers.
+14
+
+Legrand maintains a nuanced distinction between the opaque body, which is the body as an intentional
+object, and the material body (Körper), which amounts to the biological body understood from a thirdperson perspective. For her, though, the pre-reflective subject is experienced as a physical subject and so
+is always already a material being (2007, pp. 507–508). When I speak of the material body I am referring
+only to its appearance as objectified, resistant to initiative, and opaque.
+15
+
+To clarify, this class of bodily feeling involves the intended lived body, as when one notices it being
+touched, but it has no corresponding equivalent in performative awareness. This is because the performative body, unlike the lived body, is not intended as an object of consciousness — not even pre-attentively
+(Legrand, 2007, p. 504).
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+transparent noetic feeling. In tiredness, the lived body’s tacit heaviness and slowness
+are the medium through which we experience the world, and the lived body can be
+foregrounded through its degrees of self-luminosity, as well as lived noematic feeling, as when we feel our heavy eyes after being abruptly awoken from sleep. Even
+when tiredness does involve noematic feelings (e.g., one’s unpleasantly strained eyelids), such feelings are about the lived rather than the material body.
+By contrast, in acute fatigue noetic feeling of the performative body constitutes
+how movement feels wrong and awkward. For example, the diffuse non-responsivity
+of the body in central nervous system fatigue is primarily shaped by such feelings.
+Acute fatigue also seems to include lived noematic feeling, as when one’s legs ache
+or one’s back shakes under load through peripheral muscular fatigue. Crucially, and
+in further contrast to tiredness, when the fatigued body appears in an overall highly
+uncoordinated, unresponsive way (Olson et al., 2018), it does so through the kind of
+noematic feeling that the next section argues is specifically material. The fatigued
+body is not only characterized by the felt wrongness of movement but by our awareness of it as an uncoordinated, obstinate thing. Its materiality lies in its opaque manner
+of givenness, where the body’s overall unresponsiveness appears through its objectlike density and resistance. It approaches the kind of melancholic experience Thomas
+Fuchs describes, whereby “the body stands in the way as an obstacle” and is given in
+its “materiality, density, and weight” (2005a, p. 99). Besides “put[ting] up resistance
+to the subject’s intentions and impulses”, this “heavy, solid body” is experienced as
+missing “the sense of the possible”, and thereby differs from the receptiveness of the
+lived body, even as it moves and senses its aches and strains (2005a, p. 99).16 As the
+next section argues, it is this dual configuration of minimally performative and material bodily awareness that helps to phenomenologically distinguish acute fatigue.
+
+6 Corporealization during acute fatigue
+How are we to understand acute fatigue’s double involvement of the performative and
+material bodies? Performative awareness lacks a noematic register, whereas material
+noematic feeling is precisely what renders the body thing-like. This suggests that the
+two forms of awareness pull in opposite directions. One way to resolve this tension
+is through Thomas Fuchs’s account of how the lived body (Leib) can be disrupted by
+the material body (Körper). To be sure, Fuchs does not primarily provide a phenomenology of fatigue. His comments belong to a wider analysis of psychopathologies,
+and fatigue mainly illustrates a broader thesis he carries over to clinical phenomena
+16
+
+Citing the same passage, Colombetti and Ratcliffe argue that Fuchs’s description of melancholic
+embodiment “is not of an object-like body, but of a subjectively lived body whose painful condition fully
+absorbs one’s attention” (2012, p. 149). They contrast such experiences with those of schizophrenia, where
+the “body is experienced as detached, [and] viewed from the outside” (2012, p. 149). My argument is that
+both feelings of detachment and feelings of heaviness, density, and solidity are material noematic feelings.
+The “sense of [one’s] body as the experiencer” might remain intact when feeling one’s body as a resistant
+heaviness (2012, p. 147). But experiencing the body as a heavy mass increasingly devoid of possible
+movement is arguably to feel like an inert thing from the inside — a split perspective between a subject
+who previously inhabited certain motor and cognitive possibilities and a subject who presently does not.
+
+13
+
+D. R. Smyth
+
+such as depression and schizophrenia (Fuchs 2002, 2005a, b). Nonetheless, his central claim is insightful:
+[The material body] appears whenever the lived-body loses its “taken for
+granted” mediating role and becomes obstinate or fragile, as e.g. in the experience of heaviness, fatigue, clumsiness, injury, or illness. The lived-body turns
+into an objective or [material] body whenever we become aware of it in an
+embarrassing way. Lived bodiliness is a constant outward movement, embedded in the environment and participating in the world. Corporeality appears
+whenever this movement is somehow disturbed or disrupted (Fuchs, 2002).
+Then the lived-body is thrown back on itself, materialized or, as I put it, ‘corporealized.’ (Fuchs 2005b, p. 108). Fatigue is thus taken to be among the phenomena that involve a disruptive layering of the lived body and the material body.
+Yet task-induced acute fatigue seems to be “embarrassing”, in Fuchs’s sense, in a
+way that mere clumsiness and other faulty movement phenomena are not. This is
+because acute fatigue registers corporealization alongside a felt need for rest. (Note
+that here the need for rest and effort-performance mismatch are jointly constitutive
+rather than left disjunctive, as in Skau et al.’s definition.) The novice’s clumsiness
+or misjudged movements may share a feeling of wrong movement, but they lack
+any overt urge to rest. At the same time, acute fatigue seems to differ from tiredness
+precisely because the former involves skilful actions that are sensitive to being done
+well or not. In acute fatigue, the body does not just slow down or lose coordination.
+It moves incorrectly and unnaturally in relation to the implicit correctness conditions
+of skilful action.
+Building on Fuchs’s suggestion, I therefore contend that not only the transparent
+body but also the minimal performative body can be corporealized, and that acute
+fatigue is the privileged case of the latter. This provides the phenomenological correlate to Skau et al.’s definition (2021) of a sensed effort-performance mismatch. In
+lived experience, this mismatch appears as performative corporealization, with the
+latter consisting of two features: (i) the minimal performative awareness of wrong
+movement, which is disrupted by (ii) the noematic feeling that now intends the material body as underperforming.17
+Corporealization in acute fatigue is therefore a change in the mode of bodily
+awareness—from minimally performative to material—rather than simply a change
+of position from background to foreground. The difference, as Legrand and Ravn
+put it, “is not a matter of attention but of reification” (2009, p. 393). As noted, foregrounded bodily feeling is characteristic of expert performative awareness rather than
+definitional of the minimal performative body, which non-experts (and perhaps also
+inattentive experts) possess more recessively. As with central nervous system fatigue,
+the wrongness of movement can materialize into a breaking-down body with lesser
+17
+
+In skilled dancing, transparent and performative noetic feelings are co-present and complementary. The
+world is experienced bodily while the body is experienced as subject-agent (Legrand, 2007, p. 507). In
+performative corporealization, no such complementary integration occurs. Instead, the performative sensing of wrong movement is disrupted, rather than completed, by the noematic feeling that presents the body
+as an underperforming thing.
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+degrees of luminosity. What distinguishes this diffuse case from a mere increase in
+felt effort is that its lag and emptiness register the violated correctness conditions of
+the actions underway. Movements are not simply harder to perform but fail to land as
+they should, arriving imprecisely and without their usual fluency. That acute mental
+fatigue is also susceptible to performative corporealization is suggested by how it is
+understood as a less organized “attentional focusing” (Van der Linden, 2011, p. 155)
+and a difficulty in “blocking out distracting stimuli” (Faber et al., 2012, p. 9). Here,
+too, effort-performance mismatch may be corporealized, with thinking experienced
+as a disjointed and obstinate process that becomes further intended as an underperforming thing.
+To clarify the concrete mode of givenness in performative corporealization, I turn
+to Iris Marion Young’s account of the disruptive layering of the lived and material
+bodies in feminine body comportment. In borrowing from Young, however, I do not
+wish to cover over the critical feminist thrust of her work. The categories she develops are meant to be diagnostic of the problematic ways in which feminine bodies
+are socially habituated. Still, her descriptive categories are illuminating for our purposes insofar as they describe changes in bodily awareness that unfold during skilful
+action: from throwing, running, climbing, and hitting (Young, 1980, p. 143), to lifting
+heavy things (p. 142), and jumping (p. 144). In all these actions, her concern is with
+how feminine comportment fails to put “the whole body … into fluid and directed
+motion”, and to move in a way that “follow[s] through in the direction of [one’s]
+intention” (p. 143). In this sense Young highlights a doubly constrained form of
+movement breakdown. The skilful action carries both its own correctness conditions
+of the task (e.g., throwing quickly and to target) and an expected gendered style that
+undermines them (e.g., throwing from the arm rather than the whole body). Although
+Young does not label such disruptions as corporealization, she points to instances of
+the latter when claiming that “[f]or feminine bodily existence … the body is often
+lived as a thing which is other than it”, and as a “fragile encumbrance” (1980, pp.
+148, 144).18 In what follows, I take her study of the three interlocking moments of
+“ambiguous transcendence, an inhibited intentionality, and a discontinuous [spatial]
+unity” to be about gendered performative corporealization, and I argue that acute
+fatigue, in limited respects, shares this phenomenological structure (1980, p. 145). As
+for their distinctness: in feminine body comportment, the wrongness of movement
+and the appearance of the material body issue from a socially habituated style and,
+unlike in acute fatigue, are not necessarily accompanied by a felt need for rest.
+Young’s first concept of ambiguous transcendence provides an initial description
+of how the lived body becomes disrupted. She develops this concept by following
+Merleau-Ponty in locating subjectivity through our bodily orientation (1980, p. 140).
+While subjectivity emerges through the way in which motor action and perception
+realize possibilities that take one beyond what is given in the present, feminine body
+comportment is “overlaid with immanence” (1980, p. 145). Immanence here names
+18
+
+Young is explicit that how she describes feminine bodily experience is not universal. Rather it contingently appears “for women situated in contemporary advanced industrial, urban, and commercial society”
+(1980, pp. 139–140). Whether Young is successful in her claims to generality is another matter (i.e., given
+her neglect of race, class, sexual orientation and other sociocultural considerations).
+
+13
+
+D. R. Smyth
+
+the confinement of the body to its given position, in contrast with the outward movement of transcendence. In the case of throwing (i.e., skilful action), the arm moves
+outward to actualize the task of releasing the ball, while the trunk and hips remain
+disengaged and “rooted” (1980, p. 146). In fatigue as well, skilful actions are overlaid with immanence. Instead of effortlessly grasping a heavy object, one’s legs push
+while the fatigued back bends under load. We attempt to surpass our situation and yet
+are rooted back down into it. Ambiguous transcendence thus provides a way of capturing how in acute fatigue we feel the breakdown of typing reports at the office (de
+Jong et al., 2020) or running into things during training (Olson et al., 2018). Despite
+our intensive efforts, the corporealized minimal performative body appears as a mere
+thing having lost its momentum. Although Young does not speak in such terms, we
+can understand ambiguous transcendence as a dynamic confrontation between the
+minimal performative body and the material body.
+Besides ambiguous transcendence, Young speaks of “inhibited intentionality”
+(1980, p. 147). Rather than just feeling that one cannot do a certain task, she argues
+that we can be aware of certain abilities that are “merely … the possibilities of ‘someone,’ and not truly [one’s own] possibilities” (Young, 1980, p. 147). By not identifying with our own projected possibilities, Young claims that this form of intentionality
+simultaneously expresses an “‘I cannot’” (1980, p. 147). For instance, there is an
+anonymous I can that is transformed into a personal I cannot when throwing a ball.
+The ball appears simultaneously as an object that someone in general could throw
+quickly and accurately, yet as only clumsily throwable for the feminized I. In fatigue,
+inhibited intentionality fuses a general capability with a personal incapability. Presently failing intentions inhibit what were, and in general remain, possibilities of the
+body. When climbing a hill or reading a book while fatigued, we may experience the
+hill as increasingly not climbable and the book as not readable. Quickly climbing the
+hill and competently reading the book were possible in general and maybe even ought
+to be possible. But now they are only possible in a degraded manner, as generalities
+of material bodies, which one’s own currently lacks.19 By contrast, the tired body
+appears through the steepness of the hill without being corporealized and without
+an effort-performance mismatch. Inhibited intentionality, however, disrupts performative awareness by overlaying the broken down general capacities of the material
+body.
+In Young’s last moment, the increased unpleasantness of corporealization is captured through the body’s spatial discontinuity. She describes such discontinuity as
+“an existential enclosure” through which space appears untraversable (1980, p. 149).
+In her words,
+Feminine existence appears to posit an existential enclosure between herself
+and the space surrounding her, in such a way that the space which belongs to
+her and is available to her grasp and manipulation is constricted, and the space
+beyond is not available to her movement. (pp. 149–150)
+19
+
+This attitude of dis-identification through inhibited intentionality echoes some of Husserl’s own reflections on bodily incapacity: “I can … have a nervous disorder and lose the mastery of my limbs; ‘I can’t do
+it.’ In that respect I have become an other” (Husserl, 1989, p. 266).
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+With the concept of existential enclosure, Young illuminates the spatiality accompanying the temporal process of breaking down. Transforming into a mode that resembles inert physical objects rooted into their own locations, the movement-oriented
+space of the lived body is disrupted. Instead, bodily awareness becomes materialized
+by feeling increasingly stuck over here and separated from the over there. Existential
+enclosure thus affects the very spatiality of the performative body, as the latter loses
+its bearings in the otherwise fluid kinaesthetic sensations guiding its movements. In
+action, tiredness is sedating, but there is a sense in which we are simply here. We are
+not cut off from over there. In fatigue, existential enclosure makes our movements
+feel like they are in the wrong place, heading in the wrong direction, or not landing
+where they should. Moreover, such enclosure corporealizes the minimal performative body by modifying presence into thing-like inertness.
+Taken together, these three moments of ambiguous transcendence, inhibited intentionality, and existential enclosure further our schematic analysis of how the performative body can be corporealized in fatigue. This deepened account reveals the
+phenomenological structures behind acute fatigue’s sensed effort-performance mismatch (Skau et al., 2021), how the performative awareness of fatigue differs from
+tiredness, and how these descriptions can apply to various subvarieties (e.g., cognitive, motoric, central fatigue). These normatively laden disruptions also indicate why
+fatigue’s affective profile is more negative than that of tiredness (Long et al., 2022).
+Tiredness is lived primarily through the transparent body and without the same concerning (or potentially embarrassing) awareness of underperformance that accompanies performative corporealization during acute fatigue.
+
+7 Chronic fatigue and exhaustion
+How does the present account of acute fatigue relate to chronic fatigue and exhaustion? Recall that Morris takes chronic fatigue as a distinctive kind of experience,
+marked by feelings of inhabiting a different planet, social isolation, and lost trust
+in one’s own body. Recreational marathon runners similarly single out exhaustion
+as an experience distinct from tiredness and fatigue (Olson et al., 2018). This last
+section addresses how the present definition of acute fatigue accommodates these
+descriptions. Based on them we can argue that chronic fatigue and exhaustion differ
+from tiredness and acute fatigue through their distinct change in what Ratcliffe calls
+“existential feeling” (Ratcliffe, 2012, 2020).
+For Ratcliffe, existential feeling denotes “all-enveloping” feelings, in particular
+the sense of reality and belonging (2020, p. 250). Importantly, existential feelings are
+not intentional states directed at this or that object. They are pre-intentional ways of
+finding oneself in the world, shaping the form of experience that intentional states
+presuppose (Ratcliffe, 2012, p. 37). To understand the kind of experience he has in
+mind, consider his example of someone losing their job:
+Consider someone who loses an important life project, such as a job that she
+cares deeply about. She might complain that … a whole system of practical
+significance focused around the job has collapsed, and the entities it involves
+
+13
+
+D. R. Smyth
+
+therefore look somehow strange. However, the relevant experience could take
+two different forms. In one scenario, the person loses many instances of experienced possibility. She retains the capacity to encounter things as offering p,
+even though many things that used to incorporate p now lack it. An alternative
+scenario is where loss of the job somehow precipitates an existential change,
+where … her world no longer includes the possibility of anything offering p.
+Only the latter is what I would call a change in existential feeling, a change in
+the form of experience that intentional states presuppose. (Ratcliffe, 2012, p.
+37)
+If we are to understand existential feeling along these lines, then tiredness and acute
+fatigue would not themselves be changes in existential feeling. Tiredness and acute
+fatigue involve only the loss of token instances of experienced possibilities, such
+as the possibility of finishing a book or winning a race. When fatigue interrupts our
+chances of finishing a book, we may continue a few pages or paragraphs more. When
+it disrupts our ability to proficiently climb the hill, we may still struggle to the peak,
+just with far more effort, at a slower pace and, as I have argued elsewhere, with the
+constrained ability to playfully engage in the current activity (Smyth, 2026a).
+Yet chronic fatigue and exhaustion are elsewhere described as the loss of reality
+(Zeiler et al., 2026, p. 14) and inhabiting “a different planet” (Morris, 2019, p. 141).
+That is to say, they involve changes in existential feeling. Gone is the very possibility
+of fully belonging to the world as others do or as one did before the onset of chronic
+fatigue syndrome. Gone, too, is the possibility of trusting one’s body and of identifying with the frequent disruptions experienced at the level of the transparent body.
+Exhaustion, whether transient (as in the depleted marathon runner) or prolonged,
+likewise involves the loss of the very possibility of action. When one is exhausted,
+the world appears categorically untraversable. There are only undoable tasks, unclimbable hills, and so forth. While exhaustion lasts, nothing offers itself as doable
+or performable.
+By contrast, if we did not already minimally belong to the world and its possibilities, acute fatigue and tiredness would be foreclosed. The world slows down in
+tiredness, and the body begins to waver in fatigue. But the world is not at a standstill,
+and we do not simply collapse (Smyth 2026b, p. 432). Tiredness and acute fatigue
+thus presuppose a certain sense of ability. Hence, when Morris claims that fatigue
+involves a general existential feeling associated with our “lapse or diminishment in
+our capacity to go on” (2019, p. 138), we can argue that acute fatigue is not itself an
+existential feeling but presupposes one. The existential feeling against which fatigue
+unfolds is its minimally preserved sense of ability.20 A diminished sense of ability,
+in other words, is not yet a different kind of feeling; it is the same existential feeling
+in weakened form. Although the existential feeling of ability captures neither the
+unique phenomenology of tiredness nor of acute fatigue, it helps to separate them
+from chronic fatigue and exhaustion. In terms of empirical definitions, the distinctive
+change of existential feeling in chronic fatigue provides a phenomenological descrip20
+
+For a treatment of the sense of ability as an existential feeling, see Schmid (2011, p. 230).
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+tion of what Skau et al. call the ongoing “overall disposition” to fatigue in its chronic
+and trait-based forms (2021, p. 7).
+
+8 Conclusion
+This paper defines acute fatigue as the corporealization of the minimal performative
+body. In closing, I want to defend the decision to build on what is otherwise a passing
+claim in Fuchs. Consider first that corporealization fits well with Long et al.’s hypothesis that fatigue may be frequently associated “with pathological experiences” (2022,
+p. 1239). The breakdown and wrongness of movements in performative awareness
+are an initial indication that fatigue feels like something is going wrong with the body
+without thereby leading us to believe we are ill. At the same time, Fuchs’s discussion of corporealization explicitly understands the material body as the “anatomical
+object of physiology and medicine” (2002; 2005b, p. 108). Historical accounts also
+tie fatigue to an increasingly medicalized body. Georges Vigarello links its emergence as a distinctive feeling to the “electric fluid” economy of 18th-century Europe
+(2022, p. 106).21 Robert Hockey similarly notes an “explicit association of fatigue
+with energy loss” at the end of the 19th century (2013, p. 45). The cultural prominence of fatigue and medicalized conceptions of the material body would thus appear
+to be co-emergent.22 The layering of subject and object in corporealization is also
+gestured at in applied phenomenological research on chronic fatigue. Patients with
+severe cancer-related fatigue, for example, describe the fatigued body as at once “a
+subject that is feeling and acting and as a material object that is felt and observed,”
+with the two “closely intertwined” (Bootsma et al., 2023, p. 509). These convergent
+considerations support the claim that acute fatigue implicates the material body and
+allow us to differentiate acute from chronic experiences by distinguishing between
+the minimal performative body that is operative during acute fatigue and the change
+in existential feeling that occurs in chronic cases.
+Looking ahead, the present study opens onto questions concerning how gendered
+bodily comportment and fatigue may intertwine. Whether and how perceived fatigue
+differs by gender remains underexamined. Existing studies on sex-based differences in physical performance, for instance, indicate that female exercise subjects
+demonstrate smaller drops in performance during certain isometric contraction tests
+(Hunter, 2014, p. 780), yet there are also suggestions that pain perceptions during
+exercise may nonetheless be higher for women (Hunter, 2014, p. 782). How internalized norms and cultural assumptions about gender-based capacities interact with
+perceived fatigue against this complex empirical backdrop is unresolved. As future
+21
+
+Georges Vigarello puts forth a broader thesis about the historical emergence of fatigue, which goes
+beyond the scope of the present paper. In particular, he points to “a radically transformed way of life”
+that begins much earlier, from the 1600s onward, and revolved around a professionalized military culture,
+urbanization, and repressive courtly etiquette (Vigarello, 2022, pp. 53–64).
+22
+
+In terms of etymology, the verb fatigare (‘to weary’) may derive from a root meaning to split open (de
+Vaan, 2008, p. 205). This would conveniently align with both its connection to the material body and its
+current technical usage, as when materials lose their load tolerance by fatiguing. The author wishes to
+thank an anonymous reviewer for suggesting this etymology.
+
+13
+
+D. R. Smyth
+
+studies close this gap, we may better understand how corporealization processes,
+such as those arising through the oppressive expectations to which certain social
+identities are subjected, interact with corporealization in acute fatigue, and whether
+the former may further exacerbate the negative affect of the latter.
+Finally, this paper also set out to facilitate the first-person discernment of acute
+fatigue to avoid risks, such as physician-patient misunderstanding (Long et al., 2022),
+compromised occupational safety (Van der Linden, 2011), and overtraining and
+reduced well-being in athletic contexts (Saw et al., 2016). Toward that end it clarifies
+how fatigue’s sensed mismatch between effort and performance can be experienced,
+and how that mismatch distinguishes fatigue from the effort and tiredness that otherwise share the urge to rest. It is thus a work of applied phenomenology — one that
+seeks to enrich empirical definitions, to reframe them, and to do so by investigating
+the given structures of phenomena, as they appear in experiential life (Zahavi, 2021).
+Acknowledgements The author wishes to thank Dr. Hans Bernhard Schmid and Dr. Sandra Lehmann for
+their patient feedback on earlier drafts of this manuscript, Dr. Susanne Ravn for her insightful discussions
+on bodily awareness in sport, Hiina Kanna Smyth for her encouragement throughout the drafting process,
+as well as the anonymous referees and handling editor for their many constructive comments during revisions. At the revision stage, LLM assistance (Anthropic, Claude) was used for copy-editing and citation
+formatting.
+Author contribution The author conducted all research and writing of this article.
+Funding Open access funding provided by University of Vienna. No funds, grants, or other support was
+received for the research and writing of this article.
+Data availability Not applicable. This article contains no data sets or supplementary materials. All citations are included in the text.
+
+Declarations
+Ethical approval Not applicable. The author has signed and abides by the Vienna Doctoral School of Philosophy’s regulations for good scientific practice.
+Informed consent Not applicable. No research subjects were involved.
+Competing interests The author has no relevant financial or non-financial interests to disclose.
+Statement regarding research involving human participants and/or animals The research of this article
+did not include any human or animal participants.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License,
+which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long
+as you give appropriate credit to the original author(s) and the source, provide a link to the Creative
+Commons licence, and indicate if changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line
+to the material. If material is not included in the article’s Creative Commons licence and your intended use
+is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission
+directly from the copyright holder. To view a copy of this licence, visit ​h​t​t​p​:​/​/​c​r​e​a​t​i​v​e​c​o​m​m​o​n​s​.​o​r​g​/​l​i​c​e​n​
+s​e​s​/​b​y​/​4​.​0​/​​​​.​​
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+
+References
+Aaronson, L. S., Teel, C. S., Cassmeyer, V., Neuberger, G. B., Pallikkathayil, L., Pierce, J., Press, A. N.,
+Williams, P. D., & Wingate, A. (1999). Defining and measuring fatigue. Image: The Journal of Nursing Scholarship, 31(1), 45–50.
+Behrens, M., Gube, M., Chaabene, H., Prieske, O., Zenon, A., Broscheid, K. C., Schega, L., Husmann, F.,
+& Weippert, M. (2023). Fatigue and human performance: An updated framework. Sports Medicine,
+53(1), 7–31. https://doi.org/10.1007/s40279-022-01748-2
+Bermúdez, J. P. (2025). What is the feeling of effort about? Australasian Journal of Philosophy, 103(1),
+88–105. https://doi​.org/10.108​0/00048402.​2024.235​1208
+Bermúdez, J. P., & Massin, O. (2023). Efforts and their feelings. Philosophy Compass, 18(1), e12894.
+https://doi.org/10.1111/phc3.12894
+Boolani, A., O’Connor, P. J., Reid, J., Ma, S., & Mondal, S. (2019). Predictors of feelings of energy differ
+from predictors of fatigue. Fatigue: Biomedicine Health and Behavior, 7(1), 12–28. ​h​t​t​p​s​​:​/​/​d​o​i​​.​o​r​g​/​​
+1​0​.​1​​0​8​0​/​2​1​6​4​1​8​4​6​.​2​0​1​8​.​1​5​5​8​7​3​3​​​​
+Bootsma, T. I., Schellekens, M. P. J., van Woezik, R. A. M., van der Lee, M. L., & Slatman, J. (2023).
+Navigating severe chronic cancer-related fatigue: An interpretative phenomenological analysis. Psychology and Health, 38(4), 494–517. https://doi​.org/10.108​0/08870446.​2021.197​3468
+Ciocan, C. (2025). The phenomenology of fatigue: Effort, powerlessness, and the temporal sedimentation of
+weariness. Phenomenology and the Cognitive Sciences. https://doi.org/10.1007/s11097-025-10115-1
+Colombetti, G. (2011). Varieties of pre-reflective self-awareness: Foreground and background bodily feelings in emotion experience. Inquiry : An Interdisciplinary Journal Of Philosophy, 54(3), 293–313.
+https://doi.org/10.1080/0020174X.2011.575003
+Colombetti, G. (2014). The feeling body: Affective science meets the enactive mind. MIT Press.
+Colombetti, G., & Ratcliffe, M. (2012). Bodily feeling in depersonalization: A phenomenological account.
+Emotion Review, 4(2), 145–150. https://doi.org/10.1177/1754073911430131
+de Jong, M., Bonvanie, A. M., Jolij, J., & Lorist, M. M. (2020). Dynamics in typewriting performance
+reflect mental fatigue during real-life office work. Plos One, 15(10), e0239984. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​
+3​7​1​/​j​o​u​r​n​a​l​.​p​o​n​e​.​0​2​3​9​9​8​4​​​​
+Faber, L. G., Maurits, N. M., & Lorist, M. M. (2012). Mental fatigue affects visual selective attention. Plos
+One, 7(10), e48073. https://doi.org/10.1371/journal.pone.0048073
+Foultier, A. P. (2023). Letting the body find its way: Skills, expertise, and bodily reflection. Phenomenology and the Cognitive Sciences, 22(4), 799–820. https://doi.org/10.1007/s11097-022-09838-2
+Fuchs, T. (2002). The phenomenology of shame, guilt and the body in body dysmorphic disorder and
+depression. Journal of Phenomenological Psychology, 33(2), 223–243. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​1​6​3​/​1​5​6​
+9​1​6​2​0​2​6​0​6​2​2​9​0​3​​​​
+Fuchs, T. (2005a). Corporealized and disembodied minds: A phenomenological view of the body in melancholia and schizophrenia. Philosophy Psychiatry and Psychology, 12(2), 95–107.
+Fuchs, T. (2005b). The phenomenology of body, space and time in depression. Comprendre, 15, 108–121.
+Gallagher, S. (2005). How the body shapes the mind. Oxford University Press.
+Gandevia, S. C. (2001). Spinal and supraspinal factors in human muscle fatigue. Physiological Reviews,
+81(4), 1725–1789. https://doi​.org/10.115​2/physrev.2​001.81.4​.1725
+Hockey, R. (2013). The psychology of fatigue: Work, effort and control. Cambridge University Press.
+Hossain, J. L., Ahmad, P., Reinish, L. W., Kayumov, L., Hossain, N. K., & Shapiro, C. M. (2005). Subjective fatigue and subjective sleepiness: Two independent consequences of sleep disorders? Journal of
+Sleep Research, 14(3), 245–253. https://doi.org/10.1111/j.1365-2869.2005.​00​466​.x
+Hunter, S. K. (2014). Sex differences in human fatigability: Mechanisms and insight to physiological
+responses. Acta Physiologica, 210(4), 768–789. https://doi.org/10.1111/apha.12234
+Husserl, E. (1989). Ideas pertaining to a pure phenomenology and to a phenomenological philosophy:
+Second book. In Rojcewicz, R., & Schuwer, A. (Eds.), Studies in the phenomenology of constitution
+(Vol. 3). Kluwer Academic.
+Legrand, D. (2007). Pre-reflective self-consciousness: On being bodily in the world. Janus Head, 9(2),
+493–519. https://doi.org/10.5840/jh20069214
+Legrand, D., & Ravn, S. (2009). Perceiving subjectivity in bodily movement: The case of dancers. Phenomenology and the Cognitive Sciences, 8(3), 389–408. https://doi.org/10.1007/s11097-009-9135-5
+
+13
+
+D. R. Smyth
+Long, H., Scott, H., & Lack, L. (2022). Sleepy, tired, drowsy, and fatigue have different meanings for a
+university student sample. Journal of Clinical Sleep Medicine, 18(5), 1235–1241. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​
+.​5​6​6​4​/​j​c​s​m​.​9​7​8​0​​​​
+Mangin, T., & Pageaux, B. (2025). It is time to stop using the terminology "passive fatigue". Motivation
+Science, 11(1), 125–132. https://doi.org/10.1037/mot0000375
+Matti, N., Mauczok, C., & Specht, M. B. (2022). Müdigkeit, Fatigue und Erschöpfung: Alles das Gleiche oder Ausprägungen eines Kontinuums? – Ein Diskussionsanstoß. Somnologie, 26(3), 187–198.
+https://doi.org/10.1007/s11818-022-00372-6
+Merleau-Ponty, M. (2010). Institution and passivity: Course notes from the Collège de France (1954–
+1955) (Leonard Lawlor and Heath Massey, Trans.). Northwestern University Press.
+Micklewright, D., St Clair Gibson, A., Gladwell, V., & Al Salman, A. (2017). Development and validity
+of the Rating-of-Fatigue Scale. Sports Medicine, 47(11), 2375–2393. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​s​4​0​2​7​
+9​-​0​1​7​-​0​7​1​1​-​5​​​​
+Morris, K. J. (2019). Toward a phenomenology of fatigue. In E. Dahl, C. Falke, and T. E. Eriksen (Eds.), Phenomenology of the broken body (pp. 137–153). Routledge. https://doi.org/10.4324/9780429462542-9
+Olson, K., Zimka, O., Pasiorowski, A., Iregbu, S., & Boulé, N. G. (2018). Tiredness, fatigue, and exhaustion as perceived by recreational marathon runners. Qualitative Health Research, 28(13), 1997–2010.
+https://doi.org/10.1177/1049732318785360
+Pigeon, W. R., Sateia, M. J., & Ferguson, R. J. (2003). Distinguishing between excessive daytime sleepiness and fatigue: Toward improved detection and treatment. Journal of Psychosomatic Research,
+54(1), 61–69. https://doi.org/10.1016/S0022-3999(02)00542-1
+Ratcliffe, M. (2012). The phenomenology of existential feeling. In J. Fingerhut, & S. Marienberg (Eds.),
+Feelings of being alive (pp. 23–54). De Gruyter.
+Ratcliffe, M. (2020). Existential feelings. In T. Szanto, & H. Landweer (Eds.), The Routledge handbook of
+phenomenology of emotion (pp. 250–261). Routledge.
+Rathe, K. J. (2025). Tired of trying to belong: On affective justice and fatigue. Philosophy and Social Criticism. https://doi.org/10.1177/01914537251334948
+Ream, E., & Richardson, A. (1996). Fatigue: A concept analysis. International Journal of Nursing Studies,
+33(5), 519–529. https://doi.org/10.1016/0020-7489(96)00004-1
+Sartre, J. P. (2022). Being and nothingness: An essay in phenomenological ontology (Sarah Richmond
+,Trans.). Routledge. https://doi.org/10.4324/9780429434013
+Sartre, J. P. (1986). Being and nothingness: An essay on phenomenological ontology (H.E. Barnes, Trans.;
+Reprint). Methuen and Co. Ltd.
+Saw, A. E., Main, L. C., & Gastin, P. B. (2016). Monitoring the athlete training response: Subjective selfreported measures trump commonly used objective measures — a systematic review. British Journal
+of Sports Medicine, 50(5), 281–291. https://doi.org/10.1136/bjsports-2015-094758
+Schmid, H. B. (2011). Feeling up to it – The sense of ability in the phenomenology of action. In A. Konzelmann Ziv, K. Lehrer, and H. B. Schmid (Eds.), Self-evaluation: Affective and social grounds of
+intentionality (pp. 215–236). Springer. https://doi.org/10.1007/978-94-007-1266-9_12
+Schmitz, H. (2011). Der Leib. De Gruyter. https://doi.org/10.1515/9783110250992
+Skau, S., Sundberg, K., & Kuhn, H. G. (2021). A proposal for a unifying set of definitions of fatigue.
+Frontiers in Psychology, 12, 739764. https://doi.org/10.3389/fpsyg.2021.739764
+Smyth, D. R. (2026a). When games become work: fatigue and the vanishing player. Journal of the Philosophy of Sport, 1–18. https://doi​.org/10.108​0/00948705.​2026.267​6177
+Smyth, D. R. (2026b). Acute Fatigue and Embodied Space: towards a Phenomenology of Existential Surface. Research in Phenomenology, 56(3), 415–440. https://doi.org/10.1163/15691640-12341607
+Stapleton, M. (2022). Pain as the performative body. Constructivist Foundations, 17(2), 156–158. ​h​t​t​p​s​:​/​
+/​c​o​n​s​t​r​u​c​t​i​v​i​s​t​.​i​n​f​o​/​1​7​/​2​/​1​5​6​​​​
+Toner, J., Montero, B. G., & Moran, A. (2016). Reflective and prereflective bodily awareness in skilled
+action. Psychology of Consciousness: Theory Research and Practice, 3(4), 303–315. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​
+/​1​0​.​1​0​3​7​/​c​n​s​0​0​0​0​0​9​0​​​​
+Tornero-Aguilera, J. F., Jimenez-Morcillo, J., Rubio-Zarapuz, A., & Clemente-Suárez, V. J. (2022). Central and peripheral fatigue in physical exercise explained: A narrative review. International Journal of
+Environmental Research and Public Health, 19(7). https://doi.org/10.3390/ijerph19073909
+Uljée, R. (2026). Ontological fatigue and the limits of phenomenology in early Levinas. Angelaki, 31(2),
+85–94. https:​​​//d​oi.​or​g/10​.1080/09​6972​5X.20​26.2651637
+de Vaan, M. (2008). Etymological dictionary of Latin and the other Italic languages. Brill.
+
+13
+
+Bodily awareness in acute fatigue: the corporealization of the minimal…
+Van der Linden, D. (2011). The urge to stop: The cognitive and biological nature of acute mental fatigue. In
+P. L. Ackerman (Ed.), Cognitive fatigue: Multidisciplinary perspectives on current research and future
+applications (pp. 149–164). American Psychological Association. https://doi.org/10.1037/12343-007
+Vigarello, G. (2022). A history of fatigue: From the Middle Ages to the present (N. Erber, Trans.; English
+edition). Polity Press.
+Young, I. M. (1980). Throwing like a girl: A phenomenology of feminine body comportment, motility and
+spatiality. Human Studies, 3, 137–156. https://doi.org/10.1007/BF02331805
+Zahavi, D. (2021). Applied phenomenology: Why it is safe to ignore the epoché. Continental Philosophy
+Review, 54(2), 259–273. https://doi.org/10.1007/s11007-019-09463-y
+Zeiler, K., Morberg Jämterud, S., León, F., Andersson, A., Birberg Thornberg, U., Blystad, I., Divanoglou,
+A., Eklund, A., Engblom, D., & Levi, R. (2026). Affective dimensions of fatigue in post COVID-19
+condition: An interdisciplinary investigation across phenomenology and biomedicine. Phenomenology and the Cognitive Sciences. https://doi.org/10.1007/s11097-026-10151-5
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps
+and institutional affiliations.
+
+13
+
+

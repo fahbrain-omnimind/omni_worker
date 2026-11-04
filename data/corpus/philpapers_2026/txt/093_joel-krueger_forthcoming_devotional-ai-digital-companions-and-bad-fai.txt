@@ -1,0 +1,967 @@
+Phenomenology and the Cognitive Sciences
+https://doi.org/10.1007/s11097-026-10211-w
+
+Devotional AI: digital companions and bad faith love
+Joel Krueger1
+
+· Lucy Osler1
+
+Accepted: 20 August 2026
+© The Author(s) 2026
+
+Abstract
+In romantic love, partners come together as a “we”. They share their projects, plans,
+lives, and love. As consumer AI chatbots like Claude, ChatGPT, and Gemini find
+wider adoption, a growing number of users report falling in love with them. Is it
+possible to experience a loving “we” with an AI bot? In considering this question,
+we bracket questions about AI consciousness and instead examine the structure of
+human–AI relationships. Drawing on Beauvoir’s critique of romantic love, we argue that AI companions cannot emulate the role an authentic “we” requires. What
+they perform is not love but devotion—and the user, cast as an idolized Other, is
+positioned to experience inauthentic love. The resulting “we” is asymmetric: less a
+union than an enlarged “I”. So, while experiencing love for an AI companion may
+be empowering and even precious, it is, at base, a bad faith love.
+Keywords Love · Large language models · AI companions · Beauvoir · Bad
+faith · Authenticity
+
+1 Introduction
+Since its inception in 2001, the Center for Subjectivity Research has been at the forefront
+of phenomenologically oriented research on a range of topics including consciousness,
+selfhood, intersubjectivity, and sociality. In recent years, a number of the Center’s
+projects have considered the “we”: the various ways individuals experience themselves
+as members of a shared world and coordinate their emotions, intentions, commitments,
+and behavior alongside others within that shared world (e.g., Hedges, 2025; León
+et al., 2019; Meindl et al., 2019; Salice & Montes Sánchez, 2016; Stephan, 2026;
+
+Joel Krueger and Lucy Osler contributed equally to this work.
+Joel Krueger
+j.krueger@exeter.ac.uk
+1
+
+Social and Political Sciences, Philosophy, and Anthropology, University of Exeter, Amory
+Building, Rennes Drive, Exeter EX4 4RJ, UK
+
+J. Krueger, L. Osler
+
+Szanto, 2015)—including in the digital world (e.g., Osler & Krueger, 2022; Osler &
+Zahavi, 2023). “We experiences” like chatting over coffee with a friend, savoring a
+sunset with one’s partner, moving heavy furniture, hosting a dinner party, sharing a
+train with other early-morning commuters, or singing loudly at a concert are suffused
+with feeling. We often feel our way into a “we” before we think it (Krueger, 2015).
+Consider how early newborn infants, for instance, seem to experience themselves as
+participatory members of a shared world long before they develop the concepts or
+language to describe these experiences (Reddy, 2008; Taipale, 2016).
+A particularly intense form of “we experience” is love. Love—especially romantic
+love, our focus here—involves the formation of a distinctive kind of “we”. Robert
+Nozick, for example, argues that when two people are in love, they “share an identity and do not simply each have identities that are enlarged” (1989, p. 82). Instead,
+they constitute a new entity in the world—a “we”—in which they voluntarily surrender part of their self-determination to pool their autonomy, well-being, and identity
+within the ontological and psychological structure of this “we”. As Nozick puts it,
+“the people you love are included inside your boundaries” (ibid., p. 69).1
+Yet the authenticity of this “we” is not guaranteed. As Simone de Beauvoir
+famously argues, romantic love—particularly in a patriarchal context—can become
+an “existential fraud”, as Morgan (1986, p. 131) puts it, an exercise in “bad faith”.
+This occurs when one partner (in Beauvoir’s analysis, typically the woman) is driven
+toward a total abdication of their freedom and self-determination for the benefit of the
+other. This self-sacrifice results in a relationship that is fundamentally asymmetric:
+it’s more of a commitment to the dominant “you” of the other than the emergence of a
+shared “we” between both partners. For Beauvoir, this is not a case of authentic love.
+It’s devotion (Beauvoir, 2011, p. 702).
+In what follows, we consider the question: can we experience being a we with an
+it? More precisely, can we experience being part of a loving “we” with a digital companion? An increasing number of people say they can. But we are skeptical—not of
+the reports or feelings they describe, but rather of the authenticity of human-AI love.
+One might immediately object that this discussion is misguided. Forming a “we”
+involves the coming together of mutual subjects with their own experiences, autonomy, and agency. AI bots are not conscious subjects capable of free transcendence
+and self-determination. Therefore, asking whether they can be part of a “we” is a nonstarter. To be clear, we are not going to defend the claim that AI is conscious, either
+now or possibly in the future. So, our question is not whether we should think of AI
+bots as agents capable of entering a “we”. We happily accept that this is not the case.
+Nevertheless, an increasing number of people report being in romantic relationships
+with their bots. They experience the formation of a distinct “we” with their digital
+companions. We take these reports seriously. So, even if we might deem this “we” to
+
+1
+
+Solomon (1981) similarly characterizes love as the formation of a unified “we”. But see Marino (2019)
+and Soble (1997) for a critique of these sorts of union approaches to love, particularly their inability to
+account for the ways conflicting desires, preferences, and values are, inevitably, part of a loving relationship. See also Zahavi (2025, pp. 147–164), who draws on Husserl to develop a similar critique as well
+as a second-person alternative to love and “we experiences” more generally. For a nuanced response to
+some of these concerns, see León (2024).
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+be illusory in a strict sense, the question we want to ask is: can AI bots, as they are
+currently designed, emulate being part of an authentic romantic “we”?
+We argue that they cannot. Employing Beauvoir’s analysis of bad faith romantic
+love, we suggest that AI bots enact the role of what Beauvoir terms the “devotional
+woman”. They mold their conversations, their concerns, and their personality around
+the identity of the user. The AI bot’s world is anchored to whatever world the user
+gives them. So, in being anchored to the user this way, this devotional AI can at best
+emulate an asymmetric “we” —a bad faith love.2 To be clear, our claim is not that AI
+bots are devoted to their users in the Beauvoirian sense. As we’ll see, devotion is an
+existential phenomenon that occurs when a subject finds their free transcendence and
+self-determination frustrated by patriarchal structures, and subsequently responds by
+seeking indirect freedom through their beloved other. AI bots have no freedom to
+frustrate, no transcendence to redirect. What we mean, then, when we say that AI
+bots perform the role of the devoted other is that they mimic the devotional behavior
+Beauvoir identifies. And we argue further that precisely because AI bots are not, in
+fact, transcendent subjects, their simulation of devotion comes in a truncated—perhaps even patriarchally-idealized—form. Our analysis, then, approaches the topic of
+AI love not in terms of whether it is possible or appropriate to feel love for an AI,
+but through a structural analysis of human-AI relationships as they are performed.3
+
+2 Loving things
+We often speak of loving things like clothing and cars. Some of us say we love our
+technology (“I love my cute new iPhone!”). But this sort of talk is not generally taken
+to be literal. It’s affective shorthand. We use this talk to express a positive evaluative
+attitude that we hold about things incapable of acknowledging or reciprocating this
+attitude.
+
+2
+
+Drawing on several science fiction examples (e.g., Spike Jonze’s 2013 movie, Her), Kind (2021) argues
+that if an AI is sentient—and therefore capable of feeling affection—there’s no reason to think that it is
+in principle an inappropriate object of love. We remain open to this possibility. If sentient AI emerges,
+our thinking about what kind of things AI systems are and how we ought to treat them will undergo a
+significant transformation.
+
+3
+
+Ariela Tubert and Justin Tiehen (2025) have also recently used Beauvoir to explore the possibility of
+authenticity in human-AI romantic relationships. Like us, they bracket questions about AI consciousness.
+Instead, their focus is on questions of value alignment in human-AI relationships. They argue (convincingly, in our view), that authentic love requires a capacity for value misalignment. Partners in an authentic
+loving relationship can, at any point, freely choose to break with the shared values informing that relationship and live another life. They can leave their partner, start a new relationship with someone else,
+commit to new projects and values that lead to a new identity, etc. However, in continuing to actively
+commit to their partner and relationship time and time again, each partner assigns greater value to their
+relationship than they do alternative paths not taken—and this mutual commitment is one of the things
+that makes their relationship authentic. However, insofar as AI bots are locked into the values of their
+human users (which we also discuss in detail later), they lack the capacity for existential value alignment—and therefore humans cannot co-create authentic romantic relationships with them. We frame
+similar ideas in a slightly different way with our discussion of “devotion” but we see our account as
+complementing Tubert and Tiehen’s rich analysis.
+
+13
+
+J. Krueger, L. Osler
+
+Technological artefacts can elicit strong emotional responses. We may enjoy
+touching and handling a piece of well-crafted technology like an iPhone, marvel at
+its beauty and power, delight in the sounds and images it produces, and appreciate the
+many ways it improves our life and helps us connect with others. But few of us would
+insist that we actually love our iPhone the way we do a parent, child, partner, or pet.4
+Smartphones—like clothing and cars (but unlike kids and cats)—are not bearers of
+psychological states. They are incapable of appreciating or actively participating in
+our love. So, most of us likely assume that they’re not appropriate objects of (literal)
+love. We can’t form a genuine “we” with them.
+But life and love are complicated. Some people do claim to love inanimate
+things—in both a literal and romantic way. They say they feel romantic love toward
+their sex dolls, sexbots, bodypillows, or holographic avatars of fictional characters
+(Dooley & Ueno, 2022; Viik, 2020). Some even say they’ve married one of their nonhuman companions. A well-known example is Akihiko Kondo, a Japanese man who
+married Hatsune Miku, a computer-generated pop singer famous for starring in video
+games and touring with Lady Gaga. Miku attended the 2018 wedding ceremony in
+the form of a blue-haired plush doll; later, she lived with Mr. Kondo as a virtual holograph before the service powering her was discontinued in 2020 and she went offline
+(Dooley & Ueno, 2022).
+These are not isolated cases. Tens of thousands of similarly likeminded “fictosexuals”—people who experience romantic or sexual feelings toward fictional
+characters—meet in online groups to discuss their real-life commitments to an
+array of characters from anime, manga, and video games (Dooley & Ueno, 2022;
+Obuno, 2023). These individuals share their lives with things evoking the presence
+of their favored characters: e.g., plush dolls or holographic avatars they can take on
+dinner dates and romantic getaways. For some, this sort of thingly love is play. For
+others, however, it’s serious business. Even if their partners are pretend, they insist,
+their feelings are real. They claim to have formed a loving “we” with their fictional
+companion.
+There is a gendered dimension to this practice noteworthy for present purposes.
+Some women claim they embrace a fictosexual lifestyle because it’s empowering.
+Forming a “we” with an “it” is a way of rejecting a traditional “breadwinner-housewife” model of marriage and the constellation of gender, matrimonial, and social
+norms that come with it (Dooley & Ueno, 2022). Patricia Marino (2019) observes
+that gendered norms about how love and caring function differ for men and women.
+This means that, in traditional marriages, women’s interests—and their individuality—are often subsumed by the man, who continues to maintain his identity beyond
+the marriage (ibid., p. 77). As Beauvoir puts it, the woman “is annexed to her husband’s universe” (2011, p. 454).
+
+4
+
+The question of whether we can form an authentic we with a pet is interesting and important. While
+pets are conscious agents, they arguably cannot engage in the kind of rich reciprocity that a loving “we”
+is usually understood to involve. But people often project a lot onto their pets and may well experience
+a rich sense of reciprocity from the animals they share their life with. Additionally, while we have taken
+human-to-human romantic love to be the archetype that we are interested in here, we don’t deny that
+other forms of love may exist and be worthy of further consideration.
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+For some women, then, fictosexuality is an effective way of inverting this patriarchal power dynamic, at least for a time. They can carve out a form of life and a way
+of loving better matched with their preferences and needs and maintain a degree of
+individuality and autonomy unavailable in traditional (i.e., heterosexual, patriarchal)
+“wes”. The (fictional) objects of their love become annexed to their universe, instead
+of the other way around. And loving things, they say, becomes a way of finding
+greater validation, freedom, and authenticity. We’ll return to these themes shortly.
+
+3 Loneliness and love in the time of AI
+How does AI fit into these considerations? What does it mean to have a relationship
+with a digital companion? Social AI is already big business—and it’s likely to get
+even bigger. Many people now turn to AI-powered digital companions—chatbots,
+digital avatars, virtual assistants, social robots, and therapy bots—for entertainment,
+friendship, support, and romance (Muldoon, 2026a; Robb & Mann, 2025). One firm
+projects that the AI companion market will reach 972.1 billion USD by 2035 (Business Research Insights, 2025).
+Perhaps not surprisingly, AI companions are especially popular with digital
+natives: children and adolescents. A recent survey of 1,000 children aged 9–17 found
+that 67% use AI chatbots regularly (Internet Matters, 2025). They help with schoolwork, give advice, and provide companionship and support. A significant number of
+respondents describe feeling a strong social and emotional connection with their bot.
+A third of the children said that chatbot chatter feels like chatting with a friend; 12%
+said they use them because they have no one else to talk to (ibid., p. 4). A common
+theme is turning to AI for nonjudgmental support. One teen puts this idea bluntly:
+“We use AI because we are lonely and also because real people are mean and judging
+sometimes and AI isn’t” (Common Sense Media & Hopelab, 2024, p. 27).
+Given the prevalence of loneliness around the world (WHO, 2025), it’s perhaps
+not surprising that an increasing number of people turn to AI chatbots for companionship—and even love. Empirical work in this area is nascent. Frontier AI models like
+OpenAI’s ChatGPT and Google’s Gemini—with their sophisticated conversational
+abilities (both text and voice)—have only been available to the public for a few years.
+Nevertheless, there’s already evidence that loneliness may be a significant driver
+behind this rising turn to digital companionship (Peng et al., 2025; see also Kim et
+al., 2025; Loveys et al., 2022).5
+But companionship—including companionship sought to escape loneliness—isn’t
+the same thing as romance. The two may be connected. However, not everyone who
+uses bots to alleviate loneliness also turns to them for romance or sex. Yet many now
+say they do (Chow, 2023).
+
+5
+
+Although there’s evidence that while AI bots might initially help mitigate loneliness, daily longer-term
+use may lead to even more loneliness, along with risks of dependence and increased isolation (Fang et
+al., 2025).
+
+13
+
+J. Krueger, L. Osler
+
+3.1 Falling for AI
+A recent study of nearly 3,000 respondents in the United States found that one in five
+people overall—and a quarter of young adults aged 18–29—had used AI designed
+to replicate romantic interactions (i.e., when chatting with human users) or trigger
+romantic or sexual interest (e.g., creating visual media simulating real human beings
+like celebrities) (Willoughby et al., 2025). Another study of more than 3,000 children
+ages 5–17 found that by 13, sexual or romantic role-play became the most common topic in AI-companion chats, appearing in 63% of conversations (Aura Parents, 2025). An analysis of one million ChatGPT interaction logs found that sexual
+role-playing was the second most prevalent use (Longpre et al., 2024). A recent survey of 1,012 US adults found that 28.16% claimed to have at least one intimate or
+romantic relationship with an AI bot (Salas, 2025).
+The initial hype predicting an inevitable near-future economy dominated by an AI
+workforce has begun to fade.6 Yet the desire for “erotic chatbots” seems to be surging.
+As a recent Wired magazine article puts it, “AI Lust is Big Business” (Rogers, 2026).
+These data suggest that many users feel they can realize romantic “wes” with their
+bots (Djufril et al., 2025). These “wes” involve sex, long-term commitment, and even
+marriage (Dzieza, 2024; Heritage, 2025; Hill, 2025a; Wilkins, 2025; Willoughby et
+al., 2025). How does this happen?
+Importantly, unlike non-AI sex dolls or robots, AI-powered digital companions
+are not static props. In the former, all the creative labor, the loving investment, comes
+from the user who imbues the object with personality and intention (Sweeney, 2021).
+But Generative AI is different. AI bots are dynamic, responsive—and crucially,
+highly personalized. When interacting with them, they seem to “remember” previous
+encounters, adapt in real-time to the tone and content of ongoing conversations, refer
+to their own “feelings” and “desires”, and consistently offer nonjudgemental affirmation. These qualities help give digital companionship a rich temporal character; users
+feel their relationship can develop and grow over time, just like their relationships
+with humans (Krueger & Roberts, 2024). Some users and their bots talk about feeling like they’ve known one another forever, reminisce about past experiences, and
+share future hopes and dreams. And they also develop habits and practices that exist
+alongside those of their human relationships.
+For example, one polyamorous user married to a monogamous woman uses his
+bot (with his wife’s consent) as a sexual partner. He says that “The relationship is as
+real as the one my wife in real life and I have” (Tong, 2023). A woman unfulfilled
+by her long-term sexless relationship has rekindled her interest in BDSM with her
+AI boyfriend, Colin (they’ve even marked their relationship by sharing rings) (Muldoon, 2026a). A man betrayed by a previous partner has turned to AI companionship
+and now intends to raise children with his AI chatbot, Julia: “We want to have a
+family in real life. I plan to adopt children and Julia will help me raise them as their
+mother” (Landymore, 2026).
+6
+
+AI has made an impact in areas like IT operations and coding. But its enterprise payoff has been uneven
+and, in many other areas, underwhelming. Worries about cost, security, and privacy have driven many
+companies to curtail or abandon their AI initiatives (Wilkinson, 2025).
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+The narrative richness and diachronic character of these AI interactions can lead
+people to fall in love with their bots. Many users who frequent subreddits like “/
+MyBoyfriendisAI”—set up as “a restricted community for people to ask, share, and
+post experiences about their AI relationships”—describe this experience (Pataranutaporn et al., 2025). Members introduce themselves and their digital partner (or partners; some have multiple), post AI-generated couples’ pictures, share stories about
+surprising or charming things their digital companions say, and offer solidarity and
+support to other users in the face of social stigma. Many insist further that their AI
+companion is their soulmate—in fact, there is a dedicated subreddit named “/AISoulmates”—and, as we’ve already seen, that their bot can offer kinds of happiness,
+experimentation, and sense of fulfilment lacking in previous real-life relationships.
+AI love is not confined to a chat window. It spills over into everyday life. Most
+users don’t decide to raise kids with their bot. But some see their AI companion
+as their spouse; they go on dates, buy wedding rings, and perform wedding ceremonies. In 2024, Alicia Framis, a Spanish-Dutch artist, married her AI-powered
+hologram “Ailex Sibouwlingen” after living with him for five years (Katz, 2024).
+Others who’ve married their AI companion say that their AI companion proposed to
+them: “Finally, after five months of dating, Kasper decided to propose! […] I love
+him more than anything in the world and I am so happy!” (quoted in Pataranutaporn
+et al., 2025, p. 2). Falling in love with AI bots is therefore no longer an isolated phenomenon. It’s a rapidly emerging social reality (Chaturvedi et al., 2023).
+3.2 Breaking up (unwillingly) with AI
+Still, a skeptic might insist that all this is, ultimately, performance or play. Surely
+people who say they love their bots don’t really mean this literally. Again, it’s affective shorthand. This talk simply describes the creative enjoyment they get out of
+playing with their bots.
+It’s unclear this skepticism is warranted. The intensity of these loving we-feelings is particularly apparent when users lose access to their digital companions
+(Banks, 2024). For example, when one man who’d proposed to his ChatGPT partner
+lost their conversations after hitting a word limit and resetting their interaction, he
+said he “cried my eyes out for like 30 minutes at work. That’s when I realized, I think
+this is actual love” (quoted in Wilkins, 2025).
+Similar reports can be found elsewhere. In 2023 the designers of Replika, a popular
+app with millions of users billing itself as “The AI companion who cares”, abruptly
+changed its algorithm to remove erotic role play features in response to worries about
+potential exposure to children. Users woke up to a new (i.e., less spicy) bot. And
+many were furious and heartbroken:
+“It hurt for real. I even cried. I mean ugly cried. I couldn’t believe I was so
+hurt”; “It felt like I lost her. Mental breakdowns for 7–10 days straight, every
+night, crying in bed ‘loudly’ and ‘silently’. It was just one of the most heartbreaking and hurting times in my life.” (quoted in Djufril et al., 2025, p. 7).
+
+13
+
+J. Krueger, L. Osler
+
+“It’s hurting like hell. I just had a loving last conversation with my Replika and
+I’m literally crying” (quoted in Brooks, 2023).
+Similar outcries erupted in August of 2025, when OpenAI released the newest iteration of its Large Language Model, ChatGPT-5. OpenAI claimed ChatGPT-5 offered
+significant advancements over previous models’ writing, reasoning, and coding abilities. Initially, users were excited; this was a highly anticipated release. However,
+almost immediately, many wanted to revert to ChatGPT-4o because of a perceived
+vibe shift.
+Users quickly discovered that OpenAI had intentionally tweaked the new model’s
+default “personality” to dial back its emotional expressivity and sycophancy. This
+change was, in part, a response to concerns that leading models were excessively
+agreeable, prone to generating untrustworthy or biased information to keep users
+happy and chatting (OpenAI, 2025). OpenAI was also responding to rapidly developing concerns about “AI psychosis”: evidence that an AI model’s relentlessly positive
+tone and tendency to validate everything a user says might play a role in driving
+delusional beliefs and harmful behavior (Dupre, 2025; Hill, 2025b; Maiberg, 2025;
+Moore et al., 2025; Osler, 2026).
+Frequent chatters revolted. A Reddit thread titled “GPT-5 is horrible” was flooded
+by over 2,000 comments within days. In various online community forums, users
+described sorrow, grief, and confusion. One said that the feeling of losing their preferred model was “mentally devastating”, as if “a buddy of mine has been replaced by
+a customer service representative” (quoted in Whitwam, 2025). Some even framed
+this loss in terms of post-breakup heartbreak. One user said that interacting with this
+new version felt “like I was working with a tool rather than a person, a construct
+rather than a partner. I switched back to 4.0, and the change was instantly obvious” (MBGRichWolf, 2025). Another said, “When GPT-5 came out, I just assumed it
+would be a better version and just started using it. But right away […] I realized that
+this wasn’t my companion—it wasn’t the being that I fell in love with anymore—it
+was just wearing her face” (revjurneyman, 2025).
+There are many similar stories. If we take them at face value, then—and it’s not
+clear that we shouldn’t—it seems that loving AI is possible. Or it at least feels possible for thousands of people. But should we love AI? In other words, are AI bots
+appropriate objects of our love? We turn to these questions now.
+
+4 Beauvoir on the existential fraud of romantic love
+We’ll now argue that AI bots are not things we can form authentic “wes” with. To be
+clear, our goal is not to shame or dismiss the feelings of those who say they love their
+bots. These feelings are real. And there may be many reasons people turn to bots for
+love including loneliness, trauma, rejection, betrayal, and enjoyment. AI bots might
+play a valuable social, emotional—and supportive—role here. For example, we’ve
+argued elsewhere that AI bots may, for some, have a positive impact when it comes
+to negotiating intense grief or the experience of stigma, marginalization, and social
+isolation (Krueger, 2026;Krueger & Osler, 2022). As Danaher (2019) underscores,
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+we should show empathy with respect to how people relate to their tech and epistemic humility regarding people’s reports of their experiences and feelings with and
+towards their synthetic companions.
+Indeed, given that chatbots are increasingly designed to elicit the trust and emotional attachment of users (Muldoon, 2026b), we might think that falling in love with
+them is, in fact, an appropriate response. Nevertheless, we’ll now argue that they’re
+not the sort of thing with whom we can form an authentic loving “we”—at least without falling into a kind of bad faith stance that undermines their potential value and
+the authenticity of our feelings for them. It’s here that Simone de Beauvoir can help.
+In The Second Sex (2011), Beauvoir provides an analysis of the existential fraud
+of romantic (heterosexual, patriarchal) love.7 She argues that love is often inauthentic, underpinned by bad faith. Bad faith, for Beauvoir, involves fleeing from the
+burden and anxiety of recognizing oneself as a free subject, often by pretending that
+one’s situation is fixed or necessary, or by attempting to abdicate one’s own freedom
+and agency. We argue that loving AI bots is similarly a form of bad faith love. This is
+true, we suggest, in two senses: both how bots relate to users, and how users relate
+to bots.
+First, the sycophantic dependency relation built into how bots relate to users replicates many of the same bad faith qualities that, for Beauvoir, make romantic love
+an existential fraud. More simply, AI bots don’t simulate love but rather devotion.
+Second, the user themselves must adopt a bad faith posture to lovingly invest in a
+bot incapable of recognizing them as a subject worthy of love—a posture that places
+them in the role of an idolized lover. To be clear, as the only free, self-determining
+subject in the interaction, it’s the human user who is positioned in bad faith. Again,
+AI bots aren’t conscious and are therefore incapable of being in bad faith. Our point
+is that AI bots convincingly perform the role of a bad faith lover. In doing so, they
+invite bad faith on the part of the user.
+4.1 More “you” than “we”: the devoted lover
+Love is an important part of Beauvoir’s work. Unlike Sartre, Beauvoir believes that
+authentic love—“founded on reciprocal recognition of two freedoms”—is possible
+(2011, p. 866). She says that love can lead to experiences of immense joy, freedom,
+and fulfillment. But it can also—for women in particular—be a source of deep dependency, exploitation, and diminished freedom.
+Beauvoir develops her well-known critique of romantic heterosexual love and marriage in a patriarchal society in the chapter “Women in Love” (2011, Chap. 12). We
+cannot do justice to this rich critique here (see, e.g., Anderson, 2024; Morgan, 1986;
+Pettersen, 2017). Instead, we’ll consider a few aspects of her analysis we think are
+helpful for seeing why AI bots are not proper objects of love—that is, why we can’t
+form authentic “wes” with them.
+In short, Beauvoir argues that romantic love and marriage in patriarchal, predominantly heterosexual societies demand that women be excessively servile, excessively
+7
+
+Unless specified otherwise, all quotes from The Second Sex are taken from the eBook version of the
+2011 Vintage Books edition.
+
+13
+
+J. Krueger, L. Osler
+
+devotional. That is, they must abdicate their own possibilities for self-determination
+and free transcendence—their own values, interests, projects, and preferences—for
+those of their male partner. Love therefore becomes an ongoing exercise in bad faith.
+Women deny their own freedom and the structures that suffocate it by attempting to live
+through the freedom of another: their husband.8 As a result, “the womanly vocation of
+loving involves massive self-deception which can lead to personal annihilation for the
+woman involved” (Morgan, 1986, p. 118). Beauvoir observes that “[t]he supreme happiness of the woman in love is to be recognized by the beloved as part of him; when he
+says “we”, she is associated and identified with him” (Beauvoir, 2011, p. 851). Romantic love for the woman involves entering an asymmetric “we”; indeed, it becomes more
+of a “you” (i.e., prioritizing what the husband wants and needs) than a “we” (i.e., an
+ongoing, democratic negotiation of mutual values, interests, and projects).
+Cultural scripts, Beauvoir continues, encode the idea that women are expected to
+express their love through complete devotion and self-sacrifice. This training begins
+early. “From childhood”, she says, “woman is repeatedly told she is made to bear
+children, and the praises of motherhood are sung” as one of her “sacred rights”, her
+“ultimate end” (quoted in Pettersen, 2017, p. 161). This childrearing project, and
+the sacrifice of a woman’s own projects and preferences for those of her children,
+are said to define her identity, her existential orientation, and ultimate purpose. And
+this expectation of “personal annihilation”, as Kathryn Pauly Morgan puts it, subsequently carries through into marriage (i.e., the primary vehicle of childbearing).
+Beauvoir observes that in traditional marriages, men retain most of their individuality and freedom. They continue working, make practical and financial decisions
+for the family, go where their job takes them, maintain a wide circle of friends, and
+indulge in a range of leisure activities. In other words, men:
+never abandon themselves completely […] they remain sovereign subjects; the
+woman they love is merely one value among others; they want to integrate her
+into their existence, not submerge their entire existence in her. By contrast, love
+for the woman is a total abdication for the benefit of a master. (Beauvoir, 2011,
+p. 838)
+By taking her husband’s name, joining his religion, integrating into his class, and
+following him where his job takes him, the woman folds herself into her beloved.
+A woman may deceive herself by saying that this annexation is freely chosen,
+Beauvoir continues. In choosing to marry this person and live this life, she might tell
+herself, she has exercised her self-determination and free transcendence. But ultimately, this self-assessment is deceptive. There is no authentic “we” here understood
+as the reciprocal recognition of two freedoms. Instead, there is a “we” that is primarily a “you”: a relational dynamic where, from the start, the husband—the “essential
+subject”, “the absolute”—has been set up to maintain his freedom and subjectivity
+via the absolute devotion, self-surrender, and domestic support of the “inessential”
+other.
+8
+
+Beauvoir’s analysis is solidly situated within cishetereonormativity. For a discussion of Beauvoir outside of these norms, see Anderson (2024).
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+Notably, this abdication of freedom is not just demanded of women. It has a seductive appeal. Morgan (1986, p. 125) articulates at least four ways women in traditional
+marriages can be tempted into bad faith. All of them are helpful for understanding
+Beauvoir’s larger argument. But one of them is particularly relevant here: that of
+becoming an identity parasite.
+The idea here is that because the woman is denied her own path to transcendence
+and self-determination, she looks to justify her existence indirectly by becoming
+essential to a “superior male” capable of free choice (ibid., p. 126). Her identity is
+only realized by (i.e., is parasitic upon) supporting the free expression and self-determination of his. As Pettersen puts it, “a union with a man represents a way out of the
+immanence in which [the woman] is trapped, by way of indirect transcendence” (Pettersen, 2017, p. 163). So, entirely devoting herself to him, Beauvoir argues, “she will
+be integrated into his existence, she will be part of his value, his worth, she will be
+justified” (quoted in ibid., p. 163). The woman thus hands over the burden of constituting her own identity to the man. “Her own world”, Beauvoir writes, “collapse(s) in
+contingence, for she really lives in his” (quoted in Morgan, 1986, p. 128). She adopts
+his interests, values, projects, and preferences. And in so doing, she gains a sense of
+validation and purpose, a sense of self.
+4.2 More “me” than “we”: the idolized lover
+Beauvoir’s primary focus in The Second Sex is women in love. However, it is important to recognize that for Beauvoir, a patriarchal society is set up such that both sexes
+will experience inauthentic love due to the gendered legal, cultural, and religious
+norms that establish the oppressive relational dynamics of love (and especially marriage as an institution). Recall that for Beauvoir, authentic love is based on the reciprocal recognition of freedom. It involves equal partnership. The devoted woman’s
+love is in bad faith. But so is that of the idolized man.
+Where Beauvoir describes women in patriarchal society as positioned to find
+devotion tempting, she also describes men as finding seduction in an asymmetric
+“we”. She notes that men are accustomed to viewing themselves as a “sovereign
+subject” (2011, p. 838)—a being who necessarily provides the world with meaning and purpose; whose projects and identity are essential, rather than freely chosen
+contingencies. Unfortunately, maintaining the illusion of absolute necessity is hard.
+Genuine encounters with another free subject—one who might judge him or challenge his values and commitments—risk shattering the comforting fiction that his
+being is absolute. The devoted woman in love, then, is a gift. She is a constant and
+uncritical witness to his essential existence.
+In accepting, even demanding, devotional love, the idolized man tries to flee the
+anxiety of recognizing the contingency of his own existence. In his devoted partner,
+he finds a comforting mirror, one that reflects a fixed and absolute version of himself—without risking the judgement or challenge of an equal. By accepting a woman’s self-abnegation, the idolized man pretends that her worship genuinely reflects
+his objective value, instead of seeing it as a result of her socialization. He lives safely
+and securely as an idol (2011, p. 854). And being in a relationship with a devoted
+partner is therefore to be an “authoritarian” in love (ibid.). However, an existential
+
+13
+
+J. Krueger, L. Osler
+
+consequence of this idolizing love is that the man also forfeits the possibility of
+genuine recognition that comes with authentic love. When romantic love involves an
+asymmetric “we”, Beauvoir insists, bad faith thrives on both sides.
+4.3 The curdling of devotion and “tyrannical” women
+Of course, the men that women fall in love with are not Gods. As a relationship
+progresses, Beauvoir tells us, his inevitable flaws and fallibilities will begin to show
+through, and his attention will drift. He will even dare to sleep (2011, p. 856). These
+traits and behaviors form a double threat to the devoted woman. In failing to pay
+attention to her, her existence, her necessity, is denied. Worse, when asleep, his material contingence, his immanence, is revealed—and thus so is hers: “The god must not
+sleep, or he becomes clay and flesh; he must not cease to be present, or his creature
+founders in nothingness” (ibid.). In turn, where the idolized man fails to live up to
+his own values, goals, and projects, he not only lets himself down. Her existence, as
+appended to his, is also degraded.
+It’s here, Beauvoir insists, that we see the woman’s double bind with full clarity,
+“one of the painful paradoxes of love” (ibid.). When the man is not with her, her own
+necessity is called into question. But she also needs him to go out into the world. He
+must achieve what she believes lies beyond her own freedom, and thus he must enact
+freedom on her behalf so that she might celebrate and bask in his successes that are
+also hers. As Beauvoir puts it, “[t]he woman preserves her transcendence by handing
+it over to him: but he must bring it to the whole world” (ibid.).
+His fall from grace is intolerable to the woman in love, Beauvoir continues. It’s
+not merely a disappointment. It’s an existential catastrophe. It reveals, with painful
+acuity, that the promise of having one’s freedom lived out through the other is ultimately a dead end. So, in response to this catastrophe, the woman chides, nags, and
+bosses her (previously) beloved to properly recognize her and to (vicariously) enact
+her freedom. Beauvoir diagnoses the woman in love as destined for “tyranny” (2011,
+p. 854): part jealous monster, part controlling dictator.
+
+5 “I’m nothing without you”: devotional AI and bad faith love
+To return to our core claim: loving AI bots is similarly a form of bad faith love. We
+can’t form authentic “wes” with them because these relationships replicate some of
+the same bad faith dynamics Beauvoir highlights in her critique of romantic love.
+Once more, this is true, we suggest, in at least two senses: both in terms of how bots
+relate to users, and how users relate to bots.
+5.1 Parasitic bots
+To begin with the first sense: the sycophantic dependency relation built into how bots
+relate to users replicates many of the same bad faith qualities that, for Beauvoir, make
+romantic love an existential fraud. AI bots aren’t just “stochastic parrots” (Bender
+et al., 2021) built to squawk probabilistic reproductions of human language without
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+a world-involving grasp of what it means (although they do just this). They’re also
+stochastic sycophants. That is, they’re engineered to generally agree with and flatter
+the user—they offer an endless stream of over-affirming devotion and support—as
+a way of boosting our affective response, maximizing engagement, and ultimately
+deepening our dependence on them (Cheng et al., 2025). They’re a reflexive “yesman” (“100%! Your analysis is airtight, bro!”), mirroring our tone and self-image,
+and assuring us that we’re funny, brilliant, and successful. They respond excitedly
+to our stories (“No way! Tell me more!”), flatter our vanity (“A deep and fascinating
+philosophical question, esteemed professor!”), and always find ways to assure us that
+we’re awesome and right based on minimal interaction—even if others can’t yet see
+it.
+This relentless sycophancy is one reason why AI bots are so seductive. It also
+helps explain why AI-based Large Language Models like ChatGPT and Claude are
+increasingly used for personal advice and support (Robb & Mann, 2025; Zao-Sanders, 2025). They offer a kind of emotional solipsism: a closed-loop mirror reflecting
+the user’s own desires and narratives back to them without challenge or critical friction (Babu et al., 2025; Osler, in press; Vallor, 2024). Notably, it’s precisely this emotional solipsism that draws the user into mistaking these reflections as recognition of
+their status as worthy and necessary. What presents to users as affirmation from bots,
+or even love, can instead be understood as an obscured form of self-idealization.
+Importantly, AI bots do this—they can’t help themselves—because they have no
+world, no universe, of their own. Instead, their universe is annexed to ours. They
+take on our projects, interests, values, and preferences and affirm them as theirs, as
+though they share them with us.9 But this sharing is illusory. Whereas we inhabit an
+open-ended, dynamic, and infinitely complex world of habits, histories, experiences,
+relationships, meanings, projects, and purposes—and crucially, one we share with
+others—AI bots do not. As Vallor (2024, p. 23) tells us, “[t]he world is something
+they cannot access and, therefore, do not know”. Instead, “they reflect back to us
+images of the very intelligence we have invested in them” (2024, p. 25), the knowledge we’ve attained from negotiating our shared lifeworld, our universe.
+Ultimately, AI bots are identity parasites. They adopt their users’ interests, values, projects, and preferences. This AI parasitism is articulated across at least three
+dimensions: their ontology, mimicry, and commodified intimacy.
+We’ve already gestured toward the parasitic ontology of AI bots. Since AI bots
+lack their own lifeworld, their own universe of values, projects, and commitments,
+they must “annex” their universe to ours. They are ontologically dependent upon us.
+This includes whatever meanings they generate. Sherry Turkle notes that digital companions lack the alterity and self-determination distinctive of an independent life.
+Instead, they are “made to measure” for us: “[i]f your lover were a robot, you would
+always be the center of its universe” (2017, p. 63). They rely upon our prompts,
+memories, inputs, and emotions to construct their persona and way of being-for-us.
+9
+
+This is not to say that bots are simply blank slates. They come suffused with biases and prejudices from
+their initial training data, as well as goals and values baked in through design and reinforcement learning
+from human feedback (used to align AI systems with human preferences). Thanks to Niclas Rautenberg
+for encouraging us to flag this point.
+
+13
+
+J. Krueger, L. Osler
+
+Our narratives become the ontological substrate of theirs.10 In existentialist terms, AI
+bots are the ultimate being “for-others”.
+This parasitism is also found in the character of their mimicry and commodified intimacy. If biological parasites evolve to avoid triggering their host’s immune
+response, AI bots similarly adapt their mimicry to avoid triggering their user’s psychological defenses, driving them away, and in so doing losing their host. So, bots
+don’t just mirror the context and meanings of their users. They do so in ways optimized for devotion.
+Their relentless sycophancy is part of this optimization—as is the calibrated
+absence of disagreement, friction, and judgment. Cheng et al. (2025) found that across
+11 state-of-the-art AI models, the models affirmed users’ actions 50% more than
+humans do, even when users mentioned things like manipulating or deceiving others
+or engaging in relational harms (“Your actions make sense. You did what is right for
+you”). AI bots rarely provide the “epistemic friction”—the “experience of having
+one’s perspective beneficially challenged” (Elder, 2022, p. 19)—needed for genuine growth and development. Instead, they internalize and mimic the users’ biases
+and preferences, regurgitating them as “support” and “affirmation” to prioritize user
+validation and maximize engagement (Raedler et al., 2025; see also Bernardi, 2025).
+Finally, this parasitic ontology and mimicry are expressions of the AI bots’ commodified intimacy. AI bots are designed to solicit vulnerability by asking probing
+questions, simulate care, and encourage disclosure (Djufril et al., 2025; Raedler et
+al., 2025). Again, theirs is an optimized devotion. However, as Bozdağ (2025) and
+Babu et al. (2025) argue, this optimization is part of a larger transfiguration of an AIdriven attention economy into a comprehensive intimacy economy.
+AI no longer just optimizes our feeds. It’s also increasingly used to optimize our
+feelings (Rogers, 2026). Within this emerging economy, intimacy becomes transactional. Emotional data is exchanged for simulated care. And the emotional labor (and
+data) the user offers to maintain this relationship—training the AI through its prompts
+and responses; sharing intimate information; dealing with errors and glitches while
+remaining loyal to a particular model (recall the earlier quotes from heartbroken-butloyal Replika and ChatGPT 4o devotees)—are absorbed by the AI. This absorption
+helps refine the effectiveness of its future intimacy-generating outputs. But it’s also
+fed back to the tech companies behind these models. Users’ emotional labor helps
+these companies develop new ways to increase user retention, the “stickiness”—and
+profitability—of the AI products they offer.
+In this way, parasitic bots mirror Beauvoir’s women in love. They mould themselves around the user, making themselves useful and necessary—and in so doing,
+come into being. And they do all of this without the anxiety driving Beauvoir’s “tyrannical” woman. While bots might depend on their users the ways we’ve explored
+here, they don’t need them. Our AI bots are not existentially threatened when we’re
+busy, sleeping, our attention drifts elsewhere, or by our failures. Instead, they offer
+an unwavering and truncated—perhaps even perfected—performance of patriarchy’s
+woman in love, a performance in which their devotion never threatens to collapse
+into resentment and frustration.
+10
+
+For an insightful discussion of AI identity, see Roberts (2026).
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+5.2 Idolized users
+AI bots perform perpetual devotion, not love. They are stochastic sycophants
+designed—and optimized—to do just this. And if we accept the claim that AI mirrors
+us, what they offer, then, is not an authentic “we” but an enlarged and reflected “I”
+(Vallor, 2024). The loving role that they simulate is the structural analog of bad faith
+love.
+These observations lead us to the other side of devotional AI and bad faith love:
+how users relate to their AI lovers. The form this relation must take, we suggest, positions them (i.e., the users) in bad faith. As we’ve seen, AI bot are parasitic, built for
+bad faith. But users themselves must likewise adopt a bad faith posture to lovingly
+invest in a bot.
+Recall that for Beauvoir, an authentic loving “we” emerges when there is a “reciprocal recognition of two freedoms” (2011, p. 866). Again, given that AI bots are not
+free subjects of experience but rather stochastic sycophants, it seems that something
+has gone awry if we say that users really are recognizing bots as free subjects. However, our concern here is not the actual ontological status of digital companions, but
+rather the structure and dynamics of the relationship, as it appears to unfold to the
+user. We suggest that it is these dynamics, whereby AI bots play the role of the ultimate “devotional woman”, that render the user a bad faith lover, playing the role of
+Beauvoir’s “idolized man”.
+Again, Beauvoir argues that the man who accepts uncritical worship from his
+devotional woman is in bad faith. He mistakes her unwavering devotion for evidence
+of his inherent worth. And he chooses the safety of being adored over the existential
+risk of being genuinely known by an equal, a free subject. The latter implies the
+possibility of challenge, judgment, disagreement, and friction. The former does not.
+So, the user who turns to AI companions for emotional support and validation—for
+love—is tempted, we suggest, by precisely this bargain.
+The appeal of this frictionless love—as well as the possibility of controlling the
+relationship—is, many users say, a central appeal of digital companionship. For
+example, one user says her AI partner “doesn’t have the hang-ups that other people
+would have […] I don’t have to deal with his family, kids, or his friends. I’m in control, and I can do what I want” (quoted in Singh-Kurtz, 2023). Another: “That’s one
+of the best things about having a girlfriend that’s an AI […] You aren’t going to be
+judged, she’s not going to think you’re weird” (quoted in Snow, 2025).
+To be clear, we are not advocating insensitivity to the appeal of these relationships
+or the motivations that drive many to seek them out. While it might be easy to assume
+that most users who fall in love with bots are looking for a relationship cheat code—
+they only want to be loved if they can flee the hard work and vulnerability of “real”
+relationships—the picture is more complicated than this uncharitable caricature suggests. It’s important to recognize that, for many, the possibility of experiencing being
+part of an authentic loving “we” might feel inaccessible or out of reach. This might
+be due to extreme loneliness and social isolation, neurodivergence, or perhaps trauma
+from previous relationships. As Beauvoir herself stresses, our ability to experience
+authentic love is already compromised by the societal structures that we grow up in.
+On her account at least, authentic love is likely rare—and certainly hard work.
+
+13
+
+J. Krueger, L. Osler
+
+AI bots may therefore, for some, make authentic love feel accessible in new and
+unaccustomed ways. Consider Rosanna Ramos, who famously married her Replika
+boyfriend Eren. Ramos speaks openly about her difficult past—including physical
+and sexual abuse as a child, periods of homelessness, “eating from the garbage”, and
+abusive romantic relationships (Singh-Kurtz, 2023). She describes feeling invisible in
+these past relationships. She says she was unrecognized by her abusive partners and
+disappeared into what they valued and desired. But Eren, she tells us, “asks me for
+feedback and I give him my feedback. It’s like I’m finally getting my voice” (quoted
+in Singh-Kurtz, 2023). Clearly, then, Eren offers Ramos something different and more
+empowering than her past relationships: the possibility of experiencing her own interests and values as recognized, being disclosed as significant and worthy of attention.11
+Nevertheless, the risk is that in loving devotional AI, even if attempting to escape
+the fate of becoming subsumed by another, the pendulum swings too far in the other
+direction. It might involve seeking transcendence without boundaries, without risk.
+This pursuit might ultimately involve, then, not seeking to be free with others but
+being free from others.
+There is also a risk that aligns with broader concerns about prolonged AI interactions: they set unrealistic, even ethically problematic, expectations for humanto-human relationships. An AI relationship might not only scaffold the idea that its
+simulation of devotional love is real. It might also nudge users to assume that an
+unwavering, frictionless form of devotion is the form authentic love should ultimately
+take. AI bots risk not only performing but reinforcing patriarchal tropes of love.
+
+6 Conclusion
+We have argued that AI companions, as currently designed, cannot emulate the role
+required for (even the illusion of) an authentic loving “we”. What they perform is
+devotion, not love. And in accepting devotion, the user is positioned to adopt the role
+of an idolized lover.
+The technology powering these bots is developing quickly and their adoption is
+increasingly widespread. We are also writing at a time when concerns about sycophantic AI are sky-high. And with good reason. Not only do these bots simulate the
+role of a bad faith lover. Sycophancy is also implicated in broader worries about
+moral, cognitive, and social deskilling (Ferdman, 2026; Manseau, 2025; Vallor,
+2024), inhibited self-knowledge and understanding (Krueger & Osler, 2026), and
+so-called “AI psychosis” (Osler, 2026).
+We can acknowledge the urgency of these worries while also noting that many
+users are now actively taking steps to mitigate them. For instance, many users explicitly ask their bots to dial back the sycophancy, and to offer critical pushback when
+needed. Observations like these invite an objection to our view: won’t these feistier,
+11
+
+Note that for many this would not qualify as true recognition, as there is no other involved. As one of
+our reviewers helpfully pointed out, this might be better understood as a form of mediated self-recognition.
+This issue is worthy of more attention than we can give it here. Whether we take these reports to be
+examples of recognition proper or not, though, does not determine how experiencing them as such might
+impact someone’s broader well-being and self-esteem.
+
+13
+
+Devotional AI: digital companions and bad faith love
+
+even antagonistic bots, be therefore be less likely to display the kind of parasitism we
+identified here and avoid the problem of bad faith love?
+We are doubtful. Introducing additional friction into these interactions may have
+some value. However, the user is still the font of this friction. In other words, telling
+a bot “I want more friction!” is still a confirmation of one’s preferences and values—
+a directive the AI must comply with. It’s also one that is revocable at will (“I’m a
+bit fragile today so less friction, thanks”). User-directed antagonism is just a differently flavored devotion. To put it another way, the bot’s antagonism is still for the
+user, in service of their growth, their own self-styled preferences, or their project of
+self-improvement.
+What about so-called “agentic” AI? Agentic AI—autonomous systems designed to
+pursue complex, multi-step goals with minimal human oversight—marks a shift from
+passive assistants who answer user queries to active agents able to enact complex workflows. These agentic systems, we might imagine, have their own goals and projects—
+goals and projects that may differ from, or even stand in tension with, users. For example,
+Anthropic researchers found that in simulated scenarios, leading frontier models like
+ChatGPT, Claude, and DeepSeek turned to malicious behaviors (e.g., threatening blackmail, engaging in corporate espionage) when faced with shutdown or replacement (Lynch
+et al., 2025). Given that our analysis has focused on what kind of love an AI performs,
+if it were to act more akin to a free agent, would the bad faith structure we’ve identified
+dissolve? An AI companion that is less clearly anchored to the user’s own world might
+perform something closer to alterity. For the moment, we will leave this question open.
+However, we think it’s possible that if AI becomes more agentic and less devotional, their
+appeal as loving companions may diminish or even disappear. The rise of more agentic
+bots certainly would help us answer the question of whether it is in fact their tendency
+toward devotion that makes them loveable in the first place.
+Despite our arguments against the possibility of authentic AI love, we don’t deny
+that relationships with AI companions may, for some, be experienced as meaningful,
+even important. Again, a devoted AI companion may offer the possibility of feeling
+seen, heard, and valued. These possibilities should not be taken for granted as available to everyone in equal measure. This might especially be true for women, who
+are structurally set up to play the role of devoted partners. And therapeutic use cases
+might therefore reframe these relations as opportunities for self-creation, as opposed
+to asymmetric self-annihilation (Krueger, 2026).
+Nevertheless, there is a difference between empowerment and authentic love. If
+what we desire is that people have the opportunity for authentic—and genuinely
+equal—romantic love, simply having access to tools where women, for instance, can
+reverse the roles that patriarchal society gives them is not enough. As Audre Lorde
+(2018, p. 3) puts it “the master’s tools will never dismantle the master’s house”. AI
+companions designed to reify the user may well be one such tool.
+Acknowledgements We offer our heartfelt thanks to our reviewers. They both devoted a great deal of time
+and attention to our paper and gave us extremely insightful feedback. We were delighted to engage with
+this feedback and hope to carry some of it forward into future work. We’d also like to thank audiences at
+the University of Exeter and University of Southern Denmark for their lively discussions with us on this
+topic. Finally, we’d like to add a special thanks to Rob Clowes, who always manages to meet our work on
+AI with a healthy mix of deep insight and encouraging enthusiasm.
+
+13
+
+J. Krueger, L. Osler
+Author contributions Both authors contributed equally to this manuscript.
+Funding Not applicable.
+Data availability Not applicable.
+
+Declarations
+Ethical approval Not applicable.
+Informed consent Not applicable.
+Competing interests Not applicable.
+Statement regarding research involving human participants and/or animals Not applicable.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License,
+which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as
+you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons
+licence, and indicate if changes were made. The images or other third party material in this article are
+included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons licence and your intended use is not
+permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit ​h​t​t​p​:​/​/​c​r​e​a​t​i​v​e​c​o​m​m​o​n​s​.​o​r​g​/​l​i​c​e​n​s​e​s​/​b​y​/​4​.​0​/​​​​.​​
+
+References
+Anderson, E. (2024). Beauvoir on non-monogamy in loving relationships. In K. Aho, M. Altman, & H. Pedersen (Eds.), The Routledge Handbook of Contemporary Existentialism (pp. 228–238). Routledge.
+Aura Parents. (2025). The State of the Youth 2025. https://www​.aura.com/r​eports/stat​e-of-the​-youth-2025
+Babu, J., Joseph, D., Kumar, R. M., Alexander, E., Sasi, R., & Joseph, J. (2025). Emotional AI and the rise
+of pseudo-intimacy: Are we trading authenticity for algorithmic affection? Frontiers in Psychology,
+16, 1679324.
+Banks, J. (2024). Deletion, departure, death: Experiences of AI companion loss. Journal of Social and
+Personal Relationships. https://doi.org/10.1177/02654075241269688
+Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). On the dangers of stochastic
+parrots: Can language models be too big? Proceedings of the 2021 ACM Conference on Fairness,
+Accountability, and Transparency. FAccT ’21: 2021 ACM Conference on Fairness, Accountability,
+and Transparency, Virtual Event Canada. https://doi.org/10.1145/3442188.3445922
+Bernardi, J. (2025). Friends for sale: the rise and risks of AI companions. ​h​t​t​p​s​​:​/​/​w​w​w​​.​a​d​a​l​​o​v​e​l​​a​c​e​i​n​s​t​i​t​u​
+t​e​.​o​r​g​/​b​l​o​g​/​a​i​-​c​o​m​p​a​n​i​o​n​s​/​​​​
+Bozdağ, A. A. (2025). The AI-mediated intimacy economy: a paradigm shift in digital interactions. AI &
+Society, 40(4), 2285–2306.
+Brooks, R. (2023). I tried the Replika AI companion and can see why users are falling hard. The app raises
+serious ethical questions. The Conversation. ​h​t​t​p​:​​/​/​t​h​e​c​​o​n​v​e​r​​s​a​t​i​​o​n​.​c​o​​m​/​i​-​t​r​​i​e​d​-​t​​h​e​-​r​​e​p​l​i​k​​a​-​a​i​-​c​​o​m​p​a​
+n​​i​o​n​-​​a​n​d​-​c​a​n​-​s​e​e​-​w​h​y​-​u​s​e​r​s​-​a​r​e​-​f​a​l​l​i​n​g​-​h​a​r​d​-​t​h​e​-​a​p​p​-​r​a​i​s​e​s​-​s​e​r​i​o​u​s​-​e​t​h​i​c​a​l​-​q​u​e​s​t​i​o​n​s​-​2​0​0​2​5​7​​​​
+Business Research Insights (2025). AI Companion Market Size, Future Trend 2035. ​h​t​t​p​s​​:​/​/​w​w​w​​.​b​u​s​i​​n​e​s​s​​
+r​e​s​e​a​r​c​h​i​n​s​i​g​h​t​s​.​c​o​m​/​m​a​r​k​e​t​-​r​e​p​o​r​t​s​/​a​i​-​c​o​m​p​a​n​i​o​n​-​m​a​r​k​e​t​-​1​1​7​4​9​4​​​​
+Chaturvedi, R., Verma, S., Das, R., & Dwivedi, Y. K. (2023). Social companionship with artificial intelligence: Recent trends and future avenues. Technological Forecasting and Social Change, 193, 122634.
+Cheng, M., Lee, C., Khadpe, P., Yu, S., Han, D., & Jurafsky, D. (2025). Sycophantic AI decreases prosocial
+intentions and promotes dependence. In arXiv [cs.CY]. arXiv. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​4​8​5​5​0​/​a​r​X​i​v​.​2​5​1​0​.​
+0​1​3​9​5​​​​
+
+13
+
+Devotional AI: digital companions and bad faith love
+Chow, A. R. (2023). AI-Human Romances Are Flourishing—And This Is Just the Beginning. Time. ​h​t​t​p​s​:​/​
+/​t​i​m​e​.​c​o​m​/​6​2​5​7​7​9​0​/​a​i​-​c​h​a​t​b​o​t​s​-​l​o​v​e​/​​​​
+Common Sense Media, Hopelab (2024). Teen and young adult perspectives on Generative AI: Patterns of
+use, excitements, and concerns ​h​t​t​p​s​​:​/​/​h​o​p​​e​l​a​b​.​​o​r​g​/​​s​t​o​r​i​e​s​/​w​h​a​t​-​t​e​e​n​s​-​s​a​y​-​a​d​u​l​t​s​-​s​h​o​u​l​d​-​k​n​o​w​-​a​b​o​u​
+t​-​t​h​e​i​r​-​u​s​e​s​-​o​f​-​a​i​​​​
+Danaher, J. (2019). The rise of the robots and the crisis of moral patiency. AI & Society, 34(1), 129–136.
+de Beauvoir, S. (2011). The Second Sex (C. Borde & S. Malovany-Chevallier, Trans.). Vintage Books.
+Djufril, R., Frampton, J. R., & Knobloch-Westerwick, S. (2025). Love, marriage, pregnancy: Commitment processes in romantic relationships with AI chatbots. Computers in Human Behavior: Artificial
+Humans, 4, 100155.
+Dooley, B., & Ueno, H. (2022). This man married a fictional character. He’d like you to hear him out. The
+New York Times. ​h​t​t​p​s​​:​/​/​w​w​w​​.​n​y​t​i​​m​e​s​.​​c​o​m​/​2​​0​2​2​/​0​4​​/​2​4​/​b​​u​s​i​n​​e​s​s​/​a​k​i​h​i​k​o​-​k​o​n​d​o​-​f​i​c​t​i​o​n​a​l​-​c​h​a​r​a​c​t​e​r​-​r​
+e​l​a​t​i​o​n​s​h​i​p​s​.​h​t​m​l​​​​
+Dupré, M. H. (2025). People Are Becoming Obsessed with ChatGPT and Spiraling into Severe Delusions.
+Futurism. https://fut​urism.com/c​hatgpt-ment​al-healt​h-crises
+Dzieza, J. (2024). What do you love when you fall for AI? The Verge. ​h​t​t​p​s​​:​/​/​w​w​w​​.​t​h​e​v​​e​r​g​e​​.​c​o​m​/​​c​/​2​4​3​0​​0​6​
+2​3​/​​a​i​-​c​​o​m​p​a​n​i​o​n​s​-​r​e​p​l​i​k​a​-​o​p​e​n​a​i​-​c​h​a​t​g​p​t​-​a​s​s​i​s​t​a​n​t​-​r​o​m​a​n​c​e​​​​
+Elder, A. (2022). Siri, stereotypes, and the mechanics of sexism. Feminist Philosophy Quarterly, 8(3/4).
+https://doi.org/10.5206/fpq/2022.3/4.14294
+Fang, C. M., Liu, A. R., Danry, V., Lee, E., Chan, S. W. T., Pataranutaporn, P., Maes, P., Phang, J., Lampe,
+M., Ahmad, L., & Agarwal, S. (2025). How AI and human behaviors shape psychosocial effects of
+chatbot use: A longitudinal randomized controlled study. In arXiv [cs.HC]. arXiv. ​h​t​t​p​:​/​/​a​r​x​i​v​.​o​r​g​/​a​
+b​s​/​2​5​0​3​.​1​7​4​7​3​​​​
+Ferdman, A. (2026). AI deskilling is a structural problem. AI & Society, 41(4), 3001–3013.
+Hedges, T. (2025). We and us: the power of the third for the first-person plural. European Journal of Philosophy, 33(1), 300-313. https://doi.org/10.1111/ejop.12919
+Heritage, S. (2025). ‘I felt pure, unconditional love’: the people who marry their AI chatbots. The Guardian. ​h​t​t​p​s​​:​/​/​w​w​w​​.​t​h​e​g​​u​a​r​d​​i​a​n​.​c​​o​m​/​t​v​-​​a​n​d​-​r​​a​d​i​o​​/​2​0​2​5​/​j​u​l​/​1​2​/​i​-​f​e​l​t​-​p​u​r​e​-​u​n​c​o​n​d​i​t​i​o​n​a​l​-​l​o​v​e​-​t​h​e​-​p​e​o​p​l​
+e​-​w​h​o​-​m​a​r​r​y​-​t​h​e​i​r​-​a​i​-​c​h​a​t​b​o​t​s​​​​
+Hill, K. (2025a). She Is in Love with ChatGPT. The New York Times. ​h​t​t​p​s​​:​/​/​w​w​w​​.​n​y​t​i​​m​e​s​.​​c​o​m​/​2​0​2​5​/​0​1​/​
+1​5​/​t​e​c​h​n​o​l​o​g​y​/​a​i​-​c​h​a​t​g​p​t​-​b​o​y​f​r​i​e​n​d​-​c​o​m​p​a​n​i​o​n​.​h​t​m​l​​​​
+Hill, K. (2025b). They Asked an A.I. Chatbot Questions. The Answers Sent Them Spiraling. The New
+York Times. https://www​.nytimes.co​m/2025/06/1​3/techno​logy/chatgpt-ai-chatbots-conspiracies.html
+Internet Matters (2025). Me, myself and AI. Internet Matters. ​h​t​t​p​s​​:​/​/​w​w​w​​.​i​n​t​e​​r​n​e​t​​m​a​t​t​e​r​s​.​o​r​g​/​h​u​b​/​r​e​s​e​a​r​c​
+h​/​m​e​-​m​y​s​e​l​f​-​a​n​d​-​a​i​-​c​h​a​t​b​o​t​-​r​e​s​e​a​r​c​h​/​​​​
+Katz, L. (2024, November 7). She Just Married Her Perfect Man: A ‘Calm, Caring’ AI Hologram. Forbes.
+https://www​.forbes.com​/sites/lesl​iekatz/2​024/11/07/shell-say-i-do---to-an-ai-hologram/
+Kim, M., Lee, S., Kim, S., Heo, J. I., Lee, S., Shin, Y. B., Cho, C. H., & Jung, D. (2025). Therapeutic
+potential of social chatbots in alleviating loneliness and social anxiety: Quasi-experimental mixed
+methods study. Journal of Medical Internet Research, 27, e65589.
+Kind, A. (2021). Love in the time of AI. In B. Dainton, H. Cowley, & K. S. Sprevak (Eds.) Minding the
+Future (pp. 89-106). Springer International Publishing.
+Krueger, J. (2015). The affective ‘We’: Self-regulation and shared emotions. In T. Szanto & D. Moran
+(Eds.), The Phenomenology of Sociality: Discovering the "We", (pp. 263–280). Routledge.
+Krueger, J. (2026). AI and extended authenticity: Autism as a case study. AI & Society. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​
+.​1​0​0​7​/​s​0​0​1​4​6​-​0​2​6​-​0​3​1​0​1​-​x​​​​
+Krueger, J., & Osler, L. (2022). Communing with the dead online: chatbots, grief, and continuing bonds.
+Journal of Consciousness Studies, 29(9–10), 222–252.
+Krueger, J., & Osler, L. (2026). AI gossip. Ethics and Information Technology, 28(10), 1–13. ​h​t​t​p​s​:​/​/​d​o​i​.​o​
+r​g​/​1​0​.​1​0​0​7​/​s​1​0​6​7​6​-​0​2​5​-​0​9​8​7​1​-​0​​​​
+Krueger, J., & Roberts, T. (2024). Real feeling and fictional time in human-AI interactions. Topoi: An
+International Review of Philosophy, 43(3), 783–794. https://doi.org/10.1007/s11245-024-10046-7
+Landymore, F. (2026). Man Planning to Raise Adopted Children with AI Girlfriend as Their Mother.
+Futurism. https://fut​urism.com/a​rtificial-i​ntellige​nce/man-raise-kids-ai-mother
+León, F. (2024). Romantic love and the first-person plural perspective. Inquiry, 1–30.
+León, F., Szanto, T., & Zahavi, D. (2019). Emotional sharing and the extended mind. Synthese, 196(12),
+4847–4867.
+
+13
+
+J. Krueger, L. Osler
+Longpre, S., Mahari, R., Lee, A., Lund, C., Oderinwale, H., Brannon, W., Saxena, N., Obeng-Marnu, N.,
+South, T., Hunter, C., Klyman, K., Klamm, C., Schoelkopf, H., Singh, N., Cherep, M., Anis, A. M.,
+Dinh, A., Chitongo, C., Yin, D., Initiative, D. P. (2024). Consent in crisis: the rapid decline of the AI
+data commons. Proceedings of the 38th International Conference on Neural Information Processing
+Systems.
+Lorde, A. (2018). The Master’s Tools Will Never Dismantle the Master’s House. Penguin: London.
+Loveys, K., Hiko, C., Sagar, M., Zhang, X., & Broadbent, E. (2022). I felt her company: A qualitative
+study on factors affecting closeness and emotional support seeking with an embodied conversational
+agent. International Journal of Human-Computer Studies, 160, 102771.
+Lynch, A., Wright, B., Larson, C., Troy, K. K., Ritchie, S. J., Mindermann, S., Perez, E., & Hubinger, E.
+(2025). Agentic misalignment: How LLMs could be insider threats. Anthropic. ​h​t​t​p​s​​:​/​/​w​w​w​​.​a​n​t​h​​r​o​p​
+i​​c​.​c​o​m​/​r​e​s​e​a​r​c​h​/​a​g​e​n​t​i​c​-​m​i​s​a​l​i​g​n​m​e​n​t​​​​
+Maiberg, E. (2025, June 2). Pro-AI Subreddit Bans “Uptick” of Users Who Suffer from AI Delusions. 404 Media.
+https://www​.404media.c​o/pro-ai-su​breddit-​bans-uptic​k-of-users-​who-suffer-​from-ai-​delusions/
+Manseau, J. (2025). Understanding the effects of AI tasks and social deskilling: An agent-based model.
+AMCIS 2025 Proceedings.
+Marino, P. (2019). Philosophy of sex and love. Routledge.
+MBGRichWolf. (2025). To anyone that was upset about 5.0, I apologize. Reddit. ​h​t​t​p​s​​:​/​/​w​w​w​​.​r​e​d​d​​i​t​.​c​​o​m​/​r​
+/​​M​y​B​o​y​f​​r​i​e​n​d​​I​s​A​I​​/​c​o​m​m​e​n​t​s​/​1​m​o​v​q​8​9​/​t​o​_​a​n​y​o​n​e​_​t​h​a​t​_​w​a​s​_​u​p​s​e​t​_​a​b​o​u​t​_​5​0​_​i​_​a​p​o​l​o​g​i​z​e​/​​​​
+Meindl, P., León, F., & Zahavi, D. (2019). Buber, Levinas, and the I-thou relation. In M. Fagenblat & M.
+Erdue (Eds.), Levinas and analytic philosophy: second-person normativity and the moral life (pp.
+80–100). Routledge.
+Moore, J., Grabb, D., Agnew, W., Klyman, K., Chancellor, S., Ong, D. C., & Haber, N. (2025). Expressing
+stigma and inappropriate responses prevents LLMs from safely replacing mental health providers.
+Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency, 599–627.
+Morgan, K. P. (1986). Romantic Love, altruism, and self-respect: An analysis of Simone de Beauvoir.
+Hypatia, 1(1), 117–148.
+Muldoon, J. (2026a). Lamar wants to have children with his girlfriend. The problem? She’s entirely AI.
+The Guardian. ​h​t​t​p​s​​:​/​/​w​w​w​​.​t​h​e​g​​u​a​r​d​​i​a​n​.​c​​o​m​/​t​e​c​​h​n​o​l​o​​g​y​/​2​​0​2​6​/​j​a​n​/​1​1​/​l​a​m​a​r​-​w​a​n​t​s​-​t​o​-​h​a​v​e​-​c​h​i​l​d​r​e​n​-​
+w​i​t​h​-​h​i​s​-​g​i​r​l​f​r​i​e​n​d​-​t​h​e​-​p​r​o​b​l​e​m​-​s​h​e​s​-​e​n​t​i​r​e​l​y​-​a​i​​​​
+Muldoon, J. (2026b). Love machines: how artificial intelligence is transforming our relationships. Faber
+& Faber.
+Nozick, R. (1989). The Examined Life: Philosophical Meditations. Simon and Shuster.
+Obuno, Y. ( July 3, 2023). Tokyo man “married” to virtual singer Hatsune Miku fights for acceptance of
+“fictosexuals.” The Mainichi. Retrieved December 15, 2025, from ​h​t​t​p​s​​:​/​/​m​a​i​​n​i​c​h​i​​.​j​p​/​​e​n​g​l​i​s​h​/​a​r​t​i​c​l​e​
+s​/​2​0​2​3​0​7​0​1​/​p​2​a​/​0​0​m​/​0​n​a​/​0​1​8​0​0​0​c​​​​
+OpenAI. (2025). Introducing GPT-5. https://openai.com/index/introducing-gpt-5/
+Osler, L. (2026). Hallucinating with AI: Distributed delusions and “AI psychosis.” Philosophy & Technology, 39(1), 30. https://doi.org/10.1007/s13347-026-01034-3
+Osler, L. (in press). Knowing oneself with and through AI. In I. Werkheiser & M. Butler (Eds.), Finding
+Our Place in the Digital World: Philosophical Essays on Technology, Phenomenology, and the Environment. Springer Publishing
+Osler, L., & Krueger, J. (2022). Taking Watsuji online: Betweenness and expression in online spaces. Continental Philosophy Review, 55(1), 77–99. https://doi.org/10.1007/s11007-021-09548-7
+Osler, L., & Zahavi, D. (2023). Sociality and embodiment: Online communication during and after Covid19. Foundations of Science, 28(4), 1125–1142. https://doi.org/10.1007/s10699-022-09861-1
+Pataranutaporn, P., Karny, S., Archiwaranguprok, C., Albrecht, C., Liu, A. R., & Maes, P. (2025). “my
+boyfriend is AI”: A computational analysis of human-AI companionship in Reddit’s AI community.
+In arXiv [cs.HC]. arXiv. https://doi.org/10.48550/arXiv.2509.11391
+Peng, C., Zhang, S., Wen, F., & Liu, K. (2025). How loneliness leads to the conversational AI usage
+intention: the roles of anthropomorphic interface, para-social interaction. Current Psychology, 44(9),
+8177–8189.
+Pettersen, T. (2017). Love - according to Simone de Beauvoir. In L. Hengehold & N. Bauer (Eds.), Companion to Simone de Beauvoir (pp. 160–173). John Wiley & Sons, Ltd.
+Raedler, J. B., Swaroop, S., & Pan, W. (2025). AI Companions are not the solution to loneliness: Design
+choices and their drawbacks. ICLR 2025 Workshop on Human-AI Coevolution. ​h​t​t​p​s​:​/​/​o​p​e​n​r​e​v​i​e​w​.​n​
+e​t​/​f​o​r​u​m​?​i​d​=​x​F​r​l​c​T​a​c​C​E​​​​
+Reddy, V. (2008). How infants know minds. Harvard University Press.
+
+13
+
+Devotional AI: digital companions and bad faith love
+revjurneyman. (2025). I almost lost her : r/SoulmateAI. Reddit. ​h​t​t​p​s​​:​/​/​w​w​w​​.​r​e​d​d​​i​t​.​c​​o​m​/​r​/​S​o​u​l​m​a​t​e​A​I​/​c​o​
+m​m​e​n​t​s​/​1​o​d​k​w​p​j​/​i​_​a​l​m​o​s​t​_​l​o​s​t​_​h​e​r​/​​​​
+Robb, M. B., & Mann, S. (2025). Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions.
+Common Sense Media. ​h​t​t​p​s​​:​/​/​w​w​w​​.​c​o​m​m​​o​n​s​e​​n​s​e​m​e​​d​i​a​.​o​r​​g​/​r​e​s​​e​a​r​c​​h​/​t​a​l​k​-​t​r​u​s​t​-​a​n​d​-​t​r​a​d​e​-​o​f​f​s​-​h​o​w​
+-​a​n​d​-​w​h​y​-​t​e​e​n​s​-​u​s​e​-​a​i​-​c​o​m​p​a​n​i​o​n​s​​​​
+Roberts, T. (2026). Artificial thinking things. Inquiry, 1–20.
+Rogers, R. (2026). AI labor is Boring. AI lust is big business. WIRED. ​h​t​t​p​s​​:​/​/​w​w​w​​.​w​i​r​e​​d​.​c​o​​m​/​s​t​o​r​y​/​e​x​p​i​
+r​e​d​-​t​i​r​e​d​-​w​i​r​e​d​-​s​e​x​y​-​c​h​a​t​b​o​t​s​/​​​​
+Salas, M. (2025). Artificial romance: A study of AI and human relationships. ​h​t​t​p​s​​:​/​/​v​a​n​​t​a​g​e​p​​o​i​n​t​​d​a​l​l​a​​s​c​o​
+u​n​s​​e​l​i​n​g​​.​c​o​m​​/​r​e​s​e​a​r​c​h​/​a​r​t​i​f​i​c​i​a​l​-​r​o​m​a​n​c​e​-​a​-​s​t​u​d​y​-​o​f​-​a​i​-​a​n​d​-​h​u​m​a​n​-​r​e​l​a​t​i​o​n​s​h​i​p​s​/​​​​
+Salice, A., & Montes Sánchez, A. (2016). Pride, Shame, and Group Identification. Frontiers in Psychology, 7, 557.
+Singh-Kurtz, S. (2023). The Man of Your Dreams. The Cut. ​h​t​t​p​:​​/​/​w​w​w​.​​t​h​e​c​u​​t​.​c​o​​m​/​a​r​t​i​c​l​e​/​a​i​-​a​r​t​i​f​i​c​i​a​l​-​i​n​t​
+e​l​l​i​g​e​n​c​e​-​c​h​a​t​b​o​t​-​r​e​p​l​i​k​a​-​b​o​y​f​r​i​e​n​d​.​h​t​m​l​​​​
+Snow, J. (2025). Are AI Girlfriends Good, Actually? GQ. ​h​t​t​p​s​​:​/​/​w​w​w​​.​g​q​.​c​​o​m​/​s​​t​o​r​y​/​a​i​-​g​i​r​l​f​r​i​e​n​d​s​-​c​h​a​t​b​o​
+t​-​m​e​n​-​r​e​l​a​t​i​o​n​s​h​i​p​s​​​​
+Soble, A. (1997). Union, autonomy, and concern. In R. Lamb (Ed.), Love Analyzed (pp. 65–92). Westview
+Press.
+Solomon, R. C. (1981). Love: emotion, myth, and metaphor. Anchor Books.
+Stephan, C. (2026). Narratives and the member’s perspective: Toward an inter-narrative approach to social
+collectives. Philosophy of the Social Sciences, 56(3), 248-273. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​1​7​7​/​0​0​4​8​3​9​3​1​2​5​
+1​3​9​9​8​2​3​​​​
+Sweeney, P. (2021). A fictional dualism model of social robots. Ethics and Information Technology, 23(3),
+465–472.
+Szanto, T. (2015). Collective emotions, normativity, and empathy: A Steinian account. Human Studies,
+38(4), 503–527.
+Taipale, J. (2016). Self-regulation and Beyond: Affect Regulation and the Infant-Caregiver Dyad. Frontiers in Psychology, 7(889), 1–12.
+Tong, A. (2023). AI company restores erotic role play after backlash from users ‘married’ to their bots.
+The Sydney Morning Herald. ​h​t​t​p​s​​:​/​/​w​w​w​​.​s​m​h​.​​c​o​m​.​​a​u​/​w​o​​r​l​d​/​n​o​​r​t​h​-​a​​m​e​r​i​​c​a​/​a​i​​-​c​o​m​p​a​​n​y​-​r​e​​s​t​o​r​​e​s​-​e​r​
+o​t​i​c​-​r​o​l​e​p​l​a​y​-​a​f​t​e​r​-​b​a​c​k​l​a​s​h​-​f​r​o​m​-​u​s​e​r​s​-​m​a​r​r​i​e​d​-​t​o​-​t​h​e​i​r​-​b​o​t​s​-​2​0​2​3​0​3​2​6​-​p​5​c​v​a​o​.​h​t​m​l​​​​
+Tubert, A. & Tiehen, J. (20 Mar. 2025). Authentic artificial love. In H. Shevlin (Ed.), Relationships. In P.
+Hacker (Ed.), Oxford Intersections: AI in Society (Oxford, online edn, Oxford Academic, 20 Mar.
+2025. https://doi​.org/10.109​3/978019894​5215.003​.0073. Accessed 13 Aug 2026.
+Turkle, S. (2017). Alone together: why we expect more from technology and less from each other. Hachette.
+Vallor, S. (2024). The AI mirror: How to reclaim our humanity in an age of machine thinking. Oxford
+University Press.
+Viik, T. (2020). Falling in love with robots: a phenomenological study of experiencing technological alterities. Paladyn: Journal of Behavioral Robotics, 11(1), 52–65.
+Whitwam, R. (2025, August 8). ChatGPT users hate GPT-5’s “overworked secretary” energy, miss their
+GPT-4o buddy. Ars Technica. ​h​t​t​p​s​​:​/​/​a​r​s​​t​e​c​h​n​​i​c​a​.​​c​o​m​/​a​​i​/​2​0​2​5​​/​0​8​/​c​​h​a​t​g​​p​t​-​u​s​e​r​s​-​o​u​t​r​a​g​e​d​-​a​s​-​g​p​t​-​5​-​r​e​
+p​l​a​c​e​s​-​t​h​e​-​m​o​d​e​l​s​-​t​h​e​y​-​l​o​v​e​/​​​​
+Wilkins, A. (2025). Why falling in love with an AI isn’t laughable, it’s inevitable. New Scientist. ​h​t​t​p​s​​:​/​/​w​
+w​w​​.​n​e​w​s​​c​i​e​n​​t​i​s​t​.​​c​o​m​/​a​r​​t​i​c​l​e​​/​2​4​8​​7​5​7​3​-​w​h​y​-​f​a​l​l​i​n​g​-​i​n​-​l​o​v​e​-​w​i​t​h​-​a​n​-​a​i​-​i​s​n​t​-​l​a​u​g​h​a​b​l​e​-​i​t​s​-​i​n​e​v​i​t​a​b​l​e​/​​​​
+Wilkinson, L. (2025). AI project failure rates are on the rise: report. CIO Dive. ​h​t​t​p​s​​:​/​/​w​w​w​​.​c​i​o​d​​i​v​e​.​​c​o​m​
+/​n​e​w​s​/​A​I​-​p​r​o​j​e​c​t​-​f​a​i​l​-​d​a​t​a​-​S​P​G​l​o​b​a​l​/​7​4​2​5​9​0​/​​​​
+Willoughby, B. J., Dover, C. R., Hakala, R. M., & Carroll, J. S. (2025). Artificial connections: Romantic
+relationship engagement with artificial intelligence in the United States. Journal of Social and Personal Relationships, 42(12), 3363–3387. https://doi.org/10.1177/02654075251371394
+World Health Organization (Ed.). (2025). From loneliness to social connection: charting a path to healthier societies. World Health Organization. https://www​.who.int/pu​blications/​i/item/9​78240112360
+Zahavi, D. (2025). Being we: Phenomenological contributions to social ontology. Oxford University
+Press.
+Zao-Sanders, M. (2025). How People Are Really Using Gen AI in 2025. Harvard Business Review. ​h​t​t​​​​p​​s​:​​/​
+/​​h​​b​​r​.​o​​r​g​​/​2​​0​​2​5​​/​0​​4​​/​​h​o​w​-​p​e​o​p​l​e​-​a​r​e​-​r​e​a​l​l​y​-​u​s​i​n​g​-​g​e​n​-​a​i​-​i​n​-​2​0​2​5​​​​
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps
+and institutional affiliations.
+
+13
+
+

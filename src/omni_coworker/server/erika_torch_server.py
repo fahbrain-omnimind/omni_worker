@@ -53,6 +53,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+# Must be set BEFORE `import torch` so the C10 CUDA caching allocator
+# releases whole cudaMalloc blocks on empty_cache() during /erika/unload.
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:False")
+
 import torch
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -320,17 +324,36 @@ def load_model(model_id: str, load_4bit: bool, device: str,
 
 @torch.inference_mode()
 def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p: float):
-    gen = _MODEL.generate(
-        prompt_ids.to(_MODEL.device),
-        max_new_tokens=max_new,
-        do_sample=temperature > 0,
-        temperature=max(temperature, 1e-4),
-        top_p=top_p,
-        output_hidden_states=True,
-        output_attentions=True,
-        return_dict_in_generate=True,
-        pad_token_id=_TOKENIZER.eos_token_id,
-    )
+    max_attn_toks = int(os.environ.get("OMNI_MAX_ATTN_TOKENS", "900"))
+    want_attn = int(prompt_ids.shape[1]) <= max_attn_toks
+    try:
+        gen = _MODEL.generate(
+            prompt_ids.to(_MODEL.device),
+            max_new_tokens=max_new,
+            do_sample=temperature > 0,
+            temperature=max(temperature, 1e-4),
+            top_p=top_p,
+            output_hidden_states=True,
+            output_attentions=want_attn,
+            return_dict_in_generate=True,
+            pad_token_id=_TOKENIZER.eos_token_id,
+        )
+    except torch.OutOfMemoryError:
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        if not want_attn:
+            raise
+        gen = _MODEL.generate(
+            prompt_ids.to(_MODEL.device),
+            max_new_tokens=max_new,
+            do_sample=temperature > 0,
+            temperature=max(temperature, 1e-4),
+            top_p=top_p,
+            output_hidden_states=True,
+            output_attentions=False,
+            return_dict_in_generate=True,
+            pad_token_id=_TOKENIZER.eos_token_id,
+        )
     seq = gen.sequences
     new_ids = seq[0, prompt_ids.shape[1]:]
     text = _TOKENIZER.decode(new_ids, skip_special_tokens=True)
@@ -483,10 +506,14 @@ def chat_completions(req: ChatCompletionReq) -> dict[str, Any]:
     try:
         text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
     except torch.OutOfMemoryError as e:
+        err_msg = str(e)
+        del e
+        import gc
+        gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
-        logger.warning("CUDA OOM em /v1/chat/completions: %s", e)
-        raise HTTPException(status_code=507, detail=f"CUDA OOM — evict peer model and retry: {e}") from e
+        logger.warning("CUDA OOM em /v1/chat/completions: %s", err_msg)
+        raise HTTPException(status_code=507, detail=f"CUDA OOM — evict peer model and retry: {err_msg}")
     return {
         "id": f"chatcmpl-{uuid.uuid4().hex[:12]}",
         "object": "chat.completion",
@@ -509,10 +536,14 @@ def completions(req: CompletionReq) -> dict[str, Any]:
     try:
         text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
     except torch.OutOfMemoryError as e:
+        err_msg = str(e)
+        del e
+        import gc
+        gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
-        logger.warning("CUDA OOM em /v1/completions: %s", e)
-        raise HTTPException(status_code=507, detail=f"CUDA OOM — evict peer model and retry: {e}") from e
+        logger.warning("CUDA OOM em /v1/completions: %s", err_msg)
+        raise HTTPException(status_code=507, detail=f"CUDA OOM — evict peer model and retry: {err_msg}")
     return {
         "id": f"cmpl-{uuid.uuid4().hex[:12]}",
         "object": "text_completion",
