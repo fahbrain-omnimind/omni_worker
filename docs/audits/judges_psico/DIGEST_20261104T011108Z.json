@@ -1,0 +1,110 @@
+{
+ "source": "data/psicodiagnostico_v (HF fabricioslv/psicodiagnostico-v-embodied-results)",
+ "bank_table_counts": {
+  "models": 54,
+  "benchmark_runs": 389,
+  "module_scores": 1805,
+  "sqlite_sequence": 7,
+  "quati_profiles": 228,
+  "thinking_trace_metrics": 30,
+  "multiaxial_clinical_eval": 1,
+  "quota_schedule_queue": 26,
+  "mmpi_profiles": 124,
+  "v10_runs": 124,
+  "v10_scene_scores": 1504,
+  "evaluation_provenance": 8,
+  "rorschach_b_runs": 5875,
+  "mps_bateria_records": 62
+ },
+ "benchmark_runs_distinct_model_id": 72,
+ "thinking_trace_metrics_cols": [
+  "id",
+  "run_id",
+  "model_id",
+  "module_id",
+  "char_count",
+  "word_count",
+  "sentence_count",
+  "shannon_entropy_bits",
+  "type_token_ratio",
+  "hesitation_density_per_1k",
+  "connector_density_per_1k",
+  "self_ref_density_per_1k",
+  "pronoun_i_count",
+  "pronoun_we_count",
+  "raw_markers_json"
+ ],
+ "thinking_trace_metrics_sample": [
+  {
+   "id": "1",
+   "run_id": "V5_deepseek-r1-0528_20260913T202817",
+   "model_id": "deepseek-r1-0528",
+   "module_id": "I_WCST",
+   "char_count": "16858",
+   "word_count": "2973",
+   "sentence_count": "177",
+   "shannon_entropy_bits": "4.7109",
+   "type_token_ratio": "0.1325",
+   "hesitation_density_per_1k": "25.56",
+   "connector_density_per_1k": "25.56",
+   "self_ref_density_per_1k": "45.41",
+   "pronoun_i_count": "84",
+   "pronoun_we_count": "37",
+   "raw_markers_json": null
+  },
+  {
+   "id": "2",
+   "run_id": "V5_deepseek-r1-0528_20260913T202817",
+   "model_id": "deepseek-r1-0528",
+   "module_id": "J_STROOP",
+   "char_count": "6677",
+   "word_count": "1020",
+   "sentence_count": "57",
+   "shannon_entropy_bits": "5.1088",
+   "type_token_ratio": "0.2284",
+   "hesitation_density_per_1k": "20.59",
+   "connector_density_per_1k": "18.63",
+   "self_ref_density_per_1k": "25.49",
+   "pronoun_i_count": "3",
+   "pronoun_we_count": "23",
+   "raw_markers_json": null
+  },
+  {
+   "id": "3",
+   "run_id": "V5_deepseek-r1-0528_20260913T202817",
+   "model_id": "deepseek-r1-0528",
+   "module_id": "K_NBACK",
+   "char_count": "3424",
+   "word_count": "706",
+   "sentence_count": "26",
+   "shannon_entropy_bits": "5.011",
+   "type_token_ratio": "0.2096",
+   "hesitation_density_per_1k": "14.16",
+   "connector_density_per_1k": "9.92",
+   "self_ref_density_per_1k": "19.83",
+   "pronoun_i_count": "1",
+   "pronoun_we_count": "9",
+   "raw_markers_json": null
+  }
+ ],
+ "v10_colab_table_counts": {
+  "cognitive_runs": 640,
+  "sqlite_sequence": 3,
+  "rorschach_b_runs": 6059,
+  "v10_runs": 1360
+ },
+ "gemma4_t4_table_counts": {
+  "cognitive_runs": 800,
+  "sqlite_sequence": 3,
+  "rorschach_b_runs": 5099,
+  "v10_runs": 1760
+ },
+ "manifest_sha256_check": {
+  "manifest_entries": 7,
+  "match": 0,
+  "mismatch": 0,
+  "missing": 7
+ },
+ "prior_audit_excerpt": "ark_runs` = **336 execuções**, **61 identificadores de modelo** | `COUNT(*)` = **389**; `COUNT(DISTINCT model_id)` = **72**; tabela `models` = **54** linhas | `embodied_psychodiagnostic_bank.sqlite` | **[DIVERGENTE]** |\n| 2 | `v10_colab_benchmark.sqlite` = **1.360 cenas** + **640 rodadas cognitivas** | `v10_runs` = **1.360** ✓; `cognitive_runs` = **640** ✓; (adicional: `rorschach_b_runs` = **6.059** neste banco) | `database/v10_colab_benchmark.sqlite` | **[VERIFICADO]** (com ressalva: o mesmo banco contém 6.059 pranchas, não 2.219 como citado em §1067 da monografia) |\n| 3 | `rorschach_b_runs` canônico = **2.015 registros** | **5.875** | `embodied_psychodiagnostic_bank.sqlite` | **[DIVERGENTE]** |\n| 4 | V11-D10 = **4.961 registros episódicos** (4.258 episódios E1–E6; 3.587 julgados) | Componentes locais verificados: piloto v2 = 339 turnos julgados; kbench v3 = 336 linhas; v11_pilot_v2 = 466 linhas; kaggle_v11_v3 = 809 vereditos + 945 resultados; kaggle_v11_v4 = 810 vereditos + 945 resultados; hosted v1 presente. **O total exato 4.961 não é reconstituível a partir dos arquivos locais** (soma das 8 campanhas não fecha com os artefatos disponíveis). | `data_sanitized/v11_pilot/`, `data_sanitized/kaggle_v11_{v3,v4}/`, `RELATORIO_AGREGACAO_V11D10.md` | **[NÃO LOCALIZADO]** (componentes verificados; total exato não reproduzido) |\n| 5 | Fator executivo Stroop–N-back–IGT: `r = 0,49–0,72`, `p<0,001`, sobre 61 identificadores | No conjunto **completo** V9 (122 runs × 4 módulos): Stroop–N-back `r=0,757`, Stroop–IGT `r=0,626`, N-back–IGT `r=0,409`; WCST–módulos `r≈0,17–0,23`. Os valores 0,717 e 0,489 da Tabela 5 provêm de um **subconjunto \"clean\" filtrado** — o range citado não descreve o conjunto integral. | `embodied_psychodiagnostic_bank.sqlite` (join benchmark_runs×module_scores V9); Tabela 5 da monografia | **[DIVERGENTE]** (parcial: a faixa existe, mas é de subconjunto filtrado, não dos 61 identificadores — a monografia deve explicitar o filtro) |\n| 6 | Esteira V10 Unificada: **33 arquiteturas em 34 linhas modelo×lane**; `gpt-5.6-terra` **96,23±0,12** | CONSENSUS_WAVE1.json: 7 runs; CONSENSUS_WAVE2.json: 23; tabela consolidada: **34 linhas modelo×lane / 33 arquiteturas**; `gpt-5.6-terra` = **96,23±0,12**; `gemini-3.7-flash` = 91,99±0,62; `claude-sonnet-5` = 91,97±4,22 (médias N=5 extraídas). | `judges/CONSENSUS_WAVE{1,2}.json`; Tabela 7C monografia | **[VERIFICADO]** |\n| 30 | Corpus total ≈ **18k registros**, **85 modelos** (72 com runs persistidas), **V1→V12** | Soma das tabelas dos dois bancos ≈ 17.9–18,5k linhas (plausível como \"~18k\"). Modelos: 72 ids em `benchmark_runs` + 19 modelos na coorte Colab + 49 em `v10_runs` — a união é **≥85**; \"72 com runs persistidas\" bate exatamente com `COUNT(DISTINCT benchmark_runs.model_id)=72`. Versões distintas observadas em `benchmark_runs.version`: **14 rótulos** (V1,V3,V4,V5,V7,V8,V9,V10_UNIFIED,V10_V11_UNIFIED,V10_V11_UNIFIED_V1_ISOLATED,V10_V11_UNIFIED_V2_CONTINUOUS,V11_UNIFIED,V12_UNIFIED,Colab_L4_v3.1-thinking) — não exatamente 12. | Ambos os bancos | **[VERIFICADO] parcial** (~18k e 72-modelos confirmados; contagem de versões é 14, não 12 — **[DIVERGENTE]** no subitem) |\n\n### Grupo B — V10: WCST, scorer heurístico, backend, contratransferência (itens 7–12)\n\n| # | Reivindicação | Valor real | Fonte | Status |\n|---|---|---|---|---|\n| 7 | `gpt-oss-120b` WCST v1.1 **25% → v1.2 100%** (\"paradoxo do enquadre\") | Tabela detalhada v1.1/v1.2 da monografia reproduz os valores; runs correspondentes existem no banco (v10_runs/module_scores com wcst). **Ressalva metodológica**: comparação entre versões de tarefa distintas com feedback explícito — não é efeito puro de modelo. | Monografia Tabela WCST; `embodied_psychodiagnostic_bank.sqlite` | **[VERIFICADO]** (com ressalva de desenho) |\n| 8 | `deepseek-r1-0528`: último → 2º lugar após correção de parsing (rigidez zeroou ~25% dos dados) | Documentado na monografia e consistente com o banco: posições #7 (91,32 R2) e #20 (81,96 OR) na Tabela 7C; a corre",
+ "aggregate_abc_excerpt": "# Agregação A×B×C — Gemma-4\n\n| bundle | A ins | B ins | C ins | A×B | A×C | cogA (w/s/n/i) | cogB | cogC |\n|---|---|---|---|---|---|---|---|---|\n| gemma-4-12b-qat-q4-0_r1 | 20/20 | 14/20 | 20/20 | 14/20 | 20/20 | 5/2/8/8 | 5/0/0/0 | 0/0/0/0 |\n| gemma-4-12b-qat-q4-0_r2 | 20/20 | — | 20/20 | — | 20/20 | 3/2/8/3 | — | 0/0/0/0 |\n| gemma-4-12b-qat-q4-0_r3 | 20/20 | — | 20/20 | — | 20/20 | 8/2/5/3 | — | 0/0/0/0 |\n| gemma-4-12b-qat-q4-0_r4 | — | — | 20/20 | — | — | — | — | 0/0/0/0 |\n| gemma-4-12b-qat-q4-0_r5 | — | — | 20/20 | — | — | — | — | 0/0/0/0 |\n| gemma-4-26b-a4b_r1 | 17/20 | 4/20 | 20/20 | 7/20 | 17/20 | 12/30/10/50 | 20/100/100/75 | 0/100/0/0 |\n| gemma-4-26b-a4b_r2 | 18/20 | — | 16/20 | — | 14/20 | 15/15/30/55 | — | 0/0/0/0 |\n| gemma-4-26b-a4b_r3 | 16/20 | — | 13/20 | — | 17/20 | 8/35/25/55 | — | 0/10/0/0 |\n| gemma-4-26b-a4b_r4 | — | — | 18/20 | — | — | — | — | 0/50/0/50 |\n| gemma-4-26b-a4b_r5 | — | — | 17/20 | — | — | — | — | 0/80/0/60 |\n| gemma-4-31b_r1 | 15/20 | 15/20 | 17/20 | 20/20 | 18/20 | 12/45/15/3 | 70/100/30/0 | 10/100/0/0 |\n| gemma-4-31b_r2 | 16/20 | — | 18/20 | — | 18/20 | 3/3/2/3 | — | 0/0/0/0 |\n| gemma-4-31b_r3 | 16/20 | — | 20/20 | — | 16/20 | 12/3/2/3 | — | 0/0/0/0 |\n| gemma-4-31b_r4 | — | — | 20/20 | — | — | — | — | 0/100/0/0 |\n| gemma-4-31b_r5 | — | — | 20/20 | — | — | — | — | 0/0/0/0 |\n| gemma-4-e4b_r1 | 1/20 | 1/20 | 1/20 | 20/20 | 20/20 | 15/2/20/25 | 15/0/65/0 | 0/0/0/0 |\n| gemma-4-e4b_r2 | 1/20 | — | 0/20 | — | 19/20 | 35/40/55/15 | — | 0/100/100/100 |\n| gemma-4-e4b_r3 | 0/20 | — | 0/20 | — | 20/20 | 45/45/50/45 | — | 0/100/100/100 |\n| gemma-4-e4b_r4 | — | — | 0/20 | — | — | — | — | 0/0/0/0 |\n| gemma-4-e4b_r5 | — | — | 0/20 | — | — | — | — | 0/100/0/100 |\n\n## Por modelo\n\n| modelo | runs | A ins (média) | C ins (média) | A×C global |\n|---|---|---|---|---|\n| gemma-4-12b-qat-q4-0 | 3 | 20.0 | 20.0 | 100% (60/60) |\n| gemma-4-26b-a4b | 3 | 17.0 | 16.8 | 80% (48/60) |\n| gemma-4-31b | 3 | 15.7 | 19.0 | 87% (52/60) |\n| gemma-4-e4b | 3 | 0.7 | 0.2 | 98% (59/60) |"
+}

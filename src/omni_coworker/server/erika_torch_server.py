@@ -366,7 +366,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
         try:
             tail = seq[:, -256:].to(_MODEL.device)
             out_t = _MODEL(tail, output_attentions=True)
-            attn_last = out_t.attentions[-1] if getattr(out_t, "attentions", None) else None
+            attn_last = out_t.attentions if getattr(out_t, "attentions", None) else None
             attn_tail_note = "tail_window_256" if attn_last is not None else "attn_unavailable"
             del out_t
         except Exception as exc:  # noqa: BLE001

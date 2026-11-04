@@ -33,6 +33,15 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOG_DIR="$REPO/logs"
 PID_DIR="$REPO/runtime_config/pids"
 mkdir -p "$LOG_DIR" "$PID_DIR" "$REPO/data/monitor"
+# captura temporal MPS (activation_steps/prompt_hidden): ligada por padrão
+[ -f "$REPO/data/monitor/capture.env" ] || cat > "$REPO/data/monitor/capture.env" <<'CAP'
+OMNI_ACT_STEP_EVERY=8
+OMNI_ACT_STEP_ON=1
+OMNI_ACT_STEP_KEEP=32
+OMNI_ACT_PROMPT_HIDDEN=1
+OMNI_ACT_VEC_SIDECAR=1
+OMNI_ACT_VEC_KEEP=64
+CAP
 
 # venv: prioriza o compartilhado documentado (omni_node), cai no local
 if [ -z "${VENV_PYTHON:-}" ]; then
