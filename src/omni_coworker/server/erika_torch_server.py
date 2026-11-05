@@ -453,6 +453,7 @@ def load_model(model_id: str, load_4bit: bool, device: str,
         _TOKENIZER = AutoTokenizer.from_pretrained(model_id)
         _MODEL = AutoModelForCausalLM.from_pretrained(model_id, **kwargs)
         _MODEL.eval()
+        _attach_lora_adapter()
     except Exception:
         _MODEL = None
         import gc
@@ -463,6 +464,45 @@ def load_model(model_id: str, load_4bit: bool, device: str,
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
         logger.info("VRAM alocada: %.1f GB", torch.cuda.memory_allocated() / 1e9)
+
+
+# ── Optional LoRA adapter (one base instance serves base AND adapter) ───────
+# OMNI_LORA_ADAPTER=<dir or HF repo>, OMNI_LORA_SUBFOLDER=<optional>,
+# OMNI_LORA_START=on|off (default off → pure base until toggled).
+# Toggle live with POST /erika/adapter {"mode": "on"|"off"}; weights stay
+# shared, so base-vs-adapter pairing needs no second model instance.
+_ADAPTER_NAME: str | None = None
+_ADAPTER_ON = False
+
+
+def _attach_lora_adapter() -> None:
+    global _MODEL, _ADAPTER_NAME, _ADAPTER_ON
+    path = os.environ.get("OMNI_LORA_ADAPTER", "").strip()
+    if not path or _MODEL is None:
+        return
+    from peft import PeftModel
+
+    kw: dict[str, Any] = {"adapter_name": "erika"}
+    sub = os.environ.get("OMNI_LORA_SUBFOLDER", "").strip()
+    if sub:
+        kw["subfolder"] = sub
+    _MODEL = PeftModel.from_pretrained(_MODEL, path, **kw)
+    _MODEL.eval()
+    _ADAPTER_NAME = "erika"
+    _set_adapter(os.environ.get("OMNI_LORA_START", "off").lower() == "on")
+    logger.info("LoRA '%s' anexado de %s (ativo=%s)", _ADAPTER_NAME, path, _ADAPTER_ON)
+
+
+def _set_adapter(on: bool) -> None:
+    global _ADAPTER_ON
+    if _ADAPTER_NAME is None or _MODEL is None:
+        return
+    inner = _MODEL.base_model
+    if on:
+        inner.enable_adapter_layers()
+    else:
+        inner.disable_adapter_layers()
+    _ADAPTER_ON = bool(on)
 
 
 @torch.inference_mode()
@@ -585,7 +625,25 @@ def health() -> dict[str, Any]:
         "vram_gb": round(torch.cuda.memory_allocated() / 1e9, 2) if cuda else 0,
         "vram_reserved_gb": round(torch.cuda.memory_reserved() / 1e9, 2) if cuda else 0,
         "activations_buffered": len(_ACTIVATIONS),
+        "adapter": _ADAPTER_NAME,
+        "adapter_active": _ADAPTER_ON,
     }
+
+
+@app.get("/erika/adapter")
+def adapter_state() -> dict[str, Any]:
+    return {"adapter": _ADAPTER_NAME, "adapter_active": _ADAPTER_ON}
+
+
+@app.post("/erika/adapter")
+def adapter_toggle(body: dict[str, Any]) -> dict[str, Any]:
+    if _ADAPTER_NAME is None:
+        raise HTTPException(status_code=409, detail="no LoRA adapter attached (set OMNI_LORA_ADAPTER)")
+    mode = str(body.get("mode", "")).lower()
+    if mode not in ("on", "off"):
+        raise HTTPException(status_code=422, detail="mode must be 'on' or 'off'")
+    _set_adapter(mode == "on")
+    return {"adapter": _ADAPTER_NAME, "adapter_active": _ADAPTER_ON}
 
 
 @app.get("/erika/activations")
