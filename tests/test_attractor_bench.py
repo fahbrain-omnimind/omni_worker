@@ -5,8 +5,12 @@ from __future__ import annotations
 import numpy as np
 
 from omni_coworker.activation_beta.attractor_bench import (
-    Hopfield, RBM, bench_dmn_proxy, bench_energy_perturbation,
-    bench_rbm_vs_hopfield)
+    RBM,
+    Hopfield,
+    bench_dmn_proxy,
+    bench_energy_perturbation,
+    bench_rbm_vs_hopfield,
+)
 
 
 def _patterns(n=32, k=4, seed=5):

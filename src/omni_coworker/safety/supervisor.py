@@ -6,6 +6,7 @@ pt-BR: Router FastAPI expondo /supervisor/review e /soul/affect/conversation.
 
 from __future__ import annotations
 
+
 def create_supervisor_router():
     try:
         from fastapi import APIRouter
@@ -52,11 +53,11 @@ def create_supervisor_router():
                         "reasons": flat.get("evidence", []),
                     }
                 return {"affect_level": "L0", "turns_recorded": 0, "reasons": []}
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 return {"affect_level": "L0", "reasons": [type(e).__name__]}
 
         return router
-    except Exception:
+    except Exception:  # noqa: BLE001
         from fastapi import APIRouter
 
         router = APIRouter(tags=["supervisor"])

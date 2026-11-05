@@ -47,5 +47,5 @@ def derive_affect_from_brain() -> dict:
         sigma = min(1.0, max(0.0, (norm or 0.0) / 300.0)) if norm is not None else 0.0
         epsilon = round(min(1.0, max(0.0, (norm or 0.0) / 1000.0 + 0.05)), 4)
         return {"phi": round(phi, 4), "psi": round(psi, 4), "sigma": round(sigma, 4), "epsilon": epsilon}
-    except Exception:
+    except Exception:  # noqa: BLE001
         return derive_affect()

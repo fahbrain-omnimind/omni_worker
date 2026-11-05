@@ -25,7 +25,7 @@ from __future__ import annotations
 import logging
 import math
 import time
-from typing import Any, Dict, List
+from typing import Any
 
 import numpy as np
 
@@ -101,11 +101,11 @@ class CausalEngine:
     def __init__(self, confidence_level: float = 0.95) -> None:
         self.confidence_level = float(confidence_level)
         self.logger = logger
-        self._intervention_history: List[Dict[str, Any]] = []
+        self._intervention_history: list[dict[str, Any]] = []
 
     def compute_causal_effect(
-        self, observational_data: List[float], interventional_data: List[float]
-    ) -> Dict[str, Any]:
+        self, observational_data: list[float], interventional_data: list[float]
+    ) -> dict[str, Any]:
         obs = np.asarray(observational_data, dtype=float)
         inter = np.asarray(interventional_data, dtype=float)
         if obs.size == 0 or inter.size == 0:
@@ -144,12 +144,12 @@ class CausalEngine:
         return result
 
     def validate_intervention_necessity(
-        self, current_state_metrics: Dict[str, float], predicted_outcome_metrics: Dict[str, float]
+        self, current_state_metrics: dict[str, float], predicted_outcome_metrics: dict[str, float]
     ) -> bool:
         differences = {}
-        for key in current_state_metrics:
+        for key, val in current_state_metrics.items():
             if key in predicted_outcome_metrics:
-                differences[key] = abs(current_state_metrics[key] - predicted_outcome_metrics[key])
+                differences[key] = abs(val - predicted_outcome_metrics[key])
         if not differences:
             return False
         avg_difference = sum(differences.values()) / len(differences)
@@ -178,10 +178,10 @@ class CausalEngine:
             self._intervention_history = self._intervention_history[-100:]
         return bool(should_intervene)
 
-    def register_event(self, cause: str, effect: str, metadata: Dict[str, Any] = None) -> None:
+    def register_event(self, cause: str, effect: str, metadata: dict[str, Any] | None = None) -> None:
         if metadata is None:
             metadata = {}
         try:
             self.logger.info("CAUSAL_REGISTRY: %s -> %s", cause, effect, extra={"metadata": metadata})
-        except Exception:
+        except Exception:  # noqa: BLE001
             print(f"CAUSAL_REGISTRY: {cause} -> {effect} | {metadata}")

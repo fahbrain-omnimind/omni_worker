@@ -4,8 +4,7 @@ from __future__ import annotations
 
 import json
 
-from omni_coworker.audit.immutable_audit import (
-    GENESIS_HASH, ImmutableAuditSystem)
+from omni_coworker.audit.immutable_audit import GENESIS_HASH, ImmutableAuditSystem
 
 
 def _read_events(audit: ImmutableAuditSystem) -> list[dict]:

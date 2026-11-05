@@ -29,7 +29,7 @@ def _get(url: str) -> dict | None:
     try:
         with urllib.request.urlopen(url, timeout=4) as r:
             return json.loads(r.read())
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 

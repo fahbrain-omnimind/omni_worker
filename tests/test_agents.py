@@ -4,7 +4,7 @@ English: Tests for DebugAgent, AnalystAgent, ReviewerAgent.
 pt-BR: Testes para agentes.
 """
 
-from omni_coworker import DebugAgent, AnalystAgent, ReviewerAgent
+from omni_coworker import AnalystAgent, DebugAgent, ReviewerAgent
 
 
 def test_debug_agent():

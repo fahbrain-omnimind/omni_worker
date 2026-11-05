@@ -45,7 +45,7 @@ def _executor_activations() -> int | None:
 
         r = httpx.get(f"{_base_for_role('executor')}/health", timeout=5.0)
         return int(r.json().get("activations_buffered", 0))
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -93,7 +93,7 @@ class SwapScheduler:
             evict_at = min(0.97, max(0.5, evict_at - delta))
             self.state["modulation"] = {"swap_threshold_delta": delta,
                                         "cycle_id": mod.get("cycle_id")}
-        except Exception:
+        except Exception:  # noqa: BLE001
             self.state["modulation"] = None
         max_unloaded = float(os.getenv("OMNI_SWAP_MAX_UNLOADED_MIN", "30")) * 60
         base = _base_for_role("executor")
@@ -103,7 +103,7 @@ class SwapScheduler:
                 # external unload detection (fail-open)
                 try:
                     acts = _executor_activations()
-                except Exception:
+                except Exception:  # noqa: BLE001
                     acts = None
                 if acts is None:
                     self.state["executor"] = "unloaded"
@@ -115,7 +115,7 @@ class SwapScheduler:
                     try:
                         r = client.post(f"{base}/erika/unload")
                         ok = r.json().get("status") in ("unloaded", "already_unloaded")
-                    except Exception:
+                    except Exception:  # noqa: BLE001
                         ok = False
                     if ok:
                         self.state["executor"] = "unloaded"
@@ -129,7 +129,7 @@ class SwapScheduler:
                     try:
                         r = client.post(f"{base}/erika/reload")
                         ok = r.json().get("status") in ("loaded", "already_loaded")
-                    except Exception:
+                    except Exception:  # noqa: BLE001
                         ok = False
                     if ok:
                         self.state["executor"] = "loaded"

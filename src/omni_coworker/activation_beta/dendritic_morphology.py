@@ -39,8 +39,10 @@ funcional e evolução restrita ao eixo.
 
 from __future__ import annotations
 
+from collections.abc import Callable
+from typing import Any
+
 import numpy as np
-from typing import Any, Callable
 
 _N = 10
 _MAX_DEPTH = float(_N - 1)

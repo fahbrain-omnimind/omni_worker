@@ -85,7 +85,7 @@ def snapshot(force: bool = False) -> dict:
             if stored == manifest:
                 return {"created": False, "skipped": True,
                         "path": str(latest), "kept": len(list(_snapshot_dir().glob("state_*.tar.gz")))}
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass  # corrupt latest -> fall through and write a fresh one
 
     ts = time.strftime("%Y%m%dT%H%M%S", time.gmtime()) + f"{time.time_ns() % 1_000_000:06d}Z"
@@ -125,7 +125,7 @@ def snapshot(force: bool = False) -> dict:
         with tarfile.open(snaps[0], "r:gz") as tf:
             tf.extractfile("manifest.json")
         head_ok = True
-    except Exception:
+    except Exception:  # noqa: BLE001
         head_ok = False
     kept = snaps[:N_SNAPSHOTS] if head_ok else snaps
     for old in snaps[len(kept):]:
@@ -170,7 +170,7 @@ def restore(path: str | Path, verify: bool = True) -> dict:
                 tf.extractall(sp, filter="data")
             try:
                 stored = json.loads((sp / "manifest.json").read_text())["hash"]
-            except Exception:
+            except Exception:  # noqa: BLE001
                 return {"restored": False, "reason": "manifest_missing",
                         "path": str(path)}
             got = _hash_tree(sp, skip_top={"manifest.json"})
@@ -199,11 +199,11 @@ def restore(path: str | Path, verify: bool = True) -> dict:
                 witness_event("state_restore", {
                     "archive": str(path), "manifest_sha256": stored,
                     "witness_records": wv.get("records", 0)})
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
             return {"restored": True, "path": str(path), "verified": True,
                     "manifest_sha256": stored, "witness": wv}
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"restored": False, "reason": str(e), "path": str(path)}
 
 

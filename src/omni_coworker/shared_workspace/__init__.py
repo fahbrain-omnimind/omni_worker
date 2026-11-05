@@ -10,10 +10,15 @@ feedback). Derivado do shared_workspace canônico, redesenhado CPU/RAM
 para o worker Kaggle — sem torch, sem IPC cross-process no P0.
 """
 
-from .bus import publish, subscribe, latest, history, topics
+from .bus import history, latest, publish, subscribe, topics
 from .schema import CANONICAL_PREFIXES, validate
 
 __all__ = [
-    "publish", "subscribe", "latest", "history", "topics",
-    "CANONICAL_PREFIXES", "validate",
+    "CANONICAL_PREFIXES",
+    "history",
+    "latest",
+    "publish",
+    "subscribe",
+    "topics",
+    "validate",
 ]

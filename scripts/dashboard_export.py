@@ -9,7 +9,7 @@ import argparse
 import json
 import sqlite3
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,7 +22,7 @@ for _p in (str(SRC), str(ROOT)):
 def _read_json(path: Path):
     try:
         return json.loads(path.read_text())
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -36,7 +36,7 @@ def _read_jsonl(path: Path):
             continue
         try:
             out.append(json.loads(line))
-        except Exception:
+        except Exception:  # noqa: BLE001, S112
             continue
     return out
 
@@ -50,7 +50,7 @@ def _sqlite_rows(db: Path, query: str, params=()):
         rows = [dict(r) for r in conn.execute(query, params).fetchall()]
         conn.close()
         return rows
-    except Exception:
+    except Exception:  # noqa: BLE001
         return []
 
 
@@ -63,14 +63,14 @@ def export(root: Path = ROOT) -> dict:
     try:
         from omni_coworker.kernel_daemon import scheduler
         live_bundle = scheduler.run_cycle() or {}
-    except Exception:
+    except Exception:  # noqa: BLE001
         live_bundle = {}
 
     live_soul = {}
     try:
         from omni_coworker.soul.api import _compute_state
         live_soul = _compute_state() or {}
-    except Exception:
+    except Exception:  # noqa: BLE001
         live_soul = {}
 
     live_soma = live_soul.get("soma") or {}
@@ -78,15 +78,18 @@ def export(root: Path = ROOT) -> dict:
         try:
             from omni_coworker.soma.probe import probe_recorded
             live_soma = probe_recorded() or {}
-        except Exception:
+        except Exception:  # noqa: BLE001
             live_soma = {}
 
     omega_val = None
     try:
-        from omni_coworker.agency.teleology import compute_omega_teleology, generate_missions
+        from omni_coworker.agency.teleology import (
+            compute_omega_teleology,
+            generate_missions,
+        )
         missions = generate_missions({"cpu_high": (live_soma.get("cpu_percent") or 0) > 80, "soma": live_soma})
         omega_val = compute_omega_teleology({"missions": missions})
-    except Exception:
+    except Exception:  # noqa: BLE001
         omega_val = None
 
     # Fallback/supplement from somatic_probes.sqlite
@@ -95,7 +98,7 @@ def export(root: Path = ROOT) -> dict:
     extra = {}
     try:
         extra = json.loads(p.get("extra_json") or "{}")
-    except Exception:
+    except Exception:  # noqa: BLE001
         extra = {}
 
     gpus = ((live_soma.get("gpu") or extra.get("gpu") or {}).get("gpus")) or []
@@ -122,7 +125,7 @@ def export(root: Path = ROOT) -> dict:
     ):
         try:
             latest_topics[row["topic"]] = json.loads(row["payload_json"])
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     if not pm_block:
@@ -291,7 +294,7 @@ def export(root: Path = ROOT) -> dict:
                     mk: {"n_records": len(mv) if isinstance(mv, list) else 1}
                     for mk, mv in payload_obj["models"].items()
                 }
-        except Exception:
+        except Exception:  # noqa: BLE001
             payload_obj = e.get("payload_json")
         mesh.append({
             "ts": e.get("ts"),
@@ -307,10 +310,13 @@ def export(root: Path = ROOT) -> dict:
         verified = True
         prev = ""
         for w in witness_lines:
-            if w.get("prev_hash", "") != prev and not (prev == "" and w.get("prev_hash", "") == ""):
-                if not (prev == "" and w.get("prev_hash") in (None, "")):
-                    verified = False
-                    break
+            if (
+                w.get("prev_hash", "") != prev
+                and not (prev == "" and w.get("prev_hash", "") == "")
+                and not (prev == "" and w.get("prev_hash") in (None, ""))
+            ):
+                verified = False
+                break
             prev = w.get("hash", "")
     if witness_lines and witness_lines[0].get("prev_hash") not in (None, ""):
         verified = False
@@ -366,7 +372,7 @@ def export(root: Path = ROOT) -> dict:
             "step_sidecars_count": len(list(step_dir.glob("*.npz"))) if step_dir.exists() else 0,
             "models": spec_feats,
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         spectral = None
 
     # activations jsonl
@@ -400,7 +406,7 @@ def export(root: Path = ROOT) -> dict:
     mps = {"count": len(mps_raw), "recent": mps_tail}
 
     out = {
-        "exported_at": datetime.now(timezone.utc).isoformat(),
+        "exported_at": datetime.now(UTC).isoformat(),
         "source": "omni_worker real state",
         "soul": soul,
         "soma": soma,

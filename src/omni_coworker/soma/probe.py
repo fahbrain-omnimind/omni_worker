@@ -44,16 +44,16 @@ def _gpu_probe() -> dict | None:
                 }
                 try:
                     g["power_w"] = round(pynvml.nvmlDeviceGetPowerUsage(h) / 1000.0, 1)
-                except Exception:
+                except Exception:  # noqa: BLE001, S110
                     pass
                 gpus.append(g)
             return {"gpus": gpus} if gpus else None
         finally:
             try:
                 pynvml.nvmlShutdown()
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     try:
@@ -70,6 +70,7 @@ def _gpu_probe() -> dict | None:
             capture_output=True,
             text=True,
             timeout=5,
+            check=False,
         )
         if r.returncode != 0:
             return None
@@ -92,7 +93,7 @@ def _gpu_probe() -> dict | None:
                     pass
             gpus.append(g)
         return {"gpus": gpus} if gpus else None
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -119,14 +120,14 @@ def _virt_probe() -> dict:
             or Path("/run/.containerenv").exists()
             or any(s in cgroup for s in ("docker", "kubepods", "containerd", "podman"))
         )
-    except Exception:
+    except Exception:  # noqa: BLE001
         info["container"] = Path("/.dockerenv").exists()
 
     try:
         info["hypervisor_flag"] = "hypervisor" in Path("/proc/cpuinfo").read_text(
             encoding="utf-8", errors="ignore"
         )
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     hypervisors = {
@@ -147,7 +148,7 @@ def _virt_probe() -> dict:
                 break
         if info["vm"] is None and info["hypervisor_flag"]:
             info["vm"] = "unknown"
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     if os.getenv("KAGGLE_KERNEL_RUN_TYPE") or os.getenv("KAGGLE_DATA_PROXY_URL") or Path("/kaggle").exists():
@@ -182,7 +183,7 @@ def _psi_probe() -> dict | None:
                     re.findall(r"(\w+)=([\d.]+)", rest)
                 }
             out[name] = row
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return out or None
 
@@ -199,7 +200,7 @@ def _disk_probe() -> dict | None:
             "io_read_mb": round((io_.read_bytes if io_ else 0) / 1e6, 1),
             "io_write_mb": round((io_.write_bytes if io_ else 0) / 1e6, 1),
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -210,14 +211,14 @@ def _net_probe() -> dict | None:
         conns = 0
         try:
             conns = len(psutil.net_connections(kind="inet"))
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return {
             "bytes_sent_mb": round(io_.bytes_sent / 1e6, 1),
             "bytes_recv_mb": round(io_.bytes_recv / 1e6, 1),
             "conns": conns,
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -238,7 +239,7 @@ def _proc_probe() -> dict | None:
             "top_rss": [{"name": n, "rss_gb": round(r / 1e9, 3)}
                         for r, n in top[:5]],
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -268,7 +269,7 @@ def _load_custom_probes() -> list:
             spec.loader.exec_module(mod)  # type: ignore[union-attr]
             if callable(getattr(mod, "probe", None)):
                 probes.append((f.stem, mod.probe))
-        except Exception:
+        except Exception:  # noqa: BLE001, S112
             continue
     return probes
 
@@ -281,7 +282,7 @@ def _custom_probes() -> dict:
     for name, fn in _CUSTOM_PROBES:
         try:
             out[name] = fn()
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             out[name] = {"error": str(e)[:120]}
     return out
 
@@ -353,7 +354,7 @@ def soma_context_line() -> str | None:
         tags = [t for t in ("container" if v.get("container") else "", v.get("vm") or "") if t]
         parts.append(f"virt={'+'.join(tags) if tags else 'metal'} platform={v.get('platform')}")
         return " ".join(parts)
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -371,7 +372,7 @@ def probe_recorded(path=None) -> dict:
 
         SomaticStore(path or "data/somatic_probes.sqlite").record(data)
         data["recorded"] = True
-    except Exception:
+    except Exception:  # noqa: BLE001
         data["recorded"] = False
     return data
 
@@ -396,6 +397,6 @@ def probe_with_brain() -> dict:
         resp2 = client.get("/erika/affect") if client else None
         if resp2 and resp2.status_code == 200:
             data["brain_affect"] = resp2.json()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return data

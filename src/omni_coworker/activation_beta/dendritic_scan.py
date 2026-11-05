@@ -162,7 +162,7 @@ def dendritic_features() -> dict[str, Any]:
                 arr = z["trajectory"] if "trajectory" in z else z["vectors"]
                 model = str(z["model"].item() if hasattr(z["model"], "item") else z["model"]) if "model" in z else f.stem
                 out[model] = scan_trajectory(arr)
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
     return out
 
@@ -187,5 +187,5 @@ def scan_latest(step_dir: str | None = None) -> dict[str, Any] | None:
         out["n_layers"] = int(traj.shape[0])
         out["n_steps"] = int(traj.shape[1])
         return out
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None

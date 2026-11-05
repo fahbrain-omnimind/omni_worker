@@ -18,4 +18,4 @@ See docs/design/OW-DSN-001_kernel_rust_matrix.md (design basis).
 from .collector import collect_cycle
 from .scheduler import KernelDaemon, status
 
-__all__ = ["collect_cycle", "KernelDaemon", "status"]
+__all__ = ["KernelDaemon", "collect_cycle", "status"]

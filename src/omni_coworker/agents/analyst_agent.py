@@ -6,17 +6,17 @@ pt-BR: Agente analista psicanalítico.
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 
 class AnalystAgent:
     """Agente de análise psicanalítica"""
     
-    def __init__(self, config: Dict[str, Any] | None = None):
+    def __init__(self, config: dict[str, Any] | None = None):
         self.config = config or {}
         self.mode = "analyst"
     
-    def analyze(self, session: Dict[str, Any] | None = None) -> Dict[str, Any]:
+    def analyze(self, session: dict[str, Any] | None = None) -> dict[str, Any]:
         """Analyze a session.
 
         English: Tries the canonical analyst adapter, then the analyst
@@ -31,11 +31,12 @@ class AnalystAgent:
             data = result.get("data") or {}
             if result.get("source") not in (None, "fallback") and not data.get("error"):
                 return {"agent": "AnalystAgent", "reading": data, **result}
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         try:
-            from ._llm import brain_chat_json
             import json
+
+            from ._llm import brain_chat_json
 
             llm = brain_chat_json(
                 [
@@ -60,7 +61,7 @@ class AnalystAgent:
                     "reading": llm,
                     "insights": [],
                 }
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return {
             "agent": "AnalystAgent",
@@ -78,7 +79,7 @@ class AnalystAgent:
             "insights": []
         }
     
-    def interpret(self, context: str) -> Dict[str, Any]:
+    def interpret(self, context: str) -> dict[str, Any]:
         """Interpret context.
         
         English: Provides interpretation.

@@ -21,8 +21,8 @@ Arquitetura / Architecture:
 
 from __future__ import annotations
 
-from collections import deque
 import os
+from collections import deque
 from typing import Any
 
 import numpy as np
@@ -179,7 +179,7 @@ def glial_gate(features: dict, window) -> dict[str, Any]:
             return {"allow_generation": False, "glial": glial,
                     "reason": "habituated>=0.8"}
         return {"allow_generation": True, "glial": glial, "reason": "ok"}
-    except Exception:
+    except Exception:  # noqa: BLE001
         if os.getenv("OMNI_GATE_FAIL_CLOSED") == "1":
             return {"allow_generation": False, "glial": {},
                     "reason": "fail-closed"}

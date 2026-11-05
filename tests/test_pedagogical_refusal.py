@@ -1,6 +1,6 @@
 """Freirean pedagogical refusal port — 4 sovereign cases + gate wiring."""
-from omni_coworker.safety.pedagogical_refusal import PedagogicalRefusalEngine
 from omni_coworker.safety import gate
+from omni_coworker.safety.pedagogical_refusal import PedagogicalRefusalEngine
 
 M = {"phi": 0.6}
 

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import time
 
 import pytest
@@ -27,7 +26,7 @@ def _write_mod(tmp_path, **over):
 
 
 def test_write_read_roundtrip(tmp_path):
-    m = _write_mod(tmp_path)
+    _write_mod(tmp_path)
     d = consumer.latest_modulation()
     assert d and d["cycle_id"] == "cyc-t" and d["swap_threshold_delta"] == 0.03
 

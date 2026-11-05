@@ -274,7 +274,7 @@ class AffectTracer:
                  {"role": "user", "content": text[:1500]}],
                 role="analyst", max_tokens=200,
             )
-        except Exception:
+        except Exception:  # noqa: BLE001
             return None
 
 

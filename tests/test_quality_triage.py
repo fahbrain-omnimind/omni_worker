@@ -9,7 +9,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]
                      / "scripts" / "quality_triage"))
-import triage  # noqa: E402
+import triage
 
 
 @pytest.fixture()

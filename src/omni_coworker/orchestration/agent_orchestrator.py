@@ -49,7 +49,7 @@ class AgentOrchestrator:
         try:
             return int(json.loads(
                 self._stall_path().read_text(encoding="utf-8"))["stall"])
-        except Exception:
+        except Exception:  # noqa: BLE001
             return 0
 
     def _save_stall(self) -> None:
@@ -59,7 +59,7 @@ class AgentOrchestrator:
             tmp.write_text(json.dumps({"stall": self._stall_count}),
                            encoding="utf-8")
             tmp.replace(self._stall_path())
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def stall(self) -> int:
@@ -160,8 +160,8 @@ class AgentOrchestrator:
         quando os backends caem.
         """
         from ..agents._llm import brain_chat_json
-        from ..agents.reviewer_agent import ReviewerAgent
         from ..agents.persona import system_prompt as _persona_prompt
+        from ..agents.reviewer_agent import ReviewerAgent
 
         _judge_persona = _persona_prompt("judge")
 
@@ -177,7 +177,7 @@ class AgentOrchestrator:
                 "comments": "; ".join(r1.get("suggestions") or ["ok"]),
                 "llm": r1.get("llm", False),
             })
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             judges.append({"judge": 1, "type": "implementation", "approved": False,
                            "comments": f"review_needed: backend unavailable: {e}",
                            "reason": f"backend unavailable: {e}", "llm": False,
@@ -188,7 +188,7 @@ class AgentOrchestrator:
         try:
             from ..integration_loop.consumer import latest_modulation
             _rec = (latest_modulation() or {}).get("recommendation")
-        except Exception:
+        except Exception:  # noqa: BLE001
             _rec = None
         result_str = str(result_text)
         judge_excerpt = result_str[:8000]
@@ -200,7 +200,7 @@ class AgentOrchestrator:
                 from ..brain.server import get_brain_client
                 c = get_brain_client(role)
                 return c is not None and c.get("/health", timeout=2.0).status_code == 200
-            except Exception:
+            except Exception:  # noqa: BLE001
                 return False
 
         def _prepare_judge_role(target_role: str, evict_peer: bool = False) -> None:
@@ -226,16 +226,16 @@ class AgentOrchestrator:
                     g = (probe().get("gpu") or {}).get("gpus") or [{}]
                     free_gb = float(g[0].get("vram_total_gb", 23.0)) - float(g[0].get("vram_used_gb", 0.0))
                     vram_tight = free_gb < 2.5
-                except Exception:
+                except Exception:  # noqa: BLE001, S110
                     pass
                 if (not is_loaded or vram_tight) and evict_peer and pc is not None:
                     try:
                         pc.post("/erika/unload")
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                 if not is_loaded:
                     tc.post("/erika/reload")
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
 
         # Judge 2 prefere o brain 'judge' (tier xl :8100) quando vivo —
@@ -331,12 +331,12 @@ class AgentOrchestrator:
             with open(qpath, "a", encoding="utf-8") as f:
                 f.write(json.dumps(entry, ensure_ascii=False,
                                    default=str) + "\n")
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         try:
             from ..agency.witness import witness_event
             witness_event("orchestrator.approval_required", entry)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     @staticmethod
@@ -348,13 +348,13 @@ class AgentOrchestrator:
         try:
             if importlib.util.find_spec(module_name) is not None:
                 return True
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         top = module_name.split(".")[0]
         if top and top != module_name:
             try:
                 return importlib.util.find_spec(top) is not None
-            except Exception:
+            except Exception:  # noqa: BLE001
                 return False
         return False
 
@@ -376,7 +376,7 @@ class AgentOrchestrator:
         try:
             if task_path.exists():
                 task = json.loads(task_path.read_text(encoding="utf-8"))
-        except Exception:
+        except Exception:  # noqa: BLE001
             task = {}
 
         files = task.get("files") or []
@@ -400,7 +400,7 @@ class AgentOrchestrator:
                 path = Path(p)
                 if path.is_file() and path.suffix == ".py":
                     py_files.append(path)
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
 
         for path in py_files:
@@ -412,7 +412,7 @@ class AgentOrchestrator:
         for path in py_files:
             try:
                 all_sources.append((str(path), path.read_text(encoding="utf-8")))
-            except Exception:
+            except Exception:  # noqa: BLE001
                 all_sources.append((str(path), ""))
         all_sources.extend(inline_sources)
 
@@ -529,7 +529,7 @@ class AgentOrchestrator:
         try:
             with open(self.audit_dir / f"{task_id}_audit.json", "w") as f:
                 json.dump(audit, f, indent=2)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return audit
     
@@ -550,7 +550,7 @@ class AgentOrchestrator:
             from ..integration_loop.consumer import latest_modulation
             mod = latest_modulation() or {}
             suffix = mod.get("prompt_suffix") or ""
-        except Exception:
+        except Exception:  # noqa: BLE001
             suffix = ""
         artifact = brain_chat(
             [
@@ -591,7 +591,7 @@ class AgentOrchestrator:
                 {"action": task.get("type", ""), "description": task.get("description", "")})
             for s in consult.get("applicable_scars") or []:
                 feedback_notes.append(f"SCAR {s['id']}: {s['defense_rule'].get('action')}")
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         for i in range(max_iterations):
             print(f"Iteration {i+1}/{max_iterations} for task {task['id']}")
@@ -607,8 +607,8 @@ class AgentOrchestrator:
             # the witness hash-chain on every iteration (previously the
             # governance kit was assembled but never connected).
             try:
-                from ..orchestration.governance import EventBus, get_trust_system
                 from ..agency.witness import witness_event
+                from ..orchestration.governance import EventBus, get_trust_system
 
                 ts = get_trust_system()
                 if consensus is None:
@@ -624,7 +624,7 @@ class AgentOrchestrator:
                 witness_event("orchestrator.iteration",
                               {"task": task['id'], "ok": ok,
                                "iteration": i + 1})
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
 
             try:
@@ -635,7 +635,7 @@ class AgentOrchestrator:
                     verdict=("undecided" if consensus is None
                              else "consensus" if consensus else "dissent"),
                 )
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
 
             feedback = {
@@ -680,7 +680,7 @@ class AgentOrchestrator:
                             "description": f"{task.get('type')} stalled {i + 1} iterations",
                             "task_id": task.get("id"),
                         })
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                     if self.SIMPLIFY_NOTE not in feedback_notes:
                         feedback_notes.append(self.SIMPLIFY_NOTE)

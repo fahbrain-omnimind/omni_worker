@@ -25,8 +25,8 @@ pt-BR: detecção de convergência em embeddings narrativos recentes.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
-from typing import Any, Optional
+from datetime import UTC, datetime, timedelta
+from typing import Any
 
 import numpy as np
 
@@ -38,7 +38,7 @@ def detect_quilting_point(
     min_points: int = 4,
     var_threshold: float = 0.05,
     window_seconds: float = 300.0,
-) -> Optional[dict[str, Any]]:
+) -> dict[str, Any] | None:
     """Detecta quilting point: convergência (variância caindo) → tópico fixo.
 
     Args:
@@ -81,7 +81,7 @@ def detect_quilting_point(
     if not fixed_topic:
         return None
     stability = float(np.clip(1.0 - mean_var / max(var_threshold, 1e-9), 0.0, 1.0))
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     window = {
         "start": now.isoformat(),
         "end": (now + timedelta(seconds=window_seconds)).isoformat(),
@@ -95,7 +95,7 @@ def detect_quilting_point(
             pairs.append(_kh_cos(arr[i].tolist(), arr[i + 1].tolist()))
         if pairs:
             mean_cosine = float(np.mean(pairs))
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return {
         "fixed_topic": fixed_topic,

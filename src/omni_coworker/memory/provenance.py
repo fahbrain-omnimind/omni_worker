@@ -22,7 +22,7 @@ _INJECTION_PATTERNS = (
 def provenance_signature(content: Any, source: Any) -> str:
     try:
         raw = (str(content) + "|" + str(source)).encode("utf-8", errors="replace")
-    except Exception:
+    except Exception:  # noqa: BLE001
         raw = b""
     return hashlib.sha256(raw).hexdigest()
 
@@ -38,7 +38,7 @@ def classify_trust(source: Any, namespace: Any) -> str:
         if ns == "document" or src.startswith("doc"):
             return "external_doc"
         return "unknown"
-    except Exception:
+    except Exception:  # noqa: BLE001
         return "unknown"
 
 
@@ -48,7 +48,7 @@ def quarantine_check(content: Any) -> dict[str, Any]:
         if isinstance(content, (bytes, bytearray)):
             try:
                 text = content.decode("utf-8")
-            except Exception:
+            except Exception:  # noqa: BLE001
                 reasons.append("non_utf8_bytes")
                 text = content.decode("utf-8", errors="replace")
         else:
@@ -60,6 +60,6 @@ def quarantine_check(content: Any) -> dict[str, Any]:
             if pat in low:
                 reasons.append(f"injection_pattern:{pat.strip()}")
         uniq = list(dict.fromkeys(reasons))
-    except Exception:
+    except Exception:  # noqa: BLE001
         uniq = ["guard_error"]
     return {"quarantine": bool(uniq), "reasons": uniq}

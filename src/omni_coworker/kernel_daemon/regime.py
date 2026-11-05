@@ -39,7 +39,7 @@ _MIN_SAMPLES = 10
 class _PH:
     """Two-sided Page-Hinkley tracker (running mean/var + drift both ways)."""
 
-    __slots__ = ("n", "mean", "m2", "cum_up", "min_up", "cum_dn", "min_dn")
+    __slots__ = ("cum_dn", "cum_up", "m2", "mean", "min_dn", "min_up", "n")
 
     def __init__(self) -> None:
         self.n = 0

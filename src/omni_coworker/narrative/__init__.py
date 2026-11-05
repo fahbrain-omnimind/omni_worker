@@ -35,9 +35,9 @@ __all__ = [
     "BeliefNetwork",
     "IdentityConstruction",
     "IdentitySnapshot",
+    "LifeStory",
+    "NarrativeEvent",
     "Value",
     "ValueSystem",
     "ValueType",
-    "LifeStory",
-    "NarrativeEvent",
 ]

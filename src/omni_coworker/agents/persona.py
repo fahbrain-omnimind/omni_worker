@@ -18,7 +18,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-__all__ = ["load_persona", "system_prompt", "ROLE_PERSONA_MAP", "PERSONA_DESCRIPTIONS"]
+__all__ = ["PERSONA_DESCRIPTIONS", "ROLE_PERSONA_MAP", "load_persona", "system_prompt"]
 
 # Coworker role -> persona config name.
 ROLE_PERSONA_MAP: dict[str, str] = {
@@ -78,7 +78,7 @@ def load_persona(name: str, config_dir: str | Path | None = None) -> dict[str, A
                     data.setdefault("mode", name)
                     data.setdefault("version", "0.0.0")
                     return data
-        except Exception:
+        except Exception:  # noqa: BLE001, S112
             continue
     return {
         "agent_name": name,
@@ -104,7 +104,7 @@ def system_prompt(role: str, mode: str | None = None) -> str:
         try:
             from .modes import spec_for
             persona_name = spec_for(mode).get("persona", persona_name)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     persona = load_persona(persona_name)
     name = str(persona.get("agent_name") or persona_name)

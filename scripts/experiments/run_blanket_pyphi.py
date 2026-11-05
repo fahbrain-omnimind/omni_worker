@@ -36,7 +36,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(REPO))
 
-from omni_coworker.psychoanalysis import markov_blanket as mb  # noqa: E402
+from omni_coworker.psychoanalysis import markov_blanket as mb
 
 DB = Path(__file__).resolve().parent / "blanket_pyphi.sqlite"
 ALPHAS = (0.05, 0.35, 0.85)
@@ -49,7 +49,7 @@ def stationary_state(joint: np.ndarray) -> tuple:
     pi = np.abs(eigenvecs[:, i].real)
     pi = pi / pi.sum()
     s_idx = int(np.argmax(pi))
-    n = int(round(np.log2(joint.shape[0])))
+    n = round(np.log2(joint.shape[0]))
     return tuple((s_idx >> (n - 1 - j)) & 1 for j in range(n)), float(pi[s_idx])
 
 
@@ -97,7 +97,7 @@ def run_phi(tpm: np.ndarray, cm: np.ndarray, state: tuple,
                 "from_nodes": [mb.NODES[i] for i in sia.partition.from_nodes],
                 "to_nodes": [mb.NODES[i] for i in sia.partition.to_nodes],
             }
-        except Exception:
+        except Exception:  # noqa: BLE001
             part = str(sia.partition)
     return {"phi": float(sia.phi), "partition": part}
 

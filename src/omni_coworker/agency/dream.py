@@ -33,7 +33,7 @@ def _state_path() -> Path:
 def _load_mark() -> float:
     try:
         return float(json.loads(_state_path().read_text()).get("last_ts", 0.0))
-    except Exception:
+    except Exception:  # noqa: BLE001
         return 0.0
 
 
@@ -42,7 +42,7 @@ def _save_mark(ts: float) -> None:
         p = _state_path()
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps({"last_ts": ts}))
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 
@@ -64,7 +64,7 @@ def _weave_dream(residue: list[dict[str, Any]]) -> tuple[str, str]:
             role="analyst", max_tokens=180, temperature=0.85)
         if text:
             return text, "brain:analyst"
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return " | ".join(r["content"][:80] for r in residue[:8]), "extractive"
 
@@ -82,7 +82,7 @@ def metabolize(idle_seconds: float = 0.0,
         from ..memory.memtrias_ai import get_memtrias
 
         mem = get_memtrias()
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"metabolized": 0, "source": "unavailable", "reason": str(e)}
 
     mark = _load_mark()
@@ -169,7 +169,7 @@ def dream_cycle(
         )
         if dream_text:
             source = "brain:analyst"
-    except Exception:
+    except Exception:  # noqa: BLE001
         dream_text = None
 
     if not dream_text:
@@ -183,6 +183,6 @@ def dream_cycle(
     }
     try:
         witness_event("dream_cycle", record, path=witness_path)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return record

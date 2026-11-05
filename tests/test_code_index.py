@@ -19,7 +19,7 @@ def _write_store(d, rows, dim=8):
         idx = faiss.IndexFlatIP(dim)
         idx.add(embs)
         faiss.write_index(idx, str(d / "code_index.faiss"))
-    except Exception:
+    except Exception:  # noqa: BLE001
         np.save(d / "embeddings.npy", embs)
 
 
@@ -41,7 +41,8 @@ def test_load_then_inplace_rebuild_reloads(tmp_path):
     assert [r["name"] for r in ci._ROWS] == ["a"]
 
     # in-place rebuild: same dir, new parquet mtime + new rows
-    import os, time
+    import os
+    import time
 
     new = [{"path": "b.py", "kind": "module", "name": "b", "text": "t2"},
            {"path": "c.py", "kind": "module", "name": "c", "text": "t3"}]

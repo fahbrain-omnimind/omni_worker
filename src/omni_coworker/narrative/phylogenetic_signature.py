@@ -44,7 +44,7 @@ import time
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import numpy as np
 
@@ -178,7 +178,7 @@ class PhylogeneticSignature:
         try:
             from ..activation_beta import attractor as att
             feats = att.features()
-        except Exception:
+        except Exception:  # noqa: BLE001
             return len(self._attractors)
         vecs = []
         keys = ("n_records", "norm_drift_mean", "drift_concentration",
@@ -209,7 +209,7 @@ class PhylogeneticSignature:
         return float(1.0 / (1.0 + np.var(recent) * 10))
 
     def emerge_from_noise(self, iterations: int = 1000,
-                          callback: Optional[Any] = None
+                          callback: Any | None = None
                           ) -> PhylogeneticState:
         """Auto-organização da assinatura a partir de ruído (convergência
         acumulativa para as bacias atratoriais)."""
@@ -317,7 +317,7 @@ class PhylogeneticSignature:
                                     if self._model_aggregate is not None
                                     else None),
             }))
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _load_signature(self) -> bool:
@@ -337,5 +337,5 @@ class PhylogeneticSignature:
                 self._model_aggregate = np.asarray(
                     data["model_aggregate"], dtype=float)
             return True
-        except Exception:
+        except Exception:  # noqa: BLE001
             return False

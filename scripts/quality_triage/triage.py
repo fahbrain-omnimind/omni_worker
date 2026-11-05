@@ -121,7 +121,7 @@ def llm_review(finding: dict, prior: dict | None) -> dict:
             if d.get("verdict"):
                 d["via"] = "llm"
                 return d
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return {"verdict": "review_needed", "confidence": 0.5,
             "rationale": "llm indisponível — revisão humana", "via": "fallback"}

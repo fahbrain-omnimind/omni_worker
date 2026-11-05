@@ -24,7 +24,6 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Dict, List, Set
 
 logger = logging.getLogger(__name__)
 
@@ -48,22 +47,22 @@ class Belief:
     statement: str
     certainty: float = 0.5
     centrality: float = 0.5
-    evidence: List[str] = field(default_factory=list)
-    connections: Set[str] = field(default_factory=set)
+    evidence: list[str] = field(default_factory=list)
+    connections: set[str] = field(default_factory=set)
     belief_id: str = field(default_factory=lambda: str(uuid.uuid4()))
 
 
 @dataclass
 class IdentitySnapshot:
     timestamp: datetime
-    core_values: List[str]
-    dominant_beliefs: List[str]
+    core_values: list[str]
+    dominant_beliefs: list[str]
     narrative_summary: str
 
 
 class ValueSystem:
     def __init__(self) -> None:
-        self.values: Dict[str, Value] = {}
+        self.values: dict[str, Value] = {}
         self._initialize_default_values()
 
     def _initialize_default_values(self) -> None:
@@ -86,7 +85,7 @@ class ValueSystem:
 
 class BeliefNetwork:
     def __init__(self) -> None:
-        self.beliefs: Dict[str, Belief] = {}
+        self.beliefs: dict[str, Belief] = {}
 
     def add_belief(self, statement: str, certainty: float, centrality: float) -> str:
         belief = Belief(statement=statement, certainty=certainty, centrality=centrality)
@@ -106,7 +105,7 @@ class IdentityConstruction:
     def __init__(self) -> None:
         self.value_system = ValueSystem()
         self.belief_network = BeliefNetwork()
-        self.history: List[IdentitySnapshot] = []
+        self.history: list[IdentitySnapshot] = []
         logger.info("Identity Construction initialized")
 
     def reflect_on_identity(self) -> IdentitySnapshot:
@@ -133,6 +132,6 @@ class IdentityConstruction:
         self.history.append(snapshot)
         return snapshot
 
-    def evolve(self, experience_impact: Dict[str, float]) -> None:
+    def evolve(self, experience_impact: dict[str, float]) -> None:
         for value_name, delta in experience_impact.items():
             self.value_system.adjust_value(value_name, delta)

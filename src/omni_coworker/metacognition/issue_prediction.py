@@ -29,7 +29,7 @@ from collections import deque
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from enum import Enum
-from typing import Any, Deque, Dict, List, Optional, Tuple
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +60,7 @@ class MetricDataPoint:
 
     timestamp: datetime
     value: float
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -70,13 +70,13 @@ class IssuePrediction:
     metric_type: MetricType
     severity: PredictionSeverity
     probability: float  # 0.0 to 1.0
-    predicted_time: Optional[datetime]
+    predicted_time: datetime | None
     description: str
-    recommended_actions: List[str]
+    recommended_actions: list[str]
     confidence: float  # 0.0 to 1.0
-    supporting_data: Dict[str, Any] = field(default_factory=dict)
+    supporting_data: dict[str, Any] = field(default_factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary."""
         return {
             "metric_type": self.metric_type.value,
@@ -100,7 +100,7 @@ class TimeSeriesAnalyzer:
             window_size: Number of recent data points to keep
         """
         self.window_size = window_size
-        self._data: Dict[MetricType, Deque[MetricDataPoint]] = {}
+        self._data: dict[MetricType, deque[MetricDataPoint]] = {}
         for metric in MetricType:
             self._data[metric] = deque(maxlen=window_size)
 
@@ -108,7 +108,7 @@ class TimeSeriesAnalyzer:
         self,
         metric_type: MetricType,
         value: float,
-        metadata: Optional[Dict[str, Any]] = None,
+        metadata: dict[str, Any] | None = None,
     ) -> None:
         """Add a data point to the time series.
 
@@ -125,7 +125,7 @@ class TimeSeriesAnalyzer:
         self._data[metric_type].append(data_point)
         logger.debug(f"Added data point for {metric_type.value}: {value}")
 
-    def get_trend(self, metric_type: MetricType) -> Optional[float]:
+    def get_trend(self, metric_type: MetricType) -> float | None:
         """Calculate trend slope using linear regression.
 
         Args:
@@ -156,7 +156,7 @@ class TimeSeriesAnalyzer:
         slope = (n * xy_sum - x_sum * y_sum) / denominator
         return float(slope)
 
-    def detect_anomaly(self, metric_type: MetricType, threshold: float = 2.0) -> Tuple[bool, float]:
+    def detect_anomaly(self, metric_type: MetricType, threshold: float = 2.0) -> tuple[bool, float]:
         """Detect anomalies using Z-score method.
 
         Args:
@@ -185,7 +185,7 @@ class TimeSeriesAnalyzer:
 
     def predict_resource_exhaustion(
         self, metric_type: MetricType, threshold: float = 95.0
-    ) -> Optional[datetime]:
+    ) -> datetime | None:
         """Predict when a resource will be exhausted.
 
         Args:
@@ -219,7 +219,7 @@ class TimeSeriesAnalyzer:
         minutes_to_exhaustion = points_to_exhaustion
         return datetime.now() + timedelta(minutes=minutes_to_exhaustion)
 
-    def get_statistics(self, metric_type: MetricType) -> Dict[str, float]:
+    def get_statistics(self, metric_type: MetricType) -> dict[str, float]:
         """Get statistical summary of a metric.
 
         Args:
@@ -260,14 +260,14 @@ class IssuePredictionEngine:
             MetricType.DISK_USAGE: 85.0,
             MetricType.ERROR_RATE: 5.0,
         }
-        self._predictions: List[IssuePrediction] = []
-        self._prediction_history: List[IssuePrediction] = []
+        self._predictions: list[IssuePrediction] = []
+        self._prediction_history: list[IssuePrediction] = []
 
     def update_metric(
         self,
         metric_type: MetricType,
         value: float,
-        metadata: Optional[Dict[str, Any]] = None,
+        metadata: dict[str, Any] | None = None,
     ) -> None:
         """Update metric value and trigger prediction analysis.
 
@@ -283,13 +283,13 @@ class IssuePredictionEngine:
         if predictions:
             logger.info(f"Generated {len(predictions)} new predictions")
 
-    def predict_issues(self) -> List[IssuePrediction]:
+    def predict_issues(self) -> list[IssuePrediction]:
         """Predict potential issues based on current metrics.
 
         Returns:
             List of predicted issues
         """
-        predictions: List[IssuePrediction] = []
+        predictions: list[IssuePrediction] = []
 
         for metric_type in MetricType:
             # Check for resource exhaustion
@@ -312,7 +312,7 @@ class IssuePredictionEngine:
         self._prediction_history.extend(predictions)
         return predictions
 
-    def _predict_resource_exhaustion(self, metric_type: MetricType) -> Optional[IssuePrediction]:
+    def _predict_resource_exhaustion(self, metric_type: MetricType) -> IssuePrediction | None:
         """Predict resource exhaustion for a metric."""
         threshold = self._thresholds.get(metric_type)
         if threshold is None:
@@ -358,7 +358,7 @@ class IssuePredictionEngine:
             },
         )
 
-    def _predict_anomaly(self, metric_type: MetricType) -> Optional[IssuePrediction]:
+    def _predict_anomaly(self, metric_type: MetricType) -> IssuePrediction | None:
         """Predict anomaly-based issues."""
         is_anomaly, z_score = self.analyzer.detect_anomaly(metric_type, threshold=2.5)
 
@@ -396,7 +396,7 @@ class IssuePredictionEngine:
 
     def _predict_performance_degradation(
         self, metric_type: MetricType
-    ) -> Optional[IssuePrediction]:
+    ) -> IssuePrediction | None:
         """Predict performance degradation."""
         # Only applicable to performance metrics
         if metric_type not in [MetricType.RESPONSE_TIME, MetricType.NETWORK_LATENCY]:
@@ -442,7 +442,7 @@ class IssuePredictionEngine:
             },
         )
 
-    def get_current_predictions(self) -> List[IssuePrediction]:
+    def get_current_predictions(self) -> list[IssuePrediction]:
         """Get current active predictions.
 
         Returns:
@@ -450,7 +450,7 @@ class IssuePredictionEngine:
         """
         return self._predictions.copy()
 
-    def get_prediction_history(self) -> List[IssuePrediction]:
+    def get_prediction_history(self) -> list[IssuePrediction]:
         """Get all historical predictions.
 
         Returns:
@@ -462,7 +462,7 @@ class IssuePredictionEngine:
         """Clear current predictions (keeps history)."""
         self._predictions.clear()
 
-    def get_metrics_summary(self) -> Dict[str, Dict[str, float]]:
+    def get_metrics_summary(self) -> dict[str, dict[str, float]]:
         """Get statistical summary of all metrics.
 
         Returns:
@@ -476,7 +476,7 @@ class IssuePredictionEngine:
         return summary
 
 
-def update_from_bundle(engine: "IssuePredictionEngine", bundle: Dict[str, Any]) -> int:
+def update_from_bundle(engine: IssuePredictionEngine, bundle: dict[str, Any]) -> int:
     """Alimenta o engine a partir do bundle do kernel_daemon do worker.
 
     Mapeia métricas reais do worker: vram_ratio->MEMORY_USAGE,

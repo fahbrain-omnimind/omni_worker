@@ -28,7 +28,7 @@ def collect_kernel_bundle() -> dict[str, Any] | None:
         from ..shared_workspace import bus
         ev = bus.latest("kernel.cycle")
         return (ev or {}).get("payload")
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -39,7 +39,7 @@ def collect_sensory() -> dict[str, Any]:
         try:
             from ..kernel_daemon.collector import collect_cycle
             bundle = collect_cycle()
-        except Exception:
+        except Exception:  # noqa: BLE001
             bundle = {}
     # fresh per-cycle soul/soma are already inside the bundle
     return bundle or {}
@@ -53,5 +53,5 @@ def collect_meaning_context(query: str) -> dict[str, Any]:
         from ..store.code_index import index_dir, search
         hits = search(query, index_dir(), k=1)
         return hits[0] if hits else {}
-    except Exception:
+    except Exception:  # noqa: BLE001
         return {}

@@ -22,7 +22,6 @@ Linha final pt-BR: a produção do modelo vira sinal observável.
 from __future__ import annotations
 
 import os
-
 from collections import deque
 from typing import Any
 
@@ -79,12 +78,12 @@ def rehydrate(log_path: Any | None = None, tail_bytes: int = 1 << 19) -> int:
                 continue
             try:
                 r = json.loads(line)
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
             model = str(r.get("model") or "unknown")
             kept.setdefault(model, deque(maxlen=_MAXLEN)).append(r)
         _WINDOWS.update(kept)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return window_size()
 
@@ -175,7 +174,7 @@ def glial_verdict(window=None, recent_n: int | None = None) -> dict[str, Any]:
     if not _REHYDRATED:
         try:
             rehydrate()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         _REHYDRATED = True
     n = recent_n or GLIAL_RECENT_WINDOW
@@ -188,7 +187,7 @@ def glial_verdict(window=None, recent_n: int | None = None) -> dict[str, Any]:
         window = list(window)[-n:] if n else list(window)
     try:
         return spiking_glial.glial_gate({}, window)
-    except Exception:
+    except Exception:  # noqa: BLE001
         if os.getenv("OMNI_GATE_FAIL_CLOSED") == "1":
             return {"allow_generation": False, "glial": {},
                     "reason": "fail-closed"}

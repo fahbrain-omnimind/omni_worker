@@ -15,13 +15,13 @@ ela quebra, inclusive registros legados anteriores ao hashing.
 from __future__ import annotations
 
 import hashlib
-import os
 import json
-from datetime import datetime, timezone
+import os
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-__all__ = ["append_witness", "read_witness", "witness_event", "verify_witness"]
+__all__ = ["append_witness", "read_witness", "verify_witness", "witness_event"]
 
 
 def _hash_record(record: dict[str, Any]) -> str:
@@ -62,7 +62,7 @@ def append_witness(path: str | Path | None = None, event: dict[str, Any] | None 
     # Add timestamp if not present
     if "ts" not in event:
         event = dict(event)
-        event["ts"] = datetime.now(timezone.utc).isoformat()
+        event["ts"] = datetime.now(UTC).isoformat()
 
     # MINJA provenance guard (lightweight)
     try:
@@ -74,7 +74,7 @@ def append_witness(path: str | Path | None = None, event: dict[str, Any] | None 
             "signature": provenance_signature(ev.get("data", ev), src),
             "trust_class": classify_trust(src, "instance"),
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         prov = {"signature": "", "trust_class": "unknown"}
     existing = read_witness(p)
     record = dict(event)
@@ -105,7 +105,7 @@ def read_witness(path: str | Path | None = None, limit: int | None = None) -> li
             if line:
                 try:
                     events.append(json.loads(line))
-                except Exception:
+                except Exception:  # noqa: BLE001, S112
                     continue
 
     if limit:
@@ -139,7 +139,7 @@ def witness_event(event_type: str, data: dict[str, Any] | None = None, path: str
             task_id=f"witness:{event_type}", kind="witness",
             content=_json.dumps(event, ensure_ascii=False),
         )
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 

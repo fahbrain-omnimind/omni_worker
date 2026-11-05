@@ -35,9 +35,9 @@ def explore(
     try:
         from ..integration_loop.consumer import latest_modulation
         boost = float((latest_modulation() or {}).get("curiosity_boost") or 0.0)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
-    k_eff = k + int(round(k * max(0.0, min(1.0, boost))))
+    k_eff = k + round(k * max(0.0, min(1.0, boost)))
     hits = code_index.search(topic, out_dir, k=k_eff)
 
     synthesis = None
@@ -63,7 +63,7 @@ def explore(
                 role="executor",
                 max_tokens=280,
             )
-        except Exception:
+        except Exception:  # noqa: BLE001
             synthesis = None
 
     return {

@@ -35,7 +35,7 @@ from pathlib import Path
 from typing import Any
 
 _LOCK = threading.RLock()
-_SINGLETON: "TraumaIntegration | None" = None
+_SINGLETON: TraumaIntegration | None = None
 
 
 def _db_path() -> Path:
@@ -90,13 +90,13 @@ class TraumaIntegration:
                          scar["severity"], json.dumps(failure_event, default=str),
                          json.dumps(rule), scar["status"]))
                 con.close()
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
         try:
             from ..shared_workspace import bus
             bus.publish("soma.scar", {"id": scar["id"], "type": scar["type"],
                                       "severity": scar["severity"]})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return scar
 
@@ -112,7 +112,7 @@ class TraumaIntegration:
                          "severity": r[3], "failure": json.loads(r[4]),
                          "defense_rule": json.loads(r[5]), "status": r[6]}
                         for r in rows]
-            except Exception:
+            except Exception:  # noqa: BLE001
                 return []
 
     def consult_scars_before_decision(self, context: dict[str, Any]) -> dict[str, Any]:

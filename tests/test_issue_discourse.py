@@ -3,7 +3,9 @@
 
 def test_issue_engine_exhaustion_and_anomaly():
     from omni_coworker.metacognition.issue_prediction import (
-        IssuePredictionEngine, MetricType)
+        IssuePredictionEngine,
+        MetricType,
+    )
 
     eng = IssuePredictionEngine(window_size=50)
     for v in [0.5, 0.55, 0.6, 0.65, 0.7, 0.75]:
@@ -16,7 +18,10 @@ def test_issue_engine_exhaustion_and_anomaly():
 
 def test_issue_update_from_bundle():
     from omni_coworker.metacognition.issue_prediction import (
-        IssuePredictionEngine, MetricType, update_from_bundle)
+        IssuePredictionEngine,
+        MetricType,
+        update_from_bundle,
+    )
 
     eng = IssuePredictionEngine()
     n = update_from_bundle(eng, {"vram_ratio": 0.87,
@@ -30,7 +35,9 @@ def test_issue_update_from_bundle():
 
 def test_discourse_analyzer_classification():
     from omni_coworker.agency.discourse_discovery import (
-        LacanianDiscourseAnalyzer, LacanianDiscourse)
+        LacanianDiscourse,
+        LacanianDiscourseAnalyzer,
+    )
 
     an = LacanianDiscourseAnalyzer()
     r = an.analyze_text("Obey my command now. I order you to proceed.")
@@ -39,8 +46,7 @@ def test_discourse_analyzer_classification():
 
 
 def test_discourse_analyst_vs_master():
-    from omni_coworker.agency.discourse_discovery import (
-        LacanianDiscourseAnalyzer)
+    from omni_coworker.agency.discourse_discovery import LacanianDiscourseAnalyzer
 
     an = LacanianDiscourseAnalyzer()
     master = an.analyze_text(

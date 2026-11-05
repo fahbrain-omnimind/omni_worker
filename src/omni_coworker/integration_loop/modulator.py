@@ -39,7 +39,7 @@ def _resource_postures(cycle: CycleResult, bundle: dict[str, Any]) -> list[dict[
             if hasattr(rp, "to_dict"):
                 try:
                     out.append(rp.to_dict())
-                except Exception:
+                except Exception:  # noqa: BLE001, S110
                     pass
             elif isinstance(rp, dict):
                 out.append(dict(rp))
@@ -48,7 +48,7 @@ def _resource_postures(cycle: CycleResult, bundle: dict[str, Any]) -> list[dict[
     try:
         from ..psychoanalysis.plasticity_resource import assess_worker_bundle
         return [a.to_dict() for a in assess_worker_bundle(bundle or {})]
-    except Exception:
+    except Exception:  # noqa: BLE001
         return []
 
 
@@ -114,7 +114,7 @@ def derive_modulation(cycle: CycleResult, bundle: dict[str, Any]) -> Modulation:
         if _has_hold(postures, {"vram_pressure", "thermal"}) or _has_hold(postures):
             delta = round(delta + 0.05, 4)
             delta = max(-0.1, min(0.1, delta))
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     return Modulation(

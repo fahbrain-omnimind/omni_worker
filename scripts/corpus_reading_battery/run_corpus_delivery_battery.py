@@ -31,19 +31,19 @@ import subprocess
 import sys
 import time
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 REPO = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(REPO / "src"))
 
-from omni_coworker.activation_beta.hidden_spectral import spectral_features  # noqa: E402
-from omni_coworker.agents._llm import brain_chat, brain_chat_json  # noqa: E402
-from omni_coworker.agents.external_cli_agent import list_available  # noqa: E402
-from omni_coworker.memory.memtrias_ai import get_memtrias  # noqa: E402
-from omni_coworker.orchestration.agent_orchestrator import AgentOrchestrator  # noqa: E402
-from omni_coworker.store.code_index import search_hypergraph  # noqa: E402
+from omni_coworker.activation_beta.hidden_spectral import spectral_features
+from omni_coworker.agents._llm import brain_chat, brain_chat_json
+from omni_coworker.agents.external_cli_agent import list_available
+from omni_coworker.memory.memtrias_ai import get_memtrias
+from omni_coworker.orchestration.agent_orchestrator import AgentOrchestrator
+from omni_coworker.store.code_index import search_hypergraph
 
 PHIL_DIR = REPO / "data/corpus/philpapers_2026/txt"
 A6_BOOK = REPO / "data/corpus/a6_book/livro_vfinal.md"
@@ -166,7 +166,7 @@ def _capture_brain_layer_mps_state(role: str) -> dict[str, Any]:
                     "norm_mean": round(sum(norms) / len(norms), 3) if norms else None,
                 }
             )
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         act_summary["activations_err"] = str(e)
 
     try:
@@ -181,7 +181,7 @@ def _capture_brain_layer_mps_state(role: str) -> dict[str, Any]:
             "hidden_dim": spec.get("hidden_dim"),
             "n_files": spec.get("n_files"),
         }
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         act_summary["spectral_err"] = str(e)
     return act_summary
 
@@ -294,7 +294,7 @@ def run_battery() -> dict[str, Any]:
                         "layer_mps": mps_loaded,
                         "latency_s": float(row[10]),
                     }
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
 
     for w in CORPUS_WORKS:
@@ -441,7 +441,7 @@ def run_battery() -> dict[str, Any]:
         exec_mps = _capture_brain_layer_mps_state("executor")
         combined_mps = {"analyst": item["analyst_mps"], "executor": exec_mps}
         dt = round(item["analyst_dt"] + (time.time() - t1), 2)
-        ts_now = datetime.now(timezone.utc).isoformat()
+        ts_now = datetime.now(UTC).isoformat()
 
         con.execute(
             """
@@ -542,7 +542,7 @@ def run_battery() -> dict[str, Any]:
         else "FAIL"
     )
 
-    ts_now = datetime.now(timezone.utc).isoformat()
+    ts_now = datetime.now(UTC).isoformat()
     con.execute(
         """
         INSERT INTO app_delivery_runs
@@ -626,7 +626,7 @@ def run_battery() -> dict[str, Any]:
 
         dres = metabolize()
         dream_count = int(dres.get("metabolized", 0))
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     con.execute(

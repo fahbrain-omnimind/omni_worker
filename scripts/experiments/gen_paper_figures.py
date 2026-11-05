@@ -4,8 +4,13 @@
 Reproduces docs/figures/fig_*.png from data/monitor/activation_steps/*.npz
 sidecars labeled diva{A,B,C}_r*. matplotlib only.
 """
-import numpy as np, glob, os, re, sys
+import glob
+import os
+import re
+
 import matplotlib
+import numpy as np
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 

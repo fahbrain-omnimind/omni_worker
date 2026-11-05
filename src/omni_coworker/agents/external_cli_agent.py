@@ -30,22 +30,23 @@ import signal
 import subprocess
 import threading
 import time
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 __all__ = [
-    "SANITIZED_BASE_ENV",
     "ALLOWED_ENV_NAMES",
     "FORBIDDEN_ENV_PREFIXES",
     "FORBIDDEN_ENV_SUBSTRINGS",
-    "sanitized_env",
-    "ShellCLIAdapter",
+    "SANITIZED_BASE_ENV",
     "ACPClient",
-    "ExternalCLIAgent",
     "CLICircuitBreaker",
+    "ExternalCLIAgent",
+    "ShellCLIAdapter",
     "default_clis",
-    "register_cli",
     "list_available",
+    "register_cli",
+    "sanitized_env",
 ]
 
 # ── Env sanitization ─────────────────────────────────────────────────────────
@@ -165,7 +166,7 @@ def _parse_json(text: str) -> dict[str, Any] | None:
     try:
         data = json.loads(text)
         return data if isinstance(data, dict) else None
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     start = text.find("{")
     end = text.rfind("}")
@@ -174,7 +175,7 @@ def _parse_json(text: str) -> dict[str, Any] | None:
     try:
         data = json.loads(text[start : end + 1])
         return data if isinstance(data, dict) else None
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -210,10 +211,10 @@ def _kill_process_group(proc: subprocess.Popen) -> None:
     """SIGKILL the whole process group (children included)."""
     try:
         os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
-    except Exception:
+    except Exception:  # noqa: BLE001
         try:
             proc.kill()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
 
@@ -469,7 +470,7 @@ class ACPClient:
             import acp  # noqa: F401
 
             return True
-        except Exception:
+        except Exception:  # noqa: BLE001
             return False
 
     def run(self, task: str, context: dict | None = None, timeout: float | None = None) -> dict:
@@ -487,7 +488,7 @@ class ACPClient:
             }
         try:
             result = asyncio.run(self._run_acp(task, context, timeout))
-        except Exception as exc:  # timeout, protocol or spawn errors
+        except Exception as exc:  # noqa: BLE001 -- timeout, protocol or spawn errors
             return {
                 "ok": False,
                 "output": "",
@@ -614,7 +615,7 @@ class _ACPSessionHandler:
             resolved = os.path.abspath(os.path.realpath(path))
             root = os.path.realpath(self.cwd)
             return resolved == root or resolved.startswith(root + os.sep)
-        except Exception:
+        except Exception:  # noqa: BLE001
             return False
 
     def _locations_of(self, tool_call: Any) -> list[str]:
@@ -701,7 +702,7 @@ class ExternalCLIAgent:
         self.adapter = self._resolve_adapter()
         try:
             self.circuit_breaker: Any = CLICircuitBreaker(self.name)
-        except Exception:
+        except Exception:  # noqa: BLE001
             self.circuit_breaker = None  # fail-open: breaker ausente não bloqueia
 
     def _resolve_adapter(self) -> str:
@@ -741,7 +742,7 @@ class ExternalCLIAgent:
                 }
                 self.last_result = payload
                 return payload
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         if self.adapter == "acp":
             client = ACPClient(
@@ -785,7 +786,7 @@ class ExternalCLIAgent:
                 failed = (not payload["ok"] or payload.get("timed_out")
                           or not payload["output"].strip())
                 (cb.record_failure if failed else cb.record_success)()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return payload
 
@@ -819,7 +820,7 @@ def _cb_state_path(state_dir: str | Path | None = None) -> Path:
     base = Path(state_dir or os.environ.get("OMNI_STATE_DIR", "data"))
     try:
         base.mkdir(parents=True, exist_ok=True)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return base / "cli_circuit_breaker.json"
 
@@ -831,7 +832,7 @@ def _cb_load(path: Path) -> dict[str, Any]:
             raw = json.loads(path.read_text(encoding="utf-8"))
             if isinstance(raw, dict):
                 return dict(raw.get("agents") or raw)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return {}
 
@@ -843,7 +844,7 @@ def _cb_save(path: Path, data: dict[str, Any]) -> None:
         tmp.write_text(json.dumps(data, ensure_ascii=False, default=str),
                        encoding="utf-8")
         os.replace(tmp, path)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 
@@ -904,7 +905,7 @@ class CLICircuitBreaker:
             lft = entry.get("last_failure_time")
             self._last_failure_time = float(lft) \
                 if isinstance(lft, (int, float)) else None
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _save(self) -> None:
@@ -919,7 +920,7 @@ class CLICircuitBreaker:
                     "cooldown": self.cooldown,
                 }
                 _cb_save(self._path, data)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _publish(self, new_state: str) -> None:
@@ -933,7 +934,7 @@ class CLICircuitBreaker:
                             {"from": self.agent,
                              "reason": "circuit_breaker_open "
                                        f"after {self._failures} failures"})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     # -- state machine -------------------------------------------------------
@@ -956,7 +957,7 @@ class CLICircuitBreaker:
         """True quando a chamada pode prosseguir (closed ou sonda half-open)."""
         try:
             return self.state in ("closed", "half_open")
-        except Exception:
+        except Exception:  # noqa: BLE001
             return True  # fail-open
 
     def record_success(self) -> None:
@@ -969,7 +970,7 @@ class CLICircuitBreaker:
             self._save()
             if prev != self._state:
                 self._publish(self._state)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def record_failure(self) -> None:
@@ -985,7 +986,7 @@ class CLICircuitBreaker:
             self._save()
             if prev != self._state:
                 self._publish(self._state)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def reset(self) -> None:
@@ -995,7 +996,7 @@ class CLICircuitBreaker:
             self._state = "closed"
             self._last_failure_time = None
             self._save()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def get_stats(self) -> dict[str, Any]:

@@ -5,7 +5,9 @@ from __future__ import annotations
 import pytest
 
 from omni_coworker.kernel_daemon.homeostasis import (
-    HomeostaticController, ResourceState, TaskPriority)
+    HomeostaticController,
+    TaskPriority,
+)
 
 
 @pytest.fixture

@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import math
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 
@@ -62,7 +62,7 @@ def detect_repetitive_behavior(operations: list[dict[str, Any]], min_reps: int =
         seen.add(key)
         uniq.append(p)
     uniq.sort(key=lambda p: p["repetitions"], reverse=True)
-    return {"patterns": uniq[:5], "total_patterns": len(uniq), "timestamp": datetime.now(timezone.utc).isoformat()}
+    return {"patterns": uniq[:5], "total_patterns": len(uniq), "timestamp": datetime.now(UTC).isoformat()}
 
 
 def detect_bias(operations: list[dict[str, Any]], sensitivity: float = 0.7) -> dict[str, Any]:
@@ -85,7 +85,7 @@ def detect_bias(operations: list[dict[str, Any]], sensitivity: float = 0.7) -> d
         ratio = count / total
         if ratio > sensitivity:
             biases.append({"type": "agent", "name": name, "usage_ratio": ratio, "severity": "high" if ratio > 0.8 else "medium"})
-    return {"biases": biases, "total_biases": len(biases), "timestamp": datetime.now(timezone.utc).isoformat()}
+    return {"biases": biases, "total_biases": len(biases), "timestamp": datetime.now(UTC).isoformat()}
 
 
 def detect_anomalies(operations: list[dict[str, Any]]) -> dict[str, Any]:
@@ -117,7 +117,7 @@ def detect_anomalies(operations: list[dict[str, Any]]) -> dict[str, Any]:
     failures = [op for op in recent if not op.get("success", True)]
     if len(failures) >= 5:
         anomalies.append({"type": "high_failure_rate", "failures": len(failures), "total": len(recent), "rate": len(failures) / len(recent)})
-    return {"anomalies": anomalies, "total_anomalies": len(anomalies), "timestamp": datetime.now(timezone.utc).isoformat()}
+    return {"anomalies": anomalies, "total_anomalies": len(anomalies), "timestamp": datetime.now(UTC).isoformat()}
 
 
 def diversity_score(operations: list[dict[str, Any]]) -> dict[str, Any]:
@@ -152,5 +152,5 @@ def diversity_score(operations: list[dict[str, Any]]) -> dict[str, Any]:
         "unique_agents": len(unique_agents),
         "total_operations": len(operations),
         "interpretation": interp,
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
     }

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-import omni_coworker.agents._llm as llm
 import omni_coworker.agency.affect_tracer as at
+import omni_coworker.agents._llm as llm
 import omni_coworker.brain.server as brain_server
 
 

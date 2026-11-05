@@ -31,7 +31,7 @@ import re
 import threading
 import time
 from concurrent.futures import Future, ThreadPoolExecutor
-from typing import Any, Optional, Tuple
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ _symbol_cache: dict[str, tuple[str, float]] = {}
 _pending: dict[str, Future] = {}
 _lock = threading.RLock()
 _MAX_CACHE = 256
-_executor: Optional[ThreadPoolExecutor] = None
+_executor: ThreadPoolExecutor | None = None
 
 _ALPHA_ARCHETYPES = [
     "Impressão sensorial ligeira, quase reconhecível.",
@@ -70,7 +70,7 @@ def _get_executor() -> ThreadPoolExecutor:
 def _content_hash(raw_data: Any) -> str:
     try:
         payload = json.dumps(raw_data, ensure_ascii=False, default=str, sort_keys=True)
-    except Exception:
+    except Exception:  # noqa: BLE001
         payload = str(raw_data)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:32]
 
@@ -87,12 +87,13 @@ def _sanitize_for_embedding(raw_data: Any) -> str:
 
 def _cosine_similarity(a, b) -> float:
     try:
-        from ..kernel_hooks.compute import cosine_similarity as _kh_cos
         import numpy as np
+
+        from ..kernel_hooks.compute import cosine_similarity as _kh_cos
         a_flat = np.asarray(a, dtype=np.float64).reshape(-1).tolist()
         b_flat = np.asarray(b, dtype=np.float64).reshape(-1).tolist()
         return float(_kh_cos(a_flat, b_flat))
-    except Exception:
+    except Exception:  # noqa: BLE001
         import numpy as np
         a = np.asarray(a, dtype=np.float64)
         b = np.asarray(b, dtype=np.float64)
@@ -134,7 +135,7 @@ def _allmini_fallback(raw_data: Any, emotional_charge: float) -> str:
                     best_idx = i
             archetype = _ALPHA_ARCHETYPES[best_idx]
             return f"{archetype} (carga={emotional_charge:.2f}, coerência={best_sim:.2f})"
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001
         logger.debug("all-MiniLM fallback falhou: %s", exc)
     return _simple_fallback(raw_data, emotional_charge)
 
@@ -151,7 +152,7 @@ def _strip_thinking(raw_text: str) -> str:
     return text
 
 
-def _brain_symbolize(raw_data: Any, emotional_charge: float) -> Optional[str]:
+def _brain_symbolize(raw_data: Any, emotional_charge: float) -> str | None:
     try:
         from ..agents._llm import brain_chat
         messages = [
@@ -164,7 +165,7 @@ def _brain_symbolize(raw_data: Any, emotional_charge: float) -> Optional[str]:
             if len(text.split()) >= 4 and len(text) >= 20:
                 return text
         return None
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001
         logger.debug("brain_chat symbolize falhou: %s", exc)
         return None
 
@@ -182,7 +183,7 @@ def _symbolize_worker(raw_data: Any, emotional_charge: float, key: str) -> str:
             _symbol_cache[key] = (result, time.time())
             _pending.pop(key, None)
         return result
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001
         logger.debug("Erro no worker Bion: %s", exc)
         result = _simple_fallback(raw_data, emotional_charge)
         with _lock:
@@ -193,7 +194,6 @@ def _symbolize_worker(raw_data: Any, emotional_charge: float, key: str) -> str:
 
 class BionSymbolizer:
     """Alias de compatibilidade (nome esperado)."""
-    pass
 
 
 class BionAsyncSymbolizer:
@@ -224,7 +224,7 @@ class BionAsyncSymbolizer:
         try:
             result = future.result(timeout=timeout)
             return result
-        except Exception:
+        except Exception:  # noqa: BLE001
             with _lock:
                 _pending.pop(key, None)
             return _allmini_fallback(raw_data, emotional_charge)

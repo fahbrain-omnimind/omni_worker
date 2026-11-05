@@ -1,11 +1,8 @@
-import os
 from datetime import datetime
 
-import pytest
-
-from omni_coworker.psychoanalysis.bion_alpha_function import BionAlphaFunction
-from omni_coworker.psychoanalysis.beta_element import BetaElement
 from omni_coworker.psychoanalysis.alpha_element import AlphaElement
+from omni_coworker.psychoanalysis.beta_element import BetaElement
+from omni_coworker.psychoanalysis.bion_alpha_function import BionAlphaFunction
 
 
 def test_transform_basic():

@@ -26,11 +26,10 @@ import os
 import random
 import sqlite3
 import threading
-import time
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 from omni_coworker.store.evaporation import evaporation_score
 
@@ -65,16 +64,16 @@ def _con() -> sqlite3.Connection:
         return con
 
 
-def _dt(s: Optional[str]) -> datetime:
+def _dt(s: str | None) -> datetime:
     if not s:
-        return datetime.now(timezone.utc)
+        return datetime.now(UTC)
     try:
-        dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+        dt = datetime.fromisoformat(s)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+            dt = dt.replace(tzinfo=UTC)
         return dt
-    except Exception:
-        return datetime.now(timezone.utc)
+    except Exception:  # noqa: BLE001
+        return datetime.now(UTC)
 
 
 @dataclass
@@ -83,15 +82,15 @@ class KnowledgeItem:
     mass: float
     last_used: datetime
     use_count: int = 0
-    correlations: List[str] = field(default_factory=list)
-    creation_time: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    correlations: list[str] = field(default_factory=list)
+    creation_time: datetime = field(default_factory=lambda: datetime.now(UTC))
 
 
 @dataclass
 class EvaporationEvent:
     knowledge_id: str
     mass_lost: float
-    correlations_preserved: List[str]
+    correlations_preserved: list[str]
     frustration_energy: float
     motivation_boost: float
     timestamp: datetime
@@ -103,8 +102,8 @@ class HawkingMotivationEngine:
         self.temperature = base_temperature
         self.evaporation_threshold = timedelta(days=evaporation_threshold_days)
         self.correlation_strength = correlation_strength
-        self.knowledge_base: Dict[str, KnowledgeItem] = {}
-        self.evaporation_history: List[EvaporationEvent] = []
+        self.knowledge_base: dict[str, KnowledgeItem] = {}
+        self.evaporation_history: list[EvaporationEvent] = []
         self.evaporation_rate = self._calculate_rate()
         self._load()
         logger.info(f"HawkingMotivationEngine initialized: T={base_temperature:.2f}")
@@ -126,7 +125,7 @@ class HawkingMotivationEngine:
                     knowledge_id=r[0], mass_lost=r[1], correlations_preserved=json.loads(r[2] or "[]"),
                     frustration_energy=r[3], motivation_boost=r[4], timestamp=_dt(r[5])))
             con.close()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _save_item(self, kid: str) -> None:
@@ -141,7 +140,7 @@ class HawkingMotivationEngine:
                     (kid, item.content, item.mass, item.last_used.isoformat(),
                      item.use_count, json.dumps(item.correlations), item.creation_time.isoformat()))
             con.close()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _remove_item(self, kid: str) -> None:
@@ -150,11 +149,11 @@ class HawkingMotivationEngine:
             with con:
                 con.execute("DELETE FROM knowledge WHERE id=?", (kid,))
             con.close()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def add_knowledge(self, knowledge_id: str, content: str, mass: float = 1.0) -> None:
-        item = KnowledgeItem(content=content, mass=mass, last_used=datetime.now(timezone.utc))
+        item = KnowledgeItem(content=content, mass=mass, last_used=datetime.now(UTC))
         self.knowledge_base[knowledge_id] = item
         self._save_item(knowledge_id)
 
@@ -162,7 +161,7 @@ class HawkingMotivationEngine:
         if knowledge_id not in self.knowledge_base:
             return False
         item = self.knowledge_base[knowledge_id]
-        item.last_used = datetime.now(timezone.utc)
+        item.last_used = datetime.now(UTC)
         item.use_count += 1
         self._save_item(knowledge_id)
         return True
@@ -179,7 +178,7 @@ class HawkingMotivationEngine:
                 related.correlations.append(knowledge_id)
             self._save_item(related_id)
 
-    def _extract_correlations(self, item: KnowledgeItem) -> List[str]:
+    def _extract_correlations(self, item: KnowledgeItem) -> list[str]:
         preserved = []
         for corr_id in item.correlations:
             if random.random() < self.correlation_strength:
@@ -187,27 +186,27 @@ class HawkingMotivationEngine:
         return preserved
 
     def _compute_frustration(self, item: KnowledgeItem, time_unused: timedelta) -> float:
-        age_factor = (datetime.now(timezone.utc) - item.creation_time).days
+        age_factor = (datetime.now(UTC) - item.creation_time).days
         recency_frustration = 1.0 / max(age_factor, 1.0)
         mass_frustration = item.mass / 10.0
         usage_frustration = 1.0 / max(item.use_count + 1, 1.0)
         total = (recency_frustration + mass_frustration + usage_frustration) / 3.0
         return float(max(0.0, min(total, 1.0)))
 
-    def _generate_urgency(self, correlations: List[str]) -> float:
+    def _generate_urgency(self, correlations: list[str]) -> float:
         urgency = len(correlations) / 10.0
         for corr_id in correlations:
             if corr_id in self.knowledge_base:
                 corr_item = self.knowledge_base[corr_id]
-                time_unused = (datetime.now(timezone.utc) - corr_item.last_used).total_seconds()
+                time_unused = (datetime.now(UTC) - corr_item.last_used).total_seconds()
                 if time_unused > self.evaporation_threshold.total_seconds() * 0.5:
                     urgency += 0.1
         return float(max(0.0, min(urgency, 1.0)))
 
-    def evaporate_unused_knowledge(self, current_time: Optional[datetime] = None) -> Tuple[List[str], Dict[str, Any]]:
+    def evaporate_unused_knowledge(self, current_time: datetime | None = None) -> tuple[list[str], dict[str, Any]]:
         if current_time is None:
-            current_time = datetime.now(timezone.utc)
-        evaporated_ids: List[str] = []
+            current_time = datetime.now(UTC)
+        evaporated_ids: list[str] = []
         total_frustration = 0.0
         total_motivation = 0.0
         total_mass_lost = 0.0
@@ -242,7 +241,7 @@ class HawkingMotivationEngine:
                                         (knowledge_id, item.mass, json.dumps(correlations),
                                          frustration, motivation, current_time.isoformat()))
                         con.close()
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                     evaporated_ids.append(knowledge_id)
 
@@ -256,9 +255,9 @@ class HawkingMotivationEngine:
         }
         return evaporated_ids, motivation_data
 
-    def _identify_at_risk_correlations(self) -> List[str]:
+    def _identify_at_risk_correlations(self) -> list[str]:
         at_risk = []
-        current_time = datetime.now(timezone.utc)
+        current_time = datetime.now(UTC)
         for knowledge_id, item in self.knowledge_base.items():
             time_unused = current_time - item.last_used
             if time_unused > self.evaporation_threshold * 0.5:
@@ -269,7 +268,7 @@ class HawkingMotivationEngine:
         self.temperature = max(MIN_TEMPERATURE, min(new_temperature, MAX_TEMPERATURE))
         self.evaporation_rate = self._calculate_rate()
 
-    def get_statistics(self) -> Dict[str, Any]:
+    def get_statistics(self) -> dict[str, Any]:
         at_risk = self._identify_at_risk_correlations()
         return {
             "total_knowledge": len(self.knowledge_base),
@@ -282,11 +281,11 @@ class HawkingMotivationEngine:
             "average_use_count": (sum(i.use_count for i in self.knowledge_base.values()) / len(self.knowledge_base) if self.knowledge_base else 0.0),
         }
 
-    def get_knowledge_status(self, knowledge_id: str) -> Optional[Dict[str, Any]]:
+    def get_knowledge_status(self, knowledge_id: str) -> dict[str, Any] | None:
         if knowledge_id not in self.knowledge_base:
             return None
         item = self.knowledge_base[knowledge_id]
-        current_time = datetime.now(timezone.utc)
+        current_time = datetime.now(UTC)
         time_unused = current_time - item.last_used
         evaporation_risk = time_unused.total_seconds() / self.evaporation_threshold.total_seconds()
         evaporation_risk = min(evaporation_risk, 1.0)

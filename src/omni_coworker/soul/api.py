@@ -25,24 +25,24 @@ def _compute_state() -> dict:
     try:
         from ..soma.probe import probe
         soma = probe()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     affect: dict = {}
     try:
         from ..brain.affect import derive_affect_from_brain
         affect = derive_affect_from_brain() or {}
-    except Exception:
+    except Exception:  # noqa: BLE001
         affect = {}
 
-    payload: dict = {"soma": soma, "affect": affect}
+    _payload: dict = {"soma": soma, "affect": affect}
 
     kernel_state = None
     try:
         from ..kernel_hooks.compute import affect_state
         from ..kernel_hooks.host_state import build_host_state
         kernel_state = affect_state(build_host_state(soma=soma, affect=affect))
-    except Exception:
+    except Exception:  # noqa: BLE001
         kernel_state = None
 
     if kernel_state:
@@ -83,7 +83,7 @@ def _compute_state() -> dict:
             kernel_state=kernel_state,
             brain=affect,
         )
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return flat
 
@@ -116,7 +116,7 @@ def dodeca() -> dict:
         from ..kernel_hooks.host_state import build_host_state
         kernel_state = affect_state(build_host_state(
             soma=state.get("soma") or {}, affect=state.get("brain") or {}))
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return compute_dodeca(
         {k: state.get(k) for k in ("phi", "psi", "sigma", "epsilon")},

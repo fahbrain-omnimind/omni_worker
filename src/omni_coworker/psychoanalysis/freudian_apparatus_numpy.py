@@ -22,7 +22,7 @@ como camadas neurais com dinâmicas de tensão, prazer/desprazer e defesa.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, Optional
+from typing import Any
 
 import numpy as np
 
@@ -37,7 +37,7 @@ def _as_array(x: Any) -> np.ndarray:
 
         if isinstance(x, torch.Tensor):
             return x.detach().cpu().numpy().astype(float)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     if isinstance(x, dict):
         return {k: _as_array(v) for k, v in x.items()}  # type: ignore
@@ -59,13 +59,13 @@ def to_numpy(x: Any = None) -> Any:
 
         if isinstance(x, torch.Tensor):
             return x.detach().cpu().numpy()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     if isinstance(x, np.ndarray):
         return np.asarray(x)
     try:
         return np.asarray(x)
-    except Exception:
+    except Exception:  # noqa: BLE001
         return x
 
 
@@ -103,13 +103,13 @@ class FreudianNeuron:
 
     def __init__(
         self,
-        n_inputs: Optional[int] = None,
+        n_inputs: int | None = None,
         activation: str = "tanh",
-        seed: Optional[int] = None,
+        seed: int | None = None,
         weights: Any = None,
         bias: Any = None,
-        neuron_id: Optional[str] = None,
-        neuron_type: Optional[str] = None,
+        neuron_id: str | None = None,
+        neuron_type: str | None = None,
         **kwargs,
     ) -> None:
         if n_inputs is None:
@@ -184,11 +184,11 @@ class FreudianNeuralLayer:
 
     def __init__(
         self,
-        n_neurons: Optional[int] = None,
-        input_dim: Optional[int] = None,
+        n_neurons: int | None = None,
+        input_dim: int | None = None,
         activation: str = "tanh",
         noise: float = 0.0,
-        seed: Optional[int] = None,
+        seed: int | None = None,
         **kwargs,
     ) -> None:
         if n_neurons is None:
@@ -207,8 +207,8 @@ class FreudianNeuralLayer:
             self.noise = 0.0
         self.seed = 0 if seed is None else int(seed)
         self.rng = np.random.default_rng(self.seed)
-        self.weights: Optional[np.ndarray] = None
-        self.bias: Optional[np.ndarray] = None
+        self.weights: np.ndarray | None = None
+        self.bias: np.ndarray | None = None
         self.neurons: list = []
         if self.input_dim is not None:
             self._init_weights(self.input_dim)
@@ -232,7 +232,7 @@ class FreudianNeuralLayer:
         if self.weights is None:
             self._init_weights(x.size)
 
-    def forward(self, x: Any, noise: Optional[float] = None, **kwargs) -> np.ndarray:
+    def forward(self, x: Any, noise: float | None = None, **kwargs) -> np.ndarray:
         x = np.asarray(x, dtype=float).reshape(-1)
         self._ensure(x)
         x = _align(x, self.weights.shape[1])
@@ -350,12 +350,12 @@ class FreudianPsychicApparatus:
         self.pleasure = 0.0
         self.unpleasure = 0.0
         self._prev_tension = 0.0
-        self.last_output: Optional[Dict[str, Any]] = None
+        self.last_output: dict[str, Any] | None = None
         self.activation = activation
         logger.info("FreudianPsychicApparatus numpy inicializado (id=%d, ego=%d, superego=%d)",
                     self.n_id, self.n_ego, self.n_superego)
 
-    def _forward_one(self, x: np.ndarray, noise: Optional[float] = None) -> Dict[str, Any]:
+    def _forward_one(self, x: np.ndarray, noise: float | None = None) -> dict[str, Any]:
         x = np.asarray(x, dtype=float).reshape(-1)
         id_act = self.id_layer.forward(x, noise=noise)
         ego_input = self.W_id_ego @ id_act + self.b_id_ego
@@ -375,7 +375,7 @@ class FreudianPsychicApparatus:
             self.unpleasure += delta
         self._prev_tension = self.tension
 
-        result: Dict[str, Any] = {
+        result: dict[str, Any] = {
             "id": id_arr,
             "ego": ego_arr,
             "superego": sup_arr,
@@ -396,14 +396,14 @@ class FreudianPsychicApparatus:
         self.last_output = result
         return result
 
-    def forward(self, x: Any, noise: Optional[float] = None, **kwargs) -> Any:
+    def forward(self, x: Any, noise: float | None = None, **kwargs) -> Any:
         if noise is None and kwargs.get("noise") is not None:
             noise = kwargs.get("noise")
         x_arr = np.asarray(x, dtype=float)
         if x_arr.ndim <= 1:
             return self._forward_one(x_arr, noise=noise)
         out_list = [self._forward_one(row, noise=noise) for row in x_arr]
-        combined: Dict[str, Any] = {}
+        combined: dict[str, Any] = {}
         for key in out_list[0]:
             vals = [o[key] for o in out_list]
             if isinstance(vals[0], np.ndarray):
@@ -421,12 +421,12 @@ class FreudianPsychicApparatus:
     def learn_association(self, perception: Any, target: Any, lr: float = 0.01) -> None:
         try:
             self.id_layer.forward(perception)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # hebbian-ish update on id layer
         try:
             self.id_layer.hebbian_update(perception, self.last_output["id"] if self.last_output else perception, lr=lr)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def defense_mechanism(self, threatening: Any) -> np.ndarray:
@@ -442,7 +442,7 @@ class FreudianPsychicApparatus:
         res = self.forward(w)
         return np.asarray(res["superego"], dtype=float)
 
-    def get_psychic_metrics(self) -> Dict[str, float]:
+    def get_psychic_metrics(self) -> dict[str, float]:
         return {
             "tension": self.tension,
             "pleasure": self.pleasure,

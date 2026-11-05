@@ -60,7 +60,7 @@ def _load_recent(model: str, k: int = _MAX_FILES) -> list[np.ndarray]:
             v = z["vectors"].astype(np.float32)
             if v.ndim == 2:
                 out.append(v)
-        except Exception:
+        except Exception:  # noqa: BLE001, S112
             continue
     return out
 
@@ -76,7 +76,7 @@ def _eff_rank(vecs: list[np.ndarray], layer: int) -> tuple[float, float] | None:
     """(eff_rank, spec_entropy) for `layer` across recent generations."""
     try:
         m = np.stack([v[layer] for v in vecs if layer < v.shape[0]])
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
     if m.shape[0] < 2:
         return None
@@ -145,7 +145,7 @@ def spectral_features() -> dict[str, Any]:
             try:
                 m = np.load(f)["model"]
                 model = str(m.item() if hasattr(m, "item") else m)
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
         vecs = _load_recent(model)
         if len(vecs) < 2:
@@ -163,7 +163,7 @@ def spectral_features() -> dict[str, Any]:
                 iprs.append(_ipr_dim(v))
                 v = v / (np.linalg.norm(v) + 1e-12)
                 bonds.append(max(_bond_dims(v)))
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
         if not effs:
             continue

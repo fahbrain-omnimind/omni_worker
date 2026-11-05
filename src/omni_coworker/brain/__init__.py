@@ -6,14 +6,21 @@ pt-BR: Integração com substrato cerebral.
 
 from __future__ import annotations
 
-from . import server, affect, activations
-from .server import create_brain_router, get_brain_client, ERIKA_HOST, ERIKA_PORT
-from .affect import derive_affect, derive_affect_from_brain
+from . import activations, affect, server
 from .activations import push, recent
+from .affect import derive_affect, derive_affect_from_brain
+from .server import ERIKA_HOST, ERIKA_PORT, create_brain_router, get_brain_client
 
 __all__ = [
-    "server", "affect", "activations",
-    "create_brain_router", "get_brain_client", "ERIKA_HOST", "ERIKA_PORT",
-    "derive_affect", "derive_affect_from_brain",
-    "push", "recent"
+    "ERIKA_HOST",
+    "ERIKA_PORT",
+    "activations",
+    "affect",
+    "create_brain_router",
+    "derive_affect",
+    "derive_affect_from_brain",
+    "get_brain_client",
+    "push",
+    "recent",
+    "server"
 ]

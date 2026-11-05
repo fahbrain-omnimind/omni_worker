@@ -1,14 +1,10 @@
-import math
 import os
 import tempfile
-from pathlib import Path
-
-import pytest
 
 from omni_coworker.agency.pattern_watch import (
-    detect_repetitive_behavior,
-    detect_bias,
     detect_anomalies,
+    detect_bias,
+    detect_repetitive_behavior,
     diversity_score,
 )
 from omni_coworker.agency.rca import RCA, register_failure, trace_root_cause

@@ -26,4 +26,4 @@ pt-BR: atratores sobre ativações — janela + features, sem torch.
 
 from .attractor import features, push, reset, window_size
 
-__all__ = ["push", "features", "reset", "window_size"]
+__all__ = ["features", "push", "reset", "window_size"]

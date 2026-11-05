@@ -49,7 +49,7 @@ def latest_modulation(max_age_s: float = DEFAULT_MAX_AGE_S) -> dict[str, Any] | 
     """Fresh modulation dict, or None when absent/stale/corrupt."""
     try:
         d = json.loads(modulation_path().read_text())
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
     ts = d.get("ts")
     if not isinstance(ts, (int, float)) or (time.time() - ts) > max_age_s:

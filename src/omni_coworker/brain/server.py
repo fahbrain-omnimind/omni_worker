@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import os
 
-__all__ = ["create_brain_router", "get_brain_client", "ERIKA_HOST", "ERIKA_PORT"]
+__all__ = ["ERIKA_HOST", "ERIKA_PORT", "create_brain_router", "get_brain_client"]
 
 
 ERIKA_HOST = os.getenv("ERIKA_HOST", "127.0.0.1")
@@ -44,8 +44,8 @@ def create_brain_router():
     pt-BR: Cria router FastAPI fazendo bridge para endpoints da Erika.
     """
     try:
-        from fastapi import APIRouter, HTTPException
         import httpx
+        from fastapi import APIRouter, HTTPException
         
         router = APIRouter(prefix="/brain", tags=["brain"])
 
@@ -57,7 +57,7 @@ def create_brain_router():
                 async with httpx.AsyncClient(timeout=60.0) as client:
                     resp = await client.post(f"{base}/erika/unload")
                     return {"role": role, **resp.json()}
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 return {"role": role, "status": "error", "reason": type(e).__name__}
 
         @router.post("/reload")
@@ -68,7 +68,7 @@ def create_brain_router():
                 async with httpx.AsyncClient(timeout=300.0) as client:
                     resp = await client.post(f"{base}/erika/reload")
                     return {"role": role, **resp.json()}
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 return {"role": role, "status": "error", "reason": type(e).__name__}
 
         @router.get("/health")
@@ -77,7 +77,7 @@ def create_brain_router():
                 async with httpx.AsyncClient(timeout=5.0) as client:
                     resp = await client.get(f"{ERIKA_BASE_URL}/health")
                     return resp.json()
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
         
         @router.get("/activations")
@@ -86,7 +86,7 @@ def create_brain_router():
                 async with httpx.AsyncClient(timeout=5.0) as client:
                     resp = await client.get(f"{ERIKA_BASE_URL}/erika/activations", params={"limit": limit})
                     return resp.json()
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
         
         @router.get("/affect")
@@ -95,7 +95,7 @@ def create_brain_router():
                 async with httpx.AsyncClient(timeout=5.0) as client:
                     resp = await client.get(f"{ERIKA_BASE_URL}/erika/affect")
                     return resp.json()
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
         
         @router.post("/chat")
@@ -139,7 +139,7 @@ def create_brain_router():
                                 f"reasons={affect_verdict.get('reasons')}")
                         msgs = list(payload.get("messages") or [])
                         payload["messages"] = [{"role": "system", "content": note}] + msgs
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                 # gate glial degenerativo: bloqueia geração repetitiva (fail-open)
                 _gate_default = os.getenv("OMNI_GATE_FAIL_CLOSED") == "1"
@@ -168,7 +168,7 @@ def create_brain_router():
                                         f"{glial.get('habituated', 0.0)} "
                                         f"vagus={glial.get('vagus_sedative', 0.0)}"),
                         }] + msgs
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                 # memtrias: retorno do recalcado (recall) + inscrição (log) + corpo simbólico/acervo
                 auto_log = os.getenv("OMNI_MEMTRIAS_AUTO_LOG", "0") in ("1", "true", "yes")
@@ -202,7 +202,7 @@ def create_brain_router():
                         from ..memory.memtrias_ai import get_memtrias
 
                         mem = get_memtrias()
-                    except Exception:
+                    except Exception:  # noqa: BLE001
                         mem = None
                 if symbolic_recall and user_turn:
                     try:
@@ -216,7 +216,7 @@ def create_brain_router():
                             )
                             msgs = list(payload.get("messages") or [])
                             payload["messages"] = [{"role": "system", "content": he_note}] + msgs
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                 if mem is not None and mem_recall and user_turn:
                     try:
@@ -231,7 +231,7 @@ def create_brain_router():
                             msgs = list(payload.get("messages") or [])
                             payload["messages"] = [{"role": "system",
                                                     "content": note}] + msgs
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                 # acervo: recuperação de obras vetorizadas (conhecimento sob
                 # demanda — faiss MiniLM-L6, read-only, uso interno)
@@ -247,7 +247,7 @@ def create_brain_router():
                             msgs = list(payload.get("messages") or [])
                             payload["messages"] = [{"role": "system",
                                                     "content": note}] + msgs
-                    except Exception:
+                    except Exception:  # noqa: BLE001, S110
                         pass
                 async with httpx.AsyncClient(timeout=120.0) as client:
                     resp = await client.post(
@@ -267,10 +267,10 @@ def create_brain_router():
                                 mem.remember("interaction",
                                              f"u: {user_turn}\na: {ans}",
                                              **meta)
-                        except Exception:
+                        except Exception:  # noqa: BLE001, S110
                             pass
                     return out
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
 
         @router.get("/executor/health")
@@ -279,7 +279,7 @@ def create_brain_router():
                 async with httpx.AsyncClient(timeout=5.0) as client:
                     resp = await client.get(f"{EXECUTOR_BASE_URL}/health")
                     return resp.json()
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 raise HTTPException(status_code=503, detail=f"Executor server unavailable: {e}")
 
         @router.get("/judge/health")
@@ -288,7 +288,7 @@ def create_brain_router():
                 async with httpx.AsyncClient(timeout=5.0) as client:
                     resp = await client.get(f"{JUDGE_BASE_URL}/health")
                     return resp.json()
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 raise HTTPException(status_code=503, detail=f"Judge server unavailable: {e}")
 
         @router.get("/topology")
@@ -306,12 +306,12 @@ def create_brain_router():
                     try:
                         r = await client.get(f"{base}/health")
                         out[role] = {"status": "up", "base": base, **r.json()}
-                    except Exception:
+                    except Exception:  # noqa: BLE001
                         out[role] = {"status": "down", "base": base}
             return out
 
         return router
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001
         # Return a dummy router if dependencies missing
         from fastapi import APIRouter
         err = str(exc)
@@ -341,5 +341,5 @@ def get_brain_client(role: str = "analyst"):
         client = httpx.Client(base_url=_base_for_role(role), timeout=300.0)
         _CLIENTS[role] = client
         return client
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None

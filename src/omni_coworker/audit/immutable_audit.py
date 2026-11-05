@@ -40,7 +40,7 @@ import json
 import os
 import threading
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -78,22 +78,21 @@ class ImmutableAuditSystem:
         if not self.lock_file.exists():
             try:
                 self.lock_file.touch()
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
-        f = open(self.lock_file, "r+")
-        try:
+        with open(self.lock_file, "r+") as f:
             fcntl.flock(f, fcntl.LOCK_EX if exclusive else fcntl.LOCK_SH)
-            yield
-        finally:
-            fcntl.flock(f, fcntl.LOCK_UN)
-            f.close()
+            try:
+                yield
+            finally:
+                fcntl.flock(f, fcntl.LOCK_UN)
 
     def _log_security_event(self, msg: str) -> None:
         try:
             with open(self.security_log, "a", encoding="utf-8") as f:
-                f.write(json.dumps({"ts": datetime.now(timezone.utc).isoformat(),
+                f.write(json.dumps({"ts": datetime.now(UTC).isoformat(),
                                     "msg": msg}) + "\n")
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _read_last_hash_from_log(self) -> str:
@@ -111,7 +110,7 @@ class ImmutableAuditSystem:
                         return json.loads(line).get("current_hash", GENESIS_HASH)
                     except json.JSONDecodeError:
                         continue
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return GENESIS_HASH
 
@@ -121,7 +120,7 @@ class ImmutableAuditSystem:
         return {"action": action, "category": category, "details": details,
                 "timestamp": ts,
                 "datetime_utc": datetime.fromtimestamp(
-                    ts, tz=timezone.utc).isoformat(),
+                    ts, tz=UTC).isoformat(),
                 "prev_hash": prev_hash}
 
     @staticmethod
@@ -201,14 +200,13 @@ class ImmutableAuditSystem:
                 is_restart = ev.get("action") == "audit_system_initialized"
                 if is_restart:
                     restarts += 1
-                if ev.get("prev_hash") != prev:
+                if ev.get("prev_hash") != prev and not (is_restart and ev.get("prev_hash") == GENESIS_HASH):
                     # controlled break: a restart event may re-anchor at
                     # genesis (e.g. sidecar state lost); anything else is
                     # a real discontinuity
-                    if not (is_restart and ev.get("prev_hash") == GENESIS_HASH):
-                        corrupted.append({"line": n,
-                                          "expected_prev": prev,
-                                          "found_prev": ev.get("prev_hash")})
+                    corrupted.append({"line": n,
+                                      "expected_prev": prev,
+                                      "found_prev": ev.get("prev_hash")})
                 payload = {k: ev.get(k) for k in
                            ("action", "category", "details", "timestamp",
                             "datetime_utc", "prev_hash")}

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 from omni_coworker.orchestration.agent_orchestrator import AgentOrchestrator
 
 

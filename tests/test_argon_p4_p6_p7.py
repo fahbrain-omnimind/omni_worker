@@ -3,20 +3,20 @@
 from __future__ import annotations
 
 from pathlib import Path
+
 import numpy as np
 
-from omni_coworker.kernel_hooks.compute import cosine_similarity
-from omni_coworker.psychoanalysis.bion_symbolizer import _cosine_similarity as bion_cos
-from omni_coworker.narrative.lalangue import _cosine as lalangue_cos
-from omni_coworker.memory.memtrias_ai import _cosine as mem_cos
-from omni_coworker.integration_loop.quilting import detect_quilting_point
-from omni_coworker.store.node_db import NodeDB
-from omni_coworker.orchestration.governance import TrustSystem, QuarantineSystem
 from omni_coworker.activation_beta.dendritic_scan import (
     ipr_dim,
-    layer_correlation_graph,
     scan_trajectory,
 )
+from omni_coworker.integration_loop.quilting import detect_quilting_point
+from omni_coworker.kernel_hooks.compute import cosine_similarity
+from omni_coworker.memory.memtrias_ai import _cosine as mem_cos
+from omni_coworker.narrative.lalangue import _cosine as lalangue_cos
+from omni_coworker.orchestration.governance import QuarantineSystem, TrustSystem
+from omni_coworker.psychoanalysis.bion_symbolizer import _cosine_similarity as bion_cos
+from omni_coworker.store.node_db import NodeDB
 
 
 def test_p6_cosine_similarity_wired_consumers():

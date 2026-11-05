@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Coding-error battery — mechanical/analyst/executor tiers, live Gemma.
 
 English: per seeded victim file: (1) mechanical tier — compileall + black
@@ -49,11 +48,11 @@ def _mechanical(path: Path) -> dict:
         syntax_err = str(e)
     black = subprocess.run(
         [sys.executable, "-m", "black", "--check", "--quiet", str(path)],
-        capture_output=True, text=True, timeout=60,
+        capture_output=True, text=True, timeout=60, check=False,
     )
     ruff = subprocess.run(
         [sys.executable, "-m", "ruff", "check", "--output-format", "json", str(path)],
-        capture_output=True, text=True, timeout=60,
+        capture_output=True, text=True, timeout=60, check=False,
     )
     ruff_findings = []
     try:
@@ -61,7 +60,7 @@ def _mechanical(path: Path) -> dict:
             ruff_findings.append(
                 f"{item.get('code')}:{item.get('location', {}).get('row')}"
             )
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return {
         "compiles": compiled,
@@ -75,7 +74,7 @@ def _analyst(src: str, filename: str) -> dict | None:
     """12B review tier — returns parsed JSON findings or None on failure."""
     try:
         from omni_coworker.agents._llm import brain_chat_json
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
     out = brain_chat_json(
         [{"role": "system", "content": (
@@ -93,7 +92,7 @@ def _executor_fix(src: str, filename: str) -> str | None:
     """E4B fix tier — returns raw model output or None."""
     try:
         from omni_coworker.agents._llm import brain_chat
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
     out = brain_chat(
         [{"role": "system", "content": (
@@ -110,10 +109,10 @@ def _smoke(path: Path) -> dict:
     try:
         subprocess.run(
             [sys.executable, "-m", "black", "--quiet", str(path)],
-            capture_output=True, timeout=60,
+            capture_output=True, timeout=60, check=False,
         )
         black_ok = True
-    except Exception:
+    except Exception:  # noqa: BLE001
         black_ok = False
     try:
         ast.parse(path.read_text(encoding="utf-8"))
@@ -151,7 +150,7 @@ def _set_capture_env(run_id: str, turn: str, task: str = "coding_battery") -> No
             f"OMNI_ACT_RUN_ID={run_id}\nOMNI_ACT_TURN={turn}\nOMNI_ACT_TASK={task}\n",
             encoding="utf-8",
         )
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 

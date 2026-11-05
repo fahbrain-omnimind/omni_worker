@@ -7,7 +7,8 @@ pt-BR: Usa módulos de kernel Rust compilados quando disponíveis, senão Python
 from __future__ import annotations
 
 import math
-from typing import Any, Dict, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 from . import (
     FREUD_AVAILABLE,
@@ -19,7 +20,7 @@ from . import (
 )
 
 
-def affect_state(host_state: Dict[str, Any] | None = None) -> Dict[str, Any] | None:
+def affect_state(host_state: dict[str, Any] | None = None) -> dict[str, Any] | None:
     """Compute the 28-dim affective state via Rust kernel.
 
     English: Returns the full kernel result (affective_vector_28d, vctr_six_params,
@@ -33,7 +34,7 @@ def affect_state(host_state: Dict[str, Any] | None = None) -> Dict[str, Any] | N
     try:
         result = omnimind_kernel_compute.compute_affect_vector_28d(host_state or {})
         return result if isinstance(result, dict) else None
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -48,7 +49,7 @@ def maat_balance(phi_anchor: float, psi: float, epsilon: float) -> float:
             return float(
                 omnimind_kernel_compute.compute_maat_balance(phi_anchor, psi, epsilon)
             )
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     return max(0.0, min(1.0, (phi_anchor + psi + (1.0 - epsilon)) / 3.0))
 
@@ -82,7 +83,7 @@ def shadow_phi(
                     quantum_phi_adjustment,
                 )
             )
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     return max(0.0, math.log1p(max(0.0, total_processes)) * structural_factor)
 
@@ -96,7 +97,7 @@ def cosine_similarity(a: Sequence[float], b: Sequence[float]) -> float:
     if METRICS_AVAILABLE and omnimind_metrics:
         try:
             return float(omnimind_metrics.cosine_similarity(list(a), list(b)))
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     dot = sum(x * y for x, y in zip(a, b))
     na = math.sqrt(sum(x * x for x in a))
@@ -104,7 +105,7 @@ def cosine_similarity(a: Sequence[float], b: Sequence[float]) -> float:
     return dot / (na * nb) if na and nb else 0.0
 
 
-def kernel_status() -> Dict[str, bool]:
+def kernel_status() -> dict[str, bool]:
     """Report which Rust kernel modules are loaded.
 
     English: Availability flags for the compiled modules.
@@ -122,7 +123,7 @@ def kernel_status() -> Dict[str, bool]:
 _FREUD_APPARATUS = None
 
 
-def freud10d_cycle(perception: Sequence[float] | None = None) -> Dict[str, Any] | None:
+def freud10d_cycle(perception: Sequence[float] | None = None) -> dict[str, Any] | None:
     """One Freud10D forward pass on a persistent apparatus.
 
     English: Singleton apparatus across calls — tension/pleasure history
@@ -158,5 +159,5 @@ def freud10d_cycle(perception: Sequence[float] | None = None) -> Dict[str, Any] 
             "pleasure": pleasure,
             "tension_window": tw,
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None

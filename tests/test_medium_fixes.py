@@ -1,7 +1,5 @@
 """Medium-priority fixes: manifest hash, base_url env, external unload."""
-import os
 
-import pytest
 
 
 def test_manifest_hash_covers_full_file(tmp_path, monkeypatch):

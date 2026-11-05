@@ -6,7 +6,6 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 os.environ["TODO_DB"] = "/tmp/todo_db_battery.json"
 
-import importlib
 import todo_api
 
 
@@ -62,7 +61,7 @@ def test_stats_contract():
     import todo_stats
     _reset()
     todo_stats.TASKS.clear()
-    code, t1 = todo_api.handle_request("POST", "/tasks", {"title": "x"})
+    _code, t1 = todo_api.handle_request("POST", "/tasks", {"title": "x"})
     todo_api.handle_request("POST", f"/tasks/{t1['id']}/done")
     s = todo_stats.stats()
     assert s["total"] == 1 and s["done"] == 1 and s["pending"] == 0

@@ -42,7 +42,7 @@ def _read_new_activations(log: Path = ACTIVATIONS_LOG) -> list[dict]:
     off_path = log.with_suffix(log.suffix + ".offset")
     try:
         offset = int(off_path.read_text().strip())
-    except Exception:
+    except Exception:  # noqa: BLE001
         offset = 0
     try:
         size = log.stat().st_size
@@ -75,7 +75,7 @@ def _http_json(url: str) -> dict | None:
         import httpx
         r = httpx.get(url, timeout=_HTTP_TIMEOUT_S)
         return r.json() if r.status_code == 200 else None
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -83,7 +83,7 @@ def _brain_affect(role: str) -> dict | None:
     try:
         from ..brain.server import _base_for_role
         return _http_json(f"{_base_for_role(role)}/erika/affect")
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -94,19 +94,19 @@ def collect_cycle(log: Path | None = None) -> dict[str, Any]:
     try:
         from ..soul.api import _compute_state
         soul = _compute_state()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     soma = None
     try:
         from ..soma.probe import probe_recorded
         soma = probe_recorded()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     mesh = None
     try:
         from ..shared_workspace import bus
         mesh = bus.snapshot()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return {
         "ts": time.time(),

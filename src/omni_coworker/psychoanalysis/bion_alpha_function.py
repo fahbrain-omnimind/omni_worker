@@ -24,8 +24,9 @@ from __future__ import annotations
 
 import logging
 import os
+from collections.abc import Callable
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any
 
 import numpy as np
 
@@ -36,12 +37,12 @@ from .bion_symbolizer import BionAsyncSymbolizer
 logger = logging.getLogger(__name__)
 
 
-def _default_llm_symbolize(raw_data: Any, emotional_charge: float = 0.0) -> Optional[str]:
+def _default_llm_symbolize(raw_data: Any, emotional_charge: float = 0.0) -> str | None:
     try:
         timeout = float(os.environ.get("OMNI_WORKER_BION_SYMBOL_TIMEOUT", "2.0"))
         symbolizer = BionAsyncSymbolizer()
         return symbolizer.symbolize(raw_data=raw_data, emotional_charge=emotional_charge, timeout=timeout)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         logger.debug("Bion symbolize falhou: %s", e)
         return str(raw_data)
 
@@ -51,7 +52,7 @@ class BionAlphaFunction:
         self,
         transformation_rate: float = 0.7,
         tolerance_threshold: float = 0.6,
-        narrative_builder: Optional[Callable[[BetaElement], str]] = None,
+        narrative_builder: Callable[[BetaElement], str] | None = None,
         use_llm_symbolizer: bool = True,
     ) -> None:
         if not 0.0 <= transformation_rate <= 1.0:
@@ -62,10 +63,10 @@ class BionAlphaFunction:
         self.tolerance_threshold = tolerance_threshold
         self.narrative_builder = narrative_builder or self._default_narrative_builder
         self.use_llm_symbolizer = use_llm_symbolizer
-        self.processing_history: List[Dict[str, Any]] = []
+        self.processing_history: list[dict[str, Any]] = []
         logger.info(f"BionAlphaFunction inicializada: rate={transformation_rate:.2f}, tolerance={tolerance_threshold:.2f}")
 
-    def transform(self, beta: BetaElement) -> Optional[AlphaElement]:
+    def transform(self, beta: BetaElement) -> AlphaElement | None:
         if not self._is_processable(beta):
             logger.warning(f"BetaElement não-processável: emotional_charge={beta.emotional_charge:.2f}")
             self._record_failure(beta, reason="too_intense")
@@ -74,12 +75,12 @@ class BionAlphaFunction:
             alpha = self._apply_transformation(beta)
             self._record_success(beta, alpha)
             return alpha
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             logger.error(f"Erro na transformação: {e}")
-            self._record_failure(beta, reason=f"error: {str(e)}")
+            self._record_failure(beta, reason=f"error: {e!s}")
             return None
 
-    def transform_batch(self, betas: List[BetaElement]) -> List[AlphaElement]:
+    def transform_batch(self, betas: list[BetaElement]) -> list[AlphaElement]:
         alphas = []
         for beta in betas:
             alpha = self.transform(beta)
@@ -116,7 +117,7 @@ class BionAlphaFunction:
                 # sarannya entropy approx: I + |T-F| normalized
                 entropy = (nt.I + abs(nt.T - nt.F)) / 2.0
                 entropy_factor = max(0.01, 1.0 - entropy)
-            except Exception:
+            except Exception:  # noqa: BLE001
                 entropy_factor = 1.0
 
         base = self.transformation_rate * entropy_factor
@@ -177,7 +178,7 @@ class BionAlphaFunction:
     def _record_failure(self, beta: BetaElement, reason: str) -> None:
         self.processing_history.append({"timestamp": datetime.now().isoformat(), "status": "failure", "beta_charge": beta.emotional_charge, "reason": reason})
 
-    def get_statistics(self) -> Dict[str, Any]:
+    def get_statistics(self) -> dict[str, Any]:
         total = len(self.processing_history)
         if total == 0:
             return {"total_processed": 0, "success_rate": 0.0, "failure_rate": 0.0}

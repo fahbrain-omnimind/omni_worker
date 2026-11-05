@@ -5,8 +5,8 @@ pt-BR: Testes smoke herméticos apenas CPU.
 """
 
 from omni_coworker.app import create_app
-from omni_coworker.safety.jail import is_safe
 from omni_coworker.brain.affect import derive_affect
+from omni_coworker.safety.jail import is_safe
 from omni_coworker.soma.probe import probe
 from omni_coworker.store.node_db import NodeDB
 

@@ -6,9 +6,9 @@ pt-BR: Hermético — exercita adaptadores sem exigir GPU, kernel Rust,
 repo canônico ou backends brain.
 """
 
+from omni_coworker.agency import dunker as agency_dunker
 from omni_coworker.soma.probe import probe, soma_context_line
 from omni_coworker.soul import dodeca as soul_dodeca
-from omni_coworker.agency import dunker as agency_dunker
 
 
 def test_probe_has_virt_block():

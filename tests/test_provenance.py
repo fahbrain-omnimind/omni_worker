@@ -1,9 +1,9 @@
-import pytest
-from omni_coworker.memory.provenance import (
-    provenance_signature, classify_trust, quarantine_check,
-)
-from omni_coworker.memory.memtrias_ai import MemtriasAI
 from omni_coworker.agency.witness import append_witness, read_witness
+from omni_coworker.memory.memtrias_ai import MemtriasAI
+from omni_coworker.memory.provenance import (
+    classify_trust,
+    provenance_signature,
+)
 
 
 def test_signature_deterministic():

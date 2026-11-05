@@ -6,12 +6,10 @@ pt-BR: Unifica brain, agency, soul em :8080.
 
 from __future__ import annotations
 
-from typing import Optional
-
 from fastapi import FastAPI
 
-from .soul.api import router as soul_router
 from .brain.server import create_brain_router
+from .soul.api import router as soul_router
 
 
 def create_app() -> FastAPI:
@@ -28,17 +26,17 @@ def create_app() -> FastAPI:
     app.include_router(soul_router)
     try:
         app.include_router(create_brain_router())
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         from .safety.supervisor import create_supervisor_router
         app.include_router(create_supervisor_router())
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         from .shared_workspace.api import router as mesh_router
         app.include_router(mesh_router)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         from .kernel_daemon.api import router as kernel_router
@@ -54,7 +52,7 @@ def create_app() -> FastAPI:
         @app.on_event("shutdown")
         async def _kernel_daemon_stop() -> None:
             await _daemon.stop()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         from .integration_loop.api import router as loop_router
@@ -70,7 +68,7 @@ def create_app() -> FastAPI:
         @app.on_event("shutdown")
         async def _integration_loop_stop() -> None:
             await _loop.stop()
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     @app.get("/soma/probe")
@@ -106,7 +104,7 @@ def create_app() -> FastAPI:
         return current_state()
 
     @app.get("/safety/care")
-    def safety_care(reason: str, state_uf: Optional[str] = None, age: Optional[int] = None) -> dict:
+    def safety_care(reason: str, state_uf: str | None = None, age: int | None = None) -> dict:
         """Escalate a mental-health / abuse concern through the territorial care path.
         
         English: Escalate a mental-health / abuse concern through the territorial care path.
@@ -173,7 +171,7 @@ def create_app() -> FastAPI:
         kernel_state = None
         try:
             kernel_state = affect_state(build_host_state(soma=probe()))
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # P1 (OW-STU-019 §5b): alimenta os campos que ficavam vazios —
         # free_energy <- pred_err do integration loop; regime homeostático
@@ -193,7 +191,7 @@ def create_app() -> FastAPI:
             att = bundle.get("attractor") or {}
             if att:
                 topo_metrics = {"topology_fragmentation": att.get("entropy_collapse", 0.0)}
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return dunker_architecture(
             kernel_state=kernel_state,
@@ -214,6 +212,7 @@ def create_app() -> FastAPI:
     def root_dashboard():
         """Serve the 4-view Machine Public Soul & Supervisory Dashboard."""
         from pathlib import Path
+
         from fastapi.responses import HTMLResponse
 
         repo_root = Path(__file__).resolve().parents[2]
@@ -242,7 +241,7 @@ def create_app() -> FastAPI:
             if candidate.exists():
                 try:
                     return json.loads(candidate.read_text(encoding="utf-8"))
-                except Exception:
+                except Exception:  # noqa: BLE001, S110
                     pass
         return {"source": "omni_worker real state", "error": "snapshot_not_generated"}
 

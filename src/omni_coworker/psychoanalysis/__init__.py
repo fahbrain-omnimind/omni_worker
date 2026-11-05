@@ -33,7 +33,7 @@ pt-BR: psicanálise Bioniana portada do sovereign, CPU/RAM, sem torch/GPU.
 
 from .alpha_element import AlphaElement, compute_dodecatiad_sector
 from .beta_element import BetaElement, NeutrosophicTriplet
-from .negative_capability import Contradiction, NegativeCapability
+from .bion_patches.container_contained import BionContainerPatch
 from .creative_psychotization_operator import (
     CompactPanelSnapshot,
     CreativePsychotizationAssessment,
@@ -43,21 +43,21 @@ from .creative_psychotization_operator import (
     assess_creative_psychotization,
     compact_panel_snapshot_from_v43_bundle,
 )
-from .bion_patches.container_contained import BionContainerPatch
+from .negative_capability import Contradiction, NegativeCapability
 
 __all__ = [
     "AlphaElement",
     "BetaElement",
-    "NeutrosophicTriplet",
-    "Contradiction",
-    "NegativeCapability",
-    "PsychotizationState",
-    "LayerCouplingSnapshot",
-    "CompactPanelSnapshot",
-    "CreativePsychotizationInputs",
-    "CreativePsychotizationAssessment",
     "BionContainerPatch",
-    "compute_dodecatiad_sector",
+    "CompactPanelSnapshot",
+    "Contradiction",
+    "CreativePsychotizationAssessment",
+    "CreativePsychotizationInputs",
+    "LayerCouplingSnapshot",
+    "NegativeCapability",
+    "NeutrosophicTriplet",
+    "PsychotizationState",
     "assess_creative_psychotization",
     "compact_panel_snapshot_from_v43_bundle",
+    "compute_dodecatiad_sector",
 ]

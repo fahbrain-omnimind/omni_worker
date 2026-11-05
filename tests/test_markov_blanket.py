@@ -29,7 +29,7 @@ def test_mobius_add_stays_in_disk():
 
 
 def test_moderate_alpha_lets_belief_approach_target():
-    st, obs = _run(0.35)
+    _st, obs = _run(0.35)
     # α=0.35 with world at target: belief should get meaningfully closer
     assert obs["dH"] < 2.0
 
@@ -50,7 +50,7 @@ def test_binarize_uses_sovereign_thresholds():
 
 
 def test_tpm_row_stochastic_and_persistent():
-    joint, sbn, meta = mb.build_tpm(0.35, k=40, seed=3)
+    joint, sbn, _meta = mb.build_tpm(0.35, k=40, seed=3)
     assert np.allclose(joint.sum(1), 1.0, atol=1e-9)
     # states are largely self-persistent at the binary grain
     assert np.diag(joint).mean() > 0.5
@@ -58,7 +58,7 @@ def test_tpm_row_stochastic_and_persistent():
 
 
 def test_tpm6_unreachable_absorbing():
-    joint, sbn, meta = mb.build_tpm(0.35, k=40, seed=3, nodes6=True)
+    joint, _sbn, meta = mb.build_tpm(0.35, k=40, seed=3, nodes6=True)
     assert joint.shape == (64, 64)
     assert np.allclose(joint.sum(1), 1.0, atol=1e-9)
     # dynamics rule out a large chunk of the binary space (e.g. R=0∧P=0)

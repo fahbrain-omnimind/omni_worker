@@ -19,13 +19,13 @@ PATTERNS = [
     re.compile(r"AIza[0-9A-Za-z_-]{20,}"),
     re.compile(r"-----BEGIN (RSA|OPENSSH|EC|PRIVATE) KEY-----"),
     re.compile(r"HF_TOKEN\s*[=:]\s*\S+"),
-    re.compile(r"(api[_-]?key|secret|password|token)\s*[=:]\s*[\"'][A-Za-z0-9_\-]{12,}[\"']", re.I),
+    re.compile(r"(api[_-]?key|secret|password|token)\s*[=:]\s*[\"'][A-Za-z0-9_\-]{12,}[\"']", re.IGNORECASE),
     re.compile(r"AKIA[0-9A-Z]{16}"),
 ]
 
 def main() -> int:
     staged = subprocess.run(
-        ["git", "diff", "--cached", "--name-only", "-z"], capture_output=True, text=True
+        ["git", "diff", "--cached", "--name-only", "-z"], capture_output=True, text=True, check=False
     ).stdout.split("\0")
     files = [f for f in staged if f]
     if not files:
@@ -33,7 +33,8 @@ def main() -> int:
     bad = []
     for f in files:
         try:
-            content = open(f, encoding="utf-8", errors="ignore").read()
+            with open(f, encoding="utf-8", errors="ignore") as fp:
+                content = fp.read()
         except OSError:
             continue
         for pat in PATTERNS:

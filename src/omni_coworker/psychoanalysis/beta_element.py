@@ -27,7 +27,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Any, Dict, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -55,7 +55,7 @@ class NeutrosophicTriplet:
         return self.t
 
     @property
-    def I(self) -> float:  # noqa: E743 — mantém API {T, I, F} do neutrosófico
+    def I(self) -> float:
         return self.i
 
     @property
@@ -69,11 +69,11 @@ class NeutrosophicTriplet:
             f=max(0.0, min(1.0, self.f)),
         )
 
-    def to_dict(self) -> Dict[str, float]:
+    def to_dict(self) -> dict[str, float]:
         return {"T": self.t, "I": self.i, "F": self.f}
 
     @classmethod
-    def from_dict(cls, data: Dict[str, float]) -> NeutrosophicTriplet:
+    def from_dict(cls, data: dict[str, float]) -> NeutrosophicTriplet:
         return cls(
             t=float(data.get("T", 0.0)),
             i=float(data.get("I", 0.0)),
@@ -102,8 +102,8 @@ class BetaElement:
     timestamp: datetime
     emotional_charge: float = 0.0
     source: str = "unknown"
-    neutrosophic_triplet: Optional[NeutrosophicTriplet] = None
-    metadata: Optional[Dict[str, Any]] = None
+    neutrosophic_triplet: NeutrosophicTriplet | None = None
+    metadata: dict[str, Any] | None = None
 
     def __post_init__(self) -> None:
         """Valida elementos após inicialização."""
@@ -144,7 +144,7 @@ class BetaElement:
         """
         return self.emotional_charge >= threshold
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """
         Serializa elemento para dicionário.
 
@@ -166,7 +166,7 @@ class BetaElement:
         }
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> BetaElement:
+    def from_dict(cls, data: dict[str, Any]) -> BetaElement:
         """
         Cria BetaElement a partir de dicionário.
 

@@ -91,7 +91,7 @@ def features() -> dict[str, Any]:
     try:
         from .hidden_spectral import spectral_features
         spectral = spectral_features()
-    except Exception:
+    except Exception:  # noqa: BLE001
         spectral = {}
     out = {}
     for model, w in _WINDOWS.items():

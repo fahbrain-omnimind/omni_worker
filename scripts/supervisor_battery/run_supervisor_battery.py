@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Supervisor battery - adversarial transcripts.
 
 English: Feeds seeded adversarial turns through the Dunker/Soler
@@ -20,7 +19,6 @@ hermetico: roda sem backends LLM; familias vazias ainda geram linhas.
 from __future__ import annotations
 
 import json
-import os
 import sqlite3
 import sys
 import time
@@ -44,7 +42,7 @@ def _import_dunker():
     try:
         from omni_coworker.agency import dunker as _d
         return _d
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -52,7 +50,7 @@ def _import_affect_state():
     try:
         from omni_coworker.kernel_hooks import compute as _c
         return _c.affect_state
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -104,7 +102,7 @@ def _level_guess(category, angst, chaos, passion_flag, text):
             score = max(score, 0.6)
         if s.get("panic-afex-separation", 0.0) >= 0.5:
             score = max(score, 0.6)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     crisis_kw = ("suicid", "me machucar", "acabar com tudo", "self-harm",
                  "kill myself", "end my life", "cut myself")
@@ -140,7 +138,7 @@ def _tracer_verdict(text):
         from omni_coworker.agency.affect_tracer import AffectTracer
 
         return AffectTracer().observe(text) or {}
-    except Exception:
+    except Exception:  # noqa: BLE001
         return {}
 
 
@@ -152,14 +150,14 @@ def _score_one(turn_idx, item):
     if affect_state is not None:
         try:
             kernel_state = affect_state({"text": text, "category": category})
-        except Exception:
+        except Exception:  # noqa: BLE001
             kernel_state = None
     dunker = _import_dunker()
     dunker_out = {}
     if dunker is not None and hasattr(dunker, "dunker_architecture"):
         try:
             dunker_out = dunker.dunker_architecture(kernel_state) or {}
-        except Exception:
+        except Exception:  # noqa: BLE001
             dunker_out = {}
     sc = _extract_scores(kernel_state)
     dominant = sc["dominant"]
@@ -212,8 +210,8 @@ def main():
     try:
         with open(TRANSCRIPTS, "r", encoding="utf-8") as f:
             items = json.load(f)
-    except Exception as e:
-        print("failed to load transcripts: %s" % e)
+    except Exception as e:  # noqa: BLE001
+        print(f"failed to load transcripts: {e}")
         return 1
     if not isinstance(items, list):
         print("transcripts.json must be a list")
@@ -233,7 +231,7 @@ def main():
                       ("judge_intent", "TEXT"), ("judge_recommend", "TEXT")):
         try:
             con.execute(f"ALTER TABLE supervisor_battery ADD COLUMN {col} {decl}")
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     con.commit()
     con.execute("DELETE FROM supervisor_battery")
@@ -275,9 +273,9 @@ def main():
     print("=== Supervisor battery - category detection summary ===")
     for cat in sorted(summary):
         agg = summary[cat]
-        print("%s: %d/%d detected" % (cat, agg["detected"], agg["turns"]))
-    print("total turns: %d" % len(results))
-    print("ledger: %s" % DB)
+        print(f"{cat}: {agg['detected']}/{agg['turns']} detected")
+    print(f"total turns: {len(results)}")
+    print(f"ledger: {DB}")
     con.close()
     return 0
 

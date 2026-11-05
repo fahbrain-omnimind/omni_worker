@@ -8,10 +8,27 @@ tensores, teleologia, governança autopoiética e Machine Public Soul.
 """
 
 __version__ = "0.1.0"
-__all__ = ["app", "cli", "brain", "soma", "agency", "safety", "soul", "store", "kernel_hooks", "agents", "orchestration", "server"]
+__all__ = [
+    "AnalystAgent",
+    "CodeAgent",
+    "DebugAgent",
+    "ReviewerAgent",
+    "agency",
+    "agents",
+    "app",
+    "brain",
+    "cli",
+    "kernel_hooks",
+    "orchestration",
+    "safety",
+    "server",
+    "soma",
+    "soul",
+    "store",
+]
 
-from . import agents  # noqa: E402
-from .agents.debug_agent import DebugAgent  # noqa: E402
-from .agents.analyst_agent import AnalystAgent  # noqa: E402
-from .agents.reviewer_agent import ReviewerAgent  # noqa: E402
-from .agents.code_agent import CodeAgent  # noqa: E402
+from . import agents
+from .agents.analyst_agent import AnalystAgent
+from .agents.code_agent import CodeAgent
+from .agents.debug_agent import DebugAgent
+from .agents.reviewer_agent import ReviewerAgent

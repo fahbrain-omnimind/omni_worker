@@ -35,7 +35,7 @@ def _load() -> dict | None:
         _cache = {g: (d[f"centroid_{g}"], float(d[f"spread_{g}"]))
                   for g in "ABC"}
         return _cache
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -80,5 +80,5 @@ def classify_latest(step_dir: str | None = None) -> dict[str, Any] | None:
             out["file"] = os.path.basename(f)
             out["run_id"] = str(d["run_id"]) if "run_id" in d else ""
         return out
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None

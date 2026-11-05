@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from omni_coworker.safety.jail import is_safe, is_command_safe, validate_path
+from omni_coworker.safety.jail import is_command_safe, is_safe, validate_path
 
 
 def test_safe_commands():

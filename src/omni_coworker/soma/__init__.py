@@ -7,8 +7,8 @@ sondas.
 
 from __future__ import annotations
 
-from . import probe, somatic_store
+from . import somatic_store
 from .probe import probe, probe_recorded, probe_with_brain
 from .somatic_store import SomaticStore
 
-__all__ = ["probe", "probe_recorded", "probe_with_brain", "SomaticStore"]
+__all__ = ["SomaticStore", "probe", "probe_recorded", "probe_with_brain", "somatic_store"]

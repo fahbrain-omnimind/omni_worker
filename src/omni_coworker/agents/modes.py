@@ -37,7 +37,7 @@ def _load_state() -> dict[str, str]:
     if p.exists():
         try:
             return json.loads(p.read_text())
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     return {}
 
@@ -45,7 +45,7 @@ def _load_state() -> dict[str, str]:
 def _save_state(state: dict[str, str]) -> None:
     try:
         state_path().write_text(json.dumps(state, indent=2))
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 

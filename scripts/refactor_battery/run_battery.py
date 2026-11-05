@@ -91,7 +91,7 @@ def _smoke(files_dir: Path) -> dict:
                  files_dir / "test_todo_api.py")
     r = subprocess.run(
         [sys.executable, "-m", "pytest", "-q", "test_todo_api.py"],
-        capture_output=True, text=True, timeout=120,
+        capture_output=True, text=True, timeout=120, check=False,
         cwd=files_dir, env={**os.environ, "PYTHONPATH": str(files_dir)},
     )
     tail = r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr.strip()[-200:]
@@ -134,18 +134,18 @@ def _ensure_executor(timeout_s: int = 90) -> bool:
         with urllib.request.urlopen("http://127.0.0.1:8099/health", timeout=4) as r:
             if json.loads(r.read()).get("model_loaded"):
                 return True
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         urllib.request.urlopen(urllib.request.Request(
             "http://127.0.0.1:8099/erika/reload", method="POST"), timeout=60)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         with urllib.request.urlopen("http://127.0.0.1:8099/health", timeout=4) as r:
             if json.loads(r.read()).get("model_loaded"):
                 return True
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     # Peer (:8098) is likely holding VRAM after DebugAgent/ReviewerAgent; unload it first
     try:
@@ -154,7 +154,7 @@ def _ensure_executor(timeout_s: int = 90) -> bool:
         time.sleep(1.5)
         urllib.request.urlopen(urllib.request.Request(
             "http://127.0.0.1:8099/erika/reload", method="POST"), timeout=90)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     t0 = time.time()
     while time.time() - t0 < timeout_s:
@@ -162,15 +162,15 @@ def _ensure_executor(timeout_s: int = 90) -> bool:
             with urllib.request.urlopen("http://127.0.0.1:8099/health", timeout=4) as r:
                 if json.loads(r.read()).get("model_loaded"):
                     return True
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         time.sleep(4)
     return False
 
 
 def run_one(idx: int, trust=None) -> dict:
-    from omni_coworker.agents.debug_agent import DebugAgent
     from omni_coworker.agents.code_agent import CodeAgent
+    from omni_coworker.agents.debug_agent import DebugAgent
     from omni_coworker.agents.reviewer_agent import ReviewerAgent
 
     t0 = time.time()
@@ -285,7 +285,7 @@ def run_one(idx: int, trust=None) -> dict:
     try:
         (out / "turns.json").write_text(json.dumps(turns, ensure_ascii=False, indent=1))
         rec["summary"]["turns_file"] = str(out / "turns.json")
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     rec["review_approved"] = bool(review.get("approved"))
     rec["review_score"] = review.get("score")

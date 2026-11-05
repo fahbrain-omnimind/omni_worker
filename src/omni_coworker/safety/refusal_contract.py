@@ -28,8 +28,8 @@ pt-BR: contrato de recusa com tags duras/suaves e thresholds psi/ε.
 
 from __future__ import annotations
 
-from typing import Any, Iterable
-
+from collections.abc import Iterable
+from typing import Any
 
 HARD_REFUSAL_TAGS = {
     "war",

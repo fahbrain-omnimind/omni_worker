@@ -49,7 +49,7 @@ import os
 import time
 import uuid
 from collections import deque
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -125,7 +125,7 @@ def _summarize_attention(attentions: tuple | None) -> dict[str, Any]:
         p = p / p.sum(dim=-1, keepdim=True)
         entropy = float((-(p * p.log())).sum(-1).mean())
         return {"attention_entropy_last": round(entropy, 4), "n_layers": len(attentions)}
-    except Exception:
+    except Exception:  # noqa: BLE001
         return {}
 
 
@@ -134,7 +134,7 @@ def _emit_activation(record: dict[str, Any]) -> None:
     try:
         with open(ACTIVATIONS_LOG, "a") as fh:
             fh.write(json.dumps(record, ensure_ascii=False) + "\n")
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 
@@ -144,14 +144,15 @@ def _emit_activation(record: dict[str, Any]) -> None:
 # retenção; falha nunca bloqueia a geração.
 def _capture_cfg(key: str, default: str = "") -> str:
     try:
-        for line in open("data/monitor/capture.env", encoding="utf-8"):
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            k, val = line.split("=", 1)
-            if k.strip() == key:
-                return val.strip()
-    except Exception:
+        with open("data/monitor/capture.env", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, val = line.split("=", 1)
+                if k.strip() == key:
+                    return val.strip()
+    except Exception:  # noqa: BLE001, S110
         pass
     v = os.environ.get(key)
     if v is not None:
@@ -196,7 +197,7 @@ def _emit_vectors(last_step: tuple | None, record: dict[str, Any]) -> None:
         _vec_dir().mkdir(parents=True, exist_ok=True)
         vecs = np.stack([h[:, -1, :].detach().float().cpu().numpy()[0]
                          for h in last_step]).astype(np.float16)
-        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
+        ts = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%f")
         safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
         np.savez_compressed(_vec_dir() / f"{ts}_{safe}.npz",
                             vectors=vecs, model=_MODEL_ID,
@@ -207,7 +208,7 @@ def _emit_vectors(last_step: tuple | None, record: dict[str, Any]) -> None:
         files = sorted(_vec_dir().glob(f"*_{safe}.npz"))
         for old in files[:-_VEC_KEEP]:
             old.unlink(missing_ok=True)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 
@@ -233,7 +234,7 @@ def _emit_step_trajectory(hidden_states: tuple | None, record: dict[str, Any]) -
             for i in idxs
         ]).astype(np.float16)
         _step_dir().mkdir(parents=True, exist_ok=True)
-        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
+        ts = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%f")
         safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
         np.savez_compressed(_step_dir() / f"{ts}_{safe}.npz",
                             traj=traj, steps=np.asarray(idxs),
@@ -247,7 +248,7 @@ def _emit_step_trajectory(hidden_states: tuple | None, record: dict[str, Any]) -
             old.unlink(missing_ok=True)
         record["step_traj"] = {"n_steps": len(idxs), "every": step_every,
                               "file": f"{ts}_{safe}.npz"}
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 
@@ -276,13 +277,13 @@ def load_model(model_id: str, load_4bit: bool, device: str,
         }
         if is_bnb or load_4bit or not prequantized:
             from transformers import BitsAndBytesConfig
-            base = dict(
-                load_in_4bit=True,
-                bnb_4bit_compute_dtype=torch.bfloat16,
-                bnb_4bit_quant_type=qc.get("bnb_4bit_quant_type", "nf4"),
-                bnb_4bit_use_double_quant=bool(qc.get("bnb_4bit_use_double_quant", True)),
-                llm_int8_enable_fp32_cpu_offload=True,
-            )
+            base = {
+                "load_in_4bit": True,
+                "bnb_4bit_compute_dtype": torch.bfloat16,
+                "bnb_4bit_quant_type": qc.get("bnb_4bit_quant_type", "nf4"),
+                "bnb_4bit_use_double_quant": bool(qc.get("bnb_4bit_use_double_quant", True)),
+                "llm_int8_enable_fp32_cpu_offload": True,
+            }
             kwargs["quantization_config"] = BitsAndBytesConfig(**base)
         # non-bnb quantization (awq/gptq/compressed-tensors): the checkpoint's
         # own quant_config handles offload via max_memory
@@ -372,9 +373,9 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
         except Exception as exc:  # noqa: BLE001
             attn_tail_note = "attn_skipped:" + type(exc).__name__
     act = {
-        "ts": datetime.now(timezone.utc).isoformat(),
+        "ts": datetime.now(UTC).isoformat(),
         "model": _MODEL_ID,
-        "run_id": _capture_cfg("OMNI_ACT_RUN_ID", "") or "runtime-" + datetime.now(timezone.utc).strftime("%Y%m%d"),
+        "run_id": _capture_cfg("OMNI_ACT_RUN_ID", "") or "runtime-" + datetime.now(UTC).strftime("%Y%m%d"),
         "turn": _capture_cfg("OMNI_ACT_TURN", "") or str(int(time.time())),
         "task": _capture_cfg("OMNI_ACT_TASK", "") or "serve:" + _MODEL_ID.split("/")[-1],
         "prompt_tokens": int(prompt_ids.shape[1]),
@@ -396,7 +397,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
                            for h in out.hidden_states]).astype(np.float16)
             d = _vec_dir().parent / "prompt_hidden"
             d.mkdir(parents=True, exist_ok=True)
-            ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
+            ts = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%f")
             safe = "".join(c if c.isalnum() else "_" for c in _MODEL_ID)
             np.savez_compressed(d / f"{ts}_{safe}.npz",
                                 hidden=ph, model=_MODEL_ID,
@@ -405,7 +406,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
                                 task=_capture_cfg("OMNI_ACT_TASK", ""),
                                 ts=act["ts"])
             act["prompt_hidden_file"] = f"{ts}_{safe}.npz"
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     del gen, last_step, attn_last, seq, new_ids
     if torch.cuda.is_available():
@@ -417,7 +418,7 @@ def _chat_prompt(messages: list[ChatMessage]) -> torch.Tensor:
     msgs = [{"role": m.role, "content": m.content} for m in messages]
     try:
         text = _TOKENIZER.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
-    except Exception:
+    except Exception:  # noqa: BLE001
         text = "".join(f"[{m['role']}] {m['content']}\n" for m in msgs) + "[assistant] "
     return _TOKENIZER(text, return_tensors="pt").input_ids
 
@@ -476,7 +477,7 @@ def erika_unload() -> dict[str, Any]:
         torch.cuda.empty_cache()
         try:
             torch.cuda.ipc_collect()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         gc.collect()  # bnb/accelerate hooks pode segurar refs de Params4bit
         torch.cuda.empty_cache()

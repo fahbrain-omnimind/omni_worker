@@ -24,7 +24,7 @@ def audit_append(event_type: str, data: dict[str, Any] | None = None) -> dict:
         h = get_audit().log_action(event_type, dict(data))
         return {"source": "canonical:immutable_audit", "appended": True,
                 "hash": h}
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         canonical_err = str(e)
     try:
         from ..agency.witness import witness_event
@@ -32,7 +32,7 @@ def audit_append(event_type: str, data: dict[str, Any] | None = None) -> dict:
         witness_event(f"audit.{event_type}", data)
         return {"source": "witness_fallback", "appended": True,
                 "canonical_error": canonical_err}
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"source": None, "appended": False,
                 "reason": str(e), "canonical_error": canonical_err}
 
@@ -44,11 +44,11 @@ def audit_verify() -> dict:
 
         return {"source": "canonical",
                 "verify": get_audit().verify_chain_integrity()}
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         from ..agency.witness import verify_witness
 
         return {"source": "witness_fallback", "verify": verify_witness()}
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"source": None, "verify": {"valid": False, "reason": str(e)}}

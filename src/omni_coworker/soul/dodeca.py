@@ -62,7 +62,7 @@ def _kernel_metrics(kernel_state: dict | None) -> dict[str, float]:
         out.update({l: float(v) for l, v in zip(labels, values) if isinstance(v, (int, float))})
         m = kernel_state.get("metrics") or {}
         out.update({k: float(v) for k, v in m.items() if isinstance(v, (int, float))})
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return out
 
@@ -108,7 +108,7 @@ def compute_dodeca(state: dict | None = None,
         from ..kernel_hooks.compute import maat_balance
         if all(isinstance(s.get(k), (int, float)) for k in ("phi", "psi", "epsilon")):
             maat = maat_balance(float(s["phi"]), float(s["psi"]), float(s["epsilon"]))
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     put("S07", "maat", maat,
         "kernel_hooks.maat_balance" if maat is not None else _NA,
@@ -122,7 +122,7 @@ def compute_dodeca(state: dict | None = None,
         from ..agency.teleology import compute_omega_teleology, generate_missions
         missions = generate_missions({})
         omega = compute_omega_teleology({"missions": missions})
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     put("S10", "omega", omega,
         "agency.teleology" if omega is not None else _NA,

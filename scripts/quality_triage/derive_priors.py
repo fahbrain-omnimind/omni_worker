@@ -61,7 +61,8 @@ def derive(src: Path, out: Path) -> dict:
         out.unlink()
     w = sqlite3.connect(out)
     w.executescript(SCHEMA)
-    import json as _json, datetime as _dt
+    import datetime as _dt
+    import json as _json
     rows = []
     for rule, dist in by_rule.items():
         total = sum(dist.values())
@@ -76,7 +77,7 @@ def derive(src: Path, out: Path) -> dict:
                    for p in practices])
     w.execute("INSERT INTO meta VALUES (?,?,?)",
               (str(src), len(findings),
-               _dt.datetime.now(_dt.timezone.utc).isoformat()))
+               _dt.datetime.now(_dt.UTC).isoformat()))
     w.commit()
     w.close()
     return {"rules": len(rows), "findings": len(findings),

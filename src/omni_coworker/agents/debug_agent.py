@@ -6,18 +6,18 @@ pt-BR: Agente de debug para diagnóstico e solução de problemas (somente leitu
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 
 class DebugAgent:
     """Agente especializado em diagnóstico e debugging"""
     
-    def __init__(self, config: Dict[str, Any] | None = None):
+    def __init__(self, config: dict[str, Any] | None = None):
         self.config = config or {}
         self.mode = "debug"
         self.allowed_commands = ["ls", "cat", "grep", "find", "python3 -m pytest", "git status"]
     
-    def diagnose(self, issue: str, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
+    def diagnose(self, issue: str, context: dict[str, Any] | None = None) -> dict[str, Any]:
         """Diagnose an issue.
 
         English: Calls the executor brain for a read-only diagnosis;
@@ -55,7 +55,7 @@ class DebugAgent:
             "note": "Read-only agent - delegate fixes to CodeAgent",
         }
     
-    def analyze_logs(self, logs: str) -> Dict[str, Any]:
+    def analyze_logs(self, logs: str) -> dict[str, Any]:
         """Analyze logs for errors.
         
         English: Scans logs for patterns.
@@ -71,7 +71,7 @@ class DebugAgent:
             "errors": errors[:10]
         }
     
-    def suggest_fix(self, diagnosis: Dict[str, Any]) -> Dict[str, Any]:
+    def suggest_fix(self, diagnosis: dict[str, Any]) -> dict[str, Any]:
         """Suggest fix for diagnosis.
         
         English: Provides fix suggestions.

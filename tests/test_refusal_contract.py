@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from omni_coworker.safety import gate, refusal_contract as rc
+from omni_coworker.safety import gate
+from omni_coworker.safety import refusal_contract as rc
 
 
 @pytest.fixture()

@@ -10,7 +10,7 @@ somente através da matriz de permissões + portão constitucional
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 
 class CodeAgent:
@@ -18,7 +18,7 @@ class CodeAgent:
 
     def __init__(
         self,
-        config: Dict[str, Any] | None = None,
+        config: dict[str, Any] | None = None,
         trust_provider: Any | None = None,
     ):
         self.config = config or {}
@@ -42,10 +42,10 @@ class CodeAgent:
 
                 provider = get_trust_system()
             return float(provider.get_trust(agent="CodeAgent"))
-        except Exception:
+        except Exception:  # noqa: BLE001
             return 0.9
 
-    def generate(self, spec: str, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
+    def generate(self, spec: str, context: dict[str, Any] | None = None) -> dict[str, Any]:
         """Generate code for a spec via the executor brain.
 
         English: Executor role produces the patch; falls back to empty.
@@ -77,9 +77,9 @@ class CodeAgent:
     def submit_patch(
         self,
         code: str,
-        test_results: Dict[str, Any] | None = None,
+        test_results: dict[str, Any] | None = None,
         target_files: list[str] | None = None,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Submit a patch through the safety plane.
 
         English: Refuses empty diffs and submissions without passing

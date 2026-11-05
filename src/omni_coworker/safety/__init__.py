@@ -6,10 +6,10 @@ pt-BR: Compõe matriz de permissões + portão constitucional + segurança.
 
 from __future__ import annotations
 
-from . import matrix, gate, jail, refusal_contract, pedagogical_refusal
-from .matrix import get_matrix, check_permission
-from .gate import get_gate, evaluate_action
-from .jail import is_safe, is_command_safe, validate_path
+from . import gate, jail, matrix, pedagogical_refusal, refusal_contract
+from .gate import evaluate_action, get_gate
+from .jail import is_command_safe, is_safe, validate_path
+from .matrix import check_permission, get_matrix
 from .refusal_contract import classify_refusal_context
 
-__all__ = ["matrix", "gate", "jail", "refusal_contract", "pedagogical_refusal", "get_matrix", "check_permission", "get_gate", "evaluate_action", "is_safe", "is_command_safe", "validate_path", "classify_refusal_context"]
+__all__ = ["check_permission", "classify_refusal_context", "evaluate_action", "gate", "get_gate", "get_matrix", "is_command_safe", "is_safe", "jail", "matrix", "pedagogical_refusal", "refusal_contract", "validate_path"]

@@ -1,7 +1,5 @@
 """glial_gate wiring in /brain/chat + intervention script imports."""
-import json
 
-import pytest
 
 
 def test_glial_gate_blocks_when_habituated():
@@ -67,7 +65,6 @@ def test_intervention_script_imports():
     assert mod.hits("elevated memory pressure") == 2
 
 def test_glial_gate_fail_closed_on_error(monkeypatch):
-    import os
     from omni_coworker.activation_beta import spiking_glial
 
     monkeypatch.setenv("OMNI_GATE_FAIL_CLOSED", "1")
@@ -82,8 +79,7 @@ def test_glial_gate_fail_closed_on_error(monkeypatch):
 
 
 def test_glial_verdict_fail_closed_on_error(monkeypatch):
-    import os
-    from omni_coworker.activation_beta import spiking_glial, attractor
+    from omni_coworker.activation_beta import attractor, spiking_glial
 
     monkeypatch.setenv("OMNI_GATE_FAIL_CLOSED", "1")
     attractor.reset()
@@ -115,8 +111,8 @@ def test_rehydrate_lazy_on_first_gate(monkeypatch):
 
 def test_brain_chat_default_glial_gate_on(monkeypatch):
     monkeypatch.setenv("OMNI_GATE_FAIL_CLOSED", "1")
-    from omni_coworker.brain import server as bs
     from omni_coworker.activation_beta import attractor
+    from omni_coworker.brain import server as bs
 
     monkeypatch.setattr(
         attractor, "glial_verdict",

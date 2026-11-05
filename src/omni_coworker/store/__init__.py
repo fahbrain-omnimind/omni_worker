@@ -9,4 +9,4 @@ from __future__ import annotations
 from . import node_db
 from .node_db import NodeDB
 
-__all__ = ["node_db", "NodeDB"]
+__all__ = ["NodeDB", "node_db"]

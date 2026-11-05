@@ -71,14 +71,10 @@ def validate_path(path: str) -> bool:
     """
     import os
     # Block path traversal
-    if ".." in path or path.startswith("/etc/passwd") or path.startswith("/root/.ssh"):
+    if ".." in path or path.startswith(("/etc/passwd", "/root/.ssh")):
         return False
     # Block absolute paths outside workspace
-    if os.path.isabs(path):
-        # Allow /content paths
-        if not (path.startswith("/content/") or path.startswith("/tmp/")):
-            return False
-    return True
+    return not (os.path.isabs(path) and not path.startswith(("/content/", "/tmp/")))
 
 
 def is_command_safe(command: str) -> bool:

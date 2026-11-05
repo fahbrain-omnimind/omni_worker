@@ -26,7 +26,7 @@ def serve(port: int = 8080, host: str | None = None) -> int:
         app = create_app()
         bind = host or os.getenv("OMNI_API_HOST", "0.0.0.0")
         uvicorn.run(app, host=bind, port=port)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"Error starting server: {e}")
         return 1
     return 0
@@ -48,14 +48,14 @@ def doctor() -> int:
         try:
             imported = __import__(mod)
             checks.append((mod, getattr(imported, "__version__", "ok")))
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             checks.append((mod, f"ERROR: {e}"))
 
     try:
         from .kernel_hooks.compute import kernel_status
         for name, ok in kernel_status().items():
             checks.append((f"kernel.{name}", "available" if ok else "unavailable"))
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         checks.append(("kernel", f"ERROR: {e}"))
 
     from .brain import server as brain_server
@@ -75,7 +75,7 @@ def doctor() -> int:
                     base=base,
                 ),
             ))
-        except Exception:
+        except Exception:  # noqa: BLE001
             checks.append((f"brain.{role}", f"down ({base})"))
 
     for name, value in checks:
@@ -93,8 +93,8 @@ def demo(task: str = "hello") -> int:
     imprime resumo JSON. Funciona sem backends de LLM (os agentes já
     têm fallback limpo).
     """
-    from .agents.debug_agent import DebugAgent
     from .agents.code_agent import CodeAgent
+    from .agents.debug_agent import DebugAgent
     from .agents.reviewer_agent import ReviewerAgent
 
     diagnosis = DebugAgent().diagnose(task)

@@ -1,5 +1,4 @@
 """activation_beta — attractor features over activation windows."""
-import numpy as np
 
 from omni_coworker.activation_beta import attractor
 

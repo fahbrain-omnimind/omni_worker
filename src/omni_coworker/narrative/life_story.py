@@ -38,7 +38,7 @@ import threading
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -77,8 +77,8 @@ class LifeStory:
     """Append-only narrative chain with retroactive resignification."""
 
     def __init__(self) -> None:
-        self.narrative_events: List[NarrativeEvent] = []
-        self.current_narratives: List[str] = []
+        self.narrative_events: list[NarrativeEvent] = []
+        self.current_narratives: list[str] = []
         self._load_from_disk()
 
     def _persist(self, ev: NarrativeEvent) -> None:
@@ -103,7 +103,7 @@ class LifeStory:
                                 (json.dumps(data, ensure_ascii=False), ev.row_id))
                 con.commit()
                 con.close()
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             logger.error("Failed to persist narrative event: %s", e)
 
     def _load_from_disk(self) -> None:
@@ -124,10 +124,10 @@ class LifeStory:
                 self.narrative_events.append(NarrativeEvent(**data))
             for ev in self.narrative_events[-5:]:
                 self._update_current_narratives(ev.resignification)
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             logger.error("Failed to load Life Story: %s", e)
 
-    def inscribe_narrative_event(self, context: Dict[str, Any]) -> NarrativeEvent:
+    def inscribe_narrative_event(self, context: dict[str, Any]) -> NarrativeEvent:
         """Inscribe an event: original reading + retroactive signifier
         + resignification; persists and updates current narratives."""
         original = self._recall_original_event(context)
@@ -146,7 +146,7 @@ class LifeStory:
         self._persist(ev)
         return ev
 
-    def _recall_original_event(self, context: Dict[str, Any]) -> str:
+    def _recall_original_event(self, context: dict[str, Any]) -> str:
         mc = str(context.get("memory_context", "unknown"))
         task = context.get("task_type", "unknown_task")
         if "failure" in mc.lower():
@@ -157,7 +157,7 @@ class LifeStory:
             return f"original event: learned {context.get('skill_learned', 'unknown_skill')}"
         return f"original event: experience of {mc}"
 
-    def _find_retroactive_signifier(self, context: Dict[str, Any]) -> str:
+    def _find_retroactive_signifier(self, context: dict[str, Any]) -> str:
         cs = str(context.get("current_state", "unknown"))
         if "growth" in cs.lower():
             return "signifier 'growth' — rewrites failures as learning"
@@ -187,10 +187,10 @@ class LifeStory:
             self.current_narratives.append(resig)
         self.current_narratives = self.current_narratives[-5:]
 
-    def get_current_life_narrative(self) -> List[str]:
+    def get_current_life_narrative(self) -> list[str]:
         return self.current_narratives
 
-    def detect_narrative_instability(self) -> Optional[str]:
+    def detect_narrative_instability(self) -> str | None:
         """>3 distinct signifiers among last 5 events → unstable narrative."""
         if not self.narrative_events:
             return None
@@ -200,17 +200,17 @@ class LifeStory:
         return None
 
     @property
-    def master_signifiers(self) -> List[str]:
+    def master_signifiers(self) -> list[str]:
         return [e.retroactive_signifier for e in self.narrative_events]
 
     @property
-    def narrative_chain(self) -> List[str]:
+    def narrative_chain(self) -> list[str]:
         return [e.resignification for e in self.narrative_events]
 
     def add_event(self, event: str) -> None:
         self.inscribe_narrative_event({"memory_context": event})
 
-    def resignify_past(self, signifier: str) -> List[str]:
+    def resignify_past(self, signifier: str) -> list[str]:
         """Rewrite the last event under a new signifier (and persist)."""
         if self.narrative_events:
             last = self.narrative_events[-1]

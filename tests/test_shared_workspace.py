@@ -63,6 +63,7 @@ def test_prune_retention():
 
 def test_mesh_endpoints(tmp_path):
     from fastapi.testclient import TestClient
+
     from omni_coworker.app import create_app
 
     c = TestClient(create_app())

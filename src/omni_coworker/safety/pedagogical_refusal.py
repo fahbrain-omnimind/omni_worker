@@ -25,7 +25,6 @@ from __future__ import annotations
 import logging
 import re
 from dataclasses import dataclass
-from typing import Any
 
 from .refusal_contract import classify_refusal_context
 

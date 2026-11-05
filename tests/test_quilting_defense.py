@@ -32,7 +32,7 @@ def test_quilting_wire_live_convergent(tmp_path, monkeypatch):
     """Ciclos reais run_once: bundle estavel → quilting_point no payload."""
     monkeypatch.setenv("OMNI_STATE_DIR", str(tmp_path))
     import omni_coworker.integration_loop.store as st
-    from omni_coworker.integration_loop import loop, adapters
+    from omni_coworker.integration_loop import adapters, loop
     st._RING.clear()
     # o wire testado é convergência→fixação; o code-index pode não
     # existir no runner — hint fixo honesto

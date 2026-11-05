@@ -26,7 +26,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -95,7 +95,7 @@ class NegativeCapability:
         self.uncertainty_tolerance = uncertainty_tolerance
         self.max_buffer_size = max_buffer_size
         self.resolution_threshold = resolution_threshold
-        self.contradiction_buffer: List[Contradiction] = []
+        self.contradiction_buffer: list[Contradiction] = []
 
         logger.info(
             f"NegativeCapability inicializada: tolerance={uncertainty_tolerance:.2f}, "
@@ -160,7 +160,7 @@ class NegativeCapability:
             self.contradiction_buffer[index].tension_level = new_tension
             logger.debug(f"Tensão atualizada: index={index}, tension={new_tension:.2f}")
 
-    def needs_resolution(self) -> Optional[int]:
+    def needs_resolution(self) -> int | None:
         """
         Verifica se alguma contradição precisa resolução urgente.
 
@@ -176,7 +176,7 @@ class NegativeCapability:
                 return i
         return None
 
-    def resolve_contradiction(self, index: int, resolution: str) -> Optional[Contradiction]:
+    def resolve_contradiction(self, index: int, resolution: str) -> Contradiction | None:
         """
         Resolve contradição (remove do buffer).
 
@@ -198,7 +198,7 @@ class NegativeCapability:
         logger.warning(f"Índice inválido para resolução: {index}")
         return None
 
-    def get_buffer_state(self) -> Dict[str, Any]:
+    def get_buffer_state(self) -> dict[str, Any]:
         """
         Retorna estado atual do buffer.
 

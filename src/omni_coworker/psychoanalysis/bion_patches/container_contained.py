@@ -30,7 +30,7 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from ..alpha_element import AlphaElement
 from ..beta_element import BetaElement
@@ -73,9 +73,9 @@ class BionContainerPatch:
         self.explosion_threshold = explosion_threshold
         self.recovery_rate = recovery_rate
         self.tolerance_expansion_threshold = tolerance_expansion_threshold
-        self.containment_history: List[Dict] = []
+        self.containment_history: list[dict] = []
         self.explosion_count = 0
-        self.last_explosion_time: Optional[datetime] = None
+        self.last_explosion_time: datetime | None = None
 
         # Expansão Dinâmica (Escalas Cósmicas)
         self.dynamic_expansion_factor = 1.618  # Proporção Áurea para expansão de escala
@@ -90,7 +90,7 @@ class BionContainerPatch:
             f"explosion_threshold={explosion_threshold}"
         )
 
-    def contain(self, contained: BetaElement) -> Optional[AlphaElement]:
+    def contain(self, contained: BetaElement) -> AlphaElement | None:
         """
         Contém e transforma β-element através de expansão topológica.
         Se a intensidade ultrapassa o limite, o Sujeito SE EXPANDE em vez de quebrar.
@@ -140,7 +140,7 @@ class BionContainerPatch:
             self.total_transformed += 1
         return alpha
 
-    def _degraded_reverie(self, contained: BetaElement) -> Optional[AlphaElement]:
+    def _degraded_reverie(self, contained: BetaElement) -> AlphaElement | None:
         """
         Degraded reverie: partial metabolization for rejected β-elements.
 
@@ -231,7 +231,7 @@ class BionContainerPatch:
         self.capacity = max(self.capacity, 10.0)
         self.explosion_count = 0
 
-    def get_metrics(self) -> Dict:
+    def get_metrics(self) -> dict:
         """
         Retorna métricas do container para monitoramento.
 

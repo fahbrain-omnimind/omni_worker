@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import os
-
 from omni_coworker.safety import matrix
 
 

@@ -30,7 +30,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Dict, List
+from typing import Any
 
 
 class PsychotizationState(str, Enum):
@@ -130,9 +130,9 @@ class CreativePsychotizationAssessment:
     circulation_capacity: float
     restoration_dependency: float
     recommended_mode: str
-    reasons: List[str]
+    reasons: list[str]
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         """Return a JSON-serializable view for reports and runtime surfaces."""
 
         return {
@@ -148,7 +148,7 @@ class CreativePsychotizationAssessment:
 
 
 def compact_panel_snapshot_from_v43_bundle(
-    bundle_or_payload: Dict[str, object],
+    bundle_or_payload: dict[str, object],
 ) -> CompactPanelSnapshot:
     """
     Derive a compact operator panel from the v4.3 resource bundle.
@@ -198,7 +198,7 @@ def assess_creative_psychotization(
     circulation_capacity = _circulation_capacity(inputs)
     restoration_dependency = _restoration_dependency(inputs.layers)
 
-    reasons: List[str] = []
+    reasons: list[str] = []
     if inputs.phi_is_infinite:
         reasons.append("phi reached an infinite/uncalculable regime")
     if overflow_pressure >= 0.7:
@@ -412,14 +412,14 @@ def _gene_overflow_bias(assessment: object) -> float:
     return round(_clip01(base_weight * overflow_factor), 4)
 
 
-def _assessment_confidence(assessment: Dict[str, Any]) -> float:
+def _assessment_confidence(assessment: dict[str, Any]) -> float:
     try:
         return _clip01(float(assessment.get("confidence", 0.0)))
     except (TypeError, ValueError):
         return 0.0
 
 
-def _assessment_reasons_text(assessment: Dict[str, Any]) -> str:
+def _assessment_reasons_text(assessment: dict[str, Any]) -> str:
     reasons = assessment.get("reasons") or []
     if not isinstance(reasons, list):
         return ""

@@ -19,23 +19,24 @@ from __future__ import annotations
 import json
 import os
 import time
+from collections.abc import Callable
+from datetime import UTC, datetime
 from pathlib import Path
-from datetime import datetime, timezone
-from typing import Any, Callable
+from typing import Any, ClassVar
 
 __all__ = [
-    "EventBus",
-    "TrustSystem",
-    "QuarantineSystem",
-    "RollbackSystem",
     "CircuitBreaker",
     "CircuitBreakerOpen",
+    "EventBus",
     "OrchestratorMetrics",
+    "QuarantineSystem",
+    "RollbackSystem",
+    "TrustSystem",
 ]
 
 
 def _now() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
 # ── EventBus ──────────────────────────────────────────────────────────────────
@@ -77,7 +78,7 @@ class EventBus:
         for handler in list(self._handlers.get(event_type, [])):
             try:
                 handler(event_type, data)
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
 
     def history(self, event_type: str | None = None) -> list[dict[str, Any]]:
@@ -108,7 +109,7 @@ class TrustSystem:
     não corresponde a este contrato aditivo de eventos; reimplementado.
     """
 
-    EVENT_DELTAS: dict[str, float] = {
+    EVENT_DELTAS: ClassVar[dict[str, float]] = {
         "tests_passed": +0.1,
         "review_dissent": -0.2,
         # integration_loop: a confiança acumula evidência por estágio/ciclo
@@ -144,7 +145,7 @@ class TrustSystem:
                     }
             if not self._scores:
                 self._scores = self._node_db().get_trust_scores()
-        except Exception:
+        except Exception:  # noqa: BLE001
             self._scores = {}
 
     def _save_scores(self) -> None:
@@ -153,17 +154,17 @@ class TrustSystem:
             tmp = self._scores_path.with_name(self._scores_path.name + ".tmp")
             tmp.write_text(json.dumps(self._scores, ensure_ascii=False), encoding="utf-8")
             os.replace(tmp, self._scores_path)
-        except Exception:
+        except Exception:  # noqa: BLE001
             try:
                 tmp.unlink(missing_ok=True)
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
         try:
             db = self._node_db()
             ts = _now()
             for agent, sc in self._scores.items():
                 db.upsert_trust_score(agent, sc, ts=ts)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _append_event(self, record: dict[str, Any]) -> None:
@@ -171,11 +172,11 @@ class TrustSystem:
             self._events_path.parent.mkdir(parents=True, exist_ok=True)
             with self._events_path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         try:
             self._node_db().append_trust_event(record)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def get_trust(self, agent: str = "CodeAgent") -> float:
@@ -219,10 +220,10 @@ class TrustSystem:
         }
 
 
-_SHARED_TRUST: "TrustSystem | None" = None
+_SHARED_TRUST: TrustSystem | None = None
 
 
-def get_trust_system() -> "TrustSystem":
+def get_trust_system() -> TrustSystem:
     """Process-wide shared TrustSystem (audit P0: loop must feed trust).
 
     English: Singleton so battery, agents and orchestrator accumulate
@@ -268,11 +269,11 @@ class QuarantineSystem:
                     if isinstance(raw, dict):
                         self._records = {str(k): v for k, v in raw.items() if isinstance(v, dict)}
                         return
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
         try:
             self._records = self._node_db().get_quarantine_records()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _save(self) -> None:
@@ -282,10 +283,10 @@ class QuarantineSystem:
                 tmp = p.with_name(p.name + ".tmp")
                 tmp.write_text(json.dumps(self._records, ensure_ascii=False, default=str), encoding="utf-8")
                 os.replace(tmp, p)
-            except Exception:
+            except Exception:  # noqa: BLE001
                 try:
                     tmp.unlink(missing_ok=True)
-                except Exception:
+                except Exception:  # noqa: BLE001, S110
                     pass
         try:
             db = self._node_db()
@@ -296,7 +297,7 @@ class QuarantineSystem:
                     rec.get("evidence") if isinstance(rec.get("evidence"), dict) else {},
                     ts=str(rec.get("ts") or _now()),
                 )
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def quarantine(
@@ -320,7 +321,7 @@ class QuarantineSystem:
             self._save()
             try:
                 self._node_db().delete_quarantine(component_id)
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
         return removed
 
@@ -472,7 +473,7 @@ class CircuitBreaker:
     def _read_store(cls) -> dict:
         try:
             return json.loads(cls._store_path().read_text(encoding="utf-8"))
-        except Exception:
+        except Exception:  # noqa: BLE001
             return {}
 
     def _load(self) -> None:
@@ -482,7 +483,7 @@ class CircuitBreaker:
             self.state = rec.get("state", "closed")
             self.last_failure_time = rec.get("last_failure_time")
             self.last_success_time = rec.get("last_success_time")
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def _save(self) -> None:
@@ -501,7 +502,7 @@ class CircuitBreaker:
             tmp.write_text(json.dumps(store, ensure_ascii=False),
                            encoding="utf-8")
             os.replace(tmp, path)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
 
     def is_available(self) -> bool:
@@ -536,9 +537,7 @@ class CircuitBreaker:
         """Register a failure; opens the circuit at the threshold."""
         self.failure_count += 1
         self.last_failure_time = time.time()
-        if self.state == "half_open":
-            self.state = "open"
-        elif self.failure_count >= self.failure_threshold:
+        if self.state == "half_open" or self.failure_count >= self.failure_threshold:
             self.state = "open"
         self._save()
 
@@ -608,7 +607,7 @@ class OrchestratorMetrics:
 
             self._engine = OrchestratorMetricsCollector()
             self._engine_source = "canonical"
-        except Exception:
+        except Exception:  # noqa: BLE001
             self._engine_source = "fallback"
 
     def push(self, name: str, latency: float, success: bool = True) -> None:

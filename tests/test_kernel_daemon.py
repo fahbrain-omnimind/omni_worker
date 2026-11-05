@@ -24,8 +24,7 @@ def _fresh(tmp_path, monkeypatch):
 def _write_log(path, records):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "a") as fh:
-        for r in records:
-            fh.write(json.dumps(r) + "\n")
+        fh.writelines(json.dumps(r) + "\n" for r in records)
 
 
 def test_tail_incremental(tmp_path):
@@ -79,6 +78,7 @@ def test_run_cycle_publishes(tmp_path, monkeypatch):
 
 def test_status_endpoint(tmp_path):
     from fastapi.testclient import TestClient
+
     from omni_coworker.app import create_app
     c = TestClient(create_app())
     r = c.get("/kernel/daemon")

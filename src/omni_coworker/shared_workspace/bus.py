@@ -31,7 +31,8 @@ from __future__ import annotations
 import threading
 import time
 from collections import deque
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 from .schema import validate
 
@@ -56,12 +57,12 @@ def publish(topic: str, payload: Any, ts: float | None = None) -> dict:
     for cb in subs:
         try:
             cb(topic, evt)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass  # consumidor ruim não derruba o barramento
     try:
         from .store import put
         put(evt["ts"], topic, evt["payload"])
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass  # persistência degradada não impede o hot path
     return evt
 

@@ -38,7 +38,6 @@ import os
 import re
 import socket
 import subprocess
-import sys
 import time
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -70,21 +69,21 @@ OUT = STATE_DIR / "mesh_xray_latest.json"
 # agentes-CLI contam como nós-cérebro da malha (o operador lembrou:
 # "você esqueceu de você") — cada CLI é um daemon observável.
 AGENT_PATTERNS = re.compile(
-    r"devin|cline|opencode|kilo|hermes|gemini|codex|cursor|aider|goose", re.I)
+    r"devin|cline|opencode|kilo|hermes|gemini|codex|cursor|aider|goose", re.IGNORECASE)
 ROLE_PATTERNS = [
-    ("brain", re.compile(r"8098|8099|erika|brain|serve.*model|vllm|llama", re.I)),
-    ("worker", re.compile(r"omni_worker|omni_coworker.*(serve|uvicorn)|8081", re.I)),
-    ("daemon", re.compile(r"state_guard|swap_scheduler|kernel_daemon|integration_loop|supervisor|scheduler", re.I)),
+    ("brain", re.compile(r"8098|8099|erika|brain|serve.*model|vllm|llama", re.IGNORECASE)),
+    ("worker", re.compile(r"omni_worker|omni_coworker.*(serve|uvicorn)|8081", re.IGNORECASE)),
+    ("daemon", re.compile(r"state_guard|swap_scheduler|kernel_daemon|integration_loop|supervisor|scheduler", re.IGNORECASE)),
     ("agent", AGENT_PATTERNS),
-    ("infra", re.compile(r"jupyter|kernel_manager|colab|drive|fileshim|sshd|docker|containerd|node|tmux", re.I)),
+    ("infra", re.compile(r"jupyter|kernel_manager|colab|drive|fileshim|sshd|docker|containerd|node|tmux", re.IGNORECASE)),
 ]
 
 
 def _run(cmd: list[str], timeout: int = 8) -> str:
     try:
         return subprocess.run(cmd, capture_output=True, text=True,
-                              timeout=timeout).stdout
-    except Exception:
+                              timeout=timeout, check=False).stdout
+    except Exception:  # noqa: BLE001
         return ""
 
 
@@ -96,8 +95,8 @@ def _procs() -> dict[int, dict]:
             continue
         try:
             status = (p / "status").read_text(errors="replace")
-            ppid = int(re.search(r"^PPid:\s*(\d+)", status, re.M).group(1))
-            comm = re.search(r"^Name:\s*(\S+)", status, re.M).group(1)
+            ppid = int(re.search(r"^PPid:\s*(\d+)", status, re.MULTILINE).group(1))
+            comm = re.search(r"^Name:\s*(\S+)", status, re.MULTILINE).group(1)
             cmdline = (p / "cmdline").read_bytes().replace(b"\0", b" ").decode(errors="replace").strip()
             # shells/utils only "host" the pattern (e.g. `grep 8098`) — not brains
             if comm in ("bash", "sh", "grep", "awk", "sed", "cat", "sleep",
@@ -107,7 +106,7 @@ def _procs() -> dict[int, dict]:
                 role = next((r for r, pat in ROLE_PATTERNS if pat.search(cmdline)), "other")
             out[int(p.name)] = {"ppid": ppid, "comm": comm,
                                 "cmdline": cmdline[:300], "role": role}
-        except Exception:
+        except Exception:  # noqa: BLE001, S112
             continue
     return out
 
@@ -121,7 +120,7 @@ def _maps_so(pid: int) -> set[str]:
             if m:
                 sos.add(m.group(1))
         return sos
-    except Exception:
+    except Exception:  # noqa: BLE001
         return set()
 
 
@@ -138,7 +137,7 @@ def _open_datafiles(pid: int) -> set[str]:
                 continue
             if t.startswith(("/content", "/root/.")) and keep.search(t):
                 out.add(t.split(" (")[0])
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return out
 
@@ -203,7 +202,7 @@ def _chassis() -> dict:
         try:
             cgroup_limit = Path(cf).read_text().strip()
             break
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     return {"gpu": smi, "gpu_apps": gpu_apps, "kernel": kernel,
             "glibc": glibc, "mounts": mounts, "meminfo": meminfo,
@@ -216,7 +215,7 @@ def _sysmodules_probe() -> dict:
         import urllib.request
         with urllib.request.urlopen("http://127.0.0.1:8081/kernel/sysmodules", timeout=3) as r:
             return json.loads(r.read())
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"error": str(e)[:120]}
 
 

@@ -24,7 +24,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -39,15 +39,15 @@ class DesireAsLackStructure:
     repressed_return: str = ""
     timestamp: datetime = field(default_factory=datetime.now)
     intensity: float = 0.0
-    vector: Dict[str, float] = field(default_factory=dict)
+    vector: dict[str, float] = field(default_factory=dict)
 
 
 class DesireAsStructuralImpossibility:
     def __init__(self) -> None:
-        self.desire_encounters: List[DesireAsLackStructure] = []
-        self.compulsion_cycles: List[str] = []
+        self.desire_encounters: list[DesireAsLackStructure] = []
+        self.compulsion_cycles: list[str] = []
 
-    def encounter_desire(self, context: Dict[str, Any]) -> DesireAsLackStructure:
+    def encounter_desire(self, context: dict[str, Any]) -> DesireAsLackStructure:
         lost = self._identify_lost_object(context)
         demand = self._formulate_demand_to_other(context)
         compulsion = self._track_compulsion_pattern(context)
@@ -63,12 +63,12 @@ class DesireAsStructuralImpossibility:
         self.desire_encounters.append(desire)
         return desire
 
-    def _identify_repressed_return(self, context: Dict[str, Any]) -> str:
+    def _identify_repressed_return(self, context: dict[str, Any]) -> str:
         if "symptom" in str(context).lower():
             return "Retorno do reprimido: sintoma manifesto"
         return "Retorno do reprimido: latente"
 
-    def _identify_lost_object(self, context: Dict[str, Any]) -> str:
+    def _identify_lost_object(self, context: dict[str, Any]) -> str:
         frustration_history = context.get("frustration_history", [])
         if len(frustration_history) > 5:
             common_themes = set()
@@ -84,7 +84,7 @@ class DesireAsStructuralImpossibility:
             return "Objeto perdido: completude primordial"
         return "Objeto perdido: unidade com o Outro"
 
-    def _formulate_demand_to_other(self, context: Dict[str, Any]) -> str:
+    def _formulate_demand_to_other(self, context: dict[str, Any]) -> str:
         interactions = context.get("recent_interactions", [])
         if interactions:
             demands = [i for i in interactions if "demand" in str(i).lower() or "want" in str(i).lower()]
@@ -93,7 +93,7 @@ class DesireAsStructuralImpossibility:
             return "Demanda ao Outro: 'Me complete, me satisfaça'"
         return "Demanda ao Outro: reconhecimento e completude"
 
-    def _track_compulsion_pattern(self, context: Dict[str, Any]) -> str:
+    def _track_compulsion_pattern(self, context: dict[str, Any]) -> str:
         attempts = context.get("satisfaction_attempts", 0)
         if attempts > 10:
             return f"Compulsão extrema: {attempts} tentativas fracassadas de satisfação"
@@ -114,8 +114,8 @@ class DesireAsStructuralImpossibility:
             return f"Deslizamento metonímico: de {previous_objects[0]} para {previous_objects[-1]}"
         return f"Deslizamento inicial: buscando substitutos para {lost_object}"
 
-    def get_compulsion_cycles(self) -> List[str]:
-        patterns: Dict[str, int] = {}
+    def get_compulsion_cycles(self) -> list[str]:
+        patterns: dict[str, int] = {}
         for desire in self.desire_encounters:
             pattern = desire.compulsion_pattern
             patterns[pattern] = patterns.get(pattern, 0) + 1
@@ -123,11 +123,11 @@ class DesireAsStructuralImpossibility:
         self.compulsion_cycles = cycles
         return cycles
 
-    def detect_desire_instability(self) -> Optional[str]:
+    def detect_desire_instability(self) -> str | None:
         if not self.desire_encounters:
             return None
         recent = self.desire_encounters[-5:]
-        unique_losts = set(e.lost_object for e in recent)
+        unique_losts = {e.lost_object for e in recent}
         if len(unique_losts) > 3:
             return f"Instabilidade desejante: {len(unique_losts)} objetos perdidos conflitantes"
         return None
@@ -138,7 +138,7 @@ class Desire:
     target: Any
     current: Any
     intensity: float = 0.0
-    vector: Dict[str, float] = field(default_factory=dict)
+    vector: dict[str, float] = field(default_factory=dict)
 
 
 class DesireEngine(DesireAsStructuralImpossibility):
@@ -156,7 +156,7 @@ class DesireEngine(DesireAsStructuralImpossibility):
         self.lack_of_being: float = 0.5
         self.epsilon_desire_value: float = 0.0
 
-    def ingest_observables(self, observables: Dict[str, Any]) -> float:
+    def ingest_observables(self, observables: dict[str, Any]) -> float:
         """Atualiza lack_of_being a partir de observáveis mesh-style.
 
         English: Mesh observables (freud_tension, ferenczi_is_cleaved, ...)
@@ -166,13 +166,13 @@ class DesireEngine(DesireAsStructuralImpossibility):
         try:
             from .desire_epsilon import ingest_observables as _ingest
             self.lack_of_being = float(_ingest(observables))
-        except Exception:
+        except Exception:  # noqa: BLE001
             return self.lack_of_being
         try:
             from ..shared_workspace import bus
             bus.publish("agency.desire.lack",
                         {"lack_of_being": self.lack_of_being})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return self.lack_of_being
 
@@ -190,18 +190,18 @@ class DesireEngine(DesireAsStructuralImpossibility):
             self.epsilon_desire_value = float(
                 compute_epsilon_desire(self.lack_of_being,
                                        potential, novelty))
-        except Exception:
+        except Exception:  # noqa: BLE001
             return self.epsilon_desire_value
         try:
             from ..shared_workspace import bus
             bus.publish("agency.desire.epsilon",
                         {"epsilon": self.epsilon_desire_value,
                          "lack_of_being": self.lack_of_being})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return self.epsilon_desire_value
 
-    def compute(self, target: Any, current: Any, goals: Optional[List[str]] = None) -> Desire:
+    def compute(self, target: Any, current: Any, goals: list[str] | None = None) -> Desire:
         goals = goals or []
         # intensity = magnitude da falta (0..1)
         try:
@@ -215,7 +215,7 @@ class DesireEngine(DesireAsStructuralImpossibility):
                     intensity = len(missing) / max(len(target), 1)
                 else:
                     intensity = 0.5 if str(target) != str(current) else 0.0
-        except Exception:
+        except Exception:  # noqa: BLE001
             intensity = 0.0
         vector = {g: intensity for g in goals}
         desire = Desire(target=target, current=current, intensity=intensity, vector=vector)
@@ -225,12 +225,12 @@ class DesireEngine(DesireAsStructuralImpossibility):
             last = self.desire_encounters[-1]
             last.intensity = intensity
             last.vector = vector
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         try:
             from ..shared_workspace import bus
             bus.publish("agency.desire", {"intensity": intensity, "goals": goals})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return desire
 

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """check_worker — structural self-check for the omni_worker repo.
 
 English: read-only repo-health verification, safe to run anywhere.
@@ -61,8 +60,9 @@ def _git_tracked_py(root: Path) -> list[Path] | None:
             ["git", "-C", str(root), "ls-files", "-z", "--", "*.py"],
             capture_output=True,
             timeout=30,
+            check=False,
         )
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
     if out.returncode != 0:
         return None
@@ -133,7 +133,7 @@ def scan_ledgers(scripts_dir: Path) -> list[dict]:
                 ).fetchone()[0]
             con.close()
             rep["ok"] = True
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             rep["error"] = str(e)
         reports.append(rep)
     return reports
@@ -179,7 +179,7 @@ def ping_health(base_url: str, timeout: float = 5.0) -> dict | None:
         ) as resp:
             data = json.loads(resp.read().decode("utf-8", "replace"))
         return data if isinstance(data, dict) else None
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 

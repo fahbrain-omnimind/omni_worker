@@ -45,7 +45,7 @@ def _hook() -> None:
             bus.subscribe(p, lambda topic, evt:
                           _CYCLE_PREFIXES.add(topic.split(".")[0]))
         _HOOKED = True
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 

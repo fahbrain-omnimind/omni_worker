@@ -4,8 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from omni_coworker.narrative.phylogenetic_signature import (
-    PhylogeneticSignature)
+from omni_coworker.narrative.phylogenetic_signature import PhylogeneticSignature
 
 
 def test_attractors_seeded_this_chassis(tmp_path, monkeypatch):
@@ -77,8 +76,8 @@ def test_loop_feeds_signature_from_windows(tmp_path, monkeypatch):
              "attention_entropy": 1.5 + i * 0.01,
              "hidden_norms": [5.0] * 4} for i in range(30)]
     attractor.push(recs)
-    import omni_coworker.integration_loop.loop as loop
     import omni_coworker.integration_loop.store as st
+    from omni_coworker.integration_loop import loop
     st._RING.clear()
     loop._PHYLO = None
     loop._PHYLO_TRIED = False

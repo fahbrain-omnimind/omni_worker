@@ -34,7 +34,7 @@ def _soma_inject(messages: list[dict[str, str]]) -> list[dict[str, str]]:
         if not line:
             return messages
         return [{"role": "system", "content": f"[soma live] {line}"}] + list(messages)
-    except Exception:
+    except Exception:  # noqa: BLE001
         return messages
 
 
@@ -78,11 +78,11 @@ def brain_chat(
             if peer_client is not None:
                 try:
                     peer_client.post("/erika/unload")
-                except Exception:
+                except Exception:  # noqa: BLE001, S110
                     pass
             try:
                 client.post("/erika/reload")
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
             resp = client.post(
                 "/v1/chat/completions",
@@ -106,7 +106,7 @@ def brain_chat(
             "affect_level": verdict["level"],
             "affect_reasons": verdict["reasons"],
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 
@@ -130,5 +130,5 @@ def brain_chat_json(
         return None
     try:
         return json.loads(text[start : end + 1])
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None

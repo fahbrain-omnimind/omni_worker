@@ -58,12 +58,13 @@ import os
 import sqlite3
 import time
 import uuid
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 try:
-    from .provenance import provenance_signature, classify_trust, quarantine_check
-except Exception:  # pragma: no cover - fail-open
+    from .provenance import classify_trust, provenance_signature, quarantine_check
+except Exception:  # noqa: BLE001  # pragma: no cover - fail-open
     def provenance_signature(content, source):  # type: ignore
         return ""
     def classify_trust(source, namespace):  # type: ignore
@@ -112,7 +113,7 @@ def _cosine(a: np.ndarray, b: np.ndarray) -> float:
     try:
         from ..kernel_hooks.compute import cosine_similarity as _kh_cos
         return float(_kh_cos(a_arr.tolist(), b_arr.tolist()))
-    except Exception:
+    except Exception:  # noqa: BLE001
         na, nb = float(np.linalg.norm(a_arr)), float(np.linalg.norm(b_arr))
         if na == 0.0 or nb == 0.0:
             return 0.0
@@ -138,7 +139,7 @@ def _load_st(spec: str):
     try:
         from sentence_transformers import SentenceTransformer
         _ST_MODELS[spec] = SentenceTransformer(_ST_MODEL_IDS[spec])
-    except Exception:
+    except Exception:  # noqa: BLE001
         _ST_MODELS[spec] = None
     return _ST_MODELS.get(spec)
 
@@ -206,7 +207,7 @@ def _affect_analyzer(text: str) -> dict[str, Any]:
         active = {k: round(v, 4) for k, v in fams.items() if v > 0}
         return {"families": active, "flattery": flat.get("kind"),
                 "flattery_score": flat.get("score")}
-    except Exception:
+    except Exception:  # noqa: BLE001
         return {"families": {}, "flattery": "none", "flattery_score": 0.0}
 
 
@@ -297,13 +298,13 @@ class MemtriasAI:
         # MINJA provenance guard (fail-open)
         try:
             q = quarantine_check(content)
-        except Exception:
+        except Exception:  # noqa: BLE001
             q = {"quarantine": False, "reasons": ["guard_error"]}
         try:
             src_marker = doc_ref if doc_ref else instance
             tc = classify_trust(src_marker, ns)
             sig = provenance_signature(content, src_marker)
-        except Exception:
+        except Exception:  # noqa: BLE001
             tc = "unknown"
             sig = ""
         quarantined = bool(q.get("quarantine"))
@@ -321,7 +322,7 @@ class MemtriasAI:
         for name, fn in self._analyzers.items():
             try:
                 analysis[name] = fn(content or "")
-            except Exception:
+            except Exception:  # noqa: BLE001
                 analysis[name] = {"error": "analyzer_failed"}
         analysis["provenance"] = provenance
         inferred = analysis.get("affect") or {}
@@ -670,7 +671,7 @@ class MemtriasAI:
         """Recuperação vetorial real: MiniLM-L6-v2 → faiss → manifest rows."""
         try:
             import faiss
-        except Exception:
+        except Exception:  # noqa: BLE001
             return []
         try:
             if not hasattr(self, "_acervo_idx"):
@@ -695,7 +696,7 @@ class MemtriasAI:
                                 "distance": float(dist)})
             con.close()
             return out
-        except Exception:
+        except Exception:  # noqa: BLE001
             return []
 
     def acervo_search(self, query: str, top_k: int = 5) -> list[dict[str, Any]]:
@@ -735,7 +736,7 @@ class MemtriasAI:
                 tuple([f"%{query}%"] * len(text_cols)) + (top_k,)).fetchall()
             con.close()
             return [dict(zip(cols, r)) for r in rows]
-        except Exception:
+        except Exception:  # noqa: BLE001
             return []
 
 

@@ -1,7 +1,7 @@
 """Tests for glial gate."""
 
 
-from omni_coworker.activation_beta import spiking_glial, attractor
+from omni_coworker.activation_beta import spiking_glial
 
 
 def test_repetitive_signals_habituated_false():

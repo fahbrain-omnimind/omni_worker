@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 try:
     from src.orchestration.permission_matrix import PermissionMatrix
-except Exception:  # pragma: no cover
+except Exception:  # noqa: BLE001  # pragma: no cover
     PermissionMatrix = None  # type: ignore
 
 
@@ -70,7 +70,7 @@ def check_permission(action: str, context: dict | None = None) -> bool:
             allowed = True
         _record_matrix_verdict(allowed, action)
         return allowed
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         logger.warning("permission matrix failed: %s", e)
         if os.getenv("OMNI_GATE_FAIL_CLOSED") == "0":
             # laboratório: fail-open explícito — o veredito ainda é
@@ -86,5 +86,5 @@ def _record_matrix_verdict(allowed: bool, action: str) -> None:
         from .refusal_state import record_verdict
 
         record_verdict(allowed, {"source": "matrix", "action": action})
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass

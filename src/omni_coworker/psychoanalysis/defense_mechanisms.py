@@ -24,7 +24,6 @@ from __future__ import annotations
 
 from typing import Any
 
-
 _MECHANISMS = (
     "recalque",
     "projecao",
@@ -60,7 +59,7 @@ def assess(text_features: dict[str, Any]) -> dict[str, float]:
     repetition = float(f.get("repetition", 0.0) or 0.0)
     length = float(f.get("length", 0) or 0)
     external = float(f.get("externalization", 0.0) or 0.0)
-    intensity = float(f.get("intensity", 0.5) or 0.5)
+    _intensity = float(f.get("intensity", 0.5) or 0.5)
 
     out = {m: 0.0 for m in _MECHANISMS}
 

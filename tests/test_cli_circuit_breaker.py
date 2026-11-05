@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import subprocess
 
-
 from omni_coworker.agents.external_cli_agent import (
     CLICircuitBreaker,
     ExternalCLIAgent,

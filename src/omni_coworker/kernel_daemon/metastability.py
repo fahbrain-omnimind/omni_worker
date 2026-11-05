@@ -27,7 +27,6 @@ pt-BR: S_meta/M_t/C_soma/corroboração/angst por ciclo — textura do regime.
 
 from __future__ import annotations
 
-import math
 import statistics
 from typing import Any
 

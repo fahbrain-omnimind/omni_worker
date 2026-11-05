@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 from omni_coworker.narrative.lalangue import (
-    LalangueSandbox, load_vocabulary, store_stats)
+    LalangueSandbox,
+    load_vocabulary,
+    store_stats,
+)
 
 
 def test_emit_creates_and_matches():

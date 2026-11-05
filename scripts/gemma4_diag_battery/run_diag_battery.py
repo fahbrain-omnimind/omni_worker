@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """gemma4_diag_battery — replicação diagnóstica mínima da esteira canônica.
 
 English: minimal diagnostic replication of the canonical Psicodiagnóstico-V
@@ -106,7 +105,7 @@ def _hw_tier() -> str:
         return json.loads(
             (ROOT / "runtime_config" / "hw_profile.json").read_text()
         ).get("tier", "std")
-    except Exception:
+    except Exception:  # noqa: BLE001
         return "std"
 
 
@@ -121,7 +120,7 @@ def main() -> int:
         reps = max(1, int(sys.argv[i + 1]))
     try:
         from omni_coworker.agents._llm import brain_chat
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print("brain backend unavailable:", e)
         return 1
     con = sqlite3.connect(str(DB))

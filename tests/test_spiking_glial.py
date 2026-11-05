@@ -1,5 +1,4 @@
 """tests/test_spiking_glial.py"""
-import numpy as np
 
 from omni_coworker.activation_beta import spiking_glial
 

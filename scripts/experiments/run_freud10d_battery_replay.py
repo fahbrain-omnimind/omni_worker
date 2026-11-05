@@ -30,7 +30,9 @@ from typing import Any
 
 import numpy as np
 
-from omni_coworker.psychoanalysis.freudian_apparatus_numpy import FreudianPsychicApparatus
+from omni_coworker.psychoanalysis.freudian_apparatus_numpy import (
+    FreudianPsychicApparatus,
+)
 
 
 def analyze_trajectory_vacilo(arr: np.ndarray, seed: int = 42) -> dict[str, Any]:
@@ -109,7 +111,7 @@ def replay_directory(steps_dir: Path) -> dict[str, Any]:
             arr = z["trajectory"] if "trajectory" in z else z["vectors"]
             metrics = analyze_trajectory_vacilo(arr)
             records.append({"file": f.name, **metrics})
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             records.append({"file": f.name, "error": str(e)})
     return {"status": "DADO", "dir": str(steps_dir), "n_files": len(files), "records": records}
 

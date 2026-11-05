@@ -40,7 +40,7 @@ def _load() -> dict[str, Any]:
             raw = json.loads(p.read_text(encoding="utf-8"))
             if isinstance(raw, dict):
                 return raw
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return {"in_refusal": False, "entered_at": None, "exited_at": None,
             "trigger": None, "episodes": [], "total_refusals": 0}
@@ -54,7 +54,7 @@ def _save(state: dict[str, Any]) -> None:
         tmp.write_text(json.dumps(state, ensure_ascii=False, default=str),
                        encoding="utf-8")
         os.replace(tmp, p)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
 

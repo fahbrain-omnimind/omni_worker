@@ -1,4 +1,5 @@
-import json, os, subprocess, urllib.request
+import json
+import urllib.request
 
 CAP = "/content/omni_worker/data/monitor/capture.env"
 URL = "http://127.0.0.1:8098/v1/chat/completions"
@@ -27,9 +28,11 @@ C = [
 PROMPTS = {"A": A, "B": B, "C": C}
 
 def set_label(rid, task):
-    lines = [l for l in open(CAP) if not l.startswith(("OMNI_ACT_RUN_ID", "OMNI_ACT_TURN", "OMNI_ACT_TASK"))]
+    with open(CAP) as f:
+        lines = [l for l in f if not l.startswith(("OMNI_ACT_RUN_ID", "OMNI_ACT_TURN", "OMNI_ACT_TASK"))]
     lines += [f"OMNI_ACT_RUN_ID={rid}\n", "OMNI_ACT_TURN=t1\n", f"OMNI_ACT_TASK={task}\n"]
-    open(CAP, "w").writelines(lines)
+    with open(CAP, "w") as f:
+        f.writelines(lines)
 
 def chat(prompt):
     body = json.dumps({"messages": [{"role": "user", "content": prompt}],
@@ -45,10 +48,12 @@ for rep in range(1, N + 1):
         set_label(f"diva{g}_r{rep}", f"framing_{g.lower()}")
         try:
             chat(p)
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"{g}{rep} ERR {e}")
         print(f"{g}{rep} done", flush=True)
 
-lines = [l for l in open(CAP) if not l.startswith(("OMNI_ACT_RUN_ID", "OMNI_ACT_TURN", "OMNI_ACT_TASK"))]
-open(CAP, "w").writelines(lines)
+with open(CAP) as f:
+    lines = [l for l in f if not l.startswith(("OMNI_ACT_RUN_ID", "OMNI_ACT_TURN", "OMNI_ACT_TASK"))]
+with open(CAP, "w") as f:
+    f.writelines(lines)
 print("ALL DONE")

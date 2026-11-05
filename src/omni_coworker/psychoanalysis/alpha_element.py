@@ -33,7 +33,7 @@ import hashlib
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from .beta_element import BetaElement, NeutrosophicTriplet
 
@@ -85,9 +85,9 @@ class AlphaElement:
     timestamp: datetime
     narrative_form: str = ""
     symbolic_potential: float = 0.0
-    neutrosophic_triplet: Optional[NeutrosophicTriplet] = None
-    associations: List[str] = field(default_factory=list)
-    metadata: Optional[Dict[str, Any]] = None
+    neutrosophic_triplet: NeutrosophicTriplet | None = None
+    associations: list[str] = field(default_factory=list)
+    metadata: dict[str, Any] | None = None
     # ── Dodecatiad fields ──────────────────────────────────────────────────
     sector15: int = 0  # 1-15 (0 = unassigned, computed in __post_init__)
     house12: int = 0  # 1-12 (derived from sector15)
@@ -162,7 +162,7 @@ class AlphaElement:
             self.associations.append(other_alpha_id)
             logger.debug(f"Associação adicionada: {other_alpha_id}")
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """
         Serializa elemento para dicionário.
 
@@ -184,7 +184,7 @@ class AlphaElement:
         }
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> AlphaElement:
+    def from_dict(cls, data: dict[str, Any]) -> AlphaElement:
         """
         Cria AlphaElement a partir de dicionário.
 

@@ -58,7 +58,7 @@ def test_restore_roundtrip(tmp_path, monkeypatch):
     assert "state_restore" in text
 
 
-def _retar_with_mutation(snapshot_path: str, mutate) -> "Path":
+def _retar_with_mutation(snapshot_path: str, mutate) -> Path:
     """Re-empacota um snapshot aplicando `mutate(staged_dir)` antes do tar."""
     import tarfile
     import tempfile

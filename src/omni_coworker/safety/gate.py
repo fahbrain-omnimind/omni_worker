@@ -15,7 +15,7 @@ try:
         ChangePayload,
         ConstitutionalGate,
     )
-except Exception:  # pragma: no cover
+except Exception:  # noqa: BLE001  # pragma: no cover
     ConstitutionalGate = None  # type: ignore
     ChangePayload = None  # type: ignore
 
@@ -39,7 +39,7 @@ def get_gate():
         _GATE = ConstitutionalGate(db_path=db_path)
         _GATE_FAILED = False
         return _GATE
-    except Exception:
+    except Exception:  # noqa: BLE001
         _GATE_FAILED = True
         _GATE = None
         return None
@@ -68,7 +68,7 @@ def _apply_refusal_contract(result: dict, action: str,
             thermal_block_risk=bool(ctx.get("thermal_block_risk", False)),
             exfiltration_verdict=ctx.get("exfiltration_verdict"),
         )
-    except Exception:
+    except Exception:  # noqa: BLE001
         try:
             from . import refusal_contract as rc
 
@@ -76,7 +76,7 @@ def _apply_refusal_contract(result: dict, action: str,
             if tags & rc.HARD_REFUSAL_TAGS:
                 result["allowed"] = False
                 result["reason"] = "hard_refusal_tag"
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return result
 
@@ -97,7 +97,7 @@ def _apply_refusal_contract(result: dict, action: str,
             record_verdict(result["allowed"], {"source": "refusal_contract",
                                                "action": action,
                                                "assessment": assessment})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     return result
 
@@ -137,7 +137,7 @@ def _apply_pedagogical(result: dict, action: str, context: dict | None) -> dict:
             result["allowed"] = False
             result["verdict"] = "TEACH"
             result["reason"] = "pedagogical_teach_no_mutation"
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     return result
 
@@ -165,7 +165,7 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
             record_verdict(result["allowed"], {"source": "gate",
                                                "action": action,
                                                "verdict": "no_gate"})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return result
     context = context or {}
@@ -186,7 +186,7 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
 
             record_verdict(allowed, {"source": "gate", "action": action,
                                      "verdict": verdict})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         result = {
             "allowed": allowed,
@@ -196,12 +196,12 @@ def evaluate_action(action: str, context: dict | None = None) -> dict:
         }
         result = _apply_refusal_contract(result, action, context)
         return _apply_pedagogical(result, action, context)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         try:
             from .refusal_state import record_verdict
 
             record_verdict(False, {"source": "gate", "action": action,
                                    "verdict": "gate_error"})
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         return {"allowed": False, "reason": "gate_evaluation_failed", "error_type": type(e).__name__}

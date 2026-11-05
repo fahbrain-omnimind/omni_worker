@@ -4,7 +4,7 @@ English: Tests for agency, brain, soma integrations.
 pt-BR: Testes para agency, brain, integrações soma.
 """
 
-from omni_coworker import agency, brain, soma, safety, store
+from omni_coworker import agency, brain, safety, soma, store
 
 
 def test_agency_teleology():

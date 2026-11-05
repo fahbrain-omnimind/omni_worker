@@ -26,7 +26,7 @@ from typing import Any
 INTERVAL_S = float(os.getenv("OMNI_KERNEL_DAEMON_INTERVAL_S", "60"))
 _STATE: dict[str, Any] = {"cycles": 0, "errors": 0, "last_bundle": None,
                         "last_ts": None, "last_duration_s": None}
-_HOMEOSTASIS: "Any" = None
+_HOMEOSTASIS: Any = None
 
 
 def _homeostasis():
@@ -41,7 +41,7 @@ def run_cycle() -> dict[str, Any]:
     """One collect→aggregate→publish pass; updates _STATE."""
     from .collector import collect_cycle
     from .features import aggregate
-    from .feedback import publish_feedback, _publish
+    from .feedback import _publish, publish_feedback
 
     t0 = time.time()
     try:
@@ -62,7 +62,7 @@ def run_cycle() -> dict[str, Any]:
             if pl:
                 bundle["phi_layer"] = pl
                 _publish("kernel.phi_layer", pl)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # homeostasis: phi feeds sublimation; soma feeds the state machine
         homeo = _homeostasis()
@@ -81,7 +81,7 @@ def run_cycle() -> dict[str, Any]:
                 current={"homeostasis": homeo_out.get("state")},
                 goals=["homeostatic_optimum", "vram_headroom"])
             bundle["desire"] = {"intensity": d.intensity, "vector": d.vector}
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # phi_meta: IIT-simplified over subsystem activity flags
         try:
@@ -89,7 +89,7 @@ def run_cycle() -> dict[str, Any]:
             pm = _phi_update(bundle)
             bundle["phi_meta"] = pm
             _publish("kernel.phi_meta", pm)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # regime: Page-Hinkley shift detection sobre sinais do bundle (D3)
         try:
@@ -97,7 +97,7 @@ def run_cycle() -> dict[str, Any]:
             reg = regime.cycle(bundle)
             if reg.get("events"):
                 _publish("kernel.regime_shift", reg)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # metastability: textura do regime — s_meta/m_t/c_soma/angst (D6)
         try:
@@ -106,7 +106,7 @@ def run_cycle() -> dict[str, Any]:
             meta = metastability.cycle(bundle)
             bundle["metastability"] = meta
             _publish("kernel.metastability", meta)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # freud10d: aparato freudiano persistente — estado interno vivo
         # (tensão/prazer/INRC) alimentando soul axes + detector basal
@@ -137,7 +137,7 @@ def run_cycle() -> dict[str, Any]:
             if fr:
                 bundle["freud10d"] = fr
                 _publish("kernel.freud10d", fr)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # dendritic: morfologia do grafo de camadas MPS (OW-STU-019 P3)
         try:
@@ -146,7 +146,7 @@ def run_cycle() -> dict[str, Any]:
             if ds:
                 bundle["dendritic"] = ds
                 _publish("kernel.dendritic", ds)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         # ignition: GWT-lite broadcast diversity + synergy proxy (OW-STU-016)
         try:
@@ -156,17 +156,17 @@ def run_cycle() -> dict[str, Any]:
             if ig.get("ignited"):
                 _publish("kernel.workspace.ignition", ig)
             _publish("kernel.workspace", ig)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         bundle["published_topics"] = publish_feedback(bundle)
         _STATE["last_bundle"] = bundle
-    except Exception as e:  # ciclo ruim não derruba o daemon
+    except Exception as e:  # noqa: BLE001 -- ciclo ruim não derruba o daemon
         _STATE["errors"] += 1
         bundle = {"ts": t0, "error": f"{type(e).__name__}: cycle_error"}
         try:
             from ..agency import rca
             rca.register_failure("kernel.cycle", str(e), t0)
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     _STATE["cycles"] += 1
     _STATE["last_ts"] = t0
@@ -187,7 +187,7 @@ class KernelDaemon:
             await asyncio.to_thread(run_cycle)
             try:
                 await asyncio.wait_for(self._stop.wait(), timeout=self.interval_s)
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 pass
 
     def start(self) -> None:
@@ -199,7 +199,7 @@ class KernelDaemon:
         if self._task:
             try:
                 await asyncio.wait_for(self._task, timeout=5.0)
-            except (asyncio.TimeoutError, asyncio.CancelledError):
+            except (TimeoutError, asyncio.CancelledError):
                 pass
 
 

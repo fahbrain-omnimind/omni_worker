@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS probes (
 
 
 def _now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _as_float(value: Any) -> float | None:
@@ -145,7 +145,7 @@ class SomaticStore:
             if row["extra_json"]:
                 try:
                     probe["extra"] = json.loads(row["extra_json"])
-                except Exception:
+                except Exception:  # noqa: BLE001
                     probe["extra"] = row["extra_json"]
             probes.append(probe)
         return probes

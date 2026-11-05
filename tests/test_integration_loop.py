@@ -8,7 +8,8 @@ import pytest
 from omni_coworker.integration_loop import loop as _loop
 from omni_coworker.integration_loop import modulator, stages, store
 from omni_coworker.integration_loop.schema import STAGES, CycleResult, ModuleState
-from omni_coworker.shared_workspace import bus, store as mesh_store
+from omni_coworker.shared_workspace import bus
+from omni_coworker.shared_workspace import store as mesh_store
 
 
 @pytest.fixture(autouse=True)
@@ -87,6 +88,7 @@ def test_run_once_persists_and_publishes():
 
 def test_loop_api():
     from fastapi.testclient import TestClient
+
     from omni_coworker.app import create_app
     c = TestClient(create_app())
     r = c.get("/loop/status")

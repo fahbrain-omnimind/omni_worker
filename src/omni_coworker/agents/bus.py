@@ -16,10 +16,11 @@ async nos agentes.
 from __future__ import annotations
 
 from collections import defaultdict
-from datetime import datetime, timezone
-from typing import Any, Callable
+from collections.abc import Callable
+from datetime import UTC, datetime
+from typing import Any
 
-__all__ = ["MessageBus", "get_message_bus", "canonical_bus_available"]
+__all__ = ["MessageBus", "canonical_bus_available", "get_message_bus"]
 
 # Canonical source is probed lazily; only used as an availability flag so
 # callers can decide whether to bridge to the async bus. No import cost at
@@ -39,13 +40,13 @@ def canonical_bus_available() -> bool:
             from src.agentes.agent_protocol import AgentMessageBus  # noqa: F401
 
             _canonical_available = True
-        except Exception:
+        except Exception:  # noqa: BLE001
             _canonical_available = False
     return _canonical_available
 
 
 def _now() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
 class MessageBus:
@@ -103,7 +104,7 @@ class MessageBus:
         for handler in list(self._handlers.get(channel, [])):
             try:
                 handler(msg)
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
 
     # -- queues --------------------------------------------------------------

@@ -41,8 +41,9 @@ import random
 import sqlite3
 import time
 from array import array
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Any, Iterable, Optional
+from typing import Any
 
 _MATCH_THRESHOLD = 0.9
 
@@ -87,7 +88,7 @@ def _cosine(a: list[float], b: list[float]) -> float:
     try:
         from ..kernel_hooks.compute import cosine_similarity as _kh_cos
         return float(_kh_cos(a, b))
-    except Exception:
+    except Exception:  # noqa: BLE001
         return sum(x * y for x, y in zip(a, b))
 
 
@@ -151,11 +152,11 @@ class LalangueSandbox:
                     if len(a) == len(resp):
                         sim = _cosine(emb, _norm(a))
                         resp = [r + sim * 0.1 * av for r, av in zip(resp, a)]
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
             try:
                 self_res = float(self.signature.is_self(emb))
-            except Exception:
+            except Exception:  # noqa: BLE001
                 self_res = 0.0
         else:
             self_res = 0.0
@@ -181,15 +182,15 @@ class LalangueSandbox:
             "internal_dialogues": len(self.internal_dialogue),
         }
 
-    def persist(self, db_path: Optional[Path | str] = None) -> dict[str, int]:
+    def persist(self, db_path: Path | str | None = None) -> dict[str, int]:
         return persist_sandbox(self, db_path)
 
-    def restore(self, db_path: Optional[Path | str] = None) -> int:
+    def restore(self, db_path: Path | str | None = None) -> int:
         return restore_into(self, db_path)
 
 
 def persist_sandbox(sandbox: LalangueSandbox,
-                    db_path: Optional[Path | str] = None) -> dict[str, int]:
+                    db_path: Path | str | None = None) -> dict[str, int]:
     """Persiste marcas do sandbox (palavras + diálogos) em SQLite."""
     path = Path(db_path) if db_path else _db_path()
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -199,7 +200,7 @@ def persist_sandbox(sandbox: LalangueSandbox,
         for idx, entry in enumerate(sandbox.vocabulary):
             try:
                 embedding, freq, first_seen = entry
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
             blob, dim = _encode(list(embedding))
             conn.execute(
@@ -231,7 +232,7 @@ def persist_sandbox(sandbox: LalangueSandbox,
             "dialogues_n": len(sandbox.internal_dialogue)}
 
 
-def load_vocabulary(db_path: Optional[Path | str] = None) -> list[dict[str, Any]]:
+def load_vocabulary(db_path: Path | str | None = None) -> list[dict[str, Any]]:
     """Lê o vocabulário persistido (ordem de índice)."""
     path = Path(db_path) if db_path else _db_path()
     if not path.exists():
@@ -246,7 +247,7 @@ def load_vocabulary(db_path: Optional[Path | str] = None) -> list[dict[str, Any]
 
 
 def restore_into(sandbox: LalangueSandbox,
-                 db_path: Optional[Path | str] = None) -> int:
+                 db_path: Path | str | None = None) -> int:
     """Devolve as marcas ao sandbox — a língua interna sobrevive ao restart."""
     rows = load_vocabulary(db_path)
     if not rows:
@@ -258,7 +259,7 @@ def restore_into(sandbox: LalangueSandbox,
     return len(rows)
 
 
-def store_stats(db_path: Optional[Path | str] = None) -> dict[str, Any]:
+def store_stats(db_path: Path | str | None = None) -> dict[str, Any]:
     """Contagens do store (observabilidade)."""
     path = Path(db_path) if db_path else _db_path()
     if not path.exists():

@@ -30,7 +30,7 @@ def _publish(topic: str, payload: Any) -> bool:
         from ..shared_workspace import bus
         bus.publish(topic, payload)
         return True
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     try:
         import httpx
@@ -39,7 +39,7 @@ def _publish(topic: str, payload: Any) -> bool:
             json={"topic": topic, "payload": payload}, timeout=2.0,
         )
         return r.status_code == 200
-    except Exception:
+    except Exception:  # noqa: BLE001
         return False
 
 

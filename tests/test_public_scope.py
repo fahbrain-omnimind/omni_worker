@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]
                      / "scripts" / "quality_triage"))
-import public_scope  # noqa: E402
+import public_scope
 
 
 def test_domestic_accepted_flips_to_public_risk():

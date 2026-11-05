@@ -26,7 +26,6 @@ from omni_coworker.orchestration.governance import (
 )
 from omni_coworker.soma.somatic_store import SomaticStore
 
-
 # ── 1. MessageBus ────────────────────────────────────────────────────────────
 
 

@@ -34,7 +34,7 @@ pt-BR: o recalcado volta — carga reprimida retorna ao estado tensional
 
 from __future__ import annotations
 
-from typing import Any, Dict, Tuple
+from typing import Any
 
 import numpy as np
 
@@ -70,7 +70,7 @@ class RepressionChannel:
     def step(self, excitation: np.ndarray,
              moral_censorship: float = 0.5,
              somatic_symptom_drain: float = 0.0,
-             ) -> Tuple[np.ndarray, Dict[str, Any]]:
+             ) -> tuple[np.ndarray, dict[str, Any]]:
         """Um passo da dinâmica tensional + retorno do recalcado."""
         warnings: list[str] = []
         exc = np.asarray(excitation, dtype=float).reshape(-1)

@@ -1,4 +1,7 @@
-from omni_coworker.psychology.desire_epsilon import ingest_observables, compute_epsilon_desire
+from omni_coworker.psychology.desire_epsilon import (
+    compute_epsilon_desire,
+    ingest_observables,
+)
 
 
 def test_cleaved_spike():

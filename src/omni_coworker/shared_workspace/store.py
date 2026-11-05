@@ -66,7 +66,10 @@ def _provenance(topic: str, payload: Any) -> dict:
     """MINJA envelope: signature + trust_class + quarantine flags."""
     try:
         from ..memory.provenance import (
-            classify_trust, provenance_signature, quarantine_check)
+            classify_trust,
+            provenance_signature,
+            quarantine_check,
+        )
         source = payload.get("source") if isinstance(payload, dict) else None
         qc = quarantine_check(payload)
         return {
@@ -75,7 +78,7 @@ def _provenance(topic: str, payload: Any) -> dict:
             "quarantined": qc["quarantine"],
             "reasons": qc["reasons"],
         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         return {"signature": None, "trust_class": "unknown",
                 "quarantined": False, "reasons": ["guard_error"]}
 
@@ -99,7 +102,7 @@ def _unpack_provenance(raw: Any) -> dict:
     try:
         prov = json.loads(raw)
         return prov if isinstance(prov, dict) else _unpack_provenance(None)
-    except Exception:
+    except Exception:  # noqa: BLE001
         return _unpack_provenance(None)
 
 

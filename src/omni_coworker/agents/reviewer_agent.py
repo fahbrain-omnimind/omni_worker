@@ -6,17 +6,17 @@ pt-BR: Agente de revisão e validação de código.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any
 
 
 class ReviewerAgent:
     """Agente de revisão de código"""
     
-    def __init__(self, config: Dict[str, Any] | None = None):
+    def __init__(self, config: dict[str, Any] | None = None):
         self.config = config or {}
         self.mode = "reviewer"
     
-    def review(self, code: str, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
+    def review(self, code: str, context: dict[str, Any] | None = None) -> dict[str, Any]:
         """Review code.
         
         English: Reviews code for quality, style, security.
@@ -53,7 +53,7 @@ class ReviewerAgent:
                 role="analyst",
                 max_tokens=300,
             )
-        except Exception:
+        except Exception:  # noqa: BLE001
             llm_verdict = None
 
         if llm_verdict:
@@ -76,7 +76,7 @@ class ReviewerAgent:
             "llm": bool(llm_verdict),
         }
     
-    def validate_tests(self, test_results: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_tests(self, test_results: dict[str, Any]) -> dict[str, Any]:
         """Validate test results.
         
         English: Checks if tests meet coverage requirements.
@@ -84,7 +84,7 @@ class ReviewerAgent:
         """
         passed = test_results.get("passed", 0)
         failed = test_results.get("failed", 0)
-        total = passed + failed
+        _total = passed + failed
         coverage = test_results.get("coverage", 0.0)
         
         return {

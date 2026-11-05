@@ -33,7 +33,7 @@ def analyze_session(session: dict | None = None) -> dict[str, Any]:
             analyst = PsychoanalyticAnalyst(config_path)
             result = analyst.analyze_session(json.dumps(session, ensure_ascii=False))
             return {"status": "analyzed", "source": "PsychoanalyticAnalyst", "data": result}
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
     
     # Fallback analysis

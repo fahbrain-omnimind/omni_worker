@@ -21,8 +21,9 @@ from __future__ import annotations
 
 import math
 import time
-from datetime import datetime, timezone
-from typing import Any, Mapping
+from collections.abc import Mapping
+from datetime import UTC, datetime
+from typing import Any
 
 
 def _to_epoch(value: Any) -> float:
@@ -31,15 +32,15 @@ def _to_epoch(value: Any) -> float:
     if isinstance(value, datetime):
         dt = value
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+            dt = dt.replace(tzinfo=UTC)
         return dt.timestamp()
     # try parse iso
     try:
-        dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        dt = datetime.fromisoformat(str(value))
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+            dt = dt.replace(tzinfo=UTC)
         return dt.timestamp()
-    except Exception:
+    except Exception:  # noqa: BLE001
         return float(time.time())
 
 

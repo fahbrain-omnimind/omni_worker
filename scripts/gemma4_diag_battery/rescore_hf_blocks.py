@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Re-score HF "blocks" records with the worker's own metrics.
 
 English: Loads fabricioslv/gemma4-e4b-colab-l4-results
@@ -168,17 +167,21 @@ def main() -> int:
     lines = [
         "# Re-score dos blocks HF E4B-L4 com métricas do worker",
         "",
-        f"Fonte: `{HF_SQLITE}` (read-only) · gerado "
-        f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} UTC",
+        (
+            f"Fonte: `{HF_SQLITE}` (read-only) · gerado "
+            f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} UTC"
+        ),
         "",
-        "Métricas worker: `_degenerate` (mesma forma do runner) + "
-        "`_flags_resposta` canônico + uniq_words/uniq_lines "
-        "(whitespace — o `unique_ratio` armazenado usa tokens BPE, "
-        "não reproduzível exatamente; usado só como referência). "
-        "`worker_degen2` adiciona o segundo tier calibrado "
-        "(word_ur<0.5 ∧ rep4>0.05) para a classe dominante do HF: "
-        "degeneração verbosa por vazamento de deliberação, que o "
-        "heurístico de forma de linha não captura.",
+        (
+            "Métricas worker: `_degenerate` (mesma forma do runner) + "
+            "`_flags_resposta` canônico + uniq_words/uniq_lines "
+            "(whitespace — o `unique_ratio` armazenado usa tokens BPE, "
+            "não reproduzível exatamente; usado só como referência). "
+            "`worker_degen2` adiciona o segundo tier calibrado "
+            "(word_ur<0.5 ∧ rep4>0.05) para a classe dominante do HF: "
+            "degeneração verbosa por vazamento de deliberação, que o "
+            "heurístico de forma de linha não captura."
+        ),
         "",
         "## Concordância por experimento (visible_response)",
         "",

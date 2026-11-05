@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from omni_coworker.agency.affect_tracer import AffectTracer, score_turn, trajectory_level
+from omni_coworker.agency.affect_tracer import (
+    AffectTracer,
+    score_turn,
+    trajectory_level,
+)
 
 
 def test_score_turn_neutral():

@@ -28,7 +28,7 @@ Linha final pt-BR: o que a máquina não digere vira ruído; o α é legível.
 from __future__ import annotations
 
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from ..psychoanalysis.beta_element import BetaElement
@@ -97,11 +97,11 @@ def metabolize(ctx: dict[str, Any], arousal: float, cycle_n: int = 0) -> dict[st
     try:
         beta = BetaElement(
             raw_data=_digest(bundle),
-            timestamp=datetime.now(timezone.utc),
+            timestamp=datetime.now(UTC),
             emotional_charge=max(0.0, min(1.0, float(arousal))),
             source="kernel.cycle",
         )
-    except Exception:
+    except Exception:  # noqa: BLE001
         return out
     use_llm = _should_llm(arousal, homeo, cycle_n)
     out["tier"] = "llm_chain" if use_llm else "heuristic"
@@ -120,7 +120,7 @@ def metabolize(ctx: dict[str, Any], arousal: float, cycle_n: int = 0) -> dict[st
             out["degraded"] = narrative.startswith("[REVERIE")
         else:
             out["beta_unmetabolized"] = True
-    except Exception:
+    except Exception:  # noqa: BLE001
         out["beta_unmetabolized"] = True
     # OW-STU-009: a produção do modelo é β próprio — segundo β quando a
     # janela de ativações mostra atrator (score alto) — metabolizado no
@@ -133,14 +133,14 @@ def metabolize(ctx: dict[str, Any], arousal: float, cycle_n: int = 0) -> dict[st
             from ..activation_beta.attractor import digest as att_digest
             beta2 = BetaElement(
                 raw_data=att_digest(att),
-                timestamp=datetime.now(timezone.utc),
+                timestamp=datetime.now(UTC),
                 emotional_charge=max(0.0, min(1.0, att_score)),
                 source="activations.window")
             a2 = _container(False).contain(beta2)
             if a2 is not None:
                 out["attractor_alpha"] = str(getattr(a2, "content", ""))[:400]
                 out["attractor_score"] = round(att_score, 4)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
     out["elapsed_ms"] = round((time.time() - t0) * 1000, 1)
     return out

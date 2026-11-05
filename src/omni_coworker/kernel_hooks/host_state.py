@@ -37,7 +37,7 @@ def collect_kernel_bundle() -> dict[str, Any]:
         from ..shared_workspace import bus
         ev = bus.latest("kernel.cycle")
         return (ev or {}).get("payload") or {}
-    except Exception:
+    except Exception:  # noqa: BLE001
         return {}
 
 

@@ -1,12 +1,10 @@
 """Persistence tests for governance (trust/quarantine) and witness."""
 import json
-import os
-from pathlib import Path
 
 import pytest
 
 from omni_coworker.agency import witness as W
-from omni_coworker.orchestration.governance import TrustSystem, QuarantineSystem
+from omni_coworker.orchestration.governance import QuarantineSystem, TrustSystem
 
 
 @pytest.fixture(autouse=True)

@@ -23,11 +23,11 @@ from .governance import (
 
 __all__ = [
     "AgentOrchestrator",
-    "EventBus",
-    "TrustSystem",
-    "QuarantineSystem",
-    "RollbackSystem",
     "CircuitBreaker",
     "CircuitBreakerOpen",
+    "EventBus",
     "OrchestratorMetrics",
+    "QuarantineSystem",
+    "RollbackSystem",
+    "TrustSystem",
 ]

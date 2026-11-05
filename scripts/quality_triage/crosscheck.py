@@ -29,7 +29,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import public_scope  # noqa: E402
+import public_scope
 
 CLIS = {
     "hermes": ["hermes", "-z", "{prompt}", "--yolo"],
@@ -65,7 +65,7 @@ def _run_cli(cli: str, prompt: str) -> str:
     timeout = float(timeout) if timeout else None
     try:
         cmd = [c.format(prompt=prompt) if "{prompt}" in c else c for c in CLIS[cli]]
-        p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+        p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, check=False)
         return p.stdout.strip()[-4000:]
     except Exception as e:  # noqa: BLE001 — best-effort
         return f"__CLI_ERROR__ {e}"
@@ -77,7 +77,7 @@ def _extract_json(text: str) -> dict | None:
         return None
     try:
         return json.loads(text[start:end + 1])
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 

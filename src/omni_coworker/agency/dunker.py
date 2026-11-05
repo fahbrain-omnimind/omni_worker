@@ -40,7 +40,7 @@ def _families_from_kernel(kernel_state: dict | None) -> list[dict[str, Any]]:
                 "operational_alias": str(label).split("-")[-1],
             })
         return families
-    except Exception:
+    except Exception:  # noqa: BLE001
         return []
 
 
@@ -67,7 +67,7 @@ def _load_canonical_dunker():
         )
 
         return _vendored, "package:omni_coworker.vendor.dunker_architecture"
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     candidates: list[str] = []
@@ -92,13 +92,13 @@ def _load_canonical_dunker():
                 mod = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(mod)
                 return mod.compute_dunker_architecture, f"file:{path}"
-        except Exception:
+        except Exception:  # noqa: BLE001, S112
             continue
     try:
         from src.cognitive.dunker_architecture import compute_dunker_architecture
 
         return compute_dunker_architecture, "package:src.cognitive.dunker_architecture"
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None, None
 
 
@@ -143,6 +143,6 @@ def dunker_architecture(kernel_state: dict | None = None,
         out["source"] = source
         out["families_used"] = len(families)
         return out
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"status": "error", "source": source, "reason": "computation_failed", "error_type": type(e).__name__,
                 "families_used": len(families)}

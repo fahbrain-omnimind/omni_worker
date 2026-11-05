@@ -43,7 +43,7 @@ def _publish_modulation(mod, resource_postures=None) -> bool:
             payload["resource_postures"] = resource_postures
         bus.publish("feedback.loop", payload)
         return True
-    except Exception:
+    except Exception:  # noqa: BLE001
         return False
 
 
@@ -71,7 +71,10 @@ def _gov() -> dict[str, Any]:
         return _GOV
     try:
         from ..orchestration.governance import (
-            EventBus, QuarantineSystem, get_trust_system)
+            EventBus,
+            QuarantineSystem,
+            get_trust_system,
+        )
         bus, trust, quar = EventBus(), get_trust_system(), QuarantineSystem()
 
         def _feed(etype: str, data: dict[str, Any]) -> None:
@@ -85,7 +88,7 @@ def _gov() -> dict[str, Any]:
             bus.subscribe(et, _feed)
         _GOV = {"bus": bus, "trust": trust, "quarantine": quar,
                 "breakers": {}}
-    except Exception:
+    except Exception:  # noqa: BLE001
         _GOV = {}
     return _GOV
 
@@ -119,7 +122,7 @@ def _run_stage(gov: dict[str, Any], name: str, fn) -> tuple[Any, str | None]:
             return None, "circuit_open"
     try:
         out = fn()
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         if br is not None:
             br.record_failure()
         if bus is not None:
@@ -135,7 +138,7 @@ def _run_stage(gov: dict[str, Any], name: str, fn) -> tuple[Any, str | None]:
                 witness_event("stage_quarantined",
                               {"stage": name, "error": str(e),
                                "failures": br.failure_count})
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
         return None, str(e)
     if br is not None:
@@ -158,7 +161,7 @@ def _phylo_signature():
     try:
         from ..narrative.phylogenetic_signature import PhylogeneticSignature
         _PHYLO = PhylogeneticSignature()
-    except Exception:
+    except Exception:  # noqa: BLE001
         _PHYLO = None
     return _PHYLO
 
@@ -233,7 +236,7 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
                 qp = detect_quilting_point(*_narrative_history())
                 if qp:
                     nav.metadata["quilting_point"] = qp
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
             # filogenética: produção matricial alimenta a assinatura
             try:
@@ -241,7 +244,7 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
                 if sig is not None and not sig.state.emergence_complete:
                     n_att = sig.ingest_from_activation_windows()
                     nav.metadata["phylo_attractors"] = n_att
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
                 pass
 
             hint = ",".join((ctx.get("bundle") or {}).get("mesh_topics") or
@@ -276,7 +279,7 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
                     name, metadata={"skipped": note})
             else:
                 stage_states[name] = r
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         status, err = "error", f"{type(e).__name__}: loop_execution_failed"
     if skipped and status == "ok":
         status = "partial"
@@ -294,7 +297,7 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
         resource_postures = [a.to_dict() for a in assess_worker_bundle(bundle or {})]
         if isinstance(bundle, dict):
             bundle["resource_postures"] = resource_postures
-    except Exception:
+    except Exception:  # noqa: BLE001
         resource_postures = []
     payload["resource_postures"] = resource_postures
     mod = derive_modulation(cycle, bundle)
@@ -338,7 +341,7 @@ class IntegrationLoop:
             await asyncio.to_thread(run_once)
             try:
                 await asyncio.wait_for(self._stop.wait(), timeout=self.interval_s)
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 pass
 
     def start(self) -> None:
@@ -350,7 +353,7 @@ class IntegrationLoop:
         if self._task:
             try:
                 await asyncio.wait_for(self._task, timeout=5.0)
-            except (asyncio.TimeoutError, asyncio.CancelledError):
+            except (TimeoutError, asyncio.CancelledError):
                 pass
 
 

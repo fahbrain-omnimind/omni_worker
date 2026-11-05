@@ -72,7 +72,7 @@ def append_cycle(payload: dict[str, Any]) -> None:
                 con.execute("DELETE FROM cycles WHERE ts < ?",
                             (time.time() - _RETENTION_S,))
             con.close()
-        except Exception:
+        except Exception:  # noqa: BLE001, S110
             pass
         try:
             with open(_jsonl_path(), "a", encoding="utf-8") as fh:
@@ -96,7 +96,7 @@ def history(n: int = 50) -> list[dict]:
         backfill = [json.loads(r[0]) for r in reversed(rows)]
         seen = {c.get("cycle_id") for c in items}
         return [c for c in backfill if c.get("cycle_id") not in seen] + items
-    except Exception:
+    except Exception:  # noqa: BLE001
         return items[-n:]
 
 
@@ -112,7 +112,7 @@ def get_cycle(cycle_id: str) -> dict | None:
                 (cycle_id,)).fetchone()
             con.close()
             return json.loads(row[0]) if row else None
-        except Exception:
+        except Exception:  # noqa: BLE001
             return None
 
 

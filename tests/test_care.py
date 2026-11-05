@@ -79,6 +79,7 @@ def test_escalate_bilingual_docstrings() -> None:
 def test_app_route_returns_dict() -> None:
     """The /safety/care FastAPI route returns a dict with expected keys."""
     from fastapi.testclient import TestClient
+
     from omni_coworker.app import create_app
 
     app = create_app()

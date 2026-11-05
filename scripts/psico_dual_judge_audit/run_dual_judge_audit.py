@@ -21,16 +21,16 @@ import json
 import sqlite3
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
-from omni_coworker.agents._llm import brain_chat  # noqa: E402
+from omni_coworker.agents._llm import brain_chat
 
 DS = ROOT / "data" / "psicodiagnostico_v"
 OUT = ROOT / "docs" / "audits" / "judges_psico"
-STAMP = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+STAMP = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
 JUDGES = {"J1": ("analyst", "Juiz 1 (Gemma 12B)"), "J2": ("executor", "Juiz 2 (Gemma E4B)")}
 
 

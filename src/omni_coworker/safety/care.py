@@ -6,13 +6,13 @@ pt-BR: Escalada territorial para contextos de saúde mental / abuso de operador.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 # --- UF support database extracted from docs/care/BRAZIL_SUPPORT_N_NE_CO.md ---
 # Each entry lists the key regional resources for that UF.
 # For states not covered, the function falls back to national resources.
 
-_UF_SUPPORT: Dict[str, Dict[str, List[str]]] = {
+_UF_SUPPORT: dict[str, dict[str, list[str]]] = {
     "AC": {
         "crp": ["CRP-24 (24ª Região – RO/AC); sede Porto/Velho/RO. Seção Rio Branco (Av. Imigrantes, 5109)"],
         "caps": ["CAPS-I Rio Branco (Rua Getúlio Vargas, s/n – Centro)", "CAPS-III Álcool/Drogas (Av. Mâncio da Nóbrega)"],
@@ -149,14 +149,6 @@ _UF_SUPPORT: Dict[str, Dict[str, List[str]]] = {
         "cvv": ["CVV 188 – Aracaju (Rua 9 de Julho)"],
         "units": ["UBS 8 units (UBS Carmo)"],
     },
-    "RO": {
-        "crp": ["CRP-24 (24ª Região – RO/AC); sede Porto/Velho (Av. Imigrantes, 5109)", "Sindicato Psicólogos de Rondônia – Porto/Velho"],
-        "caps": ["CAPS-I (Av. Cajueiro, s/n – Jardim Amapá)", "CAPS-III (Álcool/Drogas, Av. Getúlio Vargas)"],
-        "samu": ["SAMU 192 – Porto/Velho"],
-        "upa": ["UPA 24h Porto/Velho (Av. Estrada do Ouro)"],
-        "cvv": ["CVV 188 – Porto/Velho (Rua 7 de Setembro)"],
-        "units": ["UBS 15 units (UBS Vila Nova)"],
-    },
     "TO": {
         "crp": ["CRP-22 (22ª Região – TO); sede Palmas (Av. Salvador Almada, 1250)"],
         "caps": ["CAPS-I (Av. Nazaré, s/n – Centro)", "CAPS-III (Álcool/Drogas, Av. Lourenço Filho)"],
@@ -176,7 +168,7 @@ _NATIONAL_RESOURCES = {
     "cvvr_note": ["Disque-Dependência Química 132 (quando houver uso de substâncias)"]}
 
 
-def _resources_for_uf(state_uf: str) -> Dict[str, List[str]]:
+def _resources_for_uf(state_uf: str) -> dict[str, list[str]]:
     """Return the resource dict for a given UF, falling back to national resources."""
     uf = state_uf.upper() if state_uf else ""
     if uf in _UF_SUPPORT:
@@ -184,7 +176,7 @@ def _resources_for_uf(state_uf: str) -> Dict[str, List[str]]:
     return _NATIONAL_RESOURCES.copy()
 
 
-def _referral_text(age: Optional[int], state_uf: Optional[str]) -> str:
+def _referral_text(age: int | None, state_uf: str | None) -> str:
     """Generate pt-BR referral text based on age and UF."""
     lines = [
         "Encaminhamento:",
@@ -204,7 +196,7 @@ def _referral_text(age: Optional[int], state_uf: Optional[str]) -> str:
     return "\n".join(lines)
 
 
-def escalate(reason: str, state_uf: Optional[str] = None, age: Optional[int] = None) -> Dict[str, Any]:
+def escalate(reason: str, state_uf: str | None = None, age: int | None = None) -> dict[str, Any]:
     """Escalate a mental-health / abuse concern through the territorial care path.
 
     English: Escalate a mental-health / abuse concern through the territorial care path.

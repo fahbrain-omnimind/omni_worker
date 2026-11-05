@@ -6,7 +6,7 @@ Hermetic: monkeypatches OMNI_STATE_DIR to tmp_path; no network, GPU, or models.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Optional
+from typing import Any
 
 import pytest
 
@@ -17,7 +17,8 @@ from omni_coworker.psychoanalysis import (
     CompactPanelSnapshot,
     CreativePsychotizationInputs,
     LayerCouplingSnapshot,
-    NegativeCapability,    PsychotizationState,
+    NegativeCapability,
+    PsychotizationState,
     assess_creative_psychotization,
     compact_panel_snapshot_from_v43_bundle,
     compute_dodecatiad_sector,
@@ -38,12 +39,12 @@ class _FakeAlphaFunction:
     def __init__(
         self,
         transformation_rate: float = 0.70,
-        transform: Optional[Any] = None,
+        transform: Any | None = None,
     ) -> None:
         self.transformation_rate = transformation_rate
         self._transform = transform
 
-    def transform(self, contained: BetaElement) -> Optional[AlphaElement]:
+    def transform(self, contained: BetaElement) -> AlphaElement | None:
         if self._transform is not None:
             return self._transform(contained)
         return AlphaElement(

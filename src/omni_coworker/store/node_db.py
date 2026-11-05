@@ -13,7 +13,7 @@ from __future__ import annotations
 import json
 import os
 import sqlite3
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -86,7 +86,7 @@ class NodeDB:
         self, task_id: str, kind: str, content: str, verdict: str = "", ts: str = ""
     ) -> int:
         """Persist a task artifact."""
-        ts = ts or datetime.now(timezone.utc).isoformat()
+        ts = ts or datetime.now(UTC).isoformat()
         self.init()
         with sqlite3.connect(self.path) as conn:
             cur = conn.execute(
@@ -144,7 +144,7 @@ class NodeDB:
 
     def upsert_trust_score(self, agent: str, score: float, ts: str = "") -> None:
         """Persist per-agent trust score in node.db."""
-        ts = ts or datetime.now(timezone.utc).isoformat()
+        ts = ts or datetime.now(UTC).isoformat()
         self.init()
         with sqlite3.connect(self.path) as conn:
             conn.execute(
@@ -165,7 +165,7 @@ class NodeDB:
     def append_trust_event(self, record: dict[str, Any]) -> int:
         """Persist a trust delta event in node.db."""
         self.init()
-        ts = str(record.get("ts") or datetime.now(timezone.utc).isoformat())
+        ts = str(record.get("ts") or datetime.now(UTC).isoformat())
         with sqlite3.connect(self.path) as conn:
             cur = conn.execute(
                 """INSERT INTO trust_events(event, agent, delta, before_score, after_score, ts)
@@ -207,7 +207,7 @@ class NodeDB:
         self, component_id: str, reason: str, evidence: dict[str, Any] | None = None, ts: str = ""
     ) -> None:
         """Persist a quarantine record in node.db."""
-        ts = ts or datetime.now(timezone.utc).isoformat()
+        ts = ts or datetime.now(UTC).isoformat()
         self.init()
         with sqlite3.connect(self.path) as conn:
             conn.execute(
@@ -241,7 +241,7 @@ class NodeDB:
             for cid, reason, ev_json, ts in cur.fetchall():
                 try:
                     ev = json.loads(ev_json) if ev_json else {}
-                except Exception:
+                except Exception:  # noqa: BLE001
                     ev = {}
                 out[str(cid)] = {
                     "component_id": str(cid),
@@ -261,7 +261,7 @@ class NodeDB:
         ts: str = "",
     ) -> None:
         """Persist named CircuitBreaker state in node.db."""
-        ts = ts or datetime.now(timezone.utc).isoformat()
+        ts = ts or datetime.now(UTC).isoformat()
         self.init()
         with sqlite3.connect(self.path) as conn:
             conn.execute(

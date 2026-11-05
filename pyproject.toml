@@ -80,3 +80,6 @@ where = ["src"]
 testpaths = ["tests"]
 addopts = "--continue-on-collection-errors"
 asyncio_mode = "auto"
+
+[tool.ruff]
+extend-exclude = ["scripts/coding_battery/victim"]

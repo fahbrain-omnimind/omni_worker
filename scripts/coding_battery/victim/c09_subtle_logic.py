@@ -11,6 +11,5 @@ def merge_sorted(a, b):
 def find_max(items):
     best = items[0]
     for x in items:
-        if x > best:
-            best = x
+        best = max(best, x)
     return best

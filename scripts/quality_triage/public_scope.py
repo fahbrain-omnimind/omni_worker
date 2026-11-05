@@ -23,63 +23,63 @@ from dataclasses import dataclass
 # Sources: OW-STU-011 §3.3/§3.6 (rule_verdicts + practices do corpus).
 PUBLIC_FLIPS: dict[str, tuple[str, str, str]] = {
     "S8707": ("future_public_risk",
-              "path como interface de script vindo de parse_args é aceitável "
-              "no doméstico; em app pública exige validação de input (allowlist)",
+              ("path como interface de script vindo de parse_args é aceitável "
+               "no doméstico; em app pública exige validação de input (allowlist)"),
               "security: validar input externo antes de usar em I/O"),
     "S7688": ("future_public_risk",
-              "ritual sudo em .sh é intencional no lab; serviço público exige "
-              "dropping de privilégios e execução sem sudo",
+              ("ritual sudo em .sh é intencional no lab; serviço público exige "
+               "dropping de privilégios e execução sem sudo"),
               "security: mínimos privilégios em runtime"),
     "S2083": ("future_public_risk",
-              "write_text de artefato interno OK no lab; exposto publicamente "
-              "é path traversal — validar e permitir apenas diretórios canônicos",
+              ("write_text de artefato interno OK no lab; exposto publicamente "
+               "é path traversal — validar e permitir apenas diretórios canônicos"),
               "security: paths de escrita restritos e validados"),
     "S5443": ("future_public_risk",
-              "/tmp world-writable é contrato do lab; público exige dir 0700 "
-              "e ownership check",
+              ("/tmp world-writable é contrato do lab; público exige dir 0700 "
+               "e ownership check"),
               "security: filas/estado fora de world-writable"),
     "S2245": ("future_public_risk",
-              "PRNG não-cripto em simulador é intencional; produção pública "
-              "que exponha IDs/tokens exige secrets/random criptográfico",
+              ("PRNG não-cripto em simulador é intencional; produção pública "
+               "que exponha IDs/tokens exige secrets/random criptográfico"),
               "security: PRNG só em não-exposição"),
     "S8705": ("future_public_risk",
-              "argv→subprocess list-form é padrão doméstico; serviço público "
-              "que aceita input externo exige shlex.quote + allowlist",
+              ("argv→subprocess list-form é padrão doméstico; serviço público "
+               "que aceita input externo exige shlex.quote + allowlist"),
               "security: shell=True só com pipeline list-form"),
     "S5332": ("future_public_risk",
-              "http:// + IPs internos são localhost de daemons do lab; "
-              "produção exige TLS e bind configurável por env",
+              ("http:// + IPs internos são localhost de daemons do lab; "
+               "produção exige TLS e bind configurável por env"),
               "security: bind/CORS configuráveis por env"),
     "S1313": ("future_public_risk",
-              "IPs LAN intencionais no lab; expostos, vazam topologia — "
-              "externalizar via env/config",
+              ("IPs LAN intencionais no lab; expostos, vazam topologia — "
+               "externalizar via env/config"),
               "architecture: separação doméstico vs oficial"),
     "S8706": ("real_vulnerability",
-              "sqlite file:URI com #/? injeta parâmetro — já era risco no "
-              "lab; em público é vulnerabilidade real, urllib.parse",
+              ("sqlite file:URI com #/? injeta parâmetro — já era risco no "
+               "lab; em público é vulnerabilidade real, urllib.parse"),
               "security: validar IPs/paths com parsers reais"),
     "S6096": ("real_vulnerability",
-              "tarfile de origem externa (HF/Zenodo) sem filter='data' é "
-              "zip-slip — vulnerabilidade real em qualquer escopo",
+              ("tarfile de origem externa (HF/Zenodo) sem filter='data' é "
+               "zip-slip — vulnerabilidade real em qualquer escopo"),
               "security: zip-slip filter='data'"),
     "S8702": ("real_vulnerability",
-              "identificadores SQL em f-string de --table/--limit — "
-              "injeção real quando exposto",
+              ("identificadores SQL em f-string de --table/--limit — "
+               "injeção real quando exposto"),
               "security: parâmetros, nunca interpolação"),
     "S5145": ("future_public_risk",
               "campos de request no logger forjam linhas — sanitizar \\n\\r",
               "security: sanitizar campos de request antes de log"),
     "S6350": ("real_vulnerability",
-              "endpoints sem auth que disparam CLIs (gemini/codex exec) — "
-              "CSRF-viável no browser do operador; público é crítico",
+              ("endpoints sem auth que disparam CLIs (gemini/codex exec) — "
+               "CSRF-viável no browser do operador; público é crítico"),
               "security: endpoints HTTP ativos exigem auth mínimo"),
     "S8786": ("architectural_debt",
-              "regex super-linear segue dívida consciente — mas em serviço "
-              "público o adversarial time é contrato, não exceção",
+              ("regex super-linear segue dívida consciente — mas em serviço "
+               "público o adversarial time é contrato, não exceção"),
               "regex: medir antes de reescrever"),
     "S1244": ("review_needed",
-              "float equality em enable-gates era intencional; em API pública "
-              "epsilon explícito evita ambiguidade de contrato",
+              ("float equality em enable-gates era intencional; em API pública "
+               "epsilon explícito evita ambiguidade de contrato"),
               "architecture: contrato explícito em superfície pública"),
     "S6466": ("false_positive",
               "slices que nunca lançam seguem false positive — sem mudança",

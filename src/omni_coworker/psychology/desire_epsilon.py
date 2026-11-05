@@ -27,7 +27,7 @@ calibracao empirica independente (NÃO LOCALIZADO).
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -49,7 +49,7 @@ WEIGHTS = {
 DEFAULT_LACK = 0.5
 
 
-def ingest_observables(obs: Dict[str, Any]) -> float:
+def ingest_observables(obs: dict[str, Any]) -> float:
     """Ingere observaveis do mesh e retorna lack_of_being (mesmos pesos do soberano)."""
     lack = float(obs.get("_base_lack", DEFAULT_LACK))
 
@@ -120,7 +120,7 @@ class DesireEpsilon:
     def __init__(self, base_lack: float = DEFAULT_LACK):
         self.lack_of_being = float(base_lack)
 
-    def ingest(self, obs: Dict[str, Any]) -> float:
+    def ingest(self, obs: dict[str, Any]) -> float:
         obs = dict(obs)
         obs.setdefault("_base_lack", self.lack_of_being)
         self.lack_of_being = ingest_observables(obs)

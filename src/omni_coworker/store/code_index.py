@@ -29,7 +29,7 @@ _SECRET_PATTERNS = [
     re.compile(r"HF_TOKEN\s*[=:]\s*\S+"),
     re.compile(
         r"(api[_-]?key|secret|password|token)\s*[=:]\s*[\"'][A-Za-z0-9_\-]{12,}[\"']",
-        re.I,
+        re.IGNORECASE,
     ),
     re.compile(r"AKIA[0-9A-Z]{16}"),
 ]
@@ -87,7 +87,7 @@ def _chunk_file(path: Path, root: Path) -> list[dict]:
     rel = str(path.relative_to(root))
     try:
         tree = ast.parse(path.read_text(encoding="utf-8"))
-    except Exception:
+    except Exception:  # noqa: BLE001
         return []
     chunks = []
     doc = ast.get_docstring(tree)
@@ -114,6 +114,7 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
     instalado) e manifest.json em out_dir.
     """
     import hashlib
+
     import numpy as np
     import pandas as pd
 
@@ -141,7 +142,7 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
                 for idx, row in old_df.iterrows():
                     th = hashlib.sha256(str(row["text"]).encode("utf-8")).hexdigest()
                     cached_vecs[th] = old_embs[idx]
-        except Exception:
+        except Exception:  # noqa: BLE001
             cached_vecs.clear()
 
     # Identificar chunks novos vs cacheados
@@ -181,7 +182,7 @@ def build_index(root: str | Path, out_dir: str | Path) -> dict:
         index.add(embs)
         faiss.write_index(index, str(out_dir / "code_index.faiss"))
         used_faiss = True
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     manifest = {
@@ -230,7 +231,7 @@ def _load(out_dir: str | Path) -> bool:
         import faiss
 
         _INDEX = ("faiss", faiss.read_index(str(out_dir / "code_index.faiss")))
-    except Exception:
+    except Exception:  # noqa: BLE001
         if not (out_dir / "embeddings.npy").exists():
             _INDEX = None
             return False
@@ -322,7 +323,7 @@ def build_symbolic_hypergraph(
             src, n_red = sanitize_secret_text(raw_src)
             redactions_total += n_red
             tree = ast.parse(src)
-        except Exception:
+        except Exception:  # noqa: BLE001, S112
             continue
 
         mod_id = f"mod:{rel}"
@@ -350,7 +351,7 @@ def build_symbolic_hypergraph(
                 nodes.setdefault(cid, {"id": cid, "kind": "concept", "name": cname})
                 concepts.append(cid)
 
-        for tbl_match in re.findall(r"CREATE TABLE IF NOT EXISTS\s+([a-zA-Z0-9_]+)", src, re.I):
+        for tbl_match in re.findall(r"CREATE TABLE IF NOT EXISTS\s+([a-zA-Z0-9_]+)", src, re.IGNORECASE):
             tid = f"table:{tbl_match}"
             nodes.setdefault(tid, {"id": tid, "kind": "sqlite_table", "name": tbl_match})
             if tid not in tables:
@@ -423,7 +424,7 @@ def search_hypergraph(
         return []
     try:
         data = json.loads(p.read_text(encoding="utf-8"))
-    except Exception:
+    except Exception:  # noqa: BLE001
         return []
     tokens = [
         t.lower()

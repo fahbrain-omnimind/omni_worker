@@ -82,7 +82,14 @@ fi
 
 export OMNI_STATE_DIR="${OMNI_STATE_DIR:-$REPO/data}"
 export OMNI_CODE_INDEX_DIR="${OMNI_CODE_INDEX_DIR:-$REPO/omni_code_index}"
-export OMNI_ACERVO_DIR="${OMNI_ACERVO_DIR:-/content/acervo_vetorizado}"
+if [ -z "${OMNI_ACERVO_DIR:-}" ]; then
+  if [ -d /mnt/local-scratch ]; then
+    OMNI_ACERVO_DIR=/mnt/local-scratch/acervo_vetorizado
+  else
+    OMNI_ACERVO_DIR=/content/acervo_vetorizado
+  fi
+fi
+export OMNI_ACERVO_DIR
 export OMNI_EMBED_DEVICE="${OMNI_EMBED_DEVICE:-cpu}"
 export OMNI_MEMTRIAS_EMBEDDER="${OMNI_MEMTRIAS_EMBEDDER:-auto}"
 export OMNI_MEMTRIAS_AUTO_LOG="${OMNI_MEMTRIAS_AUTO_LOG:-1}"

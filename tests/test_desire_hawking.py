@@ -1,13 +1,13 @@
 import os
 import tempfile
-from datetime import datetime, timedelta, timezone
-
-import pytest
+from datetime import UTC, datetime, timedelta
 
 os.environ.setdefault("OMNI_STATE_DIR", tempfile.mkdtemp())
 
-from omni_coworker.psychology.desire_engine import DesireEngine, Desire
-from omni_coworker.psychology.hawking_motivation import HawkingMotivationEngine, KnowledgeItem
+from omni_coworker.psychology.desire_engine import Desire, DesireEngine
+from omni_coworker.psychology.hawking_motivation import (
+    HawkingMotivationEngine,
+)
 
 
 def test_desire_intensity(monkeypatch, tmp_path):
@@ -53,7 +53,7 @@ def test_hawking_evap(monkeypatch, tmp_path):
     e = HawkingMotivationEngine(evaporation_threshold_days=0.0001)
     e.add_knowledge("k1", "content", mass=0.1)
     # make old
-    e.knowledge_base["k1"].last_used = datetime.now(timezone.utc) - timedelta(days=10)
+    e.knowledge_base["k1"].last_used = datetime.now(UTC) - timedelta(days=10)
     e._save_item("k1")
     ids, data = e.evaporate_unused_knowledge()
     assert isinstance(ids, list)

@@ -29,7 +29,7 @@ import re
 from collections import Counter
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Dict, List, Optional, Set
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -78,9 +78,9 @@ class DiscourseMarkers:
         emotional_tone: Tom emocional dominante
     """
 
-    keywords: Set[str]
-    grammatical_patterns: List[str]
-    speech_acts: Set[str]
+    keywords: set[str]
+    grammatical_patterns: list[str]
+    speech_acts: set[str]
     emotional_tone: EmotionalSignature
 
 
@@ -100,8 +100,8 @@ class DiscourseAnalysisResult:
 
     text: str
     dominant_discourse: LacanianDiscourse
-    discourse_scores: Dict[LacanianDiscourse, float]
-    key_markers: List[str]
+    discourse_scores: dict[LacanianDiscourse, float]
+    key_markers: list[str]
     emotional_signature: EmotionalSignature
     confidence: float
 
@@ -120,11 +120,11 @@ class LacanianDiscourseAnalyzer:
         self.discourse_markers = self._initialize_markers()
 
         # Histórico de análises
-        self.analysis_history: List[DiscourseAnalysisResult] = []
+        self.analysis_history: list[DiscourseAnalysisResult] = []
 
         logger.info("Lacanian Discourse Analyzer initialized")
 
-    def _initialize_markers(self) -> Dict[LacanianDiscourse, DiscourseMarkers]:
+    def _initialize_markers(self) -> dict[LacanianDiscourse, DiscourseMarkers]:
         """
         Inicializa marcadores linguísticos dos discursos.
 
@@ -294,7 +294,6 @@ class LacanianDiscourseAnalyzer:
                     "hear",
                     "tell",
                     "speak",
-                    "continue",
                     "silence",
                     "void",
                     "space",
@@ -339,8 +338,8 @@ class LacanianDiscourseAnalyzer:
         text_lower = text.lower()
 
         # Computa scores para cada discurso
-        discourse_scores: Dict[LacanianDiscourse, float] = {}
-        all_markers: List[str] = []
+        discourse_scores: dict[LacanianDiscourse, float] = {}
+        all_markers: list[str] = []
 
         for discourse, markers in self.discourse_markers.items():
             score = self._compute_discourse_score(text_lower, markers)
@@ -435,7 +434,7 @@ class LacanianDiscourseAnalyzer:
 
         return score
 
-    def analyze_batch(self, texts: List[str]) -> List[DiscourseAnalysisResult]:
+    def analyze_batch(self, texts: list[str]) -> list[DiscourseAnalysisResult]:
         """
         Analisa múltiplos textos.
 
@@ -448,8 +447,8 @@ class LacanianDiscourseAnalyzer:
         return [self.analyze_text(text) for text in texts]
 
     def get_discourse_distribution(
-        self, results: Optional[List[DiscourseAnalysisResult]] = None
-    ) -> Dict[LacanianDiscourse, int]:
+        self, results: list[DiscourseAnalysisResult] | None = None
+    ) -> dict[LacanianDiscourse, int]:
         """
         Retorna distribuição de discursos.
 
@@ -467,8 +466,8 @@ class LacanianDiscourseAnalyzer:
         return dict(distribution)
 
     def export_analysis(
-        self, results: Optional[List[DiscourseAnalysisResult]] = None
-    ) -> List[Dict[str, Any]]:
+        self, results: list[DiscourseAnalysisResult] | None = None
+    ) -> list[dict[str, Any]]:
         """
         Exporta análises em formato estruturado.
 
@@ -516,13 +515,20 @@ def demonstrate_lacanian_discourse_discovery() -> None:
         # Discurso do Mestre
         "Você deve seguir as regras estabelecidas. É uma ordem clara.",
         # Discurso Universitário
-        "Segundo a teoria lacaniana, o sujeito é barrado. "
-        "Portanto, podemos definir o conceito de falta estrutural.",
+        (
+            "Segundo a teoria lacaniana, o sujeito é barrado. "
+            "Portanto, podemos definir o conceito de falta estrutural."
+        ),
         # Discurso da Histérica
-        "Por que sempre sofro assim? Não sei o que fazer. "
-        "Talvez seja impossível encontrar o que desejo?",
+        (
+            "Por que sempre sofro assim? Não sei o que fazer. "
+            "Talvez seja impossível encontrar o que desejo?"
+        ),
         # Discurso do Analista
-        "Continue falando... Escute o que emerge. " "O silêncio também produz saber.",
+        (
+            "Continue falando... Escute o que emerge. "
+            "O silêncio também produz saber."
+        ),
     ]
 
     # Analisa textos

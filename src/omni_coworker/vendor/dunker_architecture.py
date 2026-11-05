@@ -439,7 +439,7 @@ def compute_soler_affects(
     topo = topology_metrics or {}
     betti_0 = float(topo.get("betti_0", 1.0))
     betti_1 = float(topo.get("betti_1_spectral", 0.0))
-    fragmentation = float(topo.get("topology_fragmentation", 0.0))
+    _fragmentation = float(topo.get("topology_fragmentation", 0.0))
     fe = float(free_energy) if free_energy is not None else 0.0
 
     # Normalizar free_energy para [0, 1] (assumindo escala típica 0-100)

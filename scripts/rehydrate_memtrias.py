@@ -31,7 +31,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
 
-from omni_coworker.memory.memtrias_ai import MemtriasAI, minilm_embedder
+from omni_coworker.memory.memtrias_ai import MemtriasAI
 
 
 def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str, int]:
@@ -70,7 +70,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
                 continue
             try:
                 txt = md.read_text(encoding="utf-8", errors="replace").strip()
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
             if not txt:
                 continue
@@ -95,6 +95,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
     # 1b. Namespace `machine`: Symbolic body (codebase hypergraph + repo snapshot, sanitized)
     try:
         import subprocess
+
         from omni_coworker.store.code_index import (
             build_symbolic_hypergraph,
             sanitize_secret_text,
@@ -149,7 +150,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
             )
             existing_refs.add(snap_ref)
             counts["machine"] += 1
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"[rehydrate] warn symbolic_hypergraph: {e}", file=sys.stderr)
 
     # 2. Namespace `document`: Local PhilPapers 2026 + A6 prior model reviews + Acervo Vetorizado
@@ -165,7 +166,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
                 continue
             try:
                 head = tf.read_text(encoding="utf-8", errors="replace")[:700]
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
             snippet = " ".join(head.split())[:500]
             mem.remember(
@@ -185,7 +186,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
                 continue
             try:
                 head = rmd.read_text(encoding="utf-8", errors="replace")[:700]
-            except Exception:
+            except Exception:  # noqa: BLE001, S112
                 continue
             snippet = " ".join(head.split())[:500]
             mem.remember(
@@ -227,7 +228,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
                 )
                 existing_refs.add(ref)
                 counts["document"] += 1
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"[rehydrate] warn acervo sample: {e}", file=sys.stderr)
 
     # 3. Namespace `instance`: Gemma 4 Analyst (12B) & Executor (E4B) battery ledgers + HF competition DBs
@@ -351,7 +352,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
                 existing_refs.add(ref)
                 counts["instance"] += 1
             con.close()
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"[rehydrate] warn hf_e4b: {e}", file=sys.stderr)
 
     # 4. Namespace `state`: somatic_probes.sqlite & integration_loop.sqlite
@@ -446,7 +447,7 @@ def rehydrate(state_dir: Path | None = None, run_dream: bool = True) -> dict[str
             res = metabolize()
             if res.get("metabolized", 0) > 0:
                 counts["dream"] += 1
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"[rehydrate] warn dream.metabolize: {e}", file=sys.stderr)
 
     # Final count per namespace
