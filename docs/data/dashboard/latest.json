@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-05T17:13:38.041137+00:00",
+  "exported_at": "2026-11-05T17:13:50.789913+00:00",
   "source": "omni_worker real state",
   "pulse": {
     "interval_s": 1800,
@@ -47,8 +47,8 @@
         "alive": true
       },
       "pulse_sync": {
-        "pid": null,
-        "alive": false
+        "pid": 134892,
+        "alive": true
       }
     },
     "active_servers": 3,
@@ -57,11 +57,11 @@
     "kernel_cycles": null
   },
   "soul": {
-    "phi": 0.2984,
+    "phi": 0.2986,
     "psi": 0.4706,
-    "sigma": 0.1147,
+    "sigma": 0.1139,
     "epsilon": 0.7,
-    "maat": 0.3563,
+    "maat": 0.3564,
     "omega": 0.763,
     "dominant_token": "yba-afex-sovereignty",
     "kernel_active": true,
@@ -69,7 +69,7 @@
       "houses": {
         "S01": {
           "axis": "sigma_primary",
-          "value": 0.1147,
+          "value": 0.1139,
           "source": "soul.sigma",
           "formula": "kernel: vctr.recalque = clip01(angst - joy + 0.5) | fallback: load1/cpu_count"
         },
@@ -87,7 +87,7 @@
         },
         "S04": {
           "axis": "phi",
-          "value": 0.2984,
+          "value": 0.2986,
           "source": "soul.phi",
           "formula": "kernel: vctr.magnitude = RMS(scores_18) | fallback: 1 - ram_used/ram_total"
         },
@@ -105,7 +105,7 @@
         },
         "S07": {
           "axis": "maat",
-          "value": 0.7131000000000001,
+          "value": 0.7133,
           "source": "kernel_hooks.maat_balance",
           "formula": "rust compute_maat_balance | fallback: (phi + psi + (1-epsilon))/3"
         },
@@ -166,10 +166,10 @@
     }
   },
   "soma": {
-    "cpu_percent": 43.9,
-    "ram_used_gb": 9.471,
+    "cpu_percent": 21.1,
+    "ram_used_gb": 9.402,
     "ram_total_gb": 89.629,
-    "load_1m": 2.799,
+    "load_1m": 2.615,
     "swap_gb": 0.0,
     "gpu_name": "NVIDIA A100-SXM4-40GB",
     "gpu_util_percent": 0,
@@ -177,11 +177,11 @@
     "vram_total_gb": 42.95,
     "gpu_temp_c": 31,
     "gpu_power_w": 49.0,
-    "psi_io": 2.66,
+    "psi_io": 1.25,
     "psi_mem": 0.0,
-    "psi_cpu": 0.0,
-    "pressure_load": 0.1571,
-    "pressure_headroom": 0.8429,
+    "psi_cpu": 0.05,
+    "pressure_load": 0.1529,
+    "pressure_headroom": 0.8471,
     "c_soma": {
       "power": 0.3063,
       "temp": 0.0175,
@@ -190,7 +190,7 @@
     }
   },
   "kernel": {
-    "cycle_count": 1377,
+    "cycle_count": 1378,
     "phi_meta": 0.7564,
     "cohesion": 0.6959,
     "s_meta": 0.1499,
@@ -210,7 +210,6 @@
   },
   "history": {
     "labels": [
-      "#1354",
       "#1355",
       "#1356",
       "#1357",
@@ -233,10 +232,10 @@
       "#1374",
       "#1375",
       "#1376",
-      "#1377"
+      "#1377",
+      "#1378"
     ],
     "phi_meta": [
-      0.9933,
       0.9953,
       0.9959,
       0.9953,
@@ -259,10 +258,10 @@
       0.788,
       0.7743,
       0.0,
-      0.7564
+      0.7564,
+      0.0
     ],
     "pressure_load": [
-      0.1277,
       0.1286,
       0.1295,
       0.1277,
@@ -285,10 +284,10 @@
       0.1501,
       0.1585,
       0.1571,
-      0.1571
+      0.1571,
+      0.1529
     ],
     "s_meta": [
-      0.1731,
       0.1767,
       0.1799,
       0.1827,
@@ -311,7 +310,8 @@
       0.1617,
       0.1564,
       0.0,
-      0.1499
+      0.1499,
+      0.0
     ],
     "attractor_score": [
       0.4,
@@ -341,6 +341,863 @@
     ]
   },
   "mesh": [
+    {
+      "ts": 1793898830.1778219,
+      "name": "kernel.drift",
+      "payload": {}
+    },
+    {
+      "ts": 1793898830.1747139,
+      "name": "kernel.soma",
+      "payload": {
+        "cpu_percent": 29.7,
+        "ram_percent": 11.7,
+        "load_per_core": 0.23,
+        "disk_percent": 41.8,
+        "psi_cpu_some": 0.06,
+        "psi_io_some": 1.53,
+        "psi_mem_some": 0.0,
+        "gpu_vram_used_gb": 21.382,
+        "gpu_vram_total_gb": 42.95,
+        "gpu_util_percent": 0,
+        "gpu_power_w": 49.0,
+        "gpu_temp_c": 31
+      }
+    },
+    {
+      "ts": 1793898830.1718125,
+      "name": "kernel.soul",
+      "payload": {
+        "phi": 0.2634,
+        "psi": 0.7059,
+        "sigma": 0.2202,
+        "epsilon": 0.55,
+        "dominant_token": "tadi-afex-void"
+      }
+    },
+    {
+      "ts": 1793898830.1687315,
+      "name": "kernel.affect",
+      "payload": {
+        "analyst": {
+          "status": "ok",
+          "n_activations": 32,
+          "attention_entropy_mean": 2.5867,
+          "hidden_norm_mean": 149.6942,
+          "last_ts": "2026-11-05T16:42:40.427348+00:00"
+        },
+        "executor": {
+          "status": "ok",
+          "n_activations": 32,
+          "attention_entropy_mean": 4.2304,
+          "hidden_norm_mean": 125.1839,
+          "last_ts": "2026-11-05T16:32:47.085687+00:00"
+        },
+        "mono_source": false
+      }
+    },
+    {
+      "ts": 1793898830.1651692,
+      "name": "kernel.cycle",
+      "payload": {
+        "ts": 1793898829.394074,
+        "models": {},
+        "affect": {
+          "analyst": {
+            "status": "ok",
+            "n_activations": 32,
+            "attention_entropy_mean": 2.5867,
+            "hidden_norm_mean": 149.6942,
+            "last_ts": "2026-11-05T16:42:40.427348+00:00"
+          },
+          "executor": {
+            "status": "ok",
+            "n_activations": 32,
+            "attention_entropy_mean": 4.2304,
+            "hidden_norm_mean": 125.1839,
+            "last_ts": "2026-11-05T16:32:47.085687+00:00"
+          }
+        },
+        "soul": {
+          "phi": 0.2634,
+          "psi": 0.7059,
+          "sigma": 0.2202,
+          "epsilon": 0.55,
+          "dominant_token": "tadi-afex-void"
+        },
+        "soma": {
+          "cpu_percent": 29.7,
+          "ram_percent": 11.7,
+          "load_per_core": 0.23,
+          "disk_percent": 41.8,
+          "psi_cpu_some": 0.06,
+          "psi_io_some": 1.53,
+          "psi_mem_some": 0.0,
+          "gpu_vram_used_gb": 21.382,
+          "gpu_vram_total_gb": 42.95,
+          "gpu_util_percent": 0,
+          "gpu_power_w": 49.0,
+          "gpu_temp_c": 31
+        },
+        "mesh_topics": [],
+        "drift": {},
+        "producing": false,
+        "attractor": {
+          "google/gemma-4-E4B-it": {
+            "n_records": 64,
+            "norm_drift_mean": 10.0636,
+            "divergent_layer": 42,
+            "drift_concentration": 0.1095,
+            "entropy_now": 4.2179,
+            "entropy_baseline": 4.1436,
+            "entropy_collapse": 0.0,
+            "attractor_score": 0.4,
+            "glial_gate": {
+              "allow_generation": true,
+              "glial": {
+                "habituated": 0.7275,
+                "sensitized": 0.0,
+                "vagus_sedative": 0.0,
+                "pause_code": null,
+                "n": 64,
+                "mean_signal": 4.1528
+              },
+              "reason": "ok"
+            }
+          },
+          "google/gemma-4-12B-it": {
+            "n_records": 69,
+            "norm_drift_mean": 14.1874,
+            "divergent_layer": 48,
+            "drift_concentration": 0.1114,
+            "entropy_now": 2.6866,
+            "entropy_baseline": 2.4914,
+            "entropy_collapse": 0.0,
+            "attractor_score": 0.4,
+            "glial_gate": {
+              "allow_generation": false,
+              "glial": {
+                "habituated": 0.995,
+                "sensitized": 1.0,
+                "vagus_sedative": 0.0,
+                "pause_code": null,
+                "n": 69,
+                "mean_signal": 2.514
+              },
+              "reason": "habituated>=0.8"
+            }
+          }
+        },
+        "phi_layer": {
+          "google/gemma-4-E4B-it": {
+            "phi_breadth": 0.9861,
+            "phi_temporal_mi": 0.9994,
+            "phi_internal": 0.7839,
+            "n_records": 64,
+            "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
+            "spectral": {
+              "eff_rank_mean": 2.764,
+              "spectral_entropy_mean": 0.9173,
+              "ipr_dim_mean": 29.94,
+              "ipr_dim_pct": 1.17,
+              "bond_dim_max_mean": 40.0,
+              "hidden_dim": 2560,
+              "n_layers": 43,
+              "n_files": 8,
+              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+            }
+          },
+          "google/gemma-4-12B-it": {
+            "phi_breadth": 0.9712,
+            "phi_temporal_mi": 1.0488,
+            "phi_internal": 0.7845,
+            "n_records": 69,
+            "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
+            "spectral": {
+              "eff_rank_mean": 2.144,
+              "spectral_entropy_mean": 0.6481,
+              "ipr_dim_mean": 62.96,
+              "ipr_dim_pct": 1.64,
+              "bond_dim_max_mean": 59.69,
+              "hidden_dim": 3840,
+              "n_layers": 49,
+              "n_files": 8,
+              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+            }
+          },
+          "google/gemma-4-31B-it": {
+            "spectral": {
+              "eff_rank_mean": 1.22,
+              "spectral_entropy_mean": 0.1909,
+              "ipr_dim_mean": 87.19,
+              "ipr_dim_pct": 1.62,
+              "bond_dim_max_mean": 64.0,
+              "hidden_dim": 5376,
+              "n_layers": 61,
+              "n_files": 2,
+              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+            },
+            "n_records": 0,
+            "note": "spectral-only (janela <6) \u2014 proxy informacional"
+          }
+        },
+        "homeostasis": {
+          "timestamp": 1793898829.875084,
+          "state": "optimal",
+          "action": "monitor",
+          "state_changed": false,
+          "sublimated": false,
+          "metrics": {
+            "cpu_percent": 29.7,
+            "memory_percent": 11.7,
+            "disk_percent": 0.0,
+            "vram_percent": 49.78346915017462,
+            "timestamp": 1793898829.8750691,
+            "state": "optimal"
+          },
+          "throttled": false,
+          "producing": false
+        },
+        "psi_engine": {
+          "psi_gaussian": 0.166736,
+          "sigma_support": 0.38202
+        },
+        "desire": {
+          "intensity": 0.0,
+          "vector": {
+            "homeostatic_optimum": 0.0,
+            "vram_headroom": 0.0
+          },
+          "rust_desire": {
+            "lack_of_being": 0.1,
+            "epsilon_desire": 0.1254,
+            "drive_type": "HOMEOSTATIC_SATISFACTION",
+            "history_len": 1
+          }
+        },
+        "phi_meta": {
+          "phi_meta": 0.0,
+          "complexity": -0.0,
+          "integration": 0.0,
+          "window": 1,
+          "elements": [
+            "activations",
+            "affect_analyst",
+            "affect_executor",
+            "homeo_stable",
+            "mesh_active",
+            "soma_ok",
+            "soul_phi"
+          ],
+          "mip_side_a": [],
+          "mip_side_b": [],
+          "mip_top3": [],
+          "n_distinct_states": 1,
+          "diversity": 1.0,
+          "scale": "bits over 7 binary flags, window 40 [PRX]",
+          "e_landauer_j_per_bit": "2.9107e-21",
+          "power_w": 49.0,
+          "temp_c": 31,
+          "bit_flow_real_bits_s": "1.6834e+22",
+          "phi_integrated_bits": 0.0,
+          "cohesion": 0.0,
+          "phi_bit_flow_rate_bits_s": "0.0000e+00",
+          "vs_i5_ratio": 1.2416,
+          "pressure_channels": {
+            "psi_io": 0.0153,
+            "psi_mem": 0.0,
+            "psi_cpu": 0.0006,
+            "vram_ratio": 0.4978,
+            "load_core": 0.23
+          },
+          "pressure_load": 0.1529,
+          "pressure_headroom": 0.8471,
+          "phi_effective_bits_s": "0.0000e+00"
+        },
+        "duration_s": null,
+        "metastability": {
+          "s_meta": null,
+          "coherence_now": 0.6151,
+          "m_t": {
+            "pressure_load": 0.1529,
+            "cohesion": 0.0,
+            "producing": false,
+            "homeo_state": "optimal"
+          },
+          "c_soma": {
+            "power": 0.3063,
+            "temp": 0.0175,
+            "vram": 0.4978,
+            "c_soma": 0.2739
+          },
+          "corroboration": 0.0,
+          "angst": 0,
+          "channels": {
+            "psi_io_some": 0.0153,
+            "psi_mem_some": 0.0,
+            "psi_cpu_some": 0.0006,
+            "cpu_percent": 0.297,
+            "vram_ratio": 0.4978,
+            "gpu_temp": 0.0175
+          },
+          "window": 1,
+          "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
+        },
+        "freud10d": {
+          "consciousness": 0.15802203118801117,
+          "state": {
+            "phi": 0.06248525157570839,
+            "psi": 0.0993557795882225,
+            "sigma": 0.053938884288072586,
+            "epsilon": 0.08019968867301941,
+            "omega": 0.15802203118801117,
+            "lambda_": 0.09903719276189804,
+            "zeta": 0.2128492146730423
+          },
+          "state_vec": [
+            0.06248525157570839,
+            0.0993557795882225,
+            0.15802203118801117,
+            0.08614135533571243,
+            0.05045946314930916,
+            0.08019968867301941,
+            0.2128492146730423,
+            0.053938884288072586,
+            0.09906495362520218,
+            0.09903719276189804
+          ],
+          "inrc": {
+            "op": "N",
+            "reason": "stagnant_field_mean_abs=0.100",
+            "transformed_vec": [
+              -0.06249,
+              -0.09936,
+              -0.15802,
+              -0.08614,
+              -0.05046,
+              -0.0802,
+              -0.21285,
+              -0.05394,
+              -0.09906,
+              -0.09904
+            ],
+            "steering_hint": "INRC-N (Nega\u00e7\u00e3o): Campo estagnado ou risco de persevera\u00e7\u00e3o \u2014 PARE de repetir a mesma chamada/hip\u00f3tese; formule a contra-hip\u00f3tese e inspecione outro ponto do c\u00f3digo."
+          },
+          "topographic": {
+            "conscious": 0.15802203118801117,
+            "preconscious": 0.08614135533571243,
+            "unconscious": 0.05045946314930916,
+            "repression": 0.30000001192092896,
+            "return_repressed": 0.20000000298023224
+          },
+          "structural": {
+            "id_drive": 0.08019968867301941,
+            "ego_mediation": 0.2128492146730423,
+            "superego_censorship": 0.053938884288072586,
+            "conflict_intensity": 0.026260804384946823
+          },
+          "neutrosophic": {
+            "phi": {
+              "T": 0.06248525157570839,
+              "I": 0.9375147223472595,
+              "F": 0.0
+            },
+            "psi": {
+              "T": 0.0993557795882225,
+              "I": 0.9006442427635193,
+              "F": 0.0
+            },
+            "omega": {
+              "T": 0.15802203118801117,
+              "I": 0.8419779539108276,
+              "F": 0.0
+            },
+            "theta": {
+              "T": 0.08614135533571243,
+              "I": 0.9138586521148682,
+              "F": 0.0
+            },
+            "upsilon": {
+              "T": 0.05045946314930916,
+              "I": 0.9495405554771423,
+              "F": 0.0
+            },
+            "xi": {
+              "T": 0.08019968867301941,
+              "I": 0.9198002815246582,
+              "F": 0.0
+            },
+            "zeta": {
+              "T": 0.2128492146730423,
+              "I": 0.7871508002281189,
+              "F": 0.0
+            },
+            "eta": {
+              "T": 0.053938884288072586,
+              "I": 0.9460611343383789,
+              "F": 0.0
+            },
+            "kappa": {
+              "T": 0.09906495362520218,
+              "I": 0.9009350538253784,
+              "F": 0.0
+            },
+            "lambda_": {
+              "T": 0.09903719276189804,
+              "I": 0.9009628295898438,
+              "F": 0.0
+            }
+          },
+          "tension": 1.0015538148581982,
+          "pleasure": null,
+          "tension_window": [
+            1.0015537738800049
+          ]
+        },
+        "sovereign_kuramoto": {
+          "kuramoto_r_pair": 0.9943,
+          "kuramoto_r_triad": 0.969,
+          "hopf_spectral_radius": 1.167,
+          "hopf_regime": "chaotic",
+          "hopf_reading": "neurotic_chaos",
+          "lif_mean_threshold": -44.7535
+        },
+        "attractor_10d": {
+          "current_attractor": "POSICAO_EP",
+          "distance_to_attractor": 1.0222,
+          "regime_confidence": 0.3598,
+          "transition_candidate": "NENHUM",
+          "state_norm": 0.3507,
+          "all_distances": {
+            "ESTAVEL_REPARACAO": 2.1508,
+            "COLAPSO_DISSOCIACAO": 2.4623,
+            "POSICAO_EP": 1.0222,
+            "POSICAO_D": 1.7773
+          }
+        },
+        "dendritic": {
+          "n_graph_nodes": 16,
+          "dendritic_depth": 4.5583,
+          "morphology_score": 0.6961,
+          "ipr_dim_mean": 0.512481,
+          "eff_dim_ratio_mean": 0.016396,
+          "contract_retention_cosine": 0.1585,
+          "contract_drift": 0.8415,
+          "scale": "layer correlation graph [PRX/TXT]",
+          "file": "20261105T164240730930_google_gemma_4_12B_it.npz",
+          "model": "google/gemma-4-12B-it",
+          "n_layers": 49,
+          "n_steps": 65
+        },
+        "workspace": {
+          "distinct_prefixes": 0,
+          "prefixes": [],
+          "n_active_prefixes": 0,
+          "synergy_proxy": 0.0,
+          "coherence_t": null,
+          "ignited": false,
+          "window": 1,
+          "scale": "prefix-count + bits [TXT/PRX]",
+          "statute": "GWT-lite broadcast texture \u2014 not consciousness, not \u03a6"
+        }
+      }
+    },
+    {
+      "ts": 1793898830.1617537,
+      "name": "kernel.workspace",
+      "payload": {
+        "distinct_prefixes": 0,
+        "prefixes": [],
+        "n_active_prefixes": 0,
+        "synergy_proxy": 0.0,
+        "coherence_t": null,
+        "ignited": false,
+        "window": 1,
+        "scale": "prefix-count + bits [TXT/PRX]",
+        "statute": "GWT-lite broadcast texture \u2014 not consciousness, not \u03a6"
+      }
+    },
+    {
+      "ts": 1793898830.1574755,
+      "name": "kernel.dendritic",
+      "payload": {
+        "n_graph_nodes": 16,
+        "dendritic_depth": 4.5583,
+        "morphology_score": 0.6961,
+        "ipr_dim_mean": 0.512481,
+        "eff_dim_ratio_mean": 0.016396,
+        "contract_retention_cosine": 0.1585,
+        "contract_drift": 0.8415,
+        "scale": "layer correlation graph [PRX/TXT]",
+        "file": "20261105T164240730930_google_gemma_4_12B_it.npz",
+        "model": "google/gemma-4-12B-it",
+        "n_layers": 49,
+        "n_steps": 65
+      }
+    },
+    {
+      "ts": 1793898829.9017613,
+      "name": "kernel.attractor_10d",
+      "payload": {
+        "current_attractor": "POSICAO_EP",
+        "distance_to_attractor": 1.0222,
+        "regime_confidence": 0.3598,
+        "transition_candidate": "NENHUM",
+        "state_norm": 0.3507,
+        "all_distances": {
+          "ESTAVEL_REPARACAO": 2.1508,
+          "COLAPSO_DISSOCIACAO": 2.4623,
+          "POSICAO_EP": 1.0222,
+          "POSICAO_D": 1.7773
+        }
+      }
+    },
+    {
+      "ts": 1793898829.8985677,
+      "name": "kernel.sovereign_kuramoto",
+      "payload": {
+        "kuramoto_r_pair": 0.9943,
+        "kuramoto_r_triad": 0.969,
+        "hopf_spectral_radius": 1.167,
+        "hopf_regime": "chaotic",
+        "hopf_reading": "neurotic_chaos",
+        "lif_mean_threshold": -44.7535
+      }
+    },
+    {
+      "ts": 1793898829.8912122,
+      "name": "kernel.freud10d",
+      "payload": {
+        "consciousness": 0.15802203118801117,
+        "state": {
+          "phi": 0.06248525157570839,
+          "psi": 0.0993557795882225,
+          "sigma": 0.053938884288072586,
+          "epsilon": 0.08019968867301941,
+          "omega": 0.15802203118801117,
+          "lambda_": 0.09903719276189804,
+          "zeta": 0.2128492146730423
+        },
+        "state_vec": [
+          0.06248525157570839,
+          0.0993557795882225,
+          0.15802203118801117,
+          0.08614135533571243,
+          0.05045946314930916,
+          0.08019968867301941,
+          0.2128492146730423,
+          0.053938884288072586,
+          0.09906495362520218,
+          0.09903719276189804
+        ],
+        "inrc": {
+          "op": "N",
+          "reason": "stagnant_field_mean_abs=0.100",
+          "transformed_vec": [
+            -0.06249,
+            -0.09936,
+            -0.15802,
+            -0.08614,
+            -0.05046,
+            -0.0802,
+            -0.21285,
+            -0.05394,
+            -0.09906,
+            -0.09904
+          ],
+          "steering_hint": "INRC-N (Nega\u00e7\u00e3o): Campo estagnado ou risco de persevera\u00e7\u00e3o \u2014 PARE de repetir a mesma chamada/hip\u00f3tese; formule a contra-hip\u00f3tese e inspecione outro ponto do c\u00f3digo."
+        },
+        "topographic": {
+          "conscious": 0.15802203118801117,
+          "preconscious": 0.08614135533571243,
+          "unconscious": 0.05045946314930916,
+          "repression": 0.30000001192092896,
+          "return_repressed": 0.20000000298023224
+        },
+        "structural": {
+          "id_drive": 0.08019968867301941,
+          "ego_mediation": 0.2128492146730423,
+          "superego_censorship": 0.053938884288072586,
+          "conflict_intensity": 0.026260804384946823
+        },
+        "neutrosophic": {
+          "phi": {
+            "T": 0.06248525157570839,
+            "I": 0.9375147223472595,
+            "F": 0.0
+          },
+          "psi": {
+            "T": 0.0993557795882225,
+            "I": 0.9006442427635193,
+            "F": 0.0
+          },
+          "omega": {
+            "T": 0.15802203118801117,
+            "I": 0.8419779539108276,
+            "F": 0.0
+          },
+          "theta": {
+            "T": 0.08614135533571243,
+            "I": 0.9138586521148682,
+            "F": 0.0
+          },
+          "upsilon": {
+            "T": 0.05045946314930916,
+            "I": 0.9495405554771423,
+            "F": 0.0
+          },
+          "xi": {
+            "T": 0.08019968867301941,
+            "I": 0.9198002815246582,
+            "F": 0.0
+          },
+          "zeta": {
+            "T": 0.2128492146730423,
+            "I": 0.7871508002281189,
+            "F": 0.0
+          },
+          "eta": {
+            "T": 0.053938884288072586,
+            "I": 0.9460611343383789,
+            "F": 0.0
+          },
+          "kappa": {
+            "T": 0.09906495362520218,
+            "I": 0.9009350538253784,
+            "F": 0.0
+          },
+          "lambda_": {
+            "T": 0.09903719276189804,
+            "I": 0.9009628295898438,
+            "F": 0.0
+          }
+        },
+        "tension": 1.0015538148581982,
+        "pleasure": null,
+        "tension_window": [
+          1.0015537738800049
+        ]
+      }
+    },
+    {
+      "ts": 1793898829.8878794,
+      "name": "kernel.metastability",
+      "payload": {
+        "s_meta": null,
+        "coherence_now": 0.6151,
+        "m_t": {
+          "pressure_load": 0.1529,
+          "cohesion": 0.0,
+          "producing": false,
+          "homeo_state": "optimal"
+        },
+        "c_soma": {
+          "power": 0.3063,
+          "temp": 0.0175,
+          "vram": 0.4978,
+          "c_soma": 0.2739
+        },
+        "corroboration": 0.0,
+        "angst": 0,
+        "channels": {
+          "psi_io_some": 0.0153,
+          "psi_mem_some": 0.0,
+          "psi_cpu_some": 0.0006,
+          "cpu_percent": 0.297,
+          "vram_ratio": 0.4978,
+          "gpu_temp": 0.0175
+        },
+        "window": 1,
+        "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
+      }
+    },
+    {
+      "ts": 1793898829.8843155,
+      "name": "kernel.phi_meta",
+      "payload": {
+        "phi_meta": 0.0,
+        "complexity": -0.0,
+        "integration": 0.0,
+        "window": 1,
+        "elements": [
+          "activations",
+          "affect_analyst",
+          "affect_executor",
+          "homeo_stable",
+          "mesh_active",
+          "soma_ok",
+          "soul_phi"
+        ],
+        "mip_side_a": [],
+        "mip_side_b": [],
+        "mip_top3": [],
+        "n_distinct_states": 1,
+        "diversity": 1.0,
+        "scale": "bits over 7 binary flags, window 40 [PRX]",
+        "e_landauer_j_per_bit": "2.9107e-21",
+        "power_w": 49.0,
+        "temp_c": 31,
+        "bit_flow_real_bits_s": "1.6834e+22",
+        "phi_integrated_bits": 0.0,
+        "cohesion": 0.0,
+        "phi_bit_flow_rate_bits_s": "0.0000e+00",
+        "vs_i5_ratio": 1.2416,
+        "pressure_channels": {
+          "psi_io": 0.0153,
+          "psi_mem": 0.0,
+          "psi_cpu": 0.0006,
+          "vram_ratio": 0.4978,
+          "load_core": 0.23
+        },
+        "pressure_load": 0.1529,
+        "pressure_headroom": 0.8471,
+        "phi_effective_bits_s": "0.0000e+00"
+      }
+    },
+    {
+      "ts": 1793898829.8807027,
+      "name": "agency.desire",
+      "payload": {
+        "intensity": 0.0,
+        "goals": [
+          "homeostatic_optimum",
+          "vram_headroom"
+        ]
+      }
+    },
+    {
+      "ts": 1793898829.875131,
+      "name": "kernel.homeostasis",
+      "payload": {
+        "timestamp": 1793898829.875084,
+        "state": "optimal",
+        "action": "monitor",
+        "state_changed": false,
+        "sublimated": false,
+        "metrics": {
+          "cpu_percent": 29.7,
+          "memory_percent": 11.7,
+          "disk_percent": 0.0,
+          "vram_percent": 49.78346915017462,
+          "timestamp": 1793898829.8750691,
+          "state": "optimal"
+        },
+        "throttled": false,
+        "producing": false
+      }
+    },
+    {
+      "ts": 1793898829.8694966,
+      "name": "kernel.phi_layer",
+      "payload": {
+        "google/gemma-4-E4B-it": {
+          "phi_breadth": 0.9861,
+          "phi_temporal_mi": 0.9994,
+          "phi_internal": 0.7839,
+          "n_records": 64,
+          "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
+          "spectral": {
+            "eff_rank_mean": 2.764,
+            "spectral_entropy_mean": 0.9173,
+            "ipr_dim_mean": 29.94,
+            "ipr_dim_pct": 1.17,
+            "bond_dim_max_mean": 40.0,
+            "hidden_dim": 2560,
+            "n_layers": 43,
+            "n_files": 8,
+            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+          }
+        },
+        "google/gemma-4-12B-it": {
+          "phi_breadth": 0.9712,
+          "phi_temporal_mi": 1.0488,
+          "phi_internal": 0.7845,
+          "n_records": 69,
+          "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
+          "spectral": {
+            "eff_rank_mean": 2.144,
+            "spectral_entropy_mean": 0.6481,
+            "ipr_dim_mean": 62.96,
+            "ipr_dim_pct": 1.64,
+            "bond_dim_max_mean": 59.69,
+            "hidden_dim": 3840,
+            "n_layers": 49,
+            "n_files": 8,
+            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+          }
+        },
+        "google/gemma-4-31B-it": {
+          "spectral": {
+            "eff_rank_mean": 1.22,
+            "spectral_entropy_mean": 0.1909,
+            "ipr_dim_mean": 87.19,
+            "ipr_dim_pct": 1.62,
+            "bond_dim_max_mean": 64.0,
+            "hidden_dim": 5376,
+            "n_layers": 61,
+            "n_files": 2,
+            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+          },
+          "n_records": 0,
+          "note": "spectral-only (janela <6) \u2014 proxy informacional"
+        }
+      }
+    },
+    {
+      "ts": 1793898829.4814904,
+      "name": "kernel.attractor",
+      "payload": {
+        "google/gemma-4-E4B-it": {
+          "n_records": 64,
+          "norm_drift_mean": 10.0636,
+          "divergent_layer": 42,
+          "drift_concentration": 0.1095,
+          "entropy_now": 4.2179,
+          "entropy_baseline": 4.1436,
+          "entropy_collapse": 0.0,
+          "attractor_score": 0.4,
+          "glial_gate": {
+            "allow_generation": true,
+            "glial": {
+              "habituated": 0.7275,
+              "sensitized": 0.0,
+              "vagus_sedative": 0.0,
+              "pause_code": null,
+              "n": 64,
+              "mean_signal": 4.1528
+            },
+            "reason": "ok"
+          }
+        },
+        "google/gemma-4-12B-it": {
+          "n_records": 69,
+          "norm_drift_mean": 14.1874,
+          "divergent_layer": 48,
+          "drift_concentration": 0.1114,
+          "entropy_now": 2.6866,
+          "entropy_baseline": 2.4914,
+          "entropy_collapse": 0.0,
+          "attractor_score": 0.4,
+          "glial_gate": {
+            "allow_generation": false,
+            "glial": {
+              "habituated": 0.995,
+              "sensitized": 1.0,
+              "vagus_sedative": 0.0,
+              "pause_code": null,
+              "n": 69,
+              "mean_signal": 2.514
+            },
+            "reason": "habituated>=0.8"
+          }
+        }
+      }
+    },
+    {
+      "ts": 1793898817.4897993,
+      "name": "kernel.drift",
+      "payload": {}
+    },
     {
       "ts": 1793898817.4870234,
       "name": "kernel.soma",
@@ -854,999 +1711,6 @@
       "ts": 1793898817.4094522,
       "name": "kernel.drift",
       "payload": {}
-    },
-    {
-      "ts": 1793898817.4064307,
-      "name": "kernel.soma",
-      "payload": {
-        "cpu_percent": 37.3,
-        "ram_percent": 11.7,
-        "load_per_core": 0.233,
-        "disk_percent": 41.8,
-        "psi_cpu_some": 0.0,
-        "psi_io_some": 2.66,
-        "psi_mem_some": 0.0,
-        "gpu_vram_used_gb": 21.382,
-        "gpu_vram_total_gb": 42.95,
-        "gpu_util_percent": 0,
-        "gpu_power_w": 49.0,
-        "gpu_temp_c": 31
-      }
-    },
-    {
-      "ts": 1793898817.4032438,
-      "name": "kernel.soul",
-      "payload": {
-        "phi": 0.2633,
-        "psi": 0.7059,
-        "sigma": 0.2202,
-        "epsilon": 0.55,
-        "dominant_token": "tadi-afex-void"
-      }
-    },
-    {
-      "ts": 1793898817.400293,
-      "name": "kernel.affect",
-      "payload": {
-        "analyst": {
-          "status": "ok",
-          "n_activations": 32,
-          "attention_entropy_mean": 2.5867,
-          "hidden_norm_mean": 149.6942,
-          "last_ts": "2026-11-05T16:42:40.427348+00:00"
-        },
-        "executor": {
-          "status": "ok",
-          "n_activations": 32,
-          "attention_entropy_mean": 4.2304,
-          "hidden_norm_mean": 125.1839,
-          "last_ts": "2026-11-05T16:32:47.085687+00:00"
-        },
-        "mono_source": false
-      }
-    },
-    {
-      "ts": 1793898817.396538,
-      "name": "kernel.cycle",
-      "payload": {
-        "ts": 1793898816.5248628,
-        "models": {},
-        "affect": {
-          "analyst": {
-            "status": "ok",
-            "n_activations": 32,
-            "attention_entropy_mean": 2.5867,
-            "hidden_norm_mean": 149.6942,
-            "last_ts": "2026-11-05T16:42:40.427348+00:00"
-          },
-          "executor": {
-            "status": "ok",
-            "n_activations": 32,
-            "attention_entropy_mean": 4.2304,
-            "hidden_norm_mean": 125.1839,
-            "last_ts": "2026-11-05T16:32:47.085687+00:00"
-          }
-        },
-        "soul": {
-          "phi": 0.2633,
-          "psi": 0.7059,
-          "sigma": 0.2202,
-          "epsilon": 0.55,
-          "dominant_token": "tadi-afex-void"
-        },
-        "soma": {
-          "cpu_percent": 37.3,
-          "ram_percent": 11.7,
-          "load_per_core": 0.233,
-          "disk_percent": 41.8,
-          "psi_cpu_some": 0.0,
-          "psi_io_some": 2.66,
-          "psi_mem_some": 0.0,
-          "gpu_vram_used_gb": 21.382,
-          "gpu_vram_total_gb": 42.95,
-          "gpu_util_percent": 0,
-          "gpu_power_w": 49.0,
-          "gpu_temp_c": 31
-        },
-        "mesh_topics": [],
-        "drift": {},
-        "producing": false,
-        "attractor": {
-          "google/gemma-4-E4B-it": {
-            "n_records": 64,
-            "norm_drift_mean": 10.0636,
-            "divergent_layer": 42,
-            "drift_concentration": 0.1095,
-            "entropy_now": 4.2179,
-            "entropy_baseline": 4.1436,
-            "entropy_collapse": 0.0,
-            "attractor_score": 0.4,
-            "glial_gate": {
-              "allow_generation": true,
-              "glial": {
-                "habituated": 0.7275,
-                "sensitized": 0.0,
-                "vagus_sedative": 0.0,
-                "pause_code": null,
-                "n": 64,
-                "mean_signal": 4.1528
-              },
-              "reason": "ok"
-            }
-          },
-          "google/gemma-4-12B-it": {
-            "n_records": 69,
-            "norm_drift_mean": 14.1874,
-            "divergent_layer": 48,
-            "drift_concentration": 0.1114,
-            "entropy_now": 2.6866,
-            "entropy_baseline": 2.4914,
-            "entropy_collapse": 0.0,
-            "attractor_score": 0.4,
-            "glial_gate": {
-              "allow_generation": false,
-              "glial": {
-                "habituated": 0.995,
-                "sensitized": 1.0,
-                "vagus_sedative": 0.0,
-                "pause_code": null,
-                "n": 69,
-                "mean_signal": 2.514
-              },
-              "reason": "habituated>=0.8"
-            }
-          }
-        },
-        "phi_layer": {
-          "google/gemma-4-E4B-it": {
-            "phi_breadth": 0.9861,
-            "phi_temporal_mi": 0.9994,
-            "phi_internal": 0.7839,
-            "n_records": 64,
-            "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
-            "spectral": {
-              "eff_rank_mean": 2.764,
-              "spectral_entropy_mean": 0.9173,
-              "ipr_dim_mean": 29.94,
-              "ipr_dim_pct": 1.17,
-              "bond_dim_max_mean": 40.0,
-              "hidden_dim": 2560,
-              "n_layers": 43,
-              "n_files": 8,
-              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-            }
-          },
-          "google/gemma-4-12B-it": {
-            "phi_breadth": 0.9712,
-            "phi_temporal_mi": 1.0488,
-            "phi_internal": 0.7845,
-            "n_records": 69,
-            "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
-            "spectral": {
-              "eff_rank_mean": 2.144,
-              "spectral_entropy_mean": 0.6481,
-              "ipr_dim_mean": 62.96,
-              "ipr_dim_pct": 1.64,
-              "bond_dim_max_mean": 59.69,
-              "hidden_dim": 3840,
-              "n_layers": 49,
-              "n_files": 8,
-              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-            }
-          },
-          "google/gemma-4-31B-it": {
-            "spectral": {
-              "eff_rank_mean": 1.22,
-              "spectral_entropy_mean": 0.1909,
-              "ipr_dim_mean": 87.19,
-              "ipr_dim_pct": 1.62,
-              "bond_dim_max_mean": 64.0,
-              "hidden_dim": 5376,
-              "n_layers": 61,
-              "n_files": 2,
-              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-            },
-            "n_records": 0,
-            "note": "spectral-only (janela <6) \u2014 proxy informacional"
-          }
-        },
-        "homeostasis": {
-          "timestamp": 1793898817.09412,
-          "state": "optimal",
-          "action": "monitor",
-          "state_changed": false,
-          "sublimated": false,
-          "metrics": {
-            "cpu_percent": 37.3,
-            "memory_percent": 11.7,
-            "disk_percent": 0.0,
-            "vram_percent": 49.78346915017462,
-            "timestamp": 1793898817.094102,
-            "state": "optimal"
-          },
-          "throttled": false,
-          "producing": false
-        },
-        "psi_engine": {
-          "psi_gaussian": 0.166483,
-          "sigma_support": 0.38202
-        },
-        "desire": {
-          "intensity": 0.0,
-          "vector": {
-            "homeostatic_optimum": 0.0,
-            "vram_headroom": 0.0
-          },
-          "rust_desire": {
-            "lack_of_being": 0.1,
-            "epsilon_desire": 0.1405,
-            "drive_type": "HOMEOSTATIC_SATISFACTION",
-            "history_len": 1
-          }
-        },
-        "phi_meta": {
-          "phi_meta": 0.0,
-          "complexity": -0.0,
-          "integration": 0.0,
-          "window": 1,
-          "elements": [
-            "activations",
-            "affect_analyst",
-            "affect_executor",
-            "homeo_stable",
-            "mesh_active",
-            "soma_ok",
-            "soul_phi"
-          ],
-          "mip_side_a": [],
-          "mip_side_b": [],
-          "mip_top3": [],
-          "n_distinct_states": 1,
-          "diversity": 1.0,
-          "scale": "bits over 7 binary flags, window 40 [PRX]",
-          "e_landauer_j_per_bit": "2.9107e-21",
-          "power_w": 49.0,
-          "temp_c": 31,
-          "bit_flow_real_bits_s": "1.6834e+22",
-          "phi_integrated_bits": 0.0,
-          "cohesion": 0.0,
-          "phi_bit_flow_rate_bits_s": "0.0000e+00",
-          "vs_i5_ratio": 1.2416,
-          "pressure_channels": {
-            "psi_io": 0.0266,
-            "psi_mem": 0.0,
-            "psi_cpu": 0.0,
-            "vram_ratio": 0.4978,
-            "load_core": 0.233
-          },
-          "pressure_load": 0.1571,
-          "pressure_headroom": 0.8429,
-          "phi_effective_bits_s": "0.0000e+00"
-        },
-        "duration_s": null,
-        "metastability": {
-          "s_meta": null,
-          "coherence_now": 0.593,
-          "m_t": {
-            "pressure_load": 0.1571,
-            "cohesion": 0.0,
-            "producing": false,
-            "homeo_state": "optimal"
-          },
-          "c_soma": {
-            "power": 0.3063,
-            "temp": 0.0175,
-            "vram": 0.4978,
-            "c_soma": 0.2739
-          },
-          "corroboration": 0.0,
-          "angst": 0,
-          "channels": {
-            "psi_io_some": 0.0266,
-            "psi_mem_some": 0.0,
-            "psi_cpu_some": 0.0,
-            "cpu_percent": 0.373,
-            "vram_ratio": 0.4978,
-            "gpu_temp": 0.0175
-          },
-          "window": 1,
-          "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
-        },
-        "freud10d": {
-          "consciousness": 0.1620967537164688,
-          "state": {
-            "phi": 0.06415151059627533,
-            "psi": 0.10200866311788559,
-            "sigma": 0.05539087951183319,
-            "epsilon": 0.08233857154846191,
-            "omega": 0.1620967537164688,
-            "lambda_": 0.10167203098535538,
-            "zeta": 0.21829557418823242
-          },
-          "state_vec": [
-            0.06415151059627533,
-            0.10200866311788559,
-            0.1620967537164688,
-            0.08839806914329529,
-            0.05181053653359413,
-            0.08233857154846191,
-            0.21829557418823242,
-            0.05539087951183319,
-            0.10169199854135513,
-            0.10167203098535538
-          ],
-          "inrc": {
-            "op": "N",
-            "reason": "stagnant_field_mean_abs=0.103",
-            "transformed_vec": [
-              -0.06415,
-              -0.10201,
-              -0.1621,
-              -0.0884,
-              -0.05181,
-              -0.08234,
-              -0.2183,
-              -0.05539,
-              -0.10169,
-              -0.10167
-            ],
-            "steering_hint": "INRC-N (Nega\u00e7\u00e3o): Campo estagnado ou risco de persevera\u00e7\u00e3o \u2014 PARE de repetir a mesma chamada/hip\u00f3tese; formule a contra-hip\u00f3tese e inspecione outro ponto do c\u00f3digo."
-          },
-          "topographic": {
-            "conscious": 0.1620967537164688,
-            "preconscious": 0.08839806914329529,
-            "unconscious": 0.05181053653359413,
-            "repression": 0.30000001192092896,
-            "return_repressed": 0.20000000298023224
-          },
-          "structural": {
-            "id_drive": 0.08233857154846191,
-            "ego_mediation": 0.21829557418823242,
-            "superego_censorship": 0.05539087951183319,
-            "conflict_intensity": 0.026947692036628723
-          },
-          "neutrosophic": {
-            "phi": {
-              "T": 0.06415151059627533,
-              "I": 0.9358484745025635,
-              "F": 0.0
-            },
-            "psi": {
-              "T": 0.10200866311788559,
-              "I": 0.8979913592338562,
-              "F": 0.0
-            },
-            "omega": {
-              "T": 0.1620967537164688,
-              "I": 0.8379032611846924,
-              "F": 0.0
-            },
-            "theta": {
-              "T": 0.08839806914329529,
-              "I": 0.9116019010543823,
-              "F": 0.0
-            },
-            "upsilon": {
-              "T": 0.05181053653359413,
-              "I": 0.9481894373893738,
-              "F": 0.0
-            },
-            "xi": {
-              "T": 0.08233857154846191,
-              "I": 0.9176614284515381,
-              "F": 0.0
-            },
-            "zeta": {
-              "T": 0.21829557418823242,
-              "I": 0.7817044258117676,
-              "F": 0.0
-            },
-            "eta": {
-              "T": 0.05539087951183319,
-              "I": 0.9446091055870056,
-              "F": 0.0
-            },
-            "kappa": {
-              "T": 0.10169199854135513,
-              "I": 0.8983079791069031,
-              "F": 0.0
-            },
-            "lambda_": {
-              "T": 0.10167203098535538,
-              "I": 0.8983279466629028,
-              "F": 0.0
-            }
-          },
-          "tension": 1.0278545878827572,
-          "pleasure": null,
-          "tension_window": [
-            1.027854561805725
-          ]
-        },
-        "sovereign_kuramoto": {
-          "kuramoto_r_pair": 0.9943,
-          "kuramoto_r_triad": 0.9689,
-          "hopf_spectral_radius": 1.166,
-          "hopf_regime": "chaotic",
-          "hopf_reading": "neurotic_chaos",
-          "lif_mean_threshold": -44.8127
-        },
-        "attractor_10d": {
-          "current_attractor": "POSICAO_EP",
-          "distance_to_attractor": 1.0143,
-          "regime_confidence": 0.3626,
-          "transition_candidate": "NENHUM",
-          "state_norm": 0.3598,
-          "all_distances": {
-            "ESTAVEL_REPARACAO": 2.1423,
-            "COLAPSO_DISSOCIACAO": 2.4711,
-            "POSICAO_EP": 1.0143,
-            "POSICAO_D": 1.7688
-          }
-        },
-        "dendritic": {
-          "n_graph_nodes": 16,
-          "dendritic_depth": 4.5583,
-          "morphology_score": 0.6961,
-          "ipr_dim_mean": 0.512481,
-          "eff_dim_ratio_mean": 0.016396,
-          "contract_retention_cosine": 0.1585,
-          "contract_drift": 0.8415,
-          "scale": "layer correlation graph [PRX/TXT]",
-          "file": "20261105T164240730930_google_gemma_4_12B_it.npz",
-          "model": "google/gemma-4-12B-it",
-          "n_layers": 49,
-          "n_steps": 65
-        },
-        "workspace": {
-          "distinct_prefixes": 0,
-          "prefixes": [],
-          "n_active_prefixes": 0,
-          "synergy_proxy": 0.0,
-          "coherence_t": null,
-          "ignited": false,
-          "window": 1,
-          "scale": "prefix-count + bits [TXT/PRX]",
-          "statute": "GWT-lite broadcast texture \u2014 not consciousness, not \u03a6"
-        }
-      }
-    },
-    {
-      "ts": 1793898817.393088,
-      "name": "kernel.workspace",
-      "payload": {
-        "distinct_prefixes": 0,
-        "prefixes": [],
-        "n_active_prefixes": 0,
-        "synergy_proxy": 0.0,
-        "coherence_t": null,
-        "ignited": false,
-        "window": 1,
-        "scale": "prefix-count + bits [TXT/PRX]",
-        "statute": "GWT-lite broadcast texture \u2014 not consciousness, not \u03a6"
-      }
-    },
-    {
-      "ts": 1793898817.3888047,
-      "name": "kernel.dendritic",
-      "payload": {
-        "n_graph_nodes": 16,
-        "dendritic_depth": 4.5583,
-        "morphology_score": 0.6961,
-        "ipr_dim_mean": 0.512481,
-        "eff_dim_ratio_mean": 0.016396,
-        "contract_retention_cosine": 0.1585,
-        "contract_drift": 0.8415,
-        "scale": "layer correlation graph [PRX/TXT]",
-        "file": "20261105T164240730930_google_gemma_4_12B_it.npz",
-        "model": "google/gemma-4-12B-it",
-        "n_layers": 49,
-        "n_steps": 65
-      }
-    },
-    {
-      "ts": 1793898817.2417457,
-      "name": "kernel.freud10d",
-      "payload": {
-        "consciousness": 0.1616436243057251,
-        "state": {
-          "phi": 0.06396599858999252,
-          "psi": 0.10171328485012054,
-          "sigma": 0.05522916465997696,
-          "epsilon": 0.08210042864084244,
-          "omega": 0.1616436243057251,
-          "lambda_": 0.10137869417667389,
-          "zeta": 0.21769003570079803
-        },
-        "state_vec": [
-          0.06396599858999252,
-          0.10171328485012054,
-          0.1616436243057251,
-          0.08814696222543716,
-          0.051660094410181046,
-          0.08210042864084244,
-          0.21769003570079803,
-          0.05522916465997696,
-          0.10139957070350647,
-          0.10137869417667389
-        ],
-        "inrc": {
-          "op": "N",
-          "reason": "stagnant_field_mean_abs=0.102"
-        },
-        "tension": 1.0249278582632542,
-        "pleasure": 0.044438838958740234,
-        "tension_window": [
-          0.9984360337257385,
-          0.9674503803253174,
-          0.9480696320533752,
-          0.9678202867507935,
-          0.9727969169616699,
-          0.9463136196136475,
-          0.9433741569519043,
-          0.9762575626373291,
-          0.9513103365898132,
-          0.947259247303009,
-          0.968896746635437,
-          0.9588978290557861,
-          0.9374227523803711,
-          0.953031063079834,
-          0.9351892471313477,
-          0.9368475079536438,
-          0.9456716775894165,
-          0.9346136450767517,
-          1.0020884275436401,
-          1.0342004299163818,
-          0.9974077343940735,
-          0.9807229042053223,
-          0.9908474683761597,
-          0.9963707327842712,
-          0.982635498046875,
-          0.9476644992828369,
-          1.0410354137420654,
-          1.0463042259216309,
-          1.01250422000885,
-          1.0012866258621216,
-          1.069366693496704,
-          1.0249278545379639
-        ]
-      }
-    },
-    {
-      "ts": 1793898817.2369456,
-      "name": "kernel.metastability",
-      "payload": {
-        "s_meta": 0.1499,
-        "coherence_now": 0.6191,
-        "m_t": {
-          "pressure_load": 0.1571,
-          "cohesion": 0.5886,
-          "producing": false,
-          "homeo_state": "optimal"
-        },
-        "c_soma": {
-          "power": 0.3081,
-          "temp": 0.0175,
-          "latency": 0.0831,
-          "vram": 0.4978,
-          "c_soma": 0.2267
-        },
-        "corroboration": 0.0,
-        "angst": 0,
-        "channels": {
-          "psi_io_some": 0.0266,
-          "psi_mem_some": 0.0,
-          "psi_cpu_some": 0.0,
-          "cpu_percent": 0.29,
-          "vram_ratio": 0.4978,
-          "gpu_temp": 0.0175
-        },
-        "window": 40,
-        "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
-      }
-    },
-    {
-      "ts": 1793898817.2331607,
-      "name": "kernel.phi_meta",
-      "payload": {
-        "phi_meta": 0.7564,
-        "complexity": 1.2851,
-        "integration": 0.0,
-        "window": 40,
-        "elements": [
-          "activations",
-          "affect_analyst",
-          "affect_executor",
-          "homeo_stable",
-          "mesh_active",
-          "soma_ok",
-          "soul_phi"
-        ],
-        "mip_side_a": [
-          "activations",
-          "homeo_stable"
-        ],
-        "mip_side_b": [
-          "affect_analyst",
-          "affect_executor",
-          "mesh_active",
-          "soma_ok",
-          "soul_phi"
-        ],
-        "mip_top3": [
-          {
-            "loss": 0.7564,
-            "side_a": [
-              "activations",
-              "homeo_stable"
-            ],
-            "side_b": [
-              "affect_analyst",
-              "affect_executor",
-              "mesh_active",
-              "soma_ok",
-              "soul_phi"
-            ]
-          },
-          {
-            "loss": 0.7564,
-            "side_a": [
-              "activations",
-              "affect_analyst",
-              "homeo_stable"
-            ],
-            "side_b": [
-              "affect_executor",
-              "mesh_active",
-              "soma_ok",
-              "soul_phi"
-            ]
-          },
-          {
-            "loss": 0.7564,
-            "side_a": [
-              "activations",
-              "affect_executor",
-              "homeo_stable"
-            ],
-            "side_b": [
-              "affect_analyst",
-              "mesh_active",
-              "soma_ok",
-              "soul_phi"
-            ]
-          }
-        ],
-        "n_distinct_states": 5,
-        "diversity": 0.125,
-        "scale": "bits over 7 binary flags, window 40 [PRX]",
-        "e_landauer_j_per_bit": "2.9107e-21",
-        "power_w": 49.3,
-        "temp_c": 31,
-        "bit_flow_real_bits_s": "1.6938e+22",
-        "phi_integrated_bits": 0.7564310932482261,
-        "cohesion": 0.5886,
-        "phi_bit_flow_rate_bits_s": "9.9694e+21",
-        "vs_i5_ratio": 1.2492,
-        "pressure_channels": {
-          "psi_io": 0.0266,
-          "psi_mem": 0.0,
-          "psi_cpu": 0.0,
-          "vram_ratio": 0.4978,
-          "load_core": 0.233
-        },
-        "pressure_load": 0.1571,
-        "pressure_headroom": 0.8429,
-        "phi_effective_bits_s": "8.4035e+21"
-      }
-    },
-    {
-      "ts": 1793898817.2159698,
-      "name": "agency.desire",
-      "payload": {
-        "intensity": 0.0,
-        "goals": [
-          "homeostatic_optimum",
-          "vram_headroom"
-        ]
-      }
-    },
-    {
-      "ts": 1793898817.2127228,
-      "name": "kernel.homeostasis",
-      "payload": {
-        "timestamp": 1793898817.2126577,
-        "state": "optimal",
-        "action": "monitor",
-        "state_changed": false,
-        "sublimated": false,
-        "metrics": {
-          "cpu_percent": 29.0,
-          "memory_percent": 11.7,
-          "disk_percent": 0.0,
-          "vram_percent": 49.78346915017462,
-          "timestamp": 1793898817.212634,
-          "state": "optimal"
-        },
-        "throttled": false,
-        "producing": false
-      }
-    },
-    {
-      "ts": 1793898817.2061372,
-      "name": "kernel.phi_layer",
-      "payload": {
-        "google/gemma-4-12B-it": {
-          "phi_breadth": 0.9721,
-          "phi_temporal_mi": 0.8974,
-          "phi_internal": 0.7559,
-          "n_records": 256,
-          "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
-          "spectral": {
-            "eff_rank_mean": 2.144,
-            "spectral_entropy_mean": 0.6481,
-            "ipr_dim_mean": 62.96,
-            "ipr_dim_pct": 1.64,
-            "bond_dim_max_mean": 59.69,
-            "hidden_dim": 3840,
-            "n_layers": 49,
-            "n_files": 8,
-            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-          }
-        },
-        "google/gemma-4-E4B-it": {
-          "phi_breadth": 0.9866,
-          "phi_temporal_mi": 0.8414,
-          "phi_internal": 0.7538,
-          "n_records": 174,
-          "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
-          "spectral": {
-            "eff_rank_mean": 2.764,
-            "spectral_entropy_mean": 0.9173,
-            "ipr_dim_mean": 29.94,
-            "ipr_dim_pct": 1.17,
-            "bond_dim_max_mean": 40.0,
-            "hidden_dim": 2560,
-            "n_layers": 43,
-            "n_files": 8,
-            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-          }
-        },
-        "google/gemma-4-31B-it": {
-          "spectral": {
-            "eff_rank_mean": 1.22,
-            "spectral_entropy_mean": 0.1909,
-            "ipr_dim_mean": 87.19,
-            "ipr_dim_pct": 1.62,
-            "bond_dim_max_mean": 64.0,
-            "hidden_dim": 5376,
-            "n_layers": 61,
-            "n_files": 2,
-            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-          },
-          "n_records": 2,
-          "note": "spectral-only (janela <6) \u2014 proxy informacional"
-        }
-      }
-    },
-    {
-      "ts": 1793898817.1299436,
-      "name": "kernel.attractor_10d",
-      "payload": {
-        "current_attractor": "POSICAO_EP",
-        "distance_to_attractor": 1.0143,
-        "regime_confidence": 0.3626,
-        "transition_candidate": "NENHUM",
-        "state_norm": 0.3598,
-        "all_distances": {
-          "ESTAVEL_REPARACAO": 2.1423,
-          "COLAPSO_DISSOCIACAO": 2.4711,
-          "POSICAO_EP": 1.0143,
-          "POSICAO_D": 1.7688
-        }
-      }
-    },
-    {
-      "ts": 1793898817.1201303,
-      "name": "kernel.sovereign_kuramoto",
-      "payload": {
-        "kuramoto_r_pair": 0.9943,
-        "kuramoto_r_triad": 0.9689,
-        "hopf_spectral_radius": 1.166,
-        "hopf_regime": "chaotic",
-        "hopf_reading": "neurotic_chaos",
-        "lif_mean_threshold": -44.8127
-      }
-    },
-    {
-      "ts": 1793898817.1106558,
-      "name": "kernel.freud10d",
-      "payload": {
-        "consciousness": 0.1620967537164688,
-        "state": {
-          "phi": 0.06415151059627533,
-          "psi": 0.10200866311788559,
-          "sigma": 0.05539087951183319,
-          "epsilon": 0.08233857154846191,
-          "omega": 0.1620967537164688,
-          "lambda_": 0.10167203098535538,
-          "zeta": 0.21829557418823242
-        },
-        "state_vec": [
-          0.06415151059627533,
-          0.10200866311788559,
-          0.1620967537164688,
-          0.08839806914329529,
-          0.05181053653359413,
-          0.08233857154846191,
-          0.21829557418823242,
-          0.05539087951183319,
-          0.10169199854135513,
-          0.10167203098535538
-        ],
-        "inrc": {
-          "op": "N",
-          "reason": "stagnant_field_mean_abs=0.103",
-          "transformed_vec": [
-            -0.06415,
-            -0.10201,
-            -0.1621,
-            -0.0884,
-            -0.05181,
-            -0.08234,
-            -0.2183,
-            -0.05539,
-            -0.10169,
-            -0.10167
-          ],
-          "steering_hint": "INRC-N (Nega\u00e7\u00e3o): Campo estagnado ou risco de persevera\u00e7\u00e3o \u2014 PARE de repetir a mesma chamada/hip\u00f3tese; formule a contra-hip\u00f3tese e inspecione outro ponto do c\u00f3digo."
-        },
-        "topographic": {
-          "conscious": 0.1620967537164688,
-          "preconscious": 0.08839806914329529,
-          "unconscious": 0.05181053653359413,
-          "repression": 0.30000001192092896,
-          "return_repressed": 0.20000000298023224
-        },
-        "structural": {
-          "id_drive": 0.08233857154846191,
-          "ego_mediation": 0.21829557418823242,
-          "superego_censorship": 0.05539087951183319,
-          "conflict_intensity": 0.026947692036628723
-        },
-        "neutrosophic": {
-          "phi": {
-            "T": 0.06415151059627533,
-            "I": 0.9358484745025635,
-            "F": 0.0
-          },
-          "psi": {
-            "T": 0.10200866311788559,
-            "I": 0.8979913592338562,
-            "F": 0.0
-          },
-          "omega": {
-            "T": 0.1620967537164688,
-            "I": 0.8379032611846924,
-            "F": 0.0
-          },
-          "theta": {
-            "T": 0.08839806914329529,
-            "I": 0.9116019010543823,
-            "F": 0.0
-          },
-          "upsilon": {
-            "T": 0.05181053653359413,
-            "I": 0.9481894373893738,
-            "F": 0.0
-          },
-          "xi": {
-            "T": 0.08233857154846191,
-            "I": 0.9176614284515381,
-            "F": 0.0
-          },
-          "zeta": {
-            "T": 0.21829557418823242,
-            "I": 0.7817044258117676,
-            "F": 0.0
-          },
-          "eta": {
-            "T": 0.05539087951183319,
-            "I": 0.9446091055870056,
-            "F": 0.0
-          },
-          "kappa": {
-            "T": 0.10169199854135513,
-            "I": 0.8983079791069031,
-            "F": 0.0
-          },
-          "lambda_": {
-            "T": 0.10167203098535538,
-            "I": 0.8983279466629028,
-            "F": 0.0
-          }
-        },
-        "tension": 1.0278545878827572,
-        "pleasure": null,
-        "tension_window": [
-          1.027854561805725
-        ]
-      }
-    },
-    {
-      "ts": 1793898817.1075468,
-      "name": "kernel.metastability",
-      "payload": {
-        "s_meta": null,
-        "coherence_now": 0.593,
-        "m_t": {
-          "pressure_load": 0.1571,
-          "cohesion": 0.0,
-          "producing": false,
-          "homeo_state": "optimal"
-        },
-        "c_soma": {
-          "power": 0.3063,
-          "temp": 0.0175,
-          "vram": 0.4978,
-          "c_soma": 0.2739
-        },
-        "corroboration": 0.0,
-        "angst": 0,
-        "channels": {
-          "psi_io_some": 0.0266,
-          "psi_mem_some": 0.0,
-          "psi_cpu_some": 0.0,
-          "cpu_percent": 0.373,
-          "vram_ratio": 0.4978,
-          "gpu_temp": 0.0175
-        },
-        "window": 1,
-        "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
-      }
-    },
-    {
-      "ts": 1793898817.103824,
-      "name": "kernel.phi_meta",
-      "payload": {
-        "phi_meta": 0.0,
-        "complexity": -0.0,
-        "integration": 0.0,
-        "window": 1,
-        "elements": [
-          "activations",
-          "affect_analyst",
-          "affect_executor",
-          "homeo_stable",
-          "mesh_active",
-          "soma_ok",
-          "soul_phi"
-        ],
-        "mip_side_a": [],
-        "mip_side_b": [],
-        "mip_top3": [],
-        "n_distinct_states": 1,
-        "diversity": 1.0,
-        "scale": "bits over 7 binary flags, window 40 [PRX]",
-        "e_landauer_j_per_bit": "2.9107e-21",
-        "power_w": 49.0,
-        "temp_c": 31,
-        "bit_flow_real_bits_s": "1.6834e+22",
-        "phi_integrated_bits": 0.0,
-        "cohesion": 0.0,
-        "phi_bit_flow_rate_bits_s": "0.0000e+00",
-        "vs_i5_ratio": 1.2416,
-        "pressure_channels": {
-          "psi_io": 0.0266,
-          "psi_mem": 0.0,
-          "psi_cpu": 0.0,
-          "vram_ratio": 0.4978,
-          "load_core": 0.233
-        },
-        "pressure_load": 0.1571,
-        "pressure_headroom": 0.8429,
-        "phi_effective_bits_s": "0.0000e+00"
-      }
     }
   ],
   "mesh_xray": null,
@@ -2312,17 +2176,6 @@
         "n_files": 8,
         "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
       },
-      "google/gemma-4-31B-it": {
-        "eff_rank_mean": 1.22,
-        "spectral_entropy_mean": 0.1909,
-        "ipr_dim_mean": 87.19,
-        "ipr_dim_pct": 1.62,
-        "bond_dim_max_mean": 64.0,
-        "hidden_dim": 5376,
-        "n_layers": 61,
-        "n_files": 2,
-        "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-      },
       "google/gemma-4-E4B-it": {
         "eff_rank_mean": 2.764,
         "spectral_entropy_mean": 0.9173,
@@ -2332,6 +2185,17 @@
         "hidden_dim": 2560,
         "n_layers": 43,
         "n_files": 8,
+        "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+      },
+      "google/gemma-4-31B-it": {
+        "eff_rank_mean": 1.22,
+        "spectral_entropy_mean": 0.1909,
+        "ipr_dim_mean": 87.19,
+        "ipr_dim_pct": 1.62,
+        "bond_dim_max_mean": 64.0,
+        "hidden_dim": 5376,
+        "n_layers": 61,
+        "n_files": 2,
         "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
       }
     }
