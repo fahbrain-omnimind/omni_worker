@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: CC-BY-NC-ND-4.0
+// SPDX-License-Identifier: Apache-2.0
 // See LICENSE for additional ethical restrictions (non-military, non-governmental, no derivatives).
 //! Port Rust da função hot-path `_score_live_writer_snapshot` do IntegrationLoop.
 //!

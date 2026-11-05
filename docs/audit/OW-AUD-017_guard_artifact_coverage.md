@@ -89,5 +89,6 @@ Generated: 2026-11-03. Repo: /content/omni_worker. OMNI_STATE_DIR env unset → 
 - **Sidecars ausentes no Drive**: `write_provenance` está correto no código
   atual — os 5 archives sem sidecar são anteriores à função. `--verify`
   falhará neles (esperado: sem sha256 para conferir).
+- **Portabilidade de Backups — RESOLVIDO (2026-11-05)**: `scripts/archive_worker_state.sh` e `scripts/restore_worker_state.sh` foram atualizados para parametrizar `BACKUP_DIR="${BACKUP_DIR:-/content/drive/MyDrive/omni_worker_backups}"` com fallback automático e transparente para `data/backups/` local caso o Google Drive não esteja montado (usuários externos ou sem Drive), garantindo 100% de portabilidade e persistência em qualquer máquina.
 - **Pendente legítimo**: nenhum `state_restore` testado em produção
   (witness 0 eventos) — restore verificado só em teste hermético.

@@ -1,9 +1,12 @@
 # RELATÓRIO TÉCNICO CONSOLIDADO DE AUDITORIA & METODOLOGIA ASSOCIATIVA
 ## Psicodiagnóstico-V em Agentes Corporificados & Avaliação de Padrões Projetivos
 
+> [!NOTE] Proveniência dos Datasets e Portabilidade Pública
+> O dataset Hugging Face `fabricioslv/psicodiagnostico-v-embodied-results` constitui o arquivo privado do autor com os logs e resultados brutos originais. O dataset público canônico e aberto da competição é o Kaggle Dataset [`fabriciodasilva/psicodiagnostico-v-embodied-battery`](https://www.kaggle.com/datasets/fabriciodasilva/psicodiagnostico-v-embodied-battery). Para execução e testes independentes sem necessidade de credenciais privadas, a bateria canônica está embutida em `vendor/benchmarks/embodied_v10_unified_battery.py`.
+
 **Data:** 2026-11-04  
 **Repositório Base:** `omni_worker` (dual-brain topology)  
-**Dataset Auditado:** Hugging Face `fabricioslv/psicodiagnostico-v-embodied-results` (Revisão commit `a67b3b4e`, 7.576 arquivos, ~451 MB)  
+**Dataset Auditado (acervo privado original):** Hugging Face `fabricioslv/psicodiagnostico-v-embodied-results` (Revisão commit `a67b3b4e`, 7.576 arquivos, ~451 MB)  
 **Estatuto Epistêmico dos Dados:** Todos os números citados foram verificados e computados diretamente dos artefatos primários (SQLite, JSON, Parquet) armazenados localmente ([DADO]). Proibição expressa de fabricação ou simulação.
 
 ---

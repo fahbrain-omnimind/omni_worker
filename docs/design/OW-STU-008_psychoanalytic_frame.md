@@ -1,8 +1,11 @@
 # OW-STU-008a — Módulos metacognition/ e lacanian/ do sovereign → omni_worker
 
+> [!NOTE] Proveniência Arquitetural e Portabilidade
+> As referências a `/content/omnimind-kilombo-sovereign` documentam a auditoria técnica do repositório privado de referência do autor, realizada durante o design de portabilidade. No `omni_worker`, os componentes portados para `src/omni_coworker/psychoanalysis/`, `kernel_daemon/homeostasis.py` e `governance.py` são 100% autônomos e funcionam sem qualquer dependência de arquivos externos ou privados.
+
 **Doc ID:** OW-STU-008a  
 **Alvo:** Portabilidade para `/content/omni_worker` (CPU/RAM apenas, sem torch/GPU/CUDA)  
-**Fontes analisadas:** `/content/omnimind-kilombo-sovereign/src/metacognition/` (20 .py, ~7100 linhas), `/content/omnimind-kilombo-sovereign/src/lacanian/` (11 .py, ~3955 linhas)  
+**Fontes analisadas (referência privada do autor):** `/content/omnimind-kilombo-sovereign/src/metacognition/` (20 .py, ~7100 linhas), `/content/omnimind-kilombo-sovereign/src/lacanian/` (11 .py, ~3955 linhas)  
 **Regra:** read-only. Não editar fontes.
 
 ## 1) Análise por arquivo — metacognition/

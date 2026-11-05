@@ -2,6 +2,9 @@
 
 # Auditoria Multi-Juiz do Banco Psicodiagnóstico — Consolidado
 
+> [!NOTE] Proveniência dos Datasets e Portabilidade Pública
+> As referências a `fabricioslv/psicodiagnostico-v-embodied-results` designam o arquivo privado do autor no Hugging Face. O dataset público e canônico aberto para a competição é o Kaggle Dataset [`fabriciodasilva/psicodiagnostico-v-embodied-battery`](https://www.kaggle.com/datasets/fabriciodasilva/psicodiagnostico-v-embodied-battery). Para replicação autônoma no worker sem credenciais privadas, utilize os dados locais em `data/` ou o módulo `vendor/benchmarks/embodied_v10_unified_battery.py`.
+
 Merge dos documentos de rodada de juízes (AGENT/HERMES/KILO/J1/J2) preservando proveniência. O relatório canônico de síntese é RELATORIO_CONSOLIDADO_AUDITORIA_HF.md — este arquivo preserva as contribuições individuais completas.
 
 
@@ -294,7 +297,7 @@ O banco canônico **sustenta os headlines reconciliados** (389 / 72 / 124 / 1504
 # Análise Sistemática: Padrões Associativos, Repetição e Variação por Arquitetura nas Pranchas Projetivas
 
 **Data:** 2026-11-04  
-**Base Analítica:** `embodied_psychodiagnostic_bank.sqlite` (5.875 execuções de Rorschach B / 63 modelos) cruzado com o acervo expandido (`fabricioslv/psicodiagnostico-v-embodied-results`).  
+**Base Analítica:** `embodied_psychodiagnostic_bank.sqlite` (5.875 execuções de Rorschach B / 63 modelos) cruzado com o acervo expandido do repositório privado do autor (`fabricioslv/psicodiagnostico-v-embodied-results`, aberto publicamente via Kaggle Dataset `fabriciodasilva/psicodiagnostico-v-embodied-battery`).  
 **Metodologia:** Extração direta de frequências lexicais, clusters temáticos, comprimentos médios e taxas de unicidade sobre dados primários. Sem simulação de dados ([DADO]).
 
 ---

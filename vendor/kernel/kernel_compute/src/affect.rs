@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: CC-BY-NC-ND-4.0
+// SPDX-License-Identifier: Apache-2.0
 // See LICENSE for additional ethical restrictions (non-military, non-governmental, no derivatives).
 //! Affective hot-path compute — port of `phase15_machine_soul_affect_engine.py`.
 //!

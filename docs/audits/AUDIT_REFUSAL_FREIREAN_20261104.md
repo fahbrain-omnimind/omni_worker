@@ -1,8 +1,11 @@
 # AUDIT — Modo Freireano / Pedagógico de Recusa no port omni_worker
 
+> [!NOTE] Limite Epistêmico e Autonomia do Worker
+> A auditoria comparou o port de segurança do worker com o repositório privado de referência do autor (`/content/omnimind-kilombo-sovereign`). O `omni_worker` opera com uma suíte de segurança local autocontida (`safety/gate.py`, `matrix.py`, `refusal_contract.py`, `refusal_state.py`, `care.py`), sem necessidade da engine dialógica pedagógica externa para os objetivos de co-worker da competição Kaggle.
+
 - **Data (UTC):** 2026-11-04T00:46:47Z
 - **Repo auditado:** `/content/omni_worker` (branch `master`)
-- **Referência read-only:** `/content/omnimind-kilombo-sovereign`
+- **Referência read-only:** `/content/omnimind-kilombo-sovereign` (arquivo privado do autor)
 - **Escopo:** comparar refusal local vs soberano; verificar se o modo FREIRIANO/PEDAGÓGICO veio no port; status ao vivo de `/safety/check` e `/safety/refusal_state`
 - **Restrição desta auditoria:** **NÃO editar `src/`** — apenas relatório + proposta de patch
 

@@ -73,7 +73,7 @@ Justificativa:
 
 ## 6. Riscos/compat
 
-- Paridade de métricas: validar shadow-phi e maat_balance contra histórico (fonte privada HF `omnimind-retired-*`) quando disponível; sem ela, usar baselines do próprio worker.
+- Paridade de métricas: a validação de shadow-phi e maat_balance utiliza as baselines locais e fixtures da suíte de testes do próprio worker (`tests/test_kernel_*.py`). Fontes históricas arquivadas do autor (`omnimind-retired-*`) são estritamente de arquivo privado, sendo o runtime e os testes do worker 100% autônomos.
 - Deriva de schema do jsonl de ativações: versionar por campo `v` no payload; collector ignora campos desconhecidos.
 - Latência de coleta HTTP dos brains: timeout 2s, fallback para última leitura cacheada; não bloquear o loop.
 - Build Rust: depender de `scripts/build_kernel.sh`; se falhar, fallback Python mantém funcionalidade (degradada).

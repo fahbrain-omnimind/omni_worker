@@ -51,9 +51,12 @@
 - `GET /mesh/metrics` → cross-prediction cache.
 - `GET /mesh/health` → lag/queue depth/persist status.
 
-## 3. Mapa do módulo fonte (read-only)
+## 3. Mapa do módulo fonte (read-only) e Autonomia
 
-`/content/omni_node/src/consciousness/shared_workspace.py` (5346 linhas):
+> [!NOTE] Proveniência Arquitetural e Autonomia
+> A referência ao protótipo histórico `/content/omni_node/src/consciousness/shared_workspace.py` ilustra a transição de um barramento monolítico original para a arquitetura desacoplada do `omni_worker`. O barramento atual em `src/omni_coworker/shared_workspace/bus.py` e `store.py` opera de forma 100% autônoma e leve em SQLite WAL e RAM in-process.
+
+Registro histórico de referência: `/content/omni_node/src/consciousness/shared_workspace.py` (5346 linhas):
 - `ModuleState`, `CrossPredictionMetrics`, `ComplexityMetrics`, `ComplexityAnalyzer`.
 - `SharedWorkspace` com embeddings/history/cross_predictions/attention_mask; sqlite phi cache; hot memory mirror; archiver.
 - `VectorizedCrossPredictor` (PCA cache, Granger/TE).
@@ -88,4 +91,4 @@ Cortar: torch lazy, CUDA, IBM/Watson federation, quantum phi, subjectivity integ
 - Single-process: se FastAPI reinicia, hot state perdido (mitigado por warm sqlite).
 - Concorrência: usar lock por tópico; sqlite WAL para writes concorrentes.
 - Métricas históricas: phi cache TTL 90s preservado para compatibilidade.
-- Fontes privadas HF `omnimind-retired-*` não necessárias para este port.
+- Autonomia de dados: o barramento não depende de acervos ou bases privadas externas (`omnimind-retired-*`), operando de modo completamente autocontido para qualquer usuário externo.

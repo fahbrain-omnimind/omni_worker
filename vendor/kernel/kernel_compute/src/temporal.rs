@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: CC-BY-NC-ND-4.0
+// SPDX-License-Identifier: Apache-2.0
 // See LICENSE for additional ethical restrictions (non-military, non-governmental, no derivatives).
 //! Port Rust COMPLETO de `_build_temporal_internal_scale` em `integration_loop.py:4367`.
 //!

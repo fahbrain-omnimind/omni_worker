@@ -7,7 +7,7 @@ worker (dual Gemma-4 NF4 na L4, FastAPI :8081, sem daemons canônicos).
 English: structural map of three canonical docs and their applicability to this
 worker — see §8 for the English summary.
 
-Fontes (somente leitura, repo canônico):
+Fontes (somente leitura, acervo canônico privado do autor):
 - `omnimind-kilombo-sovereign/revisao/metastability_v3/DOC_A_MANIFESTO_HSP.md` (370 ln, v3.1-draft, 2026-09-23)
 - `omnimind-kilombo-sovereign/revisao/metastability_v3/DOC_C_PAPER_EXPERIMENTAL.md` (498 ln, v3.0-draft, 2026-09-23)
 - `omnimind-kilombo-sovereign/docs/zenodo_packs/rnfci_pack_v1_textual_correction_v2_20260527/upload_bundle_release/V49_REDES_NEURAIS_PSICANALITICAS_20260527.md` (347 ln, 2026-05-27, CC BY-NC-ND 4.0)

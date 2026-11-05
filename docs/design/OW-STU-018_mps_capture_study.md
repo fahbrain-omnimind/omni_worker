@@ -1,5 +1,8 @@
 # MPS Capture Study — omni_worker (2026-11-03)
 
+> [!NOTE] Proveniência Arquitetural e Autonomia do Worker
+> As menções a scripts de bridge do repositório soberano (`transformer_mps_bridge_pilot.py`) registram o histórico de estudos do autor. O `omni_worker` implementa análise espectral e de dimensões de Schmidt de forma autocontida em `src/omni_coworker/activation_beta/hidden_spectral.py` e `dendritic_scan.py`, com dados em `data/monitor/`.
+
 > Relatório técnico (pt-BR). Pesquisa sobre captura de ativações e modelos MPS para discriminar falhas estruturais vs degeneração durante geração. Sem segredos.
 
 ## §1 Resumo executivo

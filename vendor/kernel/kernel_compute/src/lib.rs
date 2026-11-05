@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: CC-BY-NC-ND-4.0
+// SPDX-License-Identifier: Apache-2.0
 // See LICENSE for additional ethical restrictions (non-military, non-governmental, no derivatives).
 //! omnimind_kernel_compute — hot-path compute primitives migrated to Rust.
 #![allow(non_local_definitions)]

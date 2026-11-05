@@ -195,7 +195,10 @@ Síntese do que o pack performa (não apenas declara):
 
 ### 5.1 Aparato de proveniência/sha256 — padrão portável para o arquivamento no Drive
 
-Estado atual do worker: `scripts/archive_worker_state.sh` empacota `data logs omni_code_index` + SQLites de bateria em `omni_worker_<ts>.tar.gz` → `/content/drive/MyDrive/omni_worker_backups`, com retenção `KEEP=5`, exclusão de padrões de segredo, e escrita atômica `.$name.tmp → mv`. **Gaps frente ao padrão RNFCI:** sem manifesto, sem hash, sem metadados, sem declaração de fronteira — a integridade de um arquivo no Drive hoje não é verificável.
+> [!NOTE] Portabilidade e Destinos de Backup
+> O caminho `/content/drive/MyDrive/omni_worker_backups` é o canal de persistência pessoal em nuvem utilizado no Google Colab pelo autor. Para portabilidade pública e execução por terceiros fora do Colab, o script `archive_worker_state.sh` foi atualizado para utilizar a variável `BACKUP_DIR` com fallback padrão transparente para `data/backups/` local, sem dependência de montagem do Google Drive.
+
+Estado atual do worker: `scripts/archive_worker_state.sh` empacota `data logs omni_code_index` + SQLites de bateria em `omni_worker_<ts>.tar.gz` → `/content/drive/MyDrive/omni_worker_backups` (ou `$BACKUP_DIR`), com retenção `KEEP=5`, exclusão de padrões de segredo, e escrita atômica `.$name.tmp → mv`. **Gaps frente ao padrão RNFCI:** sem manifesto, sem hash, sem metadados, sem declaração de fronteira — a integridade de um arquivo no Drive hoje não é verificável.
 
 Port sugerido (direto do aparato §3 deste documento):
 

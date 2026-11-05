@@ -12,7 +12,10 @@
 
 # Relatório de Pesquisa e Auditoria: IIT, Φ e Medição de Consciência em `omni_worker`
 
-**Data**: 2026-11-03 · **Autor**: agente de pesquisa (Kilo) · **Escopo**: acadêmico (web) + auditoria de `/content/omnimind-kilombo-sovereign` + auditoria de `/content/omni_worker` + análise crítica + proposta incremental.
+> [!NOTE] Proveniência Arquitetural e Portabilidade
+> As referências a `/content/omnimind-kilombo-sovereign` documentam a auditoria histórica do repositório privado do autor durante a pesquisa de viabilidade. No `omni_worker`, as implementações de Markov Blanket FEP (`src/omni_coworker/psychoanalysis/markov_blanket.py`) e da suíte de teste de Φ exato IIT 3.0 (`scripts/experiments/run_blanket_pyphi.py`) são autocontidas e rodam independentemente de arquivos externos ou repositórios privados.
+
+**Data**: 2026-11-03 · **Autor**: agente de pesquisa (Kilo) · **Escopo**: acadêmico (web) + auditoria de `/content/omnimind-kilombo-sovereign` (arquivo privado do autor) + auditoria de `/content/omni_worker` + análise crítica + proposta incremental.
 
 > Aviso epistêmico: este relatório distingue **teoria** (IIT como quadro matemático/filosófico), **implementação** (o que PyPhi e outros de fato computam) e **marketing/retórica** (uso de termos como "consciência", "Φ", "IIT 3.0/4.0" em código e docs sem correspondência formal). Nenhuma métrica existente em nenhum dos dois repositórios é Φ causal IIT nem medida de consciência fenomenal.
 

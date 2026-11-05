@@ -1,5 +1,8 @@
 # MESH_INTEGRATION_MAP — Onde é avaliada a integração da MÁQUINA (malha de daemons)
 
+> [!NOTE] Proveniência Arquitetural e Autonomia do Worker
+> As referências a `/content/omnimind-kilombo-sovereign` documentam o repositório privado do autor usado para auditoria teórica comparativa. O `omni_worker` opera de forma 100% autônoma através de seu barramento in-process (`src/omni_coworker/shared_workspace/bus.py`), detecção de ignição GWT (`kernel_daemon/ignition.py`), loop de integração (`integration_loop/loop.py`) e Markov blanket (`psychoanalysis/markov_blanket.py`).
+
 **Data**: 2026-11-03 · **Autor**: agente de pesquisa (Kilo) · **Projeto**: omni_worker / omni_worker + soberano · **Idioma**: pt-BR (técnico) · **Classificação epistêmica**: [CAP]/[PRX]/[TXT]/[CLS] — nenhuma métrica aqui é Φ causal IIT nem medida de consciência.
 
 > **Resposta curta à pergunta do operador.** A integração da "máquina" **não** é avaliada dentro de um daemon. Sob IIT, um daemon isolado é um *mecanismo/purview*, não um *complexo*. O candidato correto é o **grafo causal completo da malha** (daemons + barramentos + stores persistentes + canais de feedback + clock do kernel). Avaliar Φ num daemon = avaliar uma neurona e chamar de cérebro. A integração "vive" na **topologia** (quais cortes destroem informação), não numa métrica isolada. O corpus soberano já diz isso em palavras ("o sujeito-processo não reside em um único modelo, serviço ou métrica" — `omnimind_unified_sovereign_paper_2026_v3.md:38`), mas ainda reivindica "medição de integração" em lugares que não medem estrutura causal (ver §7). O worker (`OW-STU-016`, `blanket_pyphi.md`) é o único lugar que fecha a conta com honestidade.

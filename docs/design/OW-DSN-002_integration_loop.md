@@ -98,9 +98,12 @@ Consumidores: `agent_orchestrator` (role + suffix), `swap_scheduler`
 - jsonl `data/monitor/integration_loop_cycles.jsonl` (P2 gzip rotativo).
 - Barramento: publica `feedback.loop` (OW-DSN-003).
 
-## 3. Mapa do módulo fonte
+## 3. Mapa do módulo fonte e Portabilidade
 
-Fonte: `/content/omni_node/src/consciousness/integration_loop.py` (8694 linhas).
+> [!NOTE] Proveniência Arquitetural e Autonomia
+> A citação a `/content/omni_node/src/consciousness/integration_loop.py` documenta a linhagem conceitual do protótipo histórico original do autor. No `omni_worker`, a implementação sob `src/omni_coworker/integration_loop/` é 100% autônoma, leve (Python puro e Rust pyo3), sem qualquer dependência ou acoplamento a repositórios ou diretórios externos.
+
+Fonte conceitual de referência: `/content/omni_node/src/consciousness/integration_loop.py` (8694 linhas).
 
 Estrutura real: imports pesados de GPU/torch-adjacent (numpy, sqlite3, asyncio) e
 de dezenas de submódulos do node (shared_workspace, neurosophic_sovereignty,

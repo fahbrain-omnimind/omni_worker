@@ -2,11 +2,11 @@
 
 # Inventário de Baterias Gemma-4 — HF `gemma4-e4b-colab-l4-results` + local
 
-pt-BR: O que já rodou na família Gemma-4 (fonte: dataset HF
+pt-BR: O que já rodou na família Gemma-4 (fonte: dataset experimental do acervo de pesquisa do autor
 `fabricioslv/gemma4-e4b-colab-l4-results` — sqlite de 124 execuções E4B/bf16
-na L4 em 01-02/nov/2026, baixado para `data/hf_gemma4/`), o que podemos
+na L4 em 01-02/nov/2026, arquivado para `data/hf_gemma4/`), o que podemos
 repetir neste worker e o que ele cobre de novo (12B — ausente do dataset).
-English: inventory of Gemma-4 batteries already run (HF E4B-L4 dataset),
+English: inventory of Gemma-4 batteries already run (author's research baseline dataset),
 what is repeatable in this worker, and the 12B gap it fills.
 
 ## 1. Dataset HF — estrutura (124 ledger rows, todas DONE)

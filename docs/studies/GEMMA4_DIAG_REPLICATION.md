@@ -169,8 +169,8 @@ Leituras:
 - Dataset HF re-scored: `data/hf_gemma4/gemma4_e4b_l4_results.sqlite`,
   `experiment='block1_cognitivo'`, scorers `_score_*_v2` aplicados sobre
   `visible_response`.
-- Fonte canônica: `omnimind-kilombo-sovereign/scripts/benchmarks/
-  embodied_v10_unified_battery.py` (builders L556+, scorers L757-895).
+- Fonte canônica: `vendor/benchmarks/embodied_v10_unified_battery.py`
+  (incorporada ao repositório para execução autônoma; builders L556+, scorers L757-895).
 - Log OOM: `/tmp/erika_8098.log` (torch.OutOfMemoryError, 8 MiB free).
 
 ---
@@ -179,7 +179,7 @@ Leituras:
 
 **Scope**: minimal diagnostic replication of the canonical Psicodiagnóstico-V
 executive battery (WCST/Stroop/N-back/IGT, v2 hardened prompts + scorers loaded
-by path from omnimind-kilombo-sovereign) on both live worker brains —
+from `vendor/benchmarks/embodied_v10_unified_battery.py`) on both live worker brains —
 12B-nf4 analyst and E4B-nf4 executor on the same L4. 1 rep × 4 tasks per model
 — diagnostic, not statistical.
 

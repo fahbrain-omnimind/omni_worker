@@ -2,6 +2,8 @@
 
 # Design Brief — Port do kernel transcendente / integration loop / shared workspace
 
+> **[STATUS OPERACIONAL 2026-11-05]**: Port concluído e consolidado. O repositório `omni_worker` opera de forma 100% autossuficiente e independente de repositórios irmãos, com crates Rust vendored em `vendor/kernel/`, dunker em `src/omni_coworker/vendor/` e bateria V10 canônica em `vendor/benchmarks/`.
+
 Contexto operacional para os agentes de estudo (kilo, cline, hermes).
 
 ## Repositórios

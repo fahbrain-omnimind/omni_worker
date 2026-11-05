@@ -3,7 +3,7 @@
 # Canonical Book Structure Map — *Da Geometria à Substância*
 
 **English summary.** Map of the canonical integrator book
-(`omnimind-kilombo-sovereign/revisao/A6_integrador/livro_vfinal.md`, 15.551 lines)
+(`data/corpus/a6_book/livro_vfinal.md`, 15.551 lines, preserved from the author's canonical archive)
 for the standalone Kaggle worker (`omni_worker`). The book is a programmatic
 monograph of the Dodecatiad/Sujeito-Processo corpus: 8 parts + appendices A–T.
 Core thesis: the Dodecatiad is a *reading language*, not a model of
