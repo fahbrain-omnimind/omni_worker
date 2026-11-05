@@ -73,14 +73,29 @@ def run_cycle() -> dict[str, Any]:
         bundle["homeostasis"] = homeo_out
         _publish("kernel.homeostasis", homeo_out)
         # desire: falta estrutural = distância do ótimo homeostático;
-        # compute() já publica agency.desire na malha
+        # compute() já publica agency.desire na malha + DesireEngine Rust
         try:
             from ..psychology.desire_engine import DesireEngine
             d = DesireEngine().compute(
                 target={"homeostasis": "optimal"},
                 current={"homeostasis": homeo_out.get("state")},
                 goals=["homeostatic_optimum", "vram_headroom"])
-            bundle["desire"] = {"intensity": d.intensity, "vector": d.vector}
+            desire_payload: dict[str, Any] = {"intensity": d.intensity, "vector": d.vector}
+            from ..kernel_hooks.compute import psi_gaussian, rust_desire_cycle, sigma_operational_support
+            _phi_val = float(((bundle.get("soul") or {}).get("phi")) or 0.0)
+            _sigma_val = float(((bundle.get("soul") or {}).get("sigma")) or 0.0)
+            rd = rust_desire_cycle(
+                satisfaction_level=max(0.0, 1.0 - float(d.intensity)),
+                current_phi=_phi_val,
+                somatic_heat=float((raw.get("soma") or {}).get("cpu_percent", 0.0)) / 100.0,
+            )
+            if rd:
+                desire_payload["rust_desire"] = rd
+            bundle["psi_engine"] = {
+                "psi_gaussian": round(psi_gaussian(_phi_val), 6),
+                "sigma_support": round(sigma_operational_support(_phi_val, last_sigma=_sigma_val), 6),
+            }
+            bundle["desire"] = desire_payload
         except Exception:  # noqa: BLE001, S110
             pass
         # phi_meta: IIT-simplified over subsystem activity flags
@@ -111,6 +126,7 @@ def run_cycle() -> dict[str, Any]:
         # freud10d: aparato freudiano persistente — estado interno vivo
         # (tensão/prazer/INRC) alimentando soul axes + detector basal
         # do Vacilo (OW-STU-019 P2). perception = sinais MPS normalizados.
+        fr: dict[str, Any] | None = None
         try:
             from ..kernel_hooks.compute import freud10d_cycle
             _soma = raw.get("soma") or {}
@@ -122,13 +138,13 @@ def run_cycle() -> dict[str, Any]:
                     for r in ("analyst", "executor")]
             _ent = [e for e in _ent if e and e > 0]
             perception = [
-                float(_soma.get("cpu_percent", 0.0)) / 100.0,
-                float(_soma.get("ram_percent", 0.0)) / 100.0,
-                min(1.0, float(_soma.get("load_per_core", 0.0))),
-                float(_soul.get("phi", 0.0)),
-                float(_soul.get("psi", 0.0)),
-                float(_soul.get("sigma", 0.0)),
-                float(_soul.get("epsilon", 0.0)),
+                float(_soma.get("cpu_percent", 0.0) or 0.0) / 100.0,
+                float(_soma.get("ram_percent", 0.0) or 0.0) / 100.0,
+                min(1.0, float(_soma.get("load_per_core", 0.0) or 0.0)),
+                float(_soul.get("phi", 0.0) or 0.0),
+                float(_soul.get("psi", 0.0) or 0.0),
+                float(_soul.get("sigma", 0.0) or 0.0),
+                float(_soul.get("epsilon", 0.0) or 0.0),
                 (sum(_ent) / len(_ent) / 8.0) if _ent else 0.0,
                 float(_meta.get("angst", 0.0) or 0.0),
                 float(_des.get("intensity", 0.0) or 0.0),
@@ -137,6 +153,21 @@ def run_cycle() -> dict[str, Any]:
             if fr:
                 bundle["freud10d"] = fr
                 _publish("kernel.freud10d", fr)
+                # sovereign_kuramoto + attractor_10d: sempre que freud10d disponível
+                try:
+                    from ..kernel_hooks.ablation_modulator import (
+                        compute_sovereign_kuramoto_step,
+                        navigate_attractors_10d,
+                    )
+                    _state10 = list(fr.get("state_vec") or perception)
+                    sk = compute_sovereign_kuramoto_step(_state10)
+                    bundle["sovereign_kuramoto"] = sk
+                    _publish("kernel.sovereign_kuramoto", sk)
+                    nav = navigate_attractors_10d(_state10)
+                    bundle["attractor_10d"] = nav
+                    _publish("kernel.attractor_10d", nav)
+                except Exception:  # noqa: BLE001, S110
+                    pass
         except Exception:  # noqa: BLE001, S110
             pass
         # dendritic: morfologia do grafo de camadas MPS (OW-STU-019 P3)

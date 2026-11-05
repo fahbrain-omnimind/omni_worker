@@ -159,7 +159,9 @@ def dendritic_features() -> dict[str, Any]:
         for f in sorted(d.glob("*.npz"))[-4:]:
             try:
                 z = np.load(f)
-                arr = z["trajectory"] if "trajectory" in z else z["vectors"]
+                arr = z["trajectory"] if "trajectory" in z else (z["traj"] if "traj" in z else z["vectors"])
+                if arr.ndim == 3 and "steps" in z and arr.shape[0] == len(z["steps"]) and arr.shape[1] != len(z["steps"]):
+                    arr = np.swapaxes(arr, 0, 1)
                 model = str(z["model"].item() if hasattr(z["model"], "item") else z["model"]) if "model" in z else f.stem
                 out[model] = scan_trajectory(arr)
             except Exception:  # noqa: BLE001, S112
@@ -181,6 +183,8 @@ def scan_latest(step_dir: str | None = None) -> dict[str, Any] | None:
         f = files[-1]
         d = np.load(f)
         traj = d["traj"]
+        if traj.ndim == 3 and "steps" in d and traj.shape[0] == len(d["steps"]) and traj.shape[1] != len(d["steps"]):
+            traj = np.swapaxes(traj, 0, 1)
         out = scan_trajectory(traj)
         out["file"] = os.path.basename(f)
         out["model"] = str(d["model"]) if "model" in d else None

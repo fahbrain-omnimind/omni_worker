@@ -121,6 +121,103 @@ def kernel_status() -> dict[str, bool]:
 
 
 _FREUD_APPARATUS = None
+_RUST_DESIRE = None
+
+
+def psi_gaussian(phi_raw: float) -> float:
+    """Compute Gaussian Psi component from Phi via Rust kernel (or Python fallback).
+
+    When phi_raw is a normalized [0.12, 1.0] score from soul/phi_layer, maps it
+    linearly to the canonical PHI_OPTIMAL=0.06 band [0, 0.12] before calling
+    the Rust kernel `calculate_psi_gaussian`.
+    """
+    val = float(phi_raw)
+    if 0.12 < val <= 1.0:
+        val = val * 0.12
+    if KERNEL_AVAILABLE and omnimind_kernel_compute:
+        try:
+            return float(omnimind_kernel_compute.calculate_psi_gaussian(val))
+        except Exception:  # noqa: BLE001, S110
+            pass
+    phi_opt = 0.06
+    sigma_phi = 0.015
+    if val > 1.0:
+        diff = (math.log10(max(val, 1e-30)) - math.log10(phi_opt)) / 2.0
+    else:
+        diff = (val - phi_opt) / sigma_phi
+    return max(0.0, min(1.0, math.exp(-0.5 * diff * diff)))
+
+
+def sigma_operational_support(
+    phi_raw_nats: float,
+    phi_iit_normalized: float = 0.0,
+    phi_trans_support: float = 0.0,
+    sigma_topology_proxy: float = 0.5,
+    topology_omega: float = 0.5,
+    betti_0: float = 1.0,
+    continuity_depth: float = 0.5,
+    last_sigma: float = 0.5,
+) -> float:
+    """Compute operational support floor for Sigma via Rust kernel."""
+    if KERNEL_AVAILABLE and omnimind_kernel_compute:
+        try:
+            return float(
+                omnimind_kernel_compute.compute_sigma_operational_support(
+                    float(phi_raw_nats),
+                    float(phi_iit_normalized),
+                    float(phi_trans_support),
+                    float(sigma_topology_proxy),
+                    float(topology_omega),
+                    float(betti_0),
+                    float(continuity_depth),
+                    float(last_sigma),
+                )
+            )
+        except Exception:  # noqa: BLE001, S110
+            pass
+    return max(0.0, min(1.0, 0.24 * sigma_topology_proxy + 0.18 * continuity_depth + 0.10 * last_sigma))
+
+
+def rust_desire_cycle(
+    satisfaction_level: float,
+    current_phi: float,
+    explored_states: int = 10,
+    total_possible_states: int = 100,
+    somatic_heat: float = 0.0,
+) -> dict[str, Any] | None:
+    """Compute Lacanian/Deleuzian DesireEngine step via Rust kernel."""
+    global _RUST_DESIRE
+    if not (KERNEL_AVAILABLE and omnimind_kernel_compute):
+        return None
+    try:
+        if _RUST_DESIRE is None:
+            _RUST_DESIRE = omnimind_kernel_compute.DesireEngine(1.0)
+        lack = float(_RUST_DESIRE.update_lack(float(satisfaction_level)))
+        eps = float(
+            _RUST_DESIRE.calculate_epsilon_desire(
+                float(current_phi),
+                int(explored_states),
+                int(total_possible_states),
+                float(somatic_heat),
+            )
+        )
+        drive_type = str(_RUST_DESIRE.get_drive_type(eps))
+        return {
+            "lack_of_being": round(lack, 4),
+            "epsilon_desire": round(eps, 4),
+            "drive_type": drive_type,
+            "history_len": int(_RUST_DESIRE.history_len),
+        }
+    except Exception:  # noqa: BLE001
+        return None
+
+
+_INRC_STEERING_HINTS: dict[str, str] = {
+    "I": "INRC-I (Identidade): Campo psíquico coerente — mantenha a estratégia atual e prossiga com execução incremental verificada.",
+    "N": "INRC-N (Negação): Campo estagnado ou risco de perseveração — PARE de repetir a mesma chamada/hipótese; formule a contra-hipótese e inspecione outro ponto do código.",
+    "R": "INRC-R (Reciprocidade): Pulsão elevada com baixa mediação consciente — troque a perspectiva de edição/submissão imediata para verificação rigorosa com testes.",
+    "C": "INRC-C (Compensação): Desequilíbrio Ego-Superego detectado — reduza o volume de texto/raciocínio e aplique edições cirúrgicas pequenas (edit_file focado).",
+}
 
 
 def freud10d_cycle(perception: Sequence[float] | None = None) -> dict[str, Any] | None:
@@ -128,12 +225,15 @@ def freud10d_cycle(perception: Sequence[float] | None = None) -> dict[str, Any] 
 
     English: Singleton apparatus across calls — tension/pleasure history
     accumulates per cycle (the Vacilo basal detector signal). Returns
-    consciousness scalar, freudian soul axes, INRC recommendation and
-    the last tension/pleasure windows; None when the crate is absent.
+    consciousness scalar, freudian soul axes, INRC recommendation, active
+    INRC transformed vector, topographic/structural/neutrosophic telemetry,
+    and the last tension/pleasure windows; None when the crate is absent.
     pt-BR: Aparato singleton entre chamadas — histórico de
     tensão/prazer acumula por ciclo (sinal do detector basal do
     Vacilo). Retorna escalar de consciência, eixos freudianos do soul,
-    recomendação INRC e janelas de tensão/prazer; None sem o crate.
+    recomendação INRC, vetor transformado pelo operador INRC ativo,
+    telemetria topográfica/estrutural/neutrosófica e janelas de
+    tensão/prazer; None sem o crate.
     """
     global _FREUD_APPARATUS
     if not (FREUD_AVAILABLE and omnimind_freud10d):
@@ -145,6 +245,17 @@ def freud10d_cycle(perception: Sequence[float] | None = None) -> dict[str, Any] 
         consciousness, state_vec = _FREUD_APPARATUS.forward(perc)
         values = omnimind_freud10d.freudian_values_from_state(list(state_vec))
         op, reason = _FREUD_APPARATUS.inrc_recommend()
+        if op == "N":
+            inrc_vec = list(_FREUD_APPARATUS.inrc_negate())
+        elif op == "R":
+            inrc_vec = list(_FREUD_APPARATUS.inrc_reciprocate())
+        elif op == "C":
+            inrc_vec = list(_FREUD_APPARATUS.inrc_compensate())
+        else:
+            inrc_vec = list(_FREUD_APPARATUS.inrc_identity())
+        topographic = dict(_FREUD_APPARATUS.topographic_flow())
+        structural = dict(_FREUD_APPARATUS.structural_conflict())
+        neutrosophic = dict(_FREUD_APPARATUS.neutrosophic_state())
         tension = float(sum(abs(float(v)) for v in state_vec))
         pleasure = None
         tw = list(_FREUD_APPARATUS.tension_window(32))
@@ -154,7 +265,15 @@ def freud10d_cycle(perception: Sequence[float] | None = None) -> dict[str, Any] 
             "consciousness": float(consciousness),
             "state": values,
             "state_vec": [float(v) for v in state_vec],
-            "inrc": {"op": op, "reason": reason},
+            "inrc": {
+                "op": op,
+                "reason": reason,
+                "transformed_vec": [round(float(v), 5) for v in inrc_vec],
+                "steering_hint": _INRC_STEERING_HINTS.get(op, ""),
+            },
+            "topographic": topographic,
+            "structural": structural,
+            "neutrosophic": neutrosophic,
             "tension": tension,
             "pleasure": pleasure,
             "tension_window": tw,

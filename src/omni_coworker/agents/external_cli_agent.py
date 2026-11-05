@@ -187,6 +187,16 @@ def _default_workdir() -> str:
     return os.environ.get("OMNI_EXTERNAL_CLI_WORKDIR", "/tmp/omni_coworker_external")
 
 
+_EXTRA_BIN_DIRS = "/root/.local/bin:/tools/node/bin"
+
+
+def _which_cli(bin_name: str) -> str | None:
+    """Resolve binary via shutil.which with fallback to standard user/tool bin dirs."""
+    path_env = os.environ.get("PATH", "")
+    search_path = f"{path_env}{os.pathsep}{_EXTRA_BIN_DIRS}" if path_env else _EXTRA_BIN_DIRS
+    return shutil.which(bin_name, path=search_path)
+
+
 def _binary_available(cmd: str) -> bool:
     """True when the first token of `cmd` is executable.
 
@@ -204,7 +214,7 @@ def _binary_available(cmd: str) -> bool:
     bin_name = parts[0] if parts else cmd
     if os.path.isabs(bin_name):
         return os.path.exists(bin_name) and os.access(bin_name, os.X_OK)
-    return shutil.which(bin_name) is not None
+    return _which_cli(bin_name) is not None
 
 
 def _kill_process_group(proc: subprocess.Popen) -> None:
@@ -236,7 +246,14 @@ def _no_args(task: str, context: dict[str, Any]) -> list[str]:
 # Registered CLIs are defined by env (no hardcoded keys in code). The
 # per-CLI env var is OMNI_CLI_<NAME_UPPER> holding the full command line.
 DEFAULT_CLIS: dict[str, dict[str, Any]] = {
-    "dev": {"cmd": "devin -p", "args_factory": _task_as_args},
+    "dev": {
+        "cmd": "devin --model swe-2-max --permission-mode dangerous --respect-workspace-trust false -p",
+        "args_factory": _task_as_args,
+    },
+    "devin": {
+        "cmd": "devin --model swe-2-max --permission-mode dangerous --respect-workspace-trust false -p",
+        "args_factory": _task_as_args,
+    },
     "opencode": {"cmd": "opencode run -m provider/model --format json", "args_factory": _task_as_args},
     "kilo": {"cmd": "kilo run --auto -m kilo/kilo-auto/free", "args_factory": _task_as_args},
     "hermes": {"cmd": "hermes -z", "args_factory": _task_as_args},
@@ -307,7 +324,7 @@ def list_available() -> list[dict[str, Any]]:
         except ValueError:
             parts = [cmd]
         bin_name = parts[0] if parts else cmd
-        path = shutil.which(bin_name)
+        path = _which_cli(bin_name)
         result.append(
             {
                 "name": name,
@@ -351,7 +368,8 @@ class ShellCLIAdapter:
             parts = shlex.split(cmd)
         except ValueError:
             parts = [cmd]
-        self.bin = parts[0] if parts else name
+        raw_bin = parts[0] if parts else name
+        self.bin = raw_bin if os.path.isabs(raw_bin) else (_which_cli(raw_bin) or raw_bin)
         self.static_args = parts[1:]
 
     def _argv(self, task: str, context: dict[str, Any]) -> list[str]:
@@ -455,7 +473,8 @@ class ACPClient:
             parts = shlex.split(cmd)
         except ValueError:
             parts = [cmd]
-        self.bin = parts[0] if parts else name
+        raw_bin = parts[0] if parts else name
+        self.bin = raw_bin if os.path.isabs(raw_bin) else (_which_cli(raw_bin) or raw_bin)
         self.static_args = parts[1:]
 
     @staticmethod
