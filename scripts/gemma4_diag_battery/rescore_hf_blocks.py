@@ -32,7 +32,7 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[2]
+ROOT = HERE.parents[1]
 SRC = ROOT / "src"
 for p in (str(SRC), str(ROOT)):
     if p not in sys.path:
@@ -44,9 +44,16 @@ HF_SQLITE = Path(os.getenv(
 OUT_DB = HERE / "rescore_hf_blocks.sqlite"
 REPORT = HERE.parents[1] / "docs" / "results" / "rescore_hf_blocks.md"
 
-CANONICAL = Path(
+_LOCAL_CANONICAL = ROOT / "vendor" / "benchmarks" / "embodied_v10_unified_battery.py"
+_SOVEREIGN_CANONICAL = Path(
     "/content/omnimind-kilombo-sovereign/scripts/benchmarks/"
     "embodied_v10_unified_battery.py"
+)
+CANONICAL = Path(
+    os.getenv(
+        "OMNI_V10_BATTERY_PATH",
+        str(_LOCAL_CANONICAL if _LOCAL_CANONICAL.exists() else _SOVEREIGN_CANONICAL),
+    )
 )
 
 

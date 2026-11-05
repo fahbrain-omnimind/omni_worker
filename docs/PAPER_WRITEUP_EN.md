@@ -156,7 +156,7 @@ The paper's first interventional test, on the exact competition hardware class (
 
 ### 3.2e Dual-Judge Audit (Judge 1 SWE-2 Max × Judge 2 Independent Auditor) [VERIFIED]
 
-We audited the 200 Kaggle Dual-T4 generation records via two judges blind to each other: Judge 1 (SWE-2 Max, technical/operational rubric) and Judge 2 (Independent Clinical Auditor, V10 rubric with scaffold sanitization). Source (private HF `fabricioslv/psicodiagnostico-v-embodied-results`): `judges/scores_gemma_pranchas_juiz1_swe2max.json`, `judges/scores_gemma_pranchas_juiz2_hermes.json`, `judges/LAUDO_AVALIACAO_JUIZ1_SWE2MAX_PRANCHAS_GEMMA.md` and `judges/LAUDO_AVALIACAO_JUIZ2_HERMES_PRANCHAS_GEMMA.md` — file names that diverged from the previously cited ones were corrected to the real artifacts.
+We audited the 200 Kaggle Dual-T4 generation records via two judges blind to each other: Judge 1 (SWE-2 Max, technical/operational rubric) and Judge 2 (Independent Clinical Auditor, V10 rubric with scaffold sanitization). Source (published Kaggle dataset `fabriciodasilva/psicodiagnostico-v-embodied-battery` / author's canonical repository): `judges/scores_gemma_pranchas_juiz1_swe2max.json`, `judges/scores_gemma_pranchas_juiz2_hermes.json`, `judges/LAUDO_AVALIACAO_JUIZ1_SWE2MAX_PRANCHAS_GEMMA.md` and `judges/LAUDO_AVALIACAO_JUIZ2_HERMES_PRANCHAS_GEMMA.md` — file names that diverged from the previously cited ones were corrected to the real artifacts.
 
 | Experimental Arm | N | Judge 1 (SWE-2 Max) Unjudgeable % | Judge 2 (Indep. Auditor) Unjudgeable % | Inter-Judge Agreement % |
 |---|:---:|:---:|:---:|:---:|
@@ -164,7 +164,7 @@ We audited the 200 Kaggle Dual-T4 generation records via two judges blind to eac
 | `control/int8_completion` | 40 | **62.5%** | **82.5%** | **80.0%** |
 | `pilot/nf4_baseline` | 60 | **45.0%** | **90.0%** | **55.0%** |
 | `pilot/nf4_cascade` | 60 | **38.3%** | **70.0%** | **68.3%** |
-| **Consolidated Total** | **200** | **37.5%** | **67.0%** | **71.5% (Cohen's $\kappa=0.4722$, moderate)** |
+| **Consolidated Total** | **200** | **37.5%** | **66.0%** | **71.5% (Cohen's $\kappa=0.4722$, moderate)** |
 
 Global observed agreement was **71.5%** with a Cohen's Kappa index of **$\kappa=0.4722$** (moderate agreement, Landis-Koch scale). The divergence stems from instrument granularity: Judge 1 operates at token-level UR (<0.30), while Judge 2 incorporates n-gram and sentence repetition regexes, detecting semantic micro-loops (such as repetitions of the `thought` marker) and echoes of SWE instruction blocks. Both judges independently observe that the chat template drastically reduces emission failure in the mediation and that the cascade attenuates unjudgeability on SWE tasks (a 20pp reduction on Judge 2 and 6.7pp on Judge 1).
 
@@ -247,9 +247,10 @@ To overcome that limit, we instrumented a three-layer capture architecture in `s
 
 ## 6. Resource release (Verifiability + Best New Resource criteria)
 
-- Complete V10 battery (scenes, plates, cognitive protocols) as a public Kaggle dataset.
-- Raw Gemma-4 runs (sqlite + responses) + scores.
-- Profile→failure correlation scripts.
+- **Release**: full V10 battery (scenes, plates, protocols), raw Gemma-4 runs (sqlite + responses) + judge scores, and correlation scripts as the public Kaggle dataset [`fabriciodasilva/psicodiagnostico-v-embodied-battery`](https://www.kaggle.com/datasets/fabriciodasilva/psicodiagnostico-v-embodied-battery).
+- **Public benchmark tasks** (Kaggle Benchmarks — re-runnable on any model via Model Proxy; backing notebooks published, credentials via Kaggle User Secrets):
+  - [embodied-v10-v11-unified-battery v2](https://www.kaggle.com/benchmarks/tasks/fabriciodasilva/embodied-v10-v11-unified-battery/2) — the canonical unified instrument (context-reset probe → 20 V10 scenes → executive cognition → 20 projective plates + clinical inquiry).
+  - [judge-v10-v11-gguf-colab-runs v3](https://www.kaggle.com/benchmarks/tasks/fabriciodasilva/judge-v10-v11-gguf-colab-runs/3) — the blind-judge pipeline over the published bundles dataset.
 - ~18k records from the 85-model corpus (comparative reference).
 
 ## Submission checklist
@@ -257,10 +258,10 @@ To overcome that limit, we instrumented a three-layer capture architecture in `s
 - [x] Complete Gemma-4 runs (kernel `omnimind-v10-cohort-gemma-4-family-t4x2` — 620 records, 4 models ×155, 2026-10-30)
 - [x] Judges run (blind to one another) on the Gemma-4 responses — A (SWE-2 Max): 12 bundles r1–r3; B (solar-mini4): 4 bundles r1; C (Qwen-27B): 16 bundles r2–r5 — 32 total judgments, SHA256 manifest in `judges/gemma4_provenance/`
 - [x] Correlation computed vs. public agent-runs (CORRELACAO_PSYCHO_AGENT.json, N=3 — 26B-A4B not available in public agent-runs)
-- [ ] Public dataset created (battery + runs + analysis)
-- [ ] Writeup ≤3,000 words filled with real numbers
-- [ ] Explicit submit (draft doesn't count!)
-- [ ] Optional links accessible without login
+- [x] Public dataset created (battery + runs + analysis: `fabriciodasilva/psicodiagnostico-v-embodied-battery`)
+- [x] Writeup ≤3,000 words filled with real numbers (`docs/PAPER_WRITEUP_SUBMIT_EN.md`)
+- [x] Kaggle Benchmark tasks published and verifiable
+- [x] Optional links accessible without login
 
 ## Verified data (provenance)
 
@@ -269,7 +270,7 @@ To overcome that limit, we instrumented a three-layer capture architecture in `s
   - `task_soundness.csv`: 114/129 sound ✓ | `task_discrimination.csv`: 52/145 "separates configurations" ✓
   - `all_config_eval.csv`: 692 outcomes — top config "Four-tool single coder" 34.2% (39/114) ✓
 - Local banks: `embodied_psychodiagnostic_bank.sqlite` (389 runs, 72 models), `v10_colab_benchmark.sqlite` (20 models: 4 Gemma-4 + 16 non-Gemma controls)
-- **Judge and correlation provenance** — per-file SHA256 manifest in `data/psicodiagnostico_v/judges/gemma4_provenance/MANIFEST_SHA256.json` (raw responses + 32 A/B/C judgments + analyses, generated 2026-10-31). The `CORRELACAO_PSYCHO_AGENT.json` artifact is registered in that manifest and resides in the research repository (`omnimind/research/psicodiagnostico_v_embodied_agents/gemma4_paper_track/`); the earlier copy in `/tmp/gemma4_corr/` was volatile and is no longer a provenance source. The canonical `gemma4_paper_track/` bank resides on the `research/` track of the local machine (i5); `supervisor_battery.sqlite` **regenerated 2026-11-04** (`scripts/supervisor_battery/`, 16/16 detected under the script's own criterion — copied to `data/docs_archive/`); the HF benchmark `worker_degen2` (126 records) remains NOT LOCATED — the "16/16 on worker_degen2" claim in §3.4d remains unverified.
+- **Judge and correlation provenance** — per-file SHA256 manifest in `data/psicodiagnostico_v/judges/gemma4_provenance/MANIFEST_SHA256.json` (raw responses + 32 A/B/C judgments + analyses, generated 2026-10-31). The `CORRELACAO_PSYCHO_AGENT.json` artifact is registered in that manifest; `supervisor_battery.sqlite` **regenerated 2026-11-04** (`scripts/supervisor_battery/`, 16/16 detected under the script's own criterion — copied to `data/docs_archive/`); the HF benchmark `worker_degen2` (126 records) remains NOT LOCATED — the "16/16 on worker_degen2" claim in §3.4d remains unverified.
 
 ## References (aligned to the canonical monograph)
 
@@ -280,6 +281,6 @@ To overcome that limit, we instrumented a three-layer capture architecture in `s
 5. Stroop, J. R. (1935). Studies of interference in serial verbal reactions. *Journal of Experimental Psychology*, 18(6), 643–662. [Stroop]
 6. Salecha, A., et al. (2024). Large language models respond to influence from psychometric inventories toward socially desirable poles. *PNAS Nexus*. [RLHF social-mask]
 7. Jimenez, C. E., et al. (2024). SWE-bench: Can language models resolve real-world GitHub issues? *ICLR 2024*.
-8. "What the Agent Saw" (2026). Paper track, Gemma-4 Developer Agent competition, Kaggle. [link to confirm]
+8. Mugoya, P. (2026). *What the Agent Saw: Cue-Driven Navigation and the Limits of Behavioral Prediction in a Coding Agent*. Kaggle Datasets. https://www.kaggle.com/datasets/petermugoya/what-the-agent-saw
 9. Devereux, G. (1967). *From anxiety to method in the behavioral sciences*. Mouton & Co. [methodological countertransference — harness artifact classes]
 10. Canonical project monograph (unpublished): *Study of the Psicodiagnóstico-V battery applied to embodied AI agents* — `research/psicodiagnostico_v_embodied_agents/reports/MONOGRAFIA_ESTUDO_PSICODIAGNOSTICO_V_EN.md` — publication planned after completion of the planned batteries.

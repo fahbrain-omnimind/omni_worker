@@ -29,6 +29,14 @@ Machine Public Soul (SSE + UI bilíngue).
 
 ### Índice de documentos
 
+**Submissão & Papers da Competição**
+
+| Doc | Descrição |
+|---|---|
+| [OW-SUB-001 — Paper Submission Writeup (EN)](PAPER_WRITEUP_SUBMIT_EN.md) | Manuscrito oficial de submissão à competição Google Gemma 4 Paper Track (~3.000 palavras, conciso e verificado) |
+| [OW-SUB-002 — Extended Paper Writeup (PT)](PAPER_WRITEUP.md) | Relatório estendido e bilíngue de resultados empíricos (Psicodiagnóstico-V, 620 coorte Gemma-4 + worker L4) |
+| [OW-SUB-003 — Extended Paper Writeup (EN)](PAPER_WRITEUP_EN.md) | Versão integral em inglês do writeup estendido |
+
 **Setup & operações**
 
 | Doc | Descrição |

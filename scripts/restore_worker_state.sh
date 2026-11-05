@@ -19,9 +19,13 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DRIVE_BACKUP_DIR="${DRIVE_BACKUP_DIR:-/content/drive/MyDrive/omni_worker_backups}"
+BACKUP_DIR="${BACKUP_DIR:-$DRIVE_BACKUP_DIR}"
+if [ ! -d "$BACKUP_DIR" ] && [ -d "$REPO/data/backups" ]; then
+  BACKUP_DIR="$REPO/data/backups"
+fi
 
-ARCHIVE="${1:-$(ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz 2>/dev/null | head -1)}"
-[ -n "$ARCHIVE" ] || { echo "[restore] nenhum omni_worker_*.tar.gz em $DRIVE_BACKUP_DIR"; exit 1; }
+ARCHIVE="${1:-$(ls -1t "$BACKUP_DIR"/omni_worker_*.tar.gz 2>/dev/null | head -1 || true)}"
+[ -n "$ARCHIVE" ] || { echo "[restore] nenhum omni_worker_*.tar.gz em $BACKUP_DIR (operação com estado limpo/novo)"; exit 0; }
 echo "[restore] archive: $ARCHIVE"
 
 if [ -f "$ARCHIVE.sha256" ]; then

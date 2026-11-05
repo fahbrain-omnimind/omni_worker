@@ -11,7 +11,8 @@
 
 **Links Diretos / Direct Navigation:**
 - 📊 **[Interactive 4-View Live Telemetry Dashboard (`docs/index.html`)](docs/index.html)** — alimentado por telemetria real NVIDIA L4 (`docs/data/dashboard/latest.json` + `/soul/state`)
-- 📄 **[Paper Track Writeup & Architecture (`docs/PAPER_WRITEUP.md`)](docs/PAPER_WRITEUP.md)** — resultados empíricos completos (Psicodiagnóstico-V + `omni_worker` L4)
+- 📄 **[Paper Track Submission Writeup (English) (`docs/PAPER_WRITEUP_SUBMIT_EN.md`)](docs/PAPER_WRITEUP_SUBMIT_EN.md)** — official competition submission writeup (~3,000w, empirical evaluation)
+- 📄 **[Paper Track Extended Writeup (Português) (`docs/PAPER_WRITEUP.md`)](docs/PAPER_WRITEUP.md)** — resultados empíricos completos (Psicodiagnóstico-V + `omni_worker` L4)
 - 🧭 **[Documentation & Studies Index (`docs/DOCS_INDEX.md`)](docs/DOCS_INDEX.md)** — mapa linear de `OW-DSN-001..003`, `OW-STU-008..018` e resultados
 - ⚖️ **Independent Judge Audits:** [OW-AUD-018 (Repo & Code Conformance)](docs/audit/OW-AUD-018_judge_repo_presentation_and_code_conformance.md) · [OW-AUD-019 (Kaggle & SOTA Comparison)](docs/audit/OW-AUD-019_judge_kaggle_competition_and_sota_comparison.md) · [OW-AUD-020 (Deep Architecture & MPS Audit)](docs/audit/OW-AUD-020_judge_hermes_deep_architecture_and_mps_audit.md)
 

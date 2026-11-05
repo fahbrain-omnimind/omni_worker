@@ -9,8 +9,11 @@ import pytest
 
 MOD_PATH = (Path(__file__).resolve().parent.parent
             / "scripts" / "gemma4_diag_battery" / "run_diag_battery.py")
-CANON = Path("/content/omnimind-kilombo-sovereign/scripts/benchmarks/"
-             "embodied_v10_unified_battery.py")
+_LOCAL_CANON = (Path(__file__).resolve().parent.parent
+                / "vendor" / "benchmarks" / "embodied_v10_unified_battery.py")
+_SOVEREIGN_CANON = Path("/content/omnimind-kilombo-sovereign/scripts/benchmarks/"
+                        "embodied_v10_unified_battery.py")
+CANON = _LOCAL_CANON if _LOCAL_CANON.exists() else _SOVEREIGN_CANON
 
 
 def _load():

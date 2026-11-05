@@ -30,10 +30,10 @@ DRIVE_BACKUP_DIR="${DRIVE_BACKUP_DIR:-/content/drive/MyDrive/omni_worker_backups
 KEEP="${BACKUP_KEEP:-5}"
 
 write_provenance() {
-  local tarball="$1" ts="$2" prev
-  prev="$(ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz 2>/dev/null \
+  local tarball="$1" ts="$2" outdir="${3:-$DRIVE_BACKUP_DIR}" prev
+  prev="$(ls -1t "$outdir"/omni_worker_*.tar.gz 2>/dev/null \
           | grep -v "/$(basename "$tarball")$" | head -1 | xargs -r basename)"
-  python3 - "$tarball" "$ts" "$prev" "$DRIVE_BACKUP_DIR" <<'PY'
+  python3 - "$tarball" "$ts" "$prev" "$outdir" <<'PY'
 import hashlib, json, subprocess, sys, tarfile, os
 tarball, ts, prev, outdir = sys.argv[1:5]
 h = hashlib.sha256()
@@ -86,13 +86,18 @@ verify_archive() {
 }
 
 archive_once() {
-  [ -d "$DRIVE_BACKUP_DIR" ] || mkdir -p "$DRIVE_BACKUP_DIR" || {
-    echo "[archive] drive indisponível ($DRIVE_BACKUP_DIR) — skip"; return 1; }
+  local target_dir="$DRIVE_BACKUP_DIR"
+  if [ ! -d "$target_dir" ] && ! mkdir -p "$target_dir" 2>/dev/null; then
+    target_dir="$REPO/data/backups"
+    mkdir -p "$target_dir" 2>/dev/null || {
+      echo "[archive] destino indisponível ($target_dir) — skip"; return 1; }
+    echo "[archive] fallback para diretório local: $target_dir"
+  fi
   local ts name
   ts="$(date -u +%Y%m%dT%H%M%SZ)"
   name="omni_worker_${ts}.tar.gz"
   # runtime artifacts the git history does NOT cover; secrets excluded
-  tar -czf "$DRIVE_BACKUP_DIR/.$name.tmp" \
+  tar -czf "$target_dir/.$name.tmp" \
     --exclude='*.env' --exclude='*token*' --exclude='*secret*' \
     --exclude='*.pem' --exclude='*.key' --exclude='*credential*' \
     --exclude='*id_rsa*' --exclude='*id_ed25519*' \
@@ -105,16 +110,16 @@ archive_once() {
     scripts/refactor_battery/battery_results.sqlite \
     scripts/corpus_reading_battery/corpus_delivery_battery.sqlite \
     2>/dev/null
-  if [ -s "$DRIVE_BACKUP_DIR/.$name.tmp" ]; then
-    mv "$DRIVE_BACKUP_DIR/.$name.tmp" "$DRIVE_BACKUP_DIR/$name"
-    write_provenance "$DRIVE_BACKUP_DIR/$name" "$ts"
-    echo "[archive] $name ($(du -h "$DRIVE_BACKUP_DIR/$name" | cut -f1)) +manifest +sha256"
-    ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz | tail -n +$((KEEP+1)) | while read -r old; do
+  if [ -s "$target_dir/.$name.tmp" ]; then
+    mv "$target_dir/.$name.tmp" "$target_dir/$name"
+    write_provenance "$target_dir/$name" "$ts" "$target_dir"
+    echo "[archive] $name ($(du -h "$target_dir/$name" | cut -f1)) +manifest +sha256"
+    ls -1t "$target_dir"/omni_worker_*.tar.gz | tail -n +$((KEEP+1)) | while read -r old; do
       rm -f "$old" "${old%.tar.gz}.manifest.json" "${old%.tar.gz}.sha256"
     done
     return 0
   fi
-  rm -f "$DRIVE_BACKUP_DIR/.$name.tmp"
+  rm -f "$target_dir/.$name.tmp"
   echo "[archive] tar vazio — nada a preservar"; return 1
 }
 

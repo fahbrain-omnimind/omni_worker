@@ -219,13 +219,13 @@ ensure_state_restored() {
     return 0
   fi
   if [ ! -d "$DRIVE_BACKUP_DIR" ]; then
-    echo -e "${YELLOW}[WARN]${NC} $DRIVE_BACKUP_DIR não montado e $OMNI_STATE_DIR vazio"
+    echo -e "${YELLOW}[INFO]${NC} $DRIVE_BACKUP_DIR não montado — iniciando com estado SQLite limpo e independente em $OMNI_STATE_DIR"
     return 0
   fi
   local latest
   latest="$(ls -1t "$DRIVE_BACKUP_DIR"/omni_worker_*.tar.gz 2>/dev/null | head -1 || true)"
   if [ -z "$latest" ]; then
-    echo -e "${YELLOW}[WARN]${NC} nenhum omni_worker_*.tar.gz em $DRIVE_BACKUP_DIR"
+    echo -e "${YELLOW}[INFO]${NC} nenhum omni_worker_*.tar.gz em $DRIVE_BACKUP_DIR — iniciando com estado SQLite limpo e independente"
     return 0
   fi
   echo -e "${BLUE}>> [bootstrap] verificando e restaurando backup: $(basename "$latest")${NC}"
@@ -263,21 +263,29 @@ ensure_reference_assets() {
   # worker precisa está vendored (vendor/kernel + omni_coworker.vendor).
 
   if [ ! -f "$OMNI_ACERVO_DIR/acervo_manifest.sqlite" ]; then
-    echo -e "${BLUE}>> [bootstrap] baixando acervo vetorizado HF -> $OMNI_ACERVO_DIR...${NC}"
-    "$VENV_PYTHON" -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='fabricioslv/omnimind-acervo-vetorizado', repo_type='dataset', local_dir='$OMNI_ACERVO_DIR', max_workers=8)" \
-      || echo -e "${YELLOW}[WARN] falha ao baixar acervo vetorizado${NC}"
+    if [ -n "${HF_TOKEN:-}" ]; then
+      echo -e "${BLUE}>> [bootstrap] baixando acervo vetorizado HF -> $OMNI_ACERVO_DIR...${NC}"
+      "$VENV_PYTHON" -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='fabricioslv/omnimind-acervo-vetorizado', repo_type='dataset', local_dir='$OMNI_ACERVO_DIR', max_workers=8)" \
+        || echo -e "${YELLOW}[WARN] falha ao baixar acervo vetorizado${NC}"
+    else
+      echo -e "${YELLOW}[INFO]${NC} acervo vetorizado canônico omitido (HF_TOKEN ausente) — operando com memória vetorial sob demanda (MemtriasAI)"
+    fi
   else
     echo -e "${GREEN}[OK]${NC} acervo vetorizado presente ($OMNI_ACERVO_DIR)"
   fi
 
   mkdir -p "$OMNI_STATE_DIR/hf_gemma4"
   if [ ! -f "$OMNI_STATE_DIR/hf_gemma4/gemma4_t4x2_v2_results.sqlite" ] || [ ! -f "$OMNI_STATE_DIR/hf_gemma4/gemma4_e4b_l4_results.sqlite" ]; then
-    echo -e "${BLUE}>> [bootstrap] baixando datasets da competição HF -> $OMNI_STATE_DIR/hf_gemma4...${NC}"
-    "$VENV_PYTHON" -c "
+    if [ -n "${HF_TOKEN:-}" ]; then
+      echo -e "${BLUE}>> [bootstrap] baixando datasets da competição HF -> $OMNI_STATE_DIR/hf_gemma4...${NC}"
+      "$VENV_PYTHON" -c "
 from huggingface_hub import snapshot_download
 for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4b-colab-l4-results'):
     snapshot_download(repo_id=repo, repo_type='dataset', local_dir='$OMNI_STATE_DIR/hf_gemma4')
 " || echo -e "${YELLOW}[WARN] falha ao baixar datasets HF da competição${NC}"
+    else
+      echo -e "${YELLOW}[INFO]${NC} datasets de competição HF omitidos (HF_TOKEN ausente) — execução local continuará independente"
+    fi
   else
     echo -e "${GREEN}[OK]${NC} datasets HF da competição presentes ($OMNI_STATE_DIR/hf_gemma4)"
   fi
@@ -286,13 +294,17 @@ for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4
   # insumo do scripts/psico_dual_judge_audit. Só os artefatos canônicos.
   PSICO_DIR="$OMNI_STATE_DIR/psicodiagnostico_v"
   if [ ! -f "$PSICO_DIR/embodied_psychodiagnostic_bank.sqlite" ]; then
-    echo -e "${BLUE}>> [bootstrap] baixando banco psicodiagnóstico HF -> $PSICO_DIR...${NC}"
-    mkdir -p "$PSICO_DIR"
-    "$VENV_PYTHON" -c "
+    if [ -n "${HF_TOKEN:-}" ]; then
+      echo -e "${BLUE}>> [bootstrap] baixando banco psicodiagnóstico HF -> $PSICO_DIR...${NC}"
+      mkdir -p "$PSICO_DIR"
+      "$VENV_PYTHON" -c "
 from huggingface_hub import snapshot_download
 snapshot_download(repo_id='fabricioslv/psicodiagnostico-v-embodied-results', repo_type='dataset', local_dir='$PSICO_DIR',
   allow_patterns=['embodied_psychodiagnostic_bank.sqlite','v10_colab_benchmark.sqlite','gemma4_runs_20261030/*','judges/*','INVENTARIO*','MONOGRAFIA*','analise_emergente*/*','appendices/*','data_sanitized/*'], max_workers=8)
 " || echo -e "${YELLOW}[WARN] falha ao baixar banco psicodiagnóstico${NC}"
+    else
+      echo -e "${YELLOW}[INFO]${NC} banco psicodiagnóstico omitido (HF_TOKEN ausente) — use o dataset público Kaggle se desejar auditar"
+    fi
   else
     echo -e "${GREEN}[OK]${NC} banco psicodiagnóstico presente ($PSICO_DIR)"
   fi

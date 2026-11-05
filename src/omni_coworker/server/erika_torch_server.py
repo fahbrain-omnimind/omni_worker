@@ -60,6 +60,7 @@ os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:False")
 import torch
 import uvicorn
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [erika-torch] %(message)s")
@@ -528,11 +529,36 @@ def chat_completions(req: ChatCompletionReq) -> dict[str, Any]:
             torch.cuda.empty_cache()
         logger.warning("CUDA OOM em /v1/chat/completions: %s", err_msg)
         raise HTTPException(status_code=507, detail=f"CUDA OOM — evict peer model and retry: {err_msg}")
+    model_name = req.model or _MODEL_ID
+    if req.stream:
+        def _sse():
+            cid = f"chatcmpl-{uuid.uuid4().hex[:12]}"
+            created = int(time.time())
+            first = {
+                "id": cid, "object": "chat.completion.chunk", "created": created,
+                "model": model_name,
+                "choices": [{"index": 0, "delta": {"role": "assistant", "content": text},
+                             "finish_reason": None}],
+            }
+            yield f"data: {json.dumps(first)}\n\n"
+            last = {
+                "id": cid, "object": "chat.completion.chunk", "created": created,
+                "model": model_name,
+                "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}],
+                "usage": {
+                    "prompt_tokens": act["prompt_tokens"],
+                    "completion_tokens": act["gen_tokens"],
+                    "total_tokens": act["prompt_tokens"] + act["gen_tokens"],
+                },
+            }
+            yield f"data: {json.dumps(last)}\n\n"
+            yield "data: [DONE]\n\n"
+        return StreamingResponse(_sse(), media_type="text/event-stream")
     return {
         "id": f"chatcmpl-{uuid.uuid4().hex[:12]}",
         "object": "chat.completion",
         "created": int(time.time()),
-        "model": req.model or _MODEL_ID,
+        "model": model_name,
         "choices": [{"index": 0, "message": {"role": "assistant", "content": text}, "finish_reason": "stop"}],
         "usage": {
             "prompt_tokens": act["prompt_tokens"],
