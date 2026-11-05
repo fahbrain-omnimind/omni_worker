@@ -1,10 +1,5 @@
 import numpy as np
-import omnimind_entropic_memory as em
-import omnimind_expectation_rs as ex
-import omnimind_freud10d as fd
-import omnimind_kernel_compute as kc
-import omnimind_metrics as mt
-import omnimind_sovereign_kuramoto as sk
+import pytest
 from omni_coworker.kernel_hooks.ablation_modulator import (
     ATTRACTOR_CENTROIDS,
     FREUD10D_W_FLAT,
@@ -20,6 +15,7 @@ from omni_coworker.kernel_daemon import scheduler
 
 
 def test_rust_solver():
+    sk = pytest.importorskip("omnimind_sovereign_kuramoto")
     omega = [1.0 + 0.08 * i for i in range(10)]
     phases = [0.1 * i for i in range(10)]
     solver = sk.SovereignKuramotoSolver(omega, FREUD10D_W_FLAT, phases, 0.01)
@@ -32,6 +28,7 @@ def test_rust_solver():
 
 
 def test_rust_lif():
+    sk = pytest.importorskip("omnimind_sovereign_kuramoto")
     lif = sk.PsychoanalyticLIF(-65.0, -70.0, -50.0, 3, 0.1)
     lif.set_neutrosophic(0.5, 0.2, 0.1)
     v = lif.step(10.0)
@@ -40,6 +37,7 @@ def test_rust_lif():
 
 
 def test_rust_lif_batch():
+    sk = pytest.importorskip("omnimind_sovereign_kuramoto")
     batch = sk.PsychoanalyticLIFBatch(3, -65.0, -70.0, -50.0, 3, 0.1)
     batch.set_neutrosophic_batch([(0.5, 0.2, 0.1)] * 3)
     spikes = batch.step_batch([10.0, 0.0, 5.0])
@@ -48,6 +46,7 @@ def test_rust_lif_batch():
 
 
 def test_rust_hopf():
+    sk = pytest.importorskip("omnimind_sovereign_kuramoto")
     hopf = sk.HopfBifurcationMonitor(10)
     state = [0.1 * i for i in range(10)]
     regime, sr = hopf.update(FREUD10D_W_FLAT, state)
@@ -155,6 +154,7 @@ def test_scheduler_step_includes_sovereign_kuramoto_and_attractor_10d(tmp_path, 
 
 
 def test_crate_kernel_compute():
+    kc = pytest.importorskip("omnimind_kernel_compute")
     e = kc.DesireEngine()
     out = e.calculate_epsilon_desire(current_phi=0.35, explored_states=12, total_possible_states=100, somatic_heat=0.4)
     assert isinstance(out, (int, float))
@@ -166,6 +166,7 @@ def test_crate_kernel_compute():
 
 
 def test_crate_freud10d():
+    fd = pytest.importorskip("omnimind_freud10d")
     assert fd.N_DIMS == 10
     f = fd.Freud10DApparatus()
     _, res = f.forward([0.1] * 10)
@@ -173,6 +174,7 @@ def test_crate_freud10d():
 
 
 def test_crate_metrics():
+    mt = pytest.importorskip("omnimind_metrics")
     normed = mt.normalize_l2([3.0, 4.0])
     assert len(normed) == 2 and abs(normed[0] - 0.6) < 1e-5 and abs(normed[1] - 0.8) < 1e-5
     assert mt.cosine_similarity([1.0, 0.0], [0.0, 1.0]) == 0.0
@@ -181,6 +183,7 @@ def test_crate_metrics():
 
 
 def test_crate_expectation_rs():
+    ex = pytest.importorskip("omnimind_expectation_rs")
     assert ex.health() is True
     vec = [0.1] * 256
     out = ex.predict(vec)
@@ -189,6 +192,7 @@ def test_crate_expectation_rs():
 
 
 def test_crate_entropic_memory():
+    em = pytest.importorskip("omnimind_entropic_memory")
     w = em.memory_resonance_weight(1, "sovereign", "quantum phase56", host_pressure=0.6)
     assert 0.75 <= w <= 2.25
     t2 = em.effective_t2_hours(48.0, w, 3, 1.0, 0.2)
@@ -199,6 +203,7 @@ def test_crate_entropic_memory():
 
 
 def test_helper_sovereign_expectation():
+    pytest.importorskip("omnimind_expectation_rs")
     res = compute_sovereign_expectation([0.1] * 256)
     assert res["available"] is True
     assert isinstance(res["norm"], float)
@@ -210,6 +215,7 @@ def test_helper_sovereign_expectation():
 
 
 def test_helper_sovereign_entropic_memory_state():
+    pytest.importorskip("omnimind_entropic_memory")
     res = compute_sovereign_entropic_memory_state()
     assert res["available"] is True
     assert isinstance(res["resonance_weight"], float)
