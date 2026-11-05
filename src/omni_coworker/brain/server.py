@@ -23,14 +23,14 @@ JUDGE_BASE_URL = f"http://{ERIKA_HOST}:{JUDGE_PORT}"
 def _base_for_role(role: str) -> str:
     """Return the upstream base URL for a brain role.
 
-    English: 'executor' targets the tactical model server, 'judge' the
-    heavyweight second-opinion server (tier xl), anything else targets
-    the analyst/brain server.
-    pt-BR: 'executor' aponta para o servidor do modelo tático, 'judge'
-    para o servidor de segunda-opinião pesada (tier xl), o restante
-    aponta para o servidor analista/brain.
+    English: 'executor' and 'basal_executor' target the tactical model server (:8099, 4B),
+    'judge' the heavyweight second-opinion server (:8100, tier xl), and
+    'analyst' / 'basal_assistant' target the analyst/brain server (:8098, 12B).
+    pt-BR: 'executor' e 'basal_executor' apontam para o servidor tático (:8099, 4B),
+    'judge' para o servidor de segunda-opinião (:8100), e 'analyst' / 'basal_assistant'
+    apontam para o servidor analista/brain (:8098, 12B).
     """
-    if role == "executor":
+    if role in ("executor", "basal_executor"):
         return EXECUTOR_BASE_URL
     if role == "judge":
         return JUDGE_BASE_URL
@@ -97,12 +97,44 @@ def create_brain_router():
                     return resp.json()
             except Exception as e:  # noqa: BLE001
                 raise HTTPException(status_code=503, detail=f"Brain server unavailable: {e}")
+
+        @router.get("/motor")
+        async def motor(role: str = "basal_assistant", limit: int = 16):
+            """Return Motor Layer (camada motor) + MPS Layer telemetry for analyst/basal_assistant (:8098) or executor/basal_executor (:8099)."""
+            try:
+                base = _base_for_role(role)
+                async with httpx.AsyncClient(timeout=5.0) as client:
+                    resp = await client.get(f"{base}/erika/motor", params={"limit": limit})
+                    return {"role": role, **resp.json()}
+            except Exception as e:  # noqa: BLE001
+                raise HTTPException(status_code=503, detail=f"Brain motor endpoint unavailable: {e}")
+
+        @router.post("/basal_assistant")
+        async def basal_assistant_chat(payload: dict, role: str = "basal_assistant"):
+            """Pure basal observation endpoint (no affect/glial/memory prompt injection), recording full MPS + Motor Layer telemetry."""
+            payload = dict(payload or {})
+            payload["mode"] = "basal_assistant"
+            for k in ("with_affect", "with_glial_gate", "memory_recall", "memory_log", "acervo_recall", "symbolic_recall"):
+                payload.pop(k, None)
+            try:
+                async with httpx.AsyncClient(timeout=300.0) as client:
+                    resp = await client.post(
+                        f"{_base_for_role(role)}/v1/chat/completions", json=payload
+                    )
+                    return resp.json()
+            except Exception as e:  # noqa: BLE001
+                raise HTTPException(status_code=503, detail=f"Basal assistant unavailable: {e}")
         
         @router.post("/chat")
         async def chat(payload: dict, role: str = "analyst"):
             try:
                 payload = dict(payload or {})
-                with_affect = bool(payload.pop("with_affect", False))
+                is_basal = role in ("basal_assistant", "basal_executor") or payload.get("mode") in ("basal", "basal_assistant")
+                if is_basal:
+                    payload["mode"] = "basal_assistant"
+                    for k in ("with_affect", "with_glial_gate", "memory_recall", "memory_log", "acervo_recall", "symbolic_recall"):
+                        payload.pop(k, None)
+                with_affect = False if is_basal else bool(payload.pop("with_affect", False))
                 affect_verdict = None
                 if with_affect:
                     try:
@@ -142,8 +174,8 @@ def create_brain_router():
                     except Exception:  # noqa: BLE001, S110
                         pass
                 # gate glial degenerativo: bloqueia geração repetitiva (fail-open)
-                _gate_default = os.getenv("OMNI_GATE_FAIL_CLOSED") == "1"
-                if payload.pop("with_glial_gate", _gate_default):
+                _gate_default = False if is_basal else (os.getenv("OMNI_GATE_FAIL_CLOSED") == "1")
+                if not is_basal and payload.pop("with_glial_gate", _gate_default):
                     try:
                         from ..activation_beta.attractor import glial_verdict
 
@@ -171,8 +203,8 @@ def create_brain_router():
                     except Exception:  # noqa: BLE001, S110
                         pass
                 # memtrias: retorno do recalcado (recall) + inscrição (log) + corpo simbólico/acervo
-                auto_log = os.getenv("OMNI_MEMTRIAS_AUTO_LOG", "0") in ("1", "true", "yes")
-                auto_assist = os.getenv("OMNI_AUTO_CONTEXT_ASSIST", "0") in ("1", "true", "yes")
+                auto_log = False if is_basal else (os.getenv("OMNI_MEMTRIAS_AUTO_LOG", "0") in ("1", "true", "yes"))
+                auto_assist = False if is_basal else (os.getenv("OMNI_AUTO_CONTEXT_ASSIST", "0") in ("1", "true", "yes"))
                 mem_recall = bool(payload.pop("memory_recall", False))
                 mem_log = bool(payload.pop("memory_log", auto_log))
                 mem_chat = str(payload.pop("chat_id", "") or "")
@@ -296,16 +328,22 @@ def create_brain_router():
             """Report which brain roles have live servers.
 
             English: analyst (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT)
-            + judge (ERIKA_JUDGE_PORT, tier xl).
+            + judge (ERIKA_JUDGE_PORT, tier xl) + basal_assistant + basal_executor.
             pt-BR: analista (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT)
-            + judge (ERIKA_JUDGE_PORT, tier xl).
+            + judge (ERIKA_JUDGE_PORT, tier xl) + basal_assistant + basal_executor.
             """
             out: dict = {}
             async with httpx.AsyncClient(timeout=3.0) as client:
-                for role, base in (("analyst", ERIKA_BASE_URL), ("executor", EXECUTOR_BASE_URL), ("judge", JUDGE_BASE_URL)):
+                for role, base in (
+                    ("analyst", ERIKA_BASE_URL),
+                    ("executor", EXECUTOR_BASE_URL),
+                    ("judge", JUDGE_BASE_URL),
+                    ("basal_assistant", ERIKA_BASE_URL),
+                    ("basal_executor", EXECUTOR_BASE_URL),
+                ):
                     try:
                         r = await client.get(f"{base}/health")
-                        out[role] = {"status": "up", "base": base, **r.json()}
+                        out[role] = {"status": "up", "base": base, "mode": "basal" if role.startswith("basal") else "modulated", **r.json()}
                     except Exception:  # noqa: BLE001
                         out[role] = {"status": "down", "base": base}
             return out

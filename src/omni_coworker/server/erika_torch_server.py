@@ -87,18 +87,159 @@ class ChatMessage(BaseModel):
 class ChatCompletionReq(BaseModel):
     model: str | None = None
     messages: list[ChatMessage]
-    max_tokens: int | None = Field(default=256, le=8192)
+    max_tokens: int | None = Field(default=1024, le=16384)
     temperature: float | None = 0.7
     top_p: float | None = 0.9
     stream: bool | None = False
+    mode: str | None = "basal_assistant"
 
 
 class CompletionReq(BaseModel):
     model: str | None = None
     prompt: str
-    max_tokens: int | None = Field(default=256, le=8192)
+    max_tokens: int | None = Field(default=1024, le=16384)
     temperature: float | None = 0.7
     top_p: float | None = 0.9
+    mode: str | None = "basal_assistant"
+
+
+def _compute_motor_and_mps_telemetry(hidden_states: tuple | None, text: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Compute Motor Layer (camada motor) and MPS Layer (camada MPS) metrics per generation."""
+    import math
+    import re
+    import numpy as np
+
+    txt = text or ""
+    # Separate <thought> / thinking from visible motor output
+    m_th = re.match(r"^\s*(?:<\|channel>thought|thought)\s*\n(.*?)(?:<channel\|>|\n\n)", txt, flags=re.DOTALL)
+    thinking_txt = m_th.group(1) if m_th else ""
+    visible_txt = txt[m_th.end():] if m_th else txt
+    words = visible_txt.split() or txt.split()
+    unique_ratio = round(len(set(words)) / max(1, len(words)), 4) if words else 1.0
+    degen_flag = False
+    if len(words) >= 12:
+        grams = [tuple(words[i:i + 4]) for i in range(len(words) - 3)]
+        rep4 = 1.0 - len(set(grams)) / max(1, len(grams))
+        if unique_ratio < 0.50 and rep4 > 0.05:
+            degen_flag = True
+    action_markers = sum(
+        txt.count(mk)
+        for mk in ("```", "diff --git", "===", "def ", "class ", "return ", "<|tool_call>", "DECISAO:", "ACAO:")
+    )
+
+    motor: dict[str, Any] = {
+        "motor_hidden_norm": 0.0,
+        "motor_hidden_std": 0.0,
+        "motor_velocity_mean": 0.0,
+        "motor_velocity_max": 0.0,
+        "motor_acceleration_mean": 0.0,
+        "motor_cosine_drift": 0.0,
+        "thinking_chars": len(thinking_txt),
+        "visible_motor_chars": len(visible_txt),
+        "action_markers_count": int(action_markers),
+        "unique_ratio": unique_ratio,
+        "degenerate_flag": bool(degen_flag),
+    }
+    mps: dict[str, Any] = {
+        "chi_eff_mean": 1.0,
+        "chi_eff_max": 1.0,
+        "pr_traj": 1.0,
+        "svd_entropy_mean": 0.0,
+        "contract_drift": 0.0,
+        "ipr_mean": 0.0,
+        "morphology_score": 0.0,
+    }
+    if not hidden_states:
+        return motor, mps
+
+    try:
+        n_steps = len(hidden_states)
+        last_step = hidden_states[-1]
+        n_layers = len(last_step)
+        h_motor_last = last_step[-1][:, -1, :].detach().float().cpu().numpy()[0]
+        motor["motor_hidden_norm"] = round(float(np.linalg.norm(h_motor_last)), 4)
+        motor["motor_hidden_std"] = round(float(np.std(h_motor_last)), 4)
+
+        # Sample up to 32 steps across generation for trajectory kinematics & MPS
+        stride = max(1, n_steps // 24)
+        idxs = list(range(0, n_steps, stride))
+        if idxs[-1] != n_steps - 1:
+            idxs.append(n_steps - 1)
+
+        # Motor trajectory: final layer across sampled steps (S, D)
+        motor_seq = np.stack([
+            hidden_states[i][-1][:, -1, :].detach().float().cpu().numpy()[0]
+            for i in idxs
+        ])
+        if motor_seq.shape[0] >= 2:
+            diffs = np.diff(motor_seq, axis=0)
+            vels = np.linalg.norm(diffs, axis=-1)
+            motor["motor_velocity_mean"] = round(float( np.mean(vels)), 4)
+            motor["motor_velocity_max"] = round(float(np.max(vels)), 4)
+            if diffs.shape[0] >= 2:
+                acc = np.linalg.norm(np.diff(diffs, axis=0), axis=-1)
+                motor["motor_acceleration_mean"] = round(float(np.mean(acc)), 4)
+            n0 = float(np.linalg.norm(motor_seq[0]))
+            n1 = float(np.linalg.norm(motor_seq[-1]))
+            if n0 > 1e-8 and n1 > 1e-8:
+                cos_sim = float(np.dot(motor_seq[0], motor_seq[-1]) / (n0 * n1))
+                motor["motor_cosine_drift"] = round(float(1.0 - cos_sim), 4)
+
+            # Trajectory Participation Ratio (PR_traj) on centered motor/hub sequence
+            centered = motor_seq - motor_seq.mean(axis=0, keepdims=True)
+            gram = centered @ centered.T
+            evals = np.linalg.eigvalsh(gram)
+            evals = np.maximum(evals, 0.0)
+            s1 = float(evals.sum())
+            s2 = float((evals ** 2).sum())
+            if s2 > 1e-12:
+                mps["pr_traj"] = round(float((s1 ** 2) / s2), 4)
+
+        # Exact central bipartition MPS chi_eff = exp(S_vN) across hub layers
+        hub_idxs = sorted({0, n_layers // 4, n_layers // 2, (3 * n_layers) // 4, n_layers - 1})
+        d_dim = int(h_motor_last.shape[0])
+        # Find factors (d1, d2) close to sqrt(d_dim)
+        d1 = int(math.isqrt(d_dim))
+        while d1 > 1 and (d_dim % d1) != 0:
+            d1 -= 1
+        d2 = d_dim // max(1, d1)
+        chi_vals = []
+        ent_vals = []
+        for l_idx in hub_idxs:
+            v = last_step[l_idx][:, -1, :].detach().float().cpu().numpy()[0]
+            mat = v.reshape(d1, d2)
+            s = np.linalg.svd(mat, compute_uv=False)
+            p = (s ** 2)
+            p_sum = float(p.sum())
+            if p_sum > 1e-12:
+                p = p / p_sum
+                p_pos = p[p > 1e-12]
+                svn = float(-(p_pos * np.log(p_pos)).sum())
+                ent_vals.append(svn)
+                chi_vals.append(math.exp(svn))
+        if chi_vals:
+            mps["chi_eff_mean"] = round(float(np.mean(chi_vals)), 4)
+            mps["chi_eff_max"] = round(float(np.max(chi_vals)), 4)
+            mps["svd_entropy_mean"] = round(float(np.mean(ent_vals)), 4)
+
+        # Also run dendritic_scan on (n_layers_hub, n_steps_sampled, 256)
+        if len(idxs) >= 2:
+            from ..activation_beta.dendritic_scan import scan_trajectory
+            traj_l_s_d = np.stack([
+                np.stack([
+                    hidden_states[s_i][l_i][:, -1, :256].detach().float().cpu().numpy()[0]
+                    for s_i in idxs
+                ])
+                for l_i in hub_idxs
+            ])
+            d_res = scan_trajectory(traj_l_s_d)
+            mps["contract_drift"] = round(float(d_res.get("contract_drift") or 0.0), 4)
+            mps["ipr_mean"] = round(float(d_res.get("ipr_mean") or 0.0), 6)
+            mps["morphology_score"] = round(float(d_res.get("morphology_score") or 0.0), 4)
+    except Exception:  # noqa: BLE001, S110
+        pass
+
+    return motor, mps
 
 
 # ── Instrumentation / Instrumentação ────────────────────────────────────────
@@ -325,8 +466,8 @@ def load_model(model_id: str, load_4bit: bool, device: str,
 
 
 @torch.inference_mode()
-def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p: float):
-    max_attn_toks = int(os.environ.get("OMNI_MAX_ATTN_TOKENS", "900"))
+def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p: float, mode: str = "basal_assistant"):
+    max_attn_toks = int(os.environ.get("OMNI_MAX_ATTN_TOKENS", "4096"))
     want_attn = int(prompt_ids.shape[1]) <= max_attn_toks
     try:
         gen = _MODEL.generate(
@@ -360,7 +501,8 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
     new_ids = seq[0, prompt_ids.shape[1]:]
     text = _TOKENIZER.decode(new_ids, skip_special_tokens=True)
 
-    last_step = gen.hidden_states[-1] if getattr(gen, "hidden_states", None) else None
+    hidden_all = getattr(gen, "hidden_states", None)
+    last_step = hidden_all[-1] if hidden_all else None
     attn_last = gen.attentions[-1] if getattr(gen, "attentions", None) else None
     attn_tail_note = None
     if attn_last is None:
@@ -373,22 +515,26 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
             del out_t
         except Exception as exc:  # noqa: BLE001
             attn_tail_note = "attn_skipped:" + type(exc).__name__
+    motor_layer, mps_layer = _compute_motor_and_mps_telemetry(hidden_all, text)
     act = {
         "ts": datetime.now(UTC).isoformat(),
         "model": _MODEL_ID,
+        "mode": mode or _capture_cfg("OMNI_ACT_MODE", "basal_assistant"),
         "run_id": _capture_cfg("OMNI_ACT_RUN_ID", "") or "runtime-" + datetime.now(UTC).strftime("%Y%m%d"),
         "turn": _capture_cfg("OMNI_ACT_TURN", "") or str(int(time.time())),
         "task": _capture_cfg("OMNI_ACT_TASK", "") or "serve:" + _MODEL_ID.split("/")[-1],
         "prompt_tokens": int(prompt_ids.shape[1]),
         "gen_tokens": int(new_ids.shape[0]),
+        "motor_layer": motor_layer,
+        "mps_layer": mps_layer,
         "layers": _summarize_hidden(last_step),
         **_summarize_attention(attn_last),
     }
     if attn_tail_note:
         act["attn_source"] = attn_tail_note
-    _emit_activation(act)
     _emit_vectors(last_step, act)
-    _emit_step_trajectory(getattr(gen, "hidden_states", None), act)
+    _emit_step_trajectory(hidden_all, act)
+    _emit_activation(act)
     if os.environ.get("OMNI_ACT_PROMPT_HIDDEN", "0") == "1":
         try:
             import numpy as np
@@ -463,6 +609,29 @@ def affect() -> dict[str, Any]:
     }
 
 
+@app.get("/erika/motor")
+def erika_motor(limit: int = 16) -> dict[str, Any]:
+    """Return Motor Layer + MPS Layer telemetry across recent generations."""
+    if not _ACTIVATIONS:
+        return {"status": "no_data", "model": _MODEL_ID}
+    recent = list(_ACTIVATIONS)[-limit:]
+    vel = [a["motor_layer"]["motor_velocity_mean"] for a in recent if isinstance(a.get("motor_layer"), dict)]
+    chi = [a["mps_layer"]["chi_eff_mean"] for a in recent if isinstance(a.get("mps_layer"), dict)]
+    drift = [a["mps_layer"]["contract_drift"] for a in recent if isinstance(a.get("mps_layer"), dict)]
+    return {
+        "status": "ok",
+        "model": _MODEL_ID,
+        "n_recent": len(recent),
+        "motor_velocity_mean": round(sum(vel) / len(vel), 4) if vel else 0.0,
+        "mps_chi_eff_mean": round(sum(chi) / len(chi), 4) if chi else 1.0,
+        "mps_contract_drift_mean": round(sum(drift) / len(drift), 4) if drift else 0.0,
+        "latest_motor_layer": recent[-1].get("motor_layer", {}),
+        "latest_mps_layer": recent[-1].get("mps_layer", {}),
+        "latest_mode": recent[-1].get("mode", "basal_assistant"),
+        "last_ts": recent[-1]["ts"],
+    }
+
+
 @app.post("/erika/unload")
 def erika_unload() -> dict[str, Any]:
     """Evict the model from VRAM; activations log and tokenizer stay."""
@@ -519,7 +688,13 @@ def chat_completions(req: ChatCompletionReq) -> dict[str, Any]:
         raise HTTPException(status_code=503, detail="model unloaded — POST /erika/reload first")
     ids = _chat_prompt(req.messages)
     try:
-        text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
+        text, act = _generate(
+            ids,
+            req.max_tokens or 1024,
+            req.temperature if req.temperature is not None else 0.7,
+            req.top_p if req.top_p is not None else 0.9,
+            mode=req.mode or "basal_assistant",
+        )
     except torch.OutOfMemoryError as e:
         err_msg = str(e)
         del e
@@ -565,6 +740,13 @@ def chat_completions(req: ChatCompletionReq) -> dict[str, Any]:
             "completion_tokens": act["gen_tokens"],
             "total_tokens": act["prompt_tokens"] + act["gen_tokens"],
         },
+        "telemetry": {
+            "mode": act.get("mode", "basal_assistant"),
+            "motor_layer": act.get("motor_layer", {}),
+            "mps_layer": act.get("mps_layer", {}),
+            "step_traj": act.get("step_traj"),
+            "attention_entropy_last": act.get("attention_entropy_last"),
+        },
     }
 
 
@@ -574,7 +756,13 @@ def completions(req: CompletionReq) -> dict[str, Any]:
         raise HTTPException(status_code=503, detail="model unloaded — POST /erika/reload first")
     ids = _TOKENIZER(req.prompt, return_tensors="pt").input_ids
     try:
-        text, act = _generate(ids, req.max_tokens or 256, req.temperature or 0.7, req.top_p or 0.9)
+        text, act = _generate(
+            ids,
+            req.max_tokens or 1024,
+            req.temperature if req.temperature is not None else 0.7,
+            req.top_p if req.top_p is not None else 0.9,
+            mode=req.mode or "basal_assistant",
+        )
     except torch.OutOfMemoryError as e:
         err_msg = str(e)
         del e
@@ -594,6 +782,13 @@ def completions(req: CompletionReq) -> dict[str, Any]:
             "prompt_tokens": act["prompt_tokens"],
             "completion_tokens": act["gen_tokens"],
             "total_tokens": act["prompt_tokens"] + act["gen_tokens"],
+        },
+        "telemetry": {
+            "mode": act.get("mode", "basal_assistant"),
+            "motor_layer": act.get("motor_layer", {}),
+            "mps_layer": act.get("mps_layer", {}),
+            "step_traj": act.get("step_traj"),
+            "attention_entropy_last": act.get("attention_entropy_last"),
         },
     }
 
