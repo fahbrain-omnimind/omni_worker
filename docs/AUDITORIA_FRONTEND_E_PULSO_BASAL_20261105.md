@@ -151,7 +151,31 @@ valores idênticos aos publicados no Ciclo 32 da auditoria contínua):
    `start_omni_worker.sh` via `start_proc pulse_sync … --loop
    ${PULSE_INTERVAL_S:-1800}`.
 
-## 6. Limites residuais `[LIMITE]`
+## 6. Execução verificada `[DADO]` (2026-11-05T17:13Z)
+
+- `bash scripts/pulse_dashboard_sync.sh --once` executado: exportou
+  `docs/data/dashboard/latest.json` (356 KB, `exported_at` fresco) + espelho
+  `data/dashboard/latest.json`, detectou VM ativa (3/3 servidores), commitou
+  cirurgicamente só `latest.json` e pushou **origin** (GitHub
+  `fahbrain-omnimind/omni_worker`) e **gitlab**
+  (`gitlab.com/omni-group535144/omni_worker`, remote adicionado sem token na
+  URL; auth via `credential.helper` expandindo `$GITLAB_TOKEN` no subprocesso
+  de credencial — token ausente de argv/config/log).
+- Commits: `ef0ce05` (feat dev) → `0fe9707` + `919aad4` (chore pulse) — todos
+  em `master` nos dois remotos.
+- Loop basal ativo: `runtime_config/pids/pulse_sync.pid` = 134892
+  (`--loop 1800`, log `logs/pulse_sync.log`); próximos boots sobem via
+  `start_omni_worker.sh` (`OMNI_PULSE_SYNC=0` desliga).
+- Verificações: `node --check` nos dois scripts JS, smoke `updatePulseStatus`/
+  `render280Section` com snapshot real (ONLINE/STALE/NO-SNAP + seção 280),
+  `ruff check` limpo, `python -m compileall` OK, `http.server` local servindo
+  index/dashboard/latest.json 200.
+- AUCs exportados conferem 1:1 com o Ciclo 32 da auditoria contínua
+  (`ipr` power=1.000, `motor_vel` 0.977, `chi_eff` 0.963, `pr_traj` 0.937;
+  degen `pr_traj` pooled 0.067→0.933 invertido; regime `pr_traj` 0.785 pooled,
+  0.991 intra-12B, `motor_vel` 0.946 intra-E4B).
+
+## 7. Limites residuais `[LIMITE]`
 
 - `appState.*` continua com defaults literais quando `latest.json` está
   inacessível — agora explicitamente sinalizado pelo badge OFF; não são
