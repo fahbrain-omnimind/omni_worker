@@ -23,6 +23,7 @@ MODES: dict[str, dict[str, Any]] = {
     "code": {"persona": "code", "role": "executor", "desc": "Geração e patches"},
     "reviewer": {"persona": "critic", "role": "analyst", "desc": "Revisão e juízes"},
     "orchestrator": {"persona": "titan", "role": "analyst", "desc": "Coordenação e veredito"},
+    "judge": {"persona": "judge", "role": "judge", "desc": "Juiz pesado (tier xl, :8100)"},
 }
 
 
@@ -73,7 +74,7 @@ def switch_mode(mode: str) -> dict[str, Any]:
 
 def set_role(mode: str, role: str) -> None:
     """Pin a model role to a mode (sticky model)."""
-    if mode not in MODES or role not in ("analyst", "executor"):
+    if mode not in MODES or role not in ("analyst", "executor", "judge"):
         return
     state = _load_state()
     state[f"role:{mode}"] = role

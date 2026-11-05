@@ -195,12 +195,21 @@ class AgentOrchestrator:
         swap_chars = int(os.getenv("OMNI_JUDGE_SWAP_CHARS", "3000"))
         need_turn_swap = len(result_str) >= swap_chars
 
+        def _role_up(role: str) -> bool:
+            try:
+                from ..brain.server import get_brain_client
+                c = get_brain_client(role)
+                return c is not None and c.get("/health", timeout=2.0).status_code == 200
+            except Exception:
+                return False
+
         def _prepare_judge_role(target_role: str, evict_peer: bool = False) -> None:
             if not need_turn_swap:
                 return
             try:
                 from ..brain.server import get_brain_client
-                peer = "executor" if target_role == "analyst" else "analyst"
+                peer = {"analyst": "executor", "executor": "analyst",
+                        "judge": "executor"}.get(target_role, "analyst")
                 tc = get_brain_client(target_role)
                 pc = get_brain_client(peer)
                 if tc is None:
@@ -229,7 +238,11 @@ class AgentOrchestrator:
             except Exception:
                 pass
 
-        j2_role = "analyst" if (_rec == "analyst" and not need_turn_swap) else "executor"
+        # Judge 2 prefere o brain 'judge' (tier xl :8100) quando vivo —
+        # segunda opinião mais pesada e independente; senão mantém a
+        # lógica analyst/executor da topologia L4.
+        j2_role = "judge" if _role_up("judge") else (
+            "analyst" if (_rec == "analyst" and not need_turn_swap) else "executor")
         _prepare_judge_role(j2_role, evict_peer=(j2_role != "analyst"))
         j2 = brain_chat_json(
             [

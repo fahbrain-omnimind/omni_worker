@@ -72,7 +72,8 @@ def brain_chat(
         )
         if resp.status_code in (500, 503, 507):
             # OOM ou modelo descarregado: desocupa peer e retenta (peer-swap dinâmico)
-            peer = "executor" if role == "analyst" else "analyst"
+            peer = {"analyst": "executor", "executor": "analyst",
+                    "judge": "executor"}.get(role, "analyst")
             peer_client = get_brain_client(peer)
             if peer_client is not None:
                 try:

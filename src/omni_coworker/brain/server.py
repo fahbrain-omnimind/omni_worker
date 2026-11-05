@@ -16,17 +16,25 @@ ERIKA_PORT = int(os.getenv("ERIKA_PORT", "8098"))
 ERIKA_BASE_URL = f"http://{ERIKA_HOST}:{ERIKA_PORT}"
 EXECUTOR_PORT = int(os.getenv("ERIKA_EXECUTOR_PORT", "8099"))
 EXECUTOR_BASE_URL = f"http://{ERIKA_HOST}:{EXECUTOR_PORT}"
+JUDGE_PORT = int(os.getenv("ERIKA_JUDGE_PORT", "8100"))
+JUDGE_BASE_URL = f"http://{ERIKA_HOST}:{JUDGE_PORT}"
 
 
 def _base_for_role(role: str) -> str:
     """Return the upstream base URL for a brain role.
 
-    English: 'executor' targets the tactical model server, anything else
-    targets the analyst/brain server.
-    pt-BR: 'executor' aponta para o servidor do modelo tático, o restante
+    English: 'executor' targets the tactical model server, 'judge' the
+    heavyweight second-opinion server (tier xl), anything else targets
+    the analyst/brain server.
+    pt-BR: 'executor' aponta para o servidor do modelo tático, 'judge'
+    para o servidor de segunda-opinião pesada (tier xl), o restante
     aponta para o servidor analista/brain.
     """
-    return EXECUTOR_BASE_URL if role == "executor" else ERIKA_BASE_URL
+    if role == "executor":
+        return EXECUTOR_BASE_URL
+    if role == "judge":
+        return JUDGE_BASE_URL
+    return ERIKA_BASE_URL
 
 
 def create_brain_router():
@@ -274,16 +282,27 @@ def create_brain_router():
             except Exception as e:
                 raise HTTPException(status_code=503, detail=f"Executor server unavailable: {e}")
 
+        @router.get("/judge/health")
+        async def judge_health():
+            try:
+                async with httpx.AsyncClient(timeout=5.0) as client:
+                    resp = await client.get(f"{JUDGE_BASE_URL}/health")
+                    return resp.json()
+            except Exception as e:
+                raise HTTPException(status_code=503, detail=f"Judge server unavailable: {e}")
+
         @router.get("/topology")
         async def topology():
             """Report which brain roles have live servers.
 
-            English: analyst (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT).
-            pt-BR: analista (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT).
+            English: analyst (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT)
+            + judge (ERIKA_JUDGE_PORT, tier xl).
+            pt-BR: analista (ERIKA_PORT) + executor (ERIKA_EXECUTOR_PORT)
+            + judge (ERIKA_JUDGE_PORT, tier xl).
             """
             out: dict = {}
             async with httpx.AsyncClient(timeout=3.0) as client:
-                for role, base in (("analyst", ERIKA_BASE_URL), ("executor", EXECUTOR_BASE_URL)):
+                for role, base in (("analyst", ERIKA_BASE_URL), ("executor", EXECUTOR_BASE_URL), ("judge", JUDGE_BASE_URL)):
                     try:
                         r = await client.get(f"{base}/health")
                         out[role] = {"status": "up", "base": base, **r.json()}

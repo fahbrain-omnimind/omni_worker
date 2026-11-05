@@ -2,15 +2,22 @@
 # ============================================================================
 # OMNI WORKER — bring-up da topologia completa (container/VM, sem systemd)
 #
-# English: One-command startup for the dual-brain worker node: analyst
-# (:8098) → executor (:8099) → worker API (:8081) → state_guard →
-# swap_scheduler. Sequential brain boot is intentional — concurrent nf4
-# warmup OOMs the L4 (caching_allocator_warmup transient).
+# English: One-command startup for the worker node: analyst (:8098) →
+# executor (:8099) → [judge (:8100) on tier xl] → worker API (:8081) →
+# state_guard → swap_scheduler. Sequential brain boot is intentional —
+# concurrent nf4 warmup OOMs the L4 (caching_allocator_warmup transient).
+# Hardware tier is auto-detected (runtime_config/hw_profile.json):
+#   xl  (>=60GB, A100/H100): + judge brain residente, budgets ampliados
+#   std (>=18GB, L4):        topologia dual-brain padrão
 #
 # pt-BR: Subida da topologia completa com um comando: analyst (:8098) →
-# executor (:8099) → API do worker (:8081) → state_guard →
-# swap_scheduler. Boot sequencial dos brains é intencional — warmup nf4
-# concorrente estoura a L4 (transiente do caching_allocator_warmup).
+# executor (:8099) → [judge (:8100) no tier xl] → API do worker (:8081)
+# → state_guard → swap_scheduler. Boot sequencial dos brains é intencional
+# — warmup nf4 concorrente estoura a L4 (transiente do
+# caching_allocator_warmup). O tier de hardware é auto-detectado
+# (runtime_config/hw_profile.json):
+#   xl  (>=60GB, A100/H100): + brain judge residente, budgets ampliados
+#   std (>=18GB, L4):        topologia dual-brain padrão
 #
 # Usage / Uso:
 #   bash scripts/start_omni_worker.sh           # sobe tudo
@@ -22,9 +29,12 @@
 # Env overrides / variáveis:
 #   VENV_PYTHON        (default: auto-detect .venv siblings/omni_node)
 #   ANALYST_MODEL      google/gemma-4-12B-it        EXECUTOR_MODEL  google/gemma-4-E4B-it
-#   API_PORT 8081      ANALYST_PORT 8098            EXECUTOR_PORT 8099
+#   JUDGE_MODEL        google/gemma-4-31B-it        (só sobe em tier xl ou OMNI_JUDGE_BRAIN=1)
+#   API_PORT 8081      ANALYST_PORT 8098            EXECUTOR_PORT 8099    JUDGE_PORT 8100
 #   OMNI_CODE_INDEX_DIR (default: <repo>/omni_code_index)
 #   OMNI_STATE_DIR      (default: <repo>/data)
+#   OMNI_HW_TIER        (auto: xl>=60GB | std>=18GB | min) — exportado p/ baterias
+#   OMNI_JUDGE_BRAIN=1  força o 3º brain fora do tier xl
 #   PYTHONPATH: só o pacote próprio (deps de repos irmãos estão vendored)
 # ============================================================================
 set -uo pipefail
@@ -65,17 +75,35 @@ export OMNI_MEMTRIAS_EMBEDDER="${OMNI_MEMTRIAS_EMBEDDER:-auto}"
 export OMNI_MEMTRIAS_AUTO_LOG="${OMNI_MEMTRIAS_AUTO_LOG:-1}"
 export OMNI_AUTO_CONTEXT_ASSIST="${OMNI_AUTO_CONTEXT_ASSIST:-1}"
 export OMNI_SOMA_INJECT="${OMNI_SOMA_INJECT:-1}"
-export OMNI_JUDGE_SWAP_CHARS="${OMNI_JUDGE_SWAP_CHARS:-3000}"
 export OMNI_RESTORE_CO_RESIDENT="${OMNI_RESTORE_CO_RESIDENT:-1}"
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:False}"
 DRIVE_BACKUP_DIR="${DRIVE_BACKUP_DIR:-/content/drive/MyDrive/omni_worker_backups}"
 SOVEREIGN_TAR="${SOVEREIGN_TAR:-/content/drive/MyDrive/omnimind_backup/omnimind-kilombo-sovereign.tar.gz}"
 
+# --- 0. Perfil de hardware — detecta o chassi e acomoda roster/budgets ----
+# xl (>=60GB: A100/H100): 3 brains residentes + swap_chars ampliado;
+# std (>=18GB: L4): topologia dual padrão; min: degrade.
+# Persistido p/ shells e baterias que não herdam este env.
+_gpu_mb="$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits 2>/dev/null | head -1 | tr -d ' ' || echo 0)"
+_gpu_name="$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | head -1 || echo unknown)"
+if [ "${_gpu_mb:-0}" -ge 60000 ]; then OMNI_HW_TIER=xl
+elif [ "${_gpu_mb:-0}" -ge 18000 ]; then OMNI_HW_TIER=std
+else OMNI_HW_TIER=min; fi
+export OMNI_HW_TIER
+export OMNI_JUDGE_SWAP_CHARS="${OMNI_JUDGE_SWAP_CHARS:-$([ "$OMNI_HW_TIER" = "xl" ] && echo 8000 || echo 3000)}"
+mkdir -p "$REPO/runtime_config"
+printf '{"tier":"%s","gpu":"%s","vram_mb":%s,"detected_utc":"%s"}\n' \
+  "$OMNI_HW_TIER" "$_gpu_name" "${_gpu_mb:-0}" "$(date -u +%FT%TZ)" \
+  > "$REPO/runtime_config/hw_profile.json"
+
 ANALYST_MODEL="${ANALYST_MODEL:-google/gemma-4-12B-it}"
 EXECUTOR_MODEL="${EXECUTOR_MODEL:-google/gemma-4-E4B-it}"
+JUDGE_MODEL="${JUDGE_MODEL:-google/gemma-4-31B-it}"
 API_PORT="${API_PORT:-8081}"
 ANALYST_PORT="${ANALYST_PORT:-8098}"
 EXECUTOR_PORT="${EXECUTOR_PORT:-8099}"
+JUDGE_PORT="${JUDGE_PORT:-8100}"
+export ERIKA_JUDGE_PORT="${ERIKA_JUDGE_PORT:-$JUDGE_PORT}"
 
 GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'; RED='\033[0;31m'; NC='\033[0m'
 
@@ -132,6 +160,9 @@ status() {
   for port in "$ANALYST_PORT" "$EXECUTOR_PORT"; do
     port_open "$port" && echo ":$port OK" || echo ":$port down"
   done
+  if [ "${OMNI_HW_TIER:-}" = "xl" ] || [ "${OMNI_JUDGE_BRAIN:-0}" = "1" ]; then
+    port_open "$JUDGE_PORT" && echo ":$JUDGE_PORT OK" || echo ":$JUDGE_PORT down"
+  fi
   port_open "$API_PORT" /soul/state && echo ":$API_PORT OK" || echo ":$API_PORT down"
 }
 
@@ -332,6 +363,13 @@ if [ "${1:-up}" != "--no-brains" ]; then
   else
     echo -e "${YELLOW}[WARN]${NC} VRAM apertada (${free_vram_mb}MB livre < 10GB). Subindo executor em modo --lazy (alocação sob demanda via swap_scheduler)..."
     start_brain executor "$EXECUTOR_MODEL" "$EXECUTOR_PORT" "--lazy" || true
+  fi
+
+  # Prioridade 3: Judge (tier xl ou OMNI_JUDGE_BRAIN=1) — segunda-opinião
+  # pesada residente. Falha do judge não derruba a malha (|| true).
+  if [ "$OMNI_HW_TIER" = "xl" ] || [ "${OMNI_JUDGE_BRAIN:-0}" = "1" ]; then
+    echo -e "${GREEN}[INFO]${NC} tier $OMNI_HW_TIER: subindo judge residente $JUDGE_MODEL :$JUDGE_PORT"
+    start_brain judge "$JUDGE_MODEL" "$JUDGE_PORT" || true
   fi
 fi
 

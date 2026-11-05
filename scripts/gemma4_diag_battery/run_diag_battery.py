@@ -5,9 +5,10 @@
 English: minimal diagnostic replication of the canonical Psicodiagnóstico-V
 executive battery (WCST/Stroop/N-back/IGT, v2 hardened prompts + scorers
 loaded from omnimind-kilombo-sovereign). Runs each task once per live brain
-(12B :8098 analyst, E4B :8099 executor) — enough to compare against the HF
-E4B-L4 dataset (block1_cognitivo: 100% degenerate) and test the
-quantization-inhibition hypothesis locally. Ledger → diag_battery.sqlite.
+(12B :8098 analyst, E4B :8099 executor, + 31B :8100 judge on hardware tier
+xl) — enough to compare against the HF E4B-L4 dataset (block1_cognitivo:
+100% degenerate) and test the quantization-inhibition hypothesis locally.
+Ledger → diag_battery.sqlite.
 pt-BR: replicação diagnóstica mínima da esteira executiva canônica
 (Psicodiagnóstico-V, prompts+scorers v2 carregados do soberano). Uma rep por
 task por brain vivo — suficiente para comparar com o dataset HF E4B-L4
@@ -96,11 +97,24 @@ def _degenerate(text: str) -> bool:
     return False
 
 
+def _hw_tier() -> str:
+    """Hardware tier detected by start_omni_worker.sh (env or profile file)."""
+    t = os.getenv("OMNI_HW_TIER")
+    if t:
+        return t
+    try:
+        return json.loads(
+            (ROOT / "runtime_config" / "hw_profile.json").read_text()
+        ).get("tier", "std")
+    except Exception:
+        return "std"
+
+
 def main() -> int:
     mod = _load_canonical()
-    roles = [a for a in sys.argv[1:] if a in ("analyst", "executor")] or [
-        "analyst", "executor"
-    ]
+    roles = [a for a in sys.argv[1:] if a in ("analyst", "executor", "judge")]
+    if not roles:
+        roles = ["analyst", "executor"] + (["judge"] if _hw_tier() == "xl" else [])
     reps = 1
     if "--reps" in sys.argv:
         i = sys.argv.index("--reps")
@@ -125,10 +139,13 @@ def main() -> int:
     # Full HF-parity budget needs the peer model unloaded on the L4
     # (activation capture: 62 layers x hidden per token on the 12B OOMs
     # when both brains are resident). Override per-role via OMNI_DIAG_MT_*
-    # env when running both brains concurrently.
+    # env when running both brains concurrently. On tier xl (A100+) the
+    # constraint doesn't apply — budgets go up and 'judge' joins the run.
+    _big = _hw_tier() == "xl"
     budget = {
-        "analyst": int(os.getenv("OMNI_DIAG_MT_ANALYST", "1800")),
-        "executor": int(os.getenv("OMNI_DIAG_MT_EXECUTOR", "1800")),
+        "analyst": int(os.getenv("OMNI_DIAG_MT_ANALYST", "3072" if _big else "1800")),
+        "executor": int(os.getenv("OMNI_DIAG_MT_EXECUTOR", "3072" if _big else "1800")),
+        "judge": int(os.getenv("OMNI_DIAG_MT_JUDGE", "4096")),
     }
     for rep in range(reps):
         for role in roles:
