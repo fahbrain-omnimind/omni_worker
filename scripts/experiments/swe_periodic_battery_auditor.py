@@ -17,6 +17,35 @@ import numpy as np
 ROOT = Path("/content/omni_worker")
 SQLITE_PATH = ROOT / "data" / "basal_vs_modulated_280turns_20261105.sqlite"
 REPORT_PATH = ROOT / "docs" / "AUDITORIA_CONTINUA_BASAL_MODULADO_20261105.md"
+STEPS_DIR = ROOT / "data" / "monitor" / "activation_steps"
+
+
+def _backfill_ipr_from_npz(conn: sqlite3.Connection) -> None:
+    """Backfill mps_ipr_mean and full-layer morphology_score from saved step_traj .npz files."""
+    rows = conn.execute(
+        "SELECT id, npz_file FROM battery_turns WHERE mps_ipr_mean = 0.0 AND npz_file != ''"
+    ).fetchall()
+    if not rows:
+        return
+    from omni_coworker.activation_beta.dendritic_scan import scan_trajectory
+    for row_id, fname in rows:
+        fpath = STEPS_DIR / fname
+        if not fpath.exists():
+            continue
+        try:
+            z = np.load(fpath)
+            traj = z["traj"]  # (steps, layers, hidden)
+            traj_l_s_d = np.swapaxes(traj[:, :, :256], 0, 1)
+            res = scan_trajectory(traj_l_s_d, threshold=0.65)
+            ipr_val = float(res.get("ipr_dim_mean") or 0.0)
+            morph_val = float(res.get("morphology_score") or 0.5)
+            conn.execute(
+                "UPDATE battery_turns SET mps_ipr_mean=?, mps_morphology_score=? WHERE id=?",
+                (ipr_val, morph_val, row_id),
+            )
+        except Exception:
+            pass
+    conn.commit()
 
 
 def run_audit_snapshot() -> str:
@@ -25,6 +54,7 @@ def run_audit_snapshot() -> str:
         return f"### Snapshot `{ts}`: Banco `{SQLITE_PATH}` ainda não inicializado.\n"
 
     with sqlite3.connect(SQLITE_PATH, timeout=30.0) as conn:
+        _backfill_ipr_from_npz(conn)
         total = conn.execute("SELECT count(*) FROM battery_turns").fetchone()[0]
         by_arm = conn.execute(
             """

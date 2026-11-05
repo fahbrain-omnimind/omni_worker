@@ -234,7 +234,7 @@ def _compute_motor_and_mps_telemetry(hidden_states: tuple | None, text: str) -> 
             ])
             d_res = scan_trajectory(traj_l_s_d)
             mps["contract_drift"] = round(float(d_res.get("contract_drift") or 0.0), 4)
-            mps["ipr_mean"] = round(float(d_res.get("ipr_mean") or 0.0), 6)
+            mps["ipr_mean"] = round(float(d_res.get("ipr_dim_mean") or d_res.get("ipr_mean") or 0.0), 6)
             mps["morphology_score"] = round(float(d_res.get("morphology_score") or 0.0), 4)
     except Exception:  # noqa: BLE001, S110
         pass

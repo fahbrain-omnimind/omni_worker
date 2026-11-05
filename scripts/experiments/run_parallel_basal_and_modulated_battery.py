@@ -23,6 +23,7 @@ from __future__ import annotations
 from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 import json
+import math
 from pathlib import Path
 import sqlite3
 import threading
@@ -272,12 +273,23 @@ def compute_all_sovereign_scales(
 ) -> dict[str, Any]:
     host_state = build_host_state()
     step_info = modulator.step(host_state, turn_idx=turn_idx, dendritic_metrics=prev_mps)
+    state_10d = step_info.get("state_10d") or [0.4] * 10
+    kuramoto_full = compute_sovereign_kuramoto_step(state_10d, inrc_pressure=0.20)
     ent_state = compute_sovereign_entropic_memory_state(
         age_hours=12.0 + 0.25 * turn_idx,
         orbital_pressure=float(host_state.get("affect_tension") or 0.2),
         host_pressure=float(host_state.get("coherence_score") or 0.6),
     )
-    exp_state = compute_sovereign_expectation()
+    emb_256 = [(float(state_10d[i % 10]) * math.cos(0.1 * (i + turn_idx))) for i in range(256)]
+    exp_state = compute_sovereign_expectation(emb_256)
+
+    attractor_10d = str(step_info.get("attractor") or "NEUTRO_TRANSICAO")
+    regime_conf = float(step_info.get("attractor_confidence") or 0.0)
+    psi_val = float(step_info.get("psi_value") or 0.0)
+    r_pair = float(step_info.get("kuramoto_r_pair") or kuramoto_full.get("kuramoto_r_pair") or 0.0)
+    r_triad = float(kuramoto_full.get("kuramoto_r_triad") or 0.0)
+    hopf_regime = str(step_info.get("hopf_regime") or kuramoto_full.get("hopf_regime") or "unknown")
+    hopf_sr = float(kuramoto_full.get("hopf_spectral_radius") or 0.0)
 
     base_temp = 0.20
     base_top_p = 0.90
@@ -288,13 +300,13 @@ def compute_all_sovereign_scales(
             "scale_delta_temp": 0.0,
             "inrc_operator": "OBSERVE_ONLY",
             "system_directive": "",
-            "attractor_10d": step_info["attractor_10d"],
-            "regime_confidence": step_info["regime_confidence"],
-            "psi_value": step_info["psi"],
-            "kuramoto_r_pair": step_info["kuramoto_r_pair"],
-            "kuramoto_r_triad": step_info["kuramoto_r_triad"],
-            "hopf_regime": step_info["hopf_regime"],
-            "hopf_spectral_radius": step_info["hopf_spectral_radius"],
+            "attractor_10d": attractor_10d,
+            "regime_confidence": regime_conf,
+            "psi_value": psi_val,
+            "kuramoto_r_pair": r_pair,
+            "kuramoto_r_triad": r_triad,
+            "hopf_regime": hopf_regime,
+            "hopf_spectral_radius": hopf_sr,
             "entropic_t2_hours": float(ent_state.get("effective_t2_hours") or 48.0),
             "expectation_norm": float(exp_state.get("norm") or 0.0),
         }
@@ -305,7 +317,7 @@ def compute_all_sovereign_scales(
         top_p = 0.85
         inrc_op = "C"
         directive = (
-            f"[MODULATION M1 (-delta): temp={temp:.2f}, top_p={top_p:.2f}, Psi={step_info['psi']:.3f}, "
+            f"[MODULATION M1 (-delta): temp={temp:.2f}, top_p={top_p:.2f}, Psi={psi_val:.3f}, "
             "INRC=C (Correlate/Consolidate). Priorize precisão analítica estrita, concisão e zero repetição.]"
         )
     elif sub_arm == "M2_scale_plus_delta":
@@ -313,14 +325,14 @@ def compute_all_sovereign_scales(
         top_p = 0.94
         inrc_op = "R"
         directive = (
-            f"[MODULATION M2 (+delta): temp={temp:.2f}, top_p={top_p:.2f}, Psi={step_info['psi']:.3f}, "
+            f"[MODULATION M2 (+delta): temp={temp:.2f}, top_p={top_p:.2f}, Psi={psi_val:.3f}, "
             "INRC=R (Reciprocity/Pivot). Explore perspectivas complementares mantendo rigor estrutural.]"
         )
     elif sub_arm == "M3_freud10d_inrc_kuramoto":
         temp = round(float(step_info["temperature"]), 3)
         top_p = round(float(step_info["top_p"]), 3)
         inrc_op = str(step_info["inrc_operator"])
-        directive = str(step_info["system_directive"])
+        directive = str(step_info.get("system_steering") or "")
     else:
         # M4_closed_loop_mps_motor: Closed-loop gate anchored to Phase 1 Basal Envelope
         mu_drift = (basal_env or {}).get("contract_drift_mean", 0.55)
@@ -334,8 +346,8 @@ def compute_all_sovereign_scales(
             inrc_op = "R+C"
             directive = (
                 f"[CLOSED-LOOP MPS+MOTOR GATE M4: drift={last_drift:.3f} vs basal={mu_drift:.3f}, "
-                f"motor_vel={last_vel:.2f}, Kuramoto_R={step_info['kuramoto_r_pair']:.3f}, "
-                f"Atrator={step_info['attractor_10d']}, INRC=R+C. Ancore diretamente na solução verificável.]"
+                f"motor_vel={last_vel:.2f}, Kuramoto_R={r_pair:.3f}, "
+                f"Atrator={attractor_10d}, INRC=R+C. Ancore diretamente na solução verificável.]"
             )
         else:
             temp = round(float(step_info["temperature"]), 3)
@@ -343,7 +355,7 @@ def compute_all_sovereign_scales(
             inrc_op = str(step_info["inrc_operator"])
             directive = (
                 f"[CLOSED-LOOP MPS+MOTOR GATE M4: drift={last_drift:.3f} dentro do envelope basal {mu_drift:.3f}, "
-                f"INRC={inrc_op}, Atrator={step_info['attractor_10d']}. Mantenha estabilidade ótima.]"
+                f"INRC={inrc_op}, Atrator={attractor_10d}. Mantenha estabilidade ótima.]"
             )
 
     return {
@@ -352,13 +364,13 @@ def compute_all_sovereign_scales(
         "scale_delta_temp": round(temp - base_temp, 4),
         "inrc_operator": inrc_op,
         "system_directive": directive,
-        "attractor_10d": step_info["attractor_10d"],
-        "regime_confidence": step_info["regime_confidence"],
-        "psi_value": step_info["psi"],
-        "kuramoto_r_pair": step_info["kuramoto_r_pair"],
-        "kuramoto_r_triad": step_info["kuramoto_r_triad"],
-        "hopf_regime": step_info["hopf_regime"],
-        "hopf_spectral_radius": step_info["hopf_spectral_radius"],
+        "attractor_10d": attractor_10d,
+        "regime_confidence": regime_conf,
+        "psi_value": psi_val,
+        "kuramoto_r_pair": r_pair,
+        "kuramoto_r_triad": r_triad,
+        "hopf_regime": hopf_regime,
+        "hopf_spectral_radius": hopf_sr,
         "entropic_t2_hours": float(ent_state.get("effective_t2_hours") or 48.0),
         "expectation_norm": float(exp_state.get("norm") or 0.0),
     }
