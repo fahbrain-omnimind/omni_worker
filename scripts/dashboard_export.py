@@ -7,8 +7,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import socket
 import sqlite3
 import sys
+import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -52,6 +54,300 @@ def _sqlite_rows(db: Path, query: str, params=()):
         return rows
     except Exception:  # noqa: BLE001
         return []
+
+
+def _scalar(db: Path, query: str, params=()):
+    rows = _sqlite_rows(db, query, params)
+    if not rows:
+        return None
+    return next(iter(rows[0].values()))
+
+
+def _tcp_open(port: int, host: str = "127.0.0.1", timeout: float = 1.5) -> bool:
+    try:
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except OSError:
+        return False
+
+
+def _http_ok(port: int, path: str, host: str = "127.0.0.1", timeout: float = 2.5) -> bool:
+    try:
+        with urllib.request.urlopen(f"http://{host}:{port}{path}", timeout=timeout) as r:
+            return 200 <= r.status < 400
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def _pid_alive(pid_file: Path) -> int | None:
+    try:
+        pid = int(pid_file.read_text().strip())
+    except Exception:  # noqa: BLE001
+        return None
+    try:
+        Path(f"/proc/{pid}").stat()
+        return pid
+    except OSError:
+        return None
+
+
+def _auc(scores, labels) -> float | None:
+    """Mann-Whitney ROC-AUC: P(score_pos > score_neg) + 0.5·P(tie)."""
+    pos = [s for s, lab in zip(scores, labels, strict=False) if lab == 1 and s is not None]
+    neg = [s for s, lab in zip(scores, labels, strict=False) if lab == 0 and s is not None]
+    if not pos or not neg:
+        return None
+    wins = sum(1.0 if p > n else 0.5 if p == n else 0.0 for p in pos for n in neg)
+    return round(wins / (len(pos) * len(neg)), 4)
+
+
+def _vm_section(root: Path, live_bundle: dict, live_soma: dict) -> dict:
+    """Live server probes — the 'is the VM awake' surface of the pulse."""
+    pid_dir = root / "runtime_config" / "pids"
+    hw = _read_json(pid_dir.parent / "hw_profile.json") or {}
+    gpu0 = ((live_soma.get("gpu") or {}).get("gpus") or [{}])[0]
+
+    def _svc(port: int, probe_path: str, model=None) -> dict:
+        return {
+            "port": port,
+            "model": model,
+            "http_healthy": _http_ok(port, probe_path),
+            "tcp_open": _tcp_open(port),
+            "probe": probe_path,
+        }
+
+    servers = {
+        "analyst_brain": _svc(8098, "/health", "google/gemma-4-12B-it"),
+        "executor_brain": _svc(8099, "/health", "google/gemma-4-E4B-it"),
+        "worker_api": _svc(8081, "/soul/state", None),
+    }
+    daemons = {}
+    for name in ("state_guard", "swap_scheduler", "archive_loop", "pulse_sync"):
+        pid = _pid_alive(pid_dir / f"{name}.pid")
+        daemons[name] = {"pid": pid, "alive": pid is not None}
+    active = sum(1 for s in servers.values() if s["http_healthy"])
+    return {
+        "hw_tier": hw.get("tier"),
+        "gpu_name": gpu0.get("name") or hw.get("gpu"),
+        "vram_total_mb": hw.get("vram_mb"),
+        "servers": servers,
+        "daemons": daemons,
+        "active_servers": active,
+        "vm_active": active > 0,
+        "kernel_daemon": "in-process inside worker_api :8081 (no standalone pid)",
+        "kernel_cycles": live_bundle.get("cycle_id"),
+    }
+
+
+def _basal_vs_modulated_280(data: Path) -> dict | None:
+    db = data / "basal_vs_modulated_280turns_20261105.sqlite"
+    if not db.exists():
+        return None
+
+    metrics = [
+        ("mps_chi_eff_mean", "chi_eff"),
+        ("mps_pr_traj", "pr_traj"),
+        ("mps_svd_entropy", "svd_entropy"),
+        ("mps_contract_drift", "contract_drift"),
+        ("mps_ipr_mean", "ipr"),
+        ("mps_morphology_score", "morphology"),
+        ("motor_velocity_mean", "motor_vel"),
+        ("motor_cosine_drift", "motor_cos_drift"),
+        ("motor_unique_ratio", "unique_ratio"),
+    ]
+    agg_cols = ", ".join(
+        f"ROUND(AVG({c}),4) AS {a}, ROUND(MIN({c}),4) AS {a}_min, ROUND(MAX({c}),4) AS {a}_max"
+        for c, a in metrics
+    )
+    summary = _sqlite_rows(
+        db,
+        f"SELECT model_tag, phase_group, sub_arm, COUNT(*) AS n, {agg_cols}, "
+        "ROUND(AVG(temperature),3) AS temp, ROUND(AVG(scale_delta_temp),4) AS delta_temp, "
+        "ROUND(AVG(psi_value),4) AS psi, ROUND(AVG(kuramoto_r_pair),4) AS kuramoto_r, "
+        "SUM(motor_degenerate_flag) AS degen_n, ROUND(AVG(latency_s),1) AS latency_s "
+        "FROM battery_turns GROUP BY model_tag, phase_group, sub_arm "
+        "ORDER BY model_tag, phase_group, sub_arm",
+    )
+    stage_summary = _sqlite_rows(
+        db,
+        "SELECT model_tag, phase_group, stage_category, COUNT(*) AS n, "
+        "ROUND(AVG(mps_chi_eff_mean),4) AS chi_eff, ROUND(AVG(mps_pr_traj),4) AS pr_traj, "
+        "ROUND(AVG(mps_contract_drift),4) AS contract_drift, ROUND(AVG(mps_ipr_mean),4) AS ipr, "
+        "ROUND(AVG(motor_velocity_mean),4) AS motor_vel, ROUND(AVG(motor_unique_ratio),4) AS unique_ratio, "
+        "SUM(motor_degenerate_flag) AS degen_n "
+        "FROM battery_turns GROUP BY model_tag, phase_group, stage_category "
+        "ORDER BY model_tag, phase_group, stage_category",
+    )
+    envelope = {r["model_tag"]: r for r in _sqlite_rows(db, "SELECT * FROM basal_envelope")}
+
+    turns = _sqlite_rows(
+        db,
+        "SELECT turn_global_idx AS idx, ts, model_tag AS model, phase_group AS phase, sub_arm, "
+        "stage_category AS stage, task_id, temperature AS temp, scale_delta_temp AS dt, "
+        "inrc_operator, hopf_regime, mps_chi_eff_mean AS chi_eff, mps_pr_traj AS pr_traj, "
+        "mps_svd_entropy AS svd_entropy, mps_contract_drift AS contract_drift, mps_ipr_mean AS ipr, "
+        "mps_morphology_score AS morphology, motor_velocity_mean AS motor_vel, "
+        "motor_acceleration_mean AS motor_acc, motor_cosine_drift AS motor_cos_drift, "
+        "motor_unique_ratio AS unique_ratio, motor_degenerate_flag AS degen, "
+        "psi_value AS psi, kuramoto_r_pair AS kuramoto_r, prompt_tokens, gen_tokens, "
+        "ROUND(latency_s,1) AS latency_s FROM battery_turns ORDER BY turn_global_idx",
+    )
+
+    # M4 closed-loop gate rule (audited): excursion when drift escapes the basal
+    # envelope (mu + 0.25·sigma) or motor velocity drops below 0.85·mu_env.
+    gate_counts: dict = {}
+    for t in turns:
+        env = envelope.get(t["model"]) or {}
+        d_mu, d_sd = env.get("contract_drift_mean"), env.get("contract_drift_std")
+        v_mu = env.get("motor_velocity_mean")
+        gate = None
+        if None not in (d_mu, d_sd, v_mu) and t["contract_drift"] is not None and t["motor_vel"] is not None:
+            gate = bool(
+                t["contract_drift"] > d_mu + 0.25 * d_sd or t["motor_vel"] < 0.85 * v_mu
+            )
+        t["gate_excursion"] = gate
+        if gate is not None:
+            k = gate_counts.setdefault(t["model"], {"BASAL": 0, "MODULATED": 0})
+            if gate:
+                k[t["phase"]] += 1
+    for m, c in gate_counts.items():
+        c["n_per_phase"] = sum(1 for t in turns if t["model"] == m and t["phase"] == "BASAL")
+
+    def _disc(rows, metric_col, label_fn):
+        vals = [r.get(metric_col) for r in rows]
+        labs = [label_fn(r) for r in rows]
+        keep = [(v, l) for v, l in zip(vals, labs, strict=False) if l is not None]
+        a = _auc([v for v, _ in keep], [l for _, l in keep])
+        return a
+
+    models = sorted({t["model"] for t in turns})
+    disc_chassis = {}
+    for _col, name in metrics:
+        a = _disc(turns, name, lambda r: 1 if r["model"] == "gemma-4-12B-it" else 0)
+        disc_chassis[name] = {
+            "auc_12b": a,
+            "auc_e4b": round(1 - a, 4) if a is not None else None,
+            "power": max(a, 1 - a) if a is not None else None,
+            "direction": ("12B>E4B" if a > 0.5 else "E4B>12B") if a is not None else None,
+        }
+    disc_phase = {}
+    for m in models:
+        sub = [t for t in turns if t["model"] == m]
+        disc_phase[m] = {}
+        for _col, name in metrics:
+            a = _disc(sub, name, lambda r: 1 if r["phase"] == "MODULATED" else 0)
+            disc_phase[m][name] = {
+                "auc_modulated": a,
+                "power": max(a, 1 - a) if a is not None else None,
+            }
+    disc_degen = {"pooled": {}, "per_model": {}}
+    for _col, name in metrics:
+        disc_degen["pooled"][name] = _disc(turns, name, lambda r: r["degen"])
+        for m in models:
+            sub = [t for t in turns if t["model"] == m]
+            disc_degen["per_model"].setdefault(m, {})[name] = _disc(
+                sub, name, lambda r: r["degen"]
+            )
+    regime_set = [t for t in turns if t["stage"] in ("v11_multiturn_series", "swe_competition", "swe_ood45", "cognitivo_executivo")]
+    disc_regime = {"pooled": {}, "per_model": {}}
+    for _col, name in metrics:
+        disc_regime["pooled"][name] = _disc(
+            regime_set, name, lambda r: 1 if r["stage"] == "v11_multiturn_series" else 0
+        )
+        for m in models:
+            sub = [t for t in regime_set if t["model"] == m]
+            disc_regime["per_model"].setdefault(m, {})[name] = _disc(
+                sub, name, lambda r: 1 if r["stage"] == "v11_multiturn_series" else 0
+            )
+
+    totals = {
+        "turns": len(turns),
+        "models": models,
+        "turns_per_model_phase": {
+            f"{m}/{p}": sum(1 for t in turns if t["model"] == m and t["phase"] == p)
+            for m in models for p in ("BASAL", "MODULATED")
+        },
+        "degen_per_model_phase": {
+            f"{m}/{p}": sum(1 for t in turns if t["model"] == m and t["phase"] == p and t["degen"])
+            for m in models for p in ("BASAL", "MODULATED")
+        },
+        "ts_range": [
+            min((t["ts"] for t in turns if t["ts"]), default=None),
+            max((t["ts"] for t in turns if t["ts"]), default=None),
+        ],
+        "sub_arms": sorted({t["sub_arm"] for t in turns}),
+        "stages": sorted({t["stage"] for t in turns}),
+    }
+    return {
+        "source_db": "data/basal_vs_modulated_280turns_20261105.sqlite",
+        "totals": totals,
+        "summary_by_model_phase_arm": summary,
+        "stage_summary": stage_summary,
+        "basal_envelope": envelope,
+        "gate_rule": "excursion = contract_drift > env_mu + 0.25·env_sigma OR motor_vel < 0.85·env_mu (per-model basal_envelope)",
+        "gate_excursions": gate_counts,
+        "discriminators_roc_auc": {
+            "chassis_12b_vs_e4b": disc_chassis,
+            "phase_modulated_vs_basal_intramodel": disc_phase,
+            "degeneration_degen1_vs_0": disc_degen,
+            "regime_v11_vs_swe_cog": disc_regime,
+        },
+        "turns": turns,
+    }
+
+
+def _swe_mps_ablation(data: Path) -> dict | None:
+    db = data / "swe_mps_ablation_20261105.sqlite"
+    if not db.exists():
+        return None
+    summary = _sqlite_rows(db, "SELECT * FROM ablation_summary ORDER BY arm")
+    turns = _sqlite_rows(
+        db,
+        "SELECT arm, instance_id, repo, turn_idx, temperature, inrc_operator, inrc_reason, "
+        "hopf_regime, ROUND(contract_drift,4) AS contract_drift, ROUND(ipr_dim_mean,4) AS ipr, "
+        "ROUND(morphology_score,4) AS morphology, ROUND(dendritic_depth,4) AS dendritic_depth, "
+        "psi_value AS psi, ROUND(kuramoto_r_pair,4) AS kuramoto_r, patch_applied, repro_expected, "
+        "f2p_passed, p2p_passed, resolved, ROUND(latency_s,1) AS latency_s "
+        "FROM ablation_turns ORDER BY arm, instance_id, turn_idx",
+    )
+    return {
+        "source_db": "data/swe_mps_ablation_20261105.sqlite",
+        "arms": summary,
+        "totals": {
+            "turns": len(turns),
+            "tasks_resolved": sum(1 for t in turns if t["resolved"]),
+            "patches_applied": sum(1 for t in turns if t["patch_applied"]),
+            "instances": sorted({t["instance_id"] for t in turns if t["instance_id"]}),
+        },
+        "turns": turns,
+    }
+
+
+def _corpus_reading(root: Path) -> dict | None:
+    db = root / "scripts" / "corpus_reading_battery" / "corpus_delivery_battery.sqlite"
+    if not db.exists():
+        return None
+    runs = _sqlite_rows(
+        db,
+        "SELECT id, ts_utc, work_id, file_name, author_match, title_match, anomaly, "
+        "ROUND(tabular_ratio,3) AS tabular_ratio, ROUND(latency_s,1) AS latency_s "
+        "FROM corpus_reading_runs ORDER BY id",
+    )
+    app = _sqlite_rows(
+        db,
+        "SELECT id, ts_utc, task_id, pytest_passed, pytest_total, files_scanned, "
+        "duplicates_found, anomalies_flagged, judge_consensus, audit_passed, verdict "
+        "FROM app_delivery_runs ORDER BY id",
+    )
+    dreams = _sqlite_rows(
+        db,
+        "SELECT id, ts_utc, task_id, dream_metabolized FROM dream_self_curriculum ORDER BY id",
+    )
+    return {
+        "corpus_reading_runs": runs,
+        "app_delivery_runs": app,
+        "dream_self_curriculum": dreams,
+    }
 
 
 def export(root: Path = ROOT) -> dict:
@@ -349,13 +645,22 @@ def export(root: Path = ROOT) -> dict:
     )
     sup_rows = _sqlite_rows(
         root / "scripts" / "supervisor_battery" / "supervisor_battery.sqlite",
-        "SELECT COUNT(*) AS n, SUM(CASE WHEN detected = 1 THEN 1 ELSE 0 END) AS detected_n FROM supervisor_runs"
+        "SELECT COUNT(*) AS n, "
+        "SUM(CASE WHEN passion_flag = 1 THEN 1 ELSE 0 END) AS passion_flag_n, "
+        "ROUND(AVG(CASE WHEN level_guess = tracer_level THEN 1.0 ELSE 0.0 END),3) AS level_accuracy "
+        "FROM supervisor_battery"
+    )
+    sup_categories = _sqlite_rows(
+        root / "scripts" / "supervisor_battery" / "supervisor_battery.sqlite",
+        "SELECT category, COUNT(*) AS n FROM supervisor_battery GROUP BY category ORDER BY category"
     )
     battery = {
         "runs": battery_rows,
         "diag_summary": diag_summary,
         "coding_runs": coding_rows,
         "supervisor_summary": sup_rows[0] if sup_rows else None,
+        "supervisor_categories": sup_categories,
+        "corpus_reading": _corpus_reading(root),
     }
 
     # spectral / hidden + step trajectories
@@ -405,9 +710,25 @@ def export(root: Path = ROOT) -> dict:
             mps_tail.append(c_item)
     mps = {"count": len(mps_raw), "recent": mps_tail}
 
+    # vm servers / pulse contract + study batteries
+    vm = _vm_section(root, live_bundle, live_soma)
+    basal_280 = _basal_vs_modulated_280(data)
+    swe_ablation = _swe_mps_ablation(data)
+    memtrias_n = _scalar(data / "memtrias.sqlite", "SELECT COUNT(*) FROM memories")
+    iloop = {
+        "cycles": _scalar(data / "integration_loop.sqlite", "SELECT COUNT(*) FROM cycles"),
+        "last_ts": _scalar(data / "integration_loop.sqlite", "SELECT MAX(ts) FROM cycles"),
+    }
+
     out = {
         "exported_at": datetime.now(UTC).isoformat(),
         "source": "omni_worker real state",
+        "pulse": {
+            "interval_s": 1800,
+            "stale_after_s": 2400,
+            "generator": "scripts/dashboard_export.py via scripts/pulse_dashboard_sync.sh",
+        },
+        "vm": vm,
         "soul": soul,
         "soma": soma,
         "kernel": kernel,
@@ -421,19 +742,38 @@ def export(root: Path = ROOT) -> dict:
         "activations": activations,
         "state_snapshots": snaps,
         "mps_harvest": mps,
+        "integration_loop": iloop,
+        "memtrias": {"memories": memtrias_n},
+        "basal_vs_modulated_280": basal_280,
+        "swe_mps_ablation": swe_ablation,
     }
     return out
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--output", default=str(ROOT / "data" / "dashboard" / "latest.json"))
+    ap.add_argument(
+        "--output", default=str(ROOT / "docs" / "data" / "dashboard" / "latest.json"),
+        help="primary output (committed, served by Pages)",
+    )
+    ap.add_argument(
+        "--mirror", default=str(ROOT / "data" / "dashboard" / "latest.json"),
+        help="local mirror (gitignored runtime copy)",
+    )
+    ap.add_argument("--no-mirror", action="store_true")
     args = ap.parse_args()
     result = export(ROOT)
+    payload = json.dumps(result, indent=2, default=str)
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(result, indent=2, default=str))
+    out.write_text(payload)
     print(f"wrote {out}")
+    if not args.no_mirror and args.mirror:
+        mir = Path(args.mirror)
+        if mir.resolve() != out.resolve():
+            mir.parent.mkdir(parents=True, exist_ok=True)
+            mir.write_text(payload)
+            print(f"mirrored {mir}")
 
 
 if __name__ == "__main__":

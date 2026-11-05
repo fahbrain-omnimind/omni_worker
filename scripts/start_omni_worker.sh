@@ -234,18 +234,12 @@ ensure_state_restored() {
     mkdir -p "$stage"
     tar -xzf "$latest" -C "$stage"
     rm -rf "$stage/runtime_config/pids"
-    for d in data logs omni_code_index runtime_config; do
+    for d in data logs omni_code_index runtime_config state; do
       [ -d "$stage/$d" ] && cp -a "$stage/$d" "$REPO/"
     done
-    [ -f "$stage/scripts/gemma4_diag_battery/diag_battery.sqlite" ] && \
-      cp -a "$stage/scripts/gemma4_diag_battery/diag_battery.sqlite" "$REPO/scripts/gemma4_diag_battery/"
-    [ -f "$stage/scripts/refactor_battery/battery_results.sqlite" ] && \
-      cp -a "$stage/scripts/refactor_battery/battery_results.sqlite" "$REPO/scripts/refactor_battery/"
-    [ -f "$stage/scripts/supervisor_battery/supervisor_battery.sqlite" ] && \
-      cp -a "$stage/scripts/supervisor_battery/supervisor_battery.sqlite" "$REPO/scripts/supervisor_battery/"
-    [ -f "$stage/scripts/corpus_reading_battery/corpus_delivery_battery.sqlite" ] && \
-      mkdir -p "$REPO/scripts/corpus_reading_battery" && \
-      cp -a "$stage/scripts/corpus_reading_battery/corpus_delivery_battery.sqlite" "$REPO/scripts/corpus_reading_battery/"
+    # scripts/*/*.sqlite|*.db de baterias: merge genérico do staging
+    # (o tarball só carrega os bancos, não a árvore inteira de scripts)
+    [ -d "$stage/scripts" ] && cp -a "$stage/scripts/." "$REPO/scripts/"
     rm -rf "$stage"
     echo -e "${GREEN}[OK]${NC} estado e bancos restaurados de $(basename "$latest")"
   else
@@ -408,6 +402,16 @@ start_proc swap_scheduler "swap_scheduler.log" \
   "$VENV_PYTHON" -m omni_coworker.orchestration.swap_scheduler
 start_proc archive_loop "archive_loop.log" \
   bash "$REPO/scripts/archive_worker_state.sh" --loop "${ARCHIVE_INTERVAL_S:-3600}"
+
+# --- 4b. Pulso Basal de Sincronização do Dashboard -------------------------
+# A cada PULSE_INTERVAL_S (default 1800s): exporta docs/data/dashboard/
+# latest.json (+ espelho data/dashboard/latest.json) e, com a VM ativa,
+# commita e pusha para origin (GitHub) e gitlab (token via /content/gitlab.txt,
+# nunca exposto). O frontend degrada p/ "Modo Histórico" quando o pulso para.
+if [ "${OMNI_PULSE_SYNC:-1}" = "1" ]; then
+  start_proc pulse_sync "pulse_sync.log" \
+    bash "$REPO/scripts/pulse_dashboard_sync.sh" --loop "${PULSE_INTERVAL_S:-1800}"
+fi
 
 # --- 5. Reidratação da memória topológica (memtrias.sqlite) se vazia --------
 mem_count=$("$VENV_PYTHON" -c "import sqlite3, os; p='$OMNI_STATE_DIR/memtrias.sqlite'; print(sqlite3.connect(p).execute('SELECT count(*) FROM memories').fetchone()[0] if os.path.exists(p) else 0)" 2>/dev/null || echo "0")

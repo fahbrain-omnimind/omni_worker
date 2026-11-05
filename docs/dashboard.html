@@ -3,14 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=index.html">
-    <link rel="canonical" href="index.html">
-    <title>Omni-Gemma Lab-Agent Coworker — Dashboard (moved)</title>
+    <title>Omni Worker — Pulso Basal da VM</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <style>
+        body { background: #05070d; }
+        .glass { background: rgba(15,23,42,0.72); backdrop-filter: blur(8px); }
+    </style>
 </head>
-<body>
-    <p>Canonical dashboard entrypoint is
-       <a href="index.html">index.html</a> — redirecting…</p>
-    <p>O entrypoint canônico do dashboard é
-       <a href="index.html">index.html</a> — redirecionando…</p>
+<body class="text-slate-200 min-h-screen font-sans">
+    <div class="max-w-4xl mx-auto px-4 py-8 space-y-6">
+
+        <header class="flex items-center justify-between">
+            <div>
+                <h1 class="text-xl font-bold text-white">Omni Worker — Status do Pulso Basal</h1>
+                <p class="text-xs text-slate-400 font-mono">data/dashboard/latest.json • sync 30 min</p>
+            </div>
+            <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-mono bg-indigo-600/20 text-indigo-200 border border-indigo-500/40 hover:bg-indigo-600/40 transition-all">
+                → dashboard completo (index.html)
+            </a>
+        </header>
+
+        <!-- Pulse banner -->
+        <div id="pulseBanner" class="glass rounded-2xl border border-amber-500/40 p-5 space-y-2">
+            <div class="flex items-center gap-3">
+                <span id="pulseDot" class="w-3.5 h-3.5 rounded-full bg-amber-400"></span>
+                <span id="pulseLabel" class="text-lg font-bold font-mono text-amber-300">VERIFICANDO PULSO BASAL…</span>
+            </div>
+            <p id="pulseDetail" class="text-xs font-mono text-slate-400">aguardando data/dashboard/latest.json</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-[11px] font-mono">
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span class="text-slate-500 block">exported_at (UTC)</span>
+                    <span id="pulseExportedAt" class="text-white">—</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span class="text-slate-500 block">idade</span>
+                    <span id="pulseAge" class="text-white">—</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span class="text-slate-500 block">servidores</span>
+                    <span id="pulseServers" class="text-white">—</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span class="text-slate-500 block">modo</span>
+                    <span id="pulseMode" class="text-amber-300">HISTÓRICO</span>
+                </div>
+            </div>
+            <p id="pulseServerList" class="text-[10px] font-mono text-slate-500"></p>
+        </div>
+
+        <!-- Soul/soma quick metrics -->
+        <div class="glass rounded-2xl border border-slate-800 p-5 space-y-3">
+            <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-300">Telemetria-chave (último snapshot)</h2>
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 text-[11px] font-mono" id="soulGrid">
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800"><span class="text-slate-500 block">Φ phi</span><span id="mPhi" class="text-white">—</span></div>
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800"><span class="text-slate-500 block">Ψ psi</span><span id="mPsi" class="text-white">—</span></div>
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800"><span class="text-slate-500 block">σ sigma</span><span id="mSigma" class="text-white">—</span></div>
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800"><span class="text-slate-500 block">CPU</span><span id="mCpu" class="text-white">—</span></div>
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800"><span class="text-slate-500 block">VRAM</span><span id="mVram" class="text-white">—</span></div>
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800"><span class="text-slate-500 block">ciclos kernel</span><span id="mCycles" class="text-white">—</span></div>
+            </div>
+        </div>
+
+        <!-- 280 battery summary -->
+        <div class="glass rounded-2xl border border-slate-800 p-5 space-y-3">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-rose-300">Bateria 280 Turnos — BASAL vs MODULATED (M1–M4)</h2>
+                <span id="b280Badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30">—</span>
+            </div>
+            <div id="b280Chips" class="flex flex-wrap gap-2 text-[11px] font-mono"></div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-[11px] font-mono text-left">
+                    <thead>
+                        <tr class="text-slate-500 border-b border-slate-800">
+                            <th class="py-1.5 pr-2">Modelo</th><th class="pr-2">Fase</th>
+                            <th class="pr-2 text-right">n</th><th class="pr-2 text-right">χ_eff</th>
+                            <th class="pr-2 text-right">PR_traj</th><th class="pr-2 text-right">drift</th>
+                            <th class="pr-2 text-right">IPR</th><th class="text-right">motor vel</th>
+                        </tr>
+                    </thead>
+                    <tbody id="b280Table" class="text-slate-300"></tbody>
+                </table>
+            </div>
+            <p class="text-[10px] font-mono text-slate-500">Seção completa (M1..M4 × etapas + envelopes + gate): index.html → aba “4. Pesquisas &amp; Docs”.</p>
+        </div>
+
+        <footer class="text-[10px] font-mono text-slate-600 pt-2">
+            omni_worker · docs/dashboard.html — página leve de status · dados: docs/data/dashboard/latest.json (espelho local data/dashboard/latest.json)
+        </footer>
+    </div>
+
+<script>
+    let lastSnap = null;
+    const STALE_MIN = 40;
+    function render() {
+        const snap = lastSnap;
+        let ageMin = null;
+        if (snap && snap.exported_at) {
+            const t = Date.parse(snap.exported_at);
+            if (!isNaN(t)) ageMin = Math.max(0, (Date.now() - t) / 60000);
+        }
+        const servers = (snap && snap.vm && typeof snap.vm.active_servers === 'number') ? snap.vm.active_servers : 0;
+        const online = (ageMin !== null && ageMin <= STALE_MIN && servers > 0);
+        const banner = document.getElementById('pulseBanner');
+        const dot = document.getElementById('pulseDot');
+        const label = document.getElementById('pulseLabel');
+        const detail = document.getElementById('pulseDetail');
+        if (online) {
+            banner.className = 'glass rounded-2xl border border-emerald-500/40 p-5 space-y-2';
+            dot.className = 'w-3.5 h-3.5 rounded-full bg-emerald-400 animate-pulse';
+            label.className = 'text-lg font-bold font-mono text-emerald-300';
+            label.textContent = 'VM ATIVA / PULSO BASAL ONLINE (Sync 30m)';
+            detail.textContent = `exported_at ${snap.exported_at.slice(0,19)}Z • ${ageMin.toFixed(1)} min atrás • ${servers} servidor(es) ativo(s)`;
+        } else {
+            banner.className = 'glass rounded-2xl border border-amber-500/40 p-5 space-y-2';
+            dot.className = 'w-3.5 h-3.5 rounded-full bg-amber-400';
+            label.className = 'text-lg font-bold font-mono text-amber-300';
+            label.textContent = 'SERVIDOR OFF / VM INATIVA — Modo Histórico Consolidado';
+            detail.textContent = ageMin !== null
+                ? `último pulso ${snap.exported_at.slice(0,19)}Z (${ageMin.toFixed(0)} min > ${STALE_MIN} min)`
+                : 'latest.json inacessível';
+        }
+        document.getElementById('pulseExportedAt').textContent = snap && snap.exported_at ? snap.exported_at.slice(0,19) + 'Z' : '—';
+        document.getElementById('pulseAge').textContent = ageMin !== null ? ageMin.toFixed(1) + ' min' : '—';
+        document.getElementById('pulseServers').textContent = snap && snap.vm ? servers + ' / 3' : '—';
+        const modeEl = document.getElementById('pulseMode');
+        modeEl.textContent = online ? 'TEMPO REAL' : 'HISTÓRICO';
+        modeEl.className = online ? 'text-emerald-300' : 'text-amber-300';
+        const srv = (snap && snap.vm && snap.vm.servers) || {};
+        const names = { analyst_brain: 'analyst 12B', executor_brain: 'executor E4B', worker_api: 'worker_api' };
+        document.getElementById('pulseServerList').textContent = 'probes: ' + Object.keys(names).map(k => {
+            const s = srv[k];
+            return `:${s ? s.port : '?'} ${names[k]} ${s && s.http_healthy ? 'OK' : 'down'}`;
+        }).join(' · ');
+        if (!snap) return;
+        const f = (v, d) => (v === null || v === undefined) ? '—' : (+v).toFixed(d === undefined ? 4 : d);
+        document.getElementById('mPhi').textContent = snap.soul ? f(snap.soul.phi) : '—';
+        document.getElementById('mPsi').textContent = snap.soul ? f(snap.soul.psi) : '—';
+        document.getElementById('mSigma').textContent = snap.soul ? f(snap.soul.sigma) : '—';
+        document.getElementById('mCpu').textContent = snap.soma && snap.soma.cpu_percent != null ? snap.soma.cpu_percent.toFixed(1) + '%' : '—';
+        document.getElementById('mVram').textContent = snap.soma && snap.soma.vram_used_gb != null ? `${snap.soma.vram_used_gb}/${snap.soma.vram_total_gb} GB` : '—';
+        document.getElementById('mCycles').textContent = snap.kernel && snap.kernel.cycle_count != null ? '#' + snap.kernel.cycle_count : '—';
+        const b = snap.basal_vs_modulated_280;
+        if (b && b.totals) {
+            document.getElementById('b280Badge').textContent = `${b.totals.turns}/280 [DADO]`;
+            const ch = (b.discriminators_roc_auc || {}).chassis_12b_vs_e4b || {};
+            document.getElementById('b280Chips').innerHTML = ['ipr', 'motor_vel', 'chi_eff', 'pr_traj'].filter(k => ch[k] && ch[k].power != null).map(k =>
+                `<span class="px-2 py-0.5 rounded border ${ch[k].power >= 0.99 ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40' : 'bg-cyan-500/15 text-cyan-300 border-cyan-500/40'}">${k} AUC=${ch[k].power.toFixed(3)}</span>`
+            ).join('');
+            const agg = {};
+            for (const r of (b.summary_by_model_phase_arm || [])) {
+                const key = `${r.model_tag}|${r.phase_group}`;
+                const cur = agg[key] || { n: 0, chi: 0, pr: 0, dr: 0, ipr: 0, vel: 0 };
+                cur.n += r.n; cur.chi += r.chi_eff * r.n; cur.pr += r.pr_traj * r.n; cur.dr += r.contract_drift * r.n;
+                cur.ipr += r.ipr * r.n; cur.vel += r.motor_vel * r.n;
+                agg[key] = cur;
+            }
+            document.getElementById('b280Table').innerHTML = Object.keys(agg).sort().map(k => {
+                const [m, ph] = k.split('|'); const a = agg[k];
+                const cls = ph === 'BASAL' ? 'text-cyan-300' : 'text-rose-300';
+                return `<tr class="border-b border-slate-800/60">
+                    <td class="py-1.5 pr-2 text-slate-400">${m}</td><td class="pr-2 ${cls}">${ph}</td>
+                    <td class="pr-2 text-right">${a.n}</td><td class="pr-2 text-right">${(a.chi/a.n).toFixed(2)}</td>
+                    <td class="pr-2 text-right">${(a.pr/a.n).toFixed(2)}</td><td class="pr-2 text-right">${(a.dr/a.n).toFixed(3)}</td>
+                    <td class="pr-2 text-right">${(a.ipr/a.n).toFixed(4)}</td><td class="text-right">${(a.vel/a.n).toFixed(1)}</td>
+                </tr>`;
+            }).join('');
+        } else {
+            document.getElementById('b280Badge').textContent = 'NÃO LOCALIZADO';
+        }
+    }
+    async function load() {
+        for (const u of ['./data/dashboard/latest.json', '/data/dashboard/latest.json']) {
+            try {
+                const r = await fetch(u, { cache: 'no-store' });
+                if (r.ok) { lastSnap = await r.json(); break; }
+            } catch (e) { /* offline pages */ }
+        }
+        render();
+    }
+    load();
+    setInterval(render, 60000);
+    setInterval(load, 30000);
+</script>
 </body>
 </html>
