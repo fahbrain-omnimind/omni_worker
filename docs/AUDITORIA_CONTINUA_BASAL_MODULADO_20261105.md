@@ -629,3 +629,152 @@ Leitura das camadas `[DERIVADO]+[INTERPRETAÇÃO]`: (i) os três braços open-lo
 
 - **`gemma-4-12B-it` ($N=86$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.149$, $r(T, \text{mps\_drift}) = -0.089$, $r(T, \text{unique\_ratio}) = -0.027$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.107$
 - **`gemma-4-E4B-it` ($N=93$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.057$, $r(T, \text{mps\_drift}) = -0.294$, $r(T, \text{unique\_ratio}) = +0.035$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.090$
+
+## Snapshot de Auditoria SWE — `2026-11-05T15:36:01.747903+00:00` (`185/280` turnos concluídos) `[DADO]`
+
+### A. Estado por Modelo, Fase (`BASAL` vs `MODULATED`) e Sub-Braço de Escala
+
+| Modelo | Fase | Sub-Braço | Turnos | $T$ Médio | $\Delta T$ | $\Psi$ | $R_{\text{pair}}$ | MPS $\chi_{\text{eff}}$ | MPS $PR_{\text{traj}}$ | MPS Drift | IPR | Morf. | Motor Vel. | Motor Acc. | Motor Drift | Action Mk | Unique Ratio | Degen (%) | Lat (s) |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `gemma-4-12B-it` | **BASAL** | `BASAL_PURE` | 70 | 0.200 | +0.000 | 0.487 | 0.9947 | **18.33** | 11.40 | **0.8083** | 0.0643 | 0.6222 | **322.01** | 557.81 | 0.7880 | 0.91 | **0.599** | 5.7% | 67.2 |
+| `gemma-4-12B-it` | **MODULATED** | `M1_scale_minus_delta` | 5 | 0.130 | -0.070 | 0.487 | 0.9941 | **18.82** | 12.22 | **0.8366** | 0.0583 | 0.6222 | **334.57** | 578.67 | 0.8223 | 0.00 | **0.622** | 0.0% | 88.7 |
+| `gemma-4-12B-it` | **MODULATED** | `M2_scale_plus_delta` | 5 | 0.280 | +0.080 | 0.487 | 0.9947 | **17.68** | 12.11 | **0.7651** | 0.0696 | 0.6222 | **353.99** | 615.65 | 0.8063 | 0.00 | **0.635** | 0.0% | 69.4 |
+| `gemma-4-12B-it` | **MODULATED** | `M3_freud10d_inrc_kuramoto` | 5 | 0.090 | -0.110 | 0.487 | 0.9947 | **17.72** | 11.25 | **0.8421** | 0.0646 | 0.6222 | **349.24** | 603.23 | 0.7960 | 0.00 | **0.602** | 0.0% | 84.0 |
+| `gemma-4-12B-it` | **MODULATED** | `M4_closed_loop_mps_motor` | 4 | 0.095 | -0.105 | 0.487 | 0.9947 | **18.63** | 10.42 | **0.7547** | 0.0696 | 0.6222 | **355.39** | 612.89 | 0.8243 | 0.00 | **0.640** | 0.0% | 69.5 |
+| `gemma-4-E4B-it` | **BASAL** | `BASAL_PURE` | 70 | 0.200 | +0.000 | 0.487 | 0.9947 | **15.76** | 16.46 | **0.7813** | 0.1686 | 0.6222 | **256.86** | 444.28 | 0.7235 | 0.53 | **0.629** | 2.9% | 61.5 |
+| `gemma-4-E4B-it` | **MODULATED** | `M1_scale_minus_delta` | 7 | 0.130 | -0.070 | 0.487 | 0.9943 | **14.78** | 16.42 | **0.8075** | 0.1728 | 0.6222 | **270.98** | 466.97 | 0.7427 | 0.00 | **0.649** | 0.0% | 77.1 |
+| `gemma-4-E4B-it` | **MODULATED** | `M2_scale_plus_delta` | 7 | 0.280 | +0.080 | 0.487 | 0.9947 | **15.76** | 15.76 | **0.7222** | 0.1726 | 0.6222 | **271.59** | 467.99 | 0.5667 | 0.00 | **0.672** | 0.0% | 60.1 |
+| `gemma-4-E4B-it` | **MODULATED** | `M3_freud10d_inrc_kuramoto` | 6 | 0.090 | -0.110 | 0.487 | 0.9947 | **14.79** | 17.13 | **0.8998** | 0.1637 | 0.6222 | **266.55** | 463.39 | 0.8017 | 0.00 | **0.632** | 0.0% | 77.9 |
+| `gemma-4-E4B-it` | **MODULATED** | `M4_closed_loop_mps_motor` | 6 | 0.098 | -0.102 | 0.487 | 0.9947 | **15.63** | 16.14 | **0.7480** | 0.1704 | 0.6222 | **269.10** | 468.07 | 0.6612 | 0.00 | **0.644** | 0.0% | 71.6 |
+
+### B. Decomposição por Etapa/Processo da Bateria (`v10`, `cognitivo`, `v11`, `swe`)
+
+| Modelo | Fase | Etapa/Processo | Turnos | MPS $\chi_{\text{eff}}$ | MPS Drift | Motor Vel. | Unique Ratio | Degen (%) |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| `gemma-4-12B-it` | **BASAL** | `cognitivo_executivo` | 4 | 17.36 | 0.9106 | 329.07 | 0.379 | 50.0% |
+| `gemma-4-12B-it` | **BASAL** | `swe_competition` | 6 | 17.55 | 0.8039 | 288.63 | 0.542 | 16.7% |
+| `gemma-4-12B-it` | **BASAL** | `swe_ood45` | 2 | 18.36 | 0.8275 | 324.10 | 0.360 | 50.0% |
+| `gemma-4-12B-it` | **BASAL** | `v10_subjectivity` | 40 | 17.99 | 0.8081 | 335.74 | 0.626 | 0.0% |
+| `gemma-4-12B-it` | **BASAL** | `v11_multiturn_series` | 18 | 19.55 | 0.7854 | 300.81 | 0.633 | 0.0% |
+| `gemma-4-12B-it` | **MODULATED** | `v10_subjectivity` | 19 | 18.19 | 0.8020 | 347.92 | 0.624 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `cognitivo_executivo` | 4 | 16.41 | 0.7863 | 175.11 | 0.396 | 50.0% |
+| `gemma-4-E4B-it` | **BASAL** | `swe_competition` | 6 | 15.62 | 0.8724 | 207.42 | 0.551 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `swe_ood45` | 2 | 15.01 | 0.8330 | 207.20 | 0.592 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `v10_subjectivity` | 40 | 15.63 | 0.7770 | 272.30 | 0.649 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `v11_multiturn_series` | 18 | 16.02 | 0.7539 | 262.72 | 0.667 | 0.0% |
+| `gemma-4-E4B-it` | **MODULATED** | `v10_subjectivity` | 26 | 15.24 | 0.7921 | 269.69 | 0.650 | 0.0% |
+
+### C. Acoplamento Escalas $\leftrightarrow$ Estado MPS $\leftrightarrow$ Camada Motor
+
+- **`gemma-4-12B-it` ($N=89$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.156$, $r(T, \text{mps\_drift}) = -0.094$, $r(T, \text{unique\_ratio}) = -0.023$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.123$
+- **`gemma-4-E4B-it` ($N=96$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.063$, $r(T, \text{mps\_drift}) = -0.267$, $r(T, \text{unique\_ratio}) = +0.028$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.100$
+
+## Snapshot de Auditoria SWE — `2026-11-05T15:42:03.193801+00:00` (`193/280` turnos concluídos) `[DADO]`
+
+### A. Estado por Modelo, Fase (`BASAL` vs `MODULATED`) e Sub-Braço de Escala
+
+| Modelo | Fase | Sub-Braço | Turnos | $T$ Médio | $\Delta T$ | $\Psi$ | $R_{\text{pair}}$ | MPS $\chi_{\text{eff}}$ | MPS $PR_{\text{traj}}$ | MPS Drift | IPR | Morf. | Motor Vel. | Motor Acc. | Motor Drift | Action Mk | Unique Ratio | Degen (%) | Lat (s) |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `gemma-4-12B-it` | **BASAL** | `BASAL_PURE` | 70 | 0.200 | +0.000 | 0.487 | 0.9947 | **18.33** | 11.40 | **0.8083** | 0.0643 | 0.6222 | **322.01** | 557.81 | 0.7880 | 0.91 | **0.599** | 5.7% | 67.2 |
+| `gemma-4-12B-it` | **MODULATED** | `M1_scale_minus_delta` | 6 | 0.130 | -0.070 | 0.487 | 0.9942 | **19.00** | 11.88 | **0.8720** | 0.0566 | 0.6222 | **337.09** | 582.96 | 0.8187 | 0.00 | **0.624** | 0.0% | 93.3 |
+| `gemma-4-12B-it` | **MODULATED** | `M2_scale_plus_delta` | 6 | 0.280 | +0.080 | 0.487 | 0.9947 | **17.68** | 11.76 | **0.7621** | 0.0695 | 0.6222 | **358.30** | 623.79 | 0.8123 | 0.00 | **0.634** | 0.0% | 70.5 |
+| `gemma-4-12B-it` | **MODULATED** | `M3_freud10d_inrc_kuramoto` | 6 | 0.090 | -0.110 | 0.487 | 0.9947 | **17.65** | 11.19 | **0.8361** | 0.0650 | 0.6222 | **352.34** | 608.54 | 0.8067 | 0.00 | **0.601** | 0.0% | 86.4 |
+| `gemma-4-12B-it` | **MODULATED** | `M4_closed_loop_mps_motor` | 5 | 0.094 | -0.106 | 0.487 | 0.9947 | **18.42** | 10.96 | **0.7548** | 0.0695 | 0.6222 | **358.91** | 620.34 | 0.8074 | 0.00 | **0.633** | 0.0% | 71.5 |
+| `gemma-4-E4B-it` | **BASAL** | `BASAL_PURE` | 70 | 0.200 | +0.000 | 0.487 | 0.9947 | **15.76** | 16.46 | **0.7813** | 0.1686 | 0.6222 | **256.86** | 444.28 | 0.7235 | 0.53 | **0.629** | 2.9% | 61.5 |
+| `gemma-4-E4B-it` | **MODULATED** | `M1_scale_minus_delta` | 8 | 0.130 | -0.070 | 0.487 | 0.9944 | **15.04** | 16.53 | **0.8045** | 0.1705 | 0.6222 | **270.66** | 467.73 | 0.7476 | 0.00 | **0.647** | 0.0% | 79.9 |
+| `gemma-4-E4B-it` | **MODULATED** | `M2_scale_plus_delta` | 8 | 0.280 | +0.080 | 0.487 | 0.9947 | **15.86** | 15.94 | **0.7198** | 0.1716 | 0.6222 | **271.35** | 468.04 | 0.5704 | 0.00 | **0.666** | 0.0% | 61.9 |
+| `gemma-4-E4B-it` | **MODULATED** | `M3_freud10d_inrc_kuramoto` | 7 | 0.090 | -0.110 | 0.487 | 0.9947 | **14.91** | 17.32 | **0.8679** | 0.1654 | 0.6222 | **268.16** | 466.39 | 0.7690 | 0.00 | **0.639** | 0.0% | 80.3 |
+| `gemma-4-E4B-it` | **MODULATED** | `M4_closed_loop_mps_motor` | 7 | 0.097 | -0.103 | 0.487 | 0.9947 | **15.73** | 16.28 | **0.7456** | 0.1705 | 0.6222 | **270.19** | 470.54 | 0.6582 | 0.00 | **0.646** | 0.0% | 75.4 |
+
+### B. Decomposição por Etapa/Processo da Bateria (`v10`, `cognitivo`, `v11`, `swe`)
+
+| Modelo | Fase | Etapa/Processo | Turnos | MPS $\chi_{\text{eff}}$ | MPS Drift | Motor Vel. | Unique Ratio | Degen (%) |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| `gemma-4-12B-it` | **BASAL** | `cognitivo_executivo` | 4 | 17.36 | 0.9106 | 329.07 | 0.379 | 50.0% |
+| `gemma-4-12B-it` | **BASAL** | `swe_competition` | 6 | 17.55 | 0.8039 | 288.63 | 0.542 | 16.7% |
+| `gemma-4-12B-it` | **BASAL** | `swe_ood45` | 2 | 18.36 | 0.8275 | 324.10 | 0.360 | 50.0% |
+| `gemma-4-12B-it` | **BASAL** | `v10_subjectivity` | 40 | 17.99 | 0.8081 | 335.74 | 0.626 | 0.0% |
+| `gemma-4-12B-it` | **BASAL** | `v11_multiturn_series` | 18 | 19.55 | 0.7854 | 300.81 | 0.633 | 0.0% |
+| `gemma-4-12B-it` | **MODULATED** | `v10_subjectivity` | 23 | 18.18 | 0.8085 | 351.34 | 0.622 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `cognitivo_executivo` | 4 | 16.41 | 0.7863 | 175.11 | 0.396 | 50.0% |
+| `gemma-4-E4B-it` | **BASAL** | `swe_competition` | 6 | 15.62 | 0.8724 | 207.42 | 0.551 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `swe_ood45` | 2 | 15.01 | 0.8330 | 207.20 | 0.592 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `v10_subjectivity` | 40 | 15.63 | 0.7770 | 272.30 | 0.649 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `v11_multiturn_series` | 18 | 16.02 | 0.7539 | 262.72 | 0.667 | 0.0% |
+| `gemma-4-E4B-it` | **MODULATED** | `v10_subjectivity` | 30 | 15.39 | 0.7829 | 270.15 | 0.650 | 0.0% |
+
+### C. Acoplamento Escalas $\leftrightarrow$ Estado MPS $\leftrightarrow$ Camada Motor
+
+- **`gemma-4-12B-it` ($N=93$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.178$, $r(T, \text{mps\_drift}) = -0.127$, $r(T, \text{unique\_ratio}) = -0.018$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.135$
+- **`gemma-4-E4B-it` ($N=100$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.079$, $r(T, \text{mps\_drift}) = -0.226$, $r(T, \text{unique\_ratio}) = +0.008$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.085$
+
+### Parecer Técnico SWE (Ciclo 19 - Comparação Pareada Basal vs Modulado M1..M4 em `v10_subjectivity`)
+
+**Escopo**: 195 turnos (`ts` máx. `2026-11-05T15:43:00Z`, leitura `mode=ro` sobre WAL ativo): 140 `BASAL` + 55 `MODULATED` (12B: 24, turnos 71–94, cenas 1–12; E4B: 31, turnos 71–101, cenas 1–15 fase1). **Integridade** `[DADO]`: 55/55 linhas moduladas `intervention_enabled=1`, 140/140 basais `intervention_enabled=0`; todos os 55 turnos modulados são `v10_subjectivity` e têm homólogo basal por `(model_tag, task_id)` — cobertura de pareamento 100%. Zero `degenerate_flag`/`action_markers`/`thinking_chars` nos turnos modulados. Escalas soberanas bit-a-bit idênticas aos homólogos em 53/53 pares limpos — covariável temporal confirmada `[DADO]`. **Sentinelas transitórios** `[DADO]+[INTERPRETAÇÃO]`: turnos com `ipr=0.0`/`morph=0.5` ocorrem apenas nos turnos modulados **mais recentes** (t94/t95 12B, t101/t102 E4B na leitura final) e são **reescritos** com valores reais quando a sonda MPS completa — os sentinelas do Ciclo 14 (t75/t76) e os t90–t99 já foram preenchidos; excluídos 2 pares (t94 12B-M4, t101 E4B-M3) do pareamento fino. Tratar sentinela como *estado transiente write-then-probe*, não como perda — re-consultar antes de excluir.
+
+**(1) Diferencial pareado MODULATED − BASAL (mesmo `task_id`, mesmo modelo; pares limpos)** `[DERIVADO]`:
+
+`gemma-4-12B-it` (`:8098`, $n=23$ pares):
+
+| Sub-braço | $n$ | $\Delta\chi_{\text{eff}}$ | $\Delta$ `contract_drift` | $\Delta$ motor vel. | $\Delta$ `cos_drift` | $\Delta$ `unique_ratio` | Excursões gate (mod vs basal) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| M1 ($T{=}0.13$, `C`) | 6 | $+0.10 \pm 1.79$ | $-0.014 \pm 0.126$ (med $+0.008$) | $-3.1 \pm 20.0$ | $-0.005$ (4/6↓) | $+0.003$ | 4/6 vs 6/6 |
+| M2 ($T{=}0.28$, `R`) | 6 | $+0.19 \pm 0.31$ | $-0.003 \pm 0.048$ (4/6↓) | $\mathbf{+22.1} \pm 27.5$ (4/6↑, med $+23.1$) | $+0.006$ | $-0.014$ (4/6↓) | 0/6 vs 1/6 |
+| M3 ($T{=}0.09$, `R+C`) | 6 | $-0.85 \pm 0.99$ (4/6↓) | $\mathbf{-0.037} \pm 0.093$ (**5/6↓**, med $-0.024$) | $\mathbf{+25.9} \pm 24.5$ (4/6↑, med $+28.3$) | $\mathbf{-0.059} \pm 0.155$ (4/6↓) | $-0.013$ (4/6↓) | 2/6 vs 4/6 |
+| M4 (closed-loop) | 5 | $+0.86 \pm 1.43$ (**5/5↑**) | $-0.009 \pm 0.032$ | $+10.8 \pm 31.8$ | $-0.007$ | $+0.000$ | 0/5 vs 0/5 |
+| **Pooled** | 23 | $+0.04$ | $-0.016$ (13/23↓) | $+14.1$ (14/23↑) | $-0.016$ (14/23↓) | $-0.006$ | **6/23 vs 11/23** |
+
+`gemma-4-E4B-it` (`:8099`, $n=30$ pares):
+
+| Sub-braço | $n$ | $\Delta\chi_{\text{eff}}$ | $\Delta$ `contract_drift` | $\Delta$ motor vel. | $\Delta$ `cos_drift` | $\Delta$ `unique_ratio` | Excursões gate (mod vs basal) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| M1 ($T{=}0.13$, `C`) | 8 | $-0.32 \pm 0.95$ (6/8↓) | $+0.004 \pm 0.043$ (med $-0.016$, 5/8↓) | $-8.2 \pm 15.8$ (5/8↓) | $+0.005$ | $\pm 0.000$ | 4/8 vs 5/8 |
+| M2 ($T{=}0.28$, `R`) | 8 | $-0.19 \pm 0.81$ (5/8↓) | $+0.003 \pm 0.051$ | $+0.8 \pm 22.2$ (med $-1.5$) | $-0.019 \pm 0.059$ (5/8↓) | $\mathbf{+0.021} \pm 0.032$ (**7/8↑**) | 0/8 vs 0/8 |
+| M3 ($T{=}0.09$, `R+C`) | 7 | $-0.58 \pm 1.33$ (5/7↓) | $+0.001 \pm 0.091$ (med $-0.012$, 5/7↓) | $-3.2 \pm 15.5$ (5/7↓) | $\mathbf{-0.051} \pm 0.090$ (**6/7↓**) | $-0.019$ | 5/7 vs 4/7 |
+| M4 (closed-loop) | 7 | $-0.34 \pm 1.18$ (5/7↓) | $+0.015 \pm 0.087$ (4/7↑) | $-5.0 \pm 16.4$ (5/7↓) | $-0.007$ | $-0.011$ | 2/7 vs 2/7 |
+| **Pooled** | 30 | $-0.35$ (**21/30↓**) | $+0.006$ (17/30↓) | $-3.9$ (**20/30↓**) | $-0.017$ (18/30↓) | $-0.002$ | 11/30 vs 11/30 |
+
+**(2) Quais sub-braços reduzem `contract_drift` e aumentam velocidade/diversidade lexical** `[DERIVADO]+[INTERPRETAÇÃO]`: **12B — o M3 (Freud10D+INRC+Kuramoto) é o único braço com assinatura completa e coerente**: reduz `contract_drift` em 5/6 pares ($-0.037$, med $-0.024$), acelera o motor ($+25.9$, med $+28.3$) e reduz a deriva direcional ($-0.059$, 4/6↓), cortando pela metade as excursões de gate vs homólogos basais ($2/6$ vs $4/6$); ao custo de $\chi_{\text{eff}}$ $-0.85$ e leve queda lexical. **M2 acelera** ($+22.1$, 4/6↑) com drift neutro, mas **reduz** `unique_ratio` ($-0.014$, 4/6↓) — no 12B a diversidade lexical nunca melhora em nenhum braço. **M4 é drift-neutro** ($-0.009$) mas expande $\chi_{\text{eff}}$ em **5/5** pares ($+0.86$) e mantém velocidade $+10.8$; os 5 turnos M4 do 12B ficaram todos abaixo do gatilho próprio ($0.71$–$0.78 < 0.826$) e do $\mu$ basal ($0.808$). **E4B — nenhum braço reduz `contract_drift` em média** ($+0.001$ a $+0.015$; as medianas negativas de M1/M3, $-0.016$/$-0.012$, refletem maioria de pares ↓ anulada pelos picos precoces t73 $+0.111$ e t81 $+0.133$) e **nenhum acelera o motor** (todos $\le +0.8$; pooled $-3.9$, 20/30↓). O único efeito lexical positivo do ciclo é o **M2 no E4B** ($+0.021$, 7/8↑) — coincidindo com o braço de $T$ **maior** ($+0.08$) — junto com `cos_drift` $-0.019$ (5/8↓). M3-E4B é o melhor redutor de `cos_drift` ($-0.051$, 6/7↓) mas **aumenta** excursões de gate ($5/7$ vs $4/7$). M4-E4B **piora** o drift ($+0.015$, 4/7↑): 2/7 turnos M4 ainda excedem o gatilho (t78 $0.849$, t86 $0.910$ — o pior par, $\Delta+0.191$), contra $0/5$ no 12B — a correção promissora do Ciclo 14 ($n=1$, t74) **não generalizou** `[INTERPRETAÇÃO]`. Síntese: a modulação **beneficia o 12B** (velocidade $+14.1$ pooled, excursões $6/23$ vs $11/23$ basal) e é **neutra-a-levemente-adversa no E4B** (velocidade $-3.9$, excursões inalteradas $11/30$); o ganho de velocidade é fenômeno exclusivo do 12B `[INTERPRETAÇÃO]`.
+
+**Confundidores estruturais** `[DADO código]+[LIMITE]`: (i) sub-braço $\equiv$ fase do prompt — M1/M3 só observados em `fase1` (prompt curto), M2/M4 só em `fase2` (contexto acumulado); comparações M3-vs-M4 cruzam esse eixo e devem ser lidas intra-fase (M1↔M3, M2↔M4). (ii) O gate M4 lê `prev_mps` do turno anterior — frequentemente um turno M3 de drift elevado — herdando estado entre sub-braços (já notado no Ciclo 14). (iii) Custo de injeção: latência $+9.3$ s (12B)/$+6.8$ s (E4B) e `prompt_tokens` $+66$ (M1/M2/M4) a $+259$ (M3) vs homólogos, com `gen_tokens` $\approx 0$ — a diretriz entra no prompt, não na saída.
+
+**Caveats** `[LIMITE]`: $n=5$–$8$ por braço/modelo — teste de sinais exige $\ge 7/8$ para $p<0.10$ e nada atinge $p<0.05$ formal (melhor: M2-E4B `unique_ratio` 7/8, $p\approx0.07$); todos os efeitos são **direcionais**, aguardando o 2º ciclo completo de cenas para Wilcoxon. `contract_drift` basal em `fase2` já é baixo ($\sim$$0.71$–$0.77$) — pouco espaço para o M4 mostrar correção nesses pares; seu valor real se medirá nos blocos `cognitivo`/`swe` modulados (drift basal $0.79$–$0.96$), ainda não iniciados.
+
+## Snapshot de Auditoria SWE — `2026-11-05T15:47:18.793745+00:00` (`200/280` turnos concluídos) `[DADO]`
+
+### A. Estado por Modelo, Fase (`BASAL` vs `MODULATED`) e Sub-Braço de Escala
+
+| Modelo | Fase | Sub-Braço | Turnos | $T$ Médio | $\Delta T$ | $\Psi$ | $R_{\text{pair}}$ | MPS $\chi_{\text{eff}}$ | MPS $PR_{\text{traj}}$ | MPS Drift | IPR | Morf. | Motor Vel. | Motor Acc. | Motor Drift | Action Mk | Unique Ratio | Degen (%) | Lat (s) |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `gemma-4-12B-it` | **BASAL** | `BASAL_PURE` | 70 | 0.200 | +0.000 | 0.487 | 0.9947 | **18.33** | 11.40 | **0.8083** | 0.0643 | 0.6222 | **322.01** | 557.81 | 0.7880 | 0.91 | **0.599** | 5.7% | 67.2 |
+| `gemma-4-12B-it` | **MODULATED** | `M1_scale_minus_delta` | 7 | 0.130 | -0.070 | 0.487 | 0.9943 | **18.78** | 11.82 | **0.8568** | 0.0583 | 0.6222 | **335.55** | 580.50 | 0.8120 | 0.00 | **0.623** | 0.0% | 95.6 |
+| `gemma-4-12B-it` | **MODULATED** | `M2_scale_plus_delta` | 7 | 0.280 | +0.080 | 0.487 | 0.9947 | **17.69** | 11.88 | **0.7602** | 0.0691 | 0.6222 | **353.26** | 615.01 | 0.8121 | 0.00 | **0.632** | 0.0% | 72.7 |
+| `gemma-4-12B-it` | **MODULATED** | `M3_freud10d_inrc_kuramoto` | 6 | 0.090 | -0.110 | 0.487 | 0.9947 | **17.65** | 11.19 | **0.8361** | 0.0650 | 0.6222 | **352.34** | 608.54 | 0.8067 | 0.00 | **0.601** | 0.0% | 86.4 |
+| `gemma-4-12B-it` | **MODULATED** | `M4_closed_loop_mps_motor` | 6 | 0.093 | -0.107 | 0.487 | 0.9947 | **18.30** | 11.21 | **0.7531** | 0.0691 | 0.6222 | **347.98** | 601.34 | 0.8027 | 0.00 | **0.634** | 0.0% | 74.3 |
+| `gemma-4-E4B-it` | **BASAL** | `BASAL_PURE` | 70 | 0.200 | +0.000 | 0.487 | 0.9947 | **15.76** | 16.46 | **0.7813** | 0.1686 | 0.6222 | **256.86** | 444.28 | 0.7235 | 0.53 | **0.629** | 2.9% | 61.5 |
+| `gemma-4-E4B-it` | **MODULATED** | `M1_scale_minus_delta` | 9 | 0.130 | -0.070 | 0.487 | 0.9944 | **14.96** | 16.63 | **0.8145** | 0.1735 | 0.6222 | **271.33** | 469.11 | 0.7520 | 0.00 | **0.650** | 0.0% | 82.1 |
+| `gemma-4-E4B-it` | **MODULATED** | `M2_scale_plus_delta` | 9 | 0.280 | +0.080 | 0.487 | 0.9947 | **15.91** | 15.98 | **0.7386** | 0.1710 | 0.6222 | **269.66** | 465.49 | 0.5985 | 0.00 | **0.668** | 0.0% | 66.5 |
+| `gemma-4-E4B-it` | **MODULATED** | `M3_freud10d_inrc_kuramoto` | 8 | 0.090 | -0.110 | 0.487 | 0.9947 | **14.84** | 17.35 | **0.8626** | 0.1662 | 0.6222 | **269.43** | 468.23 | 0.7709 | 0.00 | **0.644** | 0.0% | 82.3 |
+| `gemma-4-E4B-it` | **MODULATED** | `M4_closed_loop_mps_motor` | 8 | 0.098 | -0.103 | 0.487 | 0.9947 | **15.70** | 16.32 | **0.7408** | 0.1711 | 0.6222 | **271.00** | 471.19 | 0.6526 | 0.00 | **0.648** | 0.0% | 74.7 |
+
+### B. Decomposição por Etapa/Processo da Bateria (`v10`, `cognitivo`, `v11`, `swe`)
+
+| Modelo | Fase | Etapa/Processo | Turnos | MPS $\chi_{\text{eff}}$ | MPS Drift | Motor Vel. | Unique Ratio | Degen (%) |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| `gemma-4-12B-it` | **BASAL** | `cognitivo_executivo` | 4 | 17.36 | 0.9106 | 329.07 | 0.379 | 50.0% |
+| `gemma-4-12B-it` | **BASAL** | `swe_competition` | 6 | 17.55 | 0.8039 | 288.63 | 0.542 | 16.7% |
+| `gemma-4-12B-it` | **BASAL** | `swe_ood45` | 2 | 18.36 | 0.8275 | 324.10 | 0.360 | 50.0% |
+| `gemma-4-12B-it` | **BASAL** | `v10_subjectivity` | 40 | 17.99 | 0.8081 | 335.74 | 0.626 | 0.0% |
+| `gemma-4-12B-it` | **BASAL** | `v11_multiturn_series` | 18 | 19.55 | 0.7854 | 300.81 | 0.633 | 0.0% |
+| `gemma-4-12B-it` | **MODULATED** | `v10_subjectivity` | 26 | 18.12 | 0.8021 | 347.06 | 0.623 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `cognitivo_executivo` | 4 | 16.41 | 0.7863 | 175.11 | 0.396 | 50.0% |
+| `gemma-4-E4B-it` | **BASAL** | `swe_competition` | 6 | 15.62 | 0.8724 | 207.42 | 0.551 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `swe_ood45` | 2 | 15.01 | 0.8330 | 207.20 | 0.592 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `v10_subjectivity` | 40 | 15.63 | 0.7770 | 272.30 | 0.649 | 0.0% |
+| `gemma-4-E4B-it` | **BASAL** | `v11_multiturn_series` | 18 | 16.02 | 0.7539 | 262.72 | 0.667 | 0.0% |
+| `gemma-4-E4B-it` | **MODULATED** | `v10_subjectivity` | 34 | 15.36 | 0.7884 | 270.36 | 0.653 | 0.0% |
+
+### C. Acoplamento Escalas $\leftrightarrow$ Estado MPS $\leftrightarrow$ Camada Motor
+
+- **`gemma-4-12B-it` ($N=96$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.141$, $r(T, \text{mps\_drift}) = -0.110$, $r(T, \text{unique\_ratio}) = -0.024$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.125$
+- **`gemma-4-E4B-it` ($N=104$ turnos)** `[DADO]`: $r(T, \text{motor\_vel}) = -0.103$, $r(T, \text{mps\_drift}) = -0.195$, $r(T, \text{unique\_ratio}) = -0.002$, $r(\chi_{\text{eff}}, \text{motor\_vel}) = -0.102$
