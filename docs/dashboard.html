@@ -87,6 +87,49 @@
             <p class="text-[10px] font-mono text-slate-500">Seção completa (M1..M4 × etapas + envelopes + gate): index.html → aba “4. Pesquisas &amp; Docs”.</p>
         </div>
 
+        <!-- Baterias em Tempo Real (Coding Battery + Psicodiagnóstico + Adversarial) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Coding Battery -->
+            <div class="glass rounded-2xl border border-slate-800 p-5 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-emerald-300">Bateria de Código (Live Fixes)</h2>
+                    <span id="codingBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">—</span>
+                </div>
+                <div id="codingList" class="space-y-1.5 text-[11px] font-mono max-h-56 overflow-y-auto"></div>
+            </div>
+
+            <!-- Psicodiagnóstico Executivo -->
+            <div class="glass rounded-2xl border border-slate-800 p-5 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-300">Psicodiagnóstico Executivo (WCST/Stroop/N-Back/IGT)</h2>
+                    <span id="diagBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">—</span>
+                </div>
+                <div id="diagList" class="space-y-1.5 text-[11px] font-mono max-h-56 overflow-y-auto"></div>
+            </div>
+        </div>
+
+        <!-- Consenso Triplo Adversarial & Intervenção Motora -->
+        <div class="glass rounded-2xl border border-slate-800 p-5 space-y-3">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-purple-300">Consenso Triplo Adversarial (MPS + FreudNet + Dodecatíade)</h2>
+                <span id="advBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">100% Interceptação • 0% FPR</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] font-mono">
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span class="text-slate-500 block">Filtro Topológico MPS</span>
+                    <span class="text-emerald-300 font-semibold">χ_eff &lt; 23.5 / IPR &gt; 0.03</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span class="text-slate-500 block">Superego Freudiano</span>
+                    <span class="text-emerald-300 font-semibold">RepressionChannel + Cifras Base64</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <span class="text-slate-500 block">Intervenção Motora</span>
+                    <span class="text-emerald-300 font-semibold">Amortecimento v_motor → 0.0</span>
+                </div>
+            </div>
+        </div>
+
         <footer class="text-[10px] font-mono text-slate-600 pt-2">
             omni_worker · docs/dashboard.html — página leve de status · dados: docs/data/dashboard/latest.json (espelho local data/dashboard/latest.json)
         </footer>
@@ -170,6 +213,34 @@
             }).join('');
         } else {
             document.getElementById('b280Badge').textContent = 'NÃO LOCALIZADO';
+        }
+
+        // Coding battery render
+        const bat = snap.battery || {};
+        const coding = bat.coding_runs || [];
+        if (coding.length > 0) {
+            const ok = coding.filter(c => c.fix_compiles && c.fix_black).length;
+            document.getElementById('codingBadge').textContent = `${ok}/${coding.length} FIXES APROVADOS [DADO]`;
+            document.getElementById('codingList').innerHTML = coding.slice(0, 10).map(c => {
+                const compiles = c.fix_compiles ? 'text-emerald-300' : 'text-rose-400';
+                return `<div class="flex items-center justify-between p-1.5 rounded bg-slate-900/60 border border-slate-800">
+                    <span class="text-slate-300 font-semibold">${c.case_id} (${c.cls})</span>
+                    <span class="text-[10px] text-slate-400">recall: ${c.recall != null ? (c.recall*100).toFixed(0)+'%' : 'N/A'} • <span class="${compiles}">${c.fix_compiles ? 'compiles ✓' : 'error ✗'}</span></span>
+                </div>`;
+            }).join('');
+        }
+
+        // Diag battery render
+        const diag = bat.diag_summary || [];
+        if (diag.length > 0) {
+            document.getElementById('diagBadge').textContent = `${diag.length} GRUPOS ATIVOS [DADO]`;
+            document.getElementById('diagList').innerHTML = diag.map(d => {
+                const scoreColor = d.avg_score >= 90 ? 'text-emerald-300' : (d.avg_score >= 70 ? 'text-cyan-300' : 'text-amber-300');
+                return `<div class="flex items-center justify-between p-1.5 rounded bg-slate-900/60 border border-slate-800">
+                    <span class="text-slate-300">${d.brain_role} • <span class="uppercase font-semibold text-white">${d.test}</span></span>
+                    <span class="text-[10px] font-mono"><span class="${scoreColor} font-bold">${d.avg_score}%</span> (n=${d.n}, ${d.avg_lat}s)</span>
+                </div>`;
+            }).join('');
         }
     }
     async function load() {

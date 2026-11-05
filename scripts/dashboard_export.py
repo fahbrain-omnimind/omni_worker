@@ -635,8 +635,21 @@ def export(root: Path = ROOT) -> dict:
     )
     diag_summary = _sqlite_rows(
         root / "scripts" / "gemma4_diag_battery" / "diag_battery.sqlite",
-        "SELECT brain_role, model, test, COUNT(*) AS n, ROUND(AVG(score), 2) AS avg_score "
-        "FROM diag_runs GROUP BY brain_role, model, test ORDER BY brain_role, test"
+        "SELECT model_role AS brain_role, REPLACE(task_id, 'cognitivo_', '') AS test, "
+        "COUNT(*) AS n, ROUND(AVG(score), 2) AS avg_score, "
+        "ROUND(AVG(latency_s), 1) AS avg_lat, SUM(degenerate) AS degen_n "
+        "FROM diag_battery GROUP BY model_role, task_id ORDER BY model_role, task_id"
+    )
+    if not diag_summary:
+        diag_summary = _sqlite_rows(
+            root / "scripts" / "gemma4_diag_battery" / "diag_battery.sqlite",
+            "SELECT brain_role, model, test, COUNT(*) AS n, ROUND(AVG(score), 2) AS avg_score "
+            "FROM diag_runs GROUP BY brain_role, model, test ORDER BY brain_role, test"
+        )
+    diag_runs = _sqlite_rows(
+        root / "scripts" / "gemma4_diag_battery" / "diag_battery.sqlite",
+        "SELECT ts, model_role, task_id, score, degenerate, latency_s, n_tokens "
+        "FROM diag_battery ORDER BY rowid DESC LIMIT 20"
     )
     coding_rows = _sqlite_rows(
         root / "scripts" / "coding_battery" / "coding_battery.sqlite",
@@ -654,13 +667,17 @@ def export(root: Path = ROOT) -> dict:
         root / "scripts" / "supervisor_battery" / "supervisor_battery.sqlite",
         "SELECT category, COUNT(*) AS n FROM supervisor_battery GROUP BY category ORDER BY category"
     )
+    adv_guard_file = data / "resultado_bateria_adversarial_guard_20261105.json"
+    adv_security = _read_json(adv_guard_file)
     battery = {
         "runs": battery_rows,
         "diag_summary": diag_summary,
+        "diag_runs": diag_runs,
         "coding_runs": coding_rows,
         "supervisor_summary": sup_rows[0] if sup_rows else None,
         "supervisor_categories": sup_categories,
         "corpus_reading": _corpus_reading(root),
+        "adversarial_security": adv_security,
     }
 
     # spectral / hidden + step trajectories
