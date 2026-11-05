@@ -27,6 +27,8 @@ Varredura de `os.getenv` em `src/` — 25 variáveis. Classificação:
 | `OMNI_MEMTRIAS_EMBEDDER` | `auto` | — | não | `auto`/`ptbr`/`minilm`/`hash` — auto tenta `colibri-embed-ptbr` (nativo PT-BR, MTEB-BR 0.650) depois MiniLM-L6; hash offline sempre funciona |
 | `OMNI_ACERVO_DIR` | — | — | não | dir do acervo vetorizado (read-only, interno) |
 | `OMNI_MACHINE_SEED` | — | — | não | semente extra de chassi p/ PhylogeneticSignature |
+| `OMNI_V10_BATTERY_PATH` | `vendor/benchmarks/...` | — | não | caminho da bateria V10 (autossuficiente, fallback soberano) |
+| `BACKUP_DIR` | `data/backups` | — | não | diretório de backup local (fallback se Drive ausente) |
 | `KAGGLE_*`/`COLAB_*` | — | plataforma | — | fornecidas pelo host |
 
 **Conclusão**: apenas `HF_TOKEN` é um segredo obrigatório; `OMNI_GATE_FAIL_CLOSED`
@@ -83,7 +85,7 @@ bash scripts/start_omni_worker.sh
 
 GitHub: `gh secret set HF_TOKEN --repo fahbrain-omnimind/omni_worker`
 GitLab: Settings → CI/CD → Variables → key `HF_TOKEN`, masked+protected;
-ou API: `POST /projects/fahbrain-omnimind%2Fomni_worker/variables`.
+ou API: `POST /projects/omni-group535144%2Fomni_worker/variables`.
 
 ---
 

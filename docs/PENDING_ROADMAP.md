@@ -58,6 +58,16 @@ CONTINUITY_MAP para evidência commit-a-commit).
 - [x] `data/memtrias.sqlite` reidratado (`scripts/rehydrate_memtrias.py`): >250 memórias reais distribuídas nos 7 namespaces canônicos (`document`: 89, `instance`: 86+, `machine`: 56, `interaction`: 14, `state`: 11, `user`: 1, `dream`: 1 tecido ao vivo pelo Analyst `:8098`).
 - [x] Trabalho recuperado da janela 19:46–20:32Z: `data/app_delivery_workspace/corpus_integrity_app/` completado (`spec_contract.json`, `scanner.py`, `cli.py`, `test_corpus_app.py` 4/4 PASS sobre os 29 `.txt` reais do PhilPapers 2026 + `livro_vfinal.md`) + runner `scripts/corpus_reading_battery/run_corpus_delivery_battery.py` + relatório `docs/results/corpus_delivery_battery.md`.
 
+## P6 — Portabilidade Soberano × Worker & Higienização Pública (2026-11-05)
+- [x] Desacoplamento da bateria V10 canônica: incorporado `vendor/benchmarks/embodied_v10_unified_battery.py`, permitindo execução 100% autossuficiente de `tests/test_diag_battery.py` (3/3 PASS) e `scripts/gemma4_diag_battery/run_diag_battery.py` sem depender do path `/content/omnimind-kilombo-sovereign`.
+- [x] Resiliência de bootstrap em `scripts/start_omni_worker.sh`: verificação prévia de `HF_TOKEN` e Drive sem quebras de execução para novos usuários (modo limpo/independente por padrão).
+- [x] Fallback de backups em `scripts/archive_worker_state.sh` e `scripts/restore_worker_state.sh`: suporte automático a `data/backups` na ausência de `/content/drive`.
+- [x] Higienização de documentos de submissão: correção de citações de datasets privados em `docs/PAPER_WRITEUP*.md` apontando para o dataset público oficial Kaggle `fabriciodasilva/psicodiagnostico-v-embodied-battery`.
+- [x] Correção matemática da taxa consolidada do Juiz 2 para 66.0% (132/200) e atualização de checklists de submissão para `[x]`.
+- [x] Streaming SSE implementado em `/v1/chat/completions` (`src/omni_coworker/server/erika_torch_server.py`).
+- [x] Sincronização automatizada e segura do repositório entre GitHub (`fahbrain-omnimind/omni_worker`) e GitLab (`omni-group535144/omni_worker`) com credential helper sem expor tokens.
+- [x] Suíte de testes hermética completa: **468 passed, 1 skipped (0 failures)** e **0 ruff errors**.
+
 ## Resultados
 - docs/results/ — outputs de cada validação runtime
 - battery_results.sqlite + supervisor_battery.sqlite (ledgers)

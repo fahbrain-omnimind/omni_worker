@@ -12,6 +12,8 @@ Estatuto: **[DADO]** = verificado nesta sessão; **[LIMITE]** = restrição conh
 
 ## 2. Repositórios de referência e Datasets Hugging Face restaurados
 
+> **[PROVENIÊNCIA / PORTABILIDADE]**: Os artefatos e repositórios listados abaixo pertencem ao acervo histórico privado e aos pontos de salvamento do autor no Google Drive/Hugging Face, utilizados especificamente para hidratação e continuidade neste ambiente de desenvolvimento (Colab). O repositório público `omni_worker` foi arquitetado de forma autossuficiente e hermética: terceiros podem clonar e executar a suíte de testes e o servidor standalone sem acesso a esses caminhos privados, operando com bancos de dados SQLite gerados sob demanda.
+
 1. **[DADO]** `/content/omnimind-kilombo-sovereign` (1,4 GB, read-only): descompactado de `/content/drive/MyDrive/omnimind_backup/omnimind-kilombo-sovereign.tar.gz` — inclui `/content/omnimind-kilombo-sovereign/revisao/bibliografia_philpapers_20261005/txt/` (29 textos) e `revisao/A6_integrador/livro_vfinal.md` (15.551 linhas).
 2. **[DADO]** `/content/omni_node` (read-only): clonado de `https://github.com/fahbrain-omnimind/omni_node.git` (`HEAD f4d2184f`).
 3. **[DADO]** Acervo vetorizado (`/content/acervo_vetorizado`, 526 arquivos, 38,3 GB): baixado de `fabricioslv/omnimind-acervo-vetorizado` (`acervo_index.faiss` 4,34 GB + `acervo_manifest.sqlite` 779 MB, 2.402.192 vetores 384D `all-MiniLM-L6-v2`).

@@ -17,6 +17,7 @@
 | Worker API | `omni-coworker serve` (uvicorn, `app.create_app()`) | `:8081` | ATIVO | [DADO] `README.md`, `app.py` |
 | Brain Analyst | `erika_torch_server --model gemma-4-12B-it --load-4bit --eager-attn --port 8098` | `:8098` | ATIVO ~11.2 GB VRAM | [DADO] `CONTINUITY_MAP.md §3` |
 | Brain Executor | `erika_torch_server --model gemma-4-E4B-it --port 8099` | `:8099` | CARREGADO/EVICTED por swap | [DADO] `CONTINUITY_MAP.md §3` |
+| Brain Judge | `erika_torch_server --model gemma-4-31B-it --port 8100` | `:8100` | ATIVO em tier xl (>=60GB VRAM) / OMNI_JUDGE_BRAIN=1 | [DADO] `start_omni_worker.sh:110`, commit `36b41ad` |
 | State Guard | `omni_coworker.store.state_guard` (loop 6h, snapshots tar.gz) | — | ATIVO PID em `runtime_config/pids/` | [DADO] `PENDING_ROADMAP.md P1` |
 | Swap Scheduler | `omni_coworker.orchestration.swap_scheduler` (tick 600s) | — | ATIVO | [DADO] `CONTINUITY_MAP.md §3` |
 | Kernel Daemon | `kernel_daemon/` (ignition + collector) | via API | ATIVO | [DADO] `app.py:44-57` |
@@ -27,7 +28,7 @@
 
 ### 1.2 Processos do soberano (`omnimind-kilombo-sovereign`)
 
-O repositório soberano é **read-only** (referência); seus serviços não são gerenciados pelo `omni_worker`. Processos relevantes declarados:
+O repositório soberano é **read-only** (referência histórica e teórica privada do autor); seus serviços não são gerenciados pelo `omni_worker`. O `omni_worker` é desacoplado e autossuficiente: crates Rust vendored em `vendor/kernel/`, dunker em `src/omni_coworker/vendor/` e bateria canônica V10 em `vendor/benchmarks/`. Processos relevantes declarados no arquivo histórico:
 
 - `kernel/sovereign_daemon/` — daemon soberano (v1–v5 em `src/erika/`)
 - `kernel/sovereign_kuramoto/` — ritmo basal (Kuramoto coupling)

@@ -15,8 +15,8 @@ e validação end-to-end no nó NVIDIA L4.*
 | Item | Value |
 |---|---|
 | Working repo | `/content/omni_worker` (branch master) |
-| Canonical/coupled repo | `/content/omni_node` (adapters via PYTHONPATH) |
-| Python env | `/content/omni_node/.venv` — CPython 3.14.8 (`uv venv`) |
+| Canonical repo / acoplamento | Autossuficiente / standalone (crates Rust e benchmarks canônicos vendored em `vendor/`) |
+| Python env | `.venv` local ou ambiente host — CPython >= 3.12 (`uv` / `pip`) |
 | GPU | NVIDIA L4 — 23.7 GB total, ~22.5 GB usable |
 | HF token | `/root/.cache/huggingface/token` (gated `google/gemma-4-*` access OK) |
 
@@ -100,7 +100,7 @@ Both degrade to extractive fallback without the index or the brain.
 
 | Check | Result |
 |---|---|
-| `pytest` | **454 passed, 2 skipped** across 72 test files (suite is hermetic — no LLM needed; plus 4 live GPU batteries) |
+| `pytest` | **468 passed, 1 skipped** (suite hermética — no LLM needed; 0 falhas; plus baterias de runtime) |
 | `omni-coworker doctor` | fastapi/torch(cu126)/httpx/psutil/pydantic OK; Rust kernels `unavailable` (optional); brains `up` when servers run |
 | `omni-coworker serve` | ASGI up (port 8080 taken by env `node` → used `--port 8081`) |
 | `GET /soma/probe` `/soul/state` `/agency/missions` `/safety/check` `/kernel/status` `/curiosity/explore?topic=` | all HTTP 200 |
