@@ -3,13 +3,19 @@
 # archive_worker_state — preservação automática para retomada de VM
 #
 # English: Tars the worker's runtime artifacts (state, ledgers, logs,
-# code index) into the mounted Drive with retention, so a recycled VM
-# can resume. Secret-ish patterns are excluded before archiving.
+# code index, battery sqlites) into the mounted Drive with retention,
+# so a recycled VM can resume. Before taring, every *.sqlite/*.db under
+# data/, scripts/ and state/ gets PRAGMA wal_checkpoint(TRUNCATE) so no
+# committed rows stay trapped in -wal/-shm sidecars; the sidecars are
+# excluded from the tarball. Secret-ish patterns are excluded too.
 # Designed to run as a loop daemon (default 1h) or one-shot.
 #
 # pt-BR: Empacota os artefatos de runtime do worker (estado, ledgers,
-# logs, índice) no Drive montado com retenção, para retomar após a VM
-# reciclar. Padrões de segredo são excluídos antes de empacotar.
+# logs, índice, sqlites de baterias) no Drive montado com retenção,
+# para retomar após a VM reciclar. Antes do tar, todo *.sqlite/*.db em
+# data/, scripts/ e state/ recebe PRAGMA wal_checkpoint(TRUNCATE) para
+# que nenhuma linha commitada fique retida em -wal/-shm; os sidecars
+# são excluídos do tarball. Padrões de segredo também são excluídos.
 # Roda como loop daemon (default 1h) ou one-shot.
 #
 # Usage / Uso:
@@ -85,6 +91,38 @@ verify_archive() {
   echo "[verify] FALHA $base"; return 1
 }
 
+checkpoint_sqlite() {
+  # Consolidate WAL into the main db file so the tarball carries 100%
+  # of committed state (nothing left in -wal/-shm sidecars). Best-effort:
+  # a busy db logs a warning but never aborts the archive.
+  python3 - "$REPO" <<'PY'
+import os, sqlite3, sys
+repo = sys.argv[1]
+found = []
+for root in ("data", "scripts", "state"):
+    base = os.path.join(repo, root)
+    if not os.path.isdir(base):
+        continue
+    for dirpath, _, files in os.walk(base):
+        for f in files:
+            if f.endswith((".sqlite", ".db")):
+                found.append(os.path.join(dirpath, f))
+for p in sorted(set(found)):
+    rel = os.path.relpath(p, repo)
+    try:
+        con = sqlite3.connect(p, timeout=15)
+        con.execute("PRAGMA busy_timeout=15000")
+        busy, log, ckpt = con.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+        con.close()
+        wal = p + "-wal"
+        wal_sz = os.path.getsize(wal) if os.path.exists(wal) else 0
+        tag = "ok" if busy == 0 else "BUSY(parcial)"
+        print(f"[checkpoint] {tag} frames={ckpt}/{log} wal_restante={wal_sz} {rel}")
+    except Exception as e:
+        print(f"[checkpoint] FALHA {rel}: {e}")
+PY
+}
+
 archive_once() {
   local target_dir="$DRIVE_BACKUP_DIR"
   if [ ! -d "$target_dir" ] && ! mkdir -p "$target_dir" 2>/dev/null; then
@@ -96,19 +134,23 @@ archive_once() {
   local ts name
   ts="$(date -u +%Y%m%dT%H%M%SZ)"
   name="omni_worker_${ts}.tar.gz"
-  # runtime artifacts the git history does NOT cover; secrets excluded
+  checkpoint_sqlite
+  # runtime artifacts the git history does NOT cover; secrets + sqlite
+  # transient sidecars excluded (state já consolidado via checkpoint)
+  local members=(data logs omni_code_index runtime_config)
+  [ -d "$REPO/state" ] && members+=(state)
+  local db
+  for db in "$REPO"/scripts/*/*.sqlite "$REPO"/scripts/*/*.db; do
+    [ -e "$db" ] && members+=("${db#"$REPO"/}")
+  done
   tar -czf "$target_dir/.$name.tmp" \
     --exclude='*.env' --exclude='*token*' --exclude='*secret*' \
     --exclude='*.pem' --exclude='*.key' --exclude='*credential*' \
     --exclude='*id_rsa*' --exclude='*id_ed25519*' \
+    --exclude='*-wal' --exclude='*-shm' --exclude='*-journal' \
     -C "$REPO" \
     --ignore-failed-read \
-    data logs omni_code_index runtime_config \
-    scripts/gemma4_diag_battery/diag_battery.sqlite \
-    scripts/coding_battery/coding_battery.sqlite \
-    scripts/supervisor_battery/supervisor_battery.sqlite \
-    scripts/refactor_battery/battery_results.sqlite \
-    scripts/corpus_reading_battery/corpus_delivery_battery.sqlite \
+    "${members[@]}" \
     2>/dev/null
   if [ -s "$target_dir/.$name.tmp" ]; then
     mv "$target_dir/.$name.tmp" "$target_dir/$name"

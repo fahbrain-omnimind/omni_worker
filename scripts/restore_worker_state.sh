@@ -3,12 +3,16 @@
 # restore_worker_state — restaura o último backup do Drive após reciclagem
 #
 # English: Untars the newest omni_worker_*.tar.gz from the mounted Drive
-# (data/, logs/, runtime ledgers, battery sqlites) back into the repo.
-# Verify-first: checks the .sha256 manifest before extracting.
+# (data/, logs/, state/, runtime ledgers, battery sqlites) back into the
+# repo. Verify-first: checks the .sha256 sidecar before extracting.
+# Archives are already WAL-consolidated (archive_worker_state runs
+# PRAGMA wal_checkpoint(TRUNCATE) before taring).
 #
 # pt-BR: Descompacta o omni_worker_*.tar.gz mais novo do Drive montado
-# (data/, logs/, ledgers, sqlites de baterias) de volta ao repo.
-# Verifica o .sha256 antes de extrair.
+# (data/, logs/, state/, ledgers, sqlites de baterias) de volta ao repo.
+# Verifica o sidecar .sha256 antes de extrair. Os archives já vêm com
+# WAL consolidado (archive_worker_state roda PRAGMA
+# wal_checkpoint(TRUNCATE) antes de empacotar).
 #
 # Usage:
 #   bash scripts/restore_worker_state.sh              # latest archive
@@ -28,8 +32,9 @@ ARCHIVE="${1:-$(ls -1t "$BACKUP_DIR"/omni_worker_*.tar.gz 2>/dev/null | head -1 
 [ -n "$ARCHIVE" ] || { echo "[restore] nenhum omni_worker_*.tar.gz em $BACKUP_DIR (operação com estado limpo/novo)"; exit 0; }
 echo "[restore] archive: $ARCHIVE"
 
-if [ -f "$ARCHIVE.sha256" ]; then
-  want="$(awk '{print $1}' "$ARCHIVE.sha256" | head -1)"
+SHA_FILE="${ARCHIVE%.tar.gz}.sha256"
+if [ -f "$SHA_FILE" ]; then
+  want="$(awk 'NR==1{print $1}' "$SHA_FILE")"
   got="$(sha256sum "$ARCHIVE" | awk '{print $1}')"
   if [ "$want" != "$got" ]; then
     echo "[restore] SHA256 MISMATCH — abortando (integridade falhou)"
