@@ -38,14 +38,16 @@ GAMMA = 0.85
 
 
 def _bucket(vals: list[float], n: int) -> np.ndarray:
-    """Mean-pool `vals` into `n` buckets (pad with last value)."""
+    """Mean-pool `vals` into `n` buckets (pad with zeros for unobserved dimensions)."""
     if not vals:
         return np.zeros(n)
     a = np.asarray(vals, dtype=float)
-    means = [c.mean() for c in np.array_split(a, n) if c.size]
-    pad = means[-1] if means else 0.0
-    means += [pad] * (n - len(means))
-    return np.asarray(means[:n])
+    if a.size >= n:
+        means = [float(c.mean()) for c in np.array_split(a, n) if c.size]
+    else:
+        means = [float(x) for x in a]
+    means += [0.0] * (n - len(means))
+    return np.asarray(means[:n], dtype=float)
 
 
 def _zscore(v: np.ndarray, stats: dict) -> np.ndarray:

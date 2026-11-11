@@ -151,10 +151,10 @@ def _virt_probe() -> dict:
     except Exception:  # noqa: BLE001, S110
         pass
 
-    if os.getenv("KAGGLE_KERNEL_RUN_TYPE") or os.getenv("KAGGLE_DATA_PROXY_URL") or Path("/kaggle").exists():
-        info["platform"] = "kaggle"
-    elif os.getenv("COLAB_RELEASE_TAG") or os.getenv("COLAB_GPU") or "google.colab" in sys.modules:
+    if os.getenv("COLAB_RELEASE_TAG") or os.getenv("COLAB_GPU") or os.getenv("COLAB_BACKEND_VERSION") or "google.colab" in sys.modules:
         info["platform"] = "colab"
+    elif os.getenv("KAGGLE_KERNEL_RUN_TYPE") or os.getenv("KAGGLE_DATA_PROXY_URL") or Path("/kaggle/working").exists() or Path("/kaggle").exists():
+        info["platform"] = "kaggle"
     elif Path("/content").exists() and (info["container"] or info["vm"]):
         info["platform"] = "colab-family"
     elif info["vm"]:

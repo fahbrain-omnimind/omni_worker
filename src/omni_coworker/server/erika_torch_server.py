@@ -107,13 +107,20 @@ def _compute_motor_and_mps_telemetry(hidden_states: tuple | None, text: str) -> 
     """Compute Motor Layer (camada motor) and MPS Layer (camada MPS) metrics per generation."""
     import math
     import re
+
     import numpy as np
 
     txt = text or ""
     # Separate <thought> / thinking from visible motor output
-    m_th = re.match(r"^\s*(?:<\|channel>thought|thought)\s*\n(.*?)(?:<channel\|>|\n\n)", txt, flags=re.DOTALL)
-    thinking_txt = m_th.group(1) if m_th else ""
-    visible_txt = txt[m_th.end():] if m_th else txt
+    m_th = re.search(r"<\|channel>thought\s*\n?(.*?)(?:<channel\|>|$)", txt, flags=re.DOTALL)
+    if not m_th:
+        m_th = re.match(r"^\s*(?:<\|channel>thought|thought)\s*\n(.*?)(?:<channel\|>|\n\n)", txt, flags=re.DOTALL)
+    thinking_txt = m_th.group(1).strip() if m_th else ""
+    if m_th:
+        visible_raw = txt[:m_th.start()] + txt[m_th.end():]
+        visible_txt = visible_raw.replace("<|channel>", "").replace("<channel|>", "").strip()
+    else:
+        visible_txt = txt.replace("<|channel>", "").replace("<channel|>", "").strip()
     words = visible_txt.split() or txt.split()
     unique_ratio = round(len(set(words)) / max(1, len(words)), 4) if words else 1.0
     degen_flag = False
@@ -199,7 +206,7 @@ def _compute_motor_and_mps_telemetry(hidden_states: tuple | None, text: str) -> 
         hub_idxs = sorted({0, n_layers // 4, n_layers // 2, (3 * n_layers) // 4, n_layers - 1})
         d_dim = int(h_motor_last.shape[0])
         # Find factors (d1, d2) close to sqrt(d_dim)
-        d1 = int(math.isqrt(d_dim))
+        d1 = math.isqrt(d_dim)
         while d1 > 1 and (d_dim % d1) != 0:
             d1 -= 1
         d2 = d_dim // max(1, d1)
@@ -476,7 +483,7 @@ _ADAPTER_ON = False
 
 
 def _attach_lora_adapter() -> None:
-    global _MODEL, _ADAPTER_NAME, _ADAPTER_ON
+    global _MODEL, _ADAPTER_NAME
     path = os.environ.get("OMNI_LORA_ADAPTER", "").strip()
     if not path or _MODEL is None:
         return
@@ -540,6 +547,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
     seq = gen.sequences
     new_ids = seq[0, prompt_ids.shape[1]:]
     text = _TOKENIZER.decode(new_ids, skip_special_tokens=True)
+    raw_text = _TOKENIZER.decode(new_ids, skip_special_tokens=False)
 
     hidden_all = getattr(gen, "hidden_states", None)
     last_step = hidden_all[-1] if hidden_all else None
@@ -555,7 +563,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
             del out_t
         except Exception as exc:  # noqa: BLE001
             attn_tail_note = "attn_skipped:" + type(exc).__name__
-    motor_layer, mps_layer = _compute_motor_and_mps_telemetry(hidden_all, text)
+    motor_layer, mps_layer = _compute_motor_and_mps_telemetry(hidden_all, raw_text)
     act = {
         "ts": datetime.now(UTC).isoformat(),
         "model": _MODEL_ID,
