@@ -198,15 +198,37 @@ fi
 ensure_deps() {
   if [ "${OMNI_CREATE_VENV:-0}" = "1" ] && [ ! -x "$REPO/.venv/bin/python" ]; then
     echo -e "${BLUE}>> [bootstrap] criando virtualenv em $REPO/.venv...${NC}"
-    python3 -m venv "$REPO/.venv" --system-site-packages
+    # Debian/Colab: python3 pode vir sem ensurepip (python3-venv ausente) — o
+    # `venv` falha deixando um .venv sem pip. Fallback: uv venv (sem ensurepip).
+    if ! python3 -m venv "$REPO/.venv" --system-site-packages 2>/dev/null \
+       || ! "$REPO/.venv/bin/python" -m pip --version >/dev/null 2>&1; then
+      rm -rf "$REPO/.venv"
+      if command -v uv >/dev/null 2>&1; then
+        echo -e "${YELLOW}[WARN]${NC} venv/ensurepip indisponível — usando uv venv"
+        uv venv "$REPO/.venv" --system-site-packages --python python3 -q
+      else
+        python3 -m venv "$REPO/.venv" --system-site-packages --without-pip \
+          && python3 -m pip --version >/dev/null 2>&1 || true
+      fi
+    fi
     VENV_PYTHON="$REPO/.venv/bin/python"
   fi
+  # Instalador: pip se existir no venv, senão uv pip (venv criado por uv não tem pip)
+  _pip_install() {
+    if "$VENV_PYTHON" -m pip --version >/dev/null 2>&1; then
+      "$VENV_PYTHON" -m pip install -q "$@"
+    elif command -v uv >/dev/null 2>&1; then
+      uv pip install -q --python "$VENV_PYTHON" "$@"
+    else
+      echo "sem pip nem uv para $VENV_PYTHON" >&2; return 1
+    fi
+  }
   # pyphi fica fora do check: só é usado por scripts/experiments/ e quebra no
   # Python 3.13 (collections.Iterable) — incluí-lo aqui reinstalaria [all] a cada boot.
   if ! "$VENV_PYTHON" -c "import fastapi, uvicorn, httpx, bitsandbytes, faiss, sentence_transformers, black, ruff, pytest_asyncio, sse_starlette, huggingface_hub, accelerate, safetensors, scipy" 2>/dev/null; then
     echo -e "${BLUE}>> [bootstrap] instalando dependências completas de pyproject.toml ([all])...${NC}"
-    "$VENV_PYTHON" -m pip install -q -e "$REPO[all]" \
-      || "$VENV_PYTHON" -m pip install -q bitsandbytes faiss-cpu sentence-transformers pandas pyarrow nvidia-ml-py httpx psutil ruff black pytest-asyncio sse-starlette huggingface-hub pyphi "agent-client-protocol>=0.12,<1"
+    _pip_install -e "$REPO[all]" \
+      || _pip_install bitsandbytes faiss-cpu sentence-transformers pandas pyarrow nvidia-ml-py httpx psutil ruff black pytest-asyncio sse-starlette huggingface-hub pyphi "agent-client-protocol>=0.12,<1"
   else
     echo -e "${GREEN}[OK]${NC} dependências Python verificadas ($VENV_PYTHON)"
   fi
@@ -249,6 +271,13 @@ ensure_state_restored() {
 
 # --- 4. Repositórios de referência e datasets HF (acervo + competição) ------
 ensure_reference_assets() {
+  # Auth HF: HF_TOKEN no env OU token no cache local (`hf auth login` ->
+  # ~/.cache/huggingface/stored_tokens). huggingface_hub usa o cache sozinho;
+  # o valor do token nunca é lido/impresso aqui.
+  HF_AUTH=0
+  if [ -n "${HF_TOKEN:-}" ] || "$VENV_PYTHON" -c "import sys; from huggingface_hub import get_token; sys.exit(0 if get_token() else 1)" 2>/dev/null; then
+    HF_AUTH=1
+  fi
   if [ ! -d "/content/omnimind-kilombo-sovereign" ] && [ -f "$SOVEREIGN_TAR" ]; then
     echo -e "${BLUE}>> [bootstrap] descompactando /content/omnimind-kilombo-sovereign...${NC}"
     tar -xzf "$SOVEREIGN_TAR" -C /content || true
@@ -257,12 +286,12 @@ ensure_reference_assets() {
   # worker precisa está vendored (vendor/kernel + omni_coworker.vendor).
 
   if [ ! -f "$OMNI_ACERVO_DIR/acervo_manifest.sqlite" ]; then
-    if [ -n "${HF_TOKEN:-}" ]; then
-      echo -e "${BLUE}>> [bootstrap] baixando acervo vetorizado HF -> $OMNI_ACERVO_DIR...${NC}"
-      "$VENV_PYTHON" -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='fabricioslv/omnimind-acervo-vetorizado', repo_type='dataset', local_dir='$OMNI_ACERVO_DIR', max_workers=8)" \
+    if [ "$HF_AUTH" = "1" ]; then
+      echo -e "${BLUE}>> [bootstrap] baixando acervo vetorizado HF (só manifest+faiss ~5GB; parquets são cópias redundantes) -> $OMNI_ACERVO_DIR...${NC}"
+      "$VENV_PYTHON" -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='fabricioslv/omnimind-acervo-vetorizado', repo_type='dataset', local_dir='$OMNI_ACERVO_DIR', max_workers=8, allow_patterns=['acervo_manifest.sqlite','acervo_index.faiss','acervo_hypergraph.sqlite','acervo_docs_report.json'])" \
         || echo -e "${YELLOW}[WARN] falha ao baixar acervo vetorizado${NC}"
     else
-      echo -e "${YELLOW}[INFO]${NC} acervo vetorizado canônico omitido (HF_TOKEN ausente) — operando com memória vetorial sob demanda (MemtriasAI)"
+      echo -e "${YELLOW}[INFO]${NC} acervo vetorizado canônico omitido (sem login HF: HF_TOKEN/cache ausente) — operando com memória vetorial sob demanda (MemtriasAI)"
     fi
   else
     echo -e "${GREEN}[OK]${NC} acervo vetorizado presente ($OMNI_ACERVO_DIR)"
@@ -270,7 +299,7 @@ ensure_reference_assets() {
 
   mkdir -p "$OMNI_STATE_DIR/hf_gemma4"
   if [ ! -f "$OMNI_STATE_DIR/hf_gemma4/gemma4_t4x2_v2_results.sqlite" ] || [ ! -f "$OMNI_STATE_DIR/hf_gemma4/gemma4_e4b_l4_results.sqlite" ]; then
-    if [ -n "${HF_TOKEN:-}" ]; then
+    if [ "$HF_AUTH" = "1" ]; then
       echo -e "${BLUE}>> [bootstrap] baixando datasets da competição HF -> $OMNI_STATE_DIR/hf_gemma4...${NC}"
       "$VENV_PYTHON" -c "
 from huggingface_hub import snapshot_download
@@ -278,7 +307,7 @@ for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4
     snapshot_download(repo_id=repo, repo_type='dataset', local_dir='$OMNI_STATE_DIR/hf_gemma4')
 " || echo -e "${YELLOW}[WARN] falha ao baixar datasets HF da competição${NC}"
     else
-      echo -e "${YELLOW}[INFO]${NC} datasets de competição HF omitidos (HF_TOKEN ausente) — execução local continuará independente"
+      echo -e "${YELLOW}[INFO]${NC} datasets de competição HF omitidos (sem login HF: HF_TOKEN/cache ausente) — execução local continuará independente"
     fi
   else
     echo -e "${GREEN}[OK]${NC} datasets HF da competição presentes ($OMNI_STATE_DIR/hf_gemma4)"
@@ -288,7 +317,7 @@ for repo in ('fabricioslv/gemma4-kaggle-dual-t4-results', 'fabricioslv/gemma4-e4
   # insumo do scripts/psico_dual_judge_audit. Só os artefatos canônicos.
   PSICO_DIR="$OMNI_STATE_DIR/psicodiagnostico_v"
   if [ ! -f "$PSICO_DIR/embodied_psychodiagnostic_bank.sqlite" ]; then
-    if [ -n "${HF_TOKEN:-}" ]; then
+    if [ "$HF_AUTH" = "1" ]; then
       echo -e "${BLUE}>> [bootstrap] baixando banco psicodiagnóstico HF -> $PSICO_DIR...${NC}"
       mkdir -p "$PSICO_DIR"
       "$VENV_PYTHON" -c "
@@ -297,7 +326,7 @@ snapshot_download(repo_id='fabricioslv/psicodiagnostico-v-embodied-results', rep
   allow_patterns=['embodied_psychodiagnostic_bank.sqlite','v10_colab_benchmark.sqlite','gemma4_runs_20261030/*','judges/*','INVENTARIO*','MONOGRAFIA*','analise_emergente*/*','appendices/*','data_sanitized/*'], max_workers=8)
 " || echo -e "${YELLOW}[WARN] falha ao baixar banco psicodiagnóstico${NC}"
     else
-      echo -e "${YELLOW}[INFO]${NC} banco psicodiagnóstico omitido (HF_TOKEN ausente) — use o dataset público Kaggle se desejar auditar"
+      echo -e "${YELLOW}[INFO]${NC} banco psicodiagnóstico omitido (sem login HF: HF_TOKEN/cache ausente) — use o dataset público Kaggle se desejar auditar"
     fi
   else
     echo -e "${GREEN}[OK]${NC} banco psicodiagnóstico presente ($PSICO_DIR)"

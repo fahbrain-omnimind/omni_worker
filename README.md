@@ -50,6 +50,7 @@ Full topology (dual brains + API + state guard + swap scheduler) in one
 command / Topologia completa com um comando:
 
 ```bash
+OMNI_CREATE_VENV=1 bash scripts/start_omni_worker.sh   # 1ª vez em VM nova: cria .venv (fallback `uv venv` se faltar ensurepip), instala [all], compila kernel Rust, restaura backup do Drive / first run on a fresh VM
 bash scripts/start_omni_worker.sh            # sobe tudo / bring up everything
 bash scripts/start_omni_worker.sh status     # status dos serviços / service status
 bash scripts/start_omni_worker.sh stop       # para tudo / stop all
