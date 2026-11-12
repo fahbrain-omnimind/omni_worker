@@ -819,6 +819,22 @@ def chat_completions(req: ChatCompletionReq) -> dict[str, Any]:
     }
 
 
+@app.get("/v1/models")
+def list_models() -> dict[str, Any]:
+    return {
+        "object": "list",
+        "data": [
+            {
+                "id": _MODEL_ID,
+                "object": "model",
+                "created": 1700000000,
+                "owned_by": "omnimind",
+            }
+        ],
+    }
+
+
+
 @app.post("/v1/completions")
 def completions(req: CompletionReq) -> dict[str, Any]:
     if _MODEL is None:
@@ -860,6 +876,7 @@ def completions(req: CompletionReq) -> dict[str, Any]:
             "attention_entropy_last": act.get("attention_entropy_last"),
         },
     }
+
 
 
 def main() -> None:
