@@ -10,6 +10,13 @@ __pycache__/
 *.sqlite-wal
 *.sqlite-shm
 node.db
+*.parquet
+*.npz
+*.tar.gz
+*.bin
+*.zip
+*.pt
+/data/ple_runs/
 /omni_code_index/
 /dist/
 /build/
@@ -33,6 +40,7 @@ secrets*.json
 .omnimind/
 scripts/refactor_battery/out/
 scripts/supervisor_battery/*.sqlite
+scripts/ple_battery/*.sqlite
 /data/*
 !/data/corpus/
 !/data/corpus/**
@@ -54,3 +62,4 @@ scripts/gemma4_diag_battery/diag_battery.sqlite
 state/
 pyphi.log
 .kernel_target/
+
