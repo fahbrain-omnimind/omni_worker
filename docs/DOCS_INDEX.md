@@ -33,9 +33,13 @@ Machine Public Soul (SSE + UI bilíngue).
 
 | Doc | Descrição |
 |---|---|
-| [OW-SUB-001 — Paper Submission Writeup (EN)](PAPER_WRITEUP_SUBMIT_EN.md) | Manuscrito oficial de submissão à competição Google Gemma 4 Paper Track (~3.000 palavras, conciso e verificado) |
+| [OW-SUB-001 — Paper Submission Writeup (EN)](PAPER_WRITEUP_SUBMIT_EN.md) | Manuscrito oficial de submissão à competição Google Gemma 4 Paper Track (≤3.000 palavras, conciso e verificado) |
 | [OW-SUB-002 — Extended Paper Writeup (PT)](PAPER_WRITEUP.md) | Relatório estendido e bilíngue de resultados empíricos (Psicodiagnóstico-V, 620 coorte Gemma-4 + worker L4) |
 | [OW-SUB-003 — Extended Paper Writeup (EN)](PAPER_WRITEUP_EN.md) | Versão integral em inglês do writeup estendido |
+| [OW-AUD-SWE — Continuous Basal vs. Modulated SWE Evaluation (EN)](audit/continuous_swe_evaluation_summary.md) | Relatório acadêmico da bateria de 280 turnos SWE basal vs modulado (Wilcoxon, ROC-AUC) |
+| [OW-AUD-JUDGES — Multi-Judge Evaluation Consensus (EN)](audit/multi_judge_evaluation_consensus.md) | Síntese forense de consenso multi-juiz do Psicodiagnóstico-V (A×B×C) |
+| [OW-AUD-KERNEL — Sovereign Kernel Architecture & Security Audit (EN)](audit/kernel_security_audit_en.md) | Auditoria bit-a-bit das 14 crates do kernel em Rust PyO3 e licença Apache-2.0 |
+| [OW-EXP-PLE — Avaliação de Engenharia Física no Google PLE (EN)](experiments/ple_physical_engineering_evaluation_en.md) | 60 execuções sobre 29 tarefas do Google PLE com tensores de trajetória `.npz` |
 
 **Setup & operações**
 
@@ -123,22 +127,23 @@ curiosity mode, and a Machine Public Soul (SSE + bilingual UI).
 
 ### Document index
 
-Same tables as the pt-BR section above — all documents are bilingual or
-annotated in both languages.
+#### 1. Official Competition Submissions & Core Manuscripts
+- [OW-SUB-001 — Paper Submission Writeup (EN)](PAPER_WRITEUP_SUBMIT_EN.md) — Official submission manuscript to Google: The Gemma 4 Developer Agent Paper Track (≤3,000 words, verified empirical grounding).
+- [OW-SUB-003 — Extended Monograph & Technical Report (EN)](PAPER_WRITEUP_EN.md) — Comprehensive extended treatise on Gemma-4 psychodiagnostic evaluation and dual-brain architecture.
+- [OW-SUB-002 — Relatório Estendido Canônico (PT)](PAPER_WRITEUP.md) — Original canonical technical writeup in Portuguese.
 
-- **Setup & ops:** [Kaggle Setup & Validation](KAGGLE_SETUP_VALIDATION.md) ·
-  [Pending Roadmap](PENDING_ROADMAP.md) ·
-  [Code ↔ README Conformance](CODE_README_CONFORMANCE.md)
-- **Studies:** [Conversational Affect Study](CONVERSATIONAL_AFFECT_STUDY.md) ·
-  [Canonical Metastability + RNFCI Map](studies/CANONICAL_METASTABILITY_RNFCI_MAP.md) ·
-  [Canonical Book Structure Map](studies/CANONICAL_BOOK_STRUCTURE_MAP.md) ·
-  [Gemma-4 Battery Inventory](studies/GEMMA4_BATTERY_INVENTORY.md) ·
-  [Canonical Zenodo Papers Map](studies/CANONICAL_ZENODO_PAPERS_MAP.md) ·
-  [Gemma-4 Diagnostic Replication](studies/GEMMA4_DIAG_REPLICATION.md)
-- **Care:** [Affect Signals Literature](care/AFFECT_SIGNALS_LITERATURE.md) ·
-  [Brazil Mental Health Support](care/BRAZIL_SUPPORT_N_NE_CO.md) ·
-  [Affective Signals (Canonical Mining)](care/AFFECT_SIGNALS_CANONICAL.md)
-- **Audits:** [Audit Cline](audits/AUDIT_CLINE.md) ·
-  [Audit Kilo](audits/AUDIT_KILO.md) ·
-  [Audit OpenCode](audits/AUDIT_OPENCODE.md)
+#### 2. Peer Audits & Statistical Syntheses
+- [OW-AUD-SWE — Continuous Basal vs. Modulated SWE Evaluation Summary](audit/continuous_swe_evaluation_summary.md) — Academic analysis of the 280-turn SWE battery comparing Basal observation vs. M1–M4 closed-loop interventions.
+- [OW-AUD-JUDGES — Multi-Judge Psychodiagnostic Evaluation Consensus](audit/multi_judge_evaluation_consensus.md) — Consolidated cross-reading audit of Judges A, B, and C over the Psicodiagnóstico-V battery (recomputed Cohen's $\kappa=0.547$ to $0.800$, Judge C skew remediation).
+- [OW-AUD-KERNEL — Sovereign Kernel Architecture & Security Audit](audit/kernel_security_audit_en.md) — Bit-by-bit forensic audit across 14 Rust PyO3 crates, PyO3 0.29 toolchain compatibility, and Apache-2.0 SPDX licensing.
+
+#### 3. Empirical Experiments & Cross-Domain Validation
+- [OW-EXP-PLE — Cross-Domain Physical-Engineering Evaluation (Google PLE)](experiments/ple_physical_engineering_evaluation_en.md) — 60 runs across 29 tasks of Google's Physical-Engineering Last Exam (wind lateral shear, seismic design, thermal routing) with `.npz` step-trajectory sidecars.
+- [OW-RES-CORPUS — Corpus Reading Battery & App Delivery](results/corpus_delivery_battery.md) — Verification of continuous corpus reading and app delivery under Gemma-4.
+
+#### 4. Setup, Operations & Conformance
+- **Setup & Ops:** [Kaggle Setup & Validation](KAGGLE_SETUP_VALIDATION.md) · [Pending Roadmap](PENDING_ROADMAP.md) · [Code ↔ README Conformance](CODE_README_CONFORMANCE.md) · [VM Recovery Procedures](ops/OW-OPS-005_vm_recovery_2026-11-03.md)
+- **Studies:** [Conversational Affect Study](CONVERSATIONAL_AFFECT_STUDY.md) · [Canonical Metastability Map](studies/CANONICAL_METASTABILITY_RNFCI_MAP.md) · [Canonical Book Structure Map](studies/CANONICAL_BOOK_STRUCTURE_MAP.md) · [Gemma-4 Battery Inventory](studies/GEMMA4_BATTERY_INVENTORY.md)
+- **Care:** [Affect Signals Literature](care/AFFECT_SIGNALS_LITERATURE.md) · [Brazil Mental Health Support](care/BRAZIL_SUPPORT_N_NE_CO.md) · [Affective Signals (Canonical Mining)](care/AFFECT_SIGNALS_CANONICAL.md)
+- **Component Audits:** [Audit Cline](audits/AUDIT_CLINE.md) · [Audit Kilo](audits/AUDIT_KILO.md) · [Audit OpenCode](audits/AUDIT_OPENCODE.md)
 - **Meta:** [AUTHORS.md](../AUTHORS.md)
