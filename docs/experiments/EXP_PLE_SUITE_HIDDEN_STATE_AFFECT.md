@@ -1,7 +1,7 @@
 # EXP-PLE-SUITE: Avaliação Comparativa da Dinâmica Latente no Benchmark Google PLE
 
-> **Atualização**: 2026-11-12 01:29:04 UTC  
-> **Total de Tarefas Registradas**: `19` tarefas  
+> **Atualização**: 2026-11-12 01:31:43 UTC  
+> **Total de Tarefas Registradas**: `20` tarefas  
 > **Modelo**: `google/gemma-4-E4B-it` (4-bit NF4, :8099)  
 > **Ledger Canônico**: `scripts/ple_battery/ple_battery_results.sqlite`  
 > **Regra de Integridade**: `AGENTS.md` (Integridade Estrita — Dados 100% Empíricos da VM)  
@@ -12,6 +12,8 @@
 
 | Tarefa PLE | Condição | Norma Residual ($||h_L||_2$) | Deriva Cosseno | Posto MPS ($\chi_{eff}$) | Entropia Atenção | Trajetória (.npz) |
 |---|---|---|---|---|---|---|
+| `cooling-water-flush-plan` | Baseline | `140.08` | `0.6807` | `15.50` | `3.8547` | `20261112T013020555781_google_gemma_4_E4B_it.npz` |
+| `cooling-water-flush-plan` | Injetado | `256.93` | `0.8635` | `15.29` | `2.9484` | `20261112T013141832773_google_gemma_4_E4B_it.npz` |
 | `data-center-site-model` | Baseline | `228.06` | `0.8784` | `14.72` | `4.2515` | `20261112T010129450897_google_gemma_4_E4B_it.npz` |
 | `data-center-site-model` | Injetado | `232.14` | `0.7369` | `13.99` | `4.3926` | `20261112T010242103417_google_gemma_4_E4B_it.npz` |
 | `data-hall-device-takeoff` | Baseline | `183.79` | `0.8574` | `14.55` | `3.9396` | `20261112T012315331632_google_gemma_4_E4B_it.npz` |
@@ -55,9 +57,9 @@
 
 ## 2. Estatísticas Agregadas [DERIVADO]
 
-- **Norma Residual Média**: Baseline = `193.69` | Injetado = `205.15` (Delta = `+5.92%`)
-- **Deriva Cosseno Média**: Baseline = `0.7957` | Injetado = `0.7994` (Delta = `+0.46%`)
-- **Posto Efetivo MPS Médio**: Baseline = `15.23` | Injetado = `15.26` (Delta = `+0.23%`)
+- **Norma Residual Média**: Baseline = `191.01` | Injetado = `207.74` (Delta = `+8.76%`)
+- **Deriva Cosseno Média**: Baseline = `0.7900` | Injetado = `0.8026` (Delta = `+1.60%`)
+- **Posto Efetivo MPS Médio**: Baseline = `15.24` | Injetado = `15.26` (Delta = `+0.15%`)
 
 ---
 
