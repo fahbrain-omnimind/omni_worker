@@ -36,6 +36,9 @@ Machine Public Soul (SSE + UI bilíngue).
 | [OW-SUB-001 — Paper Submission Writeup (EN)](PAPER_WRITEUP_SUBMIT_EN.md) | Manuscrito oficial de submissão à competição Google Gemma 4 Paper Track (≤3.000 palavras, conciso e verificado) |
 | [OW-SUB-002 — Extended Paper Writeup (PT)](PAPER_WRITEUP.md) | Relatório estendido e bilíngue de resultados empíricos (Psicodiagnóstico-V, 620 coorte Gemma-4 + worker L4) |
 | [OW-SUB-003 — Extended Paper Writeup (EN)](PAPER_WRITEUP_EN.md) | Versão integral em inglês do writeup estendido |
+| [OW-AUD-EN-001 — Sovereign Kernel Coupling & Architecture Audit (EN)](AUDIT_SOVEREIGN_KERNEL_COUPLING_EN.md) | Auditoria do acoplamento do Kernel Soberano Rust/C, limites de memória e conformidade de segurança CodeQL |
+| [OW-AUD-EN-002 — Continuous Runtime, State Integrity & Checkpointing Audit (EN)](AUDIT_CONTINUOUS_RUNTIME_DATA_EN.md) | Síntese de persistência, bancos SQLite em modo WAL, bus distribuído e checkpointing de segurança |
+| [OW-AUD-EN-003 — SWE-Agent Architecture, MPS Spectral & Adversarial Safety (EN)](ARCHITECTURE_SWE_MPS_EVALUATION_EN.md) | Arquitetura SWE2Max, decomposição espectral MPS e protocolos de segurança e cuidado territorial |
 | [OW-AUD-SWE — Continuous Basal vs. Modulated SWE Evaluation (EN)](audit/continuous_swe_evaluation_summary.md) | Relatório acadêmico da bateria de 280 turnos SWE basal vs modulado (Wilcoxon, ROC-AUC) |
 | [OW-AUD-JUDGES — Multi-Judge Evaluation Consensus (EN)](audit/multi_judge_evaluation_consensus.md) | Síntese forense de consenso multi-juiz do Psicodiagnóstico-V (A×B×C) |
 | [OW-AUD-KERNEL — Sovereign Kernel Architecture & Security Audit (EN)](audit/kernel_security_audit_en.md) | Auditoria bit-a-bit das 14 crates do kernel em Rust PyO3 e licença Apache-2.0 |
@@ -146,4 +149,6 @@ curiosity mode, and a Machine Public Soul (SSE + bilingual UI).
 - **Studies:** [Conversational Affect Study](CONVERSATIONAL_AFFECT_STUDY.md) · [Canonical Metastability Map](studies/CANONICAL_METASTABILITY_RNFCI_MAP.md) · [Canonical Book Structure Map](studies/CANONICAL_BOOK_STRUCTURE_MAP.md) · [Gemma-4 Battery Inventory](studies/GEMMA4_BATTERY_INVENTORY.md)
 - **Care:** [Affect Signals Literature](care/AFFECT_SIGNALS_LITERATURE.md) · [Brazil Mental Health Support](care/BRAZIL_SUPPORT_N_NE_CO.md) · [Affective Signals (Canonical Mining)](care/AFFECT_SIGNALS_CANONICAL.md)
 - **Component Audits:** [Audit Cline](audits/AUDIT_CLINE.md) · [Audit Kilo](audits/AUDIT_KILO.md) · [Audit OpenCode](audits/AUDIT_OPENCODE.md)
+- **Technical Audits (Synthesized EN):** [Sovereign Kernel Coupling](AUDIT_SOVEREIGN_KERNEL_COUPLING_EN.md) · [Continuous Runtime & Data Integrity](AUDIT_CONTINUOUS_RUNTIME_DATA_EN.md) · [SWE Architecture & MPS Evaluation](ARCHITECTURE_SWE_MPS_EVALUATION_EN.md)
+- **Portuguese Archive (Historical):** [docs/pt_archive/](pt_archive/) (14 historical reports archived; backed up to `/content/drive/MyDrive/omnimind_backup_docs_pt_20261112/`)
 - **Meta:** [AUTHORS.md](../AUTHORS.md)
