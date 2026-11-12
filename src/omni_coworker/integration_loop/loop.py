@@ -123,25 +123,25 @@ def _run_stage(gov: dict[str, Any], name: str, fn) -> tuple[Any, str | None]:
     try:
         out = fn()
     except Exception as e:  # noqa: BLE001
-        err_msg = str(e)
+        err_name = type(e).__name__
         if br is not None:
             br.record_failure()
         if bus is not None:
             bus.publish("loop.stage.failed", {"stage": name,
-                                              "error": err_msg})
+                                              "error": err_name})
         if br is not None and br.state == "open" and quar is not None:
-            quar.quarantine(cid, reason=err_msg,
+            quar.quarantine(cid, reason=err_name,
                             evidence={"failures": br.failure_count})
             if bus is not None:
                 bus.publish("loop.stage.quarantined", {"stage": name})
             try:
                 from ..agency.witness import witness_event
                 witness_event("stage_quarantined",
-                              {"stage": name, "error": err_msg,
+                              {"stage": name, "error": err_name,
                                "failures": br.failure_count})
             except Exception:  # noqa: BLE001, S110
                 pass
-        return None, err_msg
+        return None, err_name
     if br is not None:
         br.record_success()
     if bus is not None:

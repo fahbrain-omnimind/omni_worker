@@ -72,7 +72,7 @@ def test_failing_stage_quarantined_and_skipped(_gov_env, monkeypatch):
         out = loop_mod.run_once(_bundle())
     assert out["status"] == "partial"
     mm = out["stage_states"]["meaning_maker"]
-    assert mm["metadata"]["skipped"] in ("boom", "circuit_open",
+    assert mm["metadata"]["skipped"] in ("boom", "RuntimeError", "circuit_open",
                                          "quarantined")
     gov = loop_mod._GOV
     assert "stage.meaning_maker" in gov["quarantine"].quarantined()
@@ -99,8 +99,9 @@ def test_one_failure_keeps_other_stages(_gov_env, monkeypatch):
         lambda *a, **k: (_ for _ in ()).throw(RuntimeError("qualia boom")))
     out = loop_mod.run_once(_bundle())
     assert out["status"] == "partial"
-    assert out["stage_states"]["qualia"]["metadata"]["skipped"] == \
-        "qualia boom"
+    assert out["stage_states"]["qualia"]["metadata"]["skipped"] in (
+        "qualia boom", "RuntimeError"
+    )
     # narrative + meaning_maker ainda correram (independentes de qualia)
     assert out["stage_states"]["narrative"]["embedding"]
     assert out["stage_states"]["meaning_maker"].get("metadata") is not None
