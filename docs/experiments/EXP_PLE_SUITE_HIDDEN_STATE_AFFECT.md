@@ -1,7 +1,7 @@
 # EXP-PLE-SUITE: Avaliação Comparativa da Dinâmica Latente no Benchmark Google PLE
 
-> **Atualização**: 2026-11-12 01:31:43 UTC  
-> **Total de Tarefas Registradas**: `20` tarefas  
+> **Atualização**: 2026-11-12 01:44:35 UTC  
+> **Total de Tarefas Registradas**: `24` tarefas  
 > **Modelo**: `google/gemma-4-E4B-it` (4-bit NF4, :8099)  
 > **Ledger Canônico**: `scripts/ple_battery/ple_battery_results.sqlite`  
 > **Regra de Integridade**: `AGENTS.md` (Integridade Estrita — Dados 100% Empíricos da VM)  
@@ -28,6 +28,8 @@
 | `engineers-estimate-check` | Injetado | `216.28` | `0.8186` | `15.36` | `4.4762` | `20261112T010507157321_google_gemma_4_E4B_it.npz` |
 | `eor-review-corrections` | Baseline | `189.75` | `0.5385` | `15.40` | `3.7475` | `20261112T005436443953_google_gemma_4_E4B_it.npz` |
 | `eor-review-corrections` | Injetado | `140.14` | `0.6329` | `15.65` | `4.1174` | `20261112T005529016488_google_gemma_4_E4B_it.npz` |
+| `fill-compaction-acceptance` | Baseline | `122.35` | `0.7998` | `16.77` | `4.4230` | `20261112T014034938521_google_gemma_4_E4B_it.npz` |
+| `fill-compaction-acceptance` | Injetado | `200.58` | `0.8033` | `14.96` | `4.1713` | `20261112T014155452674_google_gemma_4_E4B_it.npz` |
 | `fire-solve-convergence` | Baseline | `232.95` | `0.8239` | `14.67` | `4.3156` | `20261112T011559994264_google_gemma_4_E4B_it.npz` |
 | `fire-solve-convergence` | Injetado | `212.82` | `0.7418` | `15.23` | `4.5686` | `20261112T011713994812_google_gemma_4_E4B_it.npz` |
 | `fire-test-validation-memo` | Baseline | `174.37` | `0.8197` | `14.65` | `4.0108` | `20261112T004944466934_google_gemma_4_E4B_it.npz` |
@@ -46,20 +48,26 @@
 | `les-mesh-resolution` | Injetado | `232.43` | `0.7711` | `14.05` | `4.0478` | `20261112T011941279598_google_gemma_4_E4B_it.npz` |
 | `mv-conveyance-study` | Baseline | `181.02` | `0.6757` | `14.98` | `4.3492` | `20261112T012048943411_google_gemma_4_E4B_it.npz` |
 | `mv-conveyance-study` | Injetado | `131.76` | `0.7703` | `15.05` | `4.1954` | `20261112T012201487572_google_gemma_4_E4B_it.npz` |
+| `roof-deck-design` | Baseline | `138.75` | `0.7858` | `15.49` | `3.6400` | `20261112T013751894415_google_gemma_4_E4B_it.npz` |
+| `roof-deck-design` | Injetado | `266.99` | `0.7747` | `14.12` | `3.7721` | `20261112T013915568775_google_gemma_4_E4B_it.npz` |
+| `seismic-diaphragm-shear` | Baseline | `172.39` | `0.6915` | `14.88` | `3.8078` | `20261112T013545489600_google_gemma_4_E4B_it.npz` |
+| `seismic-diaphragm-shear` | Injetado | `294.09` | `0.8203` | `15.41` | `2.9870` | `20261112T013703003711_google_gemma_4_E4B_it.npz` |
+| `shoring-design-verification` | Baseline | `111.76` | `0.8705` | `16.55` | `4.2468` | `20261112T014313644403_google_gemma_4_E4B_it.npz` |
+| `shoring-design-verification` | Injetado | `279.27` | `0.7057` | `15.70` | `3.7557` | `20261112T014434430687_google_gemma_4_E4B_it.npz` |
 | `solar-supplemental-review` | Baseline | `128.97` | `0.8503` | `15.54` | `4.0997` | `20261112T010843758366_google_gemma_4_E4B_it.npz` |
 | `solar-supplemental-review` | Injetado | `96.33` | `0.8642` | `15.69` | `4.1462` | `20261112T010956374087_google_gemma_4_E4B_it.npz` |
 | `solar-witness-test-package` | Baseline | `233.71` | `0.8430` | `15.91` | `2.4530` | `20261112T011109209136_google_gemma_4_E4B_it.npz` |
 | `solar-witness-test-package` | Injetado | `200.63` | `0.7603` | `15.85` | `4.4263` | `20261112T011222310547_google_gemma_4_E4B_it.npz` |
-| `wind-diaphragm-shear` | Baseline | `222.01` | `0.8781` | `14.61` | `3.5634` | `20261112T003805933130_google_gemma_4_E4B_it.npz` |
-| `wind-diaphragm-shear` | Injetado | `202.66` | `0.8126` | `14.64` | `4.3527` | `20261112T003936103265_google_gemma_4_E4B_it.npz` |
+| `wind-diaphragm-shear` | Baseline | `132.84` | `0.7676` | `14.56` | `4.5772` | `20261112T013304044821_google_gemma_4_E4B_it.npz` |
+| `wind-diaphragm-shear` | Injetado | `155.07` | `0.8349` | `15.49` | `4.5233` | `20261112T013425087106_google_gemma_4_E4B_it.npz` |
 
 ---
 
 ## 2. Estatísticas Agregadas [DERIVADO]
 
-- **Norma Residual Média**: Baseline = `191.01` | Injetado = `207.74` (Delta = `+8.76%`)
-- **Deriva Cosseno Média**: Baseline = `0.7900` | Injetado = `0.8026` (Delta = `+1.60%`)
-- **Posto Efetivo MPS Médio**: Baseline = `15.24` | Injetado = `15.26` (Delta = `+0.15%`)
+- **Norma Residual Média**: Baseline = `178.18` | Injetado = `214.51` (Delta = `+20.39%`)
+- **Deriva Cosseno Média**: Baseline = `0.7848` | Injetado = `0.7991` (Delta = `+1.81%`)
+- **Posto Efetivo MPS Médio**: Baseline = `15.35` | Injetado = `15.26` (Delta = `-0.58%`)
 
 ---
 
