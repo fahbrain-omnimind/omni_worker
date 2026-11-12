@@ -590,6 +590,7 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
                 out = _MODEL(prompt_ids.to(_MODEL.device), output_hidden_states=True)
             ph = np.stack([h[0, -1, :].detach().float().cpu().numpy()
                            for h in out.hidden_states]).astype(np.float16)
+            del out
             d = _vec_dir().parent / "prompt_hidden"
             d.mkdir(parents=True, exist_ok=True)
             ts = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%f")
@@ -603,7 +604,9 @@ def _generate(prompt_ids: torch.Tensor, max_new: int, temperature: float, top_p:
             act["prompt_hidden_file"] = f"{ts}_{safe}.npz"
         except Exception:  # noqa: BLE001, S110
             pass
-    del gen, last_step, attn_last, seq, new_ids
+    del gen, last_step, attn_last, seq, new_ids, hidden_all
+    import gc
+    gc.collect()
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
     return text, act
