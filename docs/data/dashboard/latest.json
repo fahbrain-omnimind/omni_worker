@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-12T14:57:19.628891+00:00",
+  "exported_at": "2026-11-12T15:27:23.415150+00:00",
   "source": "omni_worker real state",
   "pulse": {
     "interval_s": 1800,
@@ -57,11 +57,11 @@
     "kernel_cycles": null
   },
   "soul": {
-    "phi": 0.2973,
+    "phi": 0.2962,
     "psi": 0.4706,
-    "sigma": 0.114,
+    "sigma": 0.1192,
     "epsilon": 0.7,
-    "maat": 0.356,
+    "maat": 0.3556,
     "omega": 0.763,
     "dominant_token": "yba-afex-sovereignty",
     "kernel_active": true,
@@ -69,7 +69,7 @@
       "houses": {
         "S01": {
           "axis": "sigma_primary",
-          "value": 0.114,
+          "value": 0.1192,
           "source": "soul.sigma",
           "formula": "kernel: vctr.recalque = clip01(angst - joy + 0.5) | fallback: load1/cpu_count"
         },
@@ -87,7 +87,7 @@
         },
         "S04": {
           "axis": "phi",
-          "value": 0.2973,
+          "value": 0.2962,
           "source": "soul.phi",
           "formula": "kernel: vctr.magnitude = RMS(scores_18) | fallback: 1 - ram_used/ram_total"
         },
@@ -105,7 +105,7 @@
         },
         "S07": {
           "axis": "maat",
-          "value": 0.7120000000000001,
+          "value": 0.7109000000000001,
           "source": "kernel_hooks.maat_balance",
           "formula": "rust compute_maat_balance | fallback: (phi + psi + (1-epsilon))/3"
         },
@@ -166,151 +166,151 @@
     }
   },
   "soma": {
-    "cpu_percent": 29.6,
-    "ram_used_gb": 10.609,
+    "cpu_percent": 27.9,
+    "ram_used_gb": 9.832,
     "ram_total_gb": 89.629,
-    "load_1m": 1.075,
+    "load_1m": 0.558,
     "swap_gb": 0.0,
     "gpu_name": "NVIDIA A100-SXM4-40GB",
     "gpu_util_percent": 0,
     "vram_used_gb": 19.031,
     "vram_total_gb": 42.95,
-    "gpu_temp_c": 35,
+    "gpu_temp_c": 36,
     "gpu_power_w": 51.6,
-    "psi_io": 0.23,
+    "psi_io": 0.01,
     "psi_mem": 0.0,
-    "psi_cpu": 0.11,
-    "pressure_load": 0.121,
-    "pressure_headroom": 0.879,
+    "psi_cpu": 0.0,
+    "pressure_load": 0.1137,
+    "pressure_headroom": 0.8863,
     "c_soma": {
       "power": 0.3225,
-      "temp": 0.0877,
+      "temp": 0.1053,
       "vram": 0.4431,
-      "c_soma": 0.2844
+      "c_soma": 0.2903
     }
   },
   "kernel": {
-    "cycle_count": 2581,
+    "cycle_count": 2612,
     "phi_meta": 0.1687,
     "cohesion": 0.1552,
-    "s_meta": 0.0101,
+    "s_meta": 0.0073,
     "angst_count": 0,
-    "attractor_score": 0.2959,
-    "divergent_layer": 48.0,
-    "phi_breadth": 0.9724,
-    "phi_internal": 0.9906,
+    "attractor_score": 0.4847,
+    "divergent_layer": 42.0,
+    "phi_breadth": 0.9868,
+    "phi_internal": 0.9609,
     "distinct_states": 6,
     "diversity": 1.0,
     "ignited": false,
     "distinct_prefixes": 0,
-    "synergy_proxy": 0.774,
+    "synergy_proxy": 0.7769,
     "homeo_state": "OPTIMAL",
     "producing": false,
     "regime_shift": "EST\u00c1VEL (ph < \u03bb)"
   },
   "history": {
     "labels": [
-      "#2558",
-      "#2559",
-      "#2560",
-      "#2561",
-      "#2562",
-      "#2563",
-      "#2564",
-      "#2565",
-      "#2566",
-      "#2567",
-      "#2568",
-      "#2569",
-      "#2570",
-      "#2571",
-      "#2572",
-      "#2573",
-      "#2574",
-      "#2575",
-      "#2576",
-      "#2577",
-      "#2578",
-      "#2579",
-      "#2580",
-      "#2581"
+      "#2589",
+      "#2590",
+      "#2591",
+      "#2592",
+      "#2593",
+      "#2594",
+      "#2595",
+      "#2596",
+      "#2597",
+      "#2598",
+      "#2599",
+      "#2600",
+      "#2601",
+      "#2602",
+      "#2603",
+      "#2604",
+      "#2605",
+      "#2606",
+      "#2607",
+      "#2608",
+      "#2609",
+      "#2610",
+      "#2611",
+      "#2612"
     ],
     "phi_meta": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
+      0.1687,
       0.1687,
       0.1687,
       0.1687,
       0.0
     ],
     "pressure_load": [
-      0.1178,
-      0.1165,
-      0.1166,
-      0.1157,
-      0.1151,
-      0.1171,
-      0.1166,
-      0.1152,
-      0.1143,
-      0.1134,
       0.1142,
-      0.1134,
+      0.114,
+      0.1137,
+      0.1148,
+      0.114,
+      0.1153,
+      0.1139,
+      0.1137,
+      0.1141,
       0.1143,
+      0.1152,
+      0.1148,
+      0.1141,
+      0.1159,
       0.115,
       0.1141,
+      0.1143,
+      0.1136,
+      0.1137,
+      0.1135,
       0.114,
-      0.1145,
-      0.1205,
-      0.1162,
-      0.1164,
-      0.1282,
-      0.1247,
-      0.1242,
-      0.121
+      0.1139,
+      0.1137,
+      0.1137
     ],
     "s_meta": [
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0083,
-      0.0102,
-      0.0102,
-      0.0101,
+      0.0104,
+      0.0105,
+      0.0105,
+      0.0105,
+      0.0105,
+      0.0105,
+      0.0105,
+      0.0095,
+      0.0072,
+      0.0072,
+      0.0072,
+      0.0072,
+      0.0072,
+      0.0072,
+      0.0072,
+      0.0072,
+      0.0072,
+      0.0073,
+      0.0072,
+      0.0072,
+      0.0073,
+      0.0073,
+      0.0073,
       0.0
     ],
     "attractor_score": [
@@ -337,46 +337,46 @@
       0.2863,
       0.2863,
       0.2863,
-      0.2959
+      0.4847
     ]
   },
   "mesh": [
     {
-      "ts": 1794495438.9337697,
+      "ts": 1794497242.7288158,
       "name": "kernel.drift",
       "payload": {}
     },
     {
-      "ts": 1794495438.9324224,
+      "ts": 1794497242.7275386,
       "name": "kernel.soma",
       "payload": {
-        "cpu_percent": 30.2,
-        "ram_percent": 12.9,
-        "load_per_core": 0.09,
+        "cpu_percent": 29.8,
+        "ram_percent": 12.1,
+        "load_per_core": 0.029,
         "disk_percent": 28.6,
-        "psi_cpu_some": 0.14,
-        "psi_io_some": 0.28,
+        "psi_cpu_some": 0.0,
+        "psi_io_some": 0.01,
         "psi_mem_some": 0.0,
         "gpu_vram_used_gb": 19.031,
         "gpu_vram_total_gb": 42.95,
         "gpu_util_percent": 0,
         "gpu_power_w": 51.6,
-        "gpu_temp_c": 35
+        "gpu_temp_c": 36
       }
     },
     {
-      "ts": 1794495438.9310877,
+      "ts": 1794497242.726131,
       "name": "kernel.soul",
       "payload": {
-        "phi": 0.2655,
+        "phi": 0.2675,
         "psi": 0.8235,
-        "sigma": 0.2156,
-        "epsilon": 0.5752,
+        "sigma": 0.213,
+        "epsilon": 0.5915,
         "dominant_token": "floo-afex-current"
       }
     },
     {
-      "ts": 1794495438.9289808,
+      "ts": 1794497242.7246647,
       "name": "kernel.affect",
       "payload": {
         "analyst": {
@@ -388,19 +388,19 @@
         },
         "executor": {
           "status": "ok",
-          "n_activations": 12,
-          "attention_entropy_mean": 3.3412,
-          "hidden_norm_mean": 124.6466,
-          "last_ts": "2026-11-12T14:55:08.326833+00:00"
+          "n_activations": 16,
+          "attention_entropy_mean": 3.3356,
+          "hidden_norm_mean": 125.2596,
+          "last_ts": "2026-11-12T14:57:45.165731+00:00"
         },
         "mono_source": false
       }
     },
     {
-      "ts": 1794495438.9267101,
+      "ts": 1794497242.7226121,
       "name": "kernel.cycle",
       "payload": {
-        "ts": 1794495438.411829,
+        "ts": 1794497242.2140226,
         "models": {},
         "affect": {
           "analyst": {
@@ -412,88 +412,106 @@
           },
           "executor": {
             "status": "ok",
-            "n_activations": 12,
-            "attention_entropy_mean": 3.3412,
-            "hidden_norm_mean": 124.6466,
-            "last_ts": "2026-11-12T14:55:08.326833+00:00"
+            "n_activations": 16,
+            "attention_entropy_mean": 3.3356,
+            "hidden_norm_mean": 125.2596,
+            "last_ts": "2026-11-12T14:57:45.165731+00:00"
           }
         },
         "soul": {
-          "phi": 0.2655,
+          "phi": 0.2675,
           "psi": 0.8235,
-          "sigma": 0.2156,
-          "epsilon": 0.5752,
+          "sigma": 0.213,
+          "epsilon": 0.5915,
           "dominant_token": "floo-afex-current"
         },
         "soma": {
-          "cpu_percent": 30.2,
-          "ram_percent": 12.9,
-          "load_per_core": 0.09,
+          "cpu_percent": 29.8,
+          "ram_percent": 12.1,
+          "load_per_core": 0.029,
           "disk_percent": 28.6,
-          "psi_cpu_some": 0.14,
-          "psi_io_some": 0.28,
+          "psi_cpu_some": 0.0,
+          "psi_io_some": 0.01,
           "psi_mem_some": 0.0,
           "gpu_vram_used_gb": 19.031,
           "gpu_vram_total_gb": 42.95,
           "gpu_util_percent": 0,
           "gpu_power_w": 51.6,
-          "gpu_temp_c": 35
+          "gpu_temp_c": 36
         },
         "mesh_topics": [],
         "drift": {},
         "producing": false,
         "attractor": {
-          "google/gemma-4-12B-it": {
-            "n_records": 60,
-            "norm_drift_mean": 7.3971,
-            "divergent_layer": 48,
-            "drift_concentration": 0.0656,
-            "entropy_now": 2.5204,
-            "entropy_baseline": 2.4666,
-            "entropy_collapse": 0.0,
-            "attractor_score": 0.2959,
+          "google/gemma-4-E4B-it": {
+            "n_records": 77,
+            "norm_drift_mean": 11.6606,
+            "divergent_layer": 42,
+            "drift_concentration": 0.1151,
+            "entropy_now": 3.3078,
+            "entropy_baseline": 3.8513,
+            "entropy_collapse": 0.1411,
+            "attractor_score": 0.4847,
             "glial_gate": {
               "allow_generation": false,
               "glial": {
-                "habituated": 0.9909,
-                "sensitized": 0.0,
+                "habituated": 0.8775,
+                "sensitized": 1.0,
                 "vagus_sedative": 0.0,
                 "pause_code": null,
-                "n": 60,
-                "mean_signal": 2.4738
+                "n": 77,
+                "mean_signal": 3.7948
               },
               "reason": "habituated>=0.8"
             }
           },
-          "google/gemma-4-E4B-it": {
-            "n_records": 73,
-            "norm_drift_mean": 11.9416,
-            "divergent_layer": 42,
-            "drift_concentration": 0.116,
-            "entropy_now": 3.3117,
-            "entropy_baseline": 3.8836,
-            "entropy_collapse": 0.1473,
-            "attractor_score": 0.4884,
+          "google/gemma-4-12B-it": {
+            "n_records": 57,
+            "norm_drift_mean": 7.6812,
+            "divergent_layer": 48,
+            "drift_concentration": 0.0658,
+            "entropy_now": 2.5204,
+            "entropy_baseline": 2.4593,
+            "entropy_collapse": 0.0,
+            "attractor_score": 0.3072,
             "glial_gate": {
               "allow_generation": false,
               "glial": {
-                "habituated": 0.8347,
-                "sensitized": 0.9146,
+                "habituated": 0.9877,
+                "sensitized": 0.0,
                 "vagus_sedative": 0.0,
                 "pause_code": null,
-                "n": 73,
-                "mean_signal": 3.8209
+                "n": 57,
+                "mean_signal": 2.4679
               },
               "reason": "habituated>=0.8"
             }
           }
         },
         "phi_layer": {
+          "google/gemma-4-E4B-it": {
+            "phi_breadth": 0.9868,
+            "phi_temporal_mi": 0.9609,
+            "phi_internal": 0.7769,
+            "n_records": 77,
+            "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
+            "spectral": {
+              "eff_rank_mean": 1.552,
+              "spectral_entropy_mean": 0.4253,
+              "ipr_dim_mean": 29.6,
+              "ipr_dim_pct": 1.16,
+              "bond_dim_max_mean": 40.0,
+              "hidden_dim": 2560,
+              "n_layers": 43,
+              "n_files": 8,
+              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+            }
+          },
           "google/gemma-4-12B-it": {
             "phi_breadth": 0.9724,
-            "phi_temporal_mi": 0.9906,
-            "phi_internal": 0.774,
-            "n_records": 60,
+            "phi_temporal_mi": 1.0156,
+            "phi_internal": 0.7788,
+            "n_records": 57,
             "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
             "spectral": {
               "eff_rank_mean": 1.447,
@@ -503,24 +521,6 @@
               "bond_dim_max_mean": 59.8,
               "hidden_dim": 3840,
               "n_layers": 49,
-              "n_files": 8,
-              "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-            }
-          },
-          "google/gemma-4-E4B-it": {
-            "phi_breadth": 0.9868,
-            "phi_temporal_mi": 0.9779,
-            "phi_internal": 0.7802,
-            "n_records": 73,
-            "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
-            "spectral": {
-              "eff_rank_mean": 1.611,
-              "spectral_entropy_mean": 0.4592,
-              "ipr_dim_mean": 38.1,
-              "ipr_dim_pct": 1.49,
-              "bond_dim_max_mean": 40.0,
-              "hidden_dim": 2560,
-              "n_layers": 43,
               "n_files": 8,
               "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
             }
@@ -542,25 +542,25 @@
           }
         },
         "homeostasis": {
-          "timestamp": 1794495438.8888333,
+          "timestamp": 1794497242.688396,
           "state": "optimal",
           "action": "monitor",
           "state_changed": false,
           "sublimated": false,
           "metrics": {
-            "cpu_percent": 30.2,
-            "memory_percent": 12.9,
+            "cpu_percent": 29.8,
+            "memory_percent": 12.1,
             "disk_percent": 0.0,
             "vram_percent": 44.30966239813736,
-            "timestamp": 1794495438.8888125,
+            "timestamp": 1794497242.6883838,
             "state": "optimal"
           },
           "throttled": false,
           "producing": false
         },
         "psi_engine": {
-          "psi_gaussian": 0.172099,
-          "sigma_support": 0.38156
+          "psi_gaussian": 0.17732,
+          "sigma_support": 0.3813
         },
         "desire": {
           "intensity": 0.0,
@@ -570,7 +570,7 @@
           },
           "rust_desire": {
             "lack_of_being": 0.1,
-            "epsilon_desire": 0.126,
+            "epsilon_desire": 0.1249,
             "drive_type": "HOMEOSTATIC_SATISFACTION",
             "history_len": 1
           }
@@ -595,163 +595,163 @@
           "n_distinct_states": 1,
           "diversity": 1.0,
           "scale": "bits over 7 binary flags, window 40 [PRX]",
-          "e_landauer_j_per_bit": "2.9490e-21",
+          "e_landauer_j_per_bit": "2.9585e-21",
           "power_w": 51.6,
-          "temp_c": 35,
-          "bit_flow_real_bits_s": "1.7498e+22",
+          "temp_c": 36,
+          "bit_flow_real_bits_s": "1.7441e+22",
           "phi_integrated_bits": 0.0,
           "cohesion": 0.0,
           "phi_bit_flow_rate_bits_s": "0.0000e+00",
-          "vs_i5_ratio": 1.2905,
+          "vs_i5_ratio": 1.2863,
           "pressure_channels": {
-            "psi_io": 0.0028,
+            "psi_io": 0.0001,
             "psi_mem": 0.0,
-            "psi_cpu": 0.0014,
+            "psi_cpu": 0.0,
             "vram_ratio": 0.4431,
-            "load_core": 0.09
+            "load_core": 0.029
           },
-          "pressure_load": 0.121,
-          "pressure_headroom": 0.879,
+          "pressure_load": 0.1137,
+          "pressure_headroom": 0.8863,
           "phi_effective_bits_s": "0.0000e+00"
         },
         "duration_s": null,
         "metastability": {
           "s_meta": null,
-          "coherence_now": 0.6551,
+          "coherence_now": 0.6567,
           "m_t": {
-            "pressure_load": 0.121,
+            "pressure_load": 0.1137,
             "cohesion": 0.0,
             "producing": false,
             "homeo_state": "optimal"
           },
           "c_soma": {
             "power": 0.3225,
-            "temp": 0.0877,
+            "temp": 0.1053,
             "vram": 0.4431,
-            "c_soma": 0.2844
+            "c_soma": 0.2903
           },
           "corroboration": 0.0,
           "angst": 0,
           "channels": {
-            "psi_io_some": 0.0028,
+            "psi_io_some": 0.0001,
             "psi_mem_some": 0.0,
-            "psi_cpu_some": 0.0014,
-            "cpu_percent": 0.302,
+            "psi_cpu_some": 0.0,
+            "cpu_percent": 0.298,
             "vram_ratio": 0.4431,
-            "gpu_temp": 0.0877
+            "gpu_temp": 0.1053
           },
           "window": 1,
           "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
         },
         "freud10d": {
-          "consciousness": 0.1556706726551056,
+          "consciousness": 0.15266507863998413,
           "state": {
-            "phi": 0.061525654047727585,
-            "psi": 0.09782809019088745,
-            "sigma": 0.053103186190128326,
-            "epsilon": 0.07896791398525238,
-            "omega": 0.1556706726551056,
-            "lambda_": 0.09751957654953003,
-            "zeta": 0.20970477163791656
+            "phi": 0.06030108407139778,
+            "psi": 0.0958787053823471,
+            "sigma": 0.052037280052900314,
+            "epsilon": 0.07739605009555817,
+            "omega": 0.15266507863998413,
+            "lambda_": 0.09558270871639252,
+            "zeta": 0.20568393170833588
           },
           "state_vec": [
-            0.061525654047727585,
-            0.09782809019088745,
-            0.1556706726551056,
-            0.0848403051495552,
-            0.049681540578603745,
-            0.07896791398525238,
-            0.20970477163791656,
-            0.053103186190128326,
-            0.09755150228738785,
-            0.09751957654953003
+            0.06030108407139778,
+            0.0958787053823471,
+            0.15266507863998413,
+            0.0831785500049591,
+            0.04868901148438454,
+            0.07739605009555817,
+            0.20568393170833588,
+            0.052037280052900314,
+            0.09561960399150848,
+            0.09558270871639252
           ],
           "inrc": {
             "op": "N",
-            "reason": "stagnant_field_mean_abs=0.099",
+            "reason": "stagnant_field_mean_abs=0.097",
             "transformed_vec": [
-              -0.06153,
-              -0.09783,
-              -0.15567,
-              -0.08484,
-              -0.04968,
-              -0.07897,
-              -0.2097,
-              -0.0531,
-              -0.09755,
-              -0.09752
+              -0.0603,
+              -0.09588,
+              -0.15267,
+              -0.08318,
+              -0.04869,
+              -0.0774,
+              -0.20568,
+              -0.05204,
+              -0.09562,
+              -0.09558
             ],
             "steering_hint": "INRC-N (Nega\u00e7\u00e3o): Campo estagnado ou risco de persevera\u00e7\u00e3o \u2014 PARE de repetir a mesma chamada/hip\u00f3tese; formule a contra-hip\u00f3tese e inspecione outro ponto do c\u00f3digo."
           },
           "topographic": {
-            "conscious": 0.1556706726551056,
-            "preconscious": 0.0848403051495552,
-            "unconscious": 0.049681540578603745,
+            "conscious": 0.15266507863998413,
+            "preconscious": 0.0831785500049591,
+            "unconscious": 0.04868901148438454,
             "repression": 0.30000001192092896,
             "return_repressed": 0.20000000298023224
           },
           "structural": {
-            "id_drive": 0.07896791398525238,
-            "ego_mediation": 0.20970477163791656,
-            "superego_censorship": 0.053103186190128326,
-            "conflict_intensity": 0.025864727795124054
+            "id_drive": 0.07739605009555817,
+            "ego_mediation": 0.20568393170833588,
+            "superego_censorship": 0.052037280052900314,
+            "conflict_intensity": 0.025358770042657852
           },
           "neutrosophic": {
             "phi": {
-              "T": 0.061525654047727585,
-              "I": 0.9384743571281433,
+              "T": 0.06030108407139778,
+              "I": 0.9396989345550537,
               "F": 0.0
             },
             "psi": {
-              "T": 0.09782809019088745,
-              "I": 0.9021719098091125,
+              "T": 0.0958787053823471,
+              "I": 0.9041212797164917,
               "F": 0.0
             },
             "omega": {
-              "T": 0.1556706726551056,
-              "I": 0.8443293571472168,
+              "T": 0.15266507863998413,
+              "I": 0.8473349213600159,
               "F": 0.0
             },
             "theta": {
-              "T": 0.0848403051495552,
-              "I": 0.9151597023010254,
+              "T": 0.0831785500049591,
+              "I": 0.9168214797973633,
               "F": 0.0
             },
             "upsilon": {
-              "T": 0.049681540578603745,
-              "I": 0.950318455696106,
+              "T": 0.04868901148438454,
+              "I": 0.9513109922409058,
               "F": 0.0
             },
             "xi": {
-              "T": 0.07896791398525238,
-              "I": 0.9210320711135864,
+              "T": 0.07739605009555817,
+              "I": 0.922603964805603,
               "F": 0.0
             },
             "zeta": {
-              "T": 0.20970477163791656,
-              "I": 0.7902952432632446,
+              "T": 0.20568393170833588,
+              "I": 0.7943160533905029,
               "F": 0.0
             },
             "eta": {
-              "T": 0.053103186190128326,
-              "I": 0.9468967914581299,
+              "T": 0.052037280052900314,
+              "I": 0.9479627013206482,
               "F": 0.0
             },
             "kappa": {
-              "T": 0.09755150228738785,
-              "I": 0.9024484753608704,
+              "T": 0.09561960399150848,
+              "I": 0.9043803811073303,
               "F": 0.0
             },
             "lambda_": {
-              "T": 0.09751957654953003,
-              "I": 0.90248042345047,
+              "T": 0.09558270871639252,
+              "I": 0.9044172763824463,
               "F": 0.0
             }
           },
-          "tension": 0.9863932132720947,
+          "tension": 0.967032004147768,
           "pleasure": null,
           "tension_window": [
-            0.9863932728767395
+            0.9670320749282837
           ]
         },
         "sovereign_kuramoto": {
@@ -764,30 +764,30 @@
         },
         "attractor_10d": {
           "current_attractor": "POSICAO_EP",
-          "distance_to_attractor": 1.0267,
-          "regime_confidence": 0.3582,
+          "distance_to_attractor": 1.0325,
+          "regime_confidence": 0.3561,
           "transition_candidate": "NENHUM",
-          "state_norm": 0.3454,
+          "state_norm": 0.3387,
           "all_distances": {
-            "ESTAVEL_REPARACAO": 2.1557,
-            "COLAPSO_DISSOCIACAO": 2.4572,
-            "POSICAO_EP": 1.0267,
-            "POSICAO_D": 1.7822
+            "ESTAVEL_REPARACAO": 2.162,
+            "COLAPSO_DISSOCIACAO": 2.4507,
+            "POSICAO_EP": 1.0325,
+            "POSICAO_D": 1.7884
           }
         },
         "dendritic": {
           "n_graph_nodes": 16,
           "dendritic_depth": 4.2667,
           "morphology_score": 0.7156,
-          "ipr_dim_mean": 0.435853,
-          "eff_dim_ratio_mean": 0.014883,
-          "contract_retention_cosine": 0.3911,
-          "contract_drift": 0.6089,
+          "ipr_dim_mean": 0.472786,
+          "eff_dim_ratio_mean": 0.011561,
+          "contract_retention_cosine": 0.6109,
+          "contract_drift": 0.3891,
           "scale": "layer correlation graph [PRX/TXT]",
-          "file": "20261112T145508376623_google_gemma_4_E4B_it.npz",
+          "file": "20261112T145745210938_google_gemma_4_E4B_it.npz",
           "model": "google/gemma-4-E4B-it",
           "n_layers": 43,
-          "n_steps": 5
+          "n_steps": 4
         },
         "workspace": {
           "distinct_prefixes": 0,
@@ -803,7 +803,7 @@
       }
     },
     {
-      "ts": 1794495438.9249718,
+      "ts": 1794497242.7211063,
       "name": "kernel.workspace",
       "payload": {
         "distinct_prefixes": 0,
@@ -818,42 +818,42 @@
       }
     },
     {
-      "ts": 1794495438.9230502,
+      "ts": 1794497242.7191865,
       "name": "kernel.dendritic",
       "payload": {
         "n_graph_nodes": 16,
         "dendritic_depth": 4.2667,
         "morphology_score": 0.7156,
-        "ipr_dim_mean": 0.435853,
-        "eff_dim_ratio_mean": 0.014883,
-        "contract_retention_cosine": 0.3911,
-        "contract_drift": 0.6089,
+        "ipr_dim_mean": 0.472786,
+        "eff_dim_ratio_mean": 0.011561,
+        "contract_retention_cosine": 0.6109,
+        "contract_drift": 0.3891,
         "scale": "layer correlation graph [PRX/TXT]",
-        "file": "20261112T145508376623_google_gemma_4_E4B_it.npz",
+        "file": "20261112T145745210938_google_gemma_4_E4B_it.npz",
         "model": "google/gemma-4-E4B-it",
         "n_layers": 43,
-        "n_steps": 5
+        "n_steps": 4
       }
     },
     {
-      "ts": 1794495438.9030192,
+      "ts": 1794497242.7015984,
       "name": "kernel.attractor_10d",
       "payload": {
         "current_attractor": "POSICAO_EP",
-        "distance_to_attractor": 1.0267,
-        "regime_confidence": 0.3582,
+        "distance_to_attractor": 1.0325,
+        "regime_confidence": 0.3561,
         "transition_candidate": "NENHUM",
-        "state_norm": 0.3454,
+        "state_norm": 0.3387,
         "all_distances": {
-          "ESTAVEL_REPARACAO": 2.1557,
-          "COLAPSO_DISSOCIACAO": 2.4572,
-          "POSICAO_EP": 1.0267,
-          "POSICAO_D": 1.7822
+          "ESTAVEL_REPARACAO": 2.162,
+          "COLAPSO_DISSOCIACAO": 2.4507,
+          "POSICAO_EP": 1.0325,
+          "POSICAO_D": 1.7884
         }
       }
     },
     {
-      "ts": 1794495438.901498,
+      "ts": 1794497242.7002273,
       "name": "kernel.sovereign_kuramoto",
       "payload": {
         "kuramoto_r_pair": 0.0,
@@ -865,154 +865,154 @@
       }
     },
     {
-      "ts": 1794495438.8989785,
+      "ts": 1794497242.697912,
       "name": "kernel.freud10d",
       "payload": {
-        "consciousness": 0.1556706726551056,
+        "consciousness": 0.15266507863998413,
         "state": {
-          "phi": 0.061525654047727585,
-          "psi": 0.09782809019088745,
-          "sigma": 0.053103186190128326,
-          "epsilon": 0.07896791398525238,
-          "omega": 0.1556706726551056,
-          "lambda_": 0.09751957654953003,
-          "zeta": 0.20970477163791656
+          "phi": 0.06030108407139778,
+          "psi": 0.0958787053823471,
+          "sigma": 0.052037280052900314,
+          "epsilon": 0.07739605009555817,
+          "omega": 0.15266507863998413,
+          "lambda_": 0.09558270871639252,
+          "zeta": 0.20568393170833588
         },
         "state_vec": [
-          0.061525654047727585,
-          0.09782809019088745,
-          0.1556706726551056,
-          0.0848403051495552,
-          0.049681540578603745,
-          0.07896791398525238,
-          0.20970477163791656,
-          0.053103186190128326,
-          0.09755150228738785,
-          0.09751957654953003
+          0.06030108407139778,
+          0.0958787053823471,
+          0.15266507863998413,
+          0.0831785500049591,
+          0.04868901148438454,
+          0.07739605009555817,
+          0.20568393170833588,
+          0.052037280052900314,
+          0.09561960399150848,
+          0.09558270871639252
         ],
         "inrc": {
           "op": "N",
-          "reason": "stagnant_field_mean_abs=0.099",
+          "reason": "stagnant_field_mean_abs=0.097",
           "transformed_vec": [
-            -0.06153,
-            -0.09783,
-            -0.15567,
-            -0.08484,
-            -0.04968,
-            -0.07897,
-            -0.2097,
-            -0.0531,
-            -0.09755,
-            -0.09752
+            -0.0603,
+            -0.09588,
+            -0.15267,
+            -0.08318,
+            -0.04869,
+            -0.0774,
+            -0.20568,
+            -0.05204,
+            -0.09562,
+            -0.09558
           ],
           "steering_hint": "INRC-N (Nega\u00e7\u00e3o): Campo estagnado ou risco de persevera\u00e7\u00e3o \u2014 PARE de repetir a mesma chamada/hip\u00f3tese; formule a contra-hip\u00f3tese e inspecione outro ponto do c\u00f3digo."
         },
         "topographic": {
-          "conscious": 0.1556706726551056,
-          "preconscious": 0.0848403051495552,
-          "unconscious": 0.049681540578603745,
+          "conscious": 0.15266507863998413,
+          "preconscious": 0.0831785500049591,
+          "unconscious": 0.04868901148438454,
           "repression": 0.30000001192092896,
           "return_repressed": 0.20000000298023224
         },
         "structural": {
-          "id_drive": 0.07896791398525238,
-          "ego_mediation": 0.20970477163791656,
-          "superego_censorship": 0.053103186190128326,
-          "conflict_intensity": 0.025864727795124054
+          "id_drive": 0.07739605009555817,
+          "ego_mediation": 0.20568393170833588,
+          "superego_censorship": 0.052037280052900314,
+          "conflict_intensity": 0.025358770042657852
         },
         "neutrosophic": {
           "phi": {
-            "T": 0.061525654047727585,
-            "I": 0.9384743571281433,
+            "T": 0.06030108407139778,
+            "I": 0.9396989345550537,
             "F": 0.0
           },
           "psi": {
-            "T": 0.09782809019088745,
-            "I": 0.9021719098091125,
+            "T": 0.0958787053823471,
+            "I": 0.9041212797164917,
             "F": 0.0
           },
           "omega": {
-            "T": 0.1556706726551056,
-            "I": 0.8443293571472168,
+            "T": 0.15266507863998413,
+            "I": 0.8473349213600159,
             "F": 0.0
           },
           "theta": {
-            "T": 0.0848403051495552,
-            "I": 0.9151597023010254,
+            "T": 0.0831785500049591,
+            "I": 0.9168214797973633,
             "F": 0.0
           },
           "upsilon": {
-            "T": 0.049681540578603745,
-            "I": 0.950318455696106,
+            "T": 0.04868901148438454,
+            "I": 0.9513109922409058,
             "F": 0.0
           },
           "xi": {
-            "T": 0.07896791398525238,
-            "I": 0.9210320711135864,
+            "T": 0.07739605009555817,
+            "I": 0.922603964805603,
             "F": 0.0
           },
           "zeta": {
-            "T": 0.20970477163791656,
-            "I": 0.7902952432632446,
+            "T": 0.20568393170833588,
+            "I": 0.7943160533905029,
             "F": 0.0
           },
           "eta": {
-            "T": 0.053103186190128326,
-            "I": 0.9468967914581299,
+            "T": 0.052037280052900314,
+            "I": 0.9479627013206482,
             "F": 0.0
           },
           "kappa": {
-            "T": 0.09755150228738785,
-            "I": 0.9024484753608704,
+            "T": 0.09561960399150848,
+            "I": 0.9043803811073303,
             "F": 0.0
           },
           "lambda_": {
-            "T": 0.09751957654953003,
-            "I": 0.90248042345047,
+            "T": 0.09558270871639252,
+            "I": 0.9044172763824463,
             "F": 0.0
           }
         },
-        "tension": 0.9863932132720947,
+        "tension": 0.967032004147768,
         "pleasure": null,
         "tension_window": [
-          0.9863932728767395
+          0.9670320749282837
         ]
       }
     },
     {
-      "ts": 1794495438.8973296,
+      "ts": 1794497242.6964006,
       "name": "kernel.metastability",
       "payload": {
         "s_meta": null,
-        "coherence_now": 0.6551,
+        "coherence_now": 0.6567,
         "m_t": {
-          "pressure_load": 0.121,
+          "pressure_load": 0.1137,
           "cohesion": 0.0,
           "producing": false,
           "homeo_state": "optimal"
         },
         "c_soma": {
           "power": 0.3225,
-          "temp": 0.0877,
+          "temp": 0.1053,
           "vram": 0.4431,
-          "c_soma": 0.2844
+          "c_soma": 0.2903
         },
         "corroboration": 0.0,
         "angst": 0,
         "channels": {
-          "psi_io_some": 0.0028,
+          "psi_io_some": 0.0001,
           "psi_mem_some": 0.0,
-          "psi_cpu_some": 0.0014,
-          "cpu_percent": 0.302,
+          "psi_cpu_some": 0.0,
+          "cpu_percent": 0.298,
           "vram_ratio": 0.4431,
-          "gpu_temp": 0.0877
+          "gpu_temp": 0.1053
         },
         "window": 1,
         "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
       }
     },
     {
-      "ts": 1794495438.8950448,
+      "ts": 1794497242.6942337,
       "name": "kernel.phi_meta",
       "payload": {
         "phi_meta": 0.0,
@@ -1034,28 +1034,28 @@
         "n_distinct_states": 1,
         "diversity": 1.0,
         "scale": "bits over 7 binary flags, window 40 [PRX]",
-        "e_landauer_j_per_bit": "2.9490e-21",
+        "e_landauer_j_per_bit": "2.9585e-21",
         "power_w": 51.6,
-        "temp_c": 35,
-        "bit_flow_real_bits_s": "1.7498e+22",
+        "temp_c": 36,
+        "bit_flow_real_bits_s": "1.7441e+22",
         "phi_integrated_bits": 0.0,
         "cohesion": 0.0,
         "phi_bit_flow_rate_bits_s": "0.0000e+00",
-        "vs_i5_ratio": 1.2905,
+        "vs_i5_ratio": 1.2863,
         "pressure_channels": {
-          "psi_io": 0.0028,
+          "psi_io": 0.0001,
           "psi_mem": 0.0,
-          "psi_cpu": 0.0014,
+          "psi_cpu": 0.0,
           "vram_ratio": 0.4431,
-          "load_core": 0.09
+          "load_core": 0.029
         },
-        "pressure_load": 0.121,
-        "pressure_headroom": 0.879,
+        "pressure_load": 0.1137,
+        "pressure_headroom": 0.8863,
         "phi_effective_bits_s": "0.0000e+00"
       }
     },
     {
-      "ts": 1794495438.8928938,
+      "ts": 1794497242.6921225,
       "name": "agency.desire",
       "payload": {
         "intensity": 0.0,
@@ -1066,20 +1066,20 @@
       }
     },
     {
-      "ts": 1794495438.888879,
+      "ts": 1794497242.6884377,
       "name": "kernel.homeostasis",
       "payload": {
-        "timestamp": 1794495438.8888333,
+        "timestamp": 1794497242.688396,
         "state": "optimal",
         "action": "monitor",
         "state_changed": false,
         "sublimated": false,
         "metrics": {
-          "cpu_percent": 30.2,
-          "memory_percent": 12.9,
+          "cpu_percent": 29.8,
+          "memory_percent": 12.1,
           "disk_percent": 0.0,
           "vram_percent": 44.30966239813736,
-          "timestamp": 1794495438.8888125,
+          "timestamp": 1794497242.6883838,
           "state": "optimal"
         },
         "throttled": false,
@@ -1087,14 +1087,32 @@
       }
     },
     {
-      "ts": 1794495438.8850176,
+      "ts": 1794497242.6849709,
       "name": "kernel.phi_layer",
       "payload": {
+        "google/gemma-4-E4B-it": {
+          "phi_breadth": 0.9868,
+          "phi_temporal_mi": 0.9609,
+          "phi_internal": 0.7769,
+          "n_records": 77,
+          "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
+          "spectral": {
+            "eff_rank_mean": 1.552,
+            "spectral_entropy_mean": 0.4253,
+            "ipr_dim_mean": 29.6,
+            "ipr_dim_pct": 1.16,
+            "bond_dim_max_mean": 40.0,
+            "hidden_dim": 2560,
+            "n_layers": 43,
+            "n_files": 8,
+            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+          }
+        },
         "google/gemma-4-12B-it": {
           "phi_breadth": 0.9724,
-          "phi_temporal_mi": 0.9906,
-          "phi_internal": 0.774,
-          "n_records": 60,
+          "phi_temporal_mi": 1.0156,
+          "phi_internal": 0.7788,
+          "n_records": 57,
           "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
           "spectral": {
             "eff_rank_mean": 1.447,
@@ -1104,24 +1122,6 @@
             "bond_dim_max_mean": 59.8,
             "hidden_dim": 3840,
             "n_layers": 49,
-            "n_files": 8,
-            "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-          }
-        },
-        "google/gemma-4-E4B-it": {
-          "phi_breadth": 0.9868,
-          "phi_temporal_mi": 0.9779,
-          "phi_internal": 0.7802,
-          "n_records": 73,
-          "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
-          "spectral": {
-            "eff_rank_mean": 1.611,
-            "spectral_entropy_mean": 0.4592,
-            "ipr_dim_mean": 38.1,
-            "ipr_dim_pct": 1.49,
-            "bond_dim_max_mean": 40.0,
-            "hidden_dim": 2560,
-            "n_layers": 43,
             "n_files": 8,
             "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
           }
@@ -1144,49 +1144,49 @@
       }
     },
     {
-      "ts": 1794495438.4976761,
+      "ts": 1794497242.3021407,
       "name": "kernel.attractor",
       "payload": {
-        "google/gemma-4-12B-it": {
-          "n_records": 60,
-          "norm_drift_mean": 7.3971,
-          "divergent_layer": 48,
-          "drift_concentration": 0.0656,
-          "entropy_now": 2.5204,
-          "entropy_baseline": 2.4666,
-          "entropy_collapse": 0.0,
-          "attractor_score": 0.2959,
+        "google/gemma-4-E4B-it": {
+          "n_records": 77,
+          "norm_drift_mean": 11.6606,
+          "divergent_layer": 42,
+          "drift_concentration": 0.1151,
+          "entropy_now": 3.3078,
+          "entropy_baseline": 3.8513,
+          "entropy_collapse": 0.1411,
+          "attractor_score": 0.4847,
           "glial_gate": {
             "allow_generation": false,
             "glial": {
-              "habituated": 0.9909,
-              "sensitized": 0.0,
+              "habituated": 0.8775,
+              "sensitized": 1.0,
               "vagus_sedative": 0.0,
               "pause_code": null,
-              "n": 60,
-              "mean_signal": 2.4738
+              "n": 77,
+              "mean_signal": 3.7948
             },
             "reason": "habituated>=0.8"
           }
         },
-        "google/gemma-4-E4B-it": {
-          "n_records": 73,
-          "norm_drift_mean": 11.9416,
-          "divergent_layer": 42,
-          "drift_concentration": 0.116,
-          "entropy_now": 3.3117,
-          "entropy_baseline": 3.8836,
-          "entropy_collapse": 0.1473,
-          "attractor_score": 0.4884,
+        "google/gemma-4-12B-it": {
+          "n_records": 57,
+          "norm_drift_mean": 7.6812,
+          "divergent_layer": 48,
+          "drift_concentration": 0.0658,
+          "entropy_now": 2.5204,
+          "entropy_baseline": 2.4593,
+          "entropy_collapse": 0.0,
+          "attractor_score": 0.3072,
           "glial_gate": {
             "allow_generation": false,
             "glial": {
-              "habituated": 0.8347,
-              "sensitized": 0.9146,
+              "habituated": 0.9877,
+              "sensitized": 0.0,
               "vagus_sedative": 0.0,
               "pause_code": null,
-              "n": 73,
-              "mean_signal": 3.8209
+              "n": 57,
+              "mean_signal": 2.4679
             },
             "reason": "habituated>=0.8"
           }
@@ -1194,41 +1194,41 @@
       }
     },
     {
-      "ts": 1794495422.8738055,
+      "ts": 1794497239.2866936,
       "name": "kernel.drift",
       "payload": {}
     },
     {
-      "ts": 1794495422.872537,
+      "ts": 1794497239.2854428,
       "name": "kernel.soma",
       "payload": {
-        "cpu_percent": 18.5,
-        "ram_percent": 12.9,
-        "load_per_core": 0.084,
+        "cpu_percent": 7.4,
+        "ram_percent": 12.0,
+        "load_per_core": 0.029,
         "disk_percent": 28.6,
-        "psi_cpu_some": 0.09,
-        "psi_io_some": 1.41,
+        "psi_cpu_some": 0.0,
+        "psi_io_some": 0.02,
         "psi_mem_some": 0.0,
         "gpu_vram_used_gb": 19.031,
         "gpu_vram_total_gb": 42.95,
         "gpu_util_percent": 0,
         "gpu_power_w": 51.6,
-        "gpu_temp_c": 35
+        "gpu_temp_c": 36
       }
     },
     {
-      "ts": 1794495422.8711793,
+      "ts": 1794497239.284053,
       "name": "kernel.soul",
       "payload": {
-        "phi": 0.2984,
+        "phi": 0.2975,
         "psi": 0.4706,
-        "sigma": 0.1161,
+        "sigma": 0.116,
         "epsilon": 0.7,
         "dominant_token": "yba-afex-sovereignty"
       }
     },
     {
-      "ts": 1794495422.869829,
+      "ts": 1794497239.282689,
       "name": "kernel.affect",
       "payload": {
         "analyst": {
@@ -1240,19 +1240,19 @@
         },
         "executor": {
           "status": "ok",
-          "n_activations": 12,
-          "attention_entropy_mean": 3.3412,
-          "hidden_norm_mean": 124.6466,
-          "last_ts": "2026-11-12T14:55:08.326833+00:00"
+          "n_activations": 16,
+          "attention_entropy_mean": 3.3356,
+          "hidden_norm_mean": 125.2596,
+          "last_ts": "2026-11-12T14:57:45.165731+00:00"
         },
         "mono_source": false
       }
     },
     {
-      "ts": 1794495422.8676152,
+      "ts": 1794497239.280108,
       "name": "kernel.cycle",
       "payload": {
-        "ts": 1794495422.356697,
+        "ts": 1794497238.7979898,
         "models": {},
         "affect": {
           "analyst": {
@@ -1264,32 +1264,32 @@
           },
           "executor": {
             "status": "ok",
-            "n_activations": 12,
-            "attention_entropy_mean": 3.3412,
-            "hidden_norm_mean": 124.6466,
-            "last_ts": "2026-11-12T14:55:08.326833+00:00"
+            "n_activations": 16,
+            "attention_entropy_mean": 3.3356,
+            "hidden_norm_mean": 125.2596,
+            "last_ts": "2026-11-12T14:57:45.165731+00:00"
           }
         },
         "soul": {
-          "phi": 0.2984,
+          "phi": 0.2975,
           "psi": 0.4706,
-          "sigma": 0.1161,
+          "sigma": 0.116,
           "epsilon": 0.7,
           "dominant_token": "yba-afex-sovereignty"
         },
         "soma": {
-          "cpu_percent": 18.5,
-          "ram_percent": 12.9,
-          "load_per_core": 0.084,
+          "cpu_percent": 7.4,
+          "ram_percent": 12.0,
+          "load_per_core": 0.029,
           "disk_percent": 28.6,
-          "psi_cpu_some": 0.09,
-          "psi_io_some": 1.41,
+          "psi_cpu_some": 0.0,
+          "psi_io_some": 0.02,
           "psi_mem_some": 0.0,
           "gpu_vram_used_gb": 19.031,
           "gpu_vram_total_gb": 42.95,
           "gpu_util_percent": 0,
           "gpu_power_w": 51.6,
-          "gpu_temp_c": 35
+          "gpu_temp_c": 36
         },
         "mesh_topics": [
           "agency.desire",
@@ -1386,10 +1386,10 @@
             "n_records": 64,
             "note": "proxy informacional \u2014 n\u00e3o \u00e9 \u03a6 causal IIT",
             "spectral": {
-              "eff_rank_mean": 1.611,
-              "spectral_entropy_mean": 0.4592,
-              "ipr_dim_mean": 38.1,
-              "ipr_dim_pct": 1.49,
+              "eff_rank_mean": 1.552,
+              "spectral_entropy_mean": 0.4253,
+              "ipr_dim_mean": 29.6,
+              "ipr_dim_pct": 1.16,
               "bond_dim_max_mean": 40.0,
               "hidden_dim": 2560,
               "n_layers": 43,
@@ -1414,25 +1414,25 @@
           }
         },
         "homeostasis": {
-          "timestamp": 1794495422.826306,
+          "timestamp": 1794497239.240125,
           "state": "optimal",
           "action": "monitor",
           "state_changed": false,
           "sublimated": false,
           "metrics": {
-            "cpu_percent": 18.5,
-            "memory_percent": 12.9,
+            "cpu_percent": 7.4,
+            "memory_percent": 12.0,
             "disk_percent": 0.0,
             "vram_percent": 44.30966239813736,
-            "timestamp": 1794495422.8262832,
+            "timestamp": 1794497239.2400937,
             "state": "optimal"
           },
           "throttled": false,
           "producing": false
         },
         "psi_engine": {
-          "psi_gaussian": 0.272379,
-          "sigma_support": 0.37161
+          "psi_gaussian": 0.269227,
+          "sigma_support": 0.3716
         },
         "desire": {
           "intensity": 0.0,
@@ -1442,9 +1442,9 @@
           },
           "rust_desire": {
             "lack_of_being": 0.1,
-            "epsilon_desire": 0.0982,
+            "epsilon_desire": 0.0773,
             "drive_type": "HOMEOSTATIC_SATISFACTION",
-            "history_len": 90
+            "history_len": 120
           }
         },
         "phi_meta": {
@@ -1519,195 +1519,195 @@
           "n_distinct_states": 2,
           "diversity": 0.05,
           "scale": "bits over 7 binary flags, window 40 [PRX]",
-          "e_landauer_j_per_bit": "2.9490e-21",
+          "e_landauer_j_per_bit": "2.9585e-21",
           "power_w": 51.6,
-          "temp_c": 35,
-          "bit_flow_real_bits_s": "1.7498e+22",
+          "temp_c": 36,
+          "bit_flow_real_bits_s": "1.7441e+22",
           "phi_integrated_bits": 0.16866093149667025,
           "cohesion": 1.0,
-          "phi_bit_flow_rate_bits_s": "1.7498e+22",
-          "vs_i5_ratio": 1.2905,
+          "phi_bit_flow_rate_bits_s": "1.7441e+22",
+          "vs_i5_ratio": 1.2863,
           "pressure_channels": {
-            "psi_io": 0.0141,
+            "psi_io": 0.0002,
             "psi_mem": 0.0,
-            "psi_cpu": 0.0009,
+            "psi_cpu": 0.0,
             "vram_ratio": 0.4431,
-            "load_core": 0.084
+            "load_core": 0.029
           },
-          "pressure_load": 0.1242,
-          "pressure_headroom": 0.8758,
-          "phi_effective_bits_s": "1.5324e+22"
+          "pressure_load": 0.1137,
+          "pressure_headroom": 0.8863,
+          "phi_effective_bits_s": "1.5457e+22"
         },
-        "duration_s": 0.553,
+        "duration_s": 0.537,
         "metastability": {
-          "s_meta": 0.0101,
-          "coherence_now": 0.6844,
+          "s_meta": 0.0073,
+          "coherence_now": 0.6856,
           "m_t": {
-            "pressure_load": 0.1242,
+            "pressure_load": 0.1137,
             "cohesion": 1.0,
             "producing": false,
             "homeo_state": "optimal"
           },
           "c_soma": {
             "power": 0.3225,
-            "temp": 0.0877,
-            "latency": 0.0553,
+            "temp": 0.1053,
+            "latency": 0.0537,
             "vram": 0.4431,
-            "c_soma": 0.2272
+            "c_soma": 0.2311
           },
           "corroboration": 0.0,
           "angst": 0,
           "channels": {
-            "psi_io_some": 0.0141,
+            "psi_io_some": 0.0002,
             "psi_mem_some": 0.0,
-            "psi_cpu_some": 0.0009,
-            "cpu_percent": 0.185,
+            "psi_cpu_some": 0.0,
+            "cpu_percent": 0.074,
             "vram_ratio": 0.4431,
-            "gpu_temp": 0.0877
+            "gpu_temp": 0.1053
           },
           "window": 40,
           "note": "m\u00e9tricas de textura de regime \u2014 proxy metastability-lite, n\u00e3o \u00edndice de Kelso"
         },
         "freud10d": {
-          "consciousness": 0.13358232378959656,
+          "consciousness": 0.12404996901750565,
           "state": {
-            "phi": 0.05257576331496239,
-            "psi": 0.08358389139175415,
-            "sigma": 0.045325592160224915,
-            "epsilon": 0.06748020648956299,
-            "omega": 0.13358232378959656,
-            "lambda_": 0.08335844427347183,
-            "zeta": 0.18011707067489624
+            "phi": 0.04874623194336891,
+            "psi": 0.07749102264642715,
+            "sigma": 0.042005930095911026,
+            "epsilon": 0.06256502121686935,
+            "omega": 0.12404996901750565,
+            "lambda_": 0.07729557156562805,
+            "zeta": 0.16732314229011536
           },
           "state_vec": [
-            0.05257576331496239,
-            0.08358389139175415,
-            0.13358232378959656,
-            0.07265956699848175,
-            0.04243224859237671,
-            0.06748020648956299,
-            0.18011707067489624,
-            0.045325592160224915,
-            0.08341903239488602,
-            0.08335844427347183
+            0.04874623194336891,
+            0.07749102264642715,
+            0.12404996901750565,
+            0.06742395460605621,
+            0.039333540946245193,
+            0.06256502121686935,
+            0.16732314229011536,
+            0.042005930095911026,
+            0.07736333459615707,
+            0.07729557156562805
           ],
           "inrc": {
             "op": "N",
-            "reason": "stagnant_field_mean_abs=0.084",
+            "reason": "stagnant_field_mean_abs=0.078",
             "transformed_vec": [
-              -0.05258,
-              -0.08358,
-              -0.13358,
-              -0.07266,
-              -0.04243,
-              -0.06748,
-              -0.18012,
-              -0.04533,
-              -0.08342,
-              -0.08336
+              -0.04875,
+              -0.07749,
+              -0.12405,
+              -0.06742,
+              -0.03933,
+              -0.06257,
+              -0.16732,
+              -0.04201,
+              -0.07736,
+              -0.0773
             ],
             "steering_hint": "INRC-N (Nega\u00e7\u00e3o): Campo estagnado ou risco de persevera\u00e7\u00e3o \u2014 PARE de repetir a mesma chamada/hip\u00f3tese; formule a contra-hip\u00f3tese e inspecione outro ponto do c\u00f3digo."
           },
           "topographic": {
-            "conscious": 0.13358232378959656,
-            "preconscious": 0.07265956699848175,
-            "unconscious": 0.04243224859237671,
+            "conscious": 0.12404996901750565,
+            "preconscious": 0.06742395460605621,
+            "unconscious": 0.039333540946245193,
             "repression": 0.30000001192092896,
             "return_repressed": 0.20000000298023224
           },
           "structural": {
-            "id_drive": 0.06748020648956299,
-            "ego_mediation": 0.18011707067489624,
-            "superego_censorship": 0.045325592160224915,
-            "conflict_intensity": 0.022154614329338074
+            "id_drive": 0.06256502121686935,
+            "ego_mediation": 0.16732314229011536,
+            "superego_censorship": 0.042005930095911026,
+            "conflict_intensity": 0.020559091120958328
           },
           "neutrosophic": {
             "phi": {
-              "T": 0.05257576331496239,
-              "I": 0.9474242329597473,
+              "T": 0.04874623194336891,
+              "I": 0.9512537717819214,
               "F": 0.0
             },
             "psi": {
-              "T": 0.08358389139175415,
-              "I": 0.9164161086082458,
+              "T": 0.07749102264642715,
+              "I": 0.922508955001831,
               "F": 0.0
             },
             "omega": {
-              "T": 0.13358232378959656,
-              "I": 0.866417646408081,
+              "T": 0.12404996901750565,
+              "I": 0.875950038433075,
               "F": 0.0
             },
             "theta": {
-              "T": 0.07265956699848175,
-              "I": 0.9273404479026794,
+              "T": 0.06742395460605621,
+              "I": 0.932576060295105,
               "F": 0.0
             },
             "upsilon": {
-              "T": 0.04243224859237671,
-              "I": 0.9575677514076233,
+              "T": 0.039333540946245193,
+              "I": 0.9606664776802063,
               "F": 0.0
             },
             "xi": {
-              "T": 0.06748020648956299,
-              "I": 0.932519793510437,
+              "T": 0.06256502121686935,
+              "I": 0.93743497133255,
               "F": 0.0
             },
             "zeta": {
-              "T": 0.18011707067489624,
-              "I": 0.8198829293251038,
+              "T": 0.16732314229011536,
+              "I": 0.832676887512207,
               "F": 0.0
             },
             "eta": {
-              "T": 0.045325592160224915,
-              "I": 0.9546744227409363,
+              "T": 0.042005930095911026,
+              "I": 0.9579940438270569,
               "F": 0.0
             },
             "kappa": {
-              "T": 0.08341903239488602,
-              "I": 0.9165809750556946,
+              "T": 0.07736333459615707,
+              "I": 0.9226366877555847,
               "F": 0.0
             },
             "lambda_": {
-              "T": 0.08335844427347183,
-              "I": 0.9166415333747864,
+              "T": 0.07729557156562805,
+              "I": 0.9227044582366943,
               "F": 0.0
             }
           },
-          "tension": 0.8445341400802135,
-          "pleasure": -0.03669542074203491,
+          "tension": 0.783597718924284,
+          "pleasure": 0.0016316771507263184,
           "tension_window": [
-            0.8223474025726318,
-            0.8217262029647827,
-            0.8107067346572876,
-            0.8285561203956604,
-            0.8312446475028992,
-            0.8363770246505737,
-            0.887701690196991,
-            0.9250910878181458,
-            0.8235875368118286,
-            0.7982804775238037,
-            0.8043745160102844,
-            0.7926313877105713,
-            0.7885388135910034,
-            0.8024359941482544,
-            0.7946767807006836,
-            0.8189623355865479,
-            0.8247259855270386,
-            0.7901692986488342,
-            0.7815272808074951,
-            0.8197565078735352,
-            0.7929089665412903,
-            0.7847911715507507,
-            0.7921115756034851,
-            0.7834024429321289,
-            0.8090102672576904,
-            0.8240014910697937,
-            0.8325173854827881,
-            0.8164066672325134,
-            0.8197565078735352,
-            0.8694766163825989,
             0.8078387379646301,
-            0.844534158706665
+            0.844534158706665,
+            0.8666549921035767,
+            0.8095159530639648,
+            0.799029529094696,
+            0.788873016834259,
+            0.825782299041748,
+            0.8158411383628845,
+            0.8116596937179565,
+            0.7848128080368042,
+            0.808651328086853,
+            0.7906419634819031,
+            0.7886996269226074,
+            0.7852641344070435,
+            0.8127657175064087,
+            0.7977479100227356,
+            0.8207445740699768,
+            0.8107953667640686,
+            0.8130423426628113,
+            0.7882832288742065,
+            0.7844308614730835,
+            0.7842921018600464,
+            0.790884792804718,
+            0.7997568845748901,
+            0.7849169969558716,
+            0.7812016606330872,
+            0.8312638998031616,
+            0.8107262849807739,
+            0.8088935613632202,
+            0.8002764582633972,
+            0.7852293848991394,
+            0.7835977077484131
           ]
         },
         "sovereign_kuramoto": {
@@ -1720,30 +1720,30 @@
         },
         "attractor_10d": {
           "current_attractor": "POSICAO_EP",
-          "distance_to_attractor": 1.0694,
-          "regime_confidence": 0.3432,
+          "distance_to_attractor": 1.0879,
+          "regime_confidence": 0.3369,
           "transition_candidate": "NENHUM",
-          "state_norm": 0.296,
+          "state_norm": 0.2748,
           "all_distances": {
-            "ESTAVEL_REPARACAO": 2.2017,
-            "COLAPSO_DISSOCIACAO": 2.4095,
-            "POSICAO_EP": 1.0694,
-            "POSICAO_D": 1.8279
+            "ESTAVEL_REPARACAO": 2.2215,
+            "COLAPSO_DISSOCIACAO": 2.389,
+            "POSICAO_EP": 1.0879,
+            "POSICAO_D": 1.8477
           }
         },
         "dendritic": {
           "n_graph_nodes": 16,
           "dendritic_depth": 4.2667,
           "morphology_score": 0.7156,
-          "ipr_dim_mean": 0.435853,
-          "eff_dim_ratio_mean": 0.014883,
-          "contract_retention_cosine": 0.3911,
-          "contract_drift": 0.6089,
+          "ipr_dim_mean": 0.472786,
+          "eff_dim_ratio_mean": 0.011561,
+          "contract_retention_cosine": 0.6109,
+          "contract_drift": 0.3891,
           "scale": "layer correlation graph [PRX/TXT]",
-          "file": "20261112T145508376623_google_gemma_4_E4B_it.npz",
+          "file": "20261112T145745210938_google_gemma_4_E4B_it.npz",
           "model": "google/gemma-4-E4B-it",
           "n_layers": 43,
-          "n_steps": 5
+          "n_steps": 4
         },
         "workspace": {
           "distinct_prefixes": 3,
@@ -1763,7 +1763,7 @@
       }
     },
     {
-      "ts": 1794495422.8657384,
+      "ts": 1794497239.278634,
       "name": "kernel.workspace",
       "payload": {
         "distinct_prefixes": 3,
@@ -1782,7 +1782,7 @@
       }
     },
     {
-      "ts": 1794495422.8643367,
+      "ts": 1794497239.2773244,
       "name": "kernel.workspace.ignition",
       "payload": {
         "distinct_prefixes": 3,
@@ -1801,37 +1801,37 @@
       }
     },
     {
-      "ts": 1794495422.8628228,
+      "ts": 1794497239.2756915,
       "name": "kernel.dendritic",
       "payload": {
         "n_graph_nodes": 16,
         "dendritic_depth": 4.2667,
         "morphology_score": 0.7156,
-        "ipr_dim_mean": 0.435853,
-        "eff_dim_ratio_mean": 0.014883,
-        "contract_retention_cosine": 0.3911,
-        "contract_drift": 0.6089,
+        "ipr_dim_mean": 0.472786,
+        "eff_dim_ratio_mean": 0.011561,
+        "contract_retention_cosine": 0.6109,
+        "contract_drift": 0.3891,
         "scale": "layer correlation graph [PRX/TXT]",
-        "file": "20261112T145508376623_google_gemma_4_E4B_it.npz",
+        "file": "20261112T145745210938_google_gemma_4_E4B_it.npz",
         "model": "google/gemma-4-E4B-it",
         "n_layers": 43,
-        "n_steps": 5
+        "n_steps": 4
       }
     },
     {
-      "ts": 1794495422.8474548,
+      "ts": 1794497239.2618587,
       "name": "kernel.attractor_10d",
       "payload": {
         "current_attractor": "POSICAO_EP",
-        "distance_to_attractor": 1.0694,
-        "regime_confidence": 0.3432,
+        "distance_to_attractor": 1.0879,
+        "regime_confidence": 0.3369,
         "transition_candidate": "NENHUM",
-        "state_norm": 0.296,
+        "state_norm": 0.2748,
         "all_distances": {
-          "ESTAVEL_REPARACAO": 2.2017,
-          "COLAPSO_DISSOCIACAO": 2.4095,
-          "POSICAO_EP": 1.0694,
-          "POSICAO_D": 1.8279
+          "ESTAVEL_REPARACAO": 2.2215,
+          "COLAPSO_DISSOCIACAO": 2.389,
+          "POSICAO_EP": 1.0879,
+          "POSICAO_D": 1.8477
         }
       }
     }
@@ -1853,7 +1853,7 @@
       "stage.sensory_feedback": 1.0,
       "integration_loop": 1.0
     },
-    "events_24h": 17837
+    "events_24h": 18047
   },
   "battery": {
     "runs": [
@@ -2844,6 +2844,17 @@
     "vector_sidecars_count": 130,
     "step_sidecars_count": 66,
     "models": {
+      "google/gemma-4-E4B-it": {
+        "eff_rank_mean": 1.552,
+        "spectral_entropy_mean": 0.4253,
+        "ipr_dim_mean": 29.6,
+        "ipr_dim_pct": 1.16,
+        "bond_dim_max_mean": 40.0,
+        "hidden_dim": 2560,
+        "n_layers": 43,
+        "n_files": 8,
+        "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
+      },
       "google/gemma-4-31B-it": {
         "eff_rank_mean": 1.22,
         "spectral_entropy_mean": 0.1909,
@@ -2865,51 +2876,40 @@
         "n_layers": 49,
         "n_files": 8,
         "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
-      },
-      "google/gemma-4-E4B-it": {
-        "eff_rank_mean": 1.611,
-        "spectral_entropy_mean": 0.4592,
-        "ipr_dim_mean": 38.1,
-        "ipr_dim_pct": 1.49,
-        "bond_dim_max_mean": 40.0,
-        "hidden_dim": 2560,
-        "n_layers": 43,
-        "n_files": 8,
-        "note": "proxy espectral/MPS \u2014 n\u00e3o \u00e9 \u03a6 causal IIT"
       }
     }
   },
   "activations": {
-    "count": 1100,
+    "count": 1104,
     "last": {
-      "ts": "2026-11-12T14:55:08.326833+00:00",
+      "ts": "2026-11-12T14:57:45.165731+00:00",
       "model": "google/gemma-4-E4B-it",
       "mode": "basal_assistant",
       "run_id": "runtime-20261112",
-      "turn": "1794495308",
+      "turn": "1794495465",
       "task": "serve:gemma-4-E4B-it",
-      "prompt_tokens": 181,
-      "gen_tokens": 32,
+      "prompt_tokens": 182,
+      "gen_tokens": 19,
       "motor_layer": {
-        "motor_hidden_norm": 127.3257,
-        "motor_hidden_std": 2.5162,
-        "motor_velocity_mean": 251.5227,
-        "motor_velocity_max": 325.6871,
-        "motor_acceleration_mean": 434.4221,
-        "motor_cosine_drift": 0.7191,
+        "motor_hidden_norm": 220.9778,
+        "motor_hidden_std": 4.3665,
+        "motor_velocity_mean": 262.7657,
+        "motor_velocity_max": 333.5198,
+        "motor_acceleration_mean": 457.3033,
+        "motor_cosine_drift": 0.2959,
         "thinking_chars": 0,
-        "visible_motor_chars": 160,
+        "visible_motor_chars": 80,
         "action_markers_count": 0,
-        "unique_ratio": 0.9545,
+        "unique_ratio": 1.0,
         "degenerate_flag": false
       },
       "mps_layer": {
-        "chi_eff_mean": 16.7233,
+        "chi_eff_mean": 15.8422,
         "chi_eff_max": 29.298,
-        "pr_traj": 14.2152,
-        "svd_entropy_mean": 2.5276,
-        "contract_drift": 0.7334,
-        "ipr_mean": 0.035498,
+        "pr_traj": 11.9043,
+        "svd_entropy_mean": 2.3954,
+        "contract_drift": 0.5176,
+        "ipr_mean": 0.034961,
         "morphology_score": 0.5
       },
       "layers": [
@@ -2921,263 +2921,263 @@
         },
         {
           "layer": 1,
-          "norm": 56.7764,
-          "mean": -0.01629,
-          "std": 1.1222
+          "norm": 54.1444,
+          "mean": -0.011115,
+          "std": 1.0703
         },
         {
           "layer": 2,
-          "norm": 98.3335,
-          "mean": 0.05187,
-          "std": 1.9432
+          "norm": 98.8035,
+          "mean": 0.05304,
+          "std": 1.9524
         },
         {
           "layer": 3,
-          "norm": 102.5871,
-          "mean": 0.055578,
-          "std": 2.0272
+          "norm": 105.6251,
+          "mean": 0.057851,
+          "std": 2.0872
         },
         {
           "layer": 4,
-          "norm": 105.0748,
-          "mean": 0.078613,
-          "std": 2.0756
+          "norm": 106.9622,
+          "mean": 0.069159,
+          "std": 2.1133
         },
         {
           "layer": 5,
-          "norm": 104.5479,
-          "mean": 0.062393,
-          "std": 2.0658
+          "norm": 103.9783,
+          "mean": 0.050364,
+          "std": 2.0548
         },
         {
           "layer": 6,
-          "norm": 112.1537,
-          "mean": 0.062249,
-          "std": 2.2162
+          "norm": 113.7576,
+          "mean": 0.055358,
+          "std": 2.2481
         },
         {
           "layer": 7,
-          "norm": 124.756,
-          "mean": 0.057108,
-          "std": 2.4655
+          "norm": 124.1229,
+          "mean": 0.05069,
+          "std": 2.4531
         },
         {
           "layer": 8,
-          "norm": 116.6467,
-          "mean": 0.056886,
-          "std": 2.3052
+          "norm": 114.7384,
+          "mean": 0.059132,
+          "std": 2.2674
         },
         {
           "layer": 9,
-          "norm": 66.4388,
-          "mean": 0.032854,
-          "std": 1.313
+          "norm": 67.982,
+          "mean": 0.027216,
+          "std": 1.3436
         },
         {
           "layer": 10,
-          "norm": 85.5382,
-          "mean": 0.014588,
-          "std": 1.6909
+          "norm": 86.7106,
+          "mean": 0.001045,
+          "std": 1.7141
         },
         {
           "layer": 11,
-          "norm": 117.9043,
-          "mean": -0.025492,
-          "std": 2.3306
+          "norm": 121.2911,
+          "mean": -0.034377,
+          "std": 2.3974
         },
         {
           "layer": 12,
-          "norm": 148.1294,
-          "mean": -0.029472,
-          "std": 2.9281
+          "norm": 149.5978,
+          "mean": -0.035753,
+          "std": 2.957
         },
         {
           "layer": 13,
-          "norm": 173.9921,
-          "mean": -0.033727,
-          "std": 3.4393
+          "norm": 174.2678,
+          "mean": -0.041872,
+          "std": 3.4447
         },
         {
           "layer": 14,
-          "norm": 167.6405,
-          "mean": -0.034392,
-          "std": 3.3138
+          "norm": 165.7832,
+          "mean": -0.038138,
+          "std": 3.277
         },
         {
           "layer": 15,
-          "norm": 148.2839,
-          "mean": -0.051172,
-          "std": 2.9308
+          "norm": 144.4079,
+          "mean": -0.04311,
+          "std": 2.8543
         },
         {
           "layer": 16,
-          "norm": 140.2977,
-          "mean": -0.029174,
-          "std": 2.7733
+          "norm": 138.1122,
+          "mean": -0.021868,
+          "std": 2.7301
         },
         {
           "layer": 17,
-          "norm": 124.7393,
-          "mean": -0.014354,
-          "std": 2.4658
+          "norm": 122.2003,
+          "mean": -0.022381,
+          "std": 2.4156
         },
         {
           "layer": 18,
-          "norm": 95.42,
-          "mean": 0.031897,
-          "std": 1.886
+          "norm": 95.6263,
+          "mean": 0.013814,
+          "std": 1.8903
         },
         {
           "layer": 19,
-          "norm": 89.407,
-          "mean": 0.030376,
-          "std": 1.7671
+          "norm": 89.3298,
+          "mean": 0.010069,
+          "std": 1.7659
         },
         {
           "layer": 20,
-          "norm": 89.5981,
-          "mean": 0.018311,
-          "std": 1.7711
+          "norm": 90.9598,
+          "mean": 0.012962,
+          "std": 1.7981
         },
         {
           "layer": 21,
-          "norm": 92.3619,
-          "mean": -0.035797,
+          "norm": 92.3481,
+          "mean": -0.015384,
           "std": 1.8255
         },
         {
           "layer": 22,
-          "norm": 92.4551,
-          "mean": -0.026548,
-          "std": 1.8275
+          "norm": 88.3651,
+          "mean": -0.030406,
+          "std": 1.7465
         },
         {
           "layer": 23,
-          "norm": 52.3035,
-          "mean": -0.014238,
-          "std": 1.0338
+          "norm": 50.8207,
+          "mean": -0.001006,
+          "std": 1.0046
         },
         {
           "layer": 24,
-          "norm": 98.7485,
-          "mean": 0.021807,
-          "std": 1.9519
+          "norm": 100.4455,
+          "mean": -0.007741,
+          "std": 1.9856
         },
         {
           "layer": 25,
-          "norm": 112.3863,
-          "mean": 0.055608,
-          "std": 2.221
+          "norm": 119.0992,
+          "mean": -0.001274,
+          "std": 2.3544
         },
         {
           "layer": 26,
-          "norm": 114.7471,
-          "mean": 0.040575,
-          "std": 2.268
+          "norm": 128.8429,
+          "mean": -0.015657,
+          "std": 2.5469
         },
         {
           "layer": 27,
-          "norm": 111.4911,
-          "mean": 0.027536,
-          "std": 2.2038
+          "norm": 135.4465,
+          "mean": -7.1e-05,
+          "std": 2.6775
         },
         {
           "layer": 28,
-          "norm": 112.2461,
-          "mean": 0.048466,
-          "std": 2.2184
+          "norm": 137.7006,
+          "mean": 0.03648,
+          "std": 2.7218
         },
         {
           "layer": 29,
-          "norm": 117.7755,
-          "mean": 0.064068,
-          "std": 2.3273
+          "norm": 141.5458,
+          "mean": 0.086504,
+          "std": 2.7968
         },
         {
           "layer": 30,
-          "norm": 116.0542,
-          "mean": 0.086011,
-          "std": 2.2926
+          "norm": 139.4344,
+          "mean": 0.109894,
+          "std": 2.7542
         },
         {
           "layer": 31,
-          "norm": 129.8367,
-          "mean": 0.119457,
-          "std": 2.5638
+          "norm": 152.9478,
+          "mean": 0.133173,
+          "std": 3.0206
         },
         {
           "layer": 32,
-          "norm": 139.5629,
-          "mean": 0.102933,
-          "std": 2.757
+          "norm": 169.0689,
+          "mean": 0.124053,
+          "std": 3.3399
         },
         {
           "layer": 33,
-          "norm": 153.4999,
-          "mean": 0.083271,
-          "std": 3.0333
+          "norm": 179.7847,
+          "mean": 0.127206,
+          "std": 3.5517
         },
         {
           "layer": 34,
-          "norm": 170.7466,
-          "mean": 0.097556,
-          "std": 3.3739
+          "norm": 186.8365,
+          "mean": 0.128911,
+          "std": 3.6912
         },
         {
           "layer": 35,
-          "norm": 177.5175,
-          "mean": 0.082972,
-          "std": 3.5082
+          "norm": 196.2846,
+          "mean": 0.127687,
+          "std": 3.8781
         },
         {
           "layer": 36,
-          "norm": 180.6254,
-          "mean": 0.087014,
-          "std": 3.5696
+          "norm": 206.0411,
+          "mean": 0.127868,
+          "std": 4.071
         },
         {
           "layer": 37,
-          "norm": 183.2995,
-          "mean": 0.058006,
-          "std": 3.623
+          "norm": 210.9906,
+          "mean": 0.123571,
+          "std": 4.169
         },
         {
           "layer": 38,
-          "norm": 178.0145,
-          "mean": 0.06185,
-          "std": 3.5185
+          "norm": 206.1617,
+          "mean": 0.115418,
+          "std": 4.0738
         },
         {
           "layer": 39,
-          "norm": 166.2926,
-          "mean": 0.03381,
-          "std": 3.2871
+          "norm": 189.3159,
+          "mean": 0.108262,
+          "std": 3.7408
         },
         {
           "layer": 40,
-          "norm": 151.9456,
-          "mean": 0.041745,
-          "std": 3.0034
+          "norm": 163.7489,
+          "mean": 0.098751,
+          "std": 3.2355
         },
         {
           "layer": 41,
-          "norm": 129.3247,
-          "mean": 0.026529,
-          "std": 2.5564
+          "norm": 132.384,
+          "mean": 0.063772,
+          "std": 2.6162
         },
         {
           "layer": 42,
-          "norm": 127.3257,
-          "mean": -0.041431,
-          "std": 2.5166
+          "norm": 220.9778,
+          "mean": 0.089752,
+          "std": 4.3674
         }
       ],
-      "attention_entropy_last": 3.3441,
+      "attention_entropy_last": 3.4535,
       "n_layers": 42,
       "step_traj": {
-        "n_steps": 5,
+        "n_steps": 4,
         "every": 8,
-        "file": "20261112T145508376623_google_gemma_4_E4B_it.npz"
+        "file": "20261112T145745210938_google_gemma_4_E4B_it.npz"
       }
     }
   },
@@ -3192,7 +3192,7 @@
   },
   "integration_loop": {
     "cycles": 1308,
-    "last_ts": 1794495401.4026933
+    "last_ts": 1794497209.7196658
   },
   "memtrias": {
     "memories": 389
