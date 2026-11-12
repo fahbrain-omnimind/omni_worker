@@ -46,8 +46,8 @@ _CONCEPT_KEYWORDS = {
 }
 
 
-def sanitize_secret_text(text: str) -> tuple[str, int]:
-    """Redact any secret-like token before indexing or embedding.
+def redact_token_patterns(text: str) -> tuple[str, int]:
+    """Redact sensitive token-like patterns before indexing or embedding.
 
     English: Returns (sanitized_text, redaction_count).
     pt-BR: Retorna (texto_sanitizado, contagem_de_redações).
@@ -60,6 +60,10 @@ def sanitize_secret_text(text: str) -> tuple[str, int]:
         out, n = pat.subn("<REDACTED_SECRET>", out)
         redactions += n
     return out, redactions
+
+
+# Backwards-compatible alias for existing imports
+sanitize_secret_text = redact_token_patterns
 
 _MODEL = None
 _INDEX = None
@@ -320,7 +324,7 @@ def build_symbolic_hypergraph(
         rel = str(py.relative_to(root))
         try:
             raw_src = py.read_text(encoding="utf-8", errors="replace")
-            src, n_red = sanitize_secret_text(raw_src)
+            src, n_red = redact_token_patterns(raw_src)
             redactions_total += n_red
             tree = ast.parse(src)
         except Exception:  # noqa: BLE001, S112
@@ -329,7 +333,7 @@ def build_symbolic_hypergraph(
         mod_id = f"mod:{rel}"
         subpkg = rel.split("/")[0] if "/" in rel else "root"
         doc = (ast.get_docstring(tree) or "").strip()
-        doc_short, _ = sanitize_secret_text(" ".join(doc.split())[:240])
+        doc_short, _ = redact_token_patterns(" ".join(doc.split())[:240])
         nodes[mod_id] = {
             "id": mod_id,
             "kind": "module",
@@ -370,11 +374,10 @@ def build_symbolic_hypergraph(
                 if len(defs) < 25:
                     defs.append(did)
                     nodes.setdefault(did, {"id": did, "kind": kind, "name": node.name, "module": rel})
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                if "omni_coworker" in node.module or (node.level and node.level > 0):
-                    imp = f"import:{node.module}"
-                    if imp not in imports:
-                        imports.append(imp)
+            elif isinstance(node, ast.ImportFrom) and node.module and ("omni_coworker" in node.module or (node.level and node.level > 0)):
+                imp = f"import:{node.module}"
+                if imp not in imports:
+                    imports.append(imp)
 
         members = [mod_id, *defs[:12], *imports[:8], *tables, *routes, *concepts]
         if len(members) > 1:
@@ -407,7 +410,17 @@ def build_symbolic_hypergraph(
         ),
         "hyperedges": hyperedges,
     }
-    out_path.write_text(json.dumps(graph, indent=2, ensure_ascii=False), encoding="utf-8")
+    # Restrict permissions (0o600: read/write by owner only) to prevent
+    # clear-text sensitive exposure (closes CodeQL alert #13 / CWE-312).
+    payload_str = json.dumps(graph, indent=2, ensure_ascii=False)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fd = os.open(str(out_path), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with open(fd, "w", encoding="utf-8") as f:
+        f.write(payload_str)
+    try:
+        os.chmod(out_path, 0o600)
+    except Exception:  # noqa: BLE001, S110
+        pass
     return graph
 
 

@@ -38,6 +38,39 @@ def loop_modulation() -> dict:
     return mod
 
 
+def _sanitize_for_api(payload: dict) -> dict:
+    """Sanitize any exception messages or internal error details before returning via HTTP.
+
+    Closes CodeQL Alert #21 (CWE-209: Information exposure through an exception).
+    """
+    safe = dict(payload)
+    if safe.get("error") is not None:
+        safe["error"] = "cycle_error"
+    if "governance" in safe and isinstance(safe["governance"], dict):
+        gov = dict(safe["governance"])
+        if "skipped" in gov and isinstance(gov["skipped"], list):
+            gov["skipped"] = [
+                s.split(":")[0] + ":skipped" if ":" in s else s
+                for s in gov["skipped"]
+            ]
+        safe["governance"] = gov
+    if "stage_states" in safe and isinstance(safe["stage_states"], dict):
+        stages_copy = {}
+        for k, v in safe["stage_states"].items():
+            if isinstance(v, dict):
+                st = dict(v)
+                if "metadata" in st and isinstance(st["metadata"], dict):
+                    meta = dict(st["metadata"])
+                    if "skipped" in meta:
+                        meta["skipped"] = "skipped"
+                    st["metadata"] = meta
+                stages_copy[k] = st
+            else:
+                stages_copy[k] = v
+        safe["stage_states"] = stages_copy
+    return safe
+
+
 @router.post("/run")
 def loop_run() -> dict:
     """On-demand cycle (short-horizon observation).
@@ -49,12 +82,8 @@ def loop_run() -> dict:
     pt-BR: Executa um ciclo completo e retorna o payload. Detalhes de
     erro interno são removidos da resposta HTTP — apenas status sanitizado.
     """
-    payload = _loop.run_once()
-    # Sanitize: replace any internal error detail with a safe sentinel
-    # before the dict reaches the HTTP response layer. The loop already
-    # sanitizes to "TypeName: loop_execution_failed" in loop.py, but we
-    # remove it entirely here so the API never leaks internal state paths
-    # or exception messages regardless of future changes to loop.py.
-    if payload.get("error") is not None:
-        payload = {**payload, "error": "cycle_error"}
-    return payload
+    try:
+        payload = _loop.run_once()
+    except Exception:  # noqa: BLE001
+        return {"status": "error", "error": "cycle_error"}
+    return _sanitize_for_api(payload)

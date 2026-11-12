@@ -26,6 +26,7 @@ import sqlite3
 import subprocess
 import time
 from datetime import UTC, datetime
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
@@ -133,13 +134,36 @@ def extract_text_from_pdf(pdf_path: Path, max_ocr_pages: int = 15) -> str:
     return clean_text(" ".join(text_parts))
 
 
+class _HTMLTextExtractor(HTMLParser):
+    """Safe HTML text extractor avoiding regex tag-filtering vulnerabilities (CWE-116 / CodeQL alert #25)."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._parts: list[str] = []
+        self._skip_depth: int = 0
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() in ("script", "style", "noscript"):
+            self._skip_depth += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() in ("script", "style", "noscript") and self._skip_depth > 0:
+            self._skip_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if self._skip_depth == 0:
+            self._parts.append(data)
+
+    def get_text(self) -> str:
+        return " ".join(self._parts)
+
+
 def extract_text_from_html(html_path: Path) -> str:
     try:
         content = html_path.read_text(encoding="utf-8", errors="ignore")
-        text = re.sub(r"<script.*?</script>", " ", content, flags=re.DOTALL | re.IGNORECASE)
-        text = re.sub(r"<style.*?</style>", " ", text, flags=re.DOTALL | re.IGNORECASE)
-        text = re.sub(r"<[^>]+>", " ", text)
-        return clean_text(text)
+        parser = _HTMLTextExtractor()
+        parser.feed(content)
+        return clean_text(parser.get_text())
     except Exception:  # noqa: BLE001
         return ""
 

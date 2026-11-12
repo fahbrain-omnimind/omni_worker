@@ -123,24 +123,25 @@ def _run_stage(gov: dict[str, Any], name: str, fn) -> tuple[Any, str | None]:
     try:
         out = fn()
     except Exception as e:  # noqa: BLE001
+        err_msg = str(e)
         if br is not None:
             br.record_failure()
         if bus is not None:
             bus.publish("loop.stage.failed", {"stage": name,
-                                              "error": str(e)})
+                                              "error": err_msg})
         if br is not None and br.state == "open" and quar is not None:
-            quar.quarantine(cid, reason=str(e),
+            quar.quarantine(cid, reason=err_msg,
                             evidence={"failures": br.failure_count})
             if bus is not None:
                 bus.publish("loop.stage.quarantined", {"stage": name})
             try:
                 from ..agency.witness import witness_event
                 witness_event("stage_quarantined",
-                              {"stage": name, "error": str(e),
+                              {"stage": name, "error": err_msg,
                                "failures": br.failure_count})
             except Exception:  # noqa: BLE001, S110
                 pass
-        return None, str(e)
+        return None, err_msg
     if br is not None:
         br.record_success()
     if bus is not None:
@@ -279,8 +280,8 @@ def run_once(bundle: dict[str, Any] | None = None) -> dict[str, Any]:
                     name, metadata={"skipped": note})
             else:
                 stage_states[name] = r
-    except Exception as e:  # noqa: BLE001
-        status, err = "error", f"{type(e).__name__}: loop_execution_failed"
+    except Exception:  # noqa: BLE001
+        status, err = "error", "loop_execution_failed"
     if skipped and status == "ok":
         status = "partial"
 
