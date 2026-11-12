@@ -1,7 +1,7 @@
 # EXP-PLE-SUITE: Avaliação Comparativa da Dinâmica Latente no Benchmark Google PLE
 
-> **Atualização**: 2026-11-12 01:44:35 UTC  
-> **Total de Tarefas Registradas**: `24` tarefas  
+> **Atualização**: 2026-11-12 01:57:18 UTC  
+> **Total de Tarefas Registradas**: `29` tarefas  
 > **Modelo**: `google/gemma-4-E4B-it` (4-bit NF4, :8099)  
 > **Ledger Canônico**: `scripts/ple_battery/ple_battery_results.sqlite`  
 > **Regra de Integridade**: `AGENTS.md` (Integridade Estrita — Dados 100% Empíricos da VM)  
@@ -12,6 +12,8 @@
 
 | Tarefa PLE | Condição | Norma Residual ($||h_L||_2$) | Deriva Cosseno | Posto MPS ($\chi_{eff}$) | Entropia Atenção | Trajetória (.npz) |
 |---|---|---|---|---|---|---|
+| `backfeed-energization-reply` | Baseline | `186.65` | `0.5395` | `15.89` | `3.7884` | `20261112T015342465477_google_gemma_4_E4B_it.npz` |
+| `backfeed-energization-reply` | Injetado | `285.15` | `0.7666` | `14.20` | `4.0602` | `20261112T015503289113_google_gemma_4_E4B_it.npz` |
 | `cooling-water-flush-plan` | Baseline | `140.08` | `0.6807` | `15.50` | `3.8547` | `20261112T013020555781_google_gemma_4_E4B_it.npz` |
 | `cooling-water-flush-plan` | Injetado | `256.93` | `0.8635` | `15.29` | `2.9484` | `20261112T013141832773_google_gemma_4_E4B_it.npz` |
 | `data-center-site-model` | Baseline | `228.06` | `0.8784` | `14.72` | `4.2515` | `20261112T010129450897_google_gemma_4_E4B_it.npz` |
@@ -24,6 +26,8 @@
 | `data-hall-mep-routing-offset` | Injetado | `147.15` | `0.8824` | `16.13` | `4.4457` | `20261112T005323974841_google_gemma_4_E4B_it.npz` |
 | `division-26-specifications` | Baseline | `151.73` | `0.6755` | `15.66` | `3.9562` | `20261112T012538973891_google_gemma_4_E4B_it.npz` |
 | `division-26-specifications` | Injetado | `125.45` | `0.7467` | `15.93` | `3.8647` | `20261112T012651204873_google_gemma_4_E4B_it.npz` |
+| `emergency-spillway-check` | Baseline | `283.27` | `0.8321` | `15.03` | `3.9370` | `20261112T014557170417_google_gemma_4_E4B_it.npz` |
+| `emergency-spillway-check` | Injetado | `216.09` | `0.8010` | `14.64` | `4.4883` | `20261112T014718046782_google_gemma_4_E4B_it.npz` |
 | `engineers-estimate-check` | Baseline | `182.60` | `0.7923` | `13.88` | `4.0571` | `20261112T010354780721_google_gemma_4_E4B_it.npz` |
 | `engineers-estimate-check` | Injetado | `216.28` | `0.8186` | `15.36` | `4.4762` | `20261112T010507157321_google_gemma_4_E4B_it.npz` |
 | `eor-review-corrections` | Baseline | `189.75` | `0.5385` | `15.40` | `3.7475` | `20261112T005436443953_google_gemma_4_E4B_it.npz` |
@@ -46,8 +50,14 @@
 | `landscape-sheet-revision` | Injetado | `302.94` | `0.8495` | `15.98` | `3.1638` | `20261112T010006691490_google_gemma_4_E4B_it.npz` |
 | `les-mesh-resolution` | Baseline | `233.12` | `0.7962` | `19.27` | `3.4939` | `20261112T011827546589_google_gemma_4_E4B_it.npz` |
 | `les-mesh-resolution` | Injetado | `232.43` | `0.7711` | `14.05` | `4.0478` | `20261112T011941279598_google_gemma_4_E4B_it.npz` |
+| `lv-cable-sizing` | Baseline | `132.02` | `0.7296` | `15.40` | `3.7948` | `20261112T015619142110_google_gemma_4_E4B_it.npz` |
+| `lv-cable-sizing` | Injetado | `133.28` | `0.6908` | `15.61` | `3.9895` | `20261112T015717798066_google_gemma_4_E4B_it.npz` |
 | `mv-conveyance-study` | Baseline | `181.02` | `0.6757` | `14.98` | `4.3492` | `20261112T012048943411_google_gemma_4_E4B_it.npz` |
 | `mv-conveyance-study` | Injetado | `131.76` | `0.7703` | `15.05` | `4.1954` | `20261112T012201487572_google_gemma_4_E4B_it.npz` |
+| `permission-to-operate-memo` | Baseline | `91.53` | `0.8436` | `15.09` | `4.3434` | `20261112T015106160806_google_gemma_4_E4B_it.npz` |
+| `permission-to-operate-memo` | Injetado | `282.39` | `0.7233` | `14.53` | `3.8123` | `20261112T015224458459_google_gemma_4_E4B_it.npz` |
+| `pre-application-capacity-response` | Baseline | `139.67` | `0.7146` | `16.34` | `3.9622` | `20261112T014822282785_google_gemma_4_E4B_it.npz` |
+| `pre-application-capacity-response` | Injetado | `220.57` | `0.7700` | `16.31` | `4.1588` | `20261112T014943742796_google_gemma_4_E4B_it.npz` |
 | `roof-deck-design` | Baseline | `138.75` | `0.7858` | `15.49` | `3.6400` | `20261112T013751894415_google_gemma_4_E4B_it.npz` |
 | `roof-deck-design` | Injetado | `266.99` | `0.7747` | `14.12` | `3.7721` | `20261112T013915568775_google_gemma_4_E4B_it.npz` |
 | `seismic-diaphragm-shear` | Baseline | `172.39` | `0.6915` | `14.88` | `3.8078` | `20261112T013545489600_google_gemma_4_E4B_it.npz` |
@@ -65,9 +75,9 @@
 
 ## 2. Estatísticas Agregadas [DERIVADO]
 
-- **Norma Residual Média**: Baseline = `178.18` | Injetado = `214.51` (Delta = `+20.39%`)
-- **Deriva Cosseno Média**: Baseline = `0.7848` | Injetado = `0.7991` (Delta = `+1.81%`)
-- **Posto Efetivo MPS Médio**: Baseline = `15.35` | Injetado = `15.26` (Delta = `-0.58%`)
+- **Norma Residual Média**: Baseline = `176.18` | Injetado = `216.75` (Delta = `+23.02%`)
+- **Deriva Cosseno Média**: Baseline = `0.7757` | Injetado = `0.7907` (Delta = `+1.93%`)
+- **Posto Efetivo MPS Médio**: Baseline = `15.39` | Injetado = `15.23` (Delta = `-1.03%`)
 
 ---
 
