@@ -149,7 +149,7 @@ start_brain() { # label, model, port, extra_flags
     env PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:False}" \
         PYTHONPATH="$REPO/src" "$VENV_PYTHON" -m omni_coworker.server.erika_torch_server \
       --model "$model" --load-4bit --eager-attn --port "$port" $extra
-  wait_health "$port" "$label" "brain_$label" 600
+  wait_health "$port" "$label" "brain_$label" 1200
 }
 
 stop_all() {
