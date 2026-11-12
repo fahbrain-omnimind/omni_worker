@@ -1,0 +1,9 @@
+# Root agent — SequentialAgent pipeline: analyst -> executor -> reviewer.
+# Single base model rule: ALL agents share gemma-4-12b-it-qat-w4a16-ct.
+name: omni_pipeline
+agent_class: SequentialAgent
+description: "Calibrated 3-stage pipeline: analysis -> implementation -> verified submission."
+sub_agents:
+  - config_path: sub_agents/analyst.yaml
+  - config_path: sub_agents/executor.yaml
+  - config_path: sub_agents/reviewer.yaml

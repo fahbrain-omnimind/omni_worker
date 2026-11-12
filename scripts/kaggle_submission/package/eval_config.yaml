@@ -1,0 +1,8 @@
+# Per-task budgets calibrated for Kaggle competition runner.
+# Restricts session wall-clock to 6 minutes per task and bounded tool-calls/turns
+# so that the full hidden evaluation split runs well within the Kaggle notebook timeout.
+evaluation:
+  max_time_minutes: 6
+  max_tool_calls: 35
+  max_turns: 40
+  timeout_seconds: 180

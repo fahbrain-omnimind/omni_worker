@@ -1,0 +1,18 @@
+# Pass 2 — Executor. Implements the minimal fix from {analysis_report}.
+name: patch_executor
+agent_class: LlmAgent
+model: gemma-4-12b-it-qat-w4a16-ct
+instruction: !include prompts/executor.md
+output_key: implementation_notes
+tools:
+  - read_file
+  - edit_file
+  - write_file
+  - run_command
+  - get_status
+generate_content_config:
+  temperature: 0.2
+  max_output_tokens: 4096
+  thinking_config:
+    thinking_budget: 2048
+    include_thoughts: true

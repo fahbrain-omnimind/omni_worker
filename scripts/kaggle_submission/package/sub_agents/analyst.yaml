@@ -1,0 +1,18 @@
+# Pass 1 — Analyst (read-only). Locates the bug, plans minimal fix.
+name: code_analyst
+agent_class: LlmAgent
+model: gemma-4-12b-it-qat-w4a16-ct
+instruction: !include prompts/analyst.md
+output_key: analysis_report
+tools:
+  - read_file
+  - run_command
+  - get_code_neighbors
+  - search_similar_code
+  - get_code_subgraph
+generate_content_config:
+  temperature: 0.1
+  max_output_tokens: 4096
+  thinking_config:
+    thinking_budget: 2048
+    include_thoughts: true
